@@ -1,0 +1,39 @@
+a {
+	text-decoration: none;
+}
+
+#outputArea, #outputArea2, #outputAlert {
+	border-collapse: collapse;
+	display: table;
+	width:100%;
+	padding: inherit;
+}
+
+#outputArea > span, #outputArea2 > span {
+	display: table-row;
+}
+
+#outputArea > span > span, #outputArea2 > span > span {
+	border: 1px solid;
+	display: table-cell;
+	padding: 0.2em 0.4em;
+	white-space: nowrap;
+}
+
+#outputArea > span > span > p, #outputArea2 > span > span > p {
+	margin-bottom: 0rem;
+    width: 150px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+#sel-data {
+	margin-bottom: 20px;
+}
+
+#container, #container2 {
+	width: 550px;
+	height: 400px;
+	margin: 0 auto;
+}
