@@ -8,10 +8,17 @@ DictDb = (() => {
     console.log(dbDir);
     axios.get(dbDir, { responseType: 'arraybuffer' })
       .then(function (response) {
+		res = [`<div class="alert alert-primary"><strong>數據庫加載中!</strong></div>`];
+		outputAlert.innerHTML = res.join('\n');
         dbTemp.db = new window.SQL.Database(new Uint8Array(response.data));
+		res = [`<div class="alert alert-primary"><strong>數據庫加載完成!</strong></div>`];
+		outputAlert.innerHTML = res.join('\n');
+		outputAlert.innerHTML = [``].join('\n');
         console.info("數據庫初始化完成");
       })
       .catch(function (error) {
+		res = [`<div class="alert alert-danger"><strong>數據庫加載失敗!</strong></div>`];
+		outputAlert.innerHTML = res.join('\n');
         console.info("數據庫初始化失敗", error);
       });
   }
