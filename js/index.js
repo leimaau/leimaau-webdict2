@@ -14,10 +14,14 @@ function searchPress(e, valueInput, queryType) {
 
 // 搜索按鈕
 function querySubmit(inputValue, queryType) {
-	const eleArr = [outputAlert, container, container_bw, outTabTitle, outTabTitle_bw, outTab, outTab_bw];
-	for (let i in eleArr) { // 清除信息
-		eleArr[i].innerHTML = [``].join('\n');
-	};
+	outputAlert.innerHTML = '';
+	container.innerHTML = '';
+	container_bw.innerHTML = '';
+	outTab.innerHTML = '';
+	outTab_bw.innerHTML = '';
+	outTabTitle.innerHTML = '';
+	outTabTitle_bw.innerHTML = '';
+
 	var selval = $('.selectpicker').selectpicker('val'); // 複選下拉框的選值數組
 	if (!inputValue) {
 		res = [`<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>請輸入查詢關鍵字!</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>`];
@@ -31,8 +35,6 @@ function querySubmit(inputValue, queryType) {
 		res = [`<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>數據庫未加載，請刷新!</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>`];
 		outputAlert.innerHTML = res.join('\n');
 		return false;
-	} else {
-		outputAlert.innerHTML = [``].join('\n');
 	};
 	res = MainQuery.queryTable(inputValue, selval, queryType);
 	if (res.length == 0) {
@@ -113,15 +115,13 @@ function updateTable(arrObj) {
 			outTab.push(item);
 		}
 	};
-	outTabTitle.innerHTML = [`<h5>南寧白話</h5>`].join('\n');  // 標題
+	outTabTitle.innerHTML = `<h5>南寧白話</h5>`;  // 標題
 	$('#outTab').bootstrapTable({ // 顯示白話表格
-		theadClasses: "thead-light",
 		columns: colData,
 		data: outTab
 	});
-	outTabTitle_bw.innerHTML = [`<h5>南寧平話</h5>`].join('\n');  // 標題
+	outTabTitle_bw.innerHTML = `<h5>南寧平話</h5>`;  // 標題
 	$('#outTab_bw').bootstrapTable({ // 顯示平話表格
-		theadClasses: "thead-light",
 		columns: colData,
 		data: outTab_bw
 	});

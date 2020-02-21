@@ -17,7 +17,7 @@ DictDb = (() => {
         console.info("數據庫初始化完成");
       })
       .catch(function (error) {
-		res = [`<div class="alert alert-danger"><strong>數據庫加載失敗!</strong></div>`];
+		res = [`<div class="alert alert-danger"><strong>數據庫加載失敗，請刷新!</strong></div>`];
 		outputAlert.innerHTML = res.join('\n');
         console.info("數據庫初始化失敗", error);
       });
