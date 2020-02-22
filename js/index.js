@@ -58,7 +58,7 @@ function querySubmit(inputValue, queryType, dictType) {
 	var res_bw = [];
 	if (selVal.some(item => item.indexOf('_bw') > -1)) {
 		res_bw = MainQuery.queryTable(inputValue, selVal.filter(item => item.indexOf('_bw') > -1), queryType);
-		tableDiv(res, 'outTab_bw', "南寧平話", outTabTitle_bw, colData);  // 顯示平話表格
+		tableDiv(res_bw, 'outTab_bw', "南寧平話", outTabTitle_bw, colData);  // 顯示平話表格
 		pieDiv(res_bw, inputValue, 'outPie_bw', "南寧平話");  // 顯示平話餅圖
 	};
 	
