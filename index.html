@@ -6,35 +6,35 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Leimaau’s Webdict 2.0</title>
   <!-- Bootstrap4 CSS -->
-  <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
   <!-- jQuery -->
-  <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
   <!-- popper.min.js -->
-  <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+  <script src="https://cdn.bootcss.com/popper.js/1.16.1/umd/popper.min.js"></script>
   <!-- Bootstrap4 JavaScript -->
-  <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="https://cdn.bootcss.com/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
   <!-- bootstrap-select CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.12/dist/css/bootstrap-select.min.css">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap-select/1.13.12/css/bootstrap-select.min.css">
   <!-- bootstrap-select JavaScript -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.12/dist/js/bootstrap-select.min.js"></script>
+  <script src="https://cdn.bootcss.com/bootstrap-select/1.13.12/js/bootstrap-select.min.js"></script>
   <!-- bootstrap-select translation files -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.12/dist/js/i18n/defaults-zh_CN.min.js"></script>
+  <!-- <script src="https://cdn.bootcss.com/bootstrap-select/1.13.12/js/i18n/defaults-zh_CN.min.js"></script> -->
 
   <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.15.3/dist/bootstrap-table.min.css">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap-table/1.16.0/bootstrap-table.min.css">
   <!-- Latest compiled and minified JavaScript -->
-  <script src="https://unpkg.com/bootstrap-table@1.15.3/dist/bootstrap-table.min.js"></script>
+  <script src="https://cdn.bootcss.com/bootstrap-table/1.16.0/bootstrap-table.min.js"></script>
   <!-- Latest compiled and minified Locales -->
-  <!-- <script src="https://unpkg.com/bootstrap-table@1.15.3/dist/locale/bootstrap-table-zh-CN.min.js"></script> -->
+  <!-- <script src="https://cdn.bootcss.com/bootstrap-table/1.16.0/locale/bootstrap-table-zh-CN.min.js"></script> -->
 
   <!-- highcharts -->
-  <script src="https://code.highcharts.com/highcharts.js"></script>
-  <script src="https://cdn.hcharts.cn/highmaps/modules/map.js"></script>
+  <script src="https://cdn.bootcss.com/highcharts/8.0.0/highcharts.min.js"></script>
+  <!-- <script src="https://cdn.bootcss.com/highcharts/8.0.0/modules/map.min.js"></script> -->
 
   <!-- <script src="https://cdn.bootcss.com/sql.js/0.5.0/js/sql-debug.js"></script> -->
   <script src="https://cdn.bootcss.com/sql.js/0.5.0/js/sql-optimized.js"></script>
-  <script src="https://cdn.bootcss.com/axios/0.19.0/axios.js"></script>
+  <script src="https://cdn.bootcss.com/axios/0.19.2/axios.min.js"></script>
 
   <!-- USER CSS -->
   <link rel="stylesheet" href="css/index.css" />
@@ -46,56 +46,119 @@
 </head>
 
 <body>
-  <div class="container">
-    <h2 lang="en-HK">Leimaau’s Webdict 2.0</h2>
+  <nav class="dict-nav-container">
+    <div class="container dict-nav-main">
+      <!--
+      <div class="main-left">
+        <a class="text-muted" href="http://www.baidu.com" target="_blank">连接一</a><span>|</span>
+        <a class="text-muted" href="http://www.baidu.com" target="_blank">连接二</a><span>|</span>
+        <a class="text-muted" href="http://www.baidu.com" target="_blank">连接三</a>
+      </div>
+	    -->
+      <div class="main-right">
+        <div class="dropdown">
+          <a href="#" class="dropdown-toggle text-muted" id="right-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Link</a>
+          <div class="dropdown-menu mt-0" aria-labelledby="right-link">
+            <a class="dropdown-item" href="http://www.baidu.com" target="_blank">资料一</a>
+            <a class="dropdown-item" href="http://www.baidu.com" target="_blank">资料二</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="http://www.baidu.com">资料三</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div class="container dict-body">
+    <h2 lang="en-HK" class="dict-title">Leimaau’s Webdict 2</h2>
     <form class="form-horizontal" role="form" onsubmit="return false">
+      <div id="dictType" data-dic="dicWord">
+        <span id="dicWord" onclick="selectDictionary(this)" class="dict-type-item dict-type-checked">字典</span><span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+        <span id="dicLine" onclick="selectDictionary(this)" class="dict-type-item">詞典</span>
+      </div>
       <div class="row input-group mb-3 col-md-12">
         <input id="valueInput" type="text" class="form-control" placeholder="Search"
           onkeypress="return searchPress(event, valueInput.value, queryType.value)">
         <div class="input-group-append">
-          <button class="btn btn-success" onclick="querySubmit(valueInput.value.trim(), queryType.value);">查詢</button>
+          <button class="btn btn-success"
+            onclick="querySubmit(valueInput.value.trim(), queryType.value, dictType.dataset.dic);">查詢</button>
         </div>
       </div>
-      <div class="row form-group col-md-12">
-        <label for="char" class="form-check form-check-inline"><input class="form-check-input" type="radio" id="char"
-            name="queryType" value="char" checked>單字（繁体）&nbsp;&nbsp;</label>
-        <label for="char_simp" class="form-check form-check-inline"><input class="form-check-input" type="radio"
-            id="char_simp" name="queryType" value="char_simp">單字（簡體）&nbsp;&nbsp;</label>
-        <label for="jyutping" class="form-check form-check-inline"><input class="form-check-input" type="radio"
-            id="jyutping" name="queryType" value="jyutping">粵拼（無需聲調）&nbsp;&nbsp;</label>
-        <label for="jyut6ping3" class="form-check form-check-inline"><input class="form-check-input" type="radio"
-            id="jyut6ping3" name="queryType" value="jyut6ping3">粵拼（需聲調）&nbsp;&nbsp;</label>
+      <div id="queryRadio" class="row form-group col-md-12">
+        <!-- 查字 -->
+        <div id="queryRadio-dicWord" >
+          <label for="char" class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="char" name="queryType" value="char" checked>單字（繁体）&nbsp;&nbsp;</label>
+          <label for="char_simp" class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="char_simp" name="queryType" value="char_simp">單字（簡體）&nbsp;&nbsp;</label>
+          <label for="jyutping" class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="jyutping" name="queryType" value="jyutping">粵拼（無需聲調）&nbsp;&nbsp;</label>
+          <label for="jyut6ping3" class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="jyut6ping3" name="queryType" value="jyut6ping3">粵拼（需聲調）&nbsp;&nbsp;</label>
+          <label for="cili" class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="cili" name="queryType" value="cili">詞例（反查）&nbsp;&nbsp;</label>
+        </div>
+        <!-- 查詞 -->
+        <div id="queryRadio-dicLine" style="display: none;">
+          <label for="line_char" class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="line_char" name="queryType" value="line_phrase">詞彙（繁体）&nbsp;&nbsp;</label>
+          <label for="line_char_simp" class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="line_char_simp" name="queryType" value="line_phrase_simp">詞彙（簡體）&nbsp;&nbsp;</label>
+          <label for="line_jyutping" class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="line_jyutping" name="queryType" value="line_jyutping">粵拼（無需聲調）&nbsp;&nbsp;</label>
+          <label for="line_jyut6ping3" class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="line_jyut6ping3" name="queryType" value="line_jyut6ping3">粵拼（需聲調）&nbsp;&nbsp;</label>
+          <label for="line_expl" class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="line_expl" name="queryType" value="line_expl">解釋（反查）&nbsp;&nbsp;</label>
+        </div>
       </div>
       <div class="row" id="sel-data">
         <label class="col-md-1" for="selectpicker">選擇資料</label>
         <select class="form-control form-control-sm col-md-3 selectpicker" id="selectpicker"
           data-selected-text-format="count" data-actions-box="true" multiple>
+          <optgroup label="分韻撮要">
+            <option value="1838" selected>道光十八年重鐫本《江湖尺牘分韻撮要合集》(1838年)</option>
+          </optgroup>
           <optgroup label="南寧白話">
             <option value="1994" selected>1994年謝建猷《南寧白話同音字彙》</option>
             <option value="1997" selected>1997年楊煥典《南寧話音檔》</option>
             <option value="1998" data-subtext="南寧白話" selected>1998年楊煥典主編《廣西通誌·漢語方言誌》</option>
             <option value="2002" selected>2002年楊煥典《現代漢語方言音庫(字庫)》</option>
+            <option value="2007" selected>2007年謝建猷《廣西漢語方言研究》</option>
             <option value="2008" selected>2008年林亦、覃鳳餘《廣西南寧白話研究》</option>
+            <option value="2009" data-subtext="南寧白話 暫不提供" disabled>2009年陳海倫、林亦《粵語平話土話方音字彙》</option>
+            <option value="2018" data-subtext="本站提供" selected>2018年Leimaau《南寧白話審音表》</option>
           </optgroup>
           <optgroup label="南寧平話">
             <option value="1998_bw" data-subtext="南寧亭子平話" selected>1998年楊煥典主編《廣西通誌·漢語方言誌》</option>
+            <option value="2000_bw" data-subtext="南寧亭子平話 暫不提供" disabled>2000年李連進《平話音韻研究》</option>
+            <option value="2007_bw" data-subtext="南寧沙井平話 暫不提供" disabled>2007年謝建猷《廣西漢語方言研究》</option>
+            <option value="2008_bw" data-subtext="南寧亭子平話 暫不提供" disabled>2009年陳海倫、林亦《粵語平話土話方音字彙》</option>
+            <option value="2016_bw" data-subtext="暫不提供" disabled>2016年余瑾《廣西平話研究》</option>
+            <option value="2018_bw" data-subtext="本站提供" selected>2018年Leimaau《南寧平話審音表》</option>
           </optgroup>
         </select>
       </div>
-      <span class="row"><output id="outputAlert"></output></span>
-      <div class="row">
-        <div class="col-md-6" id="container"></div>
-        <div class="col-md-6" id="container_bw"></div>
+      <span class="row col-md-12"><output id="outputAlert"></output></span>
+      <div class="row form-group col-md-12 table-responsive">
+        <span class="classTabTitle" id="outTabTitle_gw"></span>
+        <table class="classTable" id="outTab_gw"></table>
+      </div>
+      <div class="row col-md-12">
+        <div class="col-md-6 classPie" id="outPie"></div>
+        <div class="col-md-6 classPie" id="outPie_bw"></div>
       </div>
       <div class="row form-group col-md-12 table-responsive">
-        <span id="outTabTitle"></span>
-        <table id="outTab"></table>
+        <span class="classTabTitle" id="outTabTitle"></span>
+        <table class="classTable" id="outTab"></table>
       </div>
       <div class="row form-group col-md-12 table-responsive">
-        <span id="outTabTitle_bw"></span>
-        <table id="outTab_bw"></table>
+        <span class="classTabTitle" id="outTabTitle_bw"></span>
+        <table class="classTable" id="outTab_bw"></table>
       </div>
     </form>
+  </div>
+  <div class="jumbotron text-center" style="margin-bottom:0">
+    <p>底部內容</p>
   </div>
 </body>
 

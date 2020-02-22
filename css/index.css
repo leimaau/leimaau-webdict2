@@ -1,41 +1,117 @@
 a {
-	text-decoration: none;
+	text-decoration: none; /*無下劃線*/
+	white-space: nowrap; /*無換行*/
 }
 
-p {
-    display: block;
+label {  /*上下居中*/
+	white-space: nowrap;
+	height:32px;
+	line-height:32px;
+	text-align:center;
+	vertical-align:middle;
+}
+
+p { /*表格中的expl和note列*/
+    display: block;  /*覆蓋瀏覽器樣式*/
     -webkit-margin-before: 0em;
     -webkit-margin-after: 0em;
     -webkit-margin-start: 0px;
     -webkit-margin-end: 0px;
 	margin-bottom: 0;
 	width: 150px;
-	overflow: hidden;
-	white-space: nowrap;
-	text-overflow: ellipsis;
+	overflow: hidden; /*過長隱藏*/
+	white-space: nowrap; /*無換行*/
+	text-overflow: ellipsis;  /*過長顯示省略號*/
+}
+
+.dict-body {
+	min-height: -webkit-fill-available;
 }
 
 #outputAlert {
-	border-collapse: collapse;
-	display: table;
-	width:100%;
-	padding: inherit;
+	width: 100%;
 }
 
 #sel-data {
 	margin-bottom: 20px;
 }
 
-#container, #container_bw {
+.classPie {
 	width: 550px;
-	height: 400px;
+	/*height: 400px;*/
 	margin: 0 auto;
 }
 
-#outTab, #outTab_bw {
+.classTable {
 	min-width: 420px;
 }
 
-#outTab > tr > td , #outTab_bw > tr > td {
+.classTable > tr > td {
 	white-space: nowrap;
+}
+
+/*導航欄*/
+.dict-nav-container { /*容器*/
+	height: 35px;
+	z-index: 5;	/*導航條如被遮擋修改此處*/
+	background: #f0f0f4;
+	border-bottom: 1px;
+  border-bottom-color: #dcd5d5;
+  border-bottom-style: solid;
+}
+
+/*左欄*/
+.dict-nav-main > .main-left {
+	float: left;
+	margin-top: 5px;
+}
+
+.dict-nav-main > .main-left > span{
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+/*右欄*/
+.dict-nav-main > .main-right {
+	float: right;
+	margin-top: 5px;
+	padding-right: 15px;	
+	margin-right: 15px;
+}
+
+/*
+修改下拉框為懸浮 
+僅bootstrap4可用，dropdown-menu 中增加mt-0，解決菜單和文字間的空隙
+*/
+.main-right > .dropdown:hover>.dropdown-menu {
+	display: block;
+}
+
+.main-right > .dropdown>.dropdown-toggle:active {
+	pointer-events: none;
+}
+
+/*大標題*/
+.dict-title {
+	margin: 30px auto 30px auto;
+	font-size: 3rem;
+	font-weight: 300;
+	line-height: 1.2;
+}
+
+/*字典類型*/
+#dictType {
+	margin-bottom: 5px;
+}
+
+/*字典類型-通用*/
+.dict-type-item {
+	cursor: pointer;
+	font-size: 23px;
+}
+
+/*字典類型-被選中*/
+.dict-type-checked {
+	color: #feba07;
+	font-weight: bold;
 }

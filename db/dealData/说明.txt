@@ -1,5 +1,5 @@
 ﻿
--- 表结构 1994、1997、1998、1998_bw（平话）、2002、2008 相同(已经建好)
+-- 表结构 1994、1997、1998、1998_bw（平话）、2002、2007、2008、2018 相同(已经建好)
 
 CREATE TABLE tab_1994(
    ID             TEXT     NOT NULL,
@@ -11,6 +11,24 @@ CREATE TABLE tab_1994(
    SOUR          TEXT    NOT NULL,
    EXPL          TEXT,
    NOTE          TEXT
+);
+
+-- 江湖分韵撮要
+
+CREATE TABLE tab_1838(
+   ID             TEXT     NOT NULL,
+   WORD           TEXT    NOT NULL,
+   EXPL           TEXT    NOT NULL,
+   FINAL_PART           TEXT    NOT NULL,
+   FIRST_OLD           TEXT    NOT NULL,
+   FINAL_OLD           TEXT    NOT NULL,
+   TONE           TEXT    NOT NULL,
+   JYUTPING           TEXT    NOT NULL,
+   IPA          TEXT    NOT NULL,
+   VOLUME       TEXT    NOT NULL,
+   PAGE          TEXT    NOT NULL,
+   FIRST_TYPE          TEXT    NOT NULL,
+   FANQIE          TEXT
 );
 
 
