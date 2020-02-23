@@ -1,12 +1,12 @@
 // 回車事件
-function searchPress(e, valueInput, queryType) {
+function searchPress(e, valueInput, queryType, dictType) {
 	var keyCode = null;
 	if (e.which)
 		keyCode = e.which;
 	else if (e.keyCode)
 		keyCode = e.keyCode;
 	if (keyCode == 13) {
-		querySubmit(valueInput, queryType);
+		querySubmit(valueInput, queryType, dictType);
 		return false;
 	}
 	return true;
@@ -97,6 +97,7 @@ function queryPhrase(inputValue, queryType, selVal){
 // 格式化來源欄
 function formatSOUR(value, row_year, picType) {
 	var bookname = $(`#selectpicker option[value=${row_year}]`).text();
+	row_year = row_year.replace('_bw', '').replace('_phrase', '');
 	var linkaddr = 'https://gitee.com/leimaau/data-store/raw/master/' + row_year;
 	
 	if (row_year == '1994') linkaddr += 'zh/zh'
@@ -144,7 +145,7 @@ function pieDiv(res, inputValue, div_id, pieTitle) {
 	const pie_data = {};  // 對象：{粵拼 -> [多份數據年份]}
 	for (let line of res) { // 循環每一對象存入數據 pie_data
 		var JYUTPING = line['JYUTPING'], YEAR = line['YEAR'];
-		YEAR = YEAR.replace(/_bw/, "").replace(/_phrase/, ""); // 餅圖顯示1998_bw -> 1998、2008_phrase -> 2008
+		YEAR = YEAR.replace('_bw', '').replace('_phrase', ''); // 餅圖顯示1998_bw -> 1998、2008_phrase -> 2008
 		if (typeof (pie_data[JYUTPING]) == "undefined") { pie_data[JYUTPING] = []; pie_data[JYUTPING].push(YEAR); } else { pie_data[JYUTPING].push(YEAR); };
 	};
 	// 開始顯示

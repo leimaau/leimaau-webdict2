@@ -43,7 +43,7 @@ const colData = [
 	, { field: 'IPA_S', title: '原文IPA' }
 	, { field: 'IPA_T', title: '統一IPA' }
 	, { field: 'JYUTPING', title: '粵拼', formatter: (value) => { return `<a href="javascript:querySubmit('${value.slice(0, -1)}', 'jyutping', 'dicWord')">${value.slice(0, -1)}</a>${value.slice(-1)}`; } }
-	, { field: 'SOUR', title: '來源', formatter: (value, row) => { return formatSOUR(value, row['YEAR'].replace('_bw', ''), 'png') } }
+	, { field: 'SOUR', title: '來源', formatter: (value, row) => { return formatSOUR(value, row['YEAR'], 'png') } }
 	, { field: 'EXPL', title: '詞例', formatter: (value) => { return `<p data-toggle="tooltip"  title='${value}'>${value}<p/>` } }
 	, { field: 'NOTE', title: 'leimaau附註', formatter: (value) => { return `<p data-toggle="tooltip" title='${value}'>${value}<p/>` } }
 ];
@@ -77,7 +77,7 @@ const colData_phrase = [
 	, { field: 'IPA_S', title: '原文IPA' }
 	, { field: 'IPA_T', title: '統一IPA' }
 	, { field: 'JYUTPING', title: '粵拼', formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'phrase_jyut6ping3', 'dicPhrase')">${value}</a>`; } }
-	, { field: 'SOUR', title: '來源', formatter: (value, row) => { return formatSOUR(value, row['YEAR'].replace('_phrase', ''), 'png') } }
+	, { field: 'SOUR', title: '來源', formatter: (value, row) => { return formatSOUR(value, row['YEAR'], 'png') } }
 	, { field: 'EXPL', title: '解釋', formatter: (value) => { return `<p data-toggle="tooltip"  title='${value}'>${value}<p/>` } }
 	, { field: 'NOTE', title: 'leimaau附註', formatter: (value) => { return `<p data-toggle="tooltip" title='${value}'>${value}<p/>` } }
 ];

@@ -79,7 +79,7 @@
       </div>
       <div class="row input-group mb-3 col-md-12">
         <input id="valueInput" type="text" class="form-control" placeholder="Search"
-          onkeypress="return searchPress(event, valueInput.value, queryType.value)">
+          onkeypress="return searchPress(event, valueInput.value, queryType.value, dictType.dataset.dic)">
         <div class="input-group-append">
           <button id="queryButt" class="btn btn-success" completedName="查詢" disabled onclick="querySubmit(valueInput.value.trim(), queryType.value, dictType.dataset.dic);">
             <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
