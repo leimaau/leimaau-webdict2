@@ -11,6 +11,15 @@ label {  /*上下居中*/
 	vertical-align:middle;
 }
 
+table {
+	min-width: 420px;
+}
+
+td, th {
+    display: table-cell;
+	white-space: nowrap;
+}
+
 p { /*表格中的expl和note列*/
     display: block;  /*覆蓋瀏覽器樣式*/
     -webkit-margin-before: 0em;
@@ -40,14 +49,6 @@ p { /*表格中的expl和note列*/
 	width: 550px;
 	/*height: 400px;*/
 	margin: 0 auto;
-}
-
-.classTable {
-	min-width: 420px;
-}
-
-.classTable > tr > td {
-	white-space: nowrap;
 }
 
 /*導航欄*/

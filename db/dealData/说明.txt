@@ -31,6 +31,21 @@ CREATE TABLE tab_1838(
    FANQIE          TEXT
 );
 
+-- 词汇表
+CREATE TABLE tab_2008_phrase(
+   ID            TEXT    NOT NULL,
+   LEVEL1        TEXT    NOT NULL,
+   LEVEL2        TEXT    NOT NULL,
+   LEVEL3        TEXT    NOT NULL,
+   TRAD          TEXT    NOT NULL,
+   SIMP          TEXT    NOT NULL,
+   IPA_S         TEXT    NOT NULL,
+   IPA_T         TEXT    NOT NULL,
+   JYUTPING      TEXT    NOT NULL,
+   SOUR          TEXT    NOT NULL,
+   EXPL          TEXT    ,
+   NOTE          TEXT    
+);
 
 
 -- 命令
@@ -43,4 +58,4 @@ main: E:\LocalRepository\gitee\sqliteweb\db\dealData\leimaau.db3
 sqlite> .table    #用于验证：显示这个数据库有哪些表格
 tab_1994     tab_1997     tab_1998     tab_1998_bw  tab_2002     tab_2008
 sqlite> .separator "|"  #指定分隔符为"|"，默认就是"|"可以不用执行
-sqlite> .import tab_1994.txt tab_1994   # .import FileName TableName 放在同一目录 (已经导入)
+sqlite> .import tab_temp.txt tab_1994   # .import FileName TableName 放在同一目录 (已经导入)

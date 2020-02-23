@@ -50,19 +50,21 @@
     <div class="container dict-nav-main">
       <!--
       <div class="main-left">
-        <a class="text-muted" href="http://www.baidu.com" target="_blank">连接一</a><span>|</span>
-        <a class="text-muted" href="http://www.baidu.com" target="_blank">连接二</a><span>|</span>
-        <a class="text-muted" href="http://www.baidu.com" target="_blank">连接三</a>
+        <a class="text-muted" href="#" target="_blank">连接一</a><span>|</span>
+        <a class="text-muted" href="#" target="_blank">连接二</a><span>|</span>
+        <a class="text-muted" href="#" target="_blank">连接三</a>
       </div>
 	    -->
       <div class="main-right">
         <div class="dropdown">
-          <a href="#" class="dropdown-toggle text-muted" id="right-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Link</a>
-          <div class="dropdown-menu mt-0" aria-labelledby="right-link">
-            <a class="dropdown-item" href="http://www.baidu.com" target="_blank">资料一</a>
-            <a class="dropdown-item" href="http://www.baidu.com" target="_blank">资料二</a>
+          <a href="#" class="dropdown-toggle text-muted" id="right-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">音系及輸入方案</a>
+          <div class="dropdown-menu dropdown-menu-right mt-0" aria-labelledby="right-link">
+            <a class="dropdown-item" target="_blank" href="https://github.com/leimaau/old-Cantonese">《分韻撮要》音系及輸入方案</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="http://www.baidu.com">资料三</a>
+            <a class="dropdown-item" target="_blank" href="https://leimaau.gitee.io/book/PHONETICIZE.html">南寧白話拼音方案（市區）</a>
+            <a class="dropdown-item" target="_blank" href="https://leimaau.gitee.io/book/PHONETICIZE_bingwaa.html">南寧平話拼音方案（亭子）</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" target="_blank" href="https://github.com/leimaau/naamning_jyutping">南寧話輸入方案</a>
           </div>
         </div>
       </div>
@@ -73,14 +75,16 @@
     <form class="form-horizontal" role="form" onsubmit="return false">
       <div id="dictType" data-dic="dicWord">
         <span id="dicWord" onclick="selectDictionary(this)" class="dict-type-item dict-type-checked">字典</span><span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
-        <span id="dicLine" onclick="selectDictionary(this)" class="dict-type-item">詞典</span>
+        <span id="dicPhrase" onclick="selectDictionary(this)" class="dict-type-item">詞典</span>
       </div>
       <div class="row input-group mb-3 col-md-12">
         <input id="valueInput" type="text" class="form-control" placeholder="Search"
           onkeypress="return searchPress(event, valueInput.value, queryType.value)">
         <div class="input-group-append">
-          <button class="btn btn-success"
-            onclick="querySubmit(valueInput.value.trim(), queryType.value, dictType.dataset.dic);">查詢</button>
+          <button id="queryButt" class="btn btn-success" completedName="查詢" disabled onclick="querySubmit(valueInput.value.trim(), queryType.value, dictType.dataset.dic);">
+            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            数据加载中
+          </button>
         </div>
       </div>
       <div id="queryRadio" class="row form-group col-md-12">
@@ -94,21 +98,21 @@
             <input class="form-check-input" type="radio" id="jyutping" name="queryType" value="jyutping">粵拼（無需聲調）&nbsp;&nbsp;</label>
           <label for="jyut6ping3" class="form-check form-check-inline">
             <input class="form-check-input" type="radio" id="jyut6ping3" name="queryType" value="jyut6ping3">粵拼（需聲調）&nbsp;&nbsp;</label>
-          <label for="cili" class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" id="cili" name="queryType" value="cili">詞例（反查）&nbsp;&nbsp;</label>
+          <label for="expl" class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="expl" name="queryType" value="expl">詞例（反查）&nbsp;&nbsp;</label>
         </div>
         <!-- 查詞 -->
-        <div id="queryRadio-dicLine" style="display: none;">
-          <label for="line_char" class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" id="line_char" name="queryType" value="line_phrase">詞彙（繁体）&nbsp;&nbsp;</label>
-          <label for="line_char_simp" class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" id="line_char_simp" name="queryType" value="line_phrase_simp">詞彙（簡體）&nbsp;&nbsp;</label>
-          <label for="line_jyutping" class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" id="line_jyutping" name="queryType" value="line_jyutping">粵拼（無需聲調）&nbsp;&nbsp;</label>
-          <label for="line_jyut6ping3" class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" id="line_jyut6ping3" name="queryType" value="line_jyut6ping3">粵拼（需聲調）&nbsp;&nbsp;</label>
-          <label for="line_expl" class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" id="line_expl" name="queryType" value="line_expl">解釋（反查）&nbsp;&nbsp;</label>
+        <div id="queryRadio-dicPhrase" style="display: none;">
+          <label for="phrase" class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="phrase" name="queryType" value="phrase">詞彙（繁体）&nbsp;&nbsp;</label>
+          <label for="phrase_simp" class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="phrase_simp" name="queryType" value="phrase_simp">詞彙（簡體）&nbsp;&nbsp;</label>
+          <label for="phrase_jyutping" class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="phrase_jyutping" name="queryType" value="phrase_jyutping">粵拼（無需聲調）&nbsp;&nbsp;</label>
+          <label for="phrase_jyut6ping3" class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="phrase_jyut6ping3" name="queryType" value="phrase_jyut6ping3">粵拼（需聲調）&nbsp;&nbsp;</label>
+          <label for="phrase_expl" class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="phrase_expl" name="queryType" value="phrase_expl">解釋（反查）&nbsp;&nbsp;</label>
         </div>
       </div>
       <div class="row" id="sel-data">
@@ -123,7 +127,7 @@
             <option value="1997" selected>1997年楊煥典《南寧話音檔》</option>
             <option value="1998" data-subtext="南寧白話" selected>1998年楊煥典主編《廣西通誌·漢語方言誌》</option>
             <option value="2002" selected>2002年楊煥典《現代漢語方言音庫(字庫)》</option>
-            <option value="2007" selected>2007年謝建猷《廣西漢語方言研究》</option>
+            <option value="2007" data-subtext="南寧白話" selected>2007年謝建猷《廣西漢語方言研究》</option>
             <option value="2008" selected>2008年林亦、覃鳳餘《廣西南寧白話研究》</option>
             <option value="2009" data-subtext="南寧白話 暫不提供" disabled>2009年陳海倫、林亦《粵語平話土話方音字彙》</option>
             <option value="2018" data-subtext="本站提供" selected>2018年Leimaau《南寧白話審音表》</option>
@@ -160,6 +164,7 @@
   <div class="jumbotron text-center" style="margin-bottom:0">
     <p>底部內容</p>
   </div>
+
 </body>
 
 </html>

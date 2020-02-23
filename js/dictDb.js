@@ -8,18 +8,13 @@ DictDb = (() => {
     console.log(dbDir);
     axios.get(dbDir, { responseType: 'arraybuffer' })
       .then(function (response) {
-		res = [`<div class="alert alert-primary"><strong>數據庫加載中!</strong></div>`];
-		outputAlert.innerHTML = res.join('\n');
         dbTemp.db = new window.SQL.Database(new Uint8Array(response.data));
-		res = [`<div class="alert alert-primary"><strong>數據庫加載完成!</strong></div>`];
-		outputAlert.innerHTML = res.join('\n');
-		outputAlert.innerHTML = [``].join('\n');
         console.info("數據庫初始化完成");
+        dicLoaded(queryButt); // 修改查詢按鈕
       })
       .catch(function (error) {
-		res = [`<div class="alert alert-danger"><strong>數據庫加載失敗，請刷新!</strong></div>`];
-		outputAlert.innerHTML = res.join('\n');
         console.info("數據庫初始化失敗", error);
+        displayAlert('數據庫加載失敗，請等待或刷新!', outputAlert, 'alert-danger', false);
       });
   }
 
@@ -31,7 +26,7 @@ DictDb = (() => {
   原生查詢
   */
   dbTemp.exec = (sql) => {
-    if (dbTemp.hasDb() === false){
+    if (dbTemp.hasDb() === false) {
       return false;
     }
     return dbTemp.db.exec(sql);
@@ -43,12 +38,12 @@ DictDb = (() => {
   param: 傳入參數，可以用數組 [1, 2] 或者對象 {id1:1,id2:2}，例子 {':aval' : 1, ':bval' : 'world'}
   resObj: 返回對象，對象或數組
   */
-  dbTemp.execParam = (sql, param={}, resObj=true) => {
+  dbTemp.execParam = (sql, param = {}, resObj = true) => {
     let result = [];
     let stmt = dbTemp.db.prepare(sql);
     stmt.bind(param);
-    while(stmt.step()){
-      if (resObj){
+    while (stmt.step()) {
+      if (resObj) {
         result.push(stmt.getAsObject()); // {col1: "4", col2: "DDD"}
       } else {
         result.push(stmt.get()); // ["4", "DDD"]
@@ -62,12 +57,12 @@ DictDb = (() => {
   帶回調函數的查詢
   把結果返回給傳進來的回調函數
   */
-  dbTemp.execCallback = (callback, sql, param={}, resObj=true) => {
+  dbTemp.execCallback = (callback, sql, param = {}, resObj = true) => {
     let result = [];
     let stmt = dbTemp.db.prepare(sql);
     stmt.bind(param);
-    while(stmt.step()){
-      if (resObj){
+    while (stmt.step()) {
+      if (resObj) {
         result.push(stmt.getAsObject()); // {col1: "4", col2: "DDD"}
       } else {
         result.push(stmt.get()); // ["4", "DDD"]
