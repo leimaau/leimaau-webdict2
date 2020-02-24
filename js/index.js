@@ -15,9 +15,14 @@ function searchPress(e, valueInput, queryType, dictType) {
 // 搜索按鈕
 function querySubmit(inputValue, queryType, dictType) {
 	outputAlert.innerHTML = '';
-	document.getElementsByClassName("classPie").forEach((obj)=>{obj.innerHTML = ''});
-	document.getElementsByClassName("classTabTitle").forEach((obj)=>{obj.innerHTML = ''});
-	document.getElementsByClassName("classTable").forEach((obj)=>{obj.innerHTML = ''});
+	document.getElementsByClassName('classHighcharts').forEach((obj)=>{obj.innerHTML = ''});
+	document.getElementsByClassName('classTabTitle').forEach((obj)=>{obj.innerHTML = ''});
+	document.getElementsByClassName('classTable').forEach((obj)=>{obj.innerHTML = ''});
+	$('#nav-home-tab,#nav-home-tab-bw,#nav-home,#nav-home-bw').addClass('active show'); // 選回第一個tab和內容
+	$('#nav-profile-tab,#nav-profile-tab-bw,#nav-profile,#nav-profile-bw').removeClass('active show');
+	document.getElementById('nav-tab').style.display = 'none'; // 隱藏tab
+	document.getElementById('nav-tab-bw').style.display = 'none';
+	
 	
 	var selVal = $('.selectpicker').selectpicker('val'); // 複選下拉框的選值數組
 	
@@ -44,13 +49,15 @@ function querySubmit(inputValue, queryType, dictType) {
 	};
 	
 	if (judgeFlag == 0) {
-		document.getElementsByClassName("classPie").forEach((obj)=>{obj.innerHTML = ''});
+		document.getElementsByClassName("classHighcharts").forEach((obj)=>{obj.innerHTML = ''});
 		document.getElementsByClassName("classTabTitle").forEach((obj)=>{obj.innerHTML = ''});
 		document.getElementsByClassName("classTable").forEach((obj)=>{obj.innerHTML = ''});
 		displayAlert('未查詢到結果!', outputAlert, 'alert-primary');
 		return false;
 	};
 }
+
+const allTitle = '南寧白話', allTitle_bw = '南寧平話';
 
 // 【單字】查詢模塊
 function queryChar(inputValue, queryType, selVal){
@@ -61,42 +68,69 @@ function queryChar(inputValue, queryType, selVal){
 	};
 	
 	var res = [];
-	var selArr = selVal.filter(item => item.indexOf('_bw') == -1).filter(item => item.indexOf('1838') == -1);
-	if (selArr.length != 0) {
-		res = MainQuery.queryTable(inputValue, selArr, queryType);
-		tableDiv(res, 'outTab', "南寧白話", outTabTitle, colData);  // 顯示白話表格
-		pieDiv(res, inputValue, 'outPie', "南寧白話");  // 顯示白話餅圖
+	var dataList = selVal.filter(item => item.indexOf('_bw') == -1).filter(item => item.indexOf('1838') == -1);
+	if (dataList.length != 0) {
+		res = MainQuery.queryTable(inputValue, dataList, queryType);
+		tableDiv(res, 'outTab', allTitle, outTabTitle, colData);  // 顯示白話表格
+		pieDiv(res, inputValue, 'outPie', allTitle, queryType);  // 顯示白話餅圖
+		//wordCloudDiv(res, inputValue, 'outWordCloud', allTitle_bw, queryType, 'JYUTPING'); // 顯示白話詞雲圖
+		
 	};
 	
 	var res_bw = [];
 	if (selVal.some(item => item.indexOf('_bw') > -1)) {
 		res_bw = MainQuery.queryTable(inputValue, selVal.filter(item => item.indexOf('_bw') > -1), queryType);
-		tableDiv(res_bw, 'outTab_bw', "南寧平話", outTabTitle_bw, colData);  // 顯示平話表格
-		pieDiv(res_bw, inputValue, 'outPie_bw', "南寧平話");  // 顯示平話餅圖
+		tableDiv(res_bw, 'outTab_bw', allTitle_bw, outTabTitle_bw, colData);  // 顯示平話表格
+		pieDiv(res_bw, inputValue, 'outPie_bw', allTitle_bw, queryType);  // 顯示平話餅圖
+		//wordCloudDiv(res_bw, inputValue, 'outWordCloud_bw', allTitle_bw, queryType, 'JYUTPING'); // 顯示平話詞雲圖
 	};
 	
-	return res_gw.length + res.length + res_bw.length;
+	var isShow = res_gw.length + res.length + res_bw.length;
+	/*if (isShow != 0) { // 顯示tab
+		document.getElementById('nav-tab').style.display = 'flex';
+		document.getElementById('nav-tab-bw').style.display = 'flex';
+	}*/
+	
+	return isShow;
 }
 
 
 // 【詞彙】查詢模塊
 function queryPhrase(inputValue, queryType, selVal){
 	var res = [];
-	var selArr = selVal.filter(item => item.indexOf('2008') > -1);
-	if (selArr.length != 0) {
-		res = MainQuery.queryTablePhrase(inputValue, [`${selArr}_phrase`], queryType);
-		tableDiv(res, 'outTab', "南寧白話", outTabTitle, colData_phrase);  // 顯示白話表格
-		pieDiv(res, inputValue, 'outPie', "南寧白話");  // 顯示白話餅圖
+	var dataList = [];
+	dataList.push(selVal.filter(item => item.indexOf('1998') > -1).filter(item => item.indexOf('_bw') == -1) + '_phrase'); // 拼湊所需要的表名的數組
+	dataList.push(selVal.filter(item => item.indexOf('2008') > -1).filter(item => item.indexOf('_bw') == -1) + '_phrase');
+	if (dataList.length != 0) {
+		res = MainQuery.queryTablePhrase(inputValue, dataList, queryType);
+		tableDiv(res, 'outTab', allTitle, outTabTitle, colData_phrase);  // 顯示白話表格
+		pieDiv(res, inputValue, 'outPie', allTitle, queryType);  // 顯示白話餅圖
+		wordCloudDiv(res, inputValue, 'outWordCloud', allTitle, queryType, 'TRAD'); // 顯示白話詞雲圖
 	};
 	
-	return res.length;
+	var res_bw = [];
+	var dataList_bw = selVal.filter(item => item.indexOf('_bw') > -1).filter(item => item.indexOf('1998') > -1);
+	if (dataList_bw.length != 0) {
+		res_bw = MainQuery.queryTablePhrase(inputValue, [`${dataList_bw}_phrase`], queryType);
+		tableDiv(res_bw, 'outTab_bw', allTitle_bw, outTabTitle_bw, colData_phrase);  // 顯示平話表格
+		pieDiv(res_bw, inputValue, 'outPie_bw', allTitle_bw, queryType);  // 顯示平話餅圖
+		wordCloudDiv(res_bw, inputValue, 'outWordCloud_bw', allTitle_bw, queryType, 'TRAD'); // 顯示平話詞雲圖
+	};
+	
+	var isShow = res.length + res_bw.length;
+	if (isShow != 0) { // 顯示tab
+		document.getElementById('nav-tab').style.display = 'flex';
+		document.getElementById('nav-tab-bw').style.display = 'flex';
+	}
+	
+	return isShow;
 }
 
 
 // 表格列數據寫在config.js中
 // 格式化來源欄
 function formatSOUR(value, row_year, picType) {
-	var bookname = $(`#selectpicker option[value=${row_year}]`).text();
+	var bookname = $(`#selectpicker option[value=${row_year.replace('_phrase', '')}]`).text();
 	row_year = row_year.replace('_bw', '').replace('_phrase', '');
 	var linkaddr = 'https://gitee.com/leimaau/data-store/raw/master/' + row_year;
 	
@@ -139,8 +173,9 @@ function tableDiv(res, outputDiv, tabTitle, tabTitleDiv, colData) {
 }
 
 // 餅圖顯示函數
-function pieDiv(res, inputValue, div_id, pieTitle) {
+function pieDiv(res, inputValue, div_id, pieTitle, queryType) {
 	//if (res.length == 0) return false;
+	if (queryType == 'expl' || queryType == 'phrase_expl') return false; // 詞例和解釋反查時不顯示餅圖
 	// 餅圖數據處理
 	const pie_data = {};  // 對象：{粵拼 -> [多份數據年份]}
 	for (let line of res) { // 循環每一對象存入數據 pie_data
@@ -176,7 +211,7 @@ function pieDiv(res, inputValue, div_id, pieTitle) {
 					color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
 				}
 			},
-			showInLegend: true
+			showInLegend: false
 		}
 	};
 	var series = [{
@@ -204,6 +239,51 @@ function pieDiv(res, inputValue, div_id, pieTitle) {
 	$('#' + div_id).highcharts(json);
 }
 
+// 詞雲圖顯示函數
+function wordCloudDiv(res, inputValue, div_id, wordcloudTitle, queryType, colName) {
+	//if (res.length == 0) return false;
+	if (queryType == 'expl' || queryType == 'phrase_expl') { // 詞例和解釋反查時不顯示詞雲圖
+		document.getElementById('nav-tab').style.display = 'none'; // 隱藏tab
+		document.getElementById('nav-tab-bw').style.display = 'none';
+		return false;
+	}
+
+	var text = '';
+	for (let line of res) {
+		text += line[colName] + ',';
+	};
+	text = text.replace(/,$/gi, "");
+	var data = text.split(/[,\. ]+/g)
+	.reduce(function (arr, word) {
+		var obj = arr.find(function (obj) {
+			return obj.name === word;
+		});
+		if (obj) {
+			obj.weight += 1;
+		} else {
+			obj = {
+				name: word,
+				weight: 1
+			};
+			arr.push(obj);
+		}
+		return arr;
+	}, []);
+	var series= [{
+		name: '計數',
+		type: 'wordcloud',
+		data: data
+	}];
+	var title= {
+		text: `${wordcloudTitle}【${inputValue}】`
+	};
+	var json = {};
+	json.credits = { enabled: false };
+	json.series = series;
+	json.title = title;
+	$('#' + div_id).highcharts(json);
+}
+
 /*選擇字典類型：字典、詞典*/
 function selectDictionary(_this) {
 	// 刪除選擇的樣式
@@ -226,10 +306,10 @@ function selectDictionary(_this) {
 }
 
 /*
-加载完毕，传入需要完成加载的的元素
-	删除disabled
-	获取completedName属性的值显示在按钮上
-	删除加载中的样式
+加載完畢，傳入需要完成加載的元素
+	刪除disabled
+	獲取completedName屬性的值顯示在按鈕上
+	刪除加載中的樣式
 */
 function dicLoaded(obj){
 	obj.disabled = false;
@@ -242,9 +322,9 @@ function dicLoaded(obj){
 }
 
 /*
-显示错误提示
+顯示錯誤提示
 */
-function displayAlert(text, obj, colorType, close=true){
+function displayAlert(text, obj, colorType, close = true){
 	var html = `<div class="alert ${colorType} alert-dismissible fade show" role="alert"><strong>${text}</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>`;
 	if (!close){
 		html = `<div class="alert ${colorType}"><strong>${text}</strong></div>`;

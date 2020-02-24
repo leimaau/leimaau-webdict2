@@ -45,10 +45,14 @@ p { /*表格中的expl和note列*/
 	margin-bottom: 20px;
 }
 
-.classPie {
+.classHighcharts {
 	width: 550px;
 	/*height: 400px;*/
 	margin: 0 auto;
+}
+
+#nav-tab, #nav-tab-bw {
+	display: none;
 }
 
 /*導航欄*/

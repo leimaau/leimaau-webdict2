@@ -31,7 +31,8 @@ CREATE TABLE tab_1838(
    FANQIE          TEXT
 );
 
--- 词汇表
+-- 词汇表  已建 tab_1998_phrase、tab_1998_bw_phrase、tab_2008_phrase
+
 CREATE TABLE tab_2008_phrase(
    ID            TEXT    NOT NULL,
    LEVEL1        TEXT    NOT NULL,
