@@ -268,9 +268,13 @@ function selectDictionary(_this) {
 	if ('dicWord' === _this.id){
 		document.getElementById('queryRadio-dicPhrase').style.display = 'none';
 		document.getElementById('char').checked = true; // 默認選擇第一個
+		document.getElementById('modal-table').style.display = 'block';
+		document.getElementById('modal-table-phrase').style.display = 'none';
 	} else if ('dicPhrase' === _this.id){
 		document.getElementById('queryRadio-dicWord').style.display = 'none';
 		document.getElementById('phrase').checked = true; // 默認選擇第一個
+		document.getElementById('modal-table').style.display = 'none';
+		document.getElementById('modal-table-phrase').style.display = 'block';
 	}
 	document.getElementById('queryRadio-' + _this.id).style.display = 'block';
 }

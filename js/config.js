@@ -153,7 +153,7 @@ function formatSOUR(value, row_year, picType, isChar = true) {
 	} else {
 		var bookname = rowData_book_phrase.find(item => (item.NN == row_year || item.HX_B == row_year || item.NN_T == row_year || item.NN_S == row_year)).BOOK;
 	};
-	row_year = row_year.replace('_bw', '').replace('_phrase', '');
+	row_year = row_year.replace('_bw', '').replace('_phrase', '').replace('tab_', '');
 	var linkaddr = 'https://gitee.com/leimaau/data-store/raw/master/' + row_year;
 	
 	if (row_year == '1994') linkaddr += 'zh/zh'
