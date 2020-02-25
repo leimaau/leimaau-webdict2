@@ -3,14 +3,6 @@ a {
 	white-space: nowrap; /*無換行*/
 }
 
-label {  /*上下居中*/
-	white-space: nowrap;
-	height:32px;
-	line-height:32px;
-	text-align:center;
-	vertical-align:middle;
-}
-
 table {
 	min-width: 420px;
 }
@@ -41,7 +33,7 @@ p { /*表格中的expl和note列*/
 	width: 100%;
 }
 
-#sel-data {
+#sel-data, #sel-data-phrase {
 	margin-bottom: 20px;
 }
 
@@ -120,3 +112,17 @@ p { /*表格中的expl和note列*/
 	color: #feba07;
 	font-weight: bold;
 }
+
+/*底部樣式*/
+.footer {
+  background-color: #f5f5f5;
+}
+
+/*底部容器樣式*/
+.foot-container {
+  width: auto;
+  max-width: 680px;
+  padding: 0 15px;
+}
+
+

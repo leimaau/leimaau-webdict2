@@ -24,7 +24,12 @@ function querySubmit(inputValue, queryType, dictType) {
 	document.getElementById('nav-tab-bw').style.display = 'none';
 	
 	
-	var selVal = $('.selectpicker').selectpicker('val'); // 複選下拉框的選值數組
+	var selVal = [];
+	if(dictType == 'dicWord'){
+		document.getElementsByClassName("book").forEach((item)=>{ if(item.checked == true) selVal.push(item.value)});
+	} else {
+		document.getElementsByClassName("book_phrase").forEach((item)=>{ if(item.checked == true) selVal.push(item.value)});
+	};
 	
 	if (!inputValue) { //判斷選擇
 		displayAlert('請輸入查詢關鍵字!', outputAlert, 'alert-danger');
@@ -63,7 +68,7 @@ const allTitle = '南寧白話', allTitle_bw = '南寧平話';
 function queryChar(inputValue, queryType, selVal){
 	var res_gw = [];
 	if (selVal.some(item => item.indexOf('1838') > -1)) {
-		res_gw = MainQuery.queryTableOne(inputValue, ['1838'], queryType);
+		res_gw = MainQuery.queryTableOne(inputValue, ['tab_1838'], queryType);
 		tableDiv(res_gw, 'outTab_gw', "《江湖尺牘分韻撮要合集》", outTabTitle_gw, colData_gw);
 	};
 	
@@ -99,8 +104,7 @@ function queryChar(inputValue, queryType, selVal){
 function queryPhrase(inputValue, queryType, selVal){
 	var res = [];
 	var dataList = [];
-	dataList.push(selVal.filter(item => item.indexOf('1998') > -1).filter(item => item.indexOf('_bw') == -1) + '_phrase'); // 拼湊所需要的表名的數組
-	dataList.push(selVal.filter(item => item.indexOf('2008') > -1).filter(item => item.indexOf('_bw') == -1) + '_phrase');
+	var dataList = selVal.filter(item => item.indexOf('_bw') == -1).filter(item => item.indexOf('_nncity') == -1).filter(item => item.indexOf('_proverb') == -1);
 	if (dataList.length != 0) {
 		res = MainQuery.queryTablePhrase(inputValue, dataList, queryType);
 		tableDiv(res, 'outTab', allTitle, outTabTitle, colData_phrase);  // 顯示白話表格
@@ -109,9 +113,9 @@ function queryPhrase(inputValue, queryType, selVal){
 	};
 	
 	var res_bw = [];
-	var dataList_bw = selVal.filter(item => item.indexOf('_bw') > -1).filter(item => item.indexOf('1998') > -1);
+	var dataList_bw = selVal.filter(item => item.indexOf('_bw') > -1).filter(item => item.indexOf('_nncity') == -1).filter(item => item.indexOf('_proverb') == -1);
 	if (dataList_bw.length != 0) {
-		res_bw = MainQuery.queryTablePhrase(inputValue, [`${dataList_bw}_phrase`], queryType);
+		res_bw = MainQuery.queryTablePhrase(inputValue, dataList_bw, queryType);
 		tableDiv(res_bw, 'outTab_bw', allTitle_bw, outTabTitle_bw, colData_phrase);  // 顯示平話表格
 		pieDiv(res_bw, inputValue, 'outPie_bw', allTitle_bw, queryType);  // 顯示平話餅圖
 		wordCloudDiv(res_bw, inputValue, 'outWordCloud_bw', allTitle_bw, queryType, 'TRAD'); // 顯示平話詞雲圖
@@ -125,40 +129,6 @@ function queryPhrase(inputValue, queryType, selVal){
 	
 	return isShow;
 }
-
-
-// 表格列數據寫在config.js中
-// 格式化來源欄
-function formatSOUR(value, row_year, picType) {
-	var bookname = $(`#selectpicker option[value=${row_year.replace('_phrase', '')}]`).text();
-	row_year = row_year.replace('_bw', '').replace('_phrase', '');
-	var linkaddr = 'https://gitee.com/leimaau/data-store/raw/master/' + row_year;
-	
-	if (row_year == '1994') linkaddr += 'zh/zh'
-	else if (row_year == '1997') linkaddr += 'yd/yd'
-	else if (row_year == '1998') linkaddr += 'dfz/dfz'
-	else if (row_year == '2002') linkaddr += 'zk/zk'
-	else if (row_year == '2007') linkaddr = ''
-	else if (row_year == '2008') linkaddr += 'yj/yj'
-	else if (row_year == '2018') linkaddr = '';
-	
-	if (value == '' || linkaddr == '') {
-		return `<span style="white-space: nowrap;">${bookname}</span>`;
-	} else {
-		return `<span style="white-space: nowrap;">${bookname + pageSplit(value, picType, linkaddr)}</span>`;
-	};
-}
-
-// 葉碼拼接函數
-function pageSplit(value, picType, linkaddr) {
-	var pageLink = '';
-	var pages = value.replace('P', '').replace('（單字音表）', '').split('，');
-	for (let i in pages) {
-		pageLink += `P<a href="${linkaddr + pages[i]}.${picType}" target="_Blank">${pages[i]}</a>，`;
-	}
-	return pageLink.replace(/，$/gi, "");
-}
-
 
 // 表格顯示函數
 function tableDiv(res, outputDiv, tabTitle, tabTitleDiv, colData) {
@@ -180,7 +150,7 @@ function pieDiv(res, inputValue, div_id, pieTitle, queryType) {
 	const pie_data = {};  // 對象：{粵拼 -> [多份數據年份]}
 	for (let line of res) { // 循環每一對象存入數據 pie_data
 		var JYUTPING = line['JYUTPING'], YEAR = line['YEAR'];
-		YEAR = YEAR.replace('_bw', '').replace('_phrase', ''); // 餅圖顯示1998_bw -> 1998、2008_phrase -> 2008
+		YEAR = YEAR.replace('_bw', '').replace('_phrase', '').replace('tab_', ''); // 餅圖顯示tab_1998_bw -> 1998、tab_2008_phrase -> 2008
 		if (typeof (pie_data[JYUTPING]) == "undefined") { pie_data[JYUTPING] = []; pie_data[JYUTPING].push(YEAR); } else { pie_data[JYUTPING].push(YEAR); };
 	};
 	// 開始顯示
@@ -336,3 +306,18 @@ function displayAlert(text, obj, colorType, close = true){
 (() => {
 	DictDb.factory(DictConfig.dir);
 })()
+
+$(() => {
+	$('#outTab_oldbook').bootstrapTable({ // 顯示模態框表格
+		columns: colData_oldbook,
+		data: rowData_oldbook
+	});
+	$('#outTab_book').bootstrapTable({ // 顯示模態框表格
+		columns: colData_book,
+		data: rowData_book
+	});
+	$('#outTab_book_phrase').bootstrapTable({ // 顯示模態框表格
+		columns: colData_book_phrase,
+		data: rowData_book_phrase
+	});
+})

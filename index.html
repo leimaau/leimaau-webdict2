@@ -19,16 +19,6 @@
   <!-- <script src="https://cdn.bootcss.com/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script> -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"></script>
 
-  <!-- bootstrap-select CSS -->
-  <!-- <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap-select/1.13.12/css/bootstrap-select.min.css"> -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.12/dist/css/bootstrap-select.min.css">
-  <!-- bootstrap-select JavaScript -->
-  <!-- <script src="https://cdn.bootcss.com/bootstrap-select/1.13.12/js/bootstrap-select.min.js"></script> -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.12/dist/js/bootstrap-select.min.js"></script>
-  <!-- bootstrap-select translation files -->
-  <!-- <script src="https://cdn.bootcss.com/bootstrap-select/1.13.12/js/i18n/defaults-zh_CN.min.js"></script> -->
-  <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.12/js/i18n/defaults-zh_CN.js"></script> -->
-
   <!-- Latest compiled and minified CSS -->
   <!-- <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap-table/1.16.0/bootstrap-table.min.css"> -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-table@1.16.0/dist/bootstrap-table.min.css">
@@ -59,9 +49,6 @@
   <script src="js/Bootstrap4/jquery.min.js"></script>
   <script src="js/Bootstrap4/popper.min.js"></script>
   <script src="js/Bootstrap4/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="css/bootstrap-select/bootstrap-select.min.css" />
-  <script src="js/bootstrap-select/bootstrap-select.min.js"></script>
-  <script src="js/bootstrap-select/defaults-zh_CN.js"></script>
   <link rel="stylesheet" href="css/bootstrap-table/bootstrap-table.min.css" />
   <script src="js/bootstrap-table/bootstrap-table.min.js"></script>
   <script src="js/bootstrap-table/bootstrap-table-zh-CN.min.js"></script>
@@ -92,14 +79,18 @@
 	    -->
       <div class="main-right">
         <div class="dropdown">
-          <a href="#" class="dropdown-toggle text-muted" id="right-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">音系及輸入方案</a>
+          <a href="#" class="dropdown-toggle text-muted" id="right-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">相關資料</a>
           <div class="dropdown-menu dropdown-menu-right mt-0" aria-labelledby="right-link">
             <a class="dropdown-item" target="_blank" href="https://github.com/leimaau/old-Cantonese">《分韻撮要》音系及輸入方案</a>
             <div class="dropdown-divider"></div>
+            <a class="dropdown-item" target="_blank" href="https://leimaau.gitee.io/book/">南寧話 API</a>
             <a class="dropdown-item" target="_blank" href="https://leimaau.gitee.io/book/PHONETICIZE.html">南寧白話拼音方案（市區）</a>
             <a class="dropdown-item" target="_blank" href="https://leimaau.gitee.io/book/PHONETICIZE_bingwaa.html">南寧平話拼音方案（亭子）</a>
-            <div class="dropdown-divider"></div>
             <a class="dropdown-item" target="_blank" href="https://github.com/leimaau/naamning_jyutping">南寧話輸入方案</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" target="_blank" href="https://github.com/leimaau/dictionary">mdx-mdd 資料</a>
+            <a class="dropdown-item" target="_blank" href="#">PDF 資料</a>
+            <a class="dropdown-item" target="_blank" href="#">文本資料</a>
           </div>
         </div>
       </div>
@@ -125,65 +116,138 @@
       <div id="queryRadio" class="row form-group col-md-12">
         <!-- 查字 -->
         <div id="queryRadio-dicWord" >
-          <label for="char" class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" id="char" name="queryType" value="char" checked>單字（繁体）&nbsp;&nbsp;</label>
-          <label for="char_simp" class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" id="char_simp" name="queryType" value="char_simp">單字（簡體）&nbsp;&nbsp;</label>
-          <label for="jyutping" class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" id="jyutping" name="queryType" value="jyutping">粵拼（無需聲調）&nbsp;&nbsp;</label>
-          <label for="jyut6ping3" class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" id="jyut6ping3" name="queryType" value="jyut6ping3">粵拼（需聲調）&nbsp;&nbsp;</label>
-          <label for="expl" class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" id="expl" name="queryType" value="expl">詞例（反查）&nbsp;&nbsp;</label>
+          <div class="custom-control custom-radio custom-control-inline">
+            <input class="custom-control-input" type="radio" id="char" name="queryType" value="char" checked>
+            <label for="char" class="custom-control-label">單字（繁体）</label>
+          </div>
+          <div class="custom-control custom-radio custom-control-inline">
+            <input class="custom-control-input" type="radio" id="char_simp" name="queryType" value="char_simp">
+            <label for="char_simp" class="custom-control-label">單字（簡體）</label>
+          </div>
+          <div class="custom-control custom-radio custom-control-inline">
+            <input class="custom-control-input" type="radio" id="jyutping" name="queryType" value="jyutping">
+            <label for="jyutping" class="custom-control-label">粵拼（無需聲調）</label>
+          </div>
+          <div class="custom-control custom-radio custom-control-inline">
+            <input class="custom-control-input" type="radio" id="jyut6ping3" name="queryType" value="jyut6ping3">
+            <label for="jyut6ping3" class="custom-control-label">粵拼（需聲調）</label>
+          </div>
+          <div class="custom-control custom-radio custom-control-inline">
+            <input class="custom-control-input" type="radio" id="expl" name="queryType" value="expl">
+            <label for="expl" class="custom-control-label">詞例（反查）</label>
+          </div>
         </div>
         <!-- 查詞 -->
         <div id="queryRadio-dicPhrase" style="display: none;">
-          <label for="phrase" class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" id="phrase" name="queryType" value="phrase">詞彙（繁体）&nbsp;&nbsp;</label>
-          <label for="phrase_simp" class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" id="phrase_simp" name="queryType" value="phrase_simp">詞彙（簡體）&nbsp;&nbsp;</label>
-          <label for="phrase_jyutping" class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" id="phrase_jyutping" name="queryType" value="phrase_jyutping">粵拼（無需聲調）&nbsp;&nbsp;</label>
-          <label for="phrase_jyut6ping3" class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" id="phrase_jyut6ping3" name="queryType" value="phrase_jyut6ping3">粵拼（需聲調）&nbsp;&nbsp;</label>
-          <label for="phrase_expl" class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" id="phrase_expl" name="queryType" value="phrase_expl">解釋（反查）&nbsp;&nbsp;</label>
+          <div class="custom-control custom-radio custom-control-inline">
+            <input class="custom-control-input" type="radio" id="phrase" name="queryType" value="phrase">
+            <label for="phrase" class="custom-control-label">詞彙（繁体）</label>
+          </div>
+          <div class="custom-control custom-radio custom-control-inline">
+            <input class="custom-control-input" type="radio" id="phrase_simp" name="queryType" value="phrase_simp">
+            <label for="phrase_simp" class="custom-control-label">詞彙（簡體）</label>
+          </div>
+          <div class="custom-control custom-radio custom-control-inline">
+            <input class="custom-control-input" type="radio" id="phrase_jyutping" name="queryType" value="phrase_jyutping">
+            <label for="phrase_jyutping" class="custom-control-label">粵拼（無需聲調）</label>
+          </div>
+          <div class="custom-control custom-radio custom-control-inline">
+            <input class="custom-control-input" type="radio" id="phrase_jyut6ping3" name="queryType" value="phrase_jyut6ping3">
+            <label for="phrase_jyut6ping3" class="custom-control-label">粵拼（需聲調）</label>
+          </div>
+          <div class="custom-control custom-radio custom-control-inline">
+            <input class="custom-control-input" type="radio" id="phrase_expl" name="queryType" value="phrase_expl">
+            <label for="phrase_expl" class="custom-control-label">解釋（反查）</label>
+          </div>
         </div>
       </div>
-      <div class="row" id="sel-data">
-        <label class="col-md-1" for="selectpicker">選擇資料</label>
-        <select class="form-control form-control-sm col-md-3 selectpicker" id="selectpicker"
-          data-selected-text-format="count" data-actions-box="true" multiple>
-          <optgroup label="分韻撮要">
-            <option value="1838" selected>道光十八年重鐫本《江湖尺牘分韻撮要合集》(1838年)</option>
-          </optgroup>
-          <optgroup label="南寧白話">
-            <option value="1994" selected>1994年謝建猷《南寧白話同音字彙》</option>
-            <option value="1997" selected>1997年楊煥典《南寧話音檔》</option>
-            <option value="1998" data-subtext="南寧白話" selected>1998年楊煥典主編《廣西通誌·漢語方言誌》</option>
-            <option value="2002" selected>2002年楊煥典《現代漢語方言音庫(字庫)》</option>
-            <option value="2007" data-subtext="南寧白話" selected>2007年謝建猷《廣西漢語方言研究》</option>
-            <option value="2008" selected>2008年林亦、覃鳳餘《廣西南寧白話研究》</option>
-            <option value="2009" data-subtext="南寧白話 暫不提供" disabled>2009年陳海倫、林亦《粵語平話土話方音字彙》</option>
-            <option value="2018" data-subtext="本站提供" selected>2018年Leimaau《南寧白話審音表》</option>
-          </optgroup>
-          <optgroup label="南寧平話">
-            <option value="1998_bw" data-subtext="南寧亭子平話" selected>1998年楊煥典主編《廣西通誌·漢語方言誌》</option>
-            <option value="2000_bw" data-subtext="南寧亭子平話 暫不提供" disabled>2000年李連進《平話音韻研究》</option>
-            <option value="2007_bw" data-subtext="南寧沙井平話 暫不提供" disabled>2007年謝建猷《廣西漢語方言研究》</option>
-            <option value="2009_bw" data-subtext="南寧亭子平話 暫不提供" disabled>2009年陳海倫、林亦《粵語平話土話方音字彙》</option>
-            <option value="2016_bw" data-subtext="暫不提供" disabled>2016年余瑾《廣西平話研究》</option>
-            <option value="2018_bw" data-subtext="本站提供" selected>2018年Leimaau《南寧平話審音表》</option>
-          </optgroup>
-        </select>
+	  
+      <!-- ---------------------- -->
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+        選擇資料
+      </button>
+      <!-- 模態框 -->
+      <div class="modal fade" id="myModal">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <!-- 模態框頭部 -->
+            <div class="modal-header">
+              <h4 class="modal-title">選擇資料</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+			
+            <!-- 模態框主體 -->
+            <div class="modal-body">
+              <button type="button" class="btn btn-info btn-sm" onclick="allselect();">全選</button>
+              <button type="button" class="btn btn-info btn-sm" onclick="cancelselect();">取消全選</button>
+			  <button type="button" class="btn btn-info btn-sm" onclick="getselect();">獲取</button>
+			  
+			  <table class="table table-bordered table-sm" id="outTab_oldbook"></table>
+			  <table class="table table-bordered table-sm" id="outTab_book"></table>
+			  
+			  
+              <button type="button" class="btn btn-info btn-sm" onclick="allselectphrase();">全選</button>
+              <button type="button" class="btn btn-info btn-sm" onclick="cancelselectphrase();">取消全選</button>
+			  <button type="button" class="btn btn-info btn-sm" onclick="getselectphrase();">獲取</button>
+
+			  
+			  <table class="table table-bordered table-sm" id="outTab_book_phrase"></table>
+
+			  
+            </div>
+			
+            <!-- 模態框底部 -->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+            </div>
+          </div>
+        </div>
       </div>
+
+      <script>
+        function allselect(){
+          document.getElementsByClassName("book").forEach((item)=>{ item.checked = true });
+        }
+        function allselectphrase(){
+          document.getElementsByClassName("book_phrase").forEach((item)=>{ item.checked = true });
+        }
+		
+        function cancelselect(){
+          document.getElementsByClassName("book").forEach((item)=>{ item.checked = false });
+        }
+        function cancelselectphrase(){
+          document.getElementsByClassName("book_phrase").forEach((item)=>{ item.checked = false });
+        }
+
+
+        function getselect() {
+          t = []
+          document.getElementsByClassName("book").forEach((item)=>{ if(item.checked == true) t.push(item.value)});
+          alert(t)
+        }
+        function getselectphrase() {
+          t = []
+          document.getElementsByClassName("book_phrase").forEach((item)=>{ if(item.checked == true) t.push(item.value)});
+          alert(t)
+        }
+      </script>
+
+      <!-- -------------- -->
+	  
+	  
+	  
+	  
+	  
+	  
+	  
       <span class="row col-md-12"><output id="outputAlert"></output></span>
+	  
       <div class="row form-group col-md-12 table-responsive">
         <span class="classTabTitle" id="outTabTitle_gw"></span>
         <table class="classTable" id="outTab_gw"></table>
       </div>
 
-	<div class="row col-md-12">
+	<div class="row form-group col-md-12">
 		<div class="col-md-6">
 			<nav>
 			  <div class="nav nav-tabs" id="nav-tab" role="tablist">
@@ -209,14 +273,7 @@
 			</div>
 		</div>
 	</div>
-      <!--<div class="row col-md-12">
-        <div class="col-md-6 classHighcharts" id="outPie"></div>
-        <div class="col-md-6 classHighcharts" id="outPie_bw"></div>
-      </div>
-      <div class="row col-md-12">
-        <div class="col-md-6 classHighcharts" id="outWordCloud"></div>
-        <div class="col-md-6 classHighcharts" id="outWordCloud_bw"></div>
-      </div>-->
+	
       <div class="row form-group col-md-12 table-responsive">
         <span class="classTabTitle" id="outTabTitle"></span>
         <table class="classTable" id="outTab"></table>
@@ -227,10 +284,14 @@
       </div>
     </form>
   </div>
-  <div class="jumbotron text-center" style="margin-bottom:0">
-    <p>底部內容</p>
+  <div class="footer text-right mt-auto py-3">
+	  <div class="foot-container">
+		<span class="text-muted"> 底部內容Place sticky footer content here.	
+		<!--<a class="text-muted" href="https://leimaau.github.io/leimaau-webdict2/" target="_blank">github pages</a><br/>
+		<a class="text-muted" href="https://leimaau.gitee.io/leimaau-webdict2/" target="_blank">gitee pages</a>-->
+		</span>
+	  </div>
   </div>
-
 </body>
 
 </html>

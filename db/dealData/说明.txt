@@ -1,5 +1,7 @@
 ﻿
--- 表结构 1994、1997、1998、1998_bw（平话）、2002、2007、2008、2018 相同(已经建好)
+-- 表结构 
+
+-- 单字表  1994、1997、1998、1998_bw（平话）、2002、2007、2008、2018 相同(已经建好)
 
 CREATE TABLE tab_1994(
    ID             TEXT     NOT NULL,
@@ -31,7 +33,7 @@ CREATE TABLE tab_1838(
    FANQIE          TEXT
 );
 
--- 词汇表  已建 tab_1998_phrase、tab_1998_bw_phrase、tab_2008_phrase
+-- 词汇表 tab_1997_phrase、tab_1998_phrase、tab_1998_bw_phrase（平话）、tab_2007_phrase、tab_2008_phrase 相同(已经建好)
 
 CREATE TABLE tab_2008_phrase(
    ID            TEXT    NOT NULL,
@@ -45,6 +47,27 @@ CREATE TABLE tab_2008_phrase(
    JYUTPING      TEXT    NOT NULL,
    SOUR          TEXT    NOT NULL,
    EXPL          TEXT    ,
+   NOTE          TEXT    
+);
+
+
+-- 南宁城市信息
+
+CREATE TABLE tab_nncity(
+   ID            TEXT    NOT NULL,
+   TRAD          TEXT    NOT NULL,
+   SIMP          TEXT    NOT NULL,
+   SOUR          TEXT    ,
+   NOTE          TEXT    
+);
+
+-- 南宁童谣
+
+CREATE TABLE tab_proverb(
+   ID            TEXT    NOT NULL,
+   TRAD          TEXT    NOT NULL,
+   SIMP          TEXT    NOT NULL,
+   SOUR          TEXT    ,
    NOTE          TEXT    
 );
 

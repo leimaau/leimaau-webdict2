@@ -8,7 +8,7 @@ MainQuery = (() => {
 	tempObj.queryTable = (searchValue, selVal, queryType) => {
 		let querySQL = "";
 		for (let i in selVal) {
-			querySQL += `select '${selVal[i]}' YEAR,* from tab_${selVal[i]} union `;  // 拼接查詢
+			querySQL += `select '${selVal[i]}' YEAR,* from ${selVal[i]} union `;  // 拼接查詢
 		};
 		querySQL = "select * from(" + querySQL.replace(/ union $/gi,"");
 		if (queryType == 'char') { // 查詢繁體
@@ -25,9 +25,9 @@ MainQuery = (() => {
 		return DictDb.execParam( querySQL, (queryType == 'jyutping' || queryType == 'expl') ? [] : [searchValue] );
 	};
 	
-	// (單字)查詢單個表 用於《廣韻》和《分韻撮要》
+	// (單字)查詢單個表，用於《廣韻》和《分韻撮要》
 	tempObj.queryTableOne = (searchValue, selVal, queryType) => {
-		let querySQL = `select '${selVal[0]}' YEAR,* from tab_${selVal[0]}`;
+		let querySQL = `select '${selVal[0]}' YEAR,* from ${selVal[0]}`;
 		if (queryType == 'char' || queryType == 'char_simp') { // 查詢繁簡體
 			querySQL += " where word = ? order by ID";
 		} else if (queryType == 'jyutping') { // 查詢無調粵拼
@@ -44,7 +44,7 @@ MainQuery = (() => {
 	tempObj.queryTablePhrase = (searchValue, selVal, queryType) => {
 		let querySQL = "";
 		for (let i in selVal) {
-			querySQL += `select '${selVal[i]}' YEAR,* from tab_${selVal[i]} union `;  // 拼接查詢
+			querySQL += `select '${selVal[i]}' YEAR,* from ${selVal[i]} union `;  // 拼接查詢
 		};
 		querySQL = "select * from(" + querySQL.replace(/ union $/gi,"");
 		if (queryType == 'phrase') { // 查詢繁體
