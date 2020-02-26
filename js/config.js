@@ -54,10 +54,10 @@ const rowData_book = [
 	, { BOOK: "2007年謝建猷《廣西漢語方言研究》", NN: "tab_2007", NN_D: "", NN_Y: "", HX_B: "noData", NN_T: "", NN_S: "noData", HX_P: "" }
 	, { BOOK: "2007年白雲《廣西疍家話語音研究》", NN: "", NN_D: "noData", NN_Y: "", HX_B: "", NN_T: "", NN_S: "", HX_P: "" }
 	, { BOOK: "2008年林亦、覃鳳餘《廣西南寧白話研究》", NN: "tab_2008", NN_D: "", NN_Y: "", HX_B: "", NN_T: "", NN_S: "", HX_P: "" }
-	, { BOOK: "2009年陳海倫、林亦《粵語平話土話方音字彙》", NN: "noData", NN_D: "", NN_Y: "noData", HX_B: "", NN_T: "", NN_S: "", HX_P: "" }
+	, { BOOK: "2009年陳海倫、林亦《粵語平話土話方音字彙》", NN: "noData", NN_D: "", NN_Y: "noData", HX_B: "", NN_T: "noData", NN_S: "", HX_P: "" }
 	, { BOOK: "2009年張菁雅《桂南平話語音研究》", NN: "noData", NN_D: "", NN_Y: "", HX_B: "", NN_T: "", NN_S: "", HX_P: "noData" }
 	, { BOOK: "2016年余瑾《廣西平話研究》", NN: "", NN_D: "", NN_Y: "", HX_B: "", NN_T: "", NN_S: "", HX_P: "" }
-	, { BOOK: "2018年Leimaau《南寧話審音表》", NN: "tab_2018", NN_D: "", NN_Y: "", HX_B: "", NN_T: "tab_2018_bw", NN_S: "", HX_P: "" }
+	, { BOOK: "2018年Leimaau《南寧話審音表》(本站提供)", NN: "tab_2018", NN_D: "", NN_Y: "", HX_B: "", NN_T: "tab_2018_bw", NN_S: "", HX_P: "" }
 	, { BOOK: "2019年莫思敏、談婷《廣西橫縣白話同音字彙》", NN: "", NN_D: "", NN_Y: "", HX_B: "noData", NN_T: "", NN_S: "", HX_P: "" }
 ];
 
@@ -85,8 +85,8 @@ const rowData_book_phrase = [
 
 // 格式化顯示爲checkbox
 function formatCheckBox (value, qType = '') {
-	var checkboxDiv = `<div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input book${qType}" id="checkbox_${value}" name="checkbox_${value}" value="${value}" checked><label class="custom-control-label" for="checkbox_${value}">選擇</label></div>`;
-	var disableCheckboxDiv = `<div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input disabledbook" id="checkbox_${value}" name="checkbox_${value}" value="${value}" disabled><label class="custom-control-label" for="checkbox_${value}">選擇</label></div>`;
+	var checkboxDiv = `<div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input book${qType}" id="checkbox_${value}" name="dataCheck" value="${value}" checked><label class="custom-control-label" for="checkbox_${value}">選擇</label></div>`;
+	var disableCheckboxDiv = `<div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input disabledbook" id="checkbox_${value}" name="dataCheck" value="${value}" disabled><label class="custom-control-label" for="checkbox_${value}">選擇</label></div>`;
 	if (value != "") {
 		if (value == "noData") {
 			return disableCheckboxDiv;

@@ -5,7 +5,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Leimaau’s Webdict 2.0</title>
-  
+
   <!-- Bootstrap4 CSS -->
   <!-- <link rel="stylesheet" href="https://cdn.bootcss.com/twitter-bootstrap/4.4.1/css/bootstrap.min.css"> -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css">
@@ -41,8 +41,8 @@
   <script src="https://cdn.jsdelivr.net/npm/sql.js@0.5.0/js/sql.min.js"></script>
   <!-- <script src="https://cdn.bootcss.com/axios/0.19.2/axios.min.js"></script> -->
   <script src="https://cdn.jsdelivr.net/npm/axios@0.19.2/dist/axios.min.js"></script>
-  
-  
+
+
   <!-- USER Local file -->
   <!-- 
   <link rel="stylesheet" href="css/Bootstrap4/bootstrap.min.css" />
@@ -57,7 +57,7 @@
   <script src="js/sqljs/sql.min.js"></script>
   <script src="js/sqljs/axios.min.js"></script>
   -->
-  
+
   <!-- USER CSS -->
   <link rel="stylesheet" href="css/index.css" />
   <!-- USER JavaScript -->
@@ -79,35 +79,65 @@
 	    -->
       <div class="main-right">
         <div class="dropdown">
-          <a href="#" class="dropdown-toggle text-muted" id="right-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">相關資料</a>
+          <a href="#" class="dropdown-toggle text-muted" id="right-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Link</a>
           <div class="dropdown-menu dropdown-menu-right mt-0" aria-labelledby="right-link">
-            <a class="dropdown-item" target="_blank" href="https://github.com/leimaau/old-Cantonese">《分韻撮要》音系及輸入方案</a>
+            <a class="dropdown-item" target="_blank" href="https://leimaau.gitee.io/leimaau-webdict2/">主頁地址(gitee pages)</a>
+            <a class="dropdown-item" target="_blank" href="https://leimaau.github.io/leimaau-webdict2/">備用地址(github pages)</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" target="_blank" href="https://leimaau.gitee.io/book/">南寧話 API</a>
+			<a class="dropdown-item" target="_blank" href="https://github.com/leimaau/old-Cantonese">《分韻撮要》音系及輸入方案</a>
+            <div class="dropdown-divider"></div>
             <a class="dropdown-item" target="_blank" href="https://leimaau.gitee.io/book/PHONETICIZE.html">南寧白話拼音方案（市區）</a>
             <a class="dropdown-item" target="_blank" href="https://leimaau.gitee.io/book/PHONETICIZE_bingwaa.html">南寧平話拼音方案（亭子）</a>
             <a class="dropdown-item" target="_blank" href="https://github.com/leimaau/naamning_jyutping">南寧話輸入方案</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" target="_blank" href="https://github.com/leimaau/dictionary">mdx-mdd 資料</a>
-            <a class="dropdown-item" target="_blank" href="#">PDF 資料</a>
+            <a class="dropdown-item" target="_blank" href="https://github.com/leimaau/dict-store">mdx-mdd資料</a>
+            <a class="dropdown-item" target="_blank" href="#">PDF資料</a>
             <a class="dropdown-item" target="_blank" href="#">文本資料</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item"  data-toggle="modal" data-target="#aboutModal" href="#">關於</a>
           </div>
         </div>
       </div>
+		<!-- Modal -->
+		<div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="aboutModalTitle" aria-hidden="true">
+		  <div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+			  <div class="modal-header">
+				<h5 class="modal-title" id="aboutModalTitle">關於</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				  <span aria-hidden="true">&times;</span>
+				</button>
+			  </div>
+			  <div class="modal-body">
+				本站叫「狸貓的在線詞典 2.0 版」(Leimaau’s Webdict 2.0)，相對與 1.0 版的 <a class="text-info" href="https://leimaau.github.io/leimaau-webdict" target="_blank">Leimaau’s Webdict</a> 有了較大的改進。第一版的出現獲得 sgalal 的技術支持，特此致謝。</br></br>本站原先開發和運行於 github 中，爲了方便國內用戶訪問，故將程序備份於 gitee 中運行，因此本站有兩個地址，對於國內用戶來說，gitee 地址作<a class="text-info" target="_blank" href="https://leimaau.gitee.io/leimaau-webdict2/">主頁地址</a>，github 地址作<a class="text-info" target="_blank" href="https://leimaau.github.io/leimaau-webdict2/">備用地址</a>。</br></br>
+				資料錄入與校對：Leimaau </br>
+				程序製作：sgalal、Leimaau、匆匆的我 </br>
+				聯繫郵箱：leimaau@qq.com </br>
+				github：<a class="text-info" target="_blank" href="https://github.com/leimaau">leimaau's github</a></br></br>
+				歡迎提供幫助和意見。
+			  </div>
+			  <div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			  </div>
+			</div>
+		  </div>
+		</div>
     </div>
   </nav>
   <div class="container dict-body">
     <h2 lang="en-HK" class="dict-title">Leimaau’s Webdict 2</h2>
     <form class="form-horizontal" role="form" onsubmit="return false">
       <div id="dictType" data-dic="dicWord">
-        <span id="dicWord" onclick="selectDictionary(this)" class="dict-type-item dict-type-checked">字典</span><span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+        <span id="dicWord" onclick="selectDictionary(this)"
+          class="dict-type-item dict-type-checked">字典</span><span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
         <span id="dicPhrase" onclick="selectDictionary(this)" class="dict-type-item">詞典</span>
       </div>
       <div class="row input-group mb-3 col-md-12">
         <input id="valueInput" type="text" class="form-control" placeholder="Search"
           onkeypress="return searchPress(event, valueInput.value, queryType.value, dictType.dataset.dic)">
         <div class="input-group-append">
-          <button id="queryButt" class="btn btn-success" completedName="查詢" disabled onclick="querySubmit(valueInput.value.trim(), queryType.value, dictType.dataset.dic);">
+          <button id="queryButt" class="btn btn-success" completedName="查詢" disabled
+            onclick="querySubmit(valueInput.value.trim(), queryType.value, dictType.dataset.dic);">
             <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
             数据加载中
           </button>
@@ -115,7 +145,7 @@
       </div>
       <div id="queryRadio" class="row form-group col-md-12">
         <!-- 查字 -->
-        <div id="queryRadio-dicWord" >
+        <div id="queryRadio-dicWord">
           <div class="custom-control custom-radio custom-control-inline">
             <input class="custom-control-input" type="radio" id="char" name="queryType" value="char" checked>
             <label for="char" class="custom-control-label">單字（繁体）</label>
@@ -138,7 +168,7 @@
           </div>
         </div>
         <!-- 查詞 -->
-        <div id="queryRadio-dicPhrase" style="display: none;">
+        <div id="queryRadio-dicPhrase" class="d-none">
           <div class="custom-control custom-radio custom-control-inline">
             <input class="custom-control-input" type="radio" id="phrase" name="queryType" value="phrase">
             <label for="phrase" class="custom-control-label">詞彙（繁体）</label>
@@ -148,11 +178,13 @@
             <label for="phrase_simp" class="custom-control-label">詞彙（簡體）</label>
           </div>
           <div class="custom-control custom-radio custom-control-inline">
-            <input class="custom-control-input" type="radio" id="phrase_jyutping" name="queryType" value="phrase_jyutping">
+            <input class="custom-control-input" type="radio" id="phrase_jyutping" name="queryType"
+              value="phrase_jyutping">
             <label for="phrase_jyutping" class="custom-control-label">粵拼（無需聲調）</label>
           </div>
           <div class="custom-control custom-radio custom-control-inline">
-            <input class="custom-control-input" type="radio" id="phrase_jyut6ping3" name="queryType" value="phrase_jyut6ping3">
+            <input class="custom-control-input" type="radio" id="phrase_jyut6ping3" name="queryType"
+              value="phrase_jyut6ping3">
             <label for="phrase_jyut6ping3" class="custom-control-label">粵拼（需聲調）</label>
           </div>
           <div class="custom-control custom-radio custom-control-inline">
@@ -161,11 +193,11 @@
           </div>
         </div>
       </div>
-	  
-      <!-- ---------------------- -->
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#dataModal">
-        選擇資料
-      </button>
+
+      <div class="row col-md-12">
+        <button type="button" id="dataButt" class="btn btn-outline-info btn-sm" data-toggle="modal"
+          data-target="#dataModal">選擇資料</button>
+      </div>
       <!-- 模態框 -->
       <div class="modal fade" id="dataModal">
         <div class="modal-dialog modal-lg">
@@ -177,85 +209,76 @@
             </div>
             <!-- 模態框主體 -->
             <div class="modal-body">
-			  <span class="modal-table" id="modal-table">
-				  <button type="button" class="btn btn-info btn-sm" onclick="allselect();">全選</button>
-				  <button type="button" class="btn btn-info btn-sm" onclick="cancelselect();">取消全選</button>
-				  <table class="table table-bordered table-sm" id="outTab_oldbook"></table>
-				  <table class="table table-bordered table-sm" id="outTab_book"></table>
-			  </span>
-			  <span class="modal-table-phrase" id="modal-table-phrase">
-				  <button type="button" class="btn btn-info btn-sm" onclick="allselectphrase();">全選</button>
-				  <button type="button" class="btn btn-info btn-sm" onclick="cancelselectphrase();">取消全選</button>
-				  <table class="table table-bordered table-sm" id="outTab_book_phrase"></table>
-			  </span>
+              <span class="modal-table" id="modal-table">
+                <table class="table table-bordered table-sm" id="outTab_oldbook"></table>
+                <table class="table table-bordered table-sm" id="outTab_book"></table>
+              </span>
+              <span class="modal-table-phrase d-none" id="modal-table-phrase">
+                <table class="table table-bordered table-sm" id="outTab_book_phrase"></table>
+              </span>
             </div>
             <!-- 模態框底部 -->
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+              <button type="button" class="btn btn-info" id="btn-allselect"
+                onclick="javascript:{document.getElementsByClassName('book').forEach((item)=>{ item.checked = true });}">全選</button>
+              <button type="button" class="btn btn-info" id="btn-cancel"
+                onclick="javascript:{document.getElementsByClassName('book').forEach((item)=>{ item.checked = false});}">取消全選</button>
+              <button type="button" class="btn btn-info d-none" id="btn-allselect-phrase"
+                onclick="javascript:{document.getElementsByClassName('book_phrase').forEach((item)=>{ item.checked = true });}">全選</button>
+              <button type="button" class="btn btn-info d-none" id="btn-cancel-phrase"
+                onclick="javascript:{document.getElementsByClassName('book_phrase').forEach((item)=>{ item.checked = false });}">取消全選</button>
+              <button type="button" class="btn btn-primary" data-dismiss="modal">確定</button>
             </div>
           </div>
         </div>
       </div>
 
-      <script>
-        function allselect(){
-          document.getElementsByClassName("book").forEach((item)=>{ item.checked = true });
-        }
-        function allselectphrase(){
-          document.getElementsByClassName("book_phrase").forEach((item)=>{ item.checked = true });
-        }
-		
-        function cancelselect(){
-          document.getElementsByClassName("book").forEach((item)=>{ item.checked = false });
-        }
-        function cancelselectphrase(){
-          document.getElementsByClassName("book_phrase").forEach((item)=>{ item.checked = false });
-        }
-		
-      </script>
+      <span class="alert-div row col-md-12"><output id="outputAlert"></output></span>
 
-      <!-- -------------- -->
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-      <span class="row col-md-12"><output id="outputAlert"></output></span>
-	  
       <div class="row form-group col-md-12 table-responsive">
         <span class="classTabTitle" id="outTabTitle_gw"></span>
         <table class="classTable" id="outTab_gw"></table>
       </div>
 
-	<div class="row form-group col-md-12">
-		<div class="col-md-6">
-			<nav>
-			  <div class="nav nav-tabs" id="nav-tab" role="tablist">
-				<a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">餅圖</a>
-				<a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">詞雲圖</a>
-			  </div>
-			</nav>
-			<div class="tab-content" id="nav-tabContent">
-			  <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab"><div class="classHighcharts" id="outPie"></div></div>
-			  <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab"><div class="classHighcharts" id="outWordCloud"></div></div>
-			</div>
-		</div>
-		<div class="col-md-6">
-			<nav>
-			  <div class="nav nav-tabs" id="nav-tab-bw" role="tablist">
-				<a class="nav-item nav-link active" id="nav-home-tab-bw" data-toggle="tab" href="#nav-home-bw" role="tab" aria-controls="nav-home-bw" aria-selected="true">餅圖</a>
-				<a class="nav-item nav-link" id="nav-profile-tab-bw" data-toggle="tab" href="#nav-profile-bw" role="tab" aria-controls="nav-profile-bw" aria-selected="false">詞雲圖</a>
-			  </div>
-			</nav>
-			<div class="tab-content" id="nav-tabContent-bw">
-			  <div class="tab-pane fade show active" id="nav-home-bw" role="tabpanel" aria-labelledby="nav-home-tab-bw"><div class="classHighcharts" id="outPie_bw"></div></div>
-			  <div class="tab-pane fade" id="nav-profile-bw" role="tabpanel" aria-labelledby="nav-profile-tab-bw"><div class="classHighcharts" id="outWordCloud_bw"></div></div>
-			</div>
-		</div>
-	</div>
-	
+      <div class="row form-group col-md-12">
+        <div class="col-md-6">
+          <nav>
+            <div class="nav nav-tabs d-none" id="nav-tab" role="tablist">
+              <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab"
+                aria-controls="nav-home" aria-selected="true">餅圖</a>
+              <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab"
+                aria-controls="nav-profile" aria-selected="false">詞雲圖</a>
+            </div>
+          </nav>
+          <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+              <div class="classHighcharts" id="outPie"></div>
+            </div>
+            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+              <div class="classHighcharts" id="outWordCloud"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <nav>
+            <div class="nav nav-tabs d-none" id="nav-tab-bw" role="tablist">
+              <a class="nav-item nav-link active" id="nav-home-tab-bw" data-toggle="tab" href="#nav-home-bw" role="tab"
+                aria-controls="nav-home-bw" aria-selected="true">餅圖</a>
+              <a class="nav-item nav-link" id="nav-profile-tab-bw" data-toggle="tab" href="#nav-profile-bw" role="tab"
+                aria-controls="nav-profile-bw" aria-selected="false">詞雲圖</a>
+            </div>
+          </nav>
+          <div class="tab-content" id="nav-tabContent-bw">
+            <div class="tab-pane fade show active" id="nav-home-bw" role="tabpanel" aria-labelledby="nav-home-tab-bw">
+              <div class="classHighcharts" id="outPie_bw"></div>
+            </div>
+            <div class="tab-pane fade" id="nav-profile-bw" role="tabpanel" aria-labelledby="nav-profile-tab-bw">
+              <div class="classHighcharts" id="outWordCloud_bw"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div class="row form-group col-md-12 table-responsive">
         <span class="classTabTitle" id="outTabTitle"></span>
         <table class="classTable" id="outTab"></table>
@@ -266,12 +289,9 @@
       </div>
     </form>
   </div>
-  <div class="footer text-right mt-auto py-3">
+  <div class="footer text-center mt-auto py-3">
 	  <div class="foot-container">
-		<span class="text-muted"> 底部內容Place sticky footer content here.	
-		<!--<a class="text-muted" href="https://leimaau.github.io/leimaau-webdict2/" target="_blank">github pages</a><br/>
-		<a class="text-muted" href="https://leimaau.gitee.io/leimaau-webdict2/" target="_blank">gitee pages</a>-->
-		</span>
+		<span class="text-muted"> © 2020 <a class="text-info" href="https://leimaau.gitee.io/leimaau-webdict2/">Leimaau’s Webdict</a> 版權所有</span>
 	  </div>
   </div>
 </body>

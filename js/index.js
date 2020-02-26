@@ -20,8 +20,7 @@ function querySubmit(inputValue, queryType, dictType) {
 	document.getElementsByClassName('classTable').forEach((obj)=>{obj.innerHTML = ''});
 	$('#nav-home-tab,#nav-home-tab-bw,#nav-home,#nav-home-bw').addClass('active show'); // 選回第一個tab和內容
 	$('#nav-profile-tab,#nav-profile-tab-bw,#nav-profile,#nav-profile-bw').removeClass('active show');
-	document.getElementById('nav-tab').style.display = 'none'; // 隱藏tab
-	document.getElementById('nav-tab-bw').style.display = 'none';
+	$('#nav-tab,#nav-tab-bw').addClass('d-none');  // 隱藏tab
 	
 	
 	var selVal = [];
@@ -91,10 +90,7 @@ function queryChar(inputValue, queryType, selVal){
 	};
 	
 	var isShow = res_gw.length + res.length + res_bw.length;
-	/*if (isShow != 0) { // 顯示tab
-		document.getElementById('nav-tab').style.display = 'flex';
-		document.getElementById('nav-tab-bw').style.display = 'flex';
-	}*/
+	//if (isShow != 0) { $('#nav-tab,#nav-tab-bw').removeClass('d-none'); }// 顯示tab
 	
 	return isShow;
 }
@@ -122,10 +118,7 @@ function queryPhrase(inputValue, queryType, selVal){
 	};
 	
 	var isShow = res.length + res_bw.length;
-	if (isShow != 0) { // 顯示tab
-		document.getElementById('nav-tab').style.display = 'flex';
-		document.getElementById('nav-tab-bw').style.display = 'flex';
-	}
+	if (isShow != 0) { $('#nav-tab,#nav-tab-bw').removeClass('d-none'); }// 顯示tab
 	
 	return isShow;
 }
@@ -181,7 +174,7 @@ function pieDiv(res, inputValue, div_id, pieTitle, queryType) {
 					color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
 				}
 			},
-			showInLegend: false
+			showInLegend: true
 		}
 	};
 	var series = [{
@@ -266,17 +259,15 @@ function selectDictionary(_this) {
 	dictType.dataset.dic = _this.id; // 把數據存到dictType的data-dic中
 	// 替換查詢radio
 	if ('dicWord' === _this.id){
-		document.getElementById('queryRadio-dicPhrase').style.display = 'none';
 		document.getElementById('char').checked = true; // 默認選擇第一個
-		document.getElementById('modal-table').style.display = 'block';
-		document.getElementById('modal-table-phrase').style.display = 'none';
+		$('#queryRadio-dicPhrase,#modal-table-phrase,#btn-allselect-phrase,#btn-cancel-phrase').addClass('d-none'); // radio按鈕、模態框表格、全選取消按鈕
+		$('#queryRadio-dicWord,#modal-table,#btn-allselect,#btn-cancel').removeClass('d-none');
 	} else if ('dicPhrase' === _this.id){
-		document.getElementById('queryRadio-dicWord').style.display = 'none';
 		document.getElementById('phrase').checked = true; // 默認選擇第一個
-		document.getElementById('modal-table').style.display = 'none';
-		document.getElementById('modal-table-phrase').style.display = 'block';
+		$('#queryRadio-dicPhrase,#modal-table-phrase,#btn-allselect-phrase,#btn-cancel-phrase').removeClass('d-none');
+		$('#queryRadio-dicWord,#modal-table,#btn-allselect,#btn-cancel').addClass('d-none');
 	}
-	document.getElementById('queryRadio-' + _this.id).style.display = 'block';
+	dataButt.innerHTML = getDataText(); // 更新選擇資料顯示text
 }
 
 /*
@@ -306,22 +297,43 @@ function displayAlert(text, obj, colorType, close = true){
 	obj.innerHTML = html;
 }
 
-// 入口文件
-(() => {
-	DictDb.factory(DictConfig.dir);
-})()
+function getDataText(){
+	// 判斷當前是字典還是詞典
+	let currentTable = ""
+	if (dictType.dataset.dic == 'dicWord'){
+		currentTable = "#modal-table ";
+	}
+	else {
+		currentTable = "#modal-table-phrase ";
+	}
+	let model = $("#dataModal");
+	let count = model.find(currentTable + "input[name='dataCheck']").length;
+	let countChecked = model.find(currentTable + "input[name='dataCheck']:checked").length;
+	return `選擇資料 | 已選 ${count} 項中的 ${countChecked} 項`;
+}
 
+
+// 入口文件
 $(() => {
-	$('#outTab_oldbook').bootstrapTable({ // 顯示模態框表格
+	DictDb.factory(DictConfig.dir);
+	
+	$('#outTab_oldbook').bootstrapTable({ // 輸出模態框表格
 		columns: colData_oldbook,
 		data: rowData_oldbook
 	});
-	$('#outTab_book').bootstrapTable({ // 顯示模態框表格
+	$('#outTab_book').bootstrapTable({
 		columns: colData_book,
 		data: rowData_book
 	});
-	$('#outTab_book_phrase').bootstrapTable({ // 顯示模態框表格
+	$('#outTab_book_phrase').bootstrapTable({
 		columns: colData_book_phrase,
 		data: rowData_book_phrase
 	});
+
+	// 初始化選擇資料
+	dataButt.innerHTML = getDataText(); 
+	// 綁定模態框關閉時候，更新選擇資料顯示text
+	$('#dataModal').on('hide.bs.modal', function (event) {
+		dataButt.innerHTML = getDataText();
+	})
 })
