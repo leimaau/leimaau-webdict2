@@ -61,6 +61,23 @@ MainQuery = (() => {
 		return DictDb.execParam( querySQL, [] );
 	};
 	
+	// (詞彙)查詢單個表，用於《南寧城市信息》
+	tempObj.queryTableOne_nncity = (searchValue, selVal, queryType) => {
+		let querySQL = `select '${selVal[0]}' YEAR,* from ${selVal[0]}`;
+		if (queryType == 'phrase') { // 查詢繁體
+			querySQL += ` where trad GLOB '*${searchValue}*' order by YEAR`;
+		} else if (queryType == 'phrase_simp') { // 查詢簡體
+			querySQL += ` where simp GLOB '*${searchValue}*' order by YEAR`;
+		}else if (queryType == 'phrase_jyutping') { // 查詢無調粵拼
+			querySQL += ' where 1=2';
+		} else if (queryType == 'phrase_jyut6ping3') { // 查詢有調粵拼
+			querySQL += ' where 1=2';
+		} else if (queryType == 'phrase_expl') { // 詞例反查
+			querySQL += ` where trad GLOB '*${searchValue}*' or simp GLOB '*${searchValue}*' order by YEAR`;
+		};
+		return DictDb.execParam( querySQL, [] );
+	};
+	
 	
 	return tempObj;
 })();

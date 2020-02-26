@@ -78,8 +78,8 @@ const rowData_book_phrase = [
 	, { BOOK: "2007年謝建猷《廣西漢語方言研究》", NN: "tab_2007_phrase", HX_B: "noData", NN_T: "", NN_S: "noData" }
 	, { BOOK: "2008年林亦、覃鳳餘《廣西南寧白話研究》", NN: "tab_2008_phrase", HX_B: "", NN_T: "", NN_S: "" }
 	, { BOOK: "2016年余瑾《廣西平話研究》", NN: "", HX_B: "", NN_T: "", NN_S: "" }
-	, { BOOK: "2020年Leimaau《南寧城市信息》", NN: "tab_2020_nncity", HX_B: "", NN_T: "", NN_S: "" }
-	, { BOOK: "2020年Leimaau《南寧童謠》", NN: "tab_2020_proverb", HX_B: "", NN_T: "", NN_S: "" }
+	, { BOOK: "2020年Leimaau《南寧城市信息》", NN: "tab_nncity", HX_B: "", NN_T: "", NN_S: "" }
+	, { BOOK: "2020年Leimaau《南寧童謠》", NN: "tab_proverb", HX_B: "", NN_T: "", NN_S: "" }
 ];
 
 
@@ -143,6 +143,15 @@ const colData_phrase = [
 	, { field: 'JYUTPING', title: '粵拼', formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'phrase_jyut6ping3', 'dicPhrase')">${value}</a>`; } }
 	, { field: 'SOUR', title: '來源', formatter: (value, row) => { return formatSOUR(value, row['YEAR'], 'png', false) } }
 	, { field: 'EXPL', title: '解釋', formatter: (value) => { return `<p data-toggle="tooltip"  title='${value}'>${value}<p/>` } }
+	, { field: 'NOTE', title: 'leimaau附註', formatter: (value) => { return `<p data-toggle="tooltip" title='${value}'>${value}<p/>` } }
+];
+
+const colData_nncity = [
+	{ field: 'YEAR', title: '資料', align: 'center', formatter: (value) => { return `${value.replace('tab_nncity', '2020')}`; } }
+	//, {field: 'ID',title: 'ID'}
+	, { field: 'TRAD', title: '繁體', align: 'center', formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'phrase', 'dicPhrase')">${value}</a>`; } }
+	, { field: 'SIMP', title: '簡體', align: 'center', formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'phrase_simp', 'dicPhrase')">${value}</a>`; } }
+	, { field: 'SOUR', title: '來源', formatter: (value, row) => { return formatSOUR(value, row['YEAR'], 'png', false) } }
 	, { field: 'NOTE', title: 'leimaau附註', formatter: (value) => { return `<p data-toggle="tooltip" title='${value}'>${value}<p/>` } }
 ];
 

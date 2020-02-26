@@ -117,7 +117,14 @@ function queryPhrase(inputValue, queryType, selVal){
 		wordCloudDiv(res_bw, inputValue, 'outWordCloud_bw', allTitle_bw, queryType, 'TRAD'); // 顯示平話詞雲圖
 	};
 	
-	var isShow = res.length + res_bw.length;
+	var res_nncity = [];
+	var dataList_nncity = selVal.filter(item => item.indexOf('_nncity') > -1);
+	if (dataList_nncity.length != 0) {
+		res_nncity = MainQuery.queryTableOne_nncity(inputValue, dataList_nncity, queryType);
+		tableDiv(res_nncity, 'outTab_nncity', '南寧城市信息', outTabTitle_nncity, colData_nncity);
+	};
+	
+	var isShow = res.length + res_bw.length + res_nncity.length;
 	if (isShow != 0) { $('#nav-tab,#nav-tab-bw').removeClass('d-none'); }// 顯示tab
 	
 	return isShow;
