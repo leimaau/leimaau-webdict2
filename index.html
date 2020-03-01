@@ -94,10 +94,42 @@
             <a class="dropdown-item" target="_blank" href="#">PDF資料</a>
             <a class="dropdown-item" target="_blank" href="#">文本資料</a>
             <div class="dropdown-divider"></div>
+            <a class="dropdown-item"  data-toggle="modal" data-target="#signArticleModal" href="#">在線標註</a>
+            <div class="dropdown-divider"></div>
             <a class="dropdown-item"  data-toggle="modal" data-target="#aboutModal" href="#">關於</a>
           </div>
         </div>
       </div>
+		<!-- Modal -->
+		<div class="modal fade" id="signArticleModal" tabindex="-1" role="dialog" aria-labelledby="signArticleModalLabel" aria-hidden="true">
+		  <div class="modal-dialog modal-lg" role="document">
+			<div class="modal-content">
+			  <div class="modal-header">
+				<h5 class="modal-title" id="signArticleModalLabel">在線標註</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				  <span aria-hidden="true">&times;</span>
+				</button>
+			  </div>
+			  <div class="modal-body">
+				<form>
+				  <div class="form-group">
+					<label for="sign-text" class="col-form-label">輸入文本：</label>
+					<textarea class="form-control textarea-style" id="signText">要是能重來，我要選李白</textarea>
+				  </div>
+				  <div class="form-group">
+					<label for="sign-result" class="col-form-label">結果：</label>
+					<span class="form-control textarea-style table-responsive" id="signResult"></span>
+				  </div>
+				</form>
+				<span>注：標註結果最好經過人工校對。</span>
+			  </div>
+			  <div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+				<button type="button" class="btn btn-primary" onclick="signArticle($('#signText').val());">標註</button>
+			  </div>
+			</div>
+		  </div>
+		</div>
 		<!-- Modal -->
 		<div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="aboutModalTitle" aria-hidden="true">
 		  <div class="modal-dialog modal-dialog-centered" role="document">
@@ -109,12 +141,12 @@
 				</button>
 			  </div>
 			  <div class="modal-body">
-				本站叫「狸貓的在線詞典 2.0 版」(Leimaau’s Webdict 2.0)，相對與 1.0 版的 <a class="text-info" href="https://leimaau.github.io/leimaau-webdict" target="_blank">Leimaau’s Webdict</a> 有了較大的改進。第一版的出現獲得 sgalal 的技術支持，特此致謝。</br></br>本站原先開發和運行於 github 中，爲了方便國內用戶訪問，故將程序備份於 gitee 中運行，因此本站有兩個地址，對於國內用戶來說，gitee 地址作<a class="text-info" target="_blank" href="https://leimaau.gitee.io/leimaau-webdict2/">主頁地址</a>，github 地址作<a class="text-info" target="_blank" href="https://leimaau.github.io/leimaau-webdict2/">備用地址</a>。</br></br>
+				本站叫「狸貓的在線詞典 2.0 版」(Leimaau’s Webdict 2.0)，是一個具有個人性質的在線詞典。相對與 1.0 版的 <a class="text-info" href="https://leimaau.github.io/leimaau-webdict" target="_blank">Leimaau’s Webdict</a> 本版有了較大的改進，程序的開發和製作獲益於 sgalal 和匆匆的我的技術支持，特此致謝。</br></br>本站原先開發和運行於 github 中，爲了方便國內用戶訪問，故將程序備份於 gitee 中運行，因此本站有兩個地址，對於國內用戶來說，gitee 地址作<a class="text-info" target="_blank" href="https://leimaau.gitee.io/leimaau-webdict2/">主頁地址</a>，github 地址作<a class="text-info" target="_blank" href="https://leimaau.github.io/leimaau-webdict2/">備用地址</a>。</br></br>
 				資料收集整理錄入與校對：Leimaau </br>
 				程序製作：sgalal、匆匆的我、Leimaau </br>
 				聯繫郵箱：leimaau@qq.com </br>
 				github：<a class="text-info" target="_blank" href="https://github.com/leimaau">leimaau's github</a></br></br>
-				歡迎提供幫助和意見。
+				數據繁多，疏漏難免，歡迎提供幫助和意見。
 			  </div>
 			  <div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -156,15 +188,15 @@
           </div>
           <div class="custom-control custom-radio custom-control-inline">
             <input class="custom-control-input" type="radio" id="jyutping" name="queryType" value="jyutping">
-            <label for="jyutping" class="custom-control-label">粵拼（無需聲調）</label>
+            <label for="jyutping" class="custom-control-label">拼音（無需聲調）</label>
           </div>
           <div class="custom-control custom-radio custom-control-inline">
             <input class="custom-control-input" type="radio" id="jyut6ping3" name="queryType" value="jyut6ping3">
-            <label for="jyut6ping3" class="custom-control-label">粵拼（需聲調）</label>
+            <label for="jyut6ping3" class="custom-control-label">拼音（需聲調）</label>
           </div>
           <div class="custom-control custom-radio custom-control-inline">
             <input class="custom-control-input" type="radio" id="expl" name="queryType" value="expl">
-            <label for="expl" class="custom-control-label">詞例（反查）</label>
+            <label for="expl" class="custom-control-label">釋義（反查）</label>
           </div>
         </div>
         <!-- 查詞 -->
@@ -180,16 +212,16 @@
           <div class="custom-control custom-radio custom-control-inline">
             <input class="custom-control-input" type="radio" id="phrase_jyutping" name="queryType"
               value="phrase_jyutping">
-            <label for="phrase_jyutping" class="custom-control-label">粵拼（無需聲調）</label>
+            <label for="phrase_jyutping" class="custom-control-label">拼音（無需聲調）</label>
           </div>
           <div class="custom-control custom-radio custom-control-inline">
             <input class="custom-control-input" type="radio" id="phrase_jyut6ping3" name="queryType"
               value="phrase_jyut6ping3">
-            <label for="phrase_jyut6ping3" class="custom-control-label">粵拼（需聲調）</label>
+            <label for="phrase_jyut6ping3" class="custom-control-label">拼音（需聲調）</label>
           </div>
           <div class="custom-control custom-radio custom-control-inline">
             <input class="custom-control-input" type="radio" id="phrase_expl" name="queryType" value="phrase_expl">
-            <label for="phrase_expl" class="custom-control-label">解釋（反查）</label>
+            <label for="phrase_expl" class="custom-control-label">釋義（反查）</label>
           </div>
         </div>
       </div>
@@ -200,7 +232,7 @@
       </div>
       <!-- 模態框 -->
       <div class="modal fade" id="dataModal">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog modal-xl">
           <div class="modal-content">
             <!-- 模態框頭部 -->
             <div class="modal-header">
@@ -234,10 +266,20 @@
       </div>
 
       <span class="alert-div row col-md-12"><output id="outputAlert"></output></span>
+	  
+      <div class="row form-group col-md-12 table-responsive">
+        <span class="classTabTitle" id="outTabTitle_triungkox"></span>
+        <table class="classTable" id="outTab_triungkox"></table>
+      </div>
 
       <div class="row form-group col-md-12 table-responsive">
         <span class="classTabTitle" id="outTabTitle_gw"></span>
         <table class="classTable" id="outTab_gw"></table>
+      </div>
+	  
+      <div class="row form-group col-md-12 table-responsive">
+        <span class="classTabTitle" id="outTabTitle_jw"></span>
+        <table class="classTable" id="outTab_jw"></table>
       </div>
 
       <div class="row form-group col-md-12">
@@ -292,7 +334,6 @@
         <span class="classTabTitle" id="outTabTitle_nncity"></span>
         <table class="classTable" id="outTab_nncity"></table>
       </div>
-	  
 	  
     </form>
   </div>

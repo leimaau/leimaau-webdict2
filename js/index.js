@@ -65,31 +65,45 @@ const allTitle = '南寧白話', allTitle_bw = '南寧平話';
 
 // 【單字】查詢模塊
 function queryChar(inputValue, queryType, selVal){
+	
+	var res_triungkox = [];
+	if (selVal.some(item => item.indexOf('1008') > -1)) {
+		res_triungkox = MainQuery.queryTableOne_triungkox(inputValue, ['tab_1008'], queryType);
+		showTable(res_triungkox, 'outTab_triungkox', "《廣韻》", outTabTitle_triungkox, colData_triungkox);
+	};
+	
+	
 	var res_gw = [];
 	if (selVal.some(item => item.indexOf('1838') > -1)) {
-		res_gw = MainQuery.queryTableOne(inputValue, ['tab_1838'], queryType);
-		tableDiv(res_gw, 'outTab_gw', "《江湖尺牘分韻撮要合集》", outTabTitle_gw, colData_gw);
+		res_gw = MainQuery.queryTableOne_gw(inputValue, ['tab_1838'], queryType);
+		showTable(res_gw, 'outTab_gw', "《江湖尺牘分韻撮要合集》", outTabTitle_gw, colData_gw);
+	};
+	
+	var res_jw = [];
+	if (selVal.some(item => item.indexOf('1856') > -1)) {
+		res_jw = MainQuery.queryTableOne_jw(inputValue, ['tab_1856'], queryType);
+		showTable(res_jw, 'outTab_jw', "《英華分韻撮要》", outTabTitle_jw, colData_jw);
 	};
 	
 	var res = [];
-	var dataList = selVal.filter(item => item.indexOf('_bw') == -1).filter(item => item.indexOf('1838') == -1);
+	var dataList = selVal.filter(item => item.indexOf('_bw') == -1).filter(item => item.indexOf('1008') == -1).filter(item => item.indexOf('1838') == -1).filter(item => item.indexOf('1856') == -1);
 	if (dataList.length != 0) {
 		res = MainQuery.queryTable(inputValue, dataList, queryType);
-		tableDiv(res, 'outTab', allTitle, outTabTitle, colData);  // 顯示白話表格
-		pieDiv(res, inputValue, 'outPie', allTitle, queryType);  // 顯示白話餅圖
-		//wordCloudDiv(res, inputValue, 'outWordCloud', allTitle_bw, queryType, 'JYUTPING'); // 顯示白話詞雲圖
+		showTable(res, 'outTab', allTitle, outTabTitle, colData);  // 顯示白話表格
+		if(queryType == 'char' || queryType == 'char_simp') showPie(res, inputValue, 'outPie', allTitle, queryType);  // 顯示白話餅圖
+		//showWordCloud(res, inputValue, 'outWordCloud', allTitle_bw, queryType, 'JYUTPING'); // 顯示白話詞雲圖
 		
 	};
 	
 	var res_bw = [];
 	if (selVal.some(item => item.indexOf('_bw') > -1)) {
 		res_bw = MainQuery.queryTable(inputValue, selVal.filter(item => item.indexOf('_bw') > -1), queryType);
-		tableDiv(res_bw, 'outTab_bw', allTitle_bw, outTabTitle_bw, colData);  // 顯示平話表格
-		pieDiv(res_bw, inputValue, 'outPie_bw', allTitle_bw, queryType);  // 顯示平話餅圖
-		//wordCloudDiv(res_bw, inputValue, 'outWordCloud_bw', allTitle_bw, queryType, 'JYUTPING'); // 顯示平話詞雲圖
+		showTable(res_bw, 'outTab_bw', allTitle_bw, outTabTitle_bw, colData);  // 顯示平話表格
+		if(queryType == 'char' || queryType == 'char_simp') showPie(res_bw, inputValue, 'outPie_bw', allTitle_bw, queryType);  // 顯示平話餅圖
+		//showWordCloud(res_bw, inputValue, 'outWordCloud_bw', allTitle_bw, queryType, 'JYUTPING'); // 顯示平話詞雲圖
 	};
 	
-	var isShow = res_gw.length + res.length + res_bw.length;
+	var isShow = res_triungkox.length + res_gw.length + res_jw.length + res.length + res_bw.length;
 	//if (isShow != 0) { $('#nav-tab,#nav-tab-bw').removeClass('d-none'); }// 顯示tab
 	
 	return isShow;
@@ -103,25 +117,25 @@ function queryPhrase(inputValue, queryType, selVal){
 	var dataList = selVal.filter(item => item.indexOf('_bw') == -1).filter(item => item.indexOf('_nncity') == -1).filter(item => item.indexOf('_proverb') == -1);
 	if (dataList.length != 0) {
 		res = MainQuery.queryTablePhrase(inputValue, dataList, queryType);
-		tableDiv(res, 'outTab', allTitle, outTabTitle, colData_phrase);  // 顯示白話表格
-		pieDiv(res, inputValue, 'outPie', allTitle, queryType);  // 顯示白話餅圖
-		wordCloudDiv(res, inputValue, 'outWordCloud', allTitle, queryType, 'TRAD'); // 顯示白話詞雲圖
+		showTable(res, 'outTab', allTitle, outTabTitle, colData_phrase);  // 顯示白話表格
+		showPie(res, inputValue, 'outPie', allTitle, queryType);  // 顯示白話餅圖
+		showWordCloud(res, inputValue, 'outWordCloud', allTitle, queryType, 'TRAD'); // 顯示白話詞雲圖
 	};
 	
 	var res_bw = [];
 	var dataList_bw = selVal.filter(item => item.indexOf('_bw') > -1).filter(item => item.indexOf('_nncity') == -1).filter(item => item.indexOf('_proverb') == -1);
 	if (dataList_bw.length != 0) {
 		res_bw = MainQuery.queryTablePhrase(inputValue, dataList_bw, queryType);
-		tableDiv(res_bw, 'outTab_bw', allTitle_bw, outTabTitle_bw, colData_phrase);  // 顯示平話表格
-		pieDiv(res_bw, inputValue, 'outPie_bw', allTitle_bw, queryType);  // 顯示平話餅圖
-		wordCloudDiv(res_bw, inputValue, 'outWordCloud_bw', allTitle_bw, queryType, 'TRAD'); // 顯示平話詞雲圖
+		showTable(res_bw, 'outTab_bw', allTitle_bw, outTabTitle_bw, colData_phrase);  // 顯示平話表格
+		showPie(res_bw, inputValue, 'outPie_bw', allTitle_bw, queryType);  // 顯示平話餅圖
+		showWordCloud(res_bw, inputValue, 'outWordCloud_bw', allTitle_bw, queryType, 'TRAD'); // 顯示平話詞雲圖
 	};
 	
 	var res_nncity = [];
 	var dataList_nncity = selVal.filter(item => item.indexOf('_nncity') > -1);
 	if (dataList_nncity.length != 0) {
 		res_nncity = MainQuery.queryTableOne_nncity(inputValue, dataList_nncity, queryType);
-		tableDiv(res_nncity, 'outTab_nncity', '南寧城市信息', outTabTitle_nncity, colData_nncity);
+		showTable(res_nncity, 'outTab_nncity', '南寧城市信息', outTabTitle_nncity, colData_nncity);
 	};
 	
 	var isShow = res.length + res_bw.length + res_nncity.length;
@@ -131,7 +145,7 @@ function queryPhrase(inputValue, queryType, selVal){
 }
 
 // 表格顯示函數
-function tableDiv(res, outputDiv, tabTitle, tabTitleDiv, colData) {
+function showTable(res, outputDiv, tabTitle, tabTitleDiv, colData) {
 	//if (res.length == 0) return false;
 	$('#'+outputDiv).bootstrapTable('destroy'); // 銷毀舊表
 	tabTitleDiv.innerHTML = `<h5>${tabTitle}</h5>`;  // 標題
@@ -143,7 +157,7 @@ function tableDiv(res, outputDiv, tabTitle, tabTitleDiv, colData) {
 }
 
 // 餅圖顯示函數
-function pieDiv(res, inputValue, div_id, pieTitle, queryType) {
+function showPie(res, inputValue, pieDiv, pieTitle, queryType) {
 	//if (res.length == 0) return false;
 	if (queryType == 'expl' || queryType == 'phrase_expl') return false; // 詞例和解釋反查時不顯示餅圖
 	// 餅圖數據處理
@@ -155,8 +169,8 @@ function pieDiv(res, inputValue, div_id, pieTitle, queryType) {
 	};
 	// 開始顯示
 	var show_data = [];
-	for (var i in pie_data) { pie_data[i] = new Set(pie_data[i]) }; //去重
-	for (var i in pie_data) { show_data.push({ name: i, y: pie_data[i].size, x: Array.from(pie_data[i]).toString() }) }; //name 數據名 y 數據值 x 附帶值
+	for (let i in pie_data) { pie_data[i] = new Set(pie_data[i]) }; //去重
+	for (let i in pie_data) { show_data.push({ name: i, y: pie_data[i].size, x: Array.from(pie_data[i]).toString() }) }; //name 數據名 y 數據值 x 附帶值
 
 	var chart = {
 		plotBackgroundColor: null,
@@ -206,11 +220,11 @@ function pieDiv(res, inputValue, div_id, pieTitle, queryType) {
 	json.series = series;
 	json.plotOptions = plotOptions;
 	json.colors = color;
-	$('#' + div_id).highcharts(json);
+	$('#' + pieDiv).highcharts(json);
 }
 
 // 詞雲圖顯示函數
-function wordCloudDiv(res, inputValue, div_id, wordcloudTitle, queryType, colName) {
+function showWordCloud(res, inputValue, wordCloudDiv, wordCloudTitle, queryType, colName) {
 	//if (res.length == 0) return false;
 	if (queryType == 'expl' || queryType == 'phrase_expl') { // 詞例和解釋反查時不顯示詞雲圖
 		document.getElementById('nav-tab').style.display = 'none'; // 隱藏tab
@@ -245,13 +259,13 @@ function wordCloudDiv(res, inputValue, div_id, wordcloudTitle, queryType, colNam
 		data: data
 	}];
 	var title= {
-		text: `${wordcloudTitle}【${inputValue}】`
+		text: `${wordCloudTitle}【${inputValue}】`
 	};
 	var json = {};
 	json.credits = { enabled: false };
 	json.series = series;
 	json.title = title;
-	$('#' + div_id).highcharts(json);
+	$('#' + wordCloudDiv).highcharts(json);
 }
 
 /*選擇字典類型：字典、詞典*/
@@ -317,6 +331,30 @@ function getDataText(){
 	let count = model.find(currentTable + "input[name='dataCheck']").length;
 	let countChecked = model.find(currentTable + "input[name='dataCheck']:checked").length;
 	return `選擇資料 | 已選 ${count} 項中的 ${countChecked} 項`;
+}
+
+// 在線標註函數
+function signArticle(inputText) {
+	var txtArr = inputText.split(''), resArr = [], res = [], oututText = '';
+	
+	for (let txtChar of txtArr) {
+		if (!(/[^\u4e00-\u9fa5]/.test(txtChar))) {
+			res = MainQuery.queryJyutping(txtChar);
+			resArr.push( [txtChar, res[0]['jyutping']] );
+		} else {
+			resArr.push( [txtChar, ''] );
+		}
+	}
+	
+	for (let subArr of resArr) {
+		if (subArr[0] != '\n') {
+			oututText += `<ruby>` + subArr[0] + `<rp>(</rp><rt>` + subArr[1] + `</rt><rp>)</rp></ruby>`;
+		} else {
+			oututText += subArr[0].replace('\n',`<br>`) + `<ruby><rp>(</rp><rt>` + subArr[1] + `</rt><rp>)</rp></ruby>`;
+		}
+	}
+	
+	$('#signResult').html(oututText);
 }
 
 

@@ -29,6 +29,10 @@ p { /*表格中的expl和note列*/
 	min-height: -webkit-fill-available;
 }
 
+.textarea-style {
+	min-height: 200px;
+}
+
 #outputAlert {
 	width: 100%;
 }
@@ -118,4 +122,8 @@ p { /*表格中的expl和note列*/
 
 .alert-div {
 	margin-top: 20px;
+}
+
+ruby, rt {
+    text-indent: 4px;
 }

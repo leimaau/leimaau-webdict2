@@ -1,5 +1,72 @@
 ﻿
+-- 命令
+
+sqlite3 进入命令行
+
+sqlite> .open leimaau.db3   #打开数据库
+sqlite> .database    #用于验证：显示目前连接的数据库路径
+main: E:\LocalRepository\gitee\sqliteweb\db\dealData\leimaau.db3
+sqlite> .table    #用于验证：显示这个数据库有哪些表格
+tab_1994     tab_1997     tab_1998     tab_1998_bw  tab_2002     tab_2008
+sqlite> .separator "|"  #指定分隔符为"|"，默认就是"|"可以不用执行
+sqlite> .import tab_temp.txt tab_1994   # .import FileName TableName 放在同一目录 (已经导入)
+
+
+
 -- 表结构 
+
+-- 广韵
+
+CREATE TABLE tab_1008(
+   ID             TEXT    NOT NULL,
+   WORD1          TEXT    NOT NULL,
+   WORD2          TEXT    NOT NULL,
+   FANQIE1        TEXT    NOT NULL,
+   FANQIE2        TEXT    NOT NULL,
+   EXPL           TEXT    ,
+   SHE            TEXT    NOT NULL,
+   HU             TEXT    NOT NULL,
+   DENG           TEXT    NOT NULL,
+   YUNBU1         TEXT    NOT NULL,
+   YUNBU2         TEXT    NOT NULL,
+   TONE           TEXT    NOT NULL,
+   FIRST          TEXT    NOT NULL,
+   PINYIN         TEXT    NOT NULL
+);
+
+-- 江湖尺牍分韵撮要
+
+CREATE TABLE tab_1838(
+   ID             TEXT     NOT NULL,
+   WORD           TEXT    NOT NULL,
+   EXPL           TEXT    ,
+   FINAL_PART           TEXT    NOT NULL,
+   FIRST_OLD           TEXT    NOT NULL,
+   FINAL_OLD           TEXT    NOT NULL,
+   TONE           TEXT    NOT NULL,
+   JYUTPING           TEXT    NOT NULL,
+   IPA          TEXT    NOT NULL,
+   VOLUME       TEXT    NOT NULL,
+   PAGE          TEXT    NOT NULL,
+   FIRST_TYPE          TEXT    NOT NULL,
+   FANQIE          TEXT
+);
+
+-- 英华分韵撮要
+
+CREATE TABLE tab_1856(
+   ID             TEXT    NOT NULL,
+   WORD           TEXT    NOT NULL,
+   WORD_COMP      TEXT   ,
+   WORD_NOTE      TEXT   ,
+   PAGE           TEXT    NOT NULL,
+   OLD_JP         TEXT    NOT NULL,
+   OLD_JP_TYPE    TEXT    ,
+   OLD_JP_NOTE    TEXT    ,
+   EXPL           TEXT    ,
+   IPA            TEXT    NOT NULL,
+   JYUTPING       TEXT    NOT NULL
+);
 
 -- 单字表  1994、1997、1998、1998_bw（平话）、2002、2007、2008、2018 相同(已经建好)
 
@@ -13,24 +80,6 @@ CREATE TABLE tab_1994(
    SOUR          TEXT    NOT NULL,
    EXPL          TEXT,
    NOTE          TEXT
-);
-
--- 江湖分韵撮要
-
-CREATE TABLE tab_1838(
-   ID             TEXT     NOT NULL,
-   WORD           TEXT    NOT NULL,
-   EXPL           TEXT    NOT NULL,
-   FINAL_PART           TEXT    NOT NULL,
-   FIRST_OLD           TEXT    NOT NULL,
-   FINAL_OLD           TEXT    NOT NULL,
-   TONE           TEXT    NOT NULL,
-   JYUTPING           TEXT    NOT NULL,
-   IPA          TEXT    NOT NULL,
-   VOLUME       TEXT    NOT NULL,
-   PAGE          TEXT    NOT NULL,
-   FIRST_TYPE          TEXT    NOT NULL,
-   FANQIE          TEXT
 );
 
 -- 词汇表 tab_1997_phrase、tab_1998_phrase、tab_1998_bw_phrase（平话）、tab_2007_phrase、tab_2008_phrase 相同(已经建好)
@@ -72,14 +121,3 @@ CREATE TABLE tab_proverb(
 );
 
 
--- 命令
-
-sqlite3 进入命令行
-
-sqlite> .open leimaau.db3   #打开数据库
-sqlite> .database    #用于验证：显示目前连接的数据库路径
-main: E:\LocalRepository\gitee\sqliteweb\db\dealData\leimaau.db3
-sqlite> .table    #用于验证：显示这个数据库有哪些表格
-tab_1994     tab_1997     tab_1998     tab_1998_bw  tab_2002     tab_2008
-sqlite> .separator "|"  #指定分隔符为"|"，默认就是"|"可以不用执行
-sqlite> .import tab_temp.txt tab_1994   # .import FileName TableName 放在同一目录 (已经导入)
