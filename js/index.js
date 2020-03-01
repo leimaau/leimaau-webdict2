@@ -340,7 +340,11 @@ function signArticle(inputText) {
 	for (let txtChar of txtArr) {
 		if (!(/[^\u4e00-\u9fa5]/.test(txtChar))) {
 			res = MainQuery.queryJyutping(txtChar);
-			resArr.push( [txtChar, res[0]['jyutping']] );
+			if(res.length != 0){
+				resArr.push( [txtChar, res[0]['jyutping']] );
+			} else {
+				resArr.push( [txtChar, ''] );
+			}
 		} else {
 			resArr.push( [txtChar, ''] );
 		}
