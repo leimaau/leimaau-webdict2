@@ -135,13 +135,13 @@
 						<label for="signResult_bingwaa" class="custom-control-label">平話</label>
 					</div>
 					<label class="col-form-label">標註格式：</label>
-					<div class="custom-control custom-radio custom-control-inline">
-						<input class="custom-control-input" type="radio" id="signResult_updown" name="signResult_format" value="updown" onclick="$('#opt_jyutping_ipa,#opt_ipa_jyutping').addClass('d-none');" checked>
-						<label for="signResult_updown" class="custom-control-label">內嵌</label>
-					</div>
-					<div class="custom-control custom-radio custom-control-inline">
-						<input class="custom-control-input" type="radio" id="signResult_twolines" name="signResult_format" value="twolines" onclick="$('#opt_jyutping_ipa,#opt_ipa_jyutping').removeClass('d-none');">
-						<label for="signResult_twolines" class="custom-control-label">分行</label>
+					
+					<div class="custom-control custom-control-inline">
+						<select class="form-control form-control-sm" id="signResult_format" onchange="if($('#signResult_format').val()=='twolines'){$('#opt_jyutping_ipa,#opt_ipa_jyutping').removeClass('d-none')}else{$('#opt_jyutping_ipa,#opt_ipa_jyutping').addClass('d-none');if($('#signResult_way option:selected').val()=='jyutping_ipa'){$('#signResult_way').val('jyutping')}else if($('#signResult_way option:selected').val()=='ipa_jyutping'){$('#signResult_way').val('ipa')}};">
+							<option value="updown" selected>按字內嵌</option>
+							<option value="lineupdown">按行內嵌</option>
+							<option value="twolines">分行</option>
+						</select>
 					</div>
 					<label class="col-form-label">標註方式：</label>
 					<div class="custom-control custom-control-inline">

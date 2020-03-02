@@ -339,7 +339,7 @@ function signArticle(inputText, signText_type, signResult_type, signResult_forma
 	var txtArr = inputText.split('\n'), outputText = '';
 	
 	for (let lines of txtArr) {
-		if (signResult_format == 'updown') {
+		if (signResult_format == 'updown') { // 按字內嵌
 			let lineChar = lines.split(''), outputLine = '';
 			for (let txtChar of lineChar) {
 				if (signResult_way == 'jyutping' || signResult_way == 'jyutping_ipa') {
@@ -349,7 +349,19 @@ function signArticle(inputText, signText_type, signResult_type, signResult_forma
 				}
 			}
 			outputText += outputLine + '<br>';
-		} else if (signResult_format == 'twolines') {
+		} else if (signResult_format == 'lineupdown') { // 按行內嵌
+			let lineChar = lines.split(''), outputLine1 = '', outputLine2 = '', outputLine3 = '';
+			for (let txtChar of lineChar) {
+				if (signResult_way == 'jyutping' || signResult_way == 'jyutping_ipa') {
+					outputLine1 += queryJyutping(txtChar, signText_type, signResult_type, 'jyutping') + ' ';
+					outputLine3 += txtChar;
+				} else if (signResult_way == 'ipa' || signResult_way == 'ipa_jyutping') {
+					outputLine1 += queryJyutping(txtChar, signText_type, signResult_type, 'ipa') + ' ';
+					outputLine3 += txtChar;
+				}
+			}
+			outputText += `<ruby><rb>${outputLine3}</rb><rt>${outputLine1.replace(/ $/gi, "")}</rt><rp>(${outputLine1.replace(/ $/gi, "")})</rp></ruby><br>`;
+		} else if (signResult_format == 'twolines') { // 分行
 			let lineChar = lines.split(''), outputLine1 = '', outputLine2 = '', outputLine3 = '';
 			for (let txtChar of lineChar) {
 				if (signResult_way == 'jyutping') {
@@ -387,7 +399,7 @@ function queryJyutping(txtChar, trad_simp, tabName, jyutping_ipa, keep_symbol = 
 		if(res.length != 0){
 			return (jyutping_ipa == 'jyutping') ? res[0]['jyutping'] : res[0]['ipa'];
 		} else {
-			return '';
+			return '　';　// 全角空格，會被當成一個中文
 		}
 	} else {
 		if(keep_symbol) {
