@@ -94,7 +94,7 @@
             <a class="dropdown-item" target="_blank" href="#">PDF資料</a>
             <a class="dropdown-item" target="_blank" href="#">文本資料</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item"  data-toggle="modal" data-target="#signArticleModal" href="#">在線標註</a>
+            <a class="dropdown-item text-primary"  data-toggle="modal" data-target="#signArticleModal" href="#">在線標註&nbsp;&nbsp;<span class="badge badge-danger">New</span></a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item"  data-toggle="modal" data-target="#aboutModal" href="#">關於</a>
           </div>
@@ -110,23 +110,57 @@
 				  <span aria-hidden="true">&times;</span>
 				</button>
 			  </div>
+			<form onsubmit="signArticle(signText.value, signText_type.value, signResult_type.value, signResult_format.value, signResult_way.value); return false">
 			  <div class="modal-body">
-				<form>
 				  <div class="form-group">
-					<label for="sign-text" class="col-form-label">輸入文本：</label>
-					<textarea class="form-control textarea-style" id="signText">要是能重來，我要選李白</textarea>
+					<label class="col-form-label">輸入文本：</label>
+					<div class="custom-control custom-radio custom-control-inline">
+						<input class="custom-control-input" type="radio" id="signText_char" name="signText_type" value="trad" checked>
+						<label for="signText_char" class="custom-control-label">繁體</label>
+					</div>
+					<div class="custom-control custom-radio custom-control-inline">
+						<input class="custom-control-input" type="radio" id="signText_char_simp" name="signText_type" value="simp">
+						<label for="signText_char_simp" class="custom-control-label">簡體</label>
+					</div>
+					<textarea class="form-control textarea-style" id="signText">靜夜思 【唐】李白&#10;牀前明月光，疑似地上霜。&#10;舉頭望明月，低頭思故鄉。</textarea>
 				  </div>
 				  <div class="form-group">
-					<label for="sign-result" class="col-form-label">結果：</label>
+					<label class="col-form-label">輸出結果：</label>
+					<div class="custom-control custom-radio custom-control-inline">
+						<input class="custom-control-input" type="radio" id="signResult_baakwaa" name="signResult_type" value="tab_2018" checked>
+						<label for="signResult_baakwaa" class="custom-control-label">白話</label>
+					</div>
+					<div class="custom-control custom-radio custom-control-inline">
+						<input class="custom-control-input" type="radio" id="signResult_bingwaa" name="signResult_type" value="tab_2018_bw">
+						<label for="signResult_bingwaa" class="custom-control-label">平話</label>
+					</div>
+					<label class="col-form-label">標註格式：</label>
+					<div class="custom-control custom-radio custom-control-inline">
+						<input class="custom-control-input" type="radio" id="signResult_updown" name="signResult_format" value="updown" onclick="$('#opt_jyutping_ipa,#opt_ipa_jyutping').addClass('d-none');" checked>
+						<label for="signResult_updown" class="custom-control-label">內嵌</label>
+					</div>
+					<div class="custom-control custom-radio custom-control-inline">
+						<input class="custom-control-input" type="radio" id="signResult_twolines" name="signResult_format" value="twolines" onclick="$('#opt_jyutping_ipa,#opt_ipa_jyutping').removeClass('d-none');">
+						<label for="signResult_twolines" class="custom-control-label">分行</label>
+					</div>
+					<label class="col-form-label">標註方式：</label>
+					<div class="custom-control custom-control-inline">
+						<select class="form-control form-control-sm" id="signResult_way">
+							<option value="jyutping" selected>粵拼</option>
+							<option value="ipa">IPA</option>
+							<option id="opt_jyutping_ipa" value="jyutping_ipa" class="d-none">粵拼和IPA</option>
+							<option id="opt_ipa_jyutping" value="ipa_jyutping" class="d-none">IPA和粵拼</option>
+						</select>
+					</div>
 					<span class="form-control textarea-style table-responsive" id="signResult"></span>
 				  </div>
-				</form>
-				<span>注：標註結果最好經過人工校對。</span>
+				  <span>注：標註結果最好經過人工校對。</span>
 			  </div>
 			  <div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
-				<button type="button" class="btn btn-primary" onclick="signArticle($('#signText').val());">標註</button>
+				<input class="btn btn-secondary" type="button" data-dismiss="modal" value="關閉"/>
+				<input class="btn btn-primary" type="submit" value="標註"/>
 			  </div>
+			</form>
 			</div>
 		  </div>
 		</div>
@@ -141,7 +175,7 @@
 				</button>
 			  </div>
 			  <div class="modal-body">
-				本站叫「狸貓的在線詞典 2.0 版」(Leimaau’s Webdict 2.0)，是一個具有個人性質的在線詞典。相對與 1.0 版的 <a class="text-info" href="https://leimaau.github.io/leimaau-webdict" target="_blank">Leimaau’s Webdict</a> 本版有了較大的改進，程序的開發和製作獲益於 sgalal 和匆匆的我的技術支持，特此致謝。</br></br>本站原先開發和運行於 github 中，爲了方便國內用戶訪問，故將程序備份於 gitee 中運行，因此本站有兩個地址，對於國內用戶來說，gitee 地址作<a class="text-info" target="_blank" href="https://leimaau.gitee.io/leimaau-webdict2/">主頁地址</a>，github 地址作<a class="text-info" target="_blank" href="https://leimaau.github.io/leimaau-webdict2/">備用地址</a>。</br></br>
+				本站叫「狸貓的在線詞典 2.0 版」(Leimaau’s Webdict 2.0)，是一個具有個人性質的在線詞典。相對與 1.0 版的 <a class="text-info" href="https://leimaau.github.io/leimaau-webdict" target="_blank">Leimaau’s Webdict</a> 本版有了較大的改進，程序的開發和製作得益於 sgalal 和匆匆的我的技術支持，特此致謝。</br></br>本站原先開發和運行於 github 中，爲了方便國內用戶訪問，故將程序備份於 gitee 中運行，因此本站有兩個地址，對於國內用戶來說，gitee 地址作<a class="text-info" target="_blank" href="https://leimaau.gitee.io/leimaau-webdict2/">主頁地址</a>，github 地址作<a class="text-info" target="_blank" href="https://leimaau.github.io/leimaau-webdict2/">備用地址</a>。</br></br>
 				資料收集整理錄入與校對：Leimaau </br>
 				程序製作：sgalal、匆匆的我、Leimaau </br>
 				聯繫郵箱：leimaau@qq.com </br>
@@ -180,7 +214,7 @@
         <div id="queryRadio-dicWord">
           <div class="custom-control custom-radio custom-control-inline">
             <input class="custom-control-input" type="radio" id="char" name="queryType" value="char" checked>
-            <label for="char" class="custom-control-label">單字（繁体）</label>
+            <label for="char" class="custom-control-label">單字（繁體）</label>
           </div>
           <div class="custom-control custom-radio custom-control-inline">
             <input class="custom-control-input" type="radio" id="char_simp" name="queryType" value="char_simp">
@@ -203,7 +237,7 @@
         <div id="queryRadio-dicPhrase" class="d-none">
           <div class="custom-control custom-radio custom-control-inline">
             <input class="custom-control-input" type="radio" id="phrase" name="queryType" value="phrase">
-            <label for="phrase" class="custom-control-label">詞彙（繁体）</label>
+            <label for="phrase" class="custom-control-label">詞彙（繁體）</label>
           </div>
           <div class="custom-control custom-radio custom-control-inline">
             <input class="custom-control-input" type="radio" id="phrase_simp" name="queryType" value="phrase_simp">

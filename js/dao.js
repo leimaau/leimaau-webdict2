@@ -71,8 +71,8 @@ MainQuery = (() => {
 	};
 	
 	// (單字)查詢粵拼，用於在線標註
-	tempObj.queryJyutping = (inputChar) => {
-		let querySQL = `select trad, group_concat(jyutping, '/') jyutping from tab_2018 where trad='${inputChar}' group by trad`;
+	tempObj.queryJyutping = (inputChar, signText_type, signResult_type) => {
+		let querySQL = `select ${signText_type}, group_concat(jyutping, '/') jyutping, group_concat(ipa_t, '/') ipa from ${signResult_type} where ${signText_type}='${inputChar}' group by ${signText_type}`;
 		return DictDb.execParam( querySQL, [] );
 	};
 	

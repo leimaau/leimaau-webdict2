@@ -28,9 +28,9 @@ const colData_oldbook = [
 ];
 
 const rowData_oldbook = [
-	{ OLDBOOK: `《廣韻》[<a class="text-info" target="_blank" href="https://zhuanlan.zhihu.com/p/20430939">poem覈校版20170209</a>]`, TRIUNGKOX: "tab_1008", OLDCANTO: "" }
-	, { OLDBOOK: `1838年《江湖尺牘分韻撮要合集》[<a class="text-info" target="_blank" href="http://ytenx.org/pyonh/">韻典網poem覈校版</a>](本站擬音)`, TRIUNGKOX: "", OLDCANTO: "tab_1838" }
-	, { OLDBOOK: `1856年衛三畏廉士甫《英華分韻撮要》[<a class="text-info" target="_blank" href="https://jyut.net/">粵音資料集叢版</a>](本站擬音)`, TRIUNGKOX: "", OLDCANTO: "tab_1856" }
+	{ OLDBOOK: `《廣韻》[<a class="text-info" target="_blank" href="https://zhuanlan.zhihu.com/p/20430939">poem覈校版20170209</a>]`, TRIUNGKOX: 'tab_1008', OLDCANTO: '' }
+	, { OLDBOOK: `1838年《江湖尺牘分韻撮要合集》[<a class="text-info" target="_blank" href="http://ytenx.org/pyonh/">韻典網poem覈校版</a>](本站擬音)`, TRIUNGKOX: '', OLDCANTO: 'tab_1838' }
+	, { OLDBOOK: `1856年衛三畏廉士甫《英華分韻撮要》[<a class="text-info" target="_blank" href="https://jyut.net/">粵音資料集叢版</a>](本站擬音)`, TRIUNGKOX: '', OLDCANTO: 'tab_1856' }
 ];
 
 // 字典資料
@@ -46,19 +46,19 @@ const colData_book = [
 ];
 
 const rowData_book = [
-	{ BOOK: "1994年謝建猷《南寧白話同音字彙》", NN: "tab_1994", NN_D: "", NN_Y: "", HX_B: "", NN_T: "", NN_S: "", HX_P: "" }
-	, { BOOK: "1997年楊煥典《南寧話音檔》", NN: "tab_1997", NN_D: "", NN_Y: "", HX_B: "", NN_T: "", NN_S: "", HX_P: "" }
-	, { BOOK: "1998年楊煥典主編《廣西通誌·漢語方言誌》", NN: "tab_1998", NN_D: "", NN_Y: "", HX_B: "", NN_T: "tab_1998_bw", NN_S: "", HX_P: "" }
-	, { BOOK: "2000年李連進《平話音韻研究》", NN: "", NN_D: "", NN_Y: "", HX_B: "", NN_T: "noData", NN_S: "", HX_P: "noData" }
-	, { BOOK: "2002年楊煥典《現代漢語方言音庫(字庫)》", NN: "tab_2002", NN_D: "", NN_Y: "", HX_B: "", NN_T: "", NN_S: "", HX_P: "" }
-	, { BOOK: "2007年謝建猷《廣西漢語方言研究》", NN: "tab_2007", NN_D: "", NN_Y: "", HX_B: "noData", NN_T: "", NN_S: "noData", HX_P: "" }
-	, { BOOK: "2007年白雲《廣西疍家話語音研究》", NN: "", NN_D: "noData", NN_Y: "", HX_B: "", NN_T: "", NN_S: "", HX_P: "" }
-	, { BOOK: "2008年林亦、覃鳳餘《廣西南寧白話研究》", NN: "tab_2008", NN_D: "", NN_Y: "", HX_B: "", NN_T: "", NN_S: "", HX_P: "" }
-	, { BOOK: "2009年陳海倫、林亦《粵語平話土話方音字彙》", NN: "noData", NN_D: "", NN_Y: "noData", HX_B: "", NN_T: "noData", NN_S: "", HX_P: "" }
-	, { BOOK: "2009年張菁雅《桂南平話語音研究》", NN: "noData", NN_D: "", NN_Y: "", HX_B: "", NN_T: "", NN_S: "", HX_P: "noData" }
-	, { BOOK: "2016年余瑾《廣西平話研究》", NN: "", NN_D: "", NN_Y: "", HX_B: "", NN_T: "", NN_S: "", HX_P: "" }
-	, { BOOK: "2018年Leimaau《南寧話審音表》(本站提供)", NN: "tab_2018", NN_D: "", NN_Y: "", HX_B: "", NN_T: "tab_2018_bw", NN_S: "", HX_P: "" }
-	, { BOOK: "2019年莫思敏、談婷《廣西橫縣白話同音字彙》", NN: "", NN_D: "", NN_Y: "", HX_B: "noData", NN_T: "", NN_S: "", HX_P: "" }
+	{ BOOK: '1994年謝建猷《南寧白話同音字彙》', NN: 'tab_1994', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_S: '', HX_P: '' }
+	, { BOOK: '1997年楊煥典《南寧話音檔》', NN: 'tab_1997', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_S: '', HX_P: '' }
+	, { BOOK: '1998年楊煥典主編《廣西通誌·漢語方言誌》', NN: 'tab_1998', NN_D: '', NN_Y: '', HX_B: '', NN_T: 'tab_1998_bw', NN_S: '', HX_P: '' }
+	, { BOOK: '2000年李連進《平話音韻研究》', NN: '', NN_D: '', NN_Y: '', HX_B: '', NN_T: 'noData', NN_S: '', HX_P: 'noData' }
+	, { BOOK: '2002年楊煥典《現代漢語方言音庫(字庫)》', NN: 'tab_2002', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_S: '', HX_P: '' }
+	, { BOOK: '2007年謝建猷《廣西漢語方言研究》', NN: 'tab_2007', NN_D: '', NN_Y: '', HX_B: 'noData', NN_T: '', NN_S: 'noData', HX_P: '' }
+	, { BOOK: '2007年白雲《廣西疍家話語音研究》', NN: '', NN_D: 'noData', NN_Y: '', HX_B: '', NN_T: '', NN_S: '', HX_P: '' }
+	, { BOOK: '2008年林亦、覃鳳餘《廣西南寧白話研究》', NN: 'tab_2008', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_S: '', HX_P: '' }
+	, { BOOK: '2009年陳海倫、林亦《粵語平話土話方音字彙》', NN: 'noData', NN_D: '', NN_Y: 'noData', HX_B: '', NN_T: 'noData', NN_S: '', HX_P: '' }
+	, { BOOK: '2009年張菁雅《桂南平話語音研究》', NN: 'noData', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_S: '', HX_P: 'noData' }
+	, { BOOK: '2016年余瑾《廣西平話研究》', NN: '', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_S: '', HX_P: '' }
+	, { BOOK: '2018年Leimaau《南寧話審音表》(本站提供)', NN: 'tab_2018', NN_D: '', NN_Y: '', HX_B: '', NN_T: 'tab_2018_bw', NN_S: '', HX_P: '' }
+	, { BOOK: '2019年莫思敏、談婷《廣西橫縣白話同音字彙》', NN: '', NN_D: '', NN_Y: '', HX_B: 'noData', NN_T: '', NN_S: '', HX_P: '' }
 ];
 
 // 詞典資料
@@ -72,15 +72,15 @@ const colData_book_phrase = [
 ];
 
 const rowData_book_phrase = [
-	{ BOOK: "1997年楊煥典《南寧話音檔》", NN: "tab_1997_phrase", HX_B: "", NN_T: "", NN_S: "" }
-	, { BOOK: "1997年李榮主編《南寧平話詞典》", NN: "", HX_B: "", NN_T: "noData", NN_S: "" }
-	, { BOOK: "1998年楊煥典主編《廣西通誌·漢語方言誌》", NN: "tab_1998_phrase", HX_B: "", NN_T: "tab_1998_bw_phrase", NN_S: "" }
-	, { BOOK: "2007年謝建猷《廣西漢語方言研究》", NN: "tab_2007_phrase", HX_B: "noData", NN_T: "", NN_S: "noData" }
-	, { BOOK: "2008年林亦、覃鳳餘《廣西南寧白話研究》", NN: "tab_2008_phrase", HX_B: "", NN_T: "", NN_S: "" }
-	, { BOOK: "2016年余瑾《廣西平話研究》", NN: "", HX_B: "", NN_T: "", NN_S: "" }
-	, { BOOK: "2020年Leimaau《基礎參考詞彙》(本站提供)", NN: "", HX_B: "", NN_T: "", NN_S: "" }
-	, { BOOK: "2020年Leimaau《南寧童謠》(本站提供)", NN: "tab_proverb", HX_B: "", NN_T: "", NN_S: "" }
-	, { BOOK: "2020年Leimaau《南寧城市信息》(本站提供)", NN: "tab_nncity", HX_B: "", NN_T: "", NN_S: "" }
+	{ BOOK: '1997年楊煥典《南寧話音檔》', NN: 'tab_1997_phrase', HX_B: '', NN_T: '', NN_S: '' }
+	, { BOOK: '1997年李榮主編《南寧平話詞典》', NN: '', HX_B: '', NN_T: 'noData', NN_S: '' }
+	, { BOOK: '1998年楊煥典主編《廣西通誌·漢語方言誌》', NN: 'tab_1998_phrase', HX_B: '', NN_T: 'tab_1998_bw_phrase', NN_S: '' }
+	, { BOOK: '2007年謝建猷《廣西漢語方言研究》', NN: 'tab_2007_phrase', HX_B: 'noData', NN_T: '', NN_S: 'noData' }
+	, { BOOK: '2008年林亦、覃鳳餘《廣西南寧白話研究》', NN: 'tab_2008_phrase', HX_B: '', NN_T: '', NN_S: '' }
+	, { BOOK: '2016年余瑾《廣西平話研究》', NN: '', HX_B: '', NN_T: '', NN_S: '' }
+	, { BOOK: '2020年Leimaau《基礎參考詞彙》(本站提供)', NN: '', HX_B: '', NN_T: '', NN_S: '' }
+	, { BOOK: '2020年Leimaau《南寧童謠》(本站提供)', NN: 'tab_proverb', HX_B: '', NN_T: '', NN_S: '' }
+	, { BOOK: '2020年Leimaau《南寧城市信息》(本站提供)', NN: 'tab_nncity', HX_B: '', NN_T: '', NN_S: '' }
 ];
 
 
@@ -88,11 +88,12 @@ const rowData_book_phrase = [
 function formatCheckBox (value, qType = '') {
 	var checkboxDiv = `<div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input book${qType}" id="checkbox_${value}" name="dataCheck" value="${value}" checked><label class="custom-control-label" for="checkbox_${value}">選擇</label></div>`;
 	var disableCheckboxDiv = `<div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input disabledbook" id="checkbox_${value}" name="dataCheck" value="${value}" disabled><label class="custom-control-label" for="checkbox_${value}">選擇</label></div>`;
-	if (value != "") {
-		if (value == "noData") {
+	if (value != '') {
+		if (value == 'noData') {
 			return disableCheckboxDiv;
+		} else {
+			return checkboxDiv;
 		}
-		return checkboxDiv;
 	} else {
 		return ``;
 	}
@@ -100,7 +101,7 @@ function formatCheckBox (value, qType = '') {
 
 
 // 定義表格列數據
-
+// 具體顯示的表格
 const colData_triungkox = [
 	{ field: 'YEAR', title: '資料', align: 'center', formatter: (value) => { return `${value.replace('tab_', '')}`; } }
 	//, {field: 'ID',title: 'ID'}

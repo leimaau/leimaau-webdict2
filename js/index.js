@@ -334,31 +334,68 @@ function getDataText(){
 }
 
 // 在線標註函數
-function signArticle(inputText) {
-	var txtArr = inputText.split(''), resArr = [], res = [], oututText = '';
+function signArticle(inputText, signText_type, signResult_type, signResult_format, signResult_way) {
 	
-	for (let txtChar of txtArr) {
-		if (!(/[^\u4e00-\u9fa5]/.test(txtChar))) {
-			res = MainQuery.queryJyutping(txtChar);
-			if(res.length != 0){
-				resArr.push( [txtChar, res[0]['jyutping']] );
-			} else {
-				resArr.push( [txtChar, ''] );
+	var txtArr = inputText.split('\n'), outputText = '';
+	
+	for (let lines of txtArr) {
+		if (signResult_format == 'updown') {
+			let lineChar = lines.split(''), outputLine = '';
+			for (let txtChar of lineChar) {
+				if (signResult_way == 'jyutping' || signResult_way == 'jyutping_ipa') {
+					outputLine += `<ruby>${txtChar}<rp>(</rp><rt>` + queryJyutping(txtChar, signText_type, signResult_type, 'jyutping', false) + `</rt><rp>)</rp></ruby>`;
+				} else if (signResult_way == 'ipa' || signResult_way == 'ipa_jyutping') {
+					outputLine += `<ruby>${txtChar}<rp>(</rp><rt>` + queryJyutping(txtChar, signText_type, signResult_type, 'ipa', false) + `</rt><rp>)</rp></ruby>`;
+				}
 			}
-		} else {
-			resArr.push( [txtChar, ''] );
+			outputText += outputLine + '<br>';
+		} else if (signResult_format == 'twolines') {
+			let lineChar = lines.split(''), outputLine1 = '', outputLine2 = '', outputLine3 = '';
+			for (let txtChar of lineChar) {
+				if (signResult_way == 'jyutping') {
+					outputLine1 += queryJyutping(txtChar, signText_type, signResult_type, 'jyutping') + ' ';
+					outputLine3 += txtChar;
+				} else if (signResult_way == 'ipa') {
+					outputLine1 += queryJyutping(txtChar, signText_type, signResult_type, 'ipa') + ' ';
+					outputLine3 += txtChar;
+				} else if (signResult_way == 'jyutping_ipa') {
+					outputLine1 += queryJyutping(txtChar, signText_type, signResult_type, 'jyutping') + ' ';
+					outputLine2 += queryJyutping(txtChar, signText_type, signResult_type, 'ipa') + ' ';
+					outputLine3 += txtChar;
+				} else if (signResult_way == 'ipa_jyutping') {
+					outputLine1 += queryJyutping(txtChar, signText_type, signResult_type, 'ipa') + ' ';
+					outputLine2 += queryJyutping(txtChar, signText_type, signResult_type, 'jyutping') + ' ';
+					outputLine3 += txtChar;
+				}
+			}
+			if (outputLine2 == ''){
+				outputText += outputLine1.replace(/ $/gi, "") + '<br>' + outputLine3 + '<br>';
+			} else {
+				outputText += outputLine1.replace(/ $/gi, "") + '<br>' + outputLine2.replace(/ $/gi, "") + '<br>' + outputLine3 + '<br>';
+			}
 		}
 	}
 	
-	for (let subArr of resArr) {
-		if (subArr[0] != '\n') {
-			oututText += `<ruby>` + subArr[0] + `<rp>(</rp><rt>` + subArr[1] + `</rt><rp>)</rp></ruby>`;
+	$('#signResult').html(outputText);
+}
+
+// 單字查詢粵拼函數
+function queryJyutping(txtChar, trad_simp, tabName, jyutping_ipa, keep_symbol = true){
+	let res = [];
+	if (!(/[^\u4e00-\u9fa5]/.test(txtChar))) {
+		res = MainQuery.queryJyutping(txtChar, trad_simp, tabName);
+		if(res.length != 0){
+			return (jyutping_ipa == 'jyutping') ? res[0]['jyutping'] : res[0]['ipa'];
 		} else {
-			oututText += subArr[0].replace('\n',`<br>`) + `<ruby><rp>(</rp><rt>` + subArr[1] + `</rt><rp>)</rp></ruby>`;
+			return '';
+		}
+	} else {
+		if(keep_symbol) {
+			return txtChar;
+		} else {
+			return '';
 		}
 	}
-	
-	$('#signResult').html(oututText);
 }
 
 

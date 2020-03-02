@@ -25,12 +25,17 @@ p { /*表格中的expl和note列*/
 	text-overflow: ellipsis;  /*過長顯示省略號*/
 }
 
+ruby, rt {
+    text-indent: 4px;
+}
+
 .dict-body {
 	min-height: -webkit-fill-available;
 }
 
 .textarea-style {
 	min-height: 200px;
+	white-space: nowrap;
 }
 
 #outputAlert {
@@ -122,8 +127,4 @@ p { /*表格中的expl和note列*/
 
 .alert-div {
 	margin-top: 20px;
-}
-
-ruby, rt {
-    text-indent: 4px;
 }
