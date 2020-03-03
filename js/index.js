@@ -410,6 +410,29 @@ function queryJyutping(txtChar, trad_simp, tabName, jyutping_ipa, keep_symbol = 
 	}
 }
 
+// 分詞函數
+function jiebaSeg(textContent) {
+	require(["finalseg","data/dictionary"], function(finalseg, dictionary) {
+		if(!initialized){ initFunc(finalseg, dictionary); }
+		return cutModule.cut(textContent,true)
+	});
+}
+
+// 複製按鈕
+function handleCopy() {
+    const clipboard  = new ClipboardJS('#copyBtn');  // 設置複製按鈕
+	toastr.options.positionClass = 'toast-top-center'; // 設置提示框位置
+	toastr.options.timeOut = 1000; // 無操作時提示框保留時間
+	toastr.options.extendedTimeOut = 1000;  // 鼠標懸停過後提示框保留時間
+	toastr.options.preventDuplicates = true; // 防止重複
+	clipboard.on('success', function(e) {
+		toastr.success("複製成功！");
+	});
+	clipboard.on('error', function(e) {
+		toastr.error("複製失敗，請刷新後重試！");
+	});
+}
+
 
 // 入口文件
 $(() => {
@@ -434,4 +457,5 @@ $(() => {
 	$('#dataModal').on('hide.bs.modal', function (event) {
 		dataButt.innerHTML = getDataText();
 	})
+	
 })

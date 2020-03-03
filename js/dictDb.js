@@ -1,5 +1,5 @@
 DictDb = (() => {
-  let dbTemp = {}
+  let dbTemp = {};
 
   dbTemp.db = null;
 
