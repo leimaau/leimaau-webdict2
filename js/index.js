@@ -416,7 +416,7 @@ function queryJyutping(txtChar, trad_simp, tabName, jyutping_ipa, keep_symbol = 
 	}
 }
 
-// 分詞函數
+// 在線分詞函數
 function wordSeg(textCont, HMM) {
 	if (textCont.length > 30000){
 		toastrFunc('toast-top-center');
@@ -428,13 +428,6 @@ function wordSeg(textCont, HMM) {
 		outputText += cutModule.cut(lines, JSON.parse(HMM)).join(' ') + '<br>';
 	}
 	$('#segResult').html(outputText);
-}
-
-// 初始化分詞模塊
-function initCutModule(){
-	require(["finalseg","data/dictionary"], function(finalseg, dictionary) {
-		initFunc(finalseg, dictionary);
-	});
 }
 
 // 複製按鈕
@@ -456,7 +449,6 @@ function toastrFunc(pos){
 	toastr.options.extendedTimeOut = 1000;  // 鼠標懸停過後提示框保留時間
 	toastr.options.preventDuplicates = true; // 防止重複
 }
-
 
 
 // 入口文件

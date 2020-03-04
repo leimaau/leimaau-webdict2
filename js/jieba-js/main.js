@@ -6,7 +6,7 @@ var trie = {}, // to be initialized
 	min_freq = 0.0,
 	initialized = false;
 	
-function initFunc(finalseg, dictionary) {
+require(["finalseg","data/dictionary"], function(finalseg, dictionary) {
 	
 	var max_of_array = function(array){return Math.max.apply(Math, array)},
 		min_of_array = function(array){return Math.min.apply(Math, array)};
@@ -288,4 +288,4 @@ function initFunc(finalseg, dictionary) {
 	
 	cutModule.cut = cut;
 
-};
+});
