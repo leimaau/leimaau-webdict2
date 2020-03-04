@@ -105,12 +105,51 @@
             <a class="dropdown-item" target="_blank" href="#">PDF資料</a>
             <a class="dropdown-item" target="_blank" href="#">文本資料</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item text-primary"  data-toggle="modal" data-target="#signArticleModal" href="#">在線標註&nbsp;&nbsp;<span class="badge badge-danger">New</span></a>
+			<a class="dropdown-item text-primary"  data-toggle="modal" data-target="#wordSegModal" onclick="initCutModule();">在線分詞&nbsp;&nbsp;<span class="badge badge-danger">New</span></a>
+            <a class="dropdown-item text-primary"  data-toggle="modal" data-target="#signArticleModal" onclick="initCutModule();">在線標註&nbsp;&nbsp;<span class="badge badge-danger">New</span></a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item"  data-toggle="modal" data-target="#aboutModal" href="#">關於</a>
           </div>
         </div>
       </div>
+		<!-- Modal -->
+		<div class="modal fade" id="wordSegModal" tabindex="-1" role="dialog" aria-labelledby="wordSegModalLabel" aria-hidden="true">
+		  <div class="modal-dialog modal-lg" role="document">
+			<div class="modal-content">
+			  <div class="modal-header">
+				<h5 class="modal-title" id="wordSegModalLabel">在線分詞</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				  <span aria-hidden="true">&times;</span>
+				</button>
+			  </div>
+			<form onsubmit="wordSeg(segText.value, 'false'); return false">
+			  <div class="modal-body">
+				  <div class="form-group">
+					<label class="col-form-label">輸入文本：</label>
+					<textarea class="form-control textarea-style" id="segText">我們來自泥潭，&#10;我們渴望權力，&#10;我們充滿野心，&#10;我們強大冷靜，&#10;我們優雅自持，&#10;我們從不後悔，&#10;我們是斯萊特林！&#10; —— J · K · 羅琳《哈利 · 波特》</textarea>
+				  </div>
+				  <div class="form-group">
+					<!--<label class="col-form-label">使用隱馬爾科夫 ( Hidden Markov Model，HMM ) 模型：</label>
+					<div class="custom-control custom-radio custom-control-inline">
+						<input class="custom-control-input" type="radio" id="HMM_Y" name="HMM" value="true" checked>
+						<label for="HMM_Y" class="custom-control-label">是</label>
+					</div>
+					<div class="custom-control custom-radio custom-control-inline">
+						<input class="custom-control-input" type="radio" id="HMM_N" name="HMM" value="false">
+						<label for="HMM_N" class="custom-control-label">否</label>
+					</div>-->
+					<span class="form-control textarea-style table-responsive" id="segResult"></span>
+				  </div>
+			  </div>
+			  <div class="modal-footer">
+				<input class="btn btn-secondary" type="button" data-dismiss="modal" value="關閉"/>
+				<input class="btn btn-info copyBtn" type="button" data-clipboard-target="#segResult" onclick="handleCopy()" value="複製"/>
+				<input class="btn btn-primary" type="submit" value="分詞"/>
+			  </div>
+			</form>
+			</div>
+		  </div>
+		</div>
 		<!-- Modal -->
 		<div class="modal fade" id="signArticleModal" tabindex="-1" role="dialog" aria-labelledby="signArticleModalLabel" aria-hidden="true">
 		  <div class="modal-dialog modal-lg" role="document">
@@ -169,7 +208,7 @@
 			  </div>
 			  <div class="modal-footer">
 				<input class="btn btn-secondary" type="button" data-dismiss="modal" value="關閉"/>
-				<input class="btn btn-info" id="copyBtn" type="button" data-clipboard-target="#signResult" onclick="handleCopy()" value="複製"/>
+				<input class="btn btn-info copyBtn" type="button" data-clipboard-target="#signResult" onclick="handleCopy()" value="複製"/>
 				<input class="btn btn-primary" type="submit" value="標註"/>
 			  </div>
 			</form>
@@ -188,7 +227,7 @@
 			  </div>
 			  <div class="modal-body">
 				本站叫「狸貓的在線詞典 2.0 版」(Leimaau’s Webdict 2.0)，是一個具有個人性質的在線詞典。相對與 1.0 版的 <a class="text-info" href="https://leimaau.github.io/leimaau-webdict" target="_blank">Leimaau’s Webdict</a> 本版有了較大的改進，程序的開發和製作得益於 sgalal 和匆匆的我的技術支持，特此致謝。</br></br>本站原先開發和運行於 github 中，爲了方便國內用戶訪問，故將程序備份於 gitee 中運行，因此本站有兩個地址，對於國內用戶來說，gitee 地址作<a class="text-info" target="_blank" href="https://leimaau.gitee.io/leimaau-webdict2/">主頁地址</a>，github 地址作<a class="text-info" target="_blank" href="https://leimaau.github.io/leimaau-webdict2/">備用地址</a>。</br></br>
-				資料收集整理錄入與校對：Leimaau </br>
+				資料收集整理錄入校對與擬音：Leimaau </br>
 				程序製作：Leimaau、匆匆的我、sgalal </br>
 				聯繫郵箱：leimaau@qq.com </br>
 				github：<a class="text-info" target="_blank" href="https://github.com/leimaau">leimaau's github</a></br></br>

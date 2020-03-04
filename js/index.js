@@ -336,6 +336,12 @@ function getDataText(){
 // 在線標註函數
 function signArticle(inputText, signText_type, signResult_type, signResult_format, signResult_way) {
 	
+	if (inputText.length > 2000){
+		toastrFunc('toast-top-center');
+		toastr.error('禁止超過兩千字！');
+		return false;
+	}
+	
 	var txtArr = inputText.split('\n'), outputText = '';
 	
 	for (let lines of txtArr) {
@@ -411,27 +417,46 @@ function queryJyutping(txtChar, trad_simp, tabName, jyutping_ipa, keep_symbol = 
 }
 
 // 分詞函數
-function jiebaSeg(textContent) {
+function wordSeg(textCont, HMM) {
+	if (textCont.length > 30000){
+		toastrFunc('toast-top-center');
+		toastr.error('禁止超過三萬字！');
+		return false;
+	}
+	var outputText = '';
+	for (let lines of textCont.split('\n')) {
+		outputText += cutModule.cut(lines, JSON.parse(HMM)).join(' ') + '<br>';
+	}
+	$('#segResult').html(outputText);
+}
+
+// 初始化分詞模塊
+function initCutModule(){
 	require(["finalseg","data/dictionary"], function(finalseg, dictionary) {
-		if(!initialized){ initFunc(finalseg, dictionary); }
-		return cutModule.cut(textContent,true)
+		initFunc(finalseg, dictionary);
 	});
 }
 
 // 複製按鈕
 function handleCopy() {
-    const clipboard  = new ClipboardJS('#copyBtn');  // 設置複製按鈕
-	toastr.options.positionClass = 'toast-top-center'; // 設置提示框位置
+    const clipboard  = new ClipboardJS('.copyBtn');  // 設置複製按鈕
+	toastrFunc('toast-top-center'); // 設置提示按鈕
+	clipboard.on('success', function(e) {
+		toastr.success('複製成功！');
+	});
+	clipboard.on('error', function(e) {
+		toastr.error('複製失敗，請刷新後重試！');
+	});
+}
+
+//  提示信息
+function toastrFunc(pos){
+	toastr.options.positionClass = pos; // 設置提示框位置
 	toastr.options.timeOut = 1000; // 無操作時提示框保留時間
 	toastr.options.extendedTimeOut = 1000;  // 鼠標懸停過後提示框保留時間
 	toastr.options.preventDuplicates = true; // 防止重複
-	clipboard.on('success', function(e) {
-		toastr.success("複製成功！");
-	});
-	clipboard.on('error', function(e) {
-		toastr.error("複製失敗，請刷新後重試！");
-	});
 }
+
 
 
 // 入口文件

@@ -6,10 +6,10 @@ var trie = {}, // to be initialized
 	min_freq = 0.0,
 	initialized = false;
 	
-var max_of_array = function(array){return Math.max.apply(Math, array)},
-	min_of_array = function(array){return Math.min.apply(Math, array)};
-
 function initFunc(finalseg, dictionary) {
+	
+	var max_of_array = function(array){return Math.max.apply(Math, array)},
+		min_of_array = function(array){return Math.min.apply(Math, array)};
 	
 	var gen_trie = function () {
 		var lfreq = {},
