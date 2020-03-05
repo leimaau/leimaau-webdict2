@@ -112,6 +112,12 @@ MainQuery = (() => {
 		return DictDb.execParam( querySQL, [] );
 	};
 	
+	// (詞彙)查詢單個表，用於在線分詞的基礎表
+	tempObj.queryTableOne_segdict = () => {
+		let querySQL = 'select * from tab_segdict';
+		return DictDb.execParam( querySQL, [], false );
+	};
+	
 	
 	return tempObj;
 })();

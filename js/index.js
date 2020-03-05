@@ -342,6 +342,12 @@ function signArticle(inputText, signText_type, signResult_type, signResult_forma
 		return false;
 	}
 	
+	if (!cutModule.initFlag){ // 初始化分詞模塊，衹執行一次
+		const segDict = MainQuery.queryTableOne_segdict();
+		cutModule.initFlag = true;
+		segMain(segDict);
+	}
+	
 	var txtArr = inputText.split('\n'), outputText = '';
 	
 	for (let lines of txtArr) {
@@ -423,6 +429,13 @@ function wordSeg(textCont, HMM) {
 		toastr.error('禁止超過三萬字！');
 		return false;
 	}
+	
+	if (!cutModule.initFlag){ // 初始化分詞模塊，衹執行一次
+		const segDict = MainQuery.queryTableOne_segdict();
+		cutModule.initFlag = true;
+		segMain(segDict);
+	}
+	
 	var outputText = '';
 	for (let lines of textCont.split('\n')) {
 		outputText += cutModule.cut(lines, JSON.parse(HMM)).join(' ') + '<br>';

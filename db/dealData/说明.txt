@@ -16,7 +16,6 @@ sqlite> .import tab_temp.txt tab_1994   # .import FileName TableName 放在同�
 -- 表结构 
 
 -- 广韵
-
 CREATE TABLE tab_1008(
    ID             TEXT    NOT NULL,
    WORD1          TEXT    NOT NULL,
@@ -35,7 +34,6 @@ CREATE TABLE tab_1008(
 );
 
 -- 江湖尺牍分韵撮要
-
 CREATE TABLE tab_1838(
    ID             TEXT     NOT NULL,
    WORD           TEXT    NOT NULL,
@@ -53,7 +51,6 @@ CREATE TABLE tab_1838(
 );
 
 -- 英华分韵撮要
-
 CREATE TABLE tab_1856(
    ID             TEXT    NOT NULL,
    WORD           TEXT    NOT NULL,
@@ -69,7 +66,6 @@ CREATE TABLE tab_1856(
 );
 
 -- 单字表  1994、1997、1998、1998_bw（平话）、2002、2007、2008、2018 相同(已经建好)
-
 CREATE TABLE tab_1994(
    ID             TEXT     NOT NULL,
    TRAD           TEXT    NOT NULL,
@@ -83,7 +79,6 @@ CREATE TABLE tab_1994(
 );
 
 -- 词汇表 tab_1997_phrase、tab_1998_phrase、tab_1998_bw_phrase（平话）、tab_2007_phrase、tab_2008_phrase 相同(已经建好)
-
 CREATE TABLE tab_2008_phrase(
    ID            TEXT    NOT NULL,
    LEVEL1        TEXT    NOT NULL,
@@ -101,7 +96,6 @@ CREATE TABLE tab_2008_phrase(
 
 
 -- 南宁城市信息
-
 CREATE TABLE tab_nncity(
    ID            TEXT    NOT NULL,
    TRAD          TEXT    NOT NULL,
@@ -111,7 +105,6 @@ CREATE TABLE tab_nncity(
 );
 
 -- 南宁童谣
-
 CREATE TABLE tab_proverb(
    ID            TEXT    NOT NULL,
    TRAD          TEXT    NOT NULL,
@@ -120,4 +113,11 @@ CREATE TABLE tab_proverb(
    NOTE          TEXT    
 );
 
+
+-- 分词词典
+CREATE TABLE tab_segdict(
+   WORD          TEXT    NOT NULL,
+   NUM           INTEGER    NOT NULL,
+   TYPE          TEXT   NOT NULL
+);
 
