@@ -76,6 +76,7 @@
   <script src="js/dictDb.js"></script>
   <script src="js/index.js"></script>
   <script src="js/jieba-js/segMain.min.js"></script>
+  <script src="js/jieba-js/segDict.js"></script>
 </head>
 
 <body>
@@ -160,7 +161,7 @@
 				  <span aria-hidden="true">&times;</span>
 				</button>
 			  </div>
-			<form onsubmit="signArticle(signText.value, signText_type.value, signResult_type.value, signResult_format.value, signResult_way.value); return false">
+			<form onsubmit="signArticle(signText.value, signText_type.value, signResult_type.value, signResult_format.value, signResult_way.value); return false"  target="iframeForm">
 			  <div class="modal-body">
 				  <div class="form-group">
 					<label class="col-form-label">輸入文本：</label>
@@ -176,17 +177,15 @@
 				  </div>
 				  <div class="form-group">
 					<label class="col-form-label">輸出結果：</label>
-					<div class="custom-control custom-radio custom-control-inline">
-						<input class="custom-control-input" type="radio" id="signResult_baakwaa" name="signResult_type" value="tab_2018" checked>
-						<label for="signResult_baakwaa" class="custom-control-label">白話</label>
-					</div>
-					<div class="custom-control custom-radio custom-control-inline">
-						<input class="custom-control-input" type="radio" id="signResult_bingwaa" name="signResult_type" value="tab_2018_bw">
-						<label for="signResult_bingwaa" class="custom-control-label">平話</label>
+					<div class="custom-control custom-control-inline sel-div">
+						<select class="form-control form-control-sm" id="signResult_type">
+							<option value="nnDict" selected>南寧白話</option>
+							<option value="nntDict">南寧平話</option>
+							<option value="gzDict">廣州話</option>
+						</select>
 					</div>
 					<label class="col-form-label">標註格式：</label>
-					
-					<div class="custom-control custom-control-inline">
+					<div class="custom-control custom-control-inline sel-div">
 						<select class="form-control form-control-sm" id="signResult_format" onchange="if($('#signResult_format').val()=='twolines'){$('#opt_jyutping_ipa,#opt_ipa_jyutping').removeClass('d-none')}else{$('#opt_jyutping_ipa,#opt_ipa_jyutping').addClass('d-none');if($('#signResult_way option:selected').val()=='jyutping_ipa'){$('#signResult_way').val('jyutping')}else if($('#signResult_way option:selected').val()=='ipa_jyutping'){$('#signResult_way').val('ipa')}};">
 							<option value="updown" selected>按字內嵌</option>
 							<option value="lineupdown">按行內嵌</option>
@@ -194,7 +193,7 @@
 						</select>
 					</div>
 					<label class="col-form-label">標註方式：</label>
-					<div class="custom-control custom-control-inline">
+					<div class="custom-control custom-control-inline sel-div">
 						<select class="form-control form-control-sm" id="signResult_way">
 							<option value="jyutping" selected>粵拼</option>
 							<option value="ipa">IPA</option>
@@ -212,6 +211,7 @@
 				<input class="btn btn-primary" type="submit" value="標註"/>
 			  </div>
 			</form>
+			<iframe id="iframeForm" name="iframeForm" style="display:none;"></iframe> 
 			</div>
 		  </div>
 		</div>

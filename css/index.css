@@ -128,3 +128,7 @@ ruby, rt {
 .alert-div {
 	margin-top: 20px;
 }
+
+.sel-div {
+	padding-left: 0px;
+}

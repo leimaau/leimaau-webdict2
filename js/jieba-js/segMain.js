@@ -3,10 +3,9 @@ const cutModule = {};
 cutModule.initFlag = false;
 
 function segMain(segDict = []) {
-(function (prob_emit, prob_start, prob_trans) {
-(function () {
 
-    var e_P = {
+	var emit_P = {};
+    emit_P.e_P = {
         'B': {
             '\u4e00': -3.6544978750449433,
             '\u4e01': -8.125041941842026,
@@ -35240,42 +35239,29 @@ function segMain(segDict = []) {
             '\u9fa2': -10.61937952828986
         }
     };
-	
-	return{
-		emit_P : e_P
-	};
-});
+	var prob_emit = {};
+	prob_emit.emit_P = emit_P;
 
-
-(function () {
-
-    var s_P = {
+	var start_P = {};
+    start_P.s_P = {
         'B': -0.26268660809250016,
         'E': -3.14e100,
         'M': -3.14e100,
         'S': -1.4652633398537678
     };
-
-    return {
-        start_P: s_P
-        
-    };
-    
-});
+	var prob_start = {};
+	prob_start.start_P = start_P;
 	
-(function () {
-
-    var t_P = {
+	var trans_P = {};
+    trans_P.t_P = {
         'B': { 'E': -0.510825623765990, 'M': -0.916290731874155 },
         'E': { 'B': -0.5897149736854513, 'S': -0.8085250474669937 },
         'M': { 'E': -0.33344856811948514, 'M': -1.2603623820268226 },
         'S': { 'B': -0.7211965654669841, 'S': -0.6658631448798212 }
     };
-
-    return {
-        trans_P : t_P
-    };
-});
+	var prob_trans = {};
+	prob_trans.trans_P = trans_P;
+	
 	
     var MIN_FLOAT = -3.14e100;
 	var re_han = /([\u4E00-\u9FA5a-zA-Z0-9+#&\._]+)/,
@@ -35398,33 +35384,30 @@ function segMain(segDict = []) {
         return outputv;
     }
     
-    return {
-        cut: function(sentence) {
-            var yieldValues = [];
-            var blocks = sentence.split(re_han);
-            for (blk in blocks) {
-                if (blocks[blk] == undefined || blocks[blk] == null) continue;
+	var finalseg = {};
+	finalseg.cut = function(sentence) {
+		var yieldValues = [];
+		var blocks = sentence.split(re_han);
+		for (blk in blocks) {
+			if (blocks[blk] == undefined || blocks[blk] == null) continue;
 
-                if (blocks[blk].match(re_han)) {
-                    var output = __cut(blocks[blk]);
-                    for (word in output) {
-                        yieldValues.push(output[word]);
-                    }
-                }
-                else {
-                    var tmp = blocks[blk].split(re_skip);
-                    for (x in tmp) {
-                        if (tmp[x] != "") {
-                            yieldValues.push(tmp[x]);
-                        }
-                    }
-                }
-            }
-            return yieldValues;
-        }
-    };
-});
-	
+			if (blocks[blk].match(re_han)) {
+				var output = __cut(blocks[blk]);
+				for (word in output) {
+					yieldValues.push(output[word]);
+				}
+			}
+			else {
+				var tmp = blocks[blk].split(re_skip);
+				for (x in tmp) {
+					if (tmp[x] != "") {
+						yieldValues.push(tmp[x]);
+					}
+				}
+			}
+		}
+		return yieldValues;
+	};
 	
 	var dictionary = segDict;
 	var trie = {}, // to be initialized

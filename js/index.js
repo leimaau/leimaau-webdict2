@@ -334,24 +334,25 @@ function getDataText(){
 }
 
 // 在線標註函數
-function signArticle(inputText, signText_type, signResult_type, signResult_format, signResult_way) {
+function signArticle(textCont, signText_type, signResult_type, signResult_format, signResult_way) {
 	
-	if (inputText.length > 2000){
+	if (textCont.length > 2000){
 		toastrFunc('toast-top-center');
 		toastr.error('禁止超過兩千字！');
 		return false;
 	}
 	
 	if (!cutModule.initFlag){ // 初始化分詞模塊，衹執行一次
-		const segDict = MainQuery.queryTableOne_segdict();
+		//const segDict = MainQuery.queryTableOne_segdict(); // 目前是從segDict.js獲取，tab_segdict爲空，需要時導入數據使用
 		cutModule.initFlag = true;
 		segMain(segDict);
 	}
 	
-	var txtArr = inputText.split('\n'), outputText = '';
+	var outputText = '';
 	
-	for (let lines of txtArr) {
+	for (let lines of textCont.split('\n')) {
 		if (signResult_format == 'updown') { // 按字內嵌
+		
 			let lineChar = lines.split(''), outputLine = '';
 			for (let txtChar of lineChar) {
 				if (signResult_way == 'jyutping' || signResult_way == 'jyutping_ipa') {
@@ -361,8 +362,10 @@ function signArticle(inputText, signText_type, signResult_type, signResult_forma
 				}
 			}
 			outputText += outputLine + '<br>';
+			
 		} else if (signResult_format == 'lineupdown') { // 按行內嵌
-			let lineChar = lines.split(''), outputLine1 = '', outputLine2 = '', outputLine3 = '';
+		
+			let lineChar = lines.split(''), outputLine1 = '', outputLine3 = '';
 			for (let txtChar of lineChar) {
 				if (signResult_way == 'jyutping' || signResult_way == 'jyutping_ipa') {
 					outputLine1 += queryJyutping(txtChar, signText_type, signResult_type, 'jyutping') + ' ';
@@ -372,7 +375,8 @@ function signArticle(inputText, signText_type, signResult_type, signResult_forma
 					outputLine3 += txtChar;
 				}
 			}
-			outputText += `<ruby><rb>${outputLine3}</rb><rt>${outputLine1.replace(/ $/gi, "")}</rt><rp>(${outputLine1.replace(/ $/gi, "")})</rp></ruby><br>`;
+			outputText += `<ruby>${outputLine3}<rp>(</rp><rt>${outputLine1.replace(/ $/gi, "")}</rt><rp>)</rp></ruby><br>`;
+			
 		} else if (signResult_format == 'twolines') { // 分行
 			let lineChar = lines.split(''), outputLine1 = '', outputLine2 = '', outputLine3 = '';
 			for (let txtChar of lineChar) {
@@ -403,19 +407,29 @@ function signArticle(inputText, signText_type, signResult_type, signResult_forma
 	$('#signResult').html(outputText);
 }
 
-// 單字查詢粵拼函數
-function queryJyutping(txtChar, trad_simp, tabName, jyutping_ipa, keep_symbol = true){
+// 查詢粵拼或IPA函數
+function queryJyutping(txtStr, trad_simp, tabName, jyutping_ipa, keep_symbol = true, isChar = true){
 	let res = [];
-	if (!(/[^\u4e00-\u9fa5]/.test(txtChar))) {
-		res = MainQuery.queryJyutping(txtChar, trad_simp, tabName);
+	if (!(/[^\u4e00-\u9fa5]/.test(txtStr))) {
+		//res = MainQuery.queryJyutping(txtStr, trad_simp, tabName); // 目前是從segDict.js獲取，tab_nn_review、tab_nnt_review、tab_gz_review爲空，需要時導入數據使用
+		res = window[tabName].filter(item => item[trad_simp] == txtStr);
 		if(res.length != 0){
-			return (jyutping_ipa == 'jyutping') ? res[0]['jyutping'] : res[0]['ipa'];
+			if (res.length == 1){
+				return (jyutping_ipa == 'jyutping') ? res[0]['jyutping'] : res[0]['ipa'];
+			} else {
+				let char_jyutping = '', char_ipa = '';
+				for (let i of res){
+					char_jyutping += i.jyutping + '/';
+					char_ipa += i.ipa + '/';
+				}
+				return (jyutping_ipa == 'jyutping') ? char_jyutping.replace(/ $/gi, "") : char_ipa.replace(/ $/gi, "");
+			}
 		} else {
 			return '　';　// 全角空格，會被當成一個中文
 		}
 	} else {
 		if(keep_symbol) {
-			return txtChar;
+			return txtStr;
 		} else {
 			return '';
 		}
@@ -431,7 +445,7 @@ function wordSeg(textCont, HMM) {
 	}
 	
 	if (!cutModule.initFlag){ // 初始化分詞模塊，衹執行一次
-		const segDict = MainQuery.queryTableOne_segdict();
+		//const segDict = MainQuery.queryTableOne_segdict(); // 目前是從segDict.js獲取，tab_segdict爲空，需要時導入數據使用
 		cutModule.initFlag = true;
 		segMain(segDict);
 	}

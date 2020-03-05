@@ -70,11 +70,24 @@ MainQuery = (() => {
 		return DictDb.execParam( querySQL, (queryType != 'jyut6ping3') ? [] : [searchValue] );
 	};
 	
-	// (單字)查詢粵拼，用於在線標註
+	
+	// 查詢單個表，用於在線分詞的基礎表，目前是從segDict.js獲取，tab_segdict爲空，需要時導入數據使用
+	/*
+	tempObj.queryTableOne_segdict = () => {
+		let querySQL = 'select * from tab_segdict';
+		return DictDb.execParam( querySQL, [], false );
+	};
+	*/
+	
+	
+	// 查詢粵拼或IPA，用於在線標註，目前是從segDict.js獲取，tab_nn_review、tab_nnt_review、tab_gz_review爲空，需要時導入數據使用
+	/*
 	tempObj.queryJyutping = (inputChar, signText_type, signResult_type) => {
-		let querySQL = `select ${signText_type}, group_concat(jyutping, '/') jyutping, group_concat(ipa_t, '/') ipa from ${signResult_type} where ${signText_type}='${inputChar}' group by ${signText_type}`;
+		let querySQL = `select ${signText_type}, group_concat(jyutping, '/') jyutping, group_concat(ipa, '/') ipa from ${signResult_type} where ${signText_type}='${inputChar}' group by ${signText_type}`;
 		return DictDb.execParam( querySQL, [] );
 	};
+	*/
+	
 	
 	// (詞彙)查詢多個表
 	tempObj.queryTablePhrase = (searchValue, selVal, queryType) => {
@@ -111,13 +124,6 @@ MainQuery = (() => {
 		};
 		return DictDb.execParam( querySQL, [] );
 	};
-	
-	// (詞彙)查詢單個表，用於在線分詞的基礎表
-	tempObj.queryTableOne_segdict = () => {
-		let querySQL = 'select * from tab_segdict';
-		return DictDb.execParam( querySQL, [], false );
-	};
-	
 	
 	return tempObj;
 })();

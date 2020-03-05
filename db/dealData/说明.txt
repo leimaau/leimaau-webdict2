@@ -114,10 +114,20 @@ CREATE TABLE tab_proverb(
 );
 
 
--- 分词词典
+-- 分词词典 暂时不用
 CREATE TABLE tab_segdict(
    WORD          TEXT    NOT NULL,
    NUM           INTEGER    NOT NULL,
    TYPE          TEXT   NOT NULL
+);
+
+
+-- 标注用表  已建tab_nn_review、tab_nnt_review、tab_gz_review 暂时不用
+CREATE TABLE tab_nn_review(
+  ID TEXT    NOT NULL,
+  TRAD TEXT    NOT NULL,
+  SIMP TEXT    NOT NULL,
+  JYUTPING TEXT    NOT NULL,
+  ipa TEXT    NOT NULL
 );
 
