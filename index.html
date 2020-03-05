@@ -77,6 +77,9 @@
   <script src="js/index.js"></script>
   <script src="js/jieba-js/segMain.min.js"></script>
   <script src="js/jieba-js/segDict.js"></script>
+  <script src="js/jieba-js/nnDict.js"></script>
+  <script src="js/jieba-js/nntDict.js"></script>
+  <!--<script src="js/jieba-js/gzDict.js"></script>-->
 </head>
 
 <body>
@@ -161,7 +164,7 @@
 				  <span aria-hidden="true">&times;</span>
 				</button>
 			  </div>
-			<form onsubmit="signArticle(signText.value, signText_type.value, signResult_type.value, signResult_format.value, signResult_way.value); return false"  target="iframeForm">
+			<form onsubmit="signArticle(signText.value, signText_type.value, signResult_type.value, signResult_format.value, signResult_way.value); return false">
 			  <div class="modal-body">
 				  <div class="form-group">
 					<label class="col-form-label">輸入文本：</label>
@@ -181,7 +184,7 @@
 						<select class="form-control form-control-sm" id="signResult_type">
 							<option value="nnDict" selected>南寧白話</option>
 							<option value="nntDict">南寧平話</option>
-							<option value="gzDict">廣州話</option>
+							<!--<option value="gzDict">廣州話</option>-->
 						</select>
 					</div>
 					<label class="col-form-label">標註格式：</label>
@@ -211,7 +214,6 @@
 				<input class="btn btn-primary" type="submit" value="標註"/>
 			  </div>
 			</form>
-			<iframe id="iframeForm" name="iframeForm" style="display:none;"></iframe> 
 			</div>
 		  </div>
 		</div>

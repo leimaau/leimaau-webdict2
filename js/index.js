@@ -348,91 +348,106 @@ function signArticle(textCont, signText_type, signResult_type, signResult_format
 		segMain(segDict);
 	}
 	
-	var outputText = '';
+	var outputText = [];
 	
 	for (let lines of textCont.split('\n')) {
 		if (signResult_format == 'updown') { // 按字內嵌
-		
-			let lineChar = lines.split(''), outputLine = '';
-			for (let txtChar of lineChar) {
-				if (signResult_way == 'jyutping' || signResult_way == 'jyutping_ipa') {
-					outputLine += `<ruby>${txtChar}<rp>(</rp><rt>` + queryJyutping(txtChar, signText_type, signResult_type, 'jyutping', false) + `</rt><rp>)</rp></ruby>`;
-				} else if (signResult_way == 'ipa' || signResult_way == 'ipa_jyutping') {
-					outputLine += `<ruby>${txtChar}<rp>(</rp><rt>` + queryJyutping(txtChar, signText_type, signResult_type, 'ipa', false) + `</rt><rp>)</rp></ruby>`;
-				}
+			let outputLine = [];
+			for (let txtStr of cutModule.cut(lines, false)) {
+				outputLine.push(`<ruby>${queryJyutpingPhrase(txtStr, signText_type, signResult_type, (signResult_way == 'jyutping' || signResult_way == 'jyutping_ipa') ? 'jyutping' : 'ipa', signResult_format, false)}</ruby>`);
 			}
-			outputText += outputLine + '<br>';
-			
+			outputText.push(`${outputLine.join('')}<br>`);
 		} else if (signResult_format == 'lineupdown') { // 按行內嵌
-		
-			let lineChar = lines.split(''), outputLine1 = '', outputLine3 = '';
-			for (let txtChar of lineChar) {
-				if (signResult_way == 'jyutping' || signResult_way == 'jyutping_ipa') {
-					outputLine1 += queryJyutping(txtChar, signText_type, signResult_type, 'jyutping') + ' ';
-					outputLine3 += txtChar;
-				} else if (signResult_way == 'ipa' || signResult_way == 'ipa_jyutping') {
-					outputLine1 += queryJyutping(txtChar, signText_type, signResult_type, 'ipa') + ' ';
-					outputLine3 += txtChar;
-				}
+			let outputLine1 = [], outputLine3 = [];
+			for (let txtStr of cutModule.cut(lines, false)) {
+				outputLine1.push(queryJyutpingPhrase(txtStr, signText_type, signResult_type, (signResult_way == 'jyutping' || signResult_way == 'jyutping_ipa') ? 'jyutping' : 'ipa', signResult_format).split(',').join(' '));
+				outputLine3.push(txtStr);
 			}
-			outputText += `<ruby>${outputLine3}<rp>(</rp><rt>${outputLine1.replace(/ $/gi, "")}</rt><rp>)</rp></ruby><br>`;
-			
+			outputText.push(`<ruby>${outputLine3.join('')}<rp>(</rp><rt>${outputLine1.join(' ')}</rt><rp>)</rp></ruby><br>`);
 		} else if (signResult_format == 'twolines') { // 分行
-			let lineChar = lines.split(''), outputLine1 = '', outputLine2 = '', outputLine3 = '';
-			for (let txtChar of lineChar) {
+			let outputLine1 = [], outputLine2 = [], outputLine3 = [];
+			for (let txtStr of cutModule.cut(lines, false)) {
 				if (signResult_way == 'jyutping') {
-					outputLine1 += queryJyutping(txtChar, signText_type, signResult_type, 'jyutping') + ' ';
-					outputLine3 += txtChar;
+					outputLine1.push(queryJyutpingPhrase(txtStr, signText_type, signResult_type, 'jyutping', signResult_format).split(',').join(' '));
+					outputLine3.push(txtStr);
 				} else if (signResult_way == 'ipa') {
-					outputLine1 += queryJyutping(txtChar, signText_type, signResult_type, 'ipa') + ' ';
-					outputLine3 += txtChar;
+					outputLine1.push(queryJyutpingPhrase(txtStr, signText_type, signResult_type, 'ipa', signResult_format).split(',').join(' '));
+					outputLine3.push(txtStr);
 				} else if (signResult_way == 'jyutping_ipa') {
-					outputLine1 += queryJyutping(txtChar, signText_type, signResult_type, 'jyutping') + ' ';
-					outputLine2 += queryJyutping(txtChar, signText_type, signResult_type, 'ipa') + ' ';
-					outputLine3 += txtChar;
+					outputLine1.push(queryJyutpingPhrase(txtStr, signText_type, signResult_type, 'jyutping', signResult_format).split(',').join(' '));
+					outputLine2.push(queryJyutpingPhrase(txtStr, signText_type, signResult_type, 'ipa', signResult_format).split(',').join(' '));
+					outputLine3.push(txtStr);
 				} else if (signResult_way == 'ipa_jyutping') {
-					outputLine1 += queryJyutping(txtChar, signText_type, signResult_type, 'ipa') + ' ';
-					outputLine2 += queryJyutping(txtChar, signText_type, signResult_type, 'jyutping') + ' ';
-					outputLine3 += txtChar;
+					outputLine1.push(queryJyutpingPhrase(txtStr, signText_type, signResult_type, 'ipa', signResult_format).split(',').join(' '));
+					outputLine2.push(queryJyutpingPhrase(txtStr, signText_type, signResult_type, 'jyutping', signResult_format).split(',').join(' '));
+					outputLine3.push(txtStr);
 				}
 			}
-			if (outputLine2 == ''){
-				outputText += outputLine1.replace(/ $/gi, "") + '<br>' + outputLine3 + '<br>';
+			if (signResult_way == 'jyutping' || signResult_way == 'ipa'){
+				outputText.push(`${outputLine1.join(' ')}<br>${outputLine3.join('')}<br>`);
 			} else {
-				outputText += outputLine1.replace(/ $/gi, "") + '<br>' + outputLine2.replace(/ $/gi, "") + '<br>' + outputLine3 + '<br>';
+				outputText.push(`${outputLine1.join(' ')}<br>${outputLine2.join(' ')}<br>${outputLine3.join('')}<br>`);
 			}
 		}
 	}
 	
-	$('#signResult').html(outputText);
+	$('#signResult').html(outputText.join(''));
 }
 
-// 查詢粵拼或IPA函數
-function queryJyutping(txtStr, trad_simp, tabName, jyutping_ipa, keep_symbol = true, isChar = true){
-	let res = [];
-	if (!(/[^\u4e00-\u9fa5]/.test(txtStr))) {
-		//res = MainQuery.queryJyutping(txtStr, trad_simp, tabName); // 目前是從segDict.js獲取，tab_nn_review、tab_nnt_review、tab_gz_review爲空，需要時導入數據使用
-		res = window[tabName].filter(item => item[trad_simp] == txtStr);
+// 【單字】查詢粵拼或IPA函數
+function queryJyutping(txtStr, trad_simp, tabName, jyutping_ipa, keep_symbol = true){
+	//let res = MainQuery.queryJyutping(txtStr, trad_simp, tabName); // 目前是從segDict.js獲取，tab_nn_review、tab_nnt_review、tab_gz_review爲空，需要時導入數據使用
+	let res = window[tabName].filter(item => item[trad_simp] == txtStr);
+	if ( !(/[^\u4e00-\u9fa5]/.test(txtStr)) || (res.length > 0) ) { // 判斷是否中文或字典有數據
 		if(res.length != 0){
-			if (res.length == 1){
+			if (res.length == 1){ // 只有一種讀音
 				return (jyutping_ipa == 'jyutping') ? res[0]['jyutping'] : res[0]['ipa'];
 			} else {
-				let char_jyutping = '', char_ipa = '';
+				let char_jyutping = [], char_ipa = [];
 				for (let i of res){
-					char_jyutping += i.jyutping + '/';
-					char_ipa += i.ipa + '/';
+					char_jyutping.push(i.jyutping);
+					char_ipa.push(i.ipa);
 				}
-				return (jyutping_ipa == 'jyutping') ? char_jyutping.replace(/ $/gi, "") : char_ipa.replace(/ $/gi, "");
+				return (jyutping_ipa == 'jyutping') ? char_jyutping.join('/') : char_ipa.join('/');
 			}
-		} else {
+		} else { // 無讀音
 			return '　';　// 全角空格，會被當成一個中文
 		}
-	} else {
+	} else { // 非中文字符
 		if(keep_symbol) {
 			return txtStr;
 		} else {
 			return '';
 		}
+	}
+}
+
+// 【詞彙】查詢粵拼或IPA函數
+function queryJyutpingPhrase(txtStr, trad_simp, tabName, jyutping_ipa, signResult_format, keep_symbol = true){
+	//let res = MainQuery.queryJyutping(txtStr, trad_simp, tabName); // 目前是從segDict.js獲取，tab_nn_review、tab_nnt_review、tab_gz_review爲空，需要時導入數據使用
+	let res = window[tabName].filter(item => item[trad_simp] == txtStr);
+	if (res.length == 1 && txtStr.length > 1 ) { // 詞典有數據並且爲詞彙
+		let resJ =[];
+		for(let i in txtStr.split('')){
+			if (signResult_format == 'updown') { // 按字內嵌時 中文字後帶 '</rt><rp>)</rp>'，拼音或ipa後帶 '</rt><rp>)</rp>'，return時合併起來
+				resJ.push(txtStr.split('')[i] + '<rp>(</rp><rt>');
+				resJ.push((jyutping_ipa == 'jyutping') ? res[0]['jyutping'].split(' ')[i] + '</rt><rp>)</rp>' : res[0]['ipa'].split(' ')[i] + '</rt><rp>)</rp>');
+			} else{
+				resJ.push((jyutping_ipa == 'jyutping') ? res[0]['jyutping'].split(' ')[i] : res[0]['ipa'].split(' ')[i]);
+			}
+		}
+		return resJ.join((signResult_format == 'updown') ? '' : ',');
+	} else { // 詞典無數據或有多個讀音或爲單字
+		let resJ =[];
+		for(let i of txtStr.split('')){
+			if (signResult_format == 'updown') {
+				resJ.push(i + '<rp>(</rp><rt>');
+				resJ.push(queryJyutping(i, trad_simp, tabName, jyutping_ipa, keep_symbol) + '</rt><rp>)</rp>');
+			} else {
+				resJ.push(queryJyutping(i, trad_simp, tabName, jyutping_ipa, keep_symbol));
+			}
+		}
+		return resJ.join((signResult_format == 'updown') ? '' : ',');
 	}
 }
 
