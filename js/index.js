@@ -85,8 +85,14 @@ function queryChar(inputValue, queryType, selVal){
 		showTable(res_jw, 'outTab_jw', "《英華分韻撮要》", outTabTitle_jw, colData_jw);
 	};
 	
+	var res_jj = [];
+	if (selVal.some(item => item.indexOf('1941') > -1)) {
+		res_jj = MainQuery.queryTableOne_jj(inputValue, ['tab_1941'], queryType);
+		showTable(res_jj, 'outTab_jj', "《粵音韻彙》", outTabTitle_jj, colData_jj);
+	};
+	
 	var res = [];
-	var dataList = selVal.filter(item => item.indexOf('_bw') == -1).filter(item => item.indexOf('1008') == -1).filter(item => item.indexOf('1838') == -1).filter(item => item.indexOf('1856') == -1);
+	var dataList = selVal.filter(item => item.indexOf('_bw') == -1).filter(item => item.indexOf('1008') == -1).filter(item => item.indexOf('1838') == -1).filter(item => item.indexOf('1856') == -1).filter(item => item.indexOf('1941') == -1);
 	if (dataList.length != 0) {
 		res = MainQuery.queryTable(inputValue, dataList, queryType);
 		showTable(res, 'outTab', allTitle, outTabTitle, colData);  // 顯示白話表格
@@ -103,7 +109,7 @@ function queryChar(inputValue, queryType, selVal){
 		//showWordCloud(res_bw, inputValue, 'outWordCloud_bw', allTitle_bw, queryType, 'JYUTPING'); // 顯示平話詞雲圖
 	};
 	
-	var isShow = res_triungkox.length + res_gw.length + res_jw.length + res.length + res_bw.length;
+	var isShow = res_triungkox.length + res_gw.length + res_jw.length + res_jj.length + res.length + res_bw.length;
 	//if (isShow != 0) { $('#nav-tab,#nav-tab-bw').removeClass('d-none'); }// 顯示tab
 	
 	return isShow;
@@ -452,7 +458,7 @@ function queryJyutpingPhrase(txtStr, trad_simp, tabName, jyutping_ipa, signResul
 }
 
 // 在線分詞函數
-function wordSeg(textCont, HMM) {
+function wordSeg(textCont, HMM = false) {
 	if (textCont.length > 30000){
 		toastrFunc('toast-top-center');
 		toastr.error('禁止超過三萬字！');

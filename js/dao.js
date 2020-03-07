@@ -70,6 +70,21 @@ MainQuery = (() => {
 		return DictDb.execParam( querySQL, (queryType != 'jyut6ping3') ? [] : [searchValue] );
 	};
 	
+	// (單字)查詢單個表，用於《粵音韻彙》
+	tempObj.queryTableOne_jj = (searchValue, selVal, queryType) => {
+		let querySQL = `select '${selVal[0]}' YEAR,* from ${selVal[0]}`;
+		if (queryType == 'char' || queryType == 'char_simp') { // 查詢繁簡體
+			querySQL += ` where word GLOB '*${searchValue}*' order by ID`;
+		} else if (queryType == 'jyutping') { // 查詢無調粵拼
+			querySQL += ` where jyutping GLOB '${searchValue}[1-6]' order by ID`;
+		} else if (queryType == 'jyut6ping3') { // 查詢有調粵拼
+			querySQL += ` where jyutping = ? order by ID`;
+		} else if (queryType == 'expl') { // 詞例反查
+			querySQL += ` where expl GLOB '*${searchValue}*' order by ID`;
+		};
+		return DictDb.execParam( querySQL, (queryType != 'jyut6ping3') ? [] : [searchValue] );
+	};
+	
 	
 	// 查詢單個表，用於在線分詞的基礎表，目前是從segDict.js獲取，tab_segdict爲空，需要時導入數據使用
 	/*
