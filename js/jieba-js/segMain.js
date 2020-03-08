@@ -3,7 +3,7 @@ const cutModule = {};
 cutModule.initFlag = false;
 
 function segMain(segDict = []) {
-
+/*
 	var emit_P = {};
     emit_P.e_P = {
         'B': {
@@ -35407,7 +35407,7 @@ function segMain(segDict = []) {
 			}
 		}
 		return yieldValues;
-	};
+	};*/
 	
 	var dictionary = segDict;
 	var trie = {}, // to be initialized
@@ -35527,7 +35527,7 @@ function segMain(segDict = []) {
 			route[idx] = [m, candidates_x[candidates.indexOf(m)]];
 		}
 	};
-
+	/*
 	var __cut_DAG = function(sentence) {
 
 		var DAG = get_DAG(sentence);
@@ -35604,7 +35604,7 @@ function segMain(segDict = []) {
 			}
 		}
 		return yieldValues;
-	};
+	};*/
 
 	var __cut_DAG_NO_HMM = function (sentence) {
 		var re_eng = /[a-zA-Z0-9]/,
