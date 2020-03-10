@@ -64,23 +64,35 @@ const rowData_book = [
 ];
 
 // 詞典資料
+const colData_oldbook_proverb = [
+	{ field: 'OLDBOOK', title: '古籍資料', align: 'center' }
+	, { field: 'PROVERB', title: '早期童謠', align: 'center', formatter: (value) => { return formatCheckBox(value, '_phrase') } }
+];
+
+const rowData_oldbook_proverb = [
+	{ OLDBOOK: '1937年邕寧縣修誌委員會《邕寧縣誌(第4冊)》(童謠)', PROVERB: 'tab_1937jz_proverb' }
+	, { OLDBOOK: '1937年廣西省政府總務處統計室《南寧社會概況》(童謠)', PROVERB: 'tab_1937kk_proverb' }
+];
+
 const colData_book_phrase = [
 	{ field: 'BOOK', title: '南寧詞彙資料', align: 'center' }
 	, { field: 'NN', title: '市區白話', align: 'center', formatter: (value) => { return formatCheckBox(value, '_phrase') } }
+	, { field: 'NN_D',title: '疍家白話', align: 'center', formatter: (value) => { return formatCheckBox(value, '_phrase') } }
 	, { field: 'HX_B',title: '橫縣白話', align: 'center', formatter: (value) => { return formatCheckBox(value, '_phrase') } }
 	, { field: 'NN_T',title: '亭子平話', align: 'center', formatter: (value) => { return formatCheckBox(value, '_phrase') } }
 	, { field: 'NN_S',title: '沙井平話', align: 'center', formatter: (value) => { return formatCheckBox(value, '_phrase') } }
-
 ];
 
 const rowData_book_phrase = [
-	{ BOOK: '1997年楊煥典《南寧話音檔》', NN: 'tab_1997_phrase', HX_B: '', NN_T: '', NN_S: '' }
-	, { BOOK: '1997年李榮主編《南寧平話詞典》', NN: '', HX_B: '', NN_T: 'noData', NN_S: '' }
-	, { BOOK: '1998年楊煥典主編《廣西通誌·漢語方言誌》', NN: 'tab_1998_phrase', HX_B: '', NN_T: 'tab_1998_bw_phrase', NN_S: '' }
-	, { BOOK: '2007年謝建猷《廣西漢語方言研究》', NN: 'tab_2007_phrase', HX_B: 'noData', NN_T: '', NN_S: 'noData' }
-	, { BOOK: '2008年林亦、覃鳳餘《廣西南寧白話研究》', NN: 'tab_2008_phrase', HX_B: '', NN_T: '', NN_S: '' }
-	, { BOOK: '2016年余瑾《廣西平話研究》', NN: '', HX_B: '', NN_T: '', NN_S: '' }
-	, { BOOK: '2020年Leimaau《南寧童謠》(本站提供)', NN: 'tab_proverb', HX_B: '', NN_T: '', NN_S: '' }
+	{ BOOK: '1997年楊煥典《南寧話音檔》', NN: 'tab_1997_phrase', NN_D: '', HX_B: '', NN_T: '', NN_S: '' }
+	, { BOOK: '1997年李榮主編《南寧平話詞典》', NN: '', NN_D: '', HX_B: '', NN_T: 'noData', NN_S: '' }
+	, { BOOK: '1998年楊煥典主編《廣西通誌·漢語方言誌》', NN: 'tab_1998_phrase', NN_D: '', HX_B: '', NN_T: 'tab_1998_bw_phrase', NN_S: '' }
+	, { BOOK: '2007年謝建猷《廣西漢語方言研究》', NN: 'tab_2007_phrase', NN_D: '', HX_B: 'noData', NN_T: '', NN_S: 'noData' }
+	, { BOOK: '2008年林亦、覃鳳餘《廣西南寧白話研究》', NN: 'tab_2008_phrase', NN_D: '', HX_B: '', NN_T: '', NN_S: '' }
+	, { BOOK: '2015年黃增霞《廣西南寧疍家話詞彙研究》', NN: '', NN_D: 'noData', HX_B: '', NN_T: '', NN_S: '' }
+	, { BOOK: '2016年余瑾《廣西平話研究》', NN: '', NN_D: '', HX_B: '', NN_T: '', NN_S: '' }
+	, { BOOK: '2019年莫思敏《橫縣白話語音研究》', NN: '', NN_D: '', HX_B: 'noData', NN_T: '', NN_S: '' }
+	, { BOOK: '2020年Leimaau《南寧童謠整理》(本站提供)', NN: 'tab_2020_proverb', NN_D: '', HX_B: '', NN_T: '', NN_S: '' }
 ];
 
 
@@ -109,7 +121,7 @@ const colData_triungkox = [
 	, { field: 'WORD2', title: '字頭(覈校後)', align: 'center', formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'char', 'dicWord')">${value}</a>` } }
 	, { field: 'FANQIE1', title: '反切(覈校前)' }
 	, { field: 'FANQIE2', title: '反切(覈校後)' }
-	, { field: 'EXPL', title: '釋義', formatter: (value) => { return `<p data-toggle="tooltip" data-placement="left" title='${value}'>${value}<p/>` }  }
+	, { field: 'EXPL', title: '釋義', formatter: (value) => { return `<p data-toggle="tooltip" data-placement="left" title="${value}">${value}<p/>` }  }
 	, { field: 'SHE', title: '攝' }
 	, { field: 'HU', title: '呼' }
 	, { field: 'DENG', title: '等' }
@@ -124,7 +136,7 @@ const colData_gw = [
 	{ field: 'YEAR', title: '資料', align: 'center', formatter: (value) => { return `${value.replace('tab_', '')}` } }
 	//, {field: 'ID',title: 'ID'}
 	, { field: 'WORD', title: '字頭', align: 'center', formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'char', 'dicWord')">${value}</a>` } }
-	, { field: 'EXPL', title: '字義', formatter: (value) => { return `<p data-toggle="tooltip" data-placement="left" title='${value}'>${value}<p/>` }  }
+	, { field: 'EXPL', title: '字義', formatter: (value) => { return `<p data-toggle="tooltip" data-placement="left" title="${value}">${value}<p/>` }  }
 	, { field: 'FINAL_PART', title: '韻部' }
 	, { field: 'FIRST_OLD', title: '聲母' }
 	, { field: 'FINAL_OLD', title: '韻母' }
@@ -144,14 +156,13 @@ const colData_jw = [
 	, { field: 'WORD', title: '字頭', align: 'center', formatter: (value) => { let charStr = value.split('|'), aLink = []; for (let i in charStr) aLink.push(`<a href="javascript:querySubmit('${charStr[i]}', 'char', 'dicWord')">${charStr[i]}</a>`); return aLink.join('|') } }
 	, { field: 'WORD_COMP', title: '兼容字頭', align: 'center', formatter: (value) => { let charStr = value.split('|'), aLink = []; for (let i in charStr) aLink.push(`<a href="javascript:querySubmit('${charStr[i]}', 'char', 'dicWord')">${charStr[i]}</a>`); return aLink.join('|') } }
 	, { field: 'WORD_NOTE', title: '字條校訂註' }
-	, { field: 'EXPL', title: '釋義', formatter: (value) => { return `<p data-toggle="tooltip" data-placement="left" title='${value}'>${value}<p/>` }  }
+	, { field: 'EXPL', title: '釋義', formatter: (value) => { return `<p data-toggle="tooltip" data-placement="left" title="${value}">${value}<p/>` }  }
 	, { field: 'OLD_JP', title: '讀音' }
 	, { field: 'OLD_JP_TYPE', title: '讀音分類' }
 	, { field: 'OLD_JP_NOTE', title: '讀音備註' }
 	, { field: 'PAGE', title: '葉', formatter: (value, row) => { return pageSplit(value.replace('*','s'), 'jpg', 'https://gitee.com/leimaau/data-store/raw/master/1856fy/fy') } }
 	, { field: 'IPA', title: 'IPA擬音' }
 	, { field: 'JYUTPING', title: '粵拼擬音', formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'jyut6ping3', 'dicWord')">${value}</a>` } }
-
 ];
 
 const colData_jj = [
@@ -161,7 +172,7 @@ const colData_jj = [
 	, { field: 'JYUTPING', title: '粵拼', formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'jyut6ping3', 'dicWord')">${value}</a>` } }
 	, { field: 'IPA', title: 'IPA' }
 	, { field: 'PAGE', title: '葉', formatter: (value, row) => { return pageSplit(value, 'jpg', 'https://gitee.com/leimaau/data-store/raw/master/1941yy/yy') } }
-	, { field: 'EXPL', title: '釋義', formatter: (value) => { return `<p data-toggle="tooltip" data-placement="left" title='${value}'>${value}<p/>` }  }
+	, { field: 'EXPL', title: '釋義', formatter: (value) => { return `<p data-toggle="tooltip" data-placement="left" title="${value}">${value}<p/>` }  }
 	, { field: 'FIRSTFLAG', title: '國語聲母是否捲舌', formatter: (value) => { return `${value.replace('1', '1（否）').replace('2', '2（是）')}` }  }
 ];
 
@@ -174,8 +185,17 @@ const colData = [
 	, { field: 'IPA_T', title: '統一IPA' }
 	, { field: 'JYUTPING', title: '粵拼', formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'jyut6ping3', 'dicWord')">${value}</a>` } }
 	, { field: 'SOUR', title: '來源', formatter: (value, row) => { return formatSOUR(value, row['YEAR'], 'png') } }
-	, { field: 'EXPL', title: '釋義', formatter: (value) => { return `<p data-toggle="tooltip" data-placement="left" title='${value}'>${value}<p/>` } }
-	, { field: 'NOTE', title: 'leimaau附註', formatter: (value) => { return `<p data-toggle="tooltip" data-placement="left" title='${value}'>${value}<p/>` } }
+	, { field: 'EXPL', title: '釋義', formatter: (value) => { return `<p data-toggle="tooltip" data-placement="left" title="${value}">${value}<p/>` } }
+	, { field: 'NOTE', title: '附註', formatter: (value) => { return `<p data-toggle="tooltip" data-placement="left" title="${value}">${value}<p/>` } }
+];
+
+const colData_proverb = [
+	{ field: 'YEAR', title: '資料', align: 'center', formatter: (value) => { return `${value.replace('_proverb', '').replace('tab_', '')}` } }
+	//, {field: 'ID',title: 'ID'}
+	, { field: 'TRAD', title: '繁體', width: '350px', align: 'left', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
+	, { field: 'SIMP', title: '簡體', width: '350px', align: 'left', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
+	, { field: 'SOUR', title: '來源', width: '280px', formatter: (value, row) => { if(row['YEAR'] == 'tab_2020_proverb') {return `<span style="white-space: normal">2020年Leimaau《南寧童謠整理》(本站提供)<span/>`} else {return (row['YEAR'] == 'tab_1937kk_proverb') ? '<span style="white-space: normal">1937年廣西省政府總務處統計室《南寧社會概況》' + pageSplit(value, 'jpg','https://gitee.com/leimaau/data-store/raw/master/1937tj/kk_tj') + '<span/>' : '<span style="white-space: normal">1937年邕寧縣修誌委員會《邕寧縣誌(第4冊)》' + pageSplit(value, 'jpg','https://gitee.com/leimaau/data-store/raw/master/1937tj/jz_tj') + '<span/>' } } }
+	, { field: 'NOTE', title: '附註', width: '220px', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
 ];
 
 const colData_phrase = [
@@ -190,17 +210,8 @@ const colData_phrase = [
 	, { field: 'IPA_T', title: '統一IPA' }
 	, { field: 'JYUTPING', title: '粵拼', formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'phrase_jyut6ping3', 'dicPhrase')">${value}</a>` } }
 	, { field: 'SOUR', title: '來源', formatter: (value, row) => { return formatSOUR(value, row['YEAR'], 'png', false) } }
-	, { field: 'EXPL', title: '釋義', formatter: (value) => { return `<p data-toggle="tooltip" data-placement="left" title='${value}'>${value}<p/>` } }
-	, { field: 'NOTE', title: 'leimaau附註', formatter: (value) => { return `<p data-toggle="tooltip" data-placement="left" title='${value}'>${value}<p/>` } }
-];
-
-const colData_nncity = [
-	{ field: 'YEAR', title: '資料', align: 'center', formatter: (value) => { return `${value.replace('tab_nncity', '2020')}` } }
-	//, {field: 'ID',title: 'ID'}
-	, { field: 'TRAD', title: '繁體', align: 'center', formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'phrase', 'dicPhrase')">${value}</a>` } }
-	, { field: 'SIMP', title: '簡體', align: 'center', formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'phrase_simp', 'dicPhrase')">${value}</a>` } }
-	, { field: 'SOUR', title: '來源', formatter: (value, row) => { return formatSOUR(value, row['YEAR'], 'png', false) } }
-	//, { field: 'NOTE', title: 'leimaau附註', formatter: (value) => { return `<p data-toggle="tooltip" data-placement="left" title='${value}'>${value}<p/>` } }
+	, { field: 'EXPL', title: '釋義', formatter: (value) => { return `<p data-toggle="tooltip" data-placement="left" title="${value}">${value}<p/>` } }
+	, { field: 'NOTE', title: '附註', formatter: (value) => { return `<p data-toggle="tooltip" data-placement="left" title="${value}">${value}<p/>` } }
 ];
 
 // 格式化來源欄

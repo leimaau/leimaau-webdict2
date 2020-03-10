@@ -110,7 +110,7 @@ function queryChar(inputValue, queryType, selVal){
 	};
 	
 	var isShow = res_triungkox.length + res_gw.length + res_jw.length + res_jj.length + res.length + res_bw.length;
-	//if (isShow != 0) { $('#nav-tab,#nav-tab-bw').removeClass('d-none'); }// 顯示tab
+	//if (isShow != 0) { if(dataList.length != 0) $('#nav-tab').removeClass('d-none'); if(dataList_bw.length != 0) $('#nav-tab-bw').removeClass('d-none'); }// 顯示tab
 	
 	return isShow;
 }
@@ -118,9 +118,17 @@ function queryChar(inputValue, queryType, selVal){
 
 // 【詞彙】查詢模塊
 function queryPhrase(inputValue, queryType, selVal){
+	
+	var res_oldProverb = [];
+	var dataList_oldProverb = selVal.filter(item => item.indexOf('_1937') > -1);
+	if (dataList_oldProverb.length != 0) {
+		res_oldProverb = MainQuery.queryTable_proverb(inputValue, dataList_oldProverb, queryType);
+		showTable(res_oldProverb, 'outTab_triungkox', '早期童謠', outTabTitle_triungkox, colData_proverb);  // 使用顯示《廣韻》的位置
+	};
+	
 	var res = [];
 	var dataList = [];
-	var dataList = selVal.filter(item => item.indexOf('_bw') == -1).filter(item => item.indexOf('_nncity') == -1).filter(item => item.indexOf('_proverb') == -1);
+	var dataList = selVal.filter(item => item.indexOf('_bw') == -1).filter(item => item.indexOf('_proverb') == -1);
 	if (dataList.length != 0) {
 		res = MainQuery.queryTablePhrase(inputValue, dataList, queryType);
 		showTable(res, 'outTab', allTitle, outTabTitle, colData_phrase);  // 顯示白話表格
@@ -129,7 +137,7 @@ function queryPhrase(inputValue, queryType, selVal){
 	};
 	
 	var res_bw = [];
-	var dataList_bw = selVal.filter(item => item.indexOf('_bw') > -1).filter(item => item.indexOf('_nncity') == -1).filter(item => item.indexOf('_proverb') == -1);
+	var dataList_bw = selVal.filter(item => item.indexOf('_bw') > -1).filter(item => item.indexOf('_proverb') == -1);
 	if (dataList_bw.length != 0) {
 		res_bw = MainQuery.queryTablePhrase(inputValue, dataList_bw, queryType);
 		showTable(res_bw, 'outTab_bw', allTitle_bw, outTabTitle_bw, colData_phrase);  // 顯示平話表格
@@ -137,15 +145,15 @@ function queryPhrase(inputValue, queryType, selVal){
 		showWordCloud(res_bw, inputValue, 'outWordCloud_bw', allTitle_bw, queryType, 'TRAD'); // 顯示平話詞雲圖
 	};
 	
-	var res_nncity = [];
-	var dataList_nncity = selVal.filter(item => item.indexOf('_nncity') > -1);
-	if (dataList_nncity.length != 0) {
-		res_nncity = MainQuery.queryTableOne_nncity(inputValue, dataList_nncity, queryType);
-		showTable(res_nncity, 'outTab_nncity', '南寧城市信息', outTabTitle_nncity, colData_nncity);
+	var res_proverb = [];
+	var dataList_proverb = selVal.filter(item => item.indexOf('_2020') > -1);
+	if (dataList_proverb.length != 0) {
+		res_proverb = MainQuery.queryTable_proverb(inputValue, dataList_proverb, queryType);
+		showTable(res_proverb, 'outTab_proverb', '童謠整理', outTabTitle_proverb, colData_proverb);
 	};
 	
-	var isShow = res.length + res_bw.length + res_nncity.length;
-	if (isShow != 0) { $('#nav-tab,#nav-tab-bw').removeClass('d-none'); }// 顯示tab
+	var isShow = res_oldProverb.length + res.length + res_bw.length + res_proverb.length;
+	if (isShow != 0) { if(dataList.length != 0) $('#nav-tab').removeClass('d-none'); if(dataList_bw.length != 0) $('#nav-tab-bw').removeClass('d-none'); }// 顯示tab
 	
 	return isShow;
 }
@@ -430,7 +438,7 @@ function queryJyutping(txtStr, trad_simp, tabName, jyutping_ipa, keep_symbol = t
 
 // 【詞彙】查詢粵拼或IPA函數
 function queryJyutpingPhrase(txtStr, trad_simp, tabName, jyutping_ipa, signResult_format, keep_symbol = true){
-	//let res = MainQuery.queryJyutping(txtStr, trad_simp, tabName); // 目前是從segDict.js獲取，tab_nn_review、tab_nnt_review、tab_gz_review爲空，需要時導入數據使用
+	//let res = MainQuery.queryJyutping(txtStr, trad_simp, tabName); // 目前是從segDict.js獲取，tab_nn_review、tab_nnt_review、tab_gz_review停用，需要時導入數據使用
 	let res = window[tabName].filter(item => item[trad_simp] == txtStr);
 	if (res.length == 1 && txtStr.length > 1 ) { // 詞典有數據並且爲詞彙
 		let resJ =[];
@@ -466,7 +474,7 @@ function wordSeg(textCont, HMM = false) {
 	}
 	
 	if (!cutModule.initFlag){ // 初始化分詞模塊，衹執行一次
-		//const segDict = MainQuery.queryTableOne_segdict(); // 目前是從segDict.js獲取，tab_segdict爲空，需要時導入數據使用
+		//const segDict = MainQuery.queryTableOne_segdict(); // 目前是從segDict.js獲取，tab_segdict停用，需要時導入數據使用
 		cutModule.initFlag = true;
 		segMain(segDict);
 	}
@@ -514,6 +522,10 @@ $(() => {
 	$('#outTab_book_phrase').bootstrapTable({
 		columns: colData_book_phrase,
 		data: rowData_book_phrase
+	});
+	$('#outTab_oldbook_proverb').bootstrapTable({
+		columns: colData_oldbook_proverb,
+		data: rowData_oldbook_proverb
 	});
 
 	// 初始化選擇資料
