@@ -76,7 +76,7 @@ CREATE TABLE tab_1941(
    FIRSTFLAG      TEXT    
 );
 
--- 单字表  1994、1997、1998、1998_bw（平话）、2002、2007、2008、2018 相同(已经建好)
+-- 单字表  1994、1997、1998、1998_bw（平话）、2002、2007、2008、2018 等相同(已经建好)
 CREATE TABLE tab_1994(
    ID             TEXT     NOT NULL,
    TRAD           TEXT    NOT NULL,
@@ -108,12 +108,10 @@ CREATE TABLE tab_1937jz_proverb(
    NOTE          TEXT    
 );
 
--- 词汇表 tab_1997_phrase、tab_1998_phrase、tab_1998_bw_phrase（平话）、tab_2007_phrase、tab_2008_phrase 相同(已经建好)
+-- 词汇表 tab_1997_phrase、tab_1998_phrase、tab_1998_bw_phrase（平话）、tab_2007_phrase、tab_2008_phrase 等相同(已经建好)
 CREATE TABLE tab_2008_phrase(
    ID            TEXT    NOT NULL,
-   LEVEL1        TEXT    NOT NULL,
-   LEVEL2        TEXT    NOT NULL,
-   LEVEL3        TEXT    NOT NULL,
+   CLASSIFI        TEXT    NOT NULL,
    TRAD          TEXT    NOT NULL,
    SIMP          TEXT    NOT NULL,
    IPA_S         TEXT    NOT NULL,

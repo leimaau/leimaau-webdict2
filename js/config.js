@@ -51,9 +51,9 @@ const rowData_book = [
 	{ BOOK: '1994年謝建猷《南寧白話同音字彙》', NN: 'tab_1994', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_S: '', HX_P: '' }
 	, { BOOK: '1997年楊煥典《南寧話音檔》', NN: 'tab_1997', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_S: '', HX_P: '' }
 	, { BOOK: '1998年楊煥典主編《廣西通誌·漢語方言誌》', NN: 'tab_1998', NN_D: '', NN_Y: '', HX_B: '', NN_T: 'tab_1998_bw', NN_S: '', HX_P: '' }
-	, { BOOK: '2000年李連進《平話音韻研究》', NN: '', NN_D: '', NN_Y: '', HX_B: '', NN_T: 'noData', NN_S: '', HX_P: 'noData' }
+	, { BOOK: '2000年李連進《平話音韻研究》', NN: '', NN_D: '', NN_Y: '', HX_B: '', NN_T: 'tab_2000_bw', NN_S: '', HX_P: 'noData' }
 	, { BOOK: '2002年楊煥典《現代漢語方言音庫(字庫)》', NN: 'tab_2002', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_S: '', HX_P: '' }
-	, { BOOK: '2007年謝建猷《廣西漢語方言研究》', NN: 'tab_2007', NN_D: '', NN_Y: '', HX_B: 'noData', NN_T: '', NN_S: 'noData', HX_P: '' }
+	, { BOOK: '2007年謝建猷《廣西漢語方言研究》', NN: 'tab_2007', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_S: 'noData', HX_P: 'noData' }
 	, { BOOK: '2007年白雲《廣西疍家話語音研究》', NN: '', NN_D: 'noData', NN_Y: '', HX_B: '', NN_T: '', NN_S: '', HX_P: '' }
 	, { BOOK: '2008年林亦、覃鳳餘《廣西南寧白話研究》', NN: 'tab_2008', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_S: '', HX_P: '' }
 	, { BOOK: '2009年陳海倫、林亦《粵語平話土話方音字彙》', NN: 'noData', NN_D: '', NN_Y: 'noData', HX_B: '', NN_T: 'noData', NN_S: '', HX_P: '' }
@@ -81,18 +81,20 @@ const colData_book_phrase = [
 	, { field: 'HX_B',title: '橫縣白話', align: 'center', formatter: (value) => { return formatCheckBox(value, '_phrase') } }
 	, { field: 'NN_T',title: '亭子平話', align: 'center', formatter: (value) => { return formatCheckBox(value, '_phrase') } }
 	, { field: 'NN_S',title: '沙井平話', align: 'center', formatter: (value) => { return formatCheckBox(value, '_phrase') } }
+	, { field: 'HX_P',title: '橫縣平話', align: 'center', formatter: (value) => { return formatCheckBox(value, '_phrase') } }
 ];
 
 const rowData_book_phrase = [
-	{ BOOK: '1997年楊煥典《南寧話音檔》', NN: 'tab_1997_phrase', NN_D: '', HX_B: '', NN_T: '', NN_S: '' }
-	, { BOOK: '1997年李榮主編《南寧平話詞典》', NN: '', NN_D: '', HX_B: '', NN_T: 'noData', NN_S: '' }
-	, { BOOK: '1998年楊煥典主編《廣西通誌·漢語方言誌》', NN: 'tab_1998_phrase', NN_D: '', HX_B: '', NN_T: 'tab_1998_bw_phrase', NN_S: '' }
-	, { BOOK: '2007年謝建猷《廣西漢語方言研究》', NN: 'tab_2007_phrase', NN_D: '', HX_B: 'noData', NN_T: '', NN_S: 'noData' }
-	, { BOOK: '2008年林亦、覃鳳餘《廣西南寧白話研究》', NN: 'tab_2008_phrase', NN_D: '', HX_B: '', NN_T: '', NN_S: '' }
-	, { BOOK: '2015年黃增霞《廣西南寧疍家話詞彙研究》', NN: '', NN_D: 'noData', HX_B: '', NN_T: '', NN_S: '' }
-	, { BOOK: '2016年余瑾《廣西平話研究》', NN: '', NN_D: '', HX_B: '', NN_T: '', NN_S: '' }
-	, { BOOK: '2019年莫思敏《橫縣白話語音研究》', NN: '', NN_D: '', HX_B: 'noData', NN_T: '', NN_S: '' }
-	, { BOOK: '2020年Leimaau《南寧童謠整理》(本站提供)', NN: 'tab_2020_proverb', NN_D: '', HX_B: '', NN_T: '', NN_S: '' }
+	{ BOOK: '1994年閉克朝《廣西橫縣平話詞彙》', NN: '', NN_D: '', HX_B: '', NN_T: '', NN_S: '', HX_P: 'noData' }
+	, { BOOK: '1997年楊煥典《南寧話音檔》', NN: 'noData', NN_D: '', HX_B: '', NN_T: '', NN_S: '', HX_P: '' }
+	, { BOOK: '1997年李榮主編《南寧平話詞典》', NN: '', NN_D: '', HX_B: '', NN_T: 'noData', NN_S: '', HX_P: '' }
+	, { BOOK: '1998年楊煥典主編《廣西通誌·漢語方言誌》', NN: 'noData', NN_D: '', HX_B: '', NN_T: 'noData', NN_S: '', HX_P: '' }
+	, { BOOK: '2007年謝建猷《廣西漢語方言研究》', NN: 'noData', NN_D: '', HX_B: '', NN_T: '', NN_S: 'noData', HX_P: 'noData' }
+	, { BOOK: '2008年林亦、覃鳳餘《廣西南寧白話研究》', NN: 'tab_2008_phrase', NN_D: '', HX_B: '', NN_T: '', NN_S: '', HX_P: '' }
+	, { BOOK: '2015年黃增霞《廣西南寧疍家話詞彙研究》', NN: '', NN_D: 'noData', HX_B: '', NN_T: '', NN_S: '', HX_P: '' }
+	, { BOOK: '2016年余瑾《廣西平話研究》', NN: '', NN_D: '', HX_B: '', NN_T: '', NN_S: '', HX_P: '' }
+	, { BOOK: '2019年莫思敏《橫縣白話語音研究》', NN: '', NN_D: '', HX_B: 'noData', NN_T: '', NN_S: '', HX_P: '' }
+	, { BOOK: '2020年Leimaau《南寧童謠整理》(本站提供)', NN: 'tab_2020_proverb', NN_D: '', HX_B: '', NN_T: '', NN_S: '', HX_P: '' }
 ];
 
 
@@ -169,8 +171,8 @@ const colData_jj = [
 	{ field: 'YEAR', title: '資料', align: 'center', formatter: (value) => { return `${value.replace('tab_', '')}` } }
 	//, {field: 'ID',title: 'ID'}
 	, { field: 'WORD', title: '字頭', align: 'center', formatter: (value) => { let charStr = value.split('|'), aLink = []; for (let i in charStr) aLink.push(`<a href="javascript:querySubmit('${charStr[i]}', 'char', 'dicWord')">${charStr[i]}</a>`); return aLink.join('|') } }
-	, { field: 'JYUTPING', title: '粵拼', formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'jyut6ping3', 'dicWord')">${value}</a>` } }
 	, { field: 'IPA', title: 'IPA' }
+	, { field: 'JYUTPING', title: '粵拼', formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'jyut6ping3', 'dicWord')">${value}</a>` } }
 	, { field: 'PAGE', title: '葉', formatter: (value, row) => { return pageSplit(value, 'jpg', 'https://gitee.com/leimaau/data-store/raw/master/1941yy/yy') } }
 	, { field: 'EXPL', title: '釋義', formatter: (value) => { return `<p data-toggle="tooltip" data-placement="left" title="${value}">${value}<p/>` }  }
 	, { field: 'FIRSTFLAG', title: '國語聲母是否捲舌', formatter: (value) => { return `${value.replace('1', '1（否）').replace('2', '2（是）')}` }  }
@@ -201,9 +203,7 @@ const colData_proverb = [
 const colData_phrase = [
 	{ field: 'YEAR', title: '資料', align: 'center', formatter: (value) => { return `${value.replace('_phrase', '').replace('tab_', '')}` } }
 	//, {field: 'ID',title: 'ID'}
-	, { field: 'LEVEL1', title: '一級分類', align: 'center' }
-	, { field: 'LEVEL2', title: '二級分類' }
-	, { field: 'LEVEL3', title: '三級分類', align: 'center' }
+	, { field: 'CLASSIFI', title: '分類' }
 	, { field: 'TRAD', title: '繁體', align: 'center', formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'phrase', 'dicPhrase')">${value}</a>` } }
 	, { field: 'SIMP', title: '簡體', align: 'center', formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'phrase_simp', 'dicPhrase')">${value}</a>` } }
 	, { field: 'IPA_S', title: '原文IPA' }
@@ -219,7 +219,7 @@ function formatSOUR(value, row_year, picType, isChar = true) {
 	if (isChar){
 		var bookname = rowData_book.find(item => (item.NN == row_year || item.NN_D == row_year || item.NN_Y == row_year || item.HX_B == row_year || item.NN_T == row_year || item.NN_S == row_year || item.HX_P == row_year)).BOOK;
 	} else {
-		var bookname = rowData_book_phrase.find(item => (item.NN == row_year || item.HX_B == row_year || item.NN_T == row_year || item.NN_S == row_year)).BOOK;
+		var bookname = rowData_book_phrase.find(item => (item.NN == row_year || item.NN_D == row_year || item.HX_B == row_year || item.NN_T == row_year || item.NN_S == row_year || item.HX_P == row_year)).BOOK;
 	};
 	row_year = row_year.replace('_bw', '').replace('_phrase', '').replace('tab_', '');
 	var linkaddr = 'https://gitee.com/leimaau/data-store/raw/master/' + row_year;

@@ -149,7 +149,7 @@ function queryPhrase(inputValue, queryType, selVal){
 	var dataList_proverb = selVal.filter(item => item.indexOf('_2020') > -1);
 	if (dataList_proverb.length != 0) {
 		res_proverb = MainQuery.queryTable_proverb(inputValue, dataList_proverb, queryType);
-		showTable(res_proverb, 'outTab_proverb', '童謠整理', outTabTitle_proverb, colData_proverb);
+		showTable(res_proverb, 'outTab_proverb', '童謠和熟語', outTabTitle_proverb, colData_proverb);
 	};
 	
 	var isShow = res_oldProverb.length + res.length + res_bw.length + res_proverb.length;
