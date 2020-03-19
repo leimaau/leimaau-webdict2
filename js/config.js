@@ -146,7 +146,7 @@ const colData_gw = [
 	//, { field: 'FIRST_TYPE', title: '紐類' }
 	, { field: 'FANQIE', title: '反切' }
 	, { field: 'VOLUME', title: '冊' }
-	, { field: 'PAGE', title: '葉', formatter: (value, row) => { return pageSplit(value, 'jpg', row['VOLUME']=='上冊' ? 'http://ytenx.org/static/img/KrungGhoTchiekDukPyonYonhTsuatQjeuhGhopDzip/volume1/' : 'http://ytenx.org/static/img/KrungGhoTchiekDukPyonYonhTsuatQjeuhGhopDzip/volume2/') } }
+	, { field: 'PAGE', title: '葉', formatter: (value, row) => { return pageSplit(value.replace('-','，'), 'jpg', row['VOLUME']=='上冊' ? 'http://ytenx.org/static/img/KrungGhoTchiekDukPyonYonhTsuatQjeuhGhopDzip/volume1/' : 'http://ytenx.org/static/img/KrungGhoTchiekDukPyonYonhTsuatQjeuhGhopDzip/volume2/') } }
 	, { field: 'IPA', title: 'IPA擬音' }
 	, { field: 'JYUTPING', title: '粵拼擬音', formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'jyut6ping3', 'dicWord')">${value}</a>` } }
 
