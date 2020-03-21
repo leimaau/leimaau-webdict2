@@ -94,7 +94,7 @@ const rowData_book_phrase = [
 	, { BOOK: '2015年黃增霞《廣西南寧疍家話詞彙研究》', NN: '', NN_D: 'noData', HX_B: '', NN_T: '', NN_S: '', HX_P: '' }
 	, { BOOK: '2016年余瑾《廣西平話研究》', NN: '', NN_D: '', HX_B: '', NN_T: '', NN_S: '', HX_P: '' }
 	, { BOOK: '2019年莫思敏《橫縣白話語音研究》', NN: '', NN_D: '', HX_B: 'noData', NN_T: '', NN_S: '', HX_P: '' }
-	, { BOOK: '2020年Leimaau《南寧童謠整理》(本站提供)', NN: 'tab_2020_proverb', NN_D: '', HX_B: '', NN_T: '', NN_S: '', HX_P: '' }
+	, { BOOK: '2020年Leimaau《南寧童謠和熟語整理》(本站提供)', NN: 'tab_2020_proverb', NN_D: '', HX_B: '', NN_T: '', NN_S: '', HX_P: '' }
 ];
 
 
