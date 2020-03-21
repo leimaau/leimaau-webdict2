@@ -30,7 +30,7 @@ ruby, rt {
 }
 
 .dict-body {
-	min-height: -webkit-fill-available;
+	min-height: 1140px;
 }
 
 .textarea-style {
