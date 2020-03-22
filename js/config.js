@@ -59,6 +59,7 @@ const rowData_book = [
 	, { BOOK: '2009年陳海倫、林亦《粵語平話土話方音字彙》', NN: 'noData', NN_D: '', NN_Y: 'noData', HX_B: '', NN_T: 'noData', NN_S: '', HX_P: '' }
 	, { BOOK: '2009年張菁雅《桂南平話語音研究》', NN: 'noData', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_S: '', HX_P: 'noData' }
 	, { BOOK: '2016年余瑾《廣西平話研究》', NN: '', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_S: '', HX_P: '' }
+	, { BOOK: '2017年詹伯慧、張振興《漢語方言學大詞典》', NN: '', NN_D: '', NN_Y: '', HX_B: '', NN_T: 'tab_2017_bw', NN_S: '', HX_P: '' }
 	, { BOOK: '2018年Leimaau《南寧話審音表》(本站提供)', NN: 'tab_2018', NN_D: '', NN_Y: '', HX_B: '', NN_T: 'tab_2018_bw', NN_S: '', HX_P: '' }
 	, { BOOK: '2019年莫思敏、談婷《廣西橫縣白話同音字彙》', NN: '', NN_D: '', NN_Y: '', HX_B: 'noData', NN_T: '', NN_S: '', HX_P: '' }
 ];
@@ -93,8 +94,9 @@ const rowData_book_phrase = [
 	, { BOOK: '2008年林亦、覃鳳餘《廣西南寧白話研究》', NN: 'tab_2008_phrase', NN_D: '', HX_B: '', NN_T: '', NN_S: '', HX_P: '' }
 	, { BOOK: '2015年黃增霞《廣西南寧疍家話詞彙研究》', NN: '', NN_D: 'noData', HX_B: '', NN_T: '', NN_S: '', HX_P: '' }
 	, { BOOK: '2016年余瑾《廣西平話研究》', NN: '', NN_D: '', HX_B: '', NN_T: '', NN_S: '', HX_P: '' }
+	, { BOOK: '2017年詹伯慧、張振興《漢語方言學大詞典》', NN: '', NN_D: '', HX_B: '', NN_T: 'noData', NN_S: '', HX_P: '' }
 	, { BOOK: '2019年莫思敏《橫縣白話語音研究》', NN: '', NN_D: '', HX_B: 'noData', NN_T: '', NN_S: '', HX_P: '' }
-	, { BOOK: '2020年Leimaau《南寧童謠和熟語整理》(本站提供)', NN: 'tab_2020_proverb', NN_D: '', HX_B: '', NN_T: '', NN_S: '', HX_P: '' }
+	, { BOOK: '2020年Leimaau《南寧童謠和熟語》(本站提供)', NN: 'tab_2020_proverb', NN_D: '', HX_B: '', NN_T: '', NN_S: '', HX_P: '' }
 ];
 
 
@@ -196,7 +198,7 @@ const colData_proverb = [
 	//, {field: 'ID',title: 'ID'}
 	, { field: 'TRAD', title: '繁體', width: '350px', align: 'left', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
 	, { field: 'SIMP', title: '簡體', width: '350px', align: 'left', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
-	, { field: 'SOUR', title: '來源', width: '280px', formatter: (value, row) => { if(row['YEAR'] == 'tab_2020_proverb') {return `<span style="white-space: normal">2020年Leimaau《南寧童謠整理》(本站提供)<span/>`} else {return (row['YEAR'] == 'tab_1937kk_proverb') ? '<span style="white-space: normal">1937年廣西省政府總務處統計室《南寧社會概況》' + pageSplit(value, 'jpg','https://gitee.com/leimaau/data-store/raw/master/1937tj/kk_tj') + '<span/>' : '<span style="white-space: normal">1937年邕寧縣修誌委員會《邕寧縣誌(第4冊)》' + pageSplit(value, 'jpg','https://gitee.com/leimaau/data-store/raw/master/1937tj/jz_tj') + '<span/>' } } }
+	, { field: 'SOUR', title: '來源', width: '280px', formatter: (value, row) => { if(row['YEAR'] == 'tab_2020_proverb') {return `<span style="white-space: normal">2020年Leimaau《南寧童謠和熟語》(本站提供)<span/>`} else {return (row['YEAR'] == 'tab_1937kk_proverb') ? '<span style="white-space: normal">1937年廣西省政府總務處統計室《南寧社會概況》' + pageSplit(value, 'jpg','https://gitee.com/leimaau/data-store/raw/master/1937tj/kk_tj') + '<span/>' : '<span style="white-space: normal">1937年邕寧縣修誌委員會《邕寧縣誌(第4冊)》' + pageSplit(value, 'jpg','https://gitee.com/leimaau/data-store/raw/master/1937tj/jz_tj') + '<span/>' } } }
 	, { field: 'NOTE', title: '附註', width: '220px', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
 ];
 
@@ -230,6 +232,7 @@ function formatSOUR(value, row_year, picType, isChar = true) {
 	else if (row_year == '2002') linkaddr += 'zk/zk'
 	else if (row_year == '2007') linkaddr = ''
 	else if (row_year == '2008') linkaddr += 'yj/yj'
+	else if (row_year == '2017') linkaddr += 'hy/hy0'
 	else if (row_year == '2018') linkaddr = '';
 	
 	if (value == '' || linkaddr == '') {

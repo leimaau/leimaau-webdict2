@@ -115,6 +115,7 @@
             <a class="dropdown-item" target="_blank" href="https://github.com/leimaau/pythonTools">python小工具</a>
 			<div class="dropdown-divider"></div>
             <a class="dropdown-item"  data-toggle="modal" data-target="#aboutModal" href="#">關於</a>
+            <a class="dropdown-item"  data-toggle="modal" data-target="#sponsorshipModal" href="#">友情贊助</a>
           </div>
         </div>
       </div>
@@ -238,7 +239,43 @@
 				數據繁多，疏漏難免，歡迎提供幫助和建議。
 			  </div>
 			  <div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+			  </div>
+			</div>
+		  </div>
+		</div>
+		<!-- Modal -->
+		<div class="modal fade" id="sponsorshipModal" tabindex="-1" role="dialog" aria-labelledby="sponsorshipModalTitle" aria-hidden="true">
+		  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+			<div class="modal-content">
+			  <div class="modal-header">
+				<h5 class="modal-title" id="sponsorshipModalTitle">友情贊助</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				  <span aria-hidden="true">&times;</span>
+				</button>
+			  </div>
+			  <div class="modal-body">
+				<div class="row">
+					<div class="col-sm-6 col-md-6 text-center">
+						 <div class="thumbnail">
+							<img src="https://gitee.com/leimaau/data-store/raw/master/jpg/zhifubao.jpg" class="img-thumbnail" alt="支付寶">
+							<div class="caption">
+								<h3>支付寶</h3>
+							</div>
+						 </div>
+					</div>
+					<div class="col-sm-6 col-md-6 text-center">
+						<div class="thumbnail">
+							<img src="https://gitee.com/leimaau/data-store/raw/master/jpg/weixin.jpg" class="img-thumbnail" alt="微信">
+							<div class="caption">
+								<h3>微信</h3>
+							</div>
+						</div>
+					</div>
+				</div>
+			  </div>
+			  <div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
 			  </div>
 			</div>
 		  </div>
@@ -354,90 +391,89 @@
           </div>
         </div>
       </div>
+	  
+	  <span class="alert-div row col-md-12"><output id="outputAlert"></output></span>
+	  
+	  <div class="row form-group col-md-12 table-responsive">
+		<span class="classTabTitle" id="outTabTitle_triungkox"></span>
+		<table class="classTable" id="outTab_triungkox"></table>
+	  </div>
+
+	  <div class="row form-group col-md-12 table-responsive">
+		<span class="classTabTitle" id="outTabTitle_gw"></span>
+		<table class="classTable" id="outTab_gw"></table>
+	  </div>
+	  
+	  <div class="row form-group col-md-12 table-responsive">
+		<span class="classTabTitle" id="outTabTitle_jw"></span>
+		<table class="classTable" id="outTab_jw"></table>
+	  </div>
+	  
+	  <div class="row form-group col-md-12 table-responsive">
+		<span class="classTabTitle" id="outTabTitle_jj"></span>
+		<table class="classTable" id="outTab_jj"></table>
+	  </div>
+
+	  <div class="row form-group col-md-12">
+		<div class="col-md-6">
+		  <nav>
+			<div class="nav nav-tabs d-none" id="nav-tab" role="tablist">
+			  <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab"
+				aria-controls="nav-home" aria-selected="true">餅圖</a>
+			  <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab"
+				aria-controls="nav-profile" aria-selected="false">詞雲圖</a>
+			</div>
+		  </nav>
+		  <div class="tab-content" id="nav-tabContent">
+			<div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+			  <div class="classHighcharts" id="outPie"></div>
+			</div>
+			<div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+			  <div class="classHighcharts" id="outWordCloud"></div>
+			</div>
+		  </div>
+		</div>
+		<div class="col-md-6">
+		  <nav>
+			<div class="nav nav-tabs d-none" id="nav-tab-bw" role="tablist">
+			  <a class="nav-item nav-link active" id="nav-home-tab-bw" data-toggle="tab" href="#nav-home-bw" role="tab"
+				aria-controls="nav-home-bw" aria-selected="true">餅圖</a>
+			  <a class="nav-item nav-link" id="nav-profile-tab-bw" data-toggle="tab" href="#nav-profile-bw" role="tab"
+				aria-controls="nav-profile-bw" aria-selected="false">詞雲圖</a>
+			</div>
+		  </nav>
+		  <div class="tab-content" id="nav-tabContent-bw">
+			<div class="tab-pane fade show active" id="nav-home-bw" role="tabpanel" aria-labelledby="nav-home-tab-bw">
+			  <div class="classHighcharts" id="outPie_bw"></div>
+			</div>
+			<div class="tab-pane fade" id="nav-profile-bw" role="tabpanel" aria-labelledby="nav-profile-tab-bw">
+			  <div class="classHighcharts" id="outWordCloud_bw"></div>
+			</div>
+		  </div>
+		</div>
+	  </div>
+
+	  <div class="row form-group col-md-12 table-responsive">
+		<span class="classTabTitle" id="outTabTitle"></span>
+		<table class="classTable" id="outTab"></table>
+	  </div>
+	  
+	  <div class="row form-group col-md-12 table-responsive">
+		<span class="classTabTitle" id="outTabTitle_bw"></span>
+		<table class="classTable" id="outTab_bw"></table>
+	  </div>
+	  
+	  <div class="row form-group col-md-12 table-responsive">
+		<span class="classTabTitle" id="outTabTitle_proverb"></span>
+		<table class="classTable" id="outTab_proverb"></table>
+	  </div>
+	  
     </form>
-	
-  <span class="alert-div row col-md-12"><output id="outputAlert"></output></span>
-  
-  <div class="row form-group col-md-12 table-responsive">
-	<span class="classTabTitle" id="outTabTitle_triungkox"></span>
-	<table class="classTable" id="outTab_triungkox"></table>
-  </div>
-
-  <div class="row form-group col-md-12 table-responsive">
-	<span class="classTabTitle" id="outTabTitle_gw"></span>
-	<table class="classTable" id="outTab_gw"></table>
-  </div>
-  
-  <div class="row form-group col-md-12 table-responsive">
-	<span class="classTabTitle" id="outTabTitle_jw"></span>
-	<table class="classTable" id="outTab_jw"></table>
-  </div>
-  
-  <div class="row form-group col-md-12 table-responsive">
-	<span class="classTabTitle" id="outTabTitle_jj"></span>
-	<table class="classTable" id="outTab_jj"></table>
-  </div>
-
-  <div class="row form-group col-md-12">
-	<div class="col-md-6">
-	  <nav>
-		<div class="nav nav-tabs d-none" id="nav-tab" role="tablist">
-		  <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab"
-			aria-controls="nav-home" aria-selected="true">餅圖</a>
-		  <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab"
-			aria-controls="nav-profile" aria-selected="false">詞雲圖</a>
-		</div>
-	  </nav>
-	  <div class="tab-content" id="nav-tabContent">
-		<div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-		  <div class="classHighcharts" id="outPie"></div>
-		</div>
-		<div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-		  <div class="classHighcharts" id="outWordCloud"></div>
-		</div>
-	  </div>
-	</div>
-	<div class="col-md-6">
-	  <nav>
-		<div class="nav nav-tabs d-none" id="nav-tab-bw" role="tablist">
-		  <a class="nav-item nav-link active" id="nav-home-tab-bw" data-toggle="tab" href="#nav-home-bw" role="tab"
-			aria-controls="nav-home-bw" aria-selected="true">餅圖</a>
-		  <a class="nav-item nav-link" id="nav-profile-tab-bw" data-toggle="tab" href="#nav-profile-bw" role="tab"
-			aria-controls="nav-profile-bw" aria-selected="false">詞雲圖</a>
-		</div>
-	  </nav>
-	  <div class="tab-content" id="nav-tabContent-bw">
-		<div class="tab-pane fade show active" id="nav-home-bw" role="tabpanel" aria-labelledby="nav-home-tab-bw">
-		  <div class="classHighcharts" id="outPie_bw"></div>
-		</div>
-		<div class="tab-pane fade" id="nav-profile-bw" role="tabpanel" aria-labelledby="nav-profile-tab-bw">
-		  <div class="classHighcharts" id="outWordCloud_bw"></div>
-		</div>
-	  </div>
-	</div>
-  </div>
-
-  <div class="row form-group col-md-12 table-responsive">
-	<span class="classTabTitle" id="outTabTitle"></span>
-	<table class="classTable" id="outTab"></table>
-  </div>
-  
-  <div class="row form-group col-md-12 table-responsive">
-	<span class="classTabTitle" id="outTabTitle_bw"></span>
-	<table class="classTable" id="outTab_bw"></table>
-  </div>
-  
-  <div class="row form-group col-md-12 table-responsive">
-	<span class="classTabTitle" id="outTabTitle_proverb"></span>
-	<table class="classTable" id="outTab_proverb"></table>
-  </div>
-
   </div>
   
   <div class="footer text-center mt-auto py-3">
 	  <div class="foot-container">
-		<span class="text-muted"> © 2020 <a class="text-info" href="https://leimaau.gitee.io/leimaau-webdict2/">Leimaau’s Webdict</a> 版權所有</span></br>
-		<span class="text-muted" id="busuanzi_container_site_pv"  style="display:none">Total view <span id="busuanzi_value_site_pv"></span> times.</span>
+		<span class="text-muted"> © 2020 <a class="text-info" href="https://leimaau.gitee.io/leimaau-webdict2/">Leimaau’s Webdict</a> 版權所有</span><span class="text-muted" id="busuanzi_container_site_pv" style="display:none"> | 本站總訪問量 <span id="busuanzi_value_site_pv"></span> 次</span>
 	  </div>
   </div>
 </body>
