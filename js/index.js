@@ -446,7 +446,7 @@ function queryJyutpingPhrase(txtStr, trad_simp, tabName, jyutping_ipa, signResul
 			if (signResult_format == 'updown') { // 按字內嵌時 中文字後帶 '</rt><rp>)</rp>'，拼音或ipa後帶 '</rt><rp>)</rp>'，return時合併起來
 				resJ.push(txtStr.split('')[i] + '<rp>(</rp><rt>');
 				resJ.push((jyutping_ipa == 'jyutping') ? res[0]['jyutping'].split(' ')[i] + '</rt><rp>)</rp>' : res[0]['ipa'].split(' ')[i] + '</rt><rp>)</rp>');
-			} else{
+			} else {
 				resJ.push((jyutping_ipa == 'jyutping') ? res[0]['jyutping'].split(' ')[i] : res[0]['ipa'].split(' ')[i]);
 			}
 		}
