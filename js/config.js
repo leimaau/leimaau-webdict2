@@ -29,10 +29,10 @@ const colData_oldbook = [
 ];
 
 const rowData_oldbook = [
-	{ OLDBOOK: `1008年《廣韻》[<a class="text-info" target="_blank" href="https://zhuanlan.zhihu.com/p/20430939">poem覈校版20170209</a>]`, TRIUNGKOX: 'tab_1008', OLDCANTO: '', CANTO: '' }
-	, { OLDBOOK: `1838年重鐫本《江湖尺牘分韻撮要合集》[<a class="text-info" target="_blank" href="http://ytenx.org/pyonh/">韻典網poem覈校版</a>](本站擬音)`, TRIUNGKOX: '', OLDCANTO: 'tab_1838', CANTO: '' }
-	, { OLDBOOK: `1856年衛三畏廉士甫《英華分韻撮要》[<a class="text-info" target="_blank" href="https://jyut.net/">粵音資料集叢版</a>](本站擬音)`, TRIUNGKOX: '', OLDCANTO: 'tab_1856', CANTO: '' }
-	, { OLDBOOK: `1941年黃錫凌《粵音韻彙》[<a class="text-info" target="_blank" href="https://jyut.net/">粵音資料集叢版</a>]`, TRIUNGKOX: '', OLDCANTO: '', CANTO: 'tab_1941' }
+	{ OLDBOOK: `1008年《廣韻》[<a class="text-info" target="_blank" href="https://zhuanlan.zhihu.com/p/20430939">poem覈校版20170209</a>]`, TRIUNGKOX: 'tab_1008_g', OLDCANTO: '', CANTO: '' }
+	, { OLDBOOK: `1838年重鐫本《江湖尺牘分韻撮要合集》[<a class="text-info" target="_blank" href="http://ytenx.org/pyonh/">韻典網poem覈校版</a>](本站擬音)`, TRIUNGKOX: '', OLDCANTO: 'tab_1838_g', CANTO: '' }
+	, { OLDBOOK: `1856年衛三畏廉士甫《英華分韻撮要》[<a class="text-info" target="_blank" href="https://jyut.net/">粵音資料集叢版</a>](本站擬音)`, TRIUNGKOX: '', OLDCANTO: 'tab_1856_g', CANTO: '' }
+	, { OLDBOOK: `1941年黃錫凌《粵音韻彙》[<a class="text-info" target="_blank" href="https://jyut.net/">粵音資料集叢版</a>]`, TRIUNGKOX: '', OLDCANTO: '', CANTO: 'tab_1941_g' }
 ];
 
 // 字典資料
@@ -51,9 +51,9 @@ const rowData_book = [
 	{ BOOK: '1994年謝建猷《南寧白話同音字彙》', NN: 'tab_1994', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_S: '', HX_P: '' }
 	, { BOOK: '1997年楊煥典《南寧話音檔》', NN: 'tab_1997', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_S: '', HX_P: '' }
 	, { BOOK: '1998年楊煥典主編《廣西通誌·漢語方言誌》', NN: 'tab_1998', NN_D: '', NN_Y: '', HX_B: '', NN_T: 'tab_1998_bw', NN_S: '', HX_P: '' }
-	, { BOOK: '2000年李連進《平話音韻研究》', NN: '', NN_D: '', NN_Y: '', HX_B: '', NN_T: 'tab_2000_bw', NN_S: '', HX_P: 'noData' }
+	, { BOOK: '2000年李連進《平話音韻研究》', NN: '', NN_D: '', NN_Y: '', HX_B: '', NN_T: 'tab_2000_bw', NN_S: '', HX_P: 'tab_2000_zb_wj' }
 	, { BOOK: '2002年楊煥典《現代漢語方言音庫(字庫)》', NN: 'tab_2002', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_S: '', HX_P: '' }
-	, { BOOK: '2007年謝建猷《廣西漢語方言研究》', NN: 'tab_2007', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_S: 'noData', HX_P: 'noData' }
+	, { BOOK: '2007年謝建猷《廣西漢語方言研究》', NN: 'tab_2007', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_S: 'tab_2007_zb_sz', HX_P: 'tab_2007_zb_wj' }
 	, { BOOK: '2007年白雲《廣西疍家話語音研究》', NN: '', NN_D: 'noData', NN_Y: '', HX_B: '', NN_T: '', NN_S: '', HX_P: '' }
 	, { BOOK: '2008年林亦、覃鳳餘《廣西南寧白話研究》', NN: 'tab_2008', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_S: '', HX_P: '' }
 	, { BOOK: '2009年陳海倫、林亦《粵語平話土話方音字彙》', NN: 'noData', NN_D: '', NN_Y: 'noData', HX_B: '', NN_T: 'noData', NN_S: '', HX_P: '' }
@@ -61,7 +61,7 @@ const rowData_book = [
 	, { BOOK: '2016年余瑾《廣西平話研究》', NN: '', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_S: '', HX_P: '' }
 	, { BOOK: '2017年詹伯慧、張振興《漢語方言學大詞典》', NN: '', NN_D: '', NN_Y: '', HX_B: '', NN_T: 'tab_2017_bw', NN_S: '', HX_P: '' }
 	, { BOOK: '2018年Leimaau《南寧話審音表》(本站提供)', NN: 'tab_2018', NN_D: '', NN_Y: '', HX_B: '', NN_T: 'tab_2018_bw', NN_S: '', HX_P: '' }
-	, { BOOK: '2019年莫思敏、談婷《廣西橫縣白話同音字彙》', NN: '', NN_D: '', NN_Y: '', HX_B: 'noData', NN_T: '', NN_S: '', HX_P: '' }
+	, { BOOK: '2019年莫思敏、談婷《廣西橫縣白話同音字彙》', NN: '', NN_D: '', NN_Y: '', HX_B: 'tab_2019_zb_b_wj', NN_T: '', NN_S: '', HX_P: '' }
 ];
 
 // 詞典資料
@@ -181,7 +181,7 @@ const colData_jj = [
 ];
 
 const colData = [
-	{ field: 'YEAR', title: '資料', align: 'center', formatter: (value) => { return `${value.replace('_bw', '').replace('tab_', '')}` } }
+	{ field: 'YEAR', title: '資料', align: 'center', formatter: (value) => { return `${value.replace('_bw', '').replace('tab_', '').replace(/_zb.*/g,'')}` } }
 	//, {field: 'ID',title: 'ID'}
 	, { field: 'TRAD', title: '繁體', align: 'center', formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'char', 'dicWord')">${value}</a>` } }
 	, { field: 'SIMP', title: '簡體', align: 'center', formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'char_simp', 'dicWord')">${value}</a>` } }

@@ -92,24 +92,48 @@ function queryChar(inputValue, queryType, selVal){
 	};
 	
 	var res = [];
-	var dataList = selVal.filter(item => item.indexOf('_bw') == -1).filter(item => item.indexOf('1008') == -1).filter(item => item.indexOf('1838') == -1).filter(item => item.indexOf('1856') == -1).filter(item => item.indexOf('1941') == -1);
+	var dataList = selVal.filter(item => item.indexOf('_bw') == -1).filter(item => item.indexOf('_g') == -1).filter(item => item.indexOf('_zb') == -1);
 	if (dataList.length != 0) {
 		res = MainQuery.queryTable(inputValue, dataList, queryType);
-		showTable(res, 'outTab', allTitle, outTabTitle, colData);  // 顯示白話表格
+		showTable(res, 'outTab', allTitle+'(市區)', outTabTitle, colData);  // 顯示白話表格
 		if(queryType == 'char' || queryType == 'char_simp') showPie(res, inputValue, 'outPie', allTitle, queryType);  // 顯示白話餅圖
-		//showWordCloud(res, inputValue, 'outWordCloud', allTitle_bw, queryType, 'JYUTPING'); // 顯示白話詞雲圖
+		//showWordCloud(res, inputValue, 'outWordCloud', allTitle, queryType, 'JYUTPING'); // 顯示白話詞雲圖
 		
 	};
 	
 	var res_bw = [];
 	if (selVal.some(item => item.indexOf('_bw') > -1)) {
 		res_bw = MainQuery.queryTable(inputValue, selVal.filter(item => item.indexOf('_bw') > -1), queryType);
-		showTable(res_bw, 'outTab_bw', allTitle_bw, outTabTitle_bw, colData);  // 顯示平話表格
+		showTable(res_bw, 'outTab_bw', allTitle_bw+'(亭子)', outTabTitle_bw, colData);  // 顯示平話表格
 		if(queryType == 'char' || queryType == 'char_simp') showPie(res_bw, inputValue, 'outPie_bw', allTitle_bw, queryType);  // 顯示平話餅圖
 		//showWordCloud(res_bw, inputValue, 'outWordCloud_bw', allTitle_bw, queryType, 'JYUTPING'); // 顯示平話詞雲圖
 	};
 	
-	var isShow = res_triungkox.length + res_gw.length + res_jw.length + res_jj.length + res.length + res_bw.length;
+	var res_zb_sz = [];
+	if (selVal.some(item => item.indexOf('zb_sz') > -1)) {
+		res_zb_sz = MainQuery.queryTable(inputValue, selVal.filter(item => item.indexOf('zb_sz') > -1), queryType);
+		showTable(res_zb_sz, 'outTab_zb_sz', '沙井平話', outTabTitle_zb_sz, colData);
+		//if(queryType == 'char' || queryType == 'char_simp') showPie(res_zb_sz, inputValue, 'outPie_zb_sz', allTitle_zb_sz, queryType);
+		//showWordCloud(res_zb_sz, inputValue, 'outWordCloud_zb_sz', '沙井平話', queryType, 'JYUTPING');
+	};
+	
+	var res_zb_b_wj = [];
+	if (selVal.some(item => item.indexOf('zb_b_wj') > -1)) {
+		res_zb_b_wj = MainQuery.queryTable(inputValue, selVal.filter(item => item.indexOf('zb_b_wj') > -1), queryType);
+		showTable(res_zb_b_wj, 'outTab_zb_b_wj', '橫縣白話', outTabTitle_zb_b_wj, colData);
+		//if(queryType == 'char' || queryType == 'char_simp') showPie(res_zb_b_wj, inputValue, 'outPie_zb_b_wj', allTitle_zb_b_wj, queryType);
+		//showWordCloud(res_zb_b_wj, inputValue, 'outWordCloud_zb_b_wj', '橫縣白話', queryType, 'JYUTPING');
+	};
+	
+	var res_zb_wj = [];
+	if (selVal.some(item => item.indexOf('zb_wj') > -1)) {
+		res_zb_wj = MainQuery.queryTable(inputValue, selVal.filter(item => item.indexOf('zb_wj') > -1), queryType);
+		showTable(res_zb_wj, 'outTab_zb_wj', '橫縣平話', outTabTitle_zb_wj, colData);
+		//if(queryType == 'char' || queryType == 'char_simp') showPie(res_zb_wj, inputValue, 'outPie_zb_wj', allTitle_zb_wj, queryType);
+		//showWordCloud(res_zb_wj, inputValue, 'outWordCloud_zb_wj', '橫縣平話', queryType, 'JYUTPING');
+	};
+	
+	var isShow = res_triungkox.length + res_gw.length + res_jw.length + res_jj.length + res.length + res_bw.length + res_zb_sz.length + res_zb_b_wj.length + res_zb_wj.length;
 	//if (isShow != 0) { if(dataList.length != 0) $('#nav-tab').removeClass('d-none'); if(dataList_bw.length != 0) $('#nav-tab-bw').removeClass('d-none'); }// 顯示tab
 	
 	return isShow;
@@ -149,7 +173,7 @@ function queryPhrase(inputValue, queryType, selVal){
 	var dataList_proverb = selVal.filter(item => item.indexOf('_2020') > -1);
 	if (dataList_proverb.length != 0) {
 		res_proverb = MainQuery.queryTable_proverb(inputValue, dataList_proverb, queryType);
-		showTable(res_proverb, 'outTab_proverb', '童謠和熟語', outTabTitle_proverb, colData_proverb);
+		showTable(res_proverb, 'outTab_zb_sz', '童謠和熟語', outTabTitle_zb_sz, colData_proverb);  // 使用顯示沙井平話的位置
 	};
 	
 	var isShow = res_oldProverb.length + res.length + res_bw.length + res_proverb.length;
@@ -348,7 +372,7 @@ function getDataText(){
 }
 
 // 在線標註函數
-function signArticle(textCont, signText_type, signResult_type, signResult_format, signResult_way) {
+function signArticle(textCont, signText_type, signResult_type, signResult_format, signResult_way, signResult_IPA) {
 	
 	if (textCont.length > 2000){
 		toastrFunc('toast-top-center');
@@ -368,13 +392,13 @@ function signArticle(textCont, signText_type, signResult_type, signResult_format
 		if (signResult_format == 'updown') { // 按字內嵌
 			let outputLine = [];
 			for (let txtStr of cutModule.cut(lines, false)) {
-				outputLine.push(`<ruby>${queryJyutpingPhrase(txtStr, signText_type, signResult_type, (signResult_way == 'jyutping' || signResult_way == 'jyutping_ipa') ? 'jyutping' : 'ipa', signResult_format, false)}</ruby>`);
+				outputLine.push(`<ruby>${queryJyutpingPhrase(txtStr, signText_type, signResult_type, (signResult_way == 'jyutping' || signResult_way == 'jyutping_ipa') ? 'jyutping' : 'ipa', signResult_format, signResult_IPA, false)}</ruby>`);
 			}
 			outputText.push(`${outputLine.join('')}<br>`);
 		} else if (signResult_format == 'lineupdown') { // 按行內嵌
 			let outputLine1 = [], outputLine3 = [];
 			for (let txtStr of cutModule.cut(lines, false)) {
-				outputLine1.push(queryJyutpingPhrase(txtStr, signText_type, signResult_type, (signResult_way == 'jyutping' || signResult_way == 'jyutping_ipa') ? 'jyutping' : 'ipa', signResult_format).split(',').join(' '));
+				outputLine1.push(queryJyutpingPhrase(txtStr, signText_type, signResult_type, (signResult_way == 'jyutping' || signResult_way == 'jyutping_ipa') ? 'jyutping' : 'ipa', signResult_format, signResult_IPA).split(',').join(' '));
 				outputLine3.push(txtStr);
 			}
 			outputText.push(`<ruby>${outputLine3.join('')}<rp>(</rp><rt>${outputLine1.join(' ')}</rt><rp>)</rp></ruby><br>`);
@@ -382,18 +406,18 @@ function signArticle(textCont, signText_type, signResult_type, signResult_format
 			let outputLine1 = [], outputLine2 = [], outputLine3 = [];
 			for (let txtStr of cutModule.cut(lines, false)) {
 				if (signResult_way == 'jyutping') {
-					outputLine1.push(queryJyutpingPhrase(txtStr, signText_type, signResult_type, 'jyutping', signResult_format).split(',').join(' '));
+					outputLine1.push(queryJyutpingPhrase(txtStr, signText_type, signResult_type, 'jyutping', signResult_format, signResult_IPA).split(',').join(' '));
 					outputLine3.push(txtStr);
 				} else if (signResult_way == 'ipa') {
-					outputLine1.push(queryJyutpingPhrase(txtStr, signText_type, signResult_type, 'ipa', signResult_format).split(',').join(' '));
+					outputLine1.push(queryJyutpingPhrase(txtStr, signText_type, signResult_type, 'ipa', signResult_format, signResult_IPA).split(',').join(' '));
 					outputLine3.push(txtStr);
 				} else if (signResult_way == 'jyutping_ipa') {
-					outputLine1.push(queryJyutpingPhrase(txtStr, signText_type, signResult_type, 'jyutping', signResult_format).split(',').join(' '));
-					outputLine2.push(queryJyutpingPhrase(txtStr, signText_type, signResult_type, 'ipa', signResult_format).split(',').join(' '));
+					outputLine1.push(queryJyutpingPhrase(txtStr, signText_type, signResult_type, 'jyutping', signResult_format, signResult_IPA).split(',').join(' '));
+					outputLine2.push(queryJyutpingPhrase(txtStr, signText_type, signResult_type, 'ipa', signResult_format, signResult_IPA).split(',').join(' '));
 					outputLine3.push(txtStr);
 				} else if (signResult_way == 'ipa_jyutping') {
-					outputLine1.push(queryJyutpingPhrase(txtStr, signText_type, signResult_type, 'ipa', signResult_format).split(',').join(' '));
-					outputLine2.push(queryJyutpingPhrase(txtStr, signText_type, signResult_type, 'jyutping', signResult_format).split(',').join(' '));
+					outputLine1.push(queryJyutpingPhrase(txtStr, signText_type, signResult_type, 'ipa', signResult_format, signResult_IPA).split(',').join(' '));
+					outputLine2.push(queryJyutpingPhrase(txtStr, signText_type, signResult_type, 'jyutping', signResult_format, signResult_IPA).split(',').join(' '));
 					outputLine3.push(txtStr);
 				}
 			}
@@ -409,18 +433,18 @@ function signArticle(textCont, signText_type, signResult_type, signResult_format
 }
 
 // 【單字】查詢粵拼或IPA函數
-function queryJyutping(txtStr, trad_simp, tabName, jyutping_ipa, keep_symbol = true){
+function queryJyutping(txtStr, trad_simp, tabName, jyutping_ipa, signResult_IPA, keep_symbol = true){
 	//let res = MainQuery.queryJyutping(txtStr, trad_simp, tabName); // 目前是從segDict.js獲取，tab_nn_review、tab_nnt_review、tab_gz_review爲空，需要時導入數據使用
 	let res = window[tabName].filter(item => item[trad_simp] == txtStr);
 	if ( !(/[^\u4e00-\u9fa5]/.test(txtStr)) || (res.length > 0) ) { // 判斷是否中文或字典有數據
 		if(res.length != 0){
 			if (res.length == 1){ // 只有一種讀音
-				return (jyutping_ipa == 'jyutping') ? res[0]['jyutping'] : res[0]['ipa'];
+				return (jyutping_ipa == 'jyutping') ? res[0]['jyutping'] : ipaFormat(res[0]['ipa'], signResult_IPA);
 			} else {
 				let char_jyutping = [], char_ipa = [];
 				for (let i of res){
 					char_jyutping.push(i.jyutping);
-					char_ipa.push(i.ipa);
+					char_ipa.push(ipaFormat(i.ipa, signResult_IPA));
 				}
 				return (jyutping_ipa == 'jyutping') ? char_jyutping.join('/') : char_ipa.join('/');
 			}
@@ -437,32 +461,41 @@ function queryJyutping(txtStr, trad_simp, tabName, jyutping_ipa, keep_symbol = t
 }
 
 // 【詞彙】查詢粵拼或IPA函數
-function queryJyutpingPhrase(txtStr, trad_simp, tabName, jyutping_ipa, signResult_format, keep_symbol = true){
+function queryJyutpingPhrase(txtStr, trad_simp, tabName, jyutping_ipa, signResult_format, signResult_IPA, keep_symbol = true){
 	//let res = MainQuery.queryJyutping(txtStr, trad_simp, tabName); // 目前是從segDict.js獲取，tab_nn_review、tab_nnt_review、tab_gz_review停用，需要時導入數據使用
-	let res = window[tabName].filter(item => item[trad_simp] == txtStr);
+	let res = window[tabName].filter(item => item[trad_simp] == txtStr), resJ =[];
 	if (res.length == 1 && txtStr.length > 1 ) { // 詞典有數據並且爲詞彙
-		let resJ =[];
 		for(let i in txtStr.split('')){
 			if (signResult_format == 'updown') { // 按字內嵌時 中文字後帶 '</rt><rp>)</rp>'，拼音或ipa後帶 '</rt><rp>)</rp>'，return時合併起來
 				resJ.push(txtStr.split('')[i] + '<rp>(</rp><rt>');
-				resJ.push((jyutping_ipa == 'jyutping') ? res[0]['jyutping'].split(' ')[i] + '</rt><rp>)</rp>' : res[0]['ipa'].split(' ')[i] + '</rt><rp>)</rp>');
+				resJ.push((jyutping_ipa == 'jyutping') ? res[0]['jyutping'].split(' ')[i] + '</rt><rp>)</rp>' : ipaFormat(res[0]['ipa'].split(' ')[i], signResult_IPA) + '</rt><rp>)</rp>');
 			} else {
-				resJ.push((jyutping_ipa == 'jyutping') ? res[0]['jyutping'].split(' ')[i] : res[0]['ipa'].split(' ')[i]);
+				resJ.push((jyutping_ipa == 'jyutping') ? res[0]['jyutping'].split(' ')[i] : ipaFormat(res[0]['ipa'].split(' ')[i], signResult_IPA));
 			}
 		}
-		return resJ.join((signResult_format == 'updown') ? '' : ',');
 	} else { // 詞典無數據或有多個讀音或爲單字
-		let resJ =[];
 		for(let i of txtStr.split('')){
 			if (signResult_format == 'updown') {
 				resJ.push(i + '<rp>(</rp><rt>');
-				resJ.push(queryJyutping(i, trad_simp, tabName, jyutping_ipa, keep_symbol) + '</rt><rp>)</rp>');
+				resJ.push(queryJyutping(i, trad_simp, tabName, jyutping_ipa, signResult_IPA, keep_symbol) + '</rt><rp>)</rp>');
 			} else {
-				resJ.push(queryJyutping(i, trad_simp, tabName, jyutping_ipa, keep_symbol));
+				resJ.push(queryJyutping(i, trad_simp, tabName, jyutping_ipa, signResult_IPA, keep_symbol));
 			}
 		}
-		return resJ.join((signResult_format == 'updown') ? '' : ',');
 	}
+	return resJ.join((signResult_format == 'updown') ? '' : ',');
+}
+
+// IPA格式處理
+function ipaFormat(IPA, signResult_IPA){
+	if(signResult_IPA == 'noUp'){
+		IPA = IPA;
+	} else if(signResult_IPA == 'Up') {
+		IPA = IPA.replace(/1/g,'¹').replace(/2/g,'²').replace(/3/g,'³').replace(/4/g,'⁴').replace(/5/g,'⁵');
+	} else if(signResult_IPA == 'toneLine') {
+		IPA = IPA.replace(/1/g,'˩').replace(/2/g,'˨').replace(/3/g,'˧').replace(/4/g,'˦').replace(/5/g,'˥');
+	}
+	return IPA;
 }
 
 // 在線分詞函數

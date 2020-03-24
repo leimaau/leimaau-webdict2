@@ -167,7 +167,7 @@
 				  <span aria-hidden="true">&times;</span>
 				</button>
 			  </div>
-			<form onsubmit="signArticle(signText.value, signText_type.value, signResult_type.value, signResult_format.value, signResult_way.value); return false">
+			<form onsubmit="signArticle(signText.value, signText_type.value, signResult_type.value, signResult_format.value, signResult_way.value, signResult_IPA.value); return false">
 			  <div class="modal-body">
 				  <div class="form-group">
 					<label class="col-form-label">輸入文本：</label>
@@ -200,11 +200,18 @@
 					</div>
 					<label class="col-form-label">標註方式：</label>
 					<div class="custom-control custom-control-inline sel-div">
-						<select class="form-control form-control-sm" id="signResult_way">
+						<select class="form-control form-control-sm" id="signResult_way" onchange="if($('#signResult_way').val()=='jyutping'){$('#IPA_format').addClass('d-none')}else{$('#IPA_format').removeClass('d-none')};">
 							<option value="jyutping" selected>粵拼</option>
 							<option value="ipa">IPA</option>
 							<option id="opt_jyutping_ipa" value="jyutping_ipa" class="d-none">粵拼和IPA</option>
 							<option id="opt_ipa_jyutping" value="ipa_jyutping" class="d-none">IPA和粵拼</option>
+						</select>
+					</div>
+					<div id="IPA_format" class="custom-control custom-control-inline sel-div d-none">
+						<select class="form-control form-control-sm" id="signResult_IPA">
+							<option value="noUp" selected>IPA調值不上標</option>
+							<option value="Up">IPA調值上標</option>
+							<option value="toneLine">IPA調值豎線</option>
 						</select>
 					</div>
 					<span class="form-control textarea-style table-responsive" id="signResult"></span>
@@ -231,7 +238,7 @@
 				</button>
 			  </div>
 			  <div class="modal-body">
-				本站叫「狸貓的在線詞典 2.0 版」(Leimaau’s Webdict 2.0)，上線於2020年02月，是一個具有個人性質的在線詞典。相對與 1.0 版的 <a class="text-info" href="https://leimaau.gitee.io/leimaau-webdict/" target="_blank">Leimaau’s Webdict</a> 本版有了較大的改進，程序的開發和製作得益於 sgalal 和匆匆的我的技術支持，特此致謝。</br></br>本站原先開發和運行於 github 中，爲了方便國內用戶訪問，故將程序備份於 gitee 中運行，因此本站有兩個地址，對於國內用戶來說，gitee 地址作<a class="text-info" target="_blank" href="https://leimaau.gitee.io/leimaau-webdict2/">主頁地址</a>，github 地址作<a class="text-info" target="_blank" href="https://leimaau.github.io/leimaau-webdict2/">備用地址</a>。關於生僻字的顯示，可在<a class="text-info" target="_blank" href="https://ctext.org/font-test-page/zh">字體試驗葉</a>查看。</br></br>
+				本站叫「狸貓的在線詞典 2.0 版」(Leimaau’s Webdict 2.0)，上線於2020年02月，是一個具有個人性質的在線詞典（狸貓者91年老南寧是也）。相對與 1.0 版的 <a class="text-info" href="https://leimaau.gitee.io/leimaau-webdict/" target="_blank">Leimaau’s Webdict</a> 本版有了較大的改進，程序的開發和製作得益於 sgalal 和匆匆的我的技術支持，特此致謝。</br></br>本站原先開發和運行於 github 中，爲了方便國內用戶訪問，故將程序備份於 gitee 中運行，因此本站有兩個地址，對於國內用戶來說，gitee 地址作<a class="text-info" target="_blank" href="https://leimaau.gitee.io/leimaau-webdict2/">主頁地址</a>，github 地址作<a class="text-info" target="_blank" href="https://leimaau.github.io/leimaau-webdict2/">備用地址</a>。關於生僻字的顯示，可在<a class="text-info" target="_blank" href="https://ctext.org/font-test-page/zh">字體試驗葉</a>查看。</br></br>
 				資料收集整理錄入校對與擬音：Leimaau </br>
 				程序製作：Leimaau、匆匆的我、sgalal </br>
 				聯繫郵箱：leimaau@qq.com </br>
@@ -464,8 +471,18 @@
 	  </div>
 	  
 	  <div class="row form-group col-md-12 table-responsive">
-		<span class="classTabTitle" id="outTabTitle_proverb"></span>
-		<table class="classTable" id="outTab_proverb"></table>
+		<span class="classTabTitle" id="outTabTitle_zb_sz"></span>
+		<table class="classTable" id="outTab_zb_sz"></table>
+	  </div>
+	  
+	  <div class="row form-group col-md-12 table-responsive">
+		<span class="classTabTitle" id="outTabTitle_zb_b_wj"></span>
+		<table class="classTable" id="outTab_zb_b_wj"></table>
+	  </div>
+	  
+	  <div class="row form-group col-md-12 table-responsive">
+		<span class="classTabTitle" id="outTabTitle_zb_wj"></span>
+		<table class="classTable" id="outTab_zb_wj"></table>
 	  </div>
 	  
     </form>
