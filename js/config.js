@@ -1,9 +1,15 @@
 /*
 全局配置
 */
+
+const cdnAddr = [];
+cdnAddr.push('https://cdn.jsdelivr.net/gh/leimaau');
+cdnAddr.push('CDN');
+cdnAddr.push('db/leimaau.db3');
+
 const DictConfig = {
   //dir: 'db/leimaau.db3',
-  dir: 'https://cdn.jsdelivr.net/gh/leimaau/CDN@v1.0/db/leimaau.db3',
+  dir: cdnAddr.join('/'),  // 使用CDN加速
 };
 
 /*

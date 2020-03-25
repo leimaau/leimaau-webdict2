@@ -5,7 +5,7 @@ DictDb = (() => {
 
   dbTemp.factory = (dbDir) => {
     // 讀取數據庫數據
-    console.log(dbDir);
+    //console.log(dbDir);
     axios.get(dbDir, { responseType: 'arraybuffer' })
       .then(function (response) {
         dbTemp.db = new window.SQL.Database(new Uint8Array(response.data));
