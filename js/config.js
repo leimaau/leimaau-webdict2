@@ -2,7 +2,8 @@
 全局配置
 */
 const DictConfig = {
-  dir: 'db/leimaau.db3',
+  //dir: 'db/leimaau.db3',
+  dir: 'https://cdn.jsdelivr.net/gh/leimaau/CDN@v1.0/db/leimaau.db3',
 };
 
 /*
