@@ -8,8 +8,8 @@ cdnAddr.push('leimaau-webdict2');
 cdnAddr.push('db/leimaau.db3');
 
 const DictConfig = {
-  //dir: 'db/leimaau.db3',
-  dir: cdnAddr.join('/'),  // 使用CDN加速
+  dir: 'db/leimaau.db3',
+  //dir: cdnAddr.join('/'),  // 使用CDN加速
 };
 
 /*
