@@ -1,6 +1,6 @@
 # leimaau-webdict2
 
-[![](https://data.jsdelivr.com/v1/package/gh/leimaau/leimaau-webdict2/badge)](https://www.jsdelivr.com/package/gh/leimaau/leimaau-webdict2)
+[![](https://data.jsdelivr.com/v1/package/gh/leimaau/CDN/badge)](https://www.jsdelivr.com/package/gh/leimaau/CDN)
 
 [Leimaau's Webdict 2.0](https://leimaau.github.io/leimaau-webdict2/)
 

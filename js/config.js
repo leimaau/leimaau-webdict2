@@ -4,7 +4,7 @@
 
 const cdnAddr = [];
 cdnAddr.push('https://cdn.jsdelivr.net/gh/leimaau');
-cdnAddr.push('leimaau-webdict2@latest');
+cdnAddr.push('CDN@latest');
 cdnAddr.push('db/leimaau.db3');
 
 const DictConfig = {
