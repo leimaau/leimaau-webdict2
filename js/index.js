@@ -241,15 +241,18 @@ function showPie(res, inputValue, pieDiv, pieTitle, queryType) {
 		name: '資料',
 		data: show_data
 	}];
-	var color = ['#065279', // 靛藍
-		'#057748', // 松花綠
-		'#b35c44', // 茶色
-		'#96ce54', // 豆青
-		'#b0a4e3', // 雪青
+	var color = ['#2775b6', // 景泰藍
+		'#2c9678', // 青礬綠
+		'#35333c', // 鯊魚灰
+		'#c06f98', // 櫻草紫
+		'#fca104', // 橙皮黃
 		'#1bd1a5', // 碧色
-		'#896c39', // 秋色
-		'#725e82', // 烏色
-		'#622a1d'];// 玄色
+		'#eb3c70', // 松葉牡丹紅
+		'#b0a4e3', // 雪青
+		'#813c85', // 桔梗紫
+		'#986524', // 山雞褐
+		'#fcd337', // 檸檬黃
+		'#5bae23']; // 鸚鵡綠
 	var json = {};
 	json.credits = { enabled: false };
 	json.chart = chart;

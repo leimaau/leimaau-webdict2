@@ -1,4 +1,4 @@
-# leimaau-webdict2
+# Leimaau's Webdict 2.0
 
 [![](https://data.jsdelivr.com/v1/package/gh/leimaau/CDN/badge)](https://www.jsdelivr.com/package/gh/leimaau/CDN)
 
