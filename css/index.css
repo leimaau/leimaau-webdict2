@@ -43,7 +43,7 @@ ruby, rt {
 }
 
 .classHighcharts {
-	width: 550px;
+	width: auto;
 	/*height: 400px;*/
 	margin: 0 auto;
 }

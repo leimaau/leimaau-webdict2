@@ -143,11 +143,12 @@ function queryChar(inputValue, queryType, selVal){
 // 【詞彙】查詢模塊
 function queryPhrase(inputValue, queryType, selVal){
 	
-	var res_oldProverb = [];
-	var dataList_oldProverb = selVal.filter(item => item.indexOf('_1937') > -1);
+	var res_proverb = [];
+	var dataList_oldProverb = selVal.filter(item => item.indexOf('_proverb') > -1);
 	if (dataList_oldProverb.length != 0) {
-		res_oldProverb = MainQuery.queryTable_proverb(inputValue, dataList_oldProverb, queryType);
-		showTable(res_oldProverb, 'outTab_triungkox', '早期童謠', outTabTitle_triungkox, colData_proverb);  // 使用顯示《廣韻》的位置
+		res_proverb = MainQuery.queryTable_proverb(inputValue, dataList_oldProverb, queryType);
+		showTable(res_proverb, 'outTab_triungkox', '早期童謠、近代童謠和熟語', outTabTitle_triungkox, colData_proverb);  // 使用顯示《廣韻》的位置
+		showWordCloud(res_proverb, inputValue, 'outWordCloud_triungkox', '早期童謠、近代童謠和熟語', queryType, 'TRAD');
 	};
 	
 	var res = [];
@@ -169,14 +170,7 @@ function queryPhrase(inputValue, queryType, selVal){
 		showWordCloud(res_bw, inputValue, 'outWordCloud_bw', allTitle_bw, queryType, 'TRAD'); // 顯示平話詞雲圖
 	};
 	
-	var res_proverb = [];
-	var dataList_proverb = selVal.filter(item => item.indexOf('_2020') > -1);
-	if (dataList_proverb.length != 0) {
-		res_proverb = MainQuery.queryTable_proverb(inputValue, dataList_proverb, queryType);
-		showTable(res_proverb, 'outTab_zb_sz', '童謠和熟語', outTabTitle_zb_sz, colData_proverb);  // 使用顯示沙井平話的位置
-	};
-	
-	var isShow = res_oldProverb.length + res.length + res_bw.length + res_proverb.length;
+	var isShow = res_proverb.length + res.length + res_bw.length;
 	if (isShow != 0) { if(dataList.length != 0) $('#nav-tab').removeClass('d-none'); if(dataList_bw.length != 0) $('#nav-tab-bw').removeClass('d-none'); }// 顯示tab
 	
 	return isShow;
@@ -272,13 +266,11 @@ function showWordCloud(res, inputValue, wordCloudDiv, wordCloudTitle, queryType,
 		document.getElementById('nav-tab-bw').style.display = 'none';
 		return false;
 	}
-
-	var text = '';
+	var text = [];
 	for (let line of res) {
-		text += line[colName] + ',';
+		text.push(line[colName]);
 	};
-	text = text.replace(/,$/gi, "");
-	var data = text.split(/[,\. ]+/g)
+	var data = text.join(',').split(/[（）《》？：，。,\. ]+/g)
 	.reduce(function (arr, word) {
 		var obj = arr.find(function (obj) {
 			return obj.name === word;

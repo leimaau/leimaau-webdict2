@@ -73,13 +73,17 @@ const rowData_book = [
 
 // 詞典資料
 const colData_oldbook_proverb = [
-	{ field: 'OLDBOOK', title: '古籍資料', align: 'center' }
-	, { field: 'PROVERB', title: '早期童謠', align: 'center', formatter: (value) => { return formatCheckBox(value, '_phrase') } }
+	{ field: 'OLDBOOK', title: '古籍資料和近代資料', align: 'center' }
+	, { field: 'OLDPROVERB', title: '早期童謠', align: 'center', formatter: (value) => { return formatCheckBox(value, '_phrase') } }
+	, { field: 'PROVERB', title: '近代童謠和熟語', align: 'center', formatter: (value) => { return formatCheckBox(value, '_phrase') } }
 ];
 
 const rowData_oldbook_proverb = [
-	{ OLDBOOK: '1937年邕寧縣修誌委員會《邕寧縣誌(第4冊)》(童謠)', PROVERB: 'tab_1937jz_proverb' }
-	, { OLDBOOK: '1937年廣西省政府總務處統計室《南寧社會概況》(童謠)', PROVERB: 'tab_1937kk_proverb' }
+	{ OLDBOOK: '1937年邕寧縣修誌委員會《邕寧縣誌(第4冊)》(童謠)', OLDPROVERB: 'tab_1937jz_proverb', PROVERB: '' }
+	, { OLDBOOK: '1937年廣西省政府總務處統計室《南寧社會概況》(童謠)', OLDPROVERB: 'tab_1937kk_proverb', PROVERB: '' }
+	//, { OLDBOOK: '2008年林亦、覃鳳餘《廣西南寧白話研究》', OLDPROVERB: '', PROVERB: 'noData' }
+	//, { OLDBOOK: '?年萬立仁、劉子林《白話童謠300首辨析》', OLDPROVERB: '', PROVERB: 'noData' }
+	, { OLDBOOK: '2020年Leimaau《南寧童謠和熟語》(本站提供)', OLDPROVERB: '', PROVERB: 'tab_2020_proverb' }
 ];
 
 const colData_book_phrase = [
@@ -98,12 +102,11 @@ const rowData_book_phrase = [
 	, { BOOK: '1997年李榮主編《南寧平話詞典》', NN: '', NN_D: '', HX_B: '', NN_T: 'noData', NN_S: '', HX_P: '' }
 	, { BOOK: '1998年楊煥典主編《廣西通誌·漢語方言誌》', NN: 'noData', NN_D: '', HX_B: '', NN_T: 'noData', NN_S: '', HX_P: '' }
 	, { BOOK: '2007年謝建猷《廣西漢語方言研究》', NN: 'noData', NN_D: '', HX_B: '', NN_T: '', NN_S: 'noData', HX_P: 'noData' }
-	, { BOOK: '2008年林亦、覃鳳餘《廣西南寧白話研究》', NN: 'tab_2008_phrase', NN_D: '', HX_B: '', NN_T: '', NN_S: '', HX_P: '' }
+	, { BOOK: '2008年林亦、覃鳳餘《廣西南寧白話研究》', NN: 'noData', NN_D: '', HX_B: '', NN_T: '', NN_S: '', HX_P: '' }
 	, { BOOK: '2015年黃增霞《廣西南寧疍家話詞彙研究》', NN: '', NN_D: 'noData', HX_B: '', NN_T: '', NN_S: '', HX_P: '' }
 	, { BOOK: '2016年余瑾《廣西平話研究》', NN: '', NN_D: '', HX_B: '', NN_T: '', NN_S: '', HX_P: '' }
 	, { BOOK: '2017年詹伯慧、張振興《漢語方言學大詞典》', NN: '', NN_D: '', HX_B: '', NN_T: 'noData', NN_S: '', HX_P: '' }
 	, { BOOK: '2019年莫思敏《橫縣白話語音研究》', NN: '', NN_D: '', HX_B: 'noData', NN_T: '', NN_S: '', HX_P: '' }
-	, { BOOK: '2020年Leimaau《南寧童謠和熟語》(本站提供)', NN: 'tab_2020_proverb', NN_D: '', HX_B: '', NN_T: '', NN_S: '', HX_P: '' }
 ];
 
 
