@@ -441,7 +441,7 @@ function queryJyutping(txtStr, trad_simp, tabName, jyutping_ipa, signResult_IPA,
 					char_jyutping.push(i.jyutping);
 					char_ipa.push(ipaFormat(i.ipa, signResult_IPA));
 				}
-				return (jyutping_ipa == 'jyutping') ? char_jyutping.join('/') : char_ipa.join('/');
+				return (jyutping_ipa == 'jyutping') ? [...new Set(char_jyutping)].join('/') : [...new Set(char_ipa)].join('/');
 			}
 		} else { // 無讀音
 			return '　';　// 全角空格，會被當成一個中文
