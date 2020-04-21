@@ -106,22 +106,22 @@
         <div class="dropdown">
           <a href="#" class="dropdown-toggle text-muted" id="right-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Link</a>
           <div class="dropdown-menu dropdown-menu-right mt-0" aria-labelledby="right-link">
-            <a class="dropdown-item" target="_blank" href="https://leimaau.gitee.io/leimaau-webdict2/">主頁地址(gitee pages)</a>
-            <a class="dropdown-item" target="_blank" href="https://leimaau.github.io/leimaau-webdict2/">備用地址(github pages)</a>
+            <a class="dropdown-item" target="_blank" href="https://leimaau.github.io/leimaau-webdict2/">主葉地址(github pages)</a>
+            <a class="dropdown-item" target="_blank" href="https://leimaau.gitee.io/leimaau-webdict2/">國內鏡像(gitee pages)</a>
             <div class="dropdown-divider"></div>
 			<a class="dropdown-item" target="_blank" href="https://github.com/leimaau/leimaau_jyutping">貍貓粵拼</a>
 			<a class="dropdown-item" target="_blank" href="https://github.com/leimaau/old-Cantonese">《分韻撮要》音系及輸入方案</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" target="_blank" href="https://leimaau.gitee.io/book/PHONETICIZE.html">南寧白話拼音方案（市區）</a>
-            <a class="dropdown-item" target="_blank" href="https://leimaau.gitee.io/book/PHONETICIZE_bingwaa.html">南寧平話拼音方案（亭子）</a>
+            <a class="dropdown-item" target="_blank" href="https://leimaau.github.io/book/PHONETICIZE.html">南寧白話拼音方案（市區）</a>
+            <a class="dropdown-item" target="_blank" href="https://leimaau.github.io/book/PHONETICIZE_bingwaa.html">南寧平話拼音方案（亭子）</a>
             <a class="dropdown-item" target="_blank" href="https://github.com/leimaau/naamning_jyutping">南寧話輸入方案</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" target="_blank" href="https://github.com/leimaau/dict-store">mdx-mdd資料</a>
             <a class="dropdown-item" target="_blank" href="https://github.com/leimaau/bookCollection">文本資料</a>
             <div class="dropdown-divider"></div>
-			<a class="dropdown-item text-primary"  data-toggle="modal" data-target="#wordSegModal" href="#">在線分詞&nbsp;&nbsp;<span class="badge badge-danger">New</span></a>
-            <a class="dropdown-item text-primary"  data-toggle="modal" data-target="#signArticleModal" href="#">在線標註&nbsp;&nbsp;<span class="badge badge-danger">New</span></a>
-            <a class="dropdown-item" target="_blank" href="#">在線推導</a>
+			<a class="dropdown-item text-primary" data-toggle="modal" data-target="#wordSegModal" href="#">在線分詞&nbsp;&nbsp;<span class="badge badge-danger">New</span></a>
+            <a class="dropdown-item text-primary" data-toggle="modal" data-target="#signArticleModal" href="#">在線標註&nbsp;&nbsp;<span class="badge badge-danger">New</span></a>
+            <a class="dropdown-item text-primary" data-toggle="modal" data-target="#derivationModal" href="#">在線推導</a>
 			<div class="dropdown-divider"></div>
             <a class="dropdown-item"  data-toggle="modal" data-target="#aboutModal" href="#">關於</a>
             <a class="dropdown-item"  data-toggle="modal" data-target="#sponsorshipModal" href="#">友情贊助</a>
@@ -237,6 +237,35 @@
 		  </div>
 		</div>
 		<!-- Modal -->
+		<div class="modal fade" id="derivationModal" tabindex="-1" role="dialog" aria-labelledby="derivationModalLabel" aria-hidden="true">
+		  <div class="modal-dialog modal-lg" role="document">
+			<div class="modal-content">
+			  <div class="modal-header">
+				<h5 class="modal-title" id="derivationModalLabel">在線推導（未實現）</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				  <span aria-hidden="true">&times;</span>
+				</button>
+			  </div>
+			<form onsubmit="derivationFun(segText.value, 'false'); return false">
+			  <div class="modal-body">
+				  <div class="form-group">
+					<label class="col-form-label"  for="derivationChar">輸入文字：</label>
+					<input type="text" class="form-control" id="derivationChar" value="發"/>
+				  </div>
+				  <div class="form-group">
+					<span class="form-control textarea-style table-responsive" id="derivationResult"></span>
+				  </div>
+			  </div>
+			  <div class="modal-footer">
+				<input class="btn btn-secondary" type="button" data-dismiss="modal" value="關閉"/>
+				<input class="btn btn-info copyBtn" type="button" data-clipboard-target="#derivationResult" onclick="handleCopy()" value="複製"/>
+				<!--<input class="btn btn-primary" type="submit" value="推導"/>-->
+			  </div>
+			</form>
+			</div>
+		  </div>
+		</div>
+		<!-- Modal -->
 		<div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="aboutModalTitle" aria-hidden="true">
 		  <div class="modal-dialog modal-dialog-centered" role="document">
 			<div class="modal-content">
@@ -247,7 +276,7 @@
 				</button>
 			  </div>
 			  <div class="modal-body">
-				本站叫「狸貓的在線詞典 2.0 版」(Leimaau’s Webdict 2.0)，上線於2020年02月，是一個具有個人性質的在線詞典（狸貓者91年老南寧是也）。相對於 1.0 版的 <a class="text-info" href="https://leimaau.gitee.io/leimaau-webdict/" target="_blank">Leimaau’s Webdict</a> 本版有了較大的改進，程序的開發和製作得益於 sgalal 和匆匆的我的技術支持，特此致謝。</br></br>本站原先開發和運行於 github 中，爲了方便國內用戶訪問，故將程序備份於 gitee 中運行，因此本站有兩個地址，對於國內用戶來說，gitee 地址作<a class="text-info" target="_blank" href="https://leimaau.gitee.io/leimaau-webdict2/">主頁地址</a>，github 地址作<a class="text-info" target="_blank" href="https://leimaau.github.io/leimaau-webdict2/">備用地址</a>。關於生僻字的顯示，可在<a class="text-info" target="_blank" href="https://ctext.org/font-test-page/zh">字體試驗葉</a>查看。</br></br>
+				本站叫「狸貓的在線詞典 2.0 版」(Leimaau’s Webdict 2.0)，上線於2020年02月，是一個具有個人性質的在線詞典（狸貓者91年老南寧是也）。相對於 1.0 版的 <a class="text-info" href="https://leimaau.github.io/leimaau-webdict/" target="_blank">Leimaau’s Webdict</a> 本版有了較大的改進，程序的開發和製作得益於 sgalal 和匆匆的我的技術支持，特此致謝。</br></br>本站原先開發和運行於 github 中，爲了方便國內用戶訪問，故將程序備份於 gitee 中運行，因此本站有兩個地址，github 地址作<a class="text-info" target="_blank" href="https://leimaau.github.io/leimaau-webdict2/">主葉地址</a>，gitee 地址作<a class="text-info" target="_blank" href="https://leimaau.gitee.io/leimaau-webdict2/">國內鏡像</a>。關於生僻字的顯示，可在<a class="text-info" target="_blank" href="https://ctext.org/font-test-page/zh">字體試驗葉</a>查看。</br></br>
 				資料收集整理錄入校對與擬音：Leimaau </br>
 				程序製作：Leimaau、匆匆的我、sgalal </br>
 				聯繫郵箱：leimaau@qq.com </br>
