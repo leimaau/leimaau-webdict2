@@ -555,6 +555,12 @@ $(() => {
 		columns: colData_oldbook_proverb,
 		data: rowData_oldbook_proverb
 	});
+	/*
+	$('#outTab_sponsor').bootstrapTable({
+		columns: colData_sponsor,
+		data: rowData_sponsor
+	});
+	*/
 
 	// 初始化選擇資料
 	dataButt.innerHTML = getDataText(); 

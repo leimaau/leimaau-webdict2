@@ -14,7 +14,7 @@ DictDb = (() => {
       })
       .catch(function (error) {
         console.info("數據庫初始化失敗", error);
-        displayAlert('數據庫加載失敗，請等待或刷新!', outputAlert, 'alert-danger', false);
+        displayAlert('數據庫加載失敗，請刷新或聯繫站長!', outputAlert, 'alert-danger', false);
       });
   }
 

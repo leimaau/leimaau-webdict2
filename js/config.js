@@ -174,7 +174,7 @@ const colData_jw = [
 	, { field: 'OLD_JP', title: '讀音' }
 	, { field: 'OLD_JP_TYPE', title: '讀音分類' }
 	, { field: 'OLD_JP_NOTE', title: '讀音備註' }
-	, { field: 'PAGE', title: '葉', formatter: (value, row) => { return pageSplit(value.replace('*','s'), 'jpg', 'https://leimaau.gitee.io/data-store/1856fy/fy') } }
+	, { field: 'PAGE', title: '葉', formatter: (value, row) => { return pageSplit(value.replace('*','s'), 'jpg', 'https://cdn.jsdelivr.net/gh/leimaau/CDN@latest/data-store/1856fy/fy') } }
 	, { field: 'IPA', title: 'IPA擬音' }
 	, { field: 'JYUTPING', title: '粵拼擬音', formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'jyut6ping3', 'dicWord')">${value}</a>` } }
 ];
@@ -185,7 +185,7 @@ const colData_jj = [
 	, { field: 'WORD', title: '字頭', align: 'center', formatter: (value) => { let charStr = value.split('|'), aLink = []; for (let i in charStr) aLink.push(`<a href="javascript:querySubmit('${charStr[i]}', 'char', 'dicWord')">${charStr[i]}</a>`); return aLink.join('|') } }
 	, { field: 'IPA', title: 'IPA' }
 	, { field: 'JYUTPING', title: '粵拼', formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'jyut6ping3', 'dicWord')">${value}</a>` } }
-	, { field: 'PAGE', title: '葉', formatter: (value, row) => { return pageSplit(value, 'jpg', 'https://leimaau.gitee.io/data-store/1941yy/yy') } }
+	, { field: 'PAGE', title: '葉', formatter: (value, row) => { return pageSplit(value, 'jpg', 'https://cdn.jsdelivr.net/gh/leimaau/CDN@latest/data-store/1941yy/yy') } }
 	, { field: 'EXPL', title: '釋義', formatter: (value) => { return `<p data-toggle="tooltip" data-placement="left" title="${value}">${value}<p/>` }  }
 	, { field: 'FIRSTFLAG', title: '國語聲母是否捲舌', formatter: (value) => { return `${value.replace('1', '1（否）').replace('2', '2（是）')}` }  }
 ];
@@ -208,7 +208,7 @@ const colData_proverb = [
 	//, {field: 'ID',title: 'ID'}
 	, { field: 'TRAD', title: '繁體', width: '350px', align: 'left', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
 	, { field: 'SIMP', title: '簡體', width: '350px', align: 'left', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
-	, { field: 'SOUR', title: '來源', width: '280px', formatter: (value, row) => { if(row['YEAR'] == 'tab_2020_proverb') {return `<span style="white-space: normal">2020年Leimaau《南寧童謠和熟語》(本站提供)<span/>`} else {return (row['YEAR'] == 'tab_1937kk_proverb') ? '<span style="white-space: normal">1937年廣西省政府總務處統計室《南寧社會概況》' + pageSplit(value, 'jpg','https://leimaau.gitee.io/data-store/1937tj/kk_tj') + '<span/>' : '<span style="white-space: normal">1937年邕寧縣修誌委員會《邕寧縣誌(第4冊)》' + pageSplit(value, 'jpg','https://leimaau.gitee.io/data-store/1937tj/jz_tj') + '<span/>' } } }
+	, { field: 'SOUR', title: '來源', width: '280px', formatter: (value, row) => { if(row['YEAR'] == 'tab_2020_proverb') {return `<span style="white-space: normal">2020年Leimaau《南寧童謠和熟語》(本站提供)<span/>`} else {return (row['YEAR'] == 'tab_1937kk_proverb') ? '<span style="white-space: normal">1937年廣西省政府總務處統計室《南寧社會概況》' + pageSplit(value, 'jpg','https://cdn.jsdelivr.net/gh/leimaau/CDN@latest/data-store/1937tj/kk_tj') + '<span/>' : '<span style="white-space: normal">1937年邕寧縣修誌委員會《邕寧縣誌(第4冊)》' + pageSplit(value, 'jpg','https://cdn.jsdelivr.net/gh/leimaau/CDN@latest/data-store/1937tj/jz_tj') + '<span/>' } } }
 	, { field: 'NOTE', title: '附註', width: '220px', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
 ];
 
@@ -234,7 +234,8 @@ function formatSOUR(value, row_year, picType, isChar = true) {
 		var bookname = rowData_book_phrase.find(item => (item.NN == row_year || item.NN_D == row_year || item.HX_B == row_year || item.NN_T == row_year || item.NN_S == row_year || item.HX_P == row_year)).BOOK;
 	};
 	row_year = row_year.replace('_bw', '').replace('_phrase', '').replace('tab_', '');
-	var linkaddr = 'https://leimaau.gitee.io/data-store/' + row_year;
+	//var linkaddr = 'https://leimaau.gitee.io/data-store/' + row_year;
+	var linkaddr = 'https://cdn.jsdelivr.net/gh/leimaau/CDN@latest/data-store/' + row_year;
 	
 	if (row_year == '1994') linkaddr += 'zh/zh'
 	else if (row_year == '1997') linkaddr += 'yd/yd'
@@ -261,3 +262,17 @@ function pageSplit(value, picType, linkaddr) {
 	}
 	return pageLink.join('，');
 }
+
+// 贊助名單(暫不使用表格)
+/*
+const colData_sponsor = [
+	{ field: 'TIME', title: '贊助時間', align: 'center' }
+	, { field: 'WAY', title: '轉賬方式', align: 'center' }
+	, { field: 'NAME',title: '贊助人', align: 'center' }
+	, { field: 'MONEY',title: '金錢', align: 'center' }
+];
+
+const rowData_sponsor = [
+	{ TIME: '2020-04-06', WAY: '微信轉賬', NAME: 'C*o', MONEY: '保密' }
+];
+*/
