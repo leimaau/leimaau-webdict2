@@ -210,7 +210,7 @@ function showPie(res, inputValue, pieDiv, pieTitle, queryType) {
 		plotShadow: false
 	};
 	var title = {
-		text: `${pieTitle}【${inputValue}】`
+		text: `<span class="user-font-pietitle">${pieTitle}【${inputValue}】</span>`
 	};
 	var tooltip = {
 		headerFormat: '{series.name}({point.y})<br/>',
@@ -512,6 +512,12 @@ function wordSeg(textCont, HMM = false) {
 		outputText += cutModule.cut(lines, JSON.parse(HMM)).join(' ') + '<br>';
 	}
 	$('#segResult').html(outputText);
+}
+
+// 在線推導函數
+function derivationFun(textChar) {
+	toastrFunc('toast-top-center');
+	toastr.warning('暫時未實現該功能！');
 }
 
 // 複製按鈕

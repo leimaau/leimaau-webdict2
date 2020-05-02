@@ -29,6 +29,15 @@ ruby, rt {
     text-indent: 4px;
 }
 
+.user-font {
+	font-family: fantasy;
+}
+
+.user-font-pietitle {
+	font-size: larger;
+	font-weight: bolder;
+}
+
 .dict-body {
 	min-height: 1140px;
 }

@@ -129,25 +129,25 @@ function formatCheckBox (value, qType = '') {
 // 定義表格列數據
 // 具體顯示的表格
 const colData_triungkox = [
-	{ field: 'YEAR', title: '資料', align: 'center', formatter: (value) => { return `${value.replace('tab_', '')}` } }
+	{ field: 'YEAR', title: '資料', align: 'center', formatter: (value) => { return `<span class="user-font">${value.replace('tab_', '')}</span>` } }
 	//, {field: 'ID',title: 'ID'}
 	, { field: 'WORD1', title: '字頭(覈校前)', align: 'center', formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'char', 'dicWord')">${value}</a>` } }
 	, { field: 'WORD2', title: '字頭(覈校後)', align: 'center', formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'char', 'dicWord')">${value}</a>` } }
 	, { field: 'FANQIE1', title: '反切(覈校前)' }
 	, { field: 'FANQIE2', title: '反切(覈校後)' }
-	, { field: 'EXPL', title: '釋義', formatter: (value) => { return `<p data-toggle="tooltip" data-placement="left" title="${value}">${value}<p/>` }  }
+	, { field: 'FIRST', title: '聲紐' }
 	, { field: 'SHE', title: '攝' }
 	, { field: 'HU', title: '呼' }
 	, { field: 'DENG', title: '等' }
 	, { field: 'YUNBU1', title: '韻部(調整前)' }
 	, { field: 'YUNBU2', title: '韻部(調整後)' }
 	, { field: 'TONE', title: '聲調' }
-	, { field: 'FIRST', title: '聲紐' }
 	, { field: 'PINYIN', title: '中古拼音(polyhedron版)', formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'jyut6ping3', 'dicWord')">${value}</a>` } }
+	, { field: 'EXPL', title: '釋義', formatter: (value) => { return `<p data-toggle="tooltip" data-placement="left" title="${value}">${value}<p/>` }  }
 ];
 
 const colData_gw = [
-	{ field: 'YEAR', title: '資料', align: 'center', formatter: (value) => { return `${value.replace('tab_', '')}` } }
+	{ field: 'YEAR', title: '資料', align: 'center', formatter: (value) => { return `<span class="user-font">${value.replace('tab_', '')}</span>` } }
 	//, {field: 'ID',title: 'ID'}
 	, { field: 'WORD', title: '字頭', align: 'center', formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'char', 'dicWord')">${value}</a>` } }
 	, { field: 'EXPL', title: '字義', formatter: (value) => { return `<p data-toggle="tooltip" data-placement="left" title="${value}">${value}<p/>` }  }
@@ -165,7 +165,7 @@ const colData_gw = [
 ];
 
 const colData_jw = [
-	{ field: 'YEAR', title: '資料', align: 'center', formatter: (value) => { return `${value.replace('tab_', '')}` } }
+	{ field: 'YEAR', title: '資料', align: 'center', formatter: (value) => { return `<span class="user-font">${value.replace('tab_', '')}</span>` } }
 	//, {field: 'ID',title: 'ID'}
 	, { field: 'WORD', title: '字頭', align: 'center', formatter: (value) => { let charStr = value.split('|'), aLink = []; for (let i in charStr) aLink.push(`<a href="javascript:querySubmit('${charStr[i]}', 'char', 'dicWord')">${charStr[i]}</a>`); return aLink.join('|') } }
 	, { field: 'WORD_COMP', title: '兼容字頭', align: 'center', formatter: (value) => { let charStr = value.split('|'), aLink = []; for (let i in charStr) aLink.push(`<a href="javascript:querySubmit('${charStr[i]}', 'char', 'dicWord')">${charStr[i]}</a>`); return aLink.join('|') } }
@@ -180,7 +180,7 @@ const colData_jw = [
 ];
 
 const colData_jj = [
-	{ field: 'YEAR', title: '資料', align: 'center', formatter: (value) => { return `${value.replace('tab_', '')}` } }
+	{ field: 'YEAR', title: '資料', align: 'center', formatter: (value) => { return `<span class="user-font">${value.replace('tab_', '')}</span>` } }
 	//, {field: 'ID',title: 'ID'}
 	, { field: 'WORD', title: '字頭', align: 'center', formatter: (value) => { let charStr = value.split('|'), aLink = []; for (let i in charStr) aLink.push(`<a href="javascript:querySubmit('${charStr[i]}', 'char', 'dicWord')">${charStr[i]}</a>`); return aLink.join('|') } }
 	, { field: 'IPA', title: 'IPA' }
@@ -191,7 +191,7 @@ const colData_jj = [
 ];
 
 const colData = [
-	{ field: 'YEAR', title: '資料', sortable : true, align: 'center', formatter: (value) => { return `${value.replace('_bw', '').replace('tab_', '').replace(/_zb.*/g,'')}` } }
+	{ field: 'YEAR', title: '資料', sortable : true, align: 'center', formatter: (value) => { return `<span class="user-font">${value.replace('_bw', '').replace('tab_', '').replace(/_zb.*/g,'')}</span>` } }
 	//, {field: 'ID',title: 'ID'}
 	, { field: 'TRAD', title: '繁體', sortable : true, align: 'center', formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'char', 'dicWord')">${value}</a>` } }
 	, { field: 'SIMP', title: '簡體', sortable : true, align: 'center', formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'char_simp', 'dicWord')">${value}</a>` } }
@@ -204,7 +204,7 @@ const colData = [
 ];
 
 const colData_proverb = [
-	{ field: 'YEAR', title: '資料', align: 'center', formatter: (value) => { return `${value.replace('_proverb', '').replace('tab_', '')}` } }
+	{ field: 'YEAR', title: '資料', align: 'center', formatter: (value) => { return `<span class="user-font">${value.replace('_proverb', '').replace('tab_', '')}</span>` } }
 	//, {field: 'ID',title: 'ID'}
 	, { field: 'TRAD', title: '繁體', width: '350px', align: 'left', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
 	, { field: 'SIMP', title: '簡體', width: '350px', align: 'left', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
@@ -213,7 +213,7 @@ const colData_proverb = [
 ];
 
 const colData_phrase = [
-	{ field: 'YEAR', title: '資料', align: 'center', formatter: (value) => { return `${value.replace('_phrase', '').replace('tab_', '')}` } }
+	{ field: 'YEAR', title: '資料', align: 'center', formatter: (value) => { return `<span class="user-font">${value.replace('_phrase', '').replace('tab_', '')}</span>` } }
 	//, {field: 'ID',title: 'ID'}
 	, { field: 'CLASSIFI', title: '分類' }
 	, { field: 'TRAD', title: '繁體', align: 'center', formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'phrase', 'dicPhrase')">${value}</a>` } }

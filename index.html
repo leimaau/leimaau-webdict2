@@ -104,7 +104,7 @@
 	    -->
       <div class="main-right">
         <div class="dropdown">
-          <a href="#" class="dropdown-toggle text-muted" id="right-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Link</a>
+          <a href="#" class="dropdown-toggle text-muted user-font" id="right-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Link</a>
           <div class="dropdown-menu dropdown-menu-right mt-0" aria-labelledby="right-link">
             <a class="dropdown-item" target="_blank" href="https://leimaau.github.io/leimaau-webdict2/">主葉地址(github pages)</a>
             <a class="dropdown-item" target="_blank" href="https://leimaau.gitee.io/leimaau-webdict2/">國內鏡像(gitee pages)</a>
@@ -241,25 +241,26 @@
 		  <div class="modal-dialog modal-lg" role="document">
 			<div class="modal-content">
 			  <div class="modal-header">
-				<h5 class="modal-title" id="derivationModalLabel">在線推導（未實現）</h5>
+				<h5 class="modal-title" id="derivationModalLabel">在線推導</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 				  <span aria-hidden="true">&times;</span>
 				</button>
 			  </div>
-			<form onsubmit="derivationFun(segText.value, 'false'); return false">
+			<form onsubmit="derivationFun(derivationChar.value); return false">
 			  <div class="modal-body">
 				  <div class="form-group">
-					<label class="col-form-label"  for="derivationChar">輸入文字：</label>
+					<label class="col-form-label"  for="derivationChar">輸入漢字：</label>
 					<input type="text" class="form-control" id="derivationChar" value="發"/>
 				  </div>
 				  <div class="form-group">
 					<span class="form-control textarea-style table-responsive" id="derivationResult"></span>
 				  </div>
+				  <span>注：推導結果最好經過人工校對。</span>
 			  </div>
 			  <div class="modal-footer">
 				<input class="btn btn-secondary" type="button" data-dismiss="modal" value="關閉"/>
 				<input class="btn btn-info copyBtn" type="button" data-clipboard-target="#derivationResult" onclick="handleCopy()" value="複製"/>
-				<!--<input class="btn btn-primary" type="submit" value="推導"/>-->
+				<input class="btn btn-primary" type="submit" value="推導"/>
 			  </div>
 			</form>
 			</div>
@@ -341,7 +342,7 @@
     </div>
   </nav>
   <div class="container dict-body">
-    <h2 lang="en-HK" class="dict-title">Leimaau’s Webdict 2</h2>
+    <h2 lang="en-HK" class="dict-title user-font">Leimaau’s Webdict 2</h2>
     <form class="form-horizontal" role="form" onsubmit="return false">
       <div id="dictType" data-dic="dicWord">
         <span id="dicWord" onclick="selectDictionary(this)"
@@ -349,7 +350,7 @@
         <span id="dicPhrase" onclick="selectDictionary(this)" class="dict-type-item">詞典</span>
       </div>
       <div class="row input-group mb-3 col-md-12">
-        <input id="valueInput" type="text" class="form-control" placeholder="Search"
+        <input id="valueInput" type="text" class="form-control form-control-lg" placeholder="Search"
           onkeypress="return searchPress(event, valueInput.value, queryType.value, dictType.dataset.dic)">
         <div class="input-group-append">
           <button id="queryButt" class="btn btn-success" completedName="查詢" disabled
@@ -541,7 +542,7 @@
   </div>
   
   <div class="footer text-center mt-auto py-3">
-	  <div class="foot-container">
+	  <div class="foot-container user-font">
 		<span class="text-muted"> © 2020 <a class="text-info" href="https://leimaau.github.io/leimaau-webdict2/">Leimaau’s Webdict</a> 版權所有</span><span class="text-muted" id="busuanzi_container_site_pv" style="display:none"> | 本站總訪問量 <span id="busuanzi_value_site_pv"></span> 次</span>
 	  </div>
   </div>
