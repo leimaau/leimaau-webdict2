@@ -12,7 +12,8 @@ td, th {
 	white-space: nowrap;
 }
 
-p { /*表格中的expl和note列*/
+/*表格中的expl和note列*/
+p {
     display: block;  /*覆蓋瀏覽器樣式*/
     -webkit-margin-before: 0em;
     -webkit-margin-after: 0em;
@@ -33,7 +34,7 @@ ruby, rt {
 	font-family: fantasy;
 }
 
-.user-font-pietitle {
+.user-font-title {
 	font-size: larger;
 	font-weight: bolder;
 }
@@ -43,12 +44,8 @@ ruby, rt {
 }
 
 .textarea-style {
-	min-height: 200px;
+	min-height: 250px;
 	white-space: nowrap;
-}
-
-#outputAlert {
-	width: 100%;
 }
 
 .classHighcharts {
@@ -106,11 +103,6 @@ ruby, rt {
 	line-height: 1.2;
 }
 
-/*字典類型*/
-#dictType {
-	margin-bottom: 5px;
-}
-
 /*字典類型-通用*/
 .dict-type-item {
 	cursor: pointer;
@@ -134,10 +126,3 @@ ruby, rt {
   padding: 0 15px;
 }
 
-.alert-div {
-	margin-top: 20px;
-}
-
-.sel-div {
-	padding-left: 0px;
-}

@@ -192,7 +192,7 @@
 				  </div>
 				  <div class="form-group">
 					<label class="col-form-label">輸出結果：</label>
-					<div class="custom-control custom-control-inline sel-div">
+					<div class="custom-control custom-control-inline pl-0">
 						<select class="form-control form-control-sm" id="signResult_type">
 							<option value="nnDict" selected>南寧白話</option>
 							<option value="nntDict">南寧平話</option>
@@ -200,7 +200,7 @@
 						</select>
 					</div>
 					<label class="col-form-label">標註格式：</label>
-					<div class="custom-control custom-control-inline sel-div">
+					<div class="custom-control custom-control-inline pl-0">
 						<select class="form-control form-control-sm" id="signResult_format" onchange="if($('#signResult_format').val()=='twolines'){$('#opt_jyutping_ipa,#opt_ipa_jyutping').removeClass('d-none')}else{$('#opt_jyutping_ipa,#opt_ipa_jyutping').addClass('d-none');if($('#signResult_way option:selected').val()=='jyutping_ipa'){$('#signResult_way').val('jyutping')}else if($('#signResult_way option:selected').val()=='ipa_jyutping'){$('#signResult_way').val('ipa')}};">
 							<option value="updown" selected>按字內嵌</option>
 							<option value="lineupdown">按行內嵌</option>
@@ -208,7 +208,7 @@
 						</select>
 					</div>
 					<label class="col-form-label">標註方式：</label>
-					<div class="custom-control custom-control-inline sel-div">
+					<div class="custom-control custom-control-inline pl-0">
 						<select class="form-control form-control-sm" id="signResult_way" onchange="if($('#signResult_way').val()=='jyutping'){$('#IPA_format').addClass('d-none')}else{$('#IPA_format').removeClass('d-none')};">
 							<option value="jyutping" selected>粵拼</option>
 							<option value="ipa">IPA</option>
@@ -216,7 +216,7 @@
 							<option id="opt_ipa_jyutping" value="ipa_jyutping" class="d-none">IPA和粵拼</option>
 						</select>
 					</div>
-					<div id="IPA_format" class="custom-control custom-control-inline sel-div d-none">
+					<div id="IPA_format" class="custom-control custom-control-inline pl-0 d-none">
 						<select class="form-control form-control-sm" id="signResult_IPA">
 							<option value="noUp" selected>IPA調值不上標</option>
 							<option value="Up">IPA調值上標</option>
@@ -344,7 +344,7 @@
   <div class="container dict-body">
     <h2 lang="en-HK" class="dict-title user-font">Leimaau’s Webdict 2</h2>
     <form class="form-horizontal" role="form" onsubmit="return false">
-      <div id="dictType" data-dic="dicWord">
+      <div id="dictType" data-dic="dicWord" class="mb-1">
         <span id="dicWord" onclick="selectDictionary(this)"
           class="dict-type-item dict-type-checked">字典</span><span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
         <span id="dicPhrase" onclick="selectDictionary(this)" class="dict-type-item">詞典</span>
@@ -451,25 +451,25 @@
         </div>
       </div>
 	  
-	  <span class="alert-div row col-md-12"><output id="outputAlert"></output></span>
+	  <span class="row col-md-12 mt-3"><output id="outputAlert" class="w-100"></output></span>
 	  
-	  <div class="row form-group col-md-12 table-responsive">
+	  <div class="row form-group col-md-12 table-responsive rowtabDiv">
 		<div class="classHighcharts" id="outWordCloud_triungkox"></div>
 		<span class="classTabTitle" id="outTabTitle_triungkox"></span>
 		<table class="classTable" id="outTab_triungkox"></table>
 	  </div>
 
-	  <div class="row form-group col-md-12 table-responsive">
+	  <div class="row form-group col-md-12 table-responsive rowtabDiv">
 		<span class="classTabTitle" id="outTabTitle_gw"></span>
 		<table class="classTable" id="outTab_gw"></table>
 	  </div>
 	  
-	  <div class="row form-group col-md-12 table-responsive">
+	  <div class="row form-group col-md-12 table-responsive rowtabDiv">
 		<span class="classTabTitle" id="outTabTitle_jw"></span>
 		<table class="classTable" id="outTab_jw"></table>
 	  </div>
 	  
-	  <div class="row form-group col-md-12 table-responsive">
+	  <div class="row form-group col-md-12 table-responsive rowtabDiv">
 		<span class="classTabTitle" id="outTabTitle_jj"></span>
 		<table class="classTable" id="outTab_jj"></table>
 	  </div>
@@ -513,31 +513,43 @@
 		</div>
 	  </div>
 
-	  <div class="row form-group col-md-12 table-responsive">
+	  <div class="row form-group col-md-12 table-responsive rowtabDiv">
 		<span class="classTabTitle" id="outTabTitle"></span>
 		<table class="classTable" id="outTab"></table>
 	  </div>
 	  
-	  <div class="row form-group col-md-12 table-responsive">
+	  <div class="row form-group col-md-12 table-responsive rowtabDiv">
 		<span class="classTabTitle" id="outTabTitle_bw"></span>
 		<table class="classTable" id="outTab_bw"></table>
 	  </div>
 	  
-	  <div class="row form-group col-md-12 table-responsive">
+	  <div class="row form-group col-md-12 table-responsive rowtabDiv">
 		<span class="classTabTitle" id="outTabTitle_zb_sz"></span>
 		<table class="classTable" id="outTab_zb_sz"></table>
 	  </div>
 	  
-	  <div class="row form-group col-md-12 table-responsive">
+	  <div class="row form-group col-md-12 table-responsive rowtabDiv">
 		<span class="classTabTitle" id="outTabTitle_zb_b_wj"></span>
 		<table class="classTable" id="outTab_zb_b_wj"></table>
 	  </div>
 	  
-	  <div class="row form-group col-md-12 table-responsive">
+	  <div class="row form-group col-md-12 table-responsive rowtabDiv">
 		<span class="classTabTitle" id="outTabTitle_zb_wj"></span>
 		<table class="classTable" id="outTab_zb_wj"></table>
 	  </div>
 	  
+	<div class="row form-group col-md-12">
+	  <div class="col-sm-4">
+		<span><output id="webLink" class="webLinkDiv"></output></span>
+	  </div>
+	  <div class="col-sm-4">
+		<span><output id="webLink2" class="webLinkDiv"></output></span>
+	  </div>
+	  <div class="col-sm-4">
+		<span><output id="webLink3" class="webLinkDiv"></output></span>
+	  </div>
+	</div>
+	
     </form>
   </div>
   

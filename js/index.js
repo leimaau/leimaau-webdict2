@@ -18,8 +18,10 @@ function querySubmit(inputValue, queryType, dictType) {
 	document.getElementsByClassName('classHighcharts').forEach((obj)=>{obj.innerHTML = ''});
 	document.getElementsByClassName('classTabTitle').forEach((obj)=>{obj.innerHTML = ''});
 	document.getElementsByClassName('classTable').forEach((obj)=>{obj.innerHTML = ''});
+	document.getElementsByClassName('webLinkDiv').forEach((obj)=>{obj.innerHTML = ''});
 	$('#nav-home-tab,#nav-home-tab-bw,#nav-home,#nav-home-bw').addClass('active show'); // 選回第一個tab和內容
 	$('#nav-profile-tab,#nav-profile-tab-bw,#nav-profile,#nav-profile-bw').removeClass('active show');
+	$('.rowtabDiv').removeClass('d-none');
 	$('#nav-tab,#nav-tab-bw').addClass('d-none');  // 隱藏tab
 	
 	
@@ -44,7 +46,7 @@ function querySubmit(inputValue, queryType, dictType) {
 		return false;
 	};
 	
-	var judgeFlag = 0; // 0 全無結果 非0有結果 
+	var judgeFlag = 0; // 0無結果 非0有結果
 	// 開始顯示
 	if(dictType == 'dicWord'){
 		judgeFlag = queryChar(inputValue, queryType, selVal);
@@ -56,6 +58,7 @@ function querySubmit(inputValue, queryType, dictType) {
 		document.getElementsByClassName("classHighcharts").forEach((obj)=>{obj.innerHTML = ''});
 		document.getElementsByClassName("classTabTitle").forEach((obj)=>{obj.innerHTML = ''});
 		document.getElementsByClassName("classTable").forEach((obj)=>{obj.innerHTML = ''});
+		$('.rowtabDiv').addClass('d-none');
 		displayAlert('未查詢到結果!', outputAlert, 'alert-primary');
 		return false;
 	};
@@ -133,6 +136,8 @@ function queryChar(inputValue, queryType, selVal){
 		//showWordCloud(res_zb_wj, inputValue, 'outWordCloud_zb_wj', '橫縣平話', queryType, 'JYUTPING');
 	};
 	
+	showLink(inputValue);
+	
 	var isShow = res_triungkox.length + res_gw.length + res_jw.length + res_jj.length + res.length + res_bw.length + res_zb_sz.length + res_zb_b_wj.length + res_zb_wj.length;
 	//if (isShow != 0) { if(dataList.length != 0) $('#nav-tab').removeClass('d-none'); if(dataList_bw.length != 0) $('#nav-tab-bw').removeClass('d-none'); }// 顯示tab
 	
@@ -188,6 +193,65 @@ function showTable(res, outputDiv, tabTitle, tabTitleDiv, colData) {
 	$("[data-toggle='tooltip']").tooltip(); // 綁定tips
 }
 
+// 鏈接顯示函數
+function showLink(textChar){
+	const outputText = [], outputText2 = [], outputText3 = [];
+	outputText.push(`<div class="card mt-1 mb-3"><div class="card-header">相關鏈接</div><div class="card-body text-secondary"><span>`);
+	outputText.push(`漢典網：<a href="http://www.zdic.net/hans/${textChar}" target="_blank">${textChar}</a></br>`);
+	outputText.push(`韻典網：<a href="https://ytenx.org/zim?dzih=${textChar}&dzyen=1&jtkb=1&jtkd=1&jtdt=1&jtgt=1" target="_blank">${textChar}</a></br>`);
+	outputText.push(`國學大師：<a href="http://www.guoxuedashi.com/zidian/${encodeUnicode(textChar).replace('\\u','')}.html" target="_blank">${textChar}</a></br>`);
+	outputText.push(`古今文字集成：<a href="http://www.ccamc.co/cjkv.php?cjkv=${textChar}" target="_blank">${textChar}</a></br>`);
+	outputText.push(`粵音資料集叢：<a href="http://www.jyut.net/q=${textChar}" target="_blank">${textChar}</a></br>`);
+	outputText.push(`漢語多功能字庫：<a href="http://humanum.arts.cuhk.edu.hk/Lexis/lexi-mf/search.php?word=${textChar}" target="_blank">${textChar}</a></br>`);
+	outputText.push(`縱橫在線中文字典：<a href="https://ckc.eduhk.hk/ckc2/dictionary.php?jiinput=${textChar}&lang=b5&form1=1" target="_blank">${textChar}</a></br>`);
+	outputText.push(`「數理華聲」科學及數學科詞彙表：<a href="https://ckc.eduhk.hk/ckc2/charlist.php?csmsinput=${textChar}&lang=b5" target="_blank">${textChar}</a></br>`);
+	outputText.push(`</span></div></div>`);
+	
+	outputText2.push(`<div class="card mt-1 mb-3"><div class="card-header">相關鏈接</div><div class="card-body text-secondary"><span>`);
+	outputText2.push(`漢字全息資源應用系統：<a href="http://qxk.bnu.edu.cn/#/danziDetail/42c2d834-fa1d-47e9-9f90-972a687183f7/${textChar}/22d3af76-1ffe-46da-8c28-40e7dfe6b8d2/0" target="_blank">${textChar}</a></br>`);
+	outputText2.push(`中國哲學書電子化計劃：<a href="https://ctext.org/dictionary.pl?if=gb&char=${textChar}" target="_blank">${textChar}</a></br>`);
+	outputText2.push(`字海|葉典：<a href="http://yedict.com/zscontent.asp?uni=${encodeUnicode(textChar).replace('\\u','')}" target="_blank">${textChar}</a></br>`);
+	outputText2.push(`Unihan：<a href="https://www.unicode.org/cgi-bin/GetUnihanData.pl?codepoint=${textChar}" target="_blank">${textChar}</a></br>`);
+	outputText2.push(`萌典：<a href="https://www.moedict.tw/${textChar}" target="_blank">${textChar}</a></br>`);
+	outputText2.push(`活用中文大辭典：<a href="https://lib.ctcn.edu.tw/chtdict/result.aspx?keyword=${textChar}" target="_blank">${textChar}</a></br>`);
+	outputText2.push(`漢字ペディア：<a href="https://www.kanjipedia.jp/search?k=${textChar}&kt=1&sk=leftHand" target="_blank">${textChar}</a></br>`);
+	outputText2.push(`小雞詞典：<a href="https://jikipedia.com/search?phrase=${textChar}&kt=1&sk=leftHand" target="_blank">${textChar}</a></br>`);
+	outputText2.push(`</span></div></div>`);
+	
+	outputText3.push(`<div class="card mt-1 mb-3"><div class="card-header">相關鏈接</div><div class="card-body text-secondary"><span>`);
+	outputText3.push(`東方語言學：<a href="http://www.eastling.org/" target="_blank">前往</a></br>`);
+	outputText3.push(`漢語方言學大詞典：<a href="http://www.fangyanxue.com/pages/index/index.html" target="_blank">前往</a></br>`);
+	outputText3.push(`古音手鏡：<a href="http://www.guguolin.com/" target="_blank">前往</a></br>`);
+	outputText3.push(`引得市：<a href="http://www.mebag.com/index/" target="_blank">前往</a></br>`);
+	outputText3.push(`開放康熙字典：<a href="http://kangxi.adcs.org.tw/kangxizidian/" target="_blank">前往</a></br>`);
+	outputText3.push(`說文解字圖像查閱：<a href="http://www.homeinmists.com/shuowen/find.html" target="_blank">前往</a></br>`);
+	outputText3.push(`現代標準漢語與粵語對照資料庫：<a href="http://apps.itsc.cuhk.edu.hk/hanyu/Page/Cover.aspx" target="_blank">前往</a></br>`);
+	outputText3.push(`ISO漢字查詢系統：<a href="http://glyph.iso10646hk.net/chinese/icharacters.jsp" target="_blank">前往</a></br>`);
+	outputText3.push(`香港小學學習字詞表：<a href="https://www.edbchinese.hk/lexlist_ch/" target="_blank">前往</a></br>`);
+	outputText3.push(`早期粵語口語文獻資料庫：<a href="http://143.89.108.109/Candbase/" target="_blank">前往</a></br>`);
+	outputText3.push(`翡翠粵語歌詞：<a href="https://www.feitsui.com/" target="_blank">前往</a></br>`);
+	outputText3.push(`</span></div></div>`);
+	
+	$('#webLink').html(outputText.join(''));
+	$('#webLink2').html(outputText2.join(''));
+	$('#webLink3').html(outputText3.join(''));
+}
+
+// 漢字轉 Unicode
+function encodeUnicode(str) {
+    var res = [];
+    for (var i = 0; i < str.length; i++) {
+        res[i] = ( "00" + str.charCodeAt(i).toString(16) ).slice(-4);
+    }
+    return "\\u" + res.join("\\u");
+}
+
+// Unicode 轉漢字
+function decodeUnicode(str) {
+    str = str.replace(/\\/g, "%");
+    return unescape(str);
+}
+
 // 餅圖顯示函數
 function showPie(res, inputValue, pieDiv, pieTitle, queryType) {
 	//if (res.length == 0) return false;
@@ -210,7 +274,7 @@ function showPie(res, inputValue, pieDiv, pieTitle, queryType) {
 		plotShadow: false
 	};
 	var title = {
-		text: `<span class="user-font-pietitle">${pieTitle}【${inputValue}】</span>`
+		text: `<span class="user-font-title">${pieTitle}【${inputValue}】</span>`
 	};
 	var tooltip = {
 		headerFormat: '{series.name}({point.y})<br/>',
@@ -292,7 +356,7 @@ function showWordCloud(res, inputValue, wordCloudDiv, wordCloudTitle, queryType,
 		data: data
 	}];
 	var title= {
-		text: `${wordCloudTitle}【${inputValue}】`
+		text: `<span class="user-font-title">${wordCloudTitle}【${inputValue}】</span>`
 	};
 	var json = {};
 	json.credits = { enabled: false };
@@ -507,17 +571,24 @@ function wordSeg(textCont, HMM = false) {
 		segMain(segDict);
 	}
 	
-	var outputText = '';
+	const outputText = [];
 	for (let lines of textCont.split('\n')) {
-		outputText += cutModule.cut(lines, JSON.parse(HMM)).join(' ') + '<br>';
+		outputText.push(cutModule.cut(lines, JSON.parse(HMM)).join(' ') + '<br>');
 	}
-	$('#segResult').html(outputText);
+	$('#segResult').html(outputText.join(''));
 }
 
 // 在線推導函數
 function derivationFun(textChar) {
 	toastrFunc('toast-top-center');
 	toastr.warning('暫時未實現該功能！');
+	
+	const outputText = [];
+	
+	outputText.push(`1234`);
+	
+	$('#derivationResult').html(outputText.join(''));
+	
 }
 
 // 複製按鈕
