@@ -193,41 +193,46 @@
 					<textarea class="form-control textarea-style" id="signText">靜夜思 【唐】李白&#10;牀前明月光，疑似地上霜。&#10;舉頭望明月，低頭思故鄉。</textarea>
 				  </div>
 				  <div class="form-group">
-					<label class="col-form-label">輸出結果：</label>
-					<div class="custom-control custom-control-inline pl-0">
-						<select class="form-control form-control-sm" id="signResult_type">
-							<option value="nnDict" selected>南寧白話</option>
-							<option value="nntDict">南寧平話</option>
-							<!--<option value="gzDict">廣州話</option>-->
-						</select>
+					<div class="row col-md-12">
+						<label class="col-form-label">輸出結果：</label>
+						<div class="custom-control custom-control-inline pl-0">
+							<select class="form-control form-control-sm" id="signResult_type">
+								<option value="nnDict" selected>南寧白話</option>
+								<option value="nntDict">南寧平話</option>
+								<!--<option value="gzDict">廣州話</option>-->
+							</select>
+						</div>
+						<label class="col-form-label">標註格式：</label>
+						<div class="custom-control custom-control-inline pl-0">
+							<select class="form-control form-control-sm" id="signResult_format" onchange="if($('#signResult_format').val()=='twolines'){$('#opt_jyutping_ipa,#opt_ipa_jyutping').removeClass('d-none')}else{$('#opt_jyutping_ipa,#opt_ipa_jyutping').addClass('d-none');if($('#signResult_way option:selected').val()=='jyutping_ipa'){$('#signResult_way').val('jyutping')}else if($('#signResult_way option:selected').val()=='ipa_jyutping'){$('#signResult_way').val('ipa')}};">
+								<option value="updown" selected>按字內嵌</option>
+								<option value="lineupdown">按行內嵌</option>
+								<option value="twolines">分行</option>
+							</select>
+						</div>
+						<label class="col-form-label">標註方式：</label>
+						<div class="custom-control custom-control-inline pl-0">
+							<select class="form-control form-control-sm" id="signResult_way" onchange="if($('#signResult_way').val()=='jyutping'){$('#IPA_format').addClass('d-none')}else{$('#IPA_format').removeClass('d-none')};">
+								<option value="jyutping" selected>粵拼</option>
+								<option value="ipa">IPA</option>
+								<option id="opt_jyutping_ipa" value="jyutping_ipa" class="d-none">粵拼和IPA</option>
+								<option id="opt_ipa_jyutping" value="ipa_jyutping" class="d-none">IPA和粵拼</option>
+							</select>
+						</div>
+						<div id="IPA_format" class="custom-control custom-control-inline pl-0 d-none">
+							<select class="form-control form-control-sm" id="signResult_IPA">
+								<option value="noUp" selected>IPA調值不上標</option>
+								<option value="Up">IPA調值上標</option>
+								<option value="toneLine">IPA調值豎線</option>
+							</select>
+						</div>
 					</div>
-					<label class="col-form-label">標註格式：</label>
-					<div class="custom-control custom-control-inline pl-0">
-						<select class="form-control form-control-sm" id="signResult_format" onchange="if($('#signResult_format').val()=='twolines'){$('#opt_jyutping_ipa,#opt_ipa_jyutping').removeClass('d-none')}else{$('#opt_jyutping_ipa,#opt_ipa_jyutping').addClass('d-none');if($('#signResult_way option:selected').val()=='jyutping_ipa'){$('#signResult_way').val('jyutping')}else if($('#signResult_way option:selected').val()=='ipa_jyutping'){$('#signResult_way').val('ipa')}};">
-							<option value="updown" selected>按字內嵌</option>
-							<option value="lineupdown">按行內嵌</option>
-							<option value="twolines">分行</option>
-						</select>
-					</div>
-					<label class="col-form-label">標註方式：</label>
-					<div class="custom-control custom-control-inline pl-0">
-						<select class="form-control form-control-sm" id="signResult_way" onchange="if($('#signResult_way').val()=='jyutping'){$('#IPA_format').addClass('d-none')}else{$('#IPA_format').removeClass('d-none')};">
-							<option value="jyutping" selected>粵拼</option>
-							<option value="ipa">IPA</option>
-							<option id="opt_jyutping_ipa" value="jyutping_ipa" class="d-none">粵拼和IPA</option>
-							<option id="opt_ipa_jyutping" value="ipa_jyutping" class="d-none">IPA和粵拼</option>
-						</select>
-					</div>
-					<div id="IPA_format" class="custom-control custom-control-inline pl-0 d-none">
-						<select class="form-control form-control-sm" id="signResult_IPA">
-							<option value="noUp" selected>IPA調值不上標</option>
-							<option value="Up">IPA調值上標</option>
-							<option value="toneLine">IPA調值豎線</option>
-						</select>
+					<div class="row col-md-12 mb-2">
+						<div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="checkbox_isw" name="wCheck" checked><label class="custom-control-label" for="checkbox_isw" title="即 (g|k)o(k|ng)->(gw|kw)o(k|ng)，(g|k)ik->(gw|kw)ik，而梗攝舒聲開合不混〔迥gwing〕(gw|kw)ing">恢復果宕曾攝一等合口〔光gwong、國gwok、過gwo〕，梗攝入聲合口〔隙kwik（讀如合口）〕。</label></div>
 					</div>
 					<span class="form-control textarea-style table-responsive" id="signResult"></span>
 				  </div>
-				  <span>※標註結果最好經過人工校對。</span>
+				  <span>※ 標註結果最好經過人工校對。</span>
 			  </div>
 			  <div class="modal-footer">
 				<input class="btn btn-secondary" type="button" data-dismiss="modal" value="關閉"/>
@@ -257,7 +262,7 @@
 				  <div class="form-group">
 					<span class="form-control textarea-style table-responsive" id="derivationResult"></span>
 				  </div>
-				  <span>※推導結果最好經過人工校對。</span>
+				  <span>※ 推導結果最好經過人工校對。</span>
 			  </div>
 			  <div class="modal-footer">
 				<input class="btn btn-secondary" type="button" data-dismiss="modal" value="關閉"/>

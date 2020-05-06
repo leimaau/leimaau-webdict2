@@ -189,7 +189,7 @@ function showTable(res, outputDiv, tabTitle, tabTitleDiv, colData) {
 		columns: colData,
 		data: res
 	});
-	$("[data-toggle='tooltip']").tooltip(); // 綁定tips
+	$('[data-toggle="tooltip"]').tooltip(); // 綁定tips
 }
 
 // 鏈接顯示函數
@@ -434,7 +434,6 @@ function getDataText(){
 
 // 在線標註函數
 function signArticle(textCont, signText_type, signResult_type, signResult_format, signResult_way, signResult_IPA) {
-	
 	if (textCont.length > 2000){
 		toastrFunc('toast-top-center');
 		toastr.error('禁止超過兩千字！');
@@ -500,11 +499,11 @@ function queryJyutping(txtStr, trad_simp, tabName, jyutping_ipa, signResult_IPA,
 	if ( !(/[^\u4e00-\u9fa5]/.test(txtStr)) || (res.length > 0) ) { // 判斷是否中文或字典有數據
 		if(res.length != 0){
 			if (res.length == 1){ // 只有一種讀音
-				return (jyutping_ipa == 'jyutping') ? res[0]['jyutping'] : ipaFormat(res[0]['ipa'], signResult_IPA);
+				return (jyutping_ipa == 'jyutping') ? jpFormat(res[0]['jyutping']) : ipaFormat(res[0]['ipa'], signResult_IPA);
 			} else {
 				let char_jyutping = [], char_ipa = [];
 				for (let i of res){
-					char_jyutping.push(i.jyutping);
+					char_jyutping.push(jpFormat(i.jyutping));
 					char_ipa.push(ipaFormat(i.ipa, signResult_IPA));
 				}
 				return (jyutping_ipa == 'jyutping') ? [...new Set(char_jyutping)].join('/') : [...new Set(char_ipa)].join('/');
@@ -529,9 +528,9 @@ function queryJyutpingPhrase(txtStr, trad_simp, tabName, jyutping_ipa, signResul
 		for(let i in txtStr.split('')){
 			if (signResult_format == 'updown') { // 按字內嵌時 中文字後帶 '</rt><rp>)</rp>'，拼音或ipa後帶 '</rt><rp>)</rp>'，return時合併起來
 				resJ.push(txtStr.split('')[i] + '<rp>(</rp><rt>');
-				resJ.push((jyutping_ipa == 'jyutping') ? res[0]['jyutping'].split(' ')[i] + '</rt><rp>)</rp>' : ipaFormat(res[0]['ipa'].split(' ')[i], signResult_IPA) + '</rt><rp>)</rp>');
+				resJ.push((jyutping_ipa == 'jyutping') ? jpFormat(res[0]['jyutping'].split(' ')[i]) + '</rt><rp>)</rp>' : ipaFormat(res[0]['ipa'].split(' ')[i], signResult_IPA) + '</rt><rp>)</rp>');
 			} else {
-				resJ.push((jyutping_ipa == 'jyutping') ? res[0]['jyutping'].split(' ')[i] : ipaFormat(res[0]['ipa'].split(' ')[i], signResult_IPA));
+				resJ.push((jyutping_ipa == 'jyutping') ? jpFormat(res[0]['jyutping'].split(' ')[i]) : ipaFormat(res[0]['ipa'].split(' ')[i], signResult_IPA));
 			}
 		}
 	} else { // 詞典無數據或有多個讀音或爲單字
@@ -549,6 +548,7 @@ function queryJyutpingPhrase(txtStr, trad_simp, tabName, jyutping_ipa, signResul
 
 // IPA格式處理
 function ipaFormat(IPA, signResult_IPA){
+	IPA = ($("#checkbox_isw").is(":checked") == true) ? IPA : IPA.replace(/kʷ(ʰ|)ɔ(k|ŋ|\d{2})/g,'k$1ɔ$2').replace(/kʷ(ʰ|)ek/g,'k$1ek');
 	if(signResult_IPA == 'noUp'){
 		IPA = IPA;
 	} else if(signResult_IPA == 'Up') {
@@ -556,7 +556,13 @@ function ipaFormat(IPA, signResult_IPA){
 	} else if(signResult_IPA == 'toneLine') {
 		IPA = IPA.replace(/1/g,'˩').replace(/2/g,'˨').replace(/3/g,'˧').replace(/4/g,'˦').replace(/5/g,'˥');
 	}
+	IPA = IPA.replace(/˥˥/g,'˥').replace(/˧˧/g,'˧').replace(/˨˨/g,'˨');
 	return IPA;
+}
+
+// 粵拼格式處理
+function jpFormat(jyutping){
+	return ($("#checkbox_isw").is(":checked") == true) ? jyutping : jyutping.replace(/(g|k)wo(k|ng|\d)/g,'$1o$2').replace(/(g|k)wik/g,'$1ik');
 }
 
 // 在線分詞函數
@@ -582,12 +588,19 @@ function wordSeg(textCont, HMM = false) {
 
 // 在線推導函數
 function derivationFun(textChar) {
-	toastrFunc('toast-top-center');
-	toastr.warning('暫時未實現該功能！');
+	if (textChar.length == 0){
+		toastrFunc('toast-top-center');
+		toastr.warning('請輸入查詢關鍵字！');
+		return false;
+	} else if(textChar.length > 2) {
+		toastrFunc('toast-top-center');
+		toastr.warning('請輸入一個漢字！');
+		return false;
+	}
 	
 	const outputText = [];
 	
-	outputText.push(`1234`);
+	outputText.push(`暫時未實現該功能！`);
 	
 	$('#derivationResult').html(outputText.join(''));
 	
