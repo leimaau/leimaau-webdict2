@@ -7,49 +7,41 @@
   <title>Leimaau's Webdict 2.0</title>
 
   <!-- Bootstrap4 CSS -->
-  <!-- <link rel="stylesheet" href="https://cdn.bootcss.com/twitter-bootstrap/4.4.1/css/bootstrap.min.css"> -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css">
   <!-- jQuery -->
-  <!-- <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script> -->
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
   <!-- popper.min.js -->
-  <!-- <script src="https://cdn.bootcss.com/popper.js/1.16.1/umd/popper.min.js"></script> -->
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   <!-- Bootstrap4 JavaScript -->
-  <!-- <script src="https://cdn.bootcss.com/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script> -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"></script>
 
   <!-- Latest compiled and minified CSS -->
-  <!-- <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap-table/1.16.0/bootstrap-table.min.css"> -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-table@1.16.0/dist/bootstrap-table.min.css">
   <!-- Latest compiled and minified JavaScript -->
-  <!-- <script src="https://cdn.bootcss.com/bootstrap-table/1.16.0/bootstrap-table.min.js"></script> -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap-table@1.16.0/dist/bootstrap-table.min.js"></script>
-  <!-- Latest compiled and minified Locales -->
-  <!-- <script src="https://cdn.bootcss.com/bootstrap-table/1.16.0/locale/bootstrap-table-zh-CN.min.js"></script> -->
-  <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap-table@1.16.0/dist/locale/bootstrap-table-zh-CN.min.js"></script> -->
 
   <!-- highcharts -->
-  <!-- <script src="https://cdn.bootcss.com/highcharts/8.0.0/highcharts.min.js"></script> -->
   <script src="https://cdn.jsdelivr.net/npm/highcharts@8.0.0/highcharts.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/highcharts@8.0.0/modules/wordcloud.js"></script>
 
-  <!-- <script src="https://cdn.bootcss.com/sql.js/0.5.0/js/sql-debug.js"></script> -->
+  <!-- sql.min.js -->
   <!-- <script src="https://cdn.jsdelivr.net/npm/sql.js@0.5.0/js/sql-debug.js"></script> -->
-  <!-- <script src="https://cdn.bootcss.com/sql.js/0.5.0/js/sql-optimized.js"></script> -->
   <!-- <script src="https://cdn.jsdelivr.net/npm/sql.js@0.5.0/js/sql-optimized.js"></script> -->
   <script src="https://cdn.jsdelivr.net/npm/sql.js@0.5.0/js/sql.min.js"></script>
-  <!-- <script src="https://cdn.bootcss.com/axios/0.19.2/axios.min.js"></script> -->
   <script src="https://cdn.jsdelivr.net/npm/axios@0.19.2/dist/axios.min.js"></script>
   
-  <!-- <script src="https://cdn.bootcss.com/clipboard.js/2.0.4/clipboard.min.js"></script> -->
+  <!-- clipboard.min.js -->
   <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js"></script>
   
-  <!-- <link rel="stylesheet" href="https://cdn.bootcss.com/toastr.js/2.1.4/toastr.min.css"> -->
+  <!-- toastr.min.js -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastr@2.1.4/build/toastr.min.css">
-  <!-- <script src="https://cdn.bootcss.com/toastr.js/2.1.4/toastr.min.js"></script> -->
   <script src="https://cdn.jsdelivr.net/npm/toastr@2.1.4/toastr.min.js"></script>
   
+  <!-- material-scrolltop.min.js -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/material-scrolltop@2.0.1/dist/material-scrolltop.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/material-scrolltop@2.0.1/dist/material-scrolltop.min.js"></script>
+  
+  <!-- busuanzi.pure.mini.js -->
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
   
   <!-- USER Local file -->
@@ -68,6 +60,8 @@
   <script src="js/clipboard/clipboard.min.js"></script>
   <link rel="stylesheet" href="css/toastr/toastr.min.css" />
   <script src="js/toastr/toastr.min.js"></script>
+  <link rel="stylesheet" href="css/material-scrolltop/material-scrolltop.min.css" />
+  <script src="js/material-scrolltop/material-scrolltop.min.js"></script>
   -->
 
   <!-- USER CSS -->
@@ -96,17 +90,17 @@
   <nav class="dict-nav-container">
     <div class="container dict-nav-main">
       <!--
-      <div class="main-left">
+      <div class="main-left float-left">
         <a class="text-muted" href="#" target="_blank">连接一</a><span>|</span>
         <a class="text-muted" href="#" target="_blank">连接二</a><span>|</span>
         <a class="text-muted" href="#" target="_blank">连接三</a>
       </div>
 	    -->
-      <div class="main-right">
+      <div class="main-right float-right">
         <div class="dropdown">
           <a href="#" class="dropdown-toggle text-muted user-font" id="right-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Link</a>
           <div class="dropdown-menu dropdown-menu-right mt-0" aria-labelledby="right-link">
-            <a class="dropdown-item" target="_blank" href="https://leimaau.github.io/leimaau-webdict2/">主葉地址(github pages)</a>
+            <a class="dropdown-item" target="_blank" href="https://leimaau.github.io/leimaau-webdict2/">主頁地址(github pages)</a>
             <a class="dropdown-item" target="_blank" href="https://leimaau.gitee.io/leimaau-webdict2/">國內鏡像(gitee pages)</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" target="_blank" href="https://leimaau.github.io/book/PHONETICIZE.html">南寧白話拼音方案（市區）</a>
@@ -115,7 +109,7 @@
             <div class="dropdown-divider"></div>
 			<a class="dropdown-item" target="_blank" href="https://github.com/rime/rime-cantonese">粵語拼音輸入方案</a>
 			<a class="dropdown-item" target="_blank" href="https://github.com/leimaau/old-Cantonese">《分韻撮要》音系及輸入方案</a>
-			<a class="dropdown-item" target="_blank" href="https://github.com/leimaau/leimaau_jyutping">貍貓粵拼</a>
+			<a class="dropdown-item" target="_blank" href="https://github.com/leimaau/leimaau_jyutping">狸貓粵拼</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" target="_blank" href="https://github.com/leimaau/dict-store">mdx-mdd資料</a>
             <a class="dropdown-item" target="_blank" href="https://github.com/leimaau/bookCollection">文本資料</a>
@@ -130,233 +124,235 @@
           </div>
         </div>
       </div>
-		<!-- Modal -->
-		<div class="modal fade" id="wordSegModal" tabindex="-1" role="dialog" aria-labelledby="wordSegModalLabel" aria-hidden="true">
-		  <div class="modal-dialog modal-lg" role="document">
-			<div class="modal-content">
-			  <div class="modal-header">
-				<h5 class="modal-title" id="wordSegModalLabel">在線分詞</h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-				  <span aria-hidden="true">&times;</span>
-				</button>
-			  </div>
-			<form onsubmit="wordSeg(segText.value, 'false'); return false">
-			  <div class="modal-body">
-				  <div class="form-group">
-					<label class="col-form-label">輸入文本：</label>
-					<textarea class="form-control textarea-style" id="segText">我們來自泥潭&#10;We come from the mire&#10;我們在地獄高歌&#10;We're singing in hell&#10;我們渴望權力&#10;We yearn for rights&#10;我們充滿野心&#10;We are full of ambition&#10;我們強大冷靜&#10;We are strong and calm&#10;我們優雅自持&#10;We hold ourselves gracefull&#10;我們從不後悔&#10;We never regret&#10;我們是永遠高貴純潔的&#10;We are always noble and pure&#10;斯萊特林&#10;Slytherin </textarea>
-				  </div>
-				  <div class="form-group">
-					<!--<label class="col-form-label">使用隱馬爾科夫 ( Hidden Markov Model，HMM ) 模型：</label>
-					<div class="custom-control custom-radio custom-control-inline">
-						<input class="custom-control-input" type="radio" id="HMM_Y" name="HMM" value="true" checked>
-						<label for="HMM_Y" class="custom-control-label">是</label>
-					</div>
-					<div class="custom-control custom-radio custom-control-inline">
-						<input class="custom-control-input" type="radio" id="HMM_N" name="HMM" value="false">
-						<label for="HMM_N" class="custom-control-label">否</label>
-					</div>-->
-					<span class="form-control textarea-style table-responsive" id="segResult"></span>
-				  </div>
-			  </div>
-			  <div class="modal-footer">
-				<input class="btn btn-secondary" type="button" data-dismiss="modal" value="關閉"/>
-				<input class="btn btn-info copyBtn" type="button" data-clipboard-target="#segResult" onclick="handleCopy()" value="複製"/>
-				<input class="btn btn-primary" type="submit" value="分詞"/>
-			  </div>
-			</form>
-			</div>
-		  </div>
-		</div>
-		<!-- Modal -->
-		<div class="modal fade" id="signArticleModal" tabindex="-1" role="dialog" aria-labelledby="signArticleModalLabel" aria-hidden="true">
-		  <div class="modal-dialog modal-lg" role="document">
-			<div class="modal-content">
-			  <div class="modal-header">
-				<h5 class="modal-title" id="signArticleModalLabel">在線標註</h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-				  <span aria-hidden="true">&times;</span>
-				</button>
-			  </div>
-			<form onsubmit="signArticle(signText.value, signText_type.value, signResult_type.value, signResult_format.value, signResult_way.value, signResult_IPA.value); return false">
-			  <div class="modal-body">
-				  <div class="form-group">
-					<label class="col-form-label">輸入文本：</label>
-					<div class="custom-control custom-radio custom-control-inline">
-						<input class="custom-control-input" type="radio" id="signText_char" name="signText_type" value="trad" checked>
-						<label for="signText_char" class="custom-control-label">繁體</label>
-					</div>
-					<div class="custom-control custom-radio custom-control-inline">
-						<input class="custom-control-input" type="radio" id="signText_char_simp" name="signText_type" value="simp">
-						<label for="signText_char_simp" class="custom-control-label">簡體</label>
-					</div>
-					<textarea class="form-control textarea-style" id="signText">靜夜思 【唐】李白&#10;牀前明月光，疑似地上霜。&#10;舉頭望明月，低頭思故鄉。</textarea>
-				  </div>
-				  <div class="form-group">
-					<div class="row col-md-12">
-						<label class="col-form-label">輸出結果：</label>
-						<div class="custom-control custom-control-inline pl-0">
-							<select class="form-control form-control-sm" id="signResult_type">
-								<option value="nnDict" selected>南寧白話</option>
-								<option value="nntDict">南寧平話</option>
-								<!--<option value="gzDict">廣州話</option>-->
-							</select>
-						</div>
-						<label class="col-form-label">標註格式：</label>
-						<div class="custom-control custom-control-inline pl-0">
-							<select class="form-control form-control-sm" id="signResult_format" onchange="if($('#signResult_format').val()=='twolines'){$('#opt_jyutping_ipa,#opt_ipa_jyutping').removeClass('d-none')}else{$('#opt_jyutping_ipa,#opt_ipa_jyutping').addClass('d-none');if($('#signResult_way option:selected').val()=='jyutping_ipa'){$('#signResult_way').val('jyutping')}else if($('#signResult_way option:selected').val()=='ipa_jyutping'){$('#signResult_way').val('ipa')}};">
-								<option value="updown" selected>按字內嵌</option>
-								<option value="lineupdown">按行內嵌</option>
-								<option value="twolines">分行</option>
-							</select>
-						</div>
-						<label class="col-form-label">標註方式：</label>
-						<div class="custom-control custom-control-inline pl-0">
-							<select class="form-control form-control-sm" id="signResult_way" onchange="if($('#signResult_way').val()=='jyutping'){$('#IPA_format').addClass('d-none')}else{$('#IPA_format').removeClass('d-none')};">
-								<option value="jyutping" selected>粵拼</option>
-								<option value="ipa">IPA</option>
-								<option id="opt_jyutping_ipa" value="jyutping_ipa" class="d-none">粵拼和IPA</option>
-								<option id="opt_ipa_jyutping" value="ipa_jyutping" class="d-none">IPA和粵拼</option>
-							</select>
-						</div>
-						<div id="IPA_format" class="custom-control custom-control-inline pl-0 d-none">
-							<select class="form-control form-control-sm" id="signResult_IPA">
-								<option value="noUp" selected>IPA調值不上標</option>
-								<option value="Up">IPA調值上標</option>
-								<option value="toneLine">IPA調值豎線</option>
-							</select>
-						</div>
-					</div>
-					<div class="row col-md-12 mb-2">
-						<div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="checkbox_isw" name="wCheck" checked><label class="custom-control-label" for="checkbox_isw" title="即 (g|k)o(k|ng)->(gw|kw)o(k|ng)，(g|k)ik->(gw|kw)ik，而梗攝舒聲開合不混〔迥gwing〕(gw|kw)ing">恢復果宕曾攝一等合口〔光gwong、國gwok、過gwo〕，梗攝入聲合口〔隙kwik（讀如合口）〕。</label></div>
-					</div>
-					<span class="form-control textarea-style table-responsive" id="signResult"></span>
-				  </div>
-				  <span>※ 標註結果最好經過人工校對。</span>
-			  </div>
-			  <div class="modal-footer">
-				<input class="btn btn-secondary" type="button" data-dismiss="modal" value="關閉"/>
-				<input class="btn btn-info copyBtn" type="button" data-clipboard-target="#signResult" onclick="handleCopy()" value="複製"/>
-				<input class="btn btn-primary" type="submit" value="標註"/>
-			  </div>
-			</form>
-			</div>
-		  </div>
-		</div>
-		<!-- Modal -->
-		<div class="modal fade" id="derivationModal" tabindex="-1" role="dialog" aria-labelledby="derivationModalLabel" aria-hidden="true">
-		  <div class="modal-dialog modal-lg" role="document">
-			<div class="modal-content">
-			  <div class="modal-header">
-				<h5 class="modal-title" id="derivationModalLabel">在線推導</h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-				  <span aria-hidden="true">&times;</span>
-				</button>
-			  </div>
-			<form onsubmit="derivationFun(derivationChar.value); return false">
-			  <div class="modal-body">
-				  <div class="form-group">
-					<label class="col-form-label"  for="derivationChar">輸入漢字：</label>
-					<input type="text" class="form-control" id="derivationChar" value="發"/>
-				  </div>
-				  <div class="form-group">
-					<span class="form-control textarea-style table-responsive" id="derivationResult"></span>
-				  </div>
-				  <span>※ 推導結果最好經過人工校對。</span>
-			  </div>
-			  <div class="modal-footer">
-				<input class="btn btn-secondary" type="button" data-dismiss="modal" value="關閉"/>
-				<input class="btn btn-info copyBtn" type="button" data-clipboard-target="#derivationResult" onclick="handleCopy()" value="複製"/>
-				<input class="btn btn-primary" type="submit" value="推導"/>
-			  </div>
-			</form>
-			</div>
-		  </div>
-		</div>
-		<!-- Modal -->
-		<div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="aboutModalTitle" aria-hidden="true">
-		  <div class="modal-dialog modal-dialog-centered" role="document">
-			<div class="modal-content">
-			  <div class="modal-header">
-				<h5 class="modal-title" id="aboutModalTitle">關於</h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-				  <span aria-hidden="true">&times;</span>
-				</button>
-			  </div>
-			  <div class="modal-body">
-				本站叫「狸貓的在線詞典 2.0 版」(Leimaau’s Webdict 2.0)，上線於2020年02月，是一個具有個人性質的在線詞典（狸貓者91年老南寧是也）。相對於 1.0 版的 <a class="text-info" href="https://leimaau.github.io/leimaau-webdict/" target="_blank">Leimaau’s Webdict</a> 本版有了較大的改進，程序的開發和製作得益於 sgalal 和匆匆的我的技術支持，特此致謝。</br></br>本站原先開發和運行於 github 中，爲了方便國內用戶訪問，故將程序備份於 gitee 中運行，因此本站有兩個地址，github 地址作<a class="text-info" target="_blank" href="https://leimaau.github.io/leimaau-webdict2/">主葉地址</a>，gitee 地址作<a class="text-info" target="_blank" href="https://leimaau.gitee.io/leimaau-webdict2/">國內鏡像</a>。關於生僻字的顯示，可在<a class="text-info" target="_blank" href="https://ctext.org/font-test-page/zh">字體試驗葉</a>查看。</br></br>
-				資料收集整理錄入校對與擬音：Leimaau </br>
-				程序製作：Leimaau、匆匆的我、sgalal </br>
-				聯繫郵箱：leimaau@qq.com </br>
-				github：<a class="text-info" target="_blank" href="https://github.com/leimaau">leimaau's github</a></br></br>
-				數據繁多，疏漏難免，歡迎提供幫助和建議。
-			  </div>
-			  <div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
-			  </div>
-			</div>
-		  </div>
-		</div>
-		<!-- Modal -->
-		<div class="modal fade" id="sponsorshipModal" tabindex="-1" role="dialog" aria-labelledby="sponsorshipModalTitle" aria-hidden="true">
-		  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-			<div class="modal-content">
-			  <div class="modal-header">
-				<h5 class="modal-title" id="sponsorshipModalTitle">友情贊助</h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-				  <span aria-hidden="true">&times;</span>
-				</button>
-			  </div>
-			  <div class="modal-body">
-				<div class="row">
-					<div class="col-sm-6 col-md-6 text-center">
-						 <div class="thumbnail">
-							<!--<img src="https://gitee.com/leimaau/data-store/raw/master/jpg/zhifubao.jpg" class="img-thumbnail" alt="支付寶">-->
-							<img src="https://cdn.jsdelivr.net/gh/leimaau/CDN@latest/data-store/jpg/zhifubao.jpg" class="img-thumbnail" alt="支付寶">
-							<div class="caption">
-								<h3>支付寶</h3>
-							</div>
-						 </div>
-					</div>
-					<div class="col-sm-6 col-md-6 text-center">
-						<div class="thumbnail">
-							<!--<img src="https://gitee.com/leimaau/data-store/raw/master/jpg/weixin.jpg" class="img-thumbnail" alt="微信">-->
-							<img src="https://cdn.jsdelivr.net/gh/leimaau/CDN@latest/data-store/jpg/weixin.jpg" class="img-thumbnail" alt="微信">
-							<div class="caption">
-								<h3>微信</h3>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!--
-				<div class="row">
-					<div class="col-sm-12 col-md-12 text-center">
-					  <span class="modal-table-sponsor" id="modal-table-sponsor">
-						<table class="table table-bordered table-sm" id="outTab_sponsor"></table>
-					  </span>
-					</div>
-				</div>
-				-->
-				贊助名單：<br/>
-				2020-04-06 微信轉賬 C*o
-			  </div>
-			  <div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
-			  </div>
-			</div>
-		  </div>
-		</div>
     </div>
   </nav>
+  
+	<!-- Modal -->
+	<div class="modal fade" id="wordSegModal" tabindex="-1" role="dialog" aria-labelledby="wordSegModalLabel" aria-hidden="true">
+	  <div class="modal-dialog modal-lg" role="document">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<h5 class="modal-title" id="wordSegModalLabel">在線分詞</h5>
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			  <span aria-hidden="true">&times;</span>
+			</button>
+		  </div>
+		<form onsubmit="wordSeg(segText.value, 'false'); return false">
+		  <div class="modal-body">
+			  <div class="form-group">
+				<label class="col-form-label">輸入文本：</label>
+				<textarea class="form-control textarea-style" id="segText">我們來自泥潭&#10;We come from the mire&#10;我們在地獄高歌&#10;We're singing in hell&#10;我們渴望權力&#10;We yearn for rights&#10;我們充滿野心&#10;We are full of ambition&#10;我們強大冷靜&#10;We are strong and calm&#10;我們優雅自持&#10;We hold ourselves gracefull&#10;我們從不後悔&#10;We never regret&#10;我們是永遠高貴純潔的&#10;We are always noble and pure&#10;斯萊特林&#10;Slytherin </textarea>
+			  </div>
+			  <div class="form-group">
+				<!--<label class="col-form-label">使用隱馬爾科夫 ( Hidden Markov Model，HMM ) 模型：</label>
+				<div class="custom-control custom-radio custom-control-inline">
+					<input class="custom-control-input" type="radio" id="HMM_Y" name="HMM" value="true" checked>
+					<label for="HMM_Y" class="custom-control-label">是</label>
+				</div>
+				<div class="custom-control custom-radio custom-control-inline">
+					<input class="custom-control-input" type="radio" id="HMM_N" name="HMM" value="false">
+					<label for="HMM_N" class="custom-control-label">否</label>
+				</div>-->
+				<span class="form-control textarea-style table-responsive" id="segResult"></span>
+			  </div>
+		  </div>
+		  <div class="modal-footer">
+			<input class="btn btn-secondary" type="button" data-dismiss="modal" value="關閉"/>
+			<input class="btn btn-info copyBtn" type="button" data-clipboard-target="#segResult" onclick="handleCopy()" value="複製"/>
+			<input class="btn btn-primary" type="submit" value="分詞"/>
+		  </div>
+		</form>
+		</div>
+	  </div>
+	</div>
+	<!-- Modal -->
+	<div class="modal fade" id="signArticleModal" tabindex="-1" role="dialog" aria-labelledby="signArticleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog modal-lg" role="document">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<h5 class="modal-title" id="signArticleModalLabel">在線標註</h5>
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			  <span aria-hidden="true">&times;</span>
+			</button>
+		  </div>
+		<form onsubmit="signArticle(signText.value, signText_type.value, signResult_type.value, signResult_format.value, signResult_way.value, signResult_IPA.value); return false">
+		  <div class="modal-body">
+			  <div class="form-group">
+				<label class="col-form-label">輸入文本：</label>
+				<div class="custom-control custom-radio custom-control-inline">
+					<input class="custom-control-input" type="radio" id="signText_char" name="signText_type" value="trad" checked>
+					<label for="signText_char" class="custom-control-label">繁體</label>
+				</div>
+				<div class="custom-control custom-radio custom-control-inline">
+					<input class="custom-control-input" type="radio" id="signText_char_simp" name="signText_type" value="simp">
+					<label for="signText_char_simp" class="custom-control-label">簡體</label>
+				</div>
+				<textarea class="form-control textarea-style" id="signText">靜夜思 【唐】李白&#10;牀前明月光，疑似地上霜。&#10;舉頭望明月，低頭思故鄉。</textarea>
+			  </div>
+			  <div class="form-group">
+				<div class="row col-md-12">
+					<label class="col-form-label">輸出結果：</label>
+					<div class="custom-control custom-control-inline pl-0">
+						<select class="form-control form-control-sm" id="signResult_type">
+							<option value="nnDict" selected>南寧白話</option>
+							<option value="nntDict">南寧平話</option>
+							<!--<option value="gzDict">廣州話</option>-->
+						</select>
+					</div>
+					<label class="col-form-label">標註格式：</label>
+					<div class="custom-control custom-control-inline pl-0">
+						<select class="form-control form-control-sm" id="signResult_format" onchange="if($('#signResult_format').val()=='twolines'){$('#opt_jyutping_ipa,#opt_ipa_jyutping').removeClass('d-none')}else{$('#opt_jyutping_ipa,#opt_ipa_jyutping').addClass('d-none');if($('#signResult_way option:selected').val()=='jyutping_ipa'){$('#signResult_way').val('jyutping')}else if($('#signResult_way option:selected').val()=='ipa_jyutping'){$('#signResult_way').val('ipa')}};">
+							<option value="updown" selected>按字內嵌</option>
+							<option value="lineupdown">按行內嵌</option>
+							<option value="twolines">分行</option>
+						</select>
+					</div>
+					<label class="col-form-label">標註方式：</label>
+					<div class="custom-control custom-control-inline pl-0">
+						<select class="form-control form-control-sm" id="signResult_way" onchange="if($('#signResult_way').val()=='jyutping'){$('#IPA_format').addClass('d-none')}else{$('#IPA_format').removeClass('d-none')};">
+							<option value="jyutping" selected>粵拼</option>
+							<option value="ipa">IPA</option>
+							<option id="opt_jyutping_ipa" value="jyutping_ipa" class="d-none">粵拼和IPA</option>
+							<option id="opt_ipa_jyutping" value="ipa_jyutping" class="d-none">IPA和粵拼</option>
+						</select>
+					</div>
+					<div id="IPA_format" class="custom-control custom-control-inline pl-0 d-none">
+						<select class="form-control form-control-sm" id="signResult_IPA">
+							<option value="noUp" selected>IPA調值不上標</option>
+							<option value="Up">IPA調值上標</option>
+							<option value="toneLine">IPA調型豎線</option>
+						</select>
+					</div>
+				</div>
+				<div class="row col-md-12 mb-2">
+					<div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="checkbox_isw" name="wCheck" checked><label class="custom-control-label" for="checkbox_isw" title="即 (g|k)o(k|ng)->(gw|kw)o(k|ng)，(g|k)ik->(gw|kw)ik，而梗攝舒聲開合不混〔迥gwing〕(gw|kw)ing">恢復見組果宕曾一等合口〔光gwong、國gwok、過gwo〕，見組梗入合口〔隙kwik（讀如合口）〕。</label></div>
+				</div>
+				<span class="form-control textarea-style table-responsive" id="signResult"></span>
+			  </div>
+			  <span>※ 標註結果最好經過人工校對。</span>
+		  </div>
+		  <div class="modal-footer">
+			<input class="btn btn-secondary" type="button" data-dismiss="modal" value="關閉"/>
+			<input class="btn btn-info copyBtn" type="button" data-clipboard-target="#signResult" onclick="handleCopy()" value="複製"/>
+			<input class="btn btn-primary" type="submit" value="標註"/>
+		  </div>
+		</form>
+		</div>
+	  </div>
+	</div>
+	<!-- Modal -->
+	<div class="modal fade" id="derivationModal" tabindex="-1" role="dialog" aria-labelledby="derivationModalLabel" aria-hidden="true">
+	  <div class="modal-dialog modal-lg" role="document">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<h5 class="modal-title" id="derivationModalLabel">在線推導</h5>
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			  <span aria-hidden="true">&times;</span>
+			</button>
+		  </div>
+		<form onsubmit="derivationFun(derivationChar.value); return false">
+		  <div class="modal-body">
+			  <div class="form-group">
+				<label class="col-form-label"  for="derivationChar">輸入漢字：</label>
+				<input type="text" class="form-control" id="derivationChar" value="發"/>
+			  </div>
+			  <div class="form-group">
+				<span class="form-control textarea-style table-responsive" id="derivationResult"></span>
+			  </div>
+			  <span>※ 推導結果最好經過人工校對。</span>
+		  </div>
+		  <div class="modal-footer">
+			<input class="btn btn-secondary" type="button" data-dismiss="modal" value="關閉"/>
+			<input class="btn btn-info copyBtn" type="button" data-clipboard-target="#derivationResult" onclick="handleCopy()" value="複製"/>
+			<input class="btn btn-primary" type="submit" value="推導"/>
+		  </div>
+		</form>
+		</div>
+	  </div>
+	</div>
+	<!-- Modal -->
+	<div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="aboutModalTitle" aria-hidden="true">
+	  <div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<h5 class="modal-title" id="aboutModalTitle">關於</h5>
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			  <span aria-hidden="true">&times;</span>
+			</button>
+		  </div>
+		  <div class="modal-body">
+			本站叫「狸貓的在線詞典 2.0 版」(Leimaau's Webdict 2.0)，上線於2020年02月，是一個具有私人性質的在線詞典（狸貓者91年老南寧是也）。相對於 1.0 版的 <a class="text-info" href="https://leimaau.github.io/leimaau-webdict/" target="_blank">Leimaau's Webdict</a> 本版有了較大的改進，程序的開發和製作得益於 sgalal 和匆匆的我的技術支持，特此致謝。</br></br>本站原先開發和運行於 github 中，爲了方便國內用戶訪問，故將程序備份於 gitee 中運行，因此本站有兩個地址，github 地址作<a class="text-info" target="_blank" href="https://leimaau.github.io/leimaau-webdict2/">主頁地址</a>，gitee 地址作<a class="text-info" target="_blank" href="https://leimaau.gitee.io/leimaau-webdict2/">國內鏡像</a>。關於生僻字的顯示，可在<a class="text-info" target="_blank" href="https://ctext.org/font-test-page/zh">字體試驗頁</a>查看。</br></br>
+			資料收集整理錄入校對與擬音：Leimaau </br>
+			程序製作：Leimaau、匆匆的我、sgalal </br>
+			聯繫郵箱：leimaau@qq.com </br>
+			github：<a class="text-info" target="_blank" href="https://github.com/leimaau">leimaau's github</a></br></br>
+			數據繁多，疏漏難免，歡迎提供幫助和建議。
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+		  </div>
+		</div>
+	  </div>
+	</div>
+	<!-- Modal -->
+	<div class="modal fade" id="sponsorshipModal" tabindex="-1" role="dialog" aria-labelledby="sponsorshipModalTitle" aria-hidden="true">
+	  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<h5 class="modal-title" id="sponsorshipModalTitle">友情贊助</h5>
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			  <span aria-hidden="true">&times;</span>
+			</button>
+		  </div>
+		  <div class="modal-body">
+			<div class="row">
+				<div class="col-sm-6 col-md-6 text-center">
+					 <div class="thumbnail">
+						<!--<img src="https://gitee.com/leimaau/data-store/raw/master/jpg/zhifubao.jpg" class="img-thumbnail" alt="支付寶">-->
+						<img src="https://cdn.jsdelivr.net/gh/leimaau/CDN@latest/data-store/jpg/zhifubao.jpg" class="img-thumbnail" alt="支付寶">
+						<div class="caption">
+							<h3>支付寶</h3>
+						</div>
+					 </div>
+				</div>
+				<div class="col-sm-6 col-md-6 text-center">
+					<div class="thumbnail">
+						<!--<img src="https://gitee.com/leimaau/data-store/raw/master/jpg/weixin.jpg" class="img-thumbnail" alt="微信">-->
+						<img src="https://cdn.jsdelivr.net/gh/leimaau/CDN@latest/data-store/jpg/weixin.jpg" class="img-thumbnail" alt="微信">
+						<div class="caption">
+							<h3>微信</h3>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--
+			<div class="row">
+				<div class="col-sm-12 col-md-12 text-center">
+				  <span class="modal-table-sponsor" id="modal-table-sponsor">
+					<table class="table table-bordered table-sm" id="outTab_sponsor"></table>
+				  </span>
+				</div>
+			</div>
+			-->
+			贊助名單：<br/>
+			2020-04-06 微信轉賬 C*o
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+		  </div>
+		</div>
+	  </div>
+	</div>
+
   <div class="container dict-body">
-    <h2 lang="en-HK" class="dict-title user-font">Leimaau’s Webdict 2</h2>
+    <h2 lang="en-HK" class="dict-title user-font">Leimaau's Webdict 2</h2>
     <form class="form-horizontal" role="form" onsubmit="return false">
       <div id="dictType" data-dic="dicWord" class="mb-1">
         <span id="dicWord" onclick="selectDictionary(this)"
           class="dict-type-item dict-type-checked">字典</span><span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
         <span id="dicPhrase" onclick="selectDictionary(this)" class="dict-type-item">詞典</span>
       </div>
-      <div class="row input-group mb-3 col-md-12">
+      <div class="row input-group mb-3 col-md-12 mySticky">
         <input id="valueInput" type="text" class="form-control form-control-lg" placeholder="Search"
           onkeypress="return searchPress(event, valueInput.value, queryType.value, dictType.dataset.dic)">
         <div class="input-group-append">
@@ -560,9 +556,11 @@
     </form>
   </div>
   
+  <button class="material-scrolltop" type="button"></button>
+  
   <div class="footer text-center mt-auto py-3">
 	  <div class="foot-container user-font">
-		<span class="text-muted"> © 2020 <a class="text-info" href="https://leimaau.github.io/leimaau-webdict2/">Leimaau’s Webdict</a> 版權所有</span><span class="text-muted" id="busuanzi_container_site_pv" style="display:none"> | 本站總訪問量 <span id="busuanzi_value_site_pv"></span> 次</span>
+		<span class="text-muted"> © <span id="year"></span> <a class="text-info" href="https://leimaau.github.io/leimaau-webdict2/">Leimaau's Webdict</a> 版權所有</span><span class="text-muted" id="busuanzi_container_site_pv" style="display:none"> | 本站總訪問量 <span id="busuanzi_value_site_pv"></span> 次</span>
 	  </div>
   </div>
 </body>

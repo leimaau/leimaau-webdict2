@@ -204,6 +204,9 @@ function showLink(textChar){
 	outputText.push(`漢語多功能字庫：<a href="http://humanum.arts.cuhk.edu.hk/Lexis/lexi-mf/search.php?word=${textChar}" target="_blank">${textChar}</a> | <a href="http://humanum.arts.cuhk.edu.hk/Lexis/lexi-mf/dialect.php?word=${textChar}" target="_blank">其他方言讀音</a></br>`);
 	outputText.push(`縱橫在線中文字典：<a href="https://ckc.eduhk.hk/ckc2/dictionary.php?jiinput=${textChar}&lang=b5&form1=1" target="_blank">${textChar}</a></br>`);
 	outputText.push(`「數理華聲」科學及數學科詞彙表：<a href="https://ckc.eduhk.hk/ckc2/charlist.php?csmsinput=${textChar}&lang=b5" target="_blank">${textChar}</a></br>`);
+	outputText.push(`英華字典資料庫：<a href="http://mhdb.mh.sinica.edu.tw/dictionary/search.php?titleOnlyBtn=true&searchStr=${textChar}&lang=b5" target="_blank">${textChar}</a></br>`);
+	outputText.push(`粵拼歌詞網：<a href="https://jyut6.com/search.php?keyword=${textChar}" target="_blank">${textChar}</a></br>`);
+	outputText.push(`翡翠粵語歌詞：<a href="https://www.feitsui.com/zh-hans/search/${textChar}.html" target="_blank">${textChar}</a></br>`);
 	outputText.push(`</span></div></div>`);
 	
 	outputText2.push(`<div class="card mt-1 mb-3"><div class="card-header">相關鏈接</div><div class="card-body text-secondary"><span>`);
@@ -224,14 +227,16 @@ function showLink(textChar){
 	outputText3.push(`漢語方言學大詞典：<a href="http://www.fangyanxue.com/pages/index/index.html" target="_blank">前往</a></br>`);
 	outputText3.push(`古音手鏡：<a href="http://www.guguolin.com/" target="_blank">前往</a></br>`);
 	outputText3.push(`小學堂：<a href="http://xiaoxue.iis.sinica.edu.tw/" target="_blank">前往</a></br>`);
+	outputText3.push(`英華字典資料庫：<a href="http://mhdb.mh.sinica.edu.tw/dictionary/index.php" target="_blank">前往</a></br>`);
 	outputText3.push(`引得市：<a href="http://www.mebag.com/index/" target="_blank">前往</a></br>`);
 	outputText3.push(`開放康熙字典：<a href="http://kangxi.adcs.org.tw/kangxizidian/" target="_blank">前往</a></br>`);
+	outputText3.push(`漢語大字典檢索：<a href="http://www.homeinmists.com/hd/search.html" target="_blank">前往</a></br>`);
 	outputText3.push(`說文解字圖像查閱：<a href="http://www.homeinmists.com/shuowen/find.html" target="_blank">前往</a></br>`);
 	outputText3.push(`現代標準漢語與粵語對照資料庫：<a href="http://apps.itsc.cuhk.edu.hk/hanyu/Page/Cover.aspx" target="_blank">前往</a></br>`);
+	outputText3.push(`CantoDict：<a href="http://www.cantonese.sheik.co.uk/scripts/masterlist.htm" target="_blank">前往</a></br>`);
 	outputText3.push(`ISO漢字查詢系統：<a href="http://glyph.iso10646hk.net/chinese/icharacters.jsp" target="_blank">前往</a></br>`);
 	outputText3.push(`香港小學學習字詞表：<a href="https://www.edbchinese.hk/lexlist_ch/" target="_blank">前往</a></br>`);
 	outputText3.push(`早期粵語口語文獻資料庫：<a href="http://143.89.108.109/Candbase/" target="_blank">前往</a></br>`);
-	outputText3.push(`翡翠粵語歌詞：<a href="https://www.feitsui.com/" target="_blank">前往</a></br>`);
 	outputText3.push(`</span></div></div>`);
 	
 	$('#webLink').html(outputText.join(''));
@@ -303,13 +308,13 @@ function showPie(res, inputValue, pieDiv, pieTitle, queryType) {
 	}];
 	var color = ['#2775b6', // 景泰藍
 		'#2c9678', // 青礬綠
-		'#35333c', // 鯊魚灰
 		'#c06f98', // 櫻草紫
 		'#fca104', // 橙皮黃
 		'#1bd1a5', // 碧色
-		'#eb3c70', // 松葉牡丹紅
+		'#35333c', // 鯊魚灰
 		'#b0a4e3', // 雪青
 		'#813c85', // 桔梗紫
+		'#eb3c70', // 松葉牡丹紅
 		'#986524', // 山雞褐
 		'#fcd337', // 檸檬黃
 		'#5bae23']; // 鸚鵡綠
@@ -499,12 +504,12 @@ function queryJyutping(txtStr, trad_simp, tabName, jyutping_ipa, signResult_IPA,
 	if ( !(/[^\u4e00-\u9fa5]/.test(txtStr)) || (res.length > 0) ) { // 判斷是否中文或字典有數據
 		if(res.length != 0){
 			if (res.length == 1){ // 只有一種讀音
-				return (jyutping_ipa == 'jyutping') ? jpFormat(res[0]['jyutping']) : ipaFormat(res[0]['ipa'], signResult_IPA);
+				return (jyutping_ipa == 'jyutping') ? jpFormat(res[0]['jyutping'], res[0]['trad'], res[0]['simp']) : ipaFormat(res[0]['ipa'], signResult_IPA, res[0]['trad'], res[0]['simp']);
 			} else {
 				let char_jyutping = [], char_ipa = [];
 				for (let i of res){
-					char_jyutping.push(jpFormat(i.jyutping));
-					char_ipa.push(ipaFormat(i.ipa, signResult_IPA));
+					char_jyutping.push(jpFormat(i.jyutping, i.trad, i.simp));
+					char_ipa.push(ipaFormat(i.ipa, signResult_IPA, i.trad, i.simp));
 				}
 				return (jyutping_ipa == 'jyutping') ? [...new Set(char_jyutping)].join('/') : [...new Set(char_ipa)].join('/');
 			}
@@ -547,8 +552,9 @@ function queryJyutpingPhrase(txtStr, trad_simp, tabName, jyutping_ipa, signResul
 }
 
 // IPA格式處理
-function ipaFormat(IPA, signResult_IPA){
+function ipaFormat(IPA, signResult_IPA, trad, simp){
 	IPA = ($("#checkbox_isw").is(":checked") == true) ? IPA : IPA.replace(/kʷ(ʰ|)ɔ(k|ŋ|\d{2})/g,'k$1ɔ$2').replace(/kʷ(ʰ|)ek/g,'k$1ek');
+	
 	if(signResult_IPA == 'noUp'){
 		IPA = IPA;
 	} else if(signResult_IPA == 'Up') {
@@ -557,12 +563,21 @@ function ipaFormat(IPA, signResult_IPA){
 		IPA = IPA.replace(/1/g,'˩').replace(/2/g,'˨').replace(/3/g,'˧').replace(/4/g,'˦').replace(/5/g,'˥');
 	}
 	IPA = IPA.replace(/˥˥/g,'˥').replace(/˧˧/g,'˧').replace(/˨˨/g,'˨');
+	
+	const reg = /郭|槨|彍|椁|崞/g;
+	IPA = (reg.test(trad) || reg.test(simp)) ? IPA.replace(/kʷʰak/g,'kʰak') : IPA;  // 專門處理平話「郭」字的白讀 [kʷʰak3/kʰak3]，恢復合口
+	
 	return IPA;
 }
 
 // 粵拼格式處理
-function jpFormat(jyutping){
-	return ($("#checkbox_isw").is(":checked") == true) ? jyutping : jyutping.replace(/(g|k)wo(k|ng|\d)/g,'$1o$2').replace(/(g|k)wik/g,'$1ik');
+function jpFormat(jyutping, trad, simp){
+	jyutping = ($("#checkbox_isw").is(":checked") == true) ? jyutping : jyutping.replace(/(g|k)wo(k|ng|\d)/g,'$1o$2').replace(/(g|k)wik/g,'$1ik');
+	
+	const reg = /郭|槨|彍|椁|崞/g;
+	jyutping = (reg.test(trad) || reg.test(simp)) ? jyutping.replace(/kwaak/g,'kaak') : jyutping;  // 專門處理平話「郭」字的白讀 kwaak2/kaak2，恢復合口
+	
+	return jyutping;
 }
 
 // 在線分詞函數
@@ -626,12 +641,33 @@ function toastrFunc(pos){
 	toastr.options.preventDuplicates = true; // 防止重複
 }
 
+// 設置頁面底部年份信息
+function setWebYear() {
+	const myDate = new Date();
+	const myYear = myDate.getFullYear();
+	if(myYear == '2020'){
+		document.getElementById("year").innerHTML =  myYear;	
+	} else {
+		document.getElementById("year").innerHTML = '2020-' + myYear;	
+	}
+}
+
+// 固定輸入框
+function setSticky(){
+	const sticky = document.querySelector('.mySticky');
+	const origOffsetY = sticky.offsetTop;
+	function onScroll(e) {
+		window.scrollY >= origOffsetY ? sticky.classList.add('div-sticky') : sticky.classList.remove('div-sticky');
+	}
+	document.addEventListener('scroll', onScroll);
+}
 
 // 入口文件
 $(() => {
 	DictDb.factory(DictConfig.dir);
 	
-	$('#outTab_oldbook').bootstrapTable({ // 輸出模態框表格
+	// 輸出模態框表格數據
+	$('#outTab_oldbook').bootstrapTable({
 		columns: colData_oldbook,
 		data: rowData_oldbook
 	});
@@ -659,6 +695,11 @@ $(() => {
 	// 綁定模態框關閉時候，更新選擇資料顯示text
 	$('#dataModal').on('hide.bs.modal', function (event) {
 		dataButt.innerHTML = getDataText();
-	})
-	
+	});
+	// 設置頁面底部年份信息
+	setWebYear();
+	// 固定輸入框
+	setSticky();
+	// 返回頂部插件
+	$('body').materialScrollTop();
 })
