@@ -467,7 +467,7 @@ function signArticle(textCont, signText_type, signResult_type, signResult_format
 				outputLine3.push(txtStr);
 			}
 			outputText.push(`<ruby>${outputLine3.join('')}<rp>(</rp><rt>${outputLine1.join(' ')}</rt><rp>)</rp></ruby><br>`);
-		} else if (signResult_format == 'twolines') { // 分行
+		} else if (signResult_format == 'twolines' || signResult_format == 'parallel') { // 分行或平行
 			let outputLine1 = [], outputLine2 = [], outputLine3 = [];
 			for (let txtStr of cutModule.cut(lines, false)) {
 				if (signResult_way == 'jyutping') {
@@ -487,9 +487,17 @@ function signArticle(textCont, signText_type, signResult_type, signResult_format
 				}
 			}
 			if (signResult_way == 'jyutping' || signResult_way == 'ipa'){
-				outputText.push(`${outputLine1.join(' ')}<br>${outputLine3.join('')}<br>`);
+				if (signResult_format == 'twolines') {  // 分行
+					outputText.push(`${outputLine1.join(' ')}<br>${outputLine3.join('')}<br>`);
+				} else {  // 平行
+					outputText.push(`${outputLine3.join('')} || ${outputLine1.join(' ')}<br>`);
+				}
 			} else {
-				outputText.push(`${outputLine1.join(' ')}<br>${outputLine2.join(' ')}<br>${outputLine3.join('')}<br>`);
+				if (signResult_format == 'twolines') {  // 分行
+					outputText.push(`${outputLine1.join(' ')}<br>${outputLine2.join(' ')}<br>${outputLine3.join('')}<br>`);
+				} else {  // 平行
+					outputText.push(`${outputLine3.join('')} || ${outputLine1.join(' ')} || ${outputLine2.join(' ')}<br>`);
+				}
 			}
 		}
 	}
@@ -641,7 +649,7 @@ function toastrFunc(pos){
 	toastr.options.preventDuplicates = true; // 防止重複
 }
 
-// 設置頁面底部年份信息
+// 設置葉面底部年份信息
 function setWebYear() {
 	const myDate = new Date();
 	const myYear = myDate.getFullYear();
@@ -696,7 +704,7 @@ $(() => {
 	$('#dataModal').on('hide.bs.modal', function (event) {
 		dataButt.innerHTML = getDataText();
 	});
-	// 設置頁面底部年份信息
+	// 設置葉面底部年份信息
 	setWebYear();
 	// 固定輸入框
 	setSticky();

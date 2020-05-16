@@ -100,7 +100,7 @@
         <div class="dropdown">
           <a href="#" class="dropdown-toggle text-muted user-font" id="right-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Link</a>
           <div class="dropdown-menu dropdown-menu-right mt-0" aria-labelledby="right-link">
-            <a class="dropdown-item" target="_blank" href="https://leimaau.github.io/leimaau-webdict2/">主頁地址(github pages)</a>
+            <a class="dropdown-item" target="_blank" href="https://leimaau.github.io/leimaau-webdict2/">主葉地址(github pages)</a>
             <a class="dropdown-item" target="_blank" href="https://leimaau.gitee.io/leimaau-webdict2/">國內鏡像(gitee pages)</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" target="_blank" href="https://leimaau.github.io/book/PHONETICIZE.html">南寧白話拼音方案（市區）</a>
@@ -201,10 +201,11 @@
 					</div>
 					<label class="col-form-label">標註格式：</label>
 					<div class="custom-control custom-control-inline pl-0">
-						<select class="form-control form-control-sm" id="signResult_format" onchange="if($('#signResult_format').val()=='twolines'){$('#opt_jyutping_ipa,#opt_ipa_jyutping').removeClass('d-none')}else{$('#opt_jyutping_ipa,#opt_ipa_jyutping').addClass('d-none');if($('#signResult_way option:selected').val()=='jyutping_ipa'){$('#signResult_way').val('jyutping')}else if($('#signResult_way option:selected').val()=='ipa_jyutping'){$('#signResult_way').val('ipa')}};">
+						<select class="form-control form-control-sm" id="signResult_format" onchange="if($('#signResult_format').val()=='twolines'||$('#signResult_format').val()=='parallel'){$('#opt_jyutping_ipa,#opt_ipa_jyutping').removeClass('d-none')}else{$('#opt_jyutping_ipa,#opt_ipa_jyutping').addClass('d-none');if($('#signResult_way option:selected').val()=='jyutping_ipa'){$('#signResult_way').val('jyutping')}else if($('#signResult_way option:selected').val()=='ipa_jyutping'){$('#signResult_way').val('ipa')}};">
 							<option value="updown" selected>按字內嵌</option>
 							<option value="lineupdown">按行內嵌</option>
 							<option value="twolines">分行</option>
+							<option value="parallel">平行</option>
 						</select>
 					</div>
 					<label class="col-form-label">標註方式：</label>
@@ -281,7 +282,7 @@
 			</button>
 		  </div>
 		  <div class="modal-body">
-			本站叫「狸貓的在線詞典 2.0 版」(Leimaau's Webdict 2.0)，上線於2020年02月，是一個具有私人性質的在線詞典（狸貓者91年老南寧是也）。相對於 1.0 版的 <a class="text-info" href="https://leimaau.github.io/leimaau-webdict/" target="_blank">Leimaau's Webdict</a> 本版有了較大的改進，程序的開發和製作得益於 sgalal 和匆匆的我的技術支持，特此致謝。</br></br>本站原先開發和運行於 github 中，爲了方便國內用戶訪問，故將程序備份於 gitee 中運行，因此本站有兩個地址，github 地址作<a class="text-info" target="_blank" href="https://leimaau.github.io/leimaau-webdict2/">主頁地址</a>，gitee 地址作<a class="text-info" target="_blank" href="https://leimaau.gitee.io/leimaau-webdict2/">國內鏡像</a>。關於生僻字的顯示，可在<a class="text-info" target="_blank" href="https://ctext.org/font-test-page/zh">字體試驗頁</a>查看。</br></br>
+			本站叫「狸貓的在線詞典 2.0 版」(Leimaau's Webdict 2.0)，上線於2020年02月，是一個具有私人性質的在線詞典（狸貓者91年老南寧是也）。相對於 1.0 版的 <a class="text-info" href="https://leimaau.github.io/leimaau-webdict/" target="_blank">Leimaau's Webdict</a> 本版有了較大的改進，程序的開發和製作得益於 sgalal 和匆匆的我的技術支持，特此致謝。</br></br>本站原先開發和運行於 github 中，爲了方便國內用戶訪問，故將程序備份於 gitee 中運行，因此本站有兩個地址，github 地址作<a class="text-info" target="_blank" href="https://leimaau.github.io/leimaau-webdict2/">主葉地址</a>，gitee 地址作<a class="text-info" target="_blank" href="https://leimaau.gitee.io/leimaau-webdict2/">國內鏡像</a>。關於生僻字的顯示，可在<a class="text-info" target="_blank" href="https://ctext.org/font-test-page/zh">字體試驗葉</a>查看。</br></br>
 			資料收集整理錄入校對與擬音：Leimaau </br>
 			程序製作：Leimaau、匆匆的我、sgalal </br>
 			聯繫郵箱：leimaau@qq.com </br>
