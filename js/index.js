@@ -561,7 +561,7 @@ function queryJyutpingPhrase(txtStr, trad_simp, tabName, jyutping_ipa, signResul
 
 // IPA格式處理
 function ipaFormat(IPA, signResult_IPA, trad, simp){
-	IPA = ($("#checkbox_isw").is(":checked") == true) ? IPA : IPA.replace(/kʷ(ʰ|)ɔ(k|ŋ|\d{2})/g,'k$1ɔ$2').replace(/kʷ(ʰ|)ek/g,'k$1ek');
+	IPA = ($("#checkbox_isw").is(":checked") == true) ? IPA : IPA.replace(/kʷ(ʰ|)ɔ(k|ŋ|\d{2})/g,'k$1ɔ$2').replace(/kʷ(ʰ|)ek/g,'k$1ek').replace(/kʷ(ʰ|)o(k|ŋ|\d{2})/g,'k$1o$2');
 	
 	if(signResult_IPA == 'noUp'){
 		IPA = IPA;
@@ -573,7 +573,7 @@ function ipaFormat(IPA, signResult_IPA, trad, simp){
 	IPA = IPA.replace(/˥˥/g,'˥').replace(/˧˧/g,'˧').replace(/˨˨/g,'˨');
 	
 	const reg = /郭|槨|彍|椁|崞/g;
-	IPA = (reg.test(trad) || reg.test(simp)) ? IPA.replace(/kʷʰak/g,'kʰak') : IPA;  // 專門處理平話「郭」字的白讀 [kʷʰak3/kʰak3]，恢復合口
+	IPA = ((reg.test(trad) || reg.test(simp)) & ($("#checkbox_isw").is(":checked") != true)) ? IPA.replace(/kʷʰak/g,'kʰak') : IPA;  // 專門處理平話「郭」字的白讀 [kʷʰak3/kʰak3]，恢復合口
 	
 	return IPA;
 }
@@ -583,7 +583,7 @@ function jpFormat(jyutping, trad, simp){
 	jyutping = ($("#checkbox_isw").is(":checked") == true) ? jyutping : jyutping.replace(/(g|k)wo(k|ng|\d)/g,'$1o$2').replace(/(g|k)wik/g,'$1ik');
 	
 	const reg = /郭|槨|彍|椁|崞/g;
-	jyutping = (reg.test(trad) || reg.test(simp)) ? jyutping.replace(/kwaak/g,'kaak') : jyutping;  // 專門處理平話「郭」字的白讀 kwaak2/kaak2，恢復合口
+	jyutping = ((reg.test(trad) || reg.test(simp)) & ($("#checkbox_isw").is(":checked") != true)) ? jyutping.replace(/kwaak/g,'kaak') : jyutping;  // 專門處理平話「郭」字的白讀 kwaak2/kaak2，恢復合口
 	
 	return jyutping;
 }
