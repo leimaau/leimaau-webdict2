@@ -277,3 +277,20 @@ const rowData_sponsor = [
 	{ TIME: '2020-04-06', WAY: '微信轉賬', NAME: 'C*o', MONEY: '保密' }
 ];
 */
+
+var	playlist = [
+	{title: "Last Dance", artist: "伍佰 & China Blue", mp3: "https://music.163.com/song/media/outer/url?id=157276.mp3" ,cover: "https://p1.music.126.net/HDdQFXVIlRvR96s0mQyu9g==/109951164170257125.jpg?param=130y130"},
+	{title: "My Sunset", artist: "Feint", mp3: "https://music.163.com/song/media/outer/url?id=17867241.mp3" ,cover: "https://p1.music.126.net/hW5xWUJSmG3E-SjMypZ4Iw==/17950626835335733.jpg?param=130y130"},
+	{title: "我知道", artist: "直火帮XZT / 直火帮Straight Fire Gang", mp3: "https://music.163.com/song/media/outer/url?id=1294676267.mp3" ,cover: "https://p2.music.126.net/p2XiuCSqlir-KHeJKjAXtQ==/109951163661465753.jpg?param=130y130"},
+	{title: "ソレソレ", artist: "JABBERLOOP", mp3: "https://music.163.com/song/media/outer/url?id=29307597.mp3" ,cover: "https://p1.music.126.net/HIjHgonnMOHxTo_cjt0LyQ==/6644348767037594.jpg?param=130y130"},
+	{title: "誰", artist: "Cosy", mp3: "https://music.163.com/song/media/outer/url?id=504924216.mp3" ,cover: "https://p1.music.126.net/wYu7NJazuNDCxzbVKld_MA==/109951163021674423.jpg?param=130y130"}
+
+];
+var isRotate = true;
+var autoplay = false;
+function bgChange(){
+	var lis= $('.lib');
+	for(var i=0; i<lis.length; i+=2)
+	lis[i].style.background = 'rgba(246, 246, 246, 0.5)';
+}
+window.onload = bgChange;

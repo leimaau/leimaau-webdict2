@@ -213,6 +213,7 @@ function showLink(textChar){
 	outputText2.push(`漢字全息資源應用系統：<a href="http://qxk.bnu.edu.cn/#/danziDetail/42c2d834-fa1d-47e9-9f90-972a687183f7/${textChar}/22d3af76-1ffe-46da-8c28-40e7dfe6b8d2/0" target="_blank">${textChar}</a></br>`);
 	outputText2.push(`中國哲學書電子化計劃：<a href="https://ctext.org/dictionary.pl?if=gb&char=${textChar}" target="_blank">${textChar}</a></br>`);
 	outputText2.push(`字海|葉典：<a href="http://yedict.com/zscontent.asp?uni=${encodeUnicode(textChar).replace('\\u','')}" target="_blank">${textChar}</a></br>`);
+	outputText2.push(`Forvo：<a href="https://zh.forvo.com/search/${textChar}/" target="_blank">${textChar}</a></br>`);
 	outputText2.push(`Unihan：<a href="https://www.unicode.org/cgi-bin/GetUnihanData.pl?codepoint=${textChar}" target="_blank">${textChar}</a></br>`);
 	outputText2.push(`萌典：<a href="https://www.moedict.tw/${textChar}" target="_blank">${textChar}</a></br>`);
 	outputText2.push(`活用中文大辭典：<a href="https://lib.ctcn.edu.tw/chtdict/result.aspx?keyword=${textChar}" target="_blank">${textChar}</a></br>`);
@@ -237,6 +238,7 @@ function showLink(textChar){
 	outputText3.push(`ISO漢字查詢系統：<a href="http://glyph.iso10646hk.net/chinese/icharacters.jsp" target="_blank">前往</a></br>`);
 	outputText3.push(`香港小學學習字詞表：<a href="https://www.edbchinese.hk/lexlist_ch/" target="_blank">前往</a></br>`);
 	outputText3.push(`早期粵語口語文獻資料庫：<a href="http://143.89.108.109/Candbase/" target="_blank">前往</a></br>`);
+	outputText3.push(`香港二十世紀中期粵語語料庫：<a href="https://hkcc.eduhk.hk/v1/introduction.html" target="_blank">前往</a></br>`);
 	outputText3.push(`</span></div></div>`);
 	
 	$('#webLink').html(outputText.join(''));
@@ -572,8 +574,8 @@ function ipaFormat(IPA, signResult_IPA, trad, simp){
 	}
 	IPA = IPA.replace(/˥˥/g,'˥').replace(/˧˧/g,'˧').replace(/˨˨/g,'˨');
 	
-	const reg = /郭|槨|彍|椁|崞/g;
-	IPA = ((reg.test(trad) || reg.test(simp)) & ($("#checkbox_isw").is(":checked") != true)) ? IPA.replace(/kʷʰak/g,'kʰak') : IPA;  // 專門處理平話「郭」字的白讀 [kʷʰak3/kʰak3]，恢復合口
+	//const reg = /郭|槨|彍|椁|崞/g;
+	//IPA = ((reg.test(trad) || reg.test(simp)) & ($("#checkbox_isw").is(":checked") != true)) ? IPA.replace(/kʷʰak/g,'kʰak') : IPA;  // 專門處理平話「郭」字的白讀 [kʷʰak3/kʰak3]，恢復合口
 	
 	return IPA;
 }
@@ -582,8 +584,8 @@ function ipaFormat(IPA, signResult_IPA, trad, simp){
 function jpFormat(jyutping, trad, simp){
 	jyutping = ($("#checkbox_isw").is(":checked") == true) ? jyutping : jyutping.replace(/(g|k)wo(k|ng|\d)/g,'$1o$2').replace(/(g|k)wik/g,'$1ik');
 	
-	const reg = /郭|槨|彍|椁|崞/g;
-	jyutping = ((reg.test(trad) || reg.test(simp)) & ($("#checkbox_isw").is(":checked") != true)) ? jyutping.replace(/kwaak/g,'kaak') : jyutping;  // 專門處理平話「郭」字的白讀 kwaak2/kaak2，恢復合口
+	//const reg = /郭|槨|彍|椁|崞/g;
+	//jyutping = ((reg.test(trad) || reg.test(simp)) & ($("#checkbox_isw").is(":checked") != true)) ? jyutping.replace(/kwaak/g,'kaak') : jyutping;  // 專門處理平話「郭」字的白讀 kwaak2/kaak2，恢復合口
 	
 	return jyutping;
 }
