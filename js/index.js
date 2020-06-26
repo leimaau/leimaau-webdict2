@@ -152,8 +152,8 @@ function queryPhrase(inputValue, queryType, selVal){
 	var dataList_oldProverb = selVal.filter(item => item.indexOf('_proverb') > -1);
 	if (dataList_oldProverb.length != 0) {
 		res_proverb = MainQuery.queryTable_proverb(inputValue, dataList_oldProverb, queryType);
-		showTable(res_proverb, 'outTab_triungkox', '早期童謠、近代童謠和熟語', outTabTitle_triungkox, colData_proverb);  // 使用顯示《廣韻》的位置
-		showWordCloud(res_proverb, inputValue, 'outWordCloud_triungkox', '早期童謠、近代童謠和熟語', queryType, 'TRAD');
+		showTable(res_proverb, 'outTab_triungkox', '童謠和熟語', outTabTitle_triungkox, colData_proverb);  // 使用顯示《廣韻》的位置
+		showWordCloud(res_proverb, inputValue, 'outWordCloud_triungkox', '童謠和熟語', queryType, 'TRAD');
 	};
 	
 	var res = [];
@@ -230,6 +230,9 @@ function showLink(textChar){
 	outputText3.push(`小學堂：<a href="http://xiaoxue.iis.sinica.edu.tw/" target="_blank">前往</a></br>`);
 	outputText3.push(`英華字典資料庫：<a href="http://mhdb.mh.sinica.edu.tw/dictionary/index.php" target="_blank">前往</a></br>`);
 	outputText3.push(`引得市：<a href="http://www.mebag.com/index/" target="_blank">前往</a></br>`);
+	outputText3.push(`廣東省情網：<a href="http://dfz.gd.gov.cn/" target="_blank">前往</a></br>`);
+	outputText3.push(`廣州市情網：<a href="http://dfz.gz.gov.cn/gzsdfz/index.shtml" target="_blank">前往</a></br>`);
+	outputText3.push(`廣西地情資料庫：<a href="http://www.gxdfz.org.cn/gdtz/" target="_blank">前往</a></br>`);
 	outputText3.push(`開放康熙字典：<a href="http://kangxi.adcs.org.tw/kangxizidian/" target="_blank">前往</a></br>`);
 	outputText3.push(`漢語大字典檢索：<a href="http://www.homeinmists.com/hd/search.html" target="_blank">前往</a></br>`);
 	outputText3.push(`說文解字圖像查閱：<a href="http://www.homeinmists.com/shuowen/find.html" target="_blank">前往</a></br>`);

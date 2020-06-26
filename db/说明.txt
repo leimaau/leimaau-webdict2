@@ -108,10 +108,10 @@ CREATE TABLE tab_1937jz_proverb(
    NOTE          TEXT    
 );
 
--- 词汇表 tab_1997_phrase、tab_1998_phrase、tab_1998_bw_phrase（平话）、tab_2007_phrase、tab_2008_phrase 等相同(已经建好)
+-- 词汇表 tab_1997_phrase、tab_1998_phrase、tab_1998_bw_phrase（平话）、tab_2007_phrase、tab_2008_phrase、tab_2020_phrase、tab_2020_bw_phrase 等相同(已经建好)
 CREATE TABLE tab_2008_phrase(
    ID            TEXT    NOT NULL,
-   CLASSIFI        TEXT    NOT NULL,
+   CLASSIFI      TEXT    NOT NULL,
    TRAD          TEXT    NOT NULL,
    SIMP          TEXT    NOT NULL,
    IPA_S         TEXT    NOT NULL,

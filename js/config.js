@@ -3,8 +3,8 @@
 */
 
 const cdnAddr = [];
-cdnAddr.push('https://cdn.jsdelivr.net/gh/leimaau');
-cdnAddr.push('CDN@0.0.4');
+cdnAddr.push('https://cdn.jsdelivr.net/npm');
+cdnAddr.push('leimaau-npm-cdn@1.0.4');
 cdnAddr.push('db/leimaau.db3');
 
 const DictConfig = {
@@ -58,6 +58,7 @@ const rowData_book = [
 	//{ BOOK: '1993年辻伸久 《南寧平話字音記略》', NN: '', NN_D: '', NN_Y: '', HX_B: '', NN_T: 'noData', NN_S: '', HX_P: '' }
 	{ BOOK: '1994年謝建猷《南寧白話同音字彙》', NN: 'tab_1994', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_S: '', HX_P: '' }
 	, { BOOK: '1997年楊煥典《南寧話音檔》', NN: 'tab_1997', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_S: '', HX_P: '' }
+	, { BOOK: '1997年李榮主編《南寧平話詞典》(單字音表)', NN: '', NN_D: '', NN_Y: '', HX_B: '', NN_T: 'noData', NN_S: '', HX_P: '' }
 	, { BOOK: '1998年楊煥典主編《廣西通誌·漢語方言誌》', NN: 'tab_1998', NN_D: '', NN_Y: '', HX_B: '', NN_T: 'tab_1998_bw', NN_S: '', HX_P: '' }
 	, { BOOK: '2000年李連進《平話音韻研究》', NN: '', NN_D: '', NN_Y: '', HX_B: '', NN_T: 'tab_2000_bw', NN_S: '', HX_P: 'tab_2000_zb_wj' }
 	, { BOOK: '2002年候精一《現代漢語方言音庫(字庫)》', NN: 'tab_2002', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_S: '', HX_P: '' }
@@ -103,11 +104,12 @@ const rowData_book_phrase = [
 	, { BOOK: '1997年李榮主編《南寧平話詞典》', NN: '', NN_D: '', HX_B: '', NN_T: 'noData', NN_S: '', HX_P: '' }
 	, { BOOK: '1998年楊煥典主編《廣西通誌·漢語方言誌》', NN: 'noData', NN_D: '', HX_B: '', NN_T: 'noData', NN_S: '', HX_P: '' }
 	, { BOOK: '2007年謝建猷《廣西漢語方言研究》', NN: 'noData', NN_D: '', HX_B: '', NN_T: '', NN_S: 'noData', HX_P: 'noData' }
-	, { BOOK: '2008年林亦、覃鳳餘《廣西南寧白話研究》', NN: 'noData', NN_D: '', HX_B: '', NN_T: '', NN_S: '', HX_P: '' }
+	, { BOOK: '2008年林亦、覃鳳餘《廣西南寧白話研究》', NN: 'tab_2008_phrase', NN_D: '', HX_B: '', NN_T: '', NN_S: '', HX_P: '' }
 	, { BOOK: '2015年黃增霞《廣西南寧疍家話詞彙研究》', NN: '', NN_D: 'noData', HX_B: '', NN_T: '', NN_S: '', HX_P: '' }
 	, { BOOK: '2016年余瑾《廣西平話研究》', NN: '', NN_D: '', HX_B: '', NN_T: '', NN_S: '', HX_P: '' }
 	, { BOOK: '2017年詹伯慧、張振興《漢語方言學大詞典》', NN: '', NN_D: '', HX_B: '', NN_T: 'noData', NN_S: '', HX_P: '' }
 	, { BOOK: '2019年莫思敏《橫縣白話語音研究》', NN: '', NN_D: '', HX_B: 'noData', NN_T: '', NN_S: '', HX_P: '' }
+	, { BOOK: '2020年Leimaau《南寧話審詞表》(本站提供)', NN: 'tab_2020_phrase', NN_D: '', HX_B: '', NN_T: 'tab_2020_bw_phrase', NN_S: '', HX_P: '' }
 ];
 
 
@@ -175,7 +177,7 @@ const colData_jw = [
 	, { field: 'OLD_JP', title: '讀音' }
 	, { field: 'OLD_JP_TYPE', title: '讀音分類' }
 	, { field: 'OLD_JP_NOTE', title: '讀音備註' }
-	, { field: 'PAGE', title: '葉', formatter: (value, row) => { return pageSplit(value.replace('*','s'), 'jpg', 'https://cdn.jsdelivr.net/gh/leimaau/CDN@0.0.4/data-store/1856fy/fy') } }
+	, { field: 'PAGE', title: '葉', formatter: (value, row) => { return pageSplit(value.replace('*','s'), 'jpg', 'https://cdn.jsdelivr.net/gh/leimaau/CDN@latest/data-store/1856fy/fy') } }
 	, { field: 'IPA', title: 'IPA擬音' }
 	, { field: 'JYUTPING', title: '粵拼擬音', formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'jyut6ping3', 'dicWord')">${value}</a>` } }
 ];
@@ -186,7 +188,7 @@ const colData_jj = [
 	, { field: 'WORD', title: '字頭', align: 'center', formatter: (value) => { let charStr = value.split('|'), aLink = []; for (let i in charStr) aLink.push(`<a href="javascript:querySubmit('${charStr[i]}', 'char', 'dicWord')">${charStr[i]}</a>`); return aLink.join('|') } }
 	, { field: 'IPA', title: 'IPA' }
 	, { field: 'JYUTPING', title: '粵拼', formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'jyut6ping3', 'dicWord')">${value}</a>` } }
-	, { field: 'PAGE', title: '葉', formatter: (value, row) => { return pageSplit(value, 'jpg', 'https://cdn.jsdelivr.net/gh/leimaau/CDN@0.0.4/data-store/1941yy/yy') } }
+	, { field: 'PAGE', title: '葉', formatter: (value, row) => { return pageSplit(value, 'jpg', 'https://cdn.jsdelivr.net/gh/leimaau/CDN@latest/data-store/1941yy/yy') } }
 	, { field: 'EXPL', title: '釋義', formatter: (value) => { return `<p data-toggle="tooltip" data-placement="left" title="${value}">${value}<p/>` }  }
 	, { field: 'FIRSTFLAG', title: '國語聲母是否捲舌', formatter: (value) => { return `${value.replace('1', '1（否）').replace('2', '2（是）')}` }  }
 ];
@@ -209,22 +211,22 @@ const colData_proverb = [
 	//, {field: 'ID',title: 'ID'}
 	, { field: 'TRAD', title: '繁體', width: '350px', align: 'left', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
 	, { field: 'SIMP', title: '簡體', width: '350px', align: 'left', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
-	, { field: 'SOUR', title: '來源', width: '280px', formatter: (value, row) => { if(row['YEAR'] == 'tab_2020_proverb') {return `<span style="white-space: normal">2020年Leimaau《南寧童謠和熟語》(本站提供)<span/>`} else {return (row['YEAR'] == 'tab_1937kk_proverb') ? '<span style="white-space: normal">1937年廣西省政府總務處統計室《南寧社會概況》' + pageSplit(value, 'jpg','https://cdn.jsdelivr.net/gh/leimaau/CDN@0.0.4/data-store/1937tj/kk_tj') + '<span/>' : '<span style="white-space: normal">1937年邕寧縣修誌委員會《邕寧縣誌(第4冊)》' + pageSplit(value, 'jpg','https://cdn.jsdelivr.net/gh/leimaau/CDN@0.0.4/data-store/1937tj/jz_tj') + '<span/>' } } }
+	, { field: 'SOUR', title: '來源', width: '280px', formatter: (value, row) => { if(row['YEAR'] == 'tab_2020_proverb') {return `<span style="white-space: normal">2020年Leimaau《南寧童謠和熟語》(本站提供)<span/>`} else {return (row['YEAR'] == 'tab_1937kk_proverb') ? '<span style="white-space: normal">1937年廣西省政府總務處統計室《南寧社會概況》' + pageSplit(value, 'jpg','https://cdn.jsdelivr.net/gh/leimaau/CDN@latest/data-store/1937tj/kk_tj') + '<span/>' : '<span style="white-space: normal">1937年邕寧縣修誌委員會《邕寧縣誌(第4冊)》' + pageSplit(value, 'jpg','https://cdn.jsdelivr.net/gh/leimaau/CDN@latest/data-store/1937tj/jz_tj') + '<span/>' } } }
 	, { field: 'NOTE', title: '附註', width: '220px', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
 ];
 
 const colData_phrase = [
-	{ field: 'YEAR', title: '資料', align: 'center', formatter: (value) => { return `<span class="user-font">${value.replace('_phrase', '').replace('tab_', '')}</span>` } }
+	{ field: 'YEAR', title: '資料', sortable : true, align: 'center', formatter: (value) => { return `<span class="user-font">${value.replace('_bw', '').replace('_phrase', '').replace('tab_', '')}</span>` } }
 	//, {field: 'ID',title: 'ID'}
-	, { field: 'CLASSIFI', title: '分類' }
-	, { field: 'TRAD', title: '繁體', align: 'center', formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'phrase', 'dicPhrase')">${value}</a>` } }
-	, { field: 'SIMP', title: '簡體', align: 'center', formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'phrase_simp', 'dicPhrase')">${value}</a>` } }
-	, { field: 'IPA_S', title: '原文IPA' }
-	, { field: 'IPA_T', title: '統一IPA' }
-	, { field: 'JYUTPING', title: '粵拼', formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'phrase_jyut6ping3', 'dicPhrase')">${value}</a>` } }
-	, { field: 'SOUR', title: '來源', formatter: (value, row) => { return formatSOUR(value, row['YEAR'], 'png', false) } }
-	, { field: 'EXPL', title: '釋義', formatter: (value) => { return `<p data-toggle="tooltip" data-placement="left" title="${value}">${value}<p/>` } }
-	, { field: 'NOTE', title: '附註', formatter: (value) => { return `<p data-toggle="tooltip" data-placement="left" title="${value}">${value}<p/>` } }
+	, { field: 'TRAD', title: '繁體', sortable : true, align: 'center', formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'phrase', 'dicPhrase')">${value}</a>` } }
+	, { field: 'SIMP', title: '簡體', sortable : true, align: 'center', formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'phrase_simp', 'dicPhrase')">${value}</a>` } }
+	, { field: 'IPA_S', title: '原文IPA', sortable : true }
+	, { field: 'IPA_T', title: '統一IPA', sortable : true }
+	, { field: 'JYUTPING', title: '粵拼', sortable : true, formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'phrase_jyut6ping3', 'dicPhrase')">${value}</a>` } }
+	, { field: 'SOUR', title: '來源', sortable : true, formatter: (value, row) => { return formatSOUR(value, row['YEAR'], 'png', false) } }
+	, { field: 'EXPL', title: '釋義', sortable : true, formatter: (value) => { return `<p data-toggle="tooltip" data-placement="left" title="${value}">${value}<p/>` } }
+	, { field: 'NOTE', title: '附註', sortable : true, formatter: (value) => { return `<p data-toggle="tooltip" data-placement="left" title="${value}">${value}<p/>` } }
+	, { field: 'CLASSIFI', title: '分類', sortable : true }
 ];
 
 // 格式化來源欄
@@ -236,7 +238,7 @@ function formatSOUR(value, row_year, picType, isChar = true) {
 	};
 	row_year = row_year.replace('_bw', '').replace('_phrase', '').replace('tab_', '');
 	//var linkaddr = 'https://leimaau.gitee.io/data-store/' + row_year;
-	var linkaddr = 'https://cdn.jsdelivr.net/gh/leimaau/CDN@0.0.4/data-store/' + row_year;
+	var linkaddr = 'https://cdn.jsdelivr.net/gh/leimaau/CDN@latest/data-store/' + row_year;
 	
 	if (row_year == '1994') linkaddr += 'zh/zh'
 	else if (row_year == '1997') linkaddr += 'yd/yd'
@@ -279,12 +281,12 @@ const rowData_sponsor = [
 */
 
 var	playlist = [
-	{title: "Last Dance", artist: "伍佰 & China Blue", mp3: "https://music.163.com/song/media/outer/url?id=157276.mp3" ,cover: "https://p1.music.126.net/HDdQFXVIlRvR96s0mQyu9g==/109951164170257125.jpg?param=130y130"},
-	{title: "My Sunset", artist: "Feint", mp3: "https://music.163.com/song/media/outer/url?id=17867241.mp3" ,cover: "https://p1.music.126.net/hW5xWUJSmG3E-SjMypZ4Iw==/17950626835335733.jpg?param=130y130"},
-	{title: "我知道", artist: "直火帮XZT / 直火帮Straight Fire Gang", mp3: "https://music.163.com/song/media/outer/url?id=1294676267.mp3" ,cover: "https://p2.music.126.net/p2XiuCSqlir-KHeJKjAXtQ==/109951163661465753.jpg?param=130y130"},
-	{title: "ソレソレ", artist: "JABBERLOOP", mp3: "https://music.163.com/song/media/outer/url?id=29307597.mp3" ,cover: "https://p1.music.126.net/HIjHgonnMOHxTo_cjt0LyQ==/6644348767037594.jpg?param=130y130"},
-	{title: "誰", artist: "Cosy", mp3: "https://music.163.com/song/media/outer/url?id=504924216.mp3" ,cover: "https://p1.music.126.net/wYu7NJazuNDCxzbVKld_MA==/109951163021674423.jpg?param=130y130"}
-
+	{ title: "Heart Like California", artist: "Before You Exit", mp3: "http://music.163.com/song/media/outer/url?id=28828120.mp3" ,cover: "http://p1.music.126.net/zuxhlVEkxksU3e5_mR4Ymg==/5990139348590509.jpg?param=130y130" }
+	, { title: "The #IcePack Rises", artist: "EnV", mp3: "http://music.163.com/song/media/outer/url?id=403711524.mp3" ,cover: "http://p1.music.126.net/VLj7Ns6qE8o9xeGCmyWvrA==/1419469512737732.jpg?param=130y130" }
+	, { title: "造物者", artist: "华晨宇", mp3: "http://music.163.com/song/media/outer/url?id=419250437.mp3" ,cover: "http://p1.music.126.net/Brk5ra86AWlPOrBljUQ9rw==/1405175872394479.jpg?param=130y130" }
+	, { title: "ソレソレ", artist: "JABBERLOOP", mp3: "http://music.163.com/song/media/outer/url?id=29307597.mp3" ,cover: "http://p1.music.126.net/HIjHgonnMOHxTo_cjt0LyQ==/6644348767037594.jpg?param=130y130" }
+	, { title: "回娘家", artist: "朱明瑛", mp3: "http://music.163.com/song/media/outer/url?id=340054.mp3" ,cover: "http://p2.music.126.net/b1DuxpPbEicNE06gVUQsLA==/39582418613242.jpg?param=130y130" }
+	, { title: "Last Dance", artist: "伍佰 & China Blue", mp3: "http://music.163.com/song/media/outer/url?id=157276.mp3" ,cover: "http://p1.music.126.net/HDdQFXVIlRvR96s0mQyu9g==/109951164170257125.jpg?param=130y130" }
 ];
 var isRotate = true;
 var autoplay = false;
