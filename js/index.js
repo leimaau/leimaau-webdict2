@@ -153,7 +153,7 @@ function queryPhrase(inputValue, queryType, selVal){
 	if (dataList_oldProverb.length != 0) {
 		res_proverb = MainQuery.queryTable_proverb(inputValue, dataList_oldProverb, queryType);
 		showTable(res_proverb, 'outTab_triungkox', '童謠和熟語', outTabTitle_triungkox, colData_proverb);  // 使用顯示《廣韻》的位置
-		showWordCloud(res_proverb, inputValue, 'outWordCloud_triungkox', '童謠和熟語', queryType, 'TRAD');
+		if (res_proverb.length != 0) showWordCloud(res_proverb, inputValue, 'outWordCloud_triungkox', '童謠和熟語', queryType, 'TRAD');
 	};
 	
 	var res = [];
@@ -190,78 +190,6 @@ function showTable(res, outputDiv, tabTitle, tabTitleDiv, colData) {
 		data: res
 	});
 	$('[data-toggle="tooltip"]').tooltip(); // 綁定tips
-}
-
-// 鏈接顯示函數
-function showLink(textChar){
-	const outputText = [], outputText2 = [], outputText3 = [];
-	outputText.push(`<div class="card mt-1 mb-3"><div class="card-header">相關鏈接</div><div class="card-body text-secondary"><span>`);
-	outputText.push(`漢典網：<a href="http://www.zdic.net/hans/${textChar}" target="_blank">${textChar}</a> | <a href="http://www.zdic.net/zd/yy/yy/${textChar}" target="_blank">粵語</a> | <a href="http://www.zdic.net/zd/yy/ph/${textChar}" target="_blank">平話</a></br>`);
-	outputText.push(`韻典網：<a href="https://ytenx.org/zim?dzih=${textChar}&dzyen=1&jtkb=1&jtkd=1&jtdt=1&jtgt=1" target="_blank">${textChar}</a></br>`);
-	outputText.push(`國學大師：<a href="http://www.guoxuedashi.com/zidian/${encodeUnicode(textChar).replace('\\u','')}.html" target="_blank">${textChar}</a></br>`);
-	outputText.push(`古今文字集成：<a href="http://www.ccamc.co/cjkv.php?cjkv=${textChar}" target="_blank">${textChar}</a></br>`);
-	outputText.push(`粵音資料集叢：<a href="https://jyut.net/query?q=${textChar}" target="_blank">${textChar}</a></br>`);
-	outputText.push(`漢語多功能字庫：<a href="http://humanum.arts.cuhk.edu.hk/Lexis/lexi-mf/search.php?word=${textChar}" target="_blank">${textChar}</a> | <a href="http://humanum.arts.cuhk.edu.hk/Lexis/lexi-mf/dialect.php?word=${textChar}" target="_blank">其他方言讀音</a></br>`);
-	outputText.push(`縱橫在線中文字典：<a href="https://ckc.eduhk.hk/ckc2/dictionary.php?jiinput=${textChar}&lang=b5&form1=1" target="_blank">${textChar}</a></br>`);
-	outputText.push(`「數理華聲」科學及數學科詞彙表：<a href="https://ckc.eduhk.hk/ckc2/charlist.php?csmsinput=${textChar}&lang=b5" target="_blank">${textChar}</a></br>`);
-	outputText.push(`英華字典資料庫：<a href="http://mhdb.mh.sinica.edu.tw/dictionary/search.php?titleOnlyBtn=true&searchStr=${textChar}&lang=b5" target="_blank">${textChar}</a></br>`);
-	outputText.push(`粵拼歌詞網：<a href="https://jyut6.com/search.php?keyword=${textChar}" target="_blank">${textChar}</a></br>`);
-	outputText.push(`翡翠粵語歌詞：<a href="https://www.feitsui.com/zh-hans/search/${textChar}.html" target="_blank">${textChar}</a></br>`);
-	outputText.push(`</span></div></div>`);
-	
-	outputText2.push(`<div class="card mt-1 mb-3"><div class="card-header">相關鏈接</div><div class="card-body text-secondary"><span>`);
-	outputText2.push(`漢字全息資源應用系統：<a href="http://qxk.bnu.edu.cn/#/danziDetail/42c2d834-fa1d-47e9-9f90-972a687183f7/${textChar}/22d3af76-1ffe-46da-8c28-40e7dfe6b8d2/0" target="_blank">${textChar}</a></br>`);
-	outputText2.push(`中國哲學書電子化計劃：<a href="https://ctext.org/dictionary.pl?if=gb&char=${textChar}" target="_blank">${textChar}</a></br>`);
-	outputText2.push(`字海|葉典：<a href="http://yedict.com/zscontent.asp?uni=${encodeUnicode(textChar).replace('\\u','')}" target="_blank">${textChar}</a></br>`);
-	outputText2.push(`Forvo：<a href="https://zh.forvo.com/search/${textChar}/" target="_blank">${textChar}</a></br>`);
-	outputText2.push(`Unihan：<a href="https://www.unicode.org/cgi-bin/GetUnihanData.pl?codepoint=${textChar}" target="_blank">${textChar}</a></br>`);
-	outputText2.push(`萌典：<a href="https://www.moedict.tw/${textChar}" target="_blank">${textChar}</a></br>`);
-	outputText2.push(`活用中文大辭典：<a href="https://lib.ctcn.edu.tw/chtdict/result.aspx?keyword=${textChar}" target="_blank">${textChar}</a></br>`);
-	outputText2.push(`漢字ペディア：<a href="https://www.kanjipedia.jp/search?k=${textChar}&kt=1&sk=leftHand" target="_blank">${textChar}</a></br>`);
-	outputText2.push(`GlyphWiki：<a href="http://glyphwiki.org/wiki/${encodeUnicode(textChar).replace('\\','')}?tdsourcetag=s_pctim_aiomsg" target="_blank">${textChar}</a></br>`);
-	outputText2.push(`Chinese Etymology 字源：<a href="https://hanziyuan.net/#${textChar}" target="_blank">${textChar}</a></br>`);
-	outputText2.push(`小雞詞典：<a href="https://jikipedia.com/search?phrase=${textChar}&kt=1&sk=leftHand" target="_blank">${textChar}</a></br>`);
-	outputText2.push(`</span></div></div>`);
-	
-	outputText3.push(`<div class="card mt-1 mb-3"><div class="card-header">相關鏈接</div><div class="card-body text-secondary"><span>`);
-	outputText3.push(`東方語言學：<a href="http://www.eastling.org/" target="_blank">前往</a></br>`);
-	outputText3.push(`漢語方言學大詞典：<a href="http://www.fangyanxue.com/pages/index/index.html" target="_blank">前往</a></br>`);
-	outputText3.push(`古音手鏡：<a href="http://www.guguolin.com/" target="_blank">前往</a></br>`);
-	outputText3.push(`小學堂：<a href="http://xiaoxue.iis.sinica.edu.tw/" target="_blank">前往</a></br>`);
-	outputText3.push(`英華字典資料庫：<a href="http://mhdb.mh.sinica.edu.tw/dictionary/index.php" target="_blank">前往</a></br>`);
-	outputText3.push(`引得市：<a href="http://www.mebag.com/index/" target="_blank">前往</a></br>`);
-	outputText3.push(`廣東省情網：<a href="http://dfz.gd.gov.cn/" target="_blank">前往</a></br>`);
-	outputText3.push(`廣州市情網：<a href="http://dfz.gz.gov.cn/gzsdfz/index.shtml" target="_blank">前往</a></br>`);
-	outputText3.push(`廣西地情資料庫：<a href="http://www.gxdfz.org.cn/gdtz/" target="_blank">前往</a></br>`);
-	outputText3.push(`開放康熙字典：<a href="http://kangxi.adcs.org.tw/kangxizidian/" target="_blank">前往</a></br>`);
-	outputText3.push(`漢語大字典檢索：<a href="http://www.homeinmists.com/hd/search.html" target="_blank">前往</a></br>`);
-	outputText3.push(`說文解字圖像查閱：<a href="http://www.homeinmists.com/shuowen/find.html" target="_blank">前往</a></br>`);
-	outputText3.push(`現代標準漢語與粵語對照資料庫：<a href="http://apps.itsc.cuhk.edu.hk/hanyu/Page/Cover.aspx" target="_blank">前往</a></br>`);
-	outputText3.push(`CantoDict：<a href="http://www.cantonese.sheik.co.uk/scripts/masterlist.htm" target="_blank">前往</a></br>`);
-	outputText3.push(`ISO漢字查詢系統：<a href="http://glyph.iso10646hk.net/chinese/icharacters.jsp" target="_blank">前往</a></br>`);
-	outputText3.push(`香港小學學習字詞表：<a href="https://www.edbchinese.hk/lexlist_ch/" target="_blank">前往</a></br>`);
-	outputText3.push(`早期粵語口語文獻資料庫：<a href="http://143.89.108.109/Candbase/" target="_blank">前往</a></br>`);
-	outputText3.push(`香港二十世紀中期粵語語料庫：<a href="https://hkcc.eduhk.hk/v1/introduction.html" target="_blank">前往</a></br>`);
-	outputText3.push(`</span></div></div>`);
-	
-	$('#webLink').html(outputText.join(''));
-	$('#webLink2').html(outputText2.join(''));
-	$('#webLink3').html(outputText3.join(''));
-}
-
-// 漢字轉 Unicode
-function encodeUnicode(str) {
-    var res = [];
-    for (var i = 0; i < str.length; i++) {
-        res[i] = ( "00" + str.charCodeAt(i).toString(16) ).slice(-4);
-    }
-    return "\\u" + res.join("\\u");
-}
-
-// Unicode 轉漢字
-function decodeUnicode(str) {
-    str = str.replace(/\\/g, "%");
-    return unescape(str);
 }
 
 // 餅圖顯示函數
@@ -453,10 +381,10 @@ function signArticle(textCont, signText_type, signResult_type, signResult_format
 	if (!cutModule.initFlag){ // 初始化分詞模塊，衹執行一次
 		//const segDict = MainQuery.queryTableOne_segdict(); // 目前是從segDict.js獲取，tab_segdict爲空，需要時導入數據使用
 		cutModule.initFlag = true;
-		segMain(segDict);
+		segMain(segDict.concat(segDictPlus));
 	}
 	
-	var outputText = [];
+	const outputText = [];
 	
 	for (let lines of textCont.split('\n')) {
 		if (signResult_format == 'updown') { // 按字內嵌
@@ -510,45 +438,33 @@ function signArticle(textCont, signText_type, signResult_type, signResult_format
 	$('#signResult').html(outputText.join(''));
 }
 
-// 【單字】查詢粵拼或IPA函數
-function queryJyutping(txtStr, trad_simp, tabName, jyutping_ipa, signResult_IPA, keep_symbol = true){
-	//let res = MainQuery.queryJyutping(txtStr, trad_simp, tabName); // 目前是從segDict.js獲取，tab_nn_review、tab_nnt_review、tab_gz_review爲空，需要時導入數據使用
-	let res = window[tabName].filter(item => item[trad_simp] == txtStr);
-	if ( !(/[^\u4e00-\u9fa5]/.test(txtStr)) || (res.length > 0) ) { // 判斷是否中文或字典有數據
-		if(res.length != 0){
-			if (res.length == 1){ // 只有一種讀音
-				return (jyutping_ipa == 'jyutping') ? jpFormat(res[0]['jyutping'], res[0]['trad'], res[0]['simp']) : ipaFormat(res[0]['ipa'], signResult_IPA, res[0]['trad'], res[0]['simp']);
-			} else {
-				let char_jyutping = [], char_ipa = [];
-				for (let i of res){
-					char_jyutping.push(jpFormat(i.jyutping, i.trad, i.simp));
-					char_ipa.push(ipaFormat(i.ipa, signResult_IPA, i.trad, i.simp));
-				}
-				return (jyutping_ipa == 'jyutping') ? [...new Set(char_jyutping)].join('/') : [...new Set(char_ipa)].join('/');
-			}
-		} else { // 無讀音
-			return '　';　// 全角空格，會被當成一個中文
-		}
-	} else { // 非中文字符
-		if(keep_symbol) {
-			return txtStr;
-		} else {
-			return '';
-		}
-	}
-}
-
 // 【詞彙】查詢粵拼或IPA函數
 function queryJyutpingPhrase(txtStr, trad_simp, tabName, jyutping_ipa, signResult_format, signResult_IPA, keep_symbol = true){
 	//let res = MainQuery.queryJyutping(txtStr, trad_simp, tabName); // 目前是從segDict.js獲取，tab_nn_review、tab_nnt_review、tab_gz_review停用，需要時導入數據使用
 	let res = window[tabName].filter(item => item[trad_simp] == txtStr), resJ =[];
-	if (res.length == 1 && txtStr.length > 1 ) { // 詞典有數據並且爲詞彙
+	if (res.length == 1 && txtStr.length > 1 ) { // 詞典有一個數據並且爲詞彙
 		for(let i in txtStr.split('')){
 			if (signResult_format == 'updown') { // 按字內嵌時 中文字後帶 '</rt><rp>)</rp>'，拼音或ipa後帶 '</rt><rp>)</rp>'，return時合併起來
 				resJ.push(txtStr.split('')[i] + '<rp>(</rp><rt>');
 				resJ.push((jyutping_ipa == 'jyutping') ? jpFormat(res[0]['jyutping'].split(' ')[i]) + '</rt><rp>)</rp>' : ipaFormat(res[0]['ipa'].split(' ')[i], signResult_IPA) + '</rt><rp>)</rp>');
 			} else {
 				resJ.push((jyutping_ipa == 'jyutping') ? jpFormat(res[0]['jyutping'].split(' ')[i]) : ipaFormat(res[0]['ipa'].split(' ')[i], signResult_IPA));
+			}
+		}
+	} else if (res.length > 1 && txtStr.length > 1 ) { // 詞典有多個數據並且爲詞彙
+		for(let i in txtStr.split('')){
+			let tempJp = [], tempIPA = [];
+			for (let j=0; j<res.length; j++) {
+				 tempJp.push(res[j]['jyutping'].split(' ')[i]);
+				 tempIPA.push(res[j]['ipa'].split(' ')[i]);
+			}
+			tempJp = [...new Set(tempJp)];
+			tempIPA = [...new Set(tempIPA)];
+			if (signResult_format == 'updown') { // 按字內嵌時 中文字後帶 '</rt><rp>)</rp>'，拼音或ipa後帶 '</rt><rp>)</rp>'，return時合併起來
+				resJ.push(txtStr.split('')[i] + '<rp>(</rp><rt>');
+				resJ.push((jyutping_ipa == 'jyutping') ? jpFormat(tempJp.join('/')) + '</rt><rp>)</rp>' : ipaFormat(tempIPA.join('/'), signResult_IPA) + '</rt><rp>)</rp>');
+			} else {
+				resJ.push((jyutping_ipa == 'jyutping') ? jpFormat(tempJp.join('/')) : ipaFormat(tempIPA.join('/'), signResult_IPA));
 			}
 		}
 	} else { // 詞典無數據或有多個讀音或爲單字
@@ -564,8 +480,36 @@ function queryJyutpingPhrase(txtStr, trad_simp, tabName, jyutping_ipa, signResul
 	return resJ.join((signResult_format == 'updown') ? '' : ',');
 }
 
+// 【單字】查詢粵拼或IPA函數
+function queryJyutping(txtStr, trad_simp, tabName, jyutping_ipa, signResult_IPA, keep_symbol = true){
+	//let res = MainQuery.queryJyutping(txtStr, trad_simp, tabName); // 目前是從segDict.js獲取，tab_nn_review、tab_nnt_review、tab_gz_review爲空，需要時導入數據使用
+	let res = window[tabName].filter(item => item[trad_simp] == txtStr);
+	if ( !(/[^\u4e00-\u9fa5]/.test(txtStr)) || (res.length > 0) ) { // 判斷是否中文或字典有數據
+		if(res.length != 0){
+			if (res.length == 1){ // 只有一種讀音
+				return (jyutping_ipa == 'jyutping') ? jpFormat(res[0]['jyutping']) : ipaFormat(res[0]['ipa'], signResult_IPA);
+			} else {
+				let char_jyutping = [], char_ipa = [];
+				for (let i of res){
+					char_jyutping.push(jpFormat(i.jyutping));
+					char_ipa.push(ipaFormat(i.ipa, signResult_IPA));
+				}
+				return (jyutping_ipa == 'jyutping') ? [...new Set(char_jyutping)].join('/') : [...new Set(char_ipa)].join('/');
+			}
+		} else { // 無讀音
+			return '　';　// 全角空格，會被當成一個中文
+		}
+	} else { // 非中文字符
+		if(keep_symbol) {
+			return txtStr;
+		} else {
+			return '';
+		}
+	}
+}
+
 // IPA格式處理
-function ipaFormat(IPA, signResult_IPA, trad, simp){
+function ipaFormat(IPA, signResult_IPA){
 	IPA = ($("#checkbox_isw").is(":checked") == true) ? IPA : IPA.replace(/kʷ(ʰ|)ɔ(k|ŋ|\d{2})/g,'k$1ɔ$2').replace(/kʷ(ʰ|)ek/g,'k$1ek').replace(/kʷ(ʰ|)o(k|ŋ|\d{2})/g,'k$1o$2');
 	
 	if(signResult_IPA == 'noUp'){
@@ -577,20 +521,28 @@ function ipaFormat(IPA, signResult_IPA, trad, simp){
 	}
 	IPA = IPA.replace(/˥˥/g,'˥').replace(/˧˧/g,'˧').replace(/˨˨/g,'˨');
 	
-	//const reg = /郭|槨|彍|椁|崞/g;
-	//IPA = ((reg.test(trad) || reg.test(simp)) & ($("#checkbox_isw").is(":checked") != true)) ? IPA.replace(/kʷʰak/g,'kʰak') : IPA;  // 專門處理平話「郭」字的白讀 [kʷʰak3/kʰak3]，恢復合口
-	
 	return IPA;
 }
 
 // 粵拼格式處理
-function jpFormat(jyutping, trad, simp){
+function jpFormat(jyutping){
 	jyutping = ($("#checkbox_isw").is(":checked") == true) ? jyutping : jyutping.replace(/(g|k)wo(k|ng|\d)/g,'$1o$2').replace(/(g|k)wik/g,'$1ik');
 	
-	//const reg = /郭|槨|彍|椁|崞/g;
-	//jyutping = ((reg.test(trad) || reg.test(simp)) & ($("#checkbox_isw").is(":checked") != true)) ? jyutping.replace(/kwaak/g,'kaak') : jyutping;  // 專門處理平話「郭」字的白讀 kwaak2/kaak2，恢復合口
-	
 	return jyutping;
+}
+
+// 粵拼與IPA轉換
+function Func_JP_IPA(inputSymbol, transform_type, IPA_version, output_IPAformat){
+	if (inputSymbol.length > 30000){
+		toastrFunc('toast-top-center');
+		toastr.error('禁止超過三萬字！');
+		return false;
+	}
+	const outputText = [];
+	for (let lines of inputSymbol.split('\n')) {
+		outputText.push(jyutping_to_ipa(lines, IPA_version, output_IPAformat) + '<br>');
+	}
+	$('#outputSymbol').html(outputText.join(''));
 }
 
 // 在線分詞函數
@@ -604,7 +556,7 @@ function wordSeg(textCont, HMM = false) {
 	if (!cutModule.initFlag){ // 初始化分詞模塊，衹執行一次
 		//const segDict = MainQuery.queryTableOne_segdict(); // 目前是從segDict.js獲取，tab_segdict停用，需要時導入數據使用
 		cutModule.initFlag = true;
-		segMain(segDict);
+		segMain(segDict.concat(segDictPlus));
 	}
 	
 	const outputText = [];

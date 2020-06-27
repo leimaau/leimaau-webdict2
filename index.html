@@ -70,21 +70,23 @@
   <script type="text/javascript" src="js/config.js"></script>
   <script type="text/javascript" src="js/dao.js"></script>
   <!--<script type="text/javascript" src="js/dictDb.js"></script>-->
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.0.5/js/dictDb.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.0.6/js/dictDb.js"></script>
   <script type="text/javascript" src="js/index.js"></script>
   <!--
   <script type="text/javascript" src="js/jieba-js/segMain.min.js"></script>
   <script type="text/javascript" src="js/jieba-js/segDict.min.js"></script>
+  <script type="text/javascript" src="js/jieba-js/segDictPlus.min.js"></script>
   <script type="text/javascript" src="js/jieba-js/nnDict.js"></script>
   <script type="text/javascript" src="js/jieba-js/nntDict.js"></script>
   <script type="text/javascript" src="js/jieba-js/gzDict.js"></script>
   -->
   
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.0.5/js/jieba-js/segMain.min.js"></script>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.0.5/js/jieba-js/segDict.min.js"></script>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.0.5/js/jieba-js/nnDict.js"></script>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.0.5/js/jieba-js/nntDict.js"></script>
-  <!--<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.0.5/js/jieba-js/gzDict.js"></script>-->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.0.6/js/jieba-js/segMain.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.0.6/js/jieba-js/segDict.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.0.6/js/jieba-js/segDictPlus.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.0.6/js/jieba-js/nnDict.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.0.6/js/jieba-js/nntDict.js"></script>
+  <!--<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.0.6/js/jieba-js/gzDict.js"></script>-->
   
   <link type="text/css" rel="stylesheet" href="css/player/player.css" />
 </head>
@@ -119,7 +121,7 @@
             <!--<a class="dropdown-item" target="_blank" href="https://github.com/leimaau/bookCollection">PDF資料</a>-->
             <div class="dropdown-divider"></div>
 			<!--<a class="dropdown-item text-primary" data-toggle="modal" data-target="#" href="#">繁簡轉換&nbsp;&nbsp;<span class="badge badge-danger">New</span></a>-->
-			<!--<a class="dropdown-item text-primary" data-toggle="modal" data-target="#" href="#">粵拼與IPA轉換&nbsp;&nbsp;<span class="badge badge-danger">New</span></a>-->
+			<a class="dropdown-item text-primary" data-toggle="modal" data-target="#JP_IPA_Modal" href="#">在線轉換&nbsp;&nbsp;<span class="badge badge-danger">New</span></a>
 			<a class="dropdown-item text-primary" data-toggle="modal" data-target="#wordSegModal" href="#">在線分詞&nbsp;&nbsp;<span class="badge badge-danger">New</span></a>
             <a class="dropdown-item text-primary" data-toggle="modal" data-target="#signArticleModal" href="#">在線標註&nbsp;&nbsp;<span class="badge badge-danger">New</span></a>
             <a class="dropdown-item text-primary" data-toggle="modal" data-target="#derivationModal" href="#">在線推導</a>
@@ -132,6 +134,62 @@
       </div>
     </div>
   </nav>
+  
+	<!-- Modal -->
+	<div class="modal fade" id="JP_IPA_Modal" tabindex="-1" role="dialog" aria-labelledby="JP_IPA_ModalLabel" aria-hidden="true">
+	  <div class="modal-dialog modal-lg" role="document">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<h5 class="modal-title" id="signArticleModalLabel">在線轉換</h5>
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			  <span aria-hidden="true">&times;</span>
+			</button>
+		  </div>
+		<form onsubmit="Func_JP_IPA(inputSymbol.value, transform_type.value, IPA_version.value, output_IPAformat.value); return false">
+		  <div class="modal-body">
+			  <div class="form-group">
+				<label class="col-form-label">轉換方式：</label>
+				<div class="custom-control custom-radio custom-control-inline">
+					<input class="custom-control-input" type="radio" id="jp_to_ipa" name="transform_type" value="0" checked onclick="$('#IPA_selectFormat').removeClass('d-none');document.getElementById('ipa_ver_label').innerHTML='輸出 IPA 版本：';">
+					<label for="jp_to_ipa" class="custom-control-label">粵拼轉 IPA</label>
+				</div>
+				<div class="custom-control custom-radio custom-control-inline">
+					<input class="custom-control-input" type="radio" id="ipa_to_jp" name="transform_type" value="1" onclick="$('#IPA_selectFormat').addClass('d-none');document.getElementById('ipa_ver_label').innerHTML='輸入 IPA 版本：';">
+					<label for="ipa_to_jp" class="custom-control-label">IPA 轉粵拼</label>
+				</div>
+				<textarea class="form-control textarea-style" id="inputSymbol">粵 jyut6&#10;拼 ping3&#10;轉 zyun2&#10;換 wun6</textarea>
+			  </div>
+			  <div class="form-group">
+				<div class="row col-md-12">
+					<label id="ipa_ver_label" class="col-form-label">輸出 IPA 版本：</label>
+					<div class="custom-control custom-control-inline pl-0">
+						<select class="form-control form-control-sm" id="IPA_version">
+							<option value="nIPA" selected>南寧白話《廣西南寧白話研究》版</option>
+							<option value="tIPA">南寧平話《廣西通誌·漢語方言誌》版</option>
+							<option value="tIPA2">南寧平話《南寧平話詞典》版</option>
+							<!--<option value="gIPA">廣州話</option>-->
+						</select>
+					</div>
+					<div id="IPA_selectFormat" class="custom-control custom-control-inline pl-0">
+						<select class="form-control form-control-sm" id="output_IPAformat">
+							<option value="noUp" selected>調值不上標</option>
+							<option value="Up">調值上標</option>
+							<option value="toneLine">調型豎線</option>
+						</select>
+					</div>
+				</div>
+				<span class="form-control textarea-style table-responsive" id="outputSymbol"></span>
+			  </div>
+		  </div>
+		  <div class="modal-footer">
+			<input class="btn btn-secondary" type="button" data-dismiss="modal" value="關閉"/>
+			<input class="btn btn-info copyBtn" type="button" data-clipboard-target="#outputSymbol" onclick="handleCopy()" value="複製"/>
+			<input class="btn btn-primary" type="submit" value="標註"/>
+		  </div>
+		</form>
+		</div>
+	  </div>
+	</div>
   
 	<!-- Modal -->
 	<div class="modal fade" id="wordSegModal" tabindex="-1" role="dialog" aria-labelledby="wordSegModalLabel" aria-hidden="true">
@@ -232,7 +290,7 @@
 					</div>
 				</div>
 				<div id="restore_format" class="row col-md-12 mb-2">
-					<div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="checkbox_isw" name="wCheck" checked><label class="custom-control-label" for="checkbox_isw" title="即 (g|k)o(k|ng)->(gw|kw)o(k|ng)，(g|k)ik->(gw|kw)ik，而梗攝舒聲開合不混〔迥gwing〕(gw|kw)ing">恢復見組果宕曾一等合口〔光gwong、國gwok、果gwo〕，見組梗入合口〔隙kwik（讀如合口）〕。</label></div>
+					<div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="checkbox_isw" name="wCheck" checked><label class="custom-control-label" for="checkbox_isw" title="即 (g|k)o(k|ng)->(gw|kw)o(k|ng)，(g|k)ik->(gw|kw)ik，而梗攝舒聲開合不混〔迥gwing〕(gw|kw)ing">恢復見組果宕曾一等合口〔光gwong、國gwok、過gwo〕，見組梗入合口〔隙kwik（讀如合口）〕。</label></div>
 				</div>
 				<span class="form-control textarea-style table-responsive" id="signResult"></span>
 			  </div>
@@ -288,7 +346,7 @@
 			</button>
 		  </div>
 		  <div class="modal-body">
-			本站叫「狸貓的在線詞典 2.0 版」(Leimaau's Webdict 2.0)，上線於2020年02月，是一個具有私人性質的在線詞典（狸貓者91年老南寧是也）。相對於 1.0 版的 <a class="text-info" href="https://leimaau.github.io/leimaau-webdict/" target="_blank">Leimaau's Webdict</a> 本版有了較大的改進，程序的開發和製作得益於 sgalal 和匆匆的我的技術支持，特此致謝。</br></br>本站原先開發和運行於 github 中，爲了方便國內用戶訪問，故將程序備份於 gitee 中運行，因此本站有兩個地址，github 地址作<a class="text-info" target="_blank" href="https://leimaau.github.io/leimaau-webdict2/">主葉地址</a>，gitee 地址作<a class="text-info" target="_blank" href="https://leimaau.gitee.io/leimaau-webdict2/">國內鏡像</a>。關於生僻字的顯示，可在<a class="text-info" target="_blank" href="https://ctext.org/font-test-page/zh">字體試驗葉</a>查看。</br></br>
+			本站叫「狸貓的在線詞典 2.0 版」(Leimaau's Webdict 2.0)，上線於2020年02月，是一個具有私人性質的在線詞典。相對於 1.0 版的 <a class="text-info" href="https://leimaau.github.io/leimaau-webdict/" target="_blank">Leimaau's Webdict</a> 本版有了較大的改進，程序的開發和製作得益於 sgalal 和匆匆的我的技術支持，特此致謝。</br></br>本站原先開發和運行於 github 中，爲了方便國內用戶訪問，故將程序備份於 gitee 中運行，因此本站有兩個地址，github 地址作<a class="text-info" target="_blank" href="https://leimaau.github.io/leimaau-webdict2/">主葉地址</a>，gitee 地址作<a class="text-info" target="_blank" href="https://leimaau.gitee.io/leimaau-webdict2/">國內鏡像</a>。關於生僻字的顯示，可在<a class="text-info" target="_blank" href="https://ctext.org/font-test-page/zh">字體試驗葉</a>查看。</br></br>
 			資料收集整理錄入校對與擬音：Leimaau </br>
 			程序製作：Leimaau、匆匆的我、sgalal </br>
 			聯繫郵箱：leimaau@qq.com </br>

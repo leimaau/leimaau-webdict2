@@ -4,11 +4,11 @@
 
 const cdnAddr = [];
 cdnAddr.push('https://cdn.jsdelivr.net/npm');
-cdnAddr.push('leimaau-npm-cdn@1.0.4');
+cdnAddr.push('leimaau-npm-cdn@1.0.6');
 cdnAddr.push('db/leimaau.db3');
 
 const DictConfig = {
-  //dir: 'db/leimaau.db3',
+  //dir: 'db/leimaau.db3',  // 使用本地庫
   dir: cdnAddr.join('/'),  // 使用CDN加速
 };
 
@@ -296,3 +296,91 @@ function bgChange(){
 	lis[i].style.background = 'rgba(246, 246, 246, 0.5)';
 }
 window.onload = bgChange;
+
+
+// 鏈接顯示函數
+function showLink(textChar){
+	const outputText = [], outputText2 = [], outputText3 = [];
+	outputText.push(`<div class="card mt-1 mb-3"><div class="card-header">相關鏈接</div><div class="card-body text-secondary"><span>`);
+	outputText.push(`漢典網：<a href="http://www.zdic.net/hans/${textChar}" target="_blank">${textChar}</a> | <a href="http://www.zdic.net/zd/yy/yy/${textChar}" target="_blank">粵語</a> | <a href="http://www.zdic.net/zd/yy/ph/${textChar}" target="_blank">平話</a></br>`);
+	outputText.push(`韻典網：<a href="https://ytenx.org/zim?dzih=${textChar}&dzyen=1&jtkb=1&jtkd=1&jtdt=1&jtgt=1" target="_blank">${textChar}</a></br>`);
+	outputText.push(`國學大師：<a href="http://www.guoxuedashi.com/zidian/${encodeUnicode(textChar).replace('\\u','')}.html" target="_blank">${textChar}</a></br>`);
+	outputText.push(`古今文字集成：<a href="http://www.ccamc.co/cjkv.php?cjkv=${textChar}" target="_blank">${textChar}</a></br>`);
+	outputText.push(`粵音資料集叢：<a href="https://jyut.net/query?q=${textChar}" target="_blank">${textChar}</a></br>`);
+	outputText.push(`漢語多功能字庫：<a href="http://humanum.arts.cuhk.edu.hk/Lexis/lexi-mf/search.php?word=${textChar}" target="_blank">${textChar}</a> | <a href="http://humanum.arts.cuhk.edu.hk/Lexis/lexi-mf/dialect.php?word=${textChar}" target="_blank">其他方言讀音</a></br>`);
+	outputText.push(`縱橫在線中文字典：<a href="https://ckc.eduhk.hk/ckc2/dictionary.php?jiinput=${textChar}&lang=b5&form1=1" target="_blank">${textChar}</a></br>`);
+	outputText.push(`「數理華聲」科學及數學科詞彙表：<a href="https://ckc.eduhk.hk/ckc2/charlist.php?csmsinput=${textChar}&lang=b5" target="_blank">${textChar}</a></br>`);
+	outputText.push(`英華字典資料庫：<a href="http://mhdb.mh.sinica.edu.tw/dictionary/search.php?titleOnlyBtn=true&searchStr=${textChar}&lang=b5" target="_blank">${textChar}</a></br>`);
+	outputText.push(`粵拼歌詞網：<a href="https://jyut6.com/search.php?keyword=${textChar}" target="_blank">${textChar}</a></br>`);
+	outputText.push(`翡翠粵語歌詞：<a href="https://www.feitsui.com/zh-hans/search/${textChar}.html" target="_blank">${textChar}</a></br>`);
+	outputText.push(`</span></div></div>`);
+	
+	outputText2.push(`<div class="card mt-1 mb-3"><div class="card-header">相關鏈接</div><div class="card-body text-secondary"><span>`);
+	outputText2.push(`漢字全息資源應用系統：<a href="http://qxk.bnu.edu.cn/#/danziDetail/42c2d834-fa1d-47e9-9f90-972a687183f7/${textChar}/22d3af76-1ffe-46da-8c28-40e7dfe6b8d2/0" target="_blank">${textChar}</a></br>`);
+	outputText2.push(`中國哲學書電子化計劃：<a href="https://ctext.org/dictionary.pl?if=gb&char=${textChar}" target="_blank">${textChar}</a></br>`);
+	outputText2.push(`字海|葉典：<a href="http://yedict.com/zscontent.asp?uni=${encodeUnicode(textChar).replace('\\u','')}" target="_blank">${textChar}</a></br>`);
+	outputText2.push(`Forvo：<a href="https://zh.forvo.com/search/${textChar}/" target="_blank">${textChar}</a></br>`);
+	outputText2.push(`Unihan：<a href="https://www.unicode.org/cgi-bin/GetUnihanData.pl?codepoint=${textChar}" target="_blank">${textChar}</a></br>`);
+	outputText2.push(`萌典：<a href="https://www.moedict.tw/${textChar}" target="_blank">${textChar}</a></br>`);
+	outputText2.push(`活用中文大辭典：<a href="https://lib.ctcn.edu.tw/chtdict/result.aspx?keyword=${textChar}" target="_blank">${textChar}</a></br>`);
+	outputText2.push(`漢字ペディア：<a href="https://www.kanjipedia.jp/search?k=${textChar}&kt=1&sk=leftHand" target="_blank">${textChar}</a></br>`);
+	outputText2.push(`GlyphWiki：<a href="http://glyphwiki.org/wiki/${encodeUnicode(textChar).replace('\\','')}?tdsourcetag=s_pctim_aiomsg" target="_blank">${textChar}</a></br>`);
+	outputText2.push(`Chinese Etymology 字源：<a href="https://hanziyuan.net/#${textChar}" target="_blank">${textChar}</a></br>`);
+	outputText2.push(`小雞詞典：<a href="https://jikipedia.com/search?phrase=${textChar}&kt=1&sk=leftHand" target="_blank">${textChar}</a></br>`);
+	outputText2.push(`</span></div></div>`);
+	
+	outputText3.push(`<div class="card mt-1 mb-3"><div class="card-header">相關鏈接</div><div class="card-body text-secondary"><span>`);
+	outputText3.push(`東方語言學：<a href="http://www.eastling.org/" target="_blank">前往</a></br>`);
+	outputText3.push(`漢語方言學大詞典：<a href="http://www.fangyanxue.com/pages/index/index.html" target="_blank">前往</a></br>`);
+	outputText3.push(`古音手鏡：<a href="http://www.guguolin.com/" target="_blank">前往</a></br>`);
+	outputText3.push(`小學堂：<a href="http://xiaoxue.iis.sinica.edu.tw/" target="_blank">前往</a></br>`);
+	outputText3.push(`英華字典資料庫：<a href="http://mhdb.mh.sinica.edu.tw/dictionary/index.php" target="_blank">前往</a></br>`);
+	outputText3.push(`引得市：<a href="http://www.mebag.com/index/" target="_blank">前往</a></br>`);
+	outputText3.push(`廣東省情網：<a href="http://dfz.gd.gov.cn/" target="_blank">前往</a></br>`);
+	outputText3.push(`廣州市情網：<a href="http://dfz.gz.gov.cn/gzsdfz/index.shtml" target="_blank">前往</a></br>`);
+	outputText3.push(`廣西地情資料庫：<a href="http://www.gxdfz.org.cn/gdtz/" target="_blank">前往</a></br>`);
+	outputText3.push(`開放康熙字典：<a href="http://kangxi.adcs.org.tw/kangxizidian/" target="_blank">前往</a></br>`);
+	outputText3.push(`漢語大字典檢索：<a href="http://www.homeinmists.com/hd/search.html" target="_blank">前往</a></br>`);
+	outputText3.push(`說文解字圖像查閱：<a href="http://www.homeinmists.com/shuowen/find.html" target="_blank">前往</a></br>`);
+	outputText3.push(`現代標準漢語與粵語對照資料庫：<a href="http://apps.itsc.cuhk.edu.hk/hanyu/Page/Cover.aspx" target="_blank">前往</a></br>`);
+	outputText3.push(`CantoDict：<a href="http://www.cantonese.sheik.co.uk/scripts/masterlist.htm" target="_blank">前往</a></br>`);
+	outputText3.push(`ISO漢字查詢系統：<a href="http://glyph.iso10646hk.net/chinese/icharacters.jsp" target="_blank">前往</a></br>`);
+	outputText3.push(`香港小學學習字詞表：<a href="https://www.edbchinese.hk/lexlist_ch/" target="_blank">前往</a></br>`);
+	outputText3.push(`早期粵語口語文獻資料庫：<a href="http://143.89.108.109/Candbase/" target="_blank">前往</a></br>`);
+	outputText3.push(`香港二十世紀中期粵語語料庫：<a href="https://hkcc.eduhk.hk/v1/introduction.html" target="_blank">前往</a></br>`);
+	outputText3.push(`</span></div></div>`);
+	
+	$('#webLink').html(outputText.join(''));
+	$('#webLink2').html(outputText2.join(''));
+	$('#webLink3').html(outputText3.join(''));
+}
+
+// 漢字轉 Unicode
+function encodeUnicode(str) {
+    var res = [];
+    for (var i = 0; i < str.length; i++) {
+        res[i] = ( "00" + str.charCodeAt(i).toString(16) ).slice(-4);
+    }
+    return "\\u" + res.join("\\u");
+}
+
+// Unicode 轉漢字
+function decodeUnicode(str) {
+    str = str.replace(/\\/g, "%");
+    return unescape(str);
+}
+
+
+// 粵拼轉IPA
+function jyutping_to_ipa(inputstr, IPA_version, output_IPAformat){
+	let outputstr = inputstr;
+	outputstr = outputstr.replace(/jyut6/, "jyːt̚˨");
+	return outputstr;
+}
+
+
+// IPA轉粵拼
+function ipa_to_jyutping(inputstr, IPA_version){
+	
+}
+
