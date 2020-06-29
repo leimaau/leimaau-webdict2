@@ -408,8 +408,8 @@ function jyutping_to_ipa(inputstr, IPA_version, output_IPAformat){
     outputstr = outputstr.replace(/o([imnptk])/g,"ɔː$1"); // oi[ɔːy]
     outputstr = outputstr.replace(/o(\d)/g,"ɔː$1");
 
-    outputstr = outputstr.replace(/aa/,"Aː");
-    outputstr = outputstr.replace(/a/,"ɐ");
+    outputstr = outputstr.replace(/aa/g,"Aː");
+    outputstr = outputstr.replace(/a/g,"ɐ");
 
     outputstr = outputstr.replace(/gw/g,"Kʷ");  // gw[ku]
     outputstr = outputstr.replace(/kw/g,"Kʷʰ"); // kw[kʰu]
@@ -508,6 +508,8 @@ function jyutping_to_ipa(inputstr, IPA_version, output_IPAformat){
 function ipa_to_jyutping(inputstr, IPA_version){
 	let outputstr = inputstr;
 	
+	outputstr = outputstr.replace(/ː/g,"").replace(/͡/g,"").replace(/̚/g,"");
+	
     if (IPA_version == 'nIPA' || IPA_version == 'gIPA'){
         outputstr = outputstr.replace(/˨˩|21|²¹|˩˩|11|¹¹/g,"_4");
         outputstr = outputstr.replace(/˥˥|55|⁵⁵/g,"_1");
@@ -515,9 +517,9 @@ function ipa_to_jyutping(inputstr, IPA_version){
         outputstr = outputstr.replace(/˧˥|35|³⁵/g,"_2");
         outputstr = outputstr.replace(/˨˨|22|²²/g,"_6");
         outputstr = outputstr.replace(/˧˧|33|³³/g,"_3");
-        outputstr = outputstr.replace(/(?<n1>[ptk])̚˨|(?<n2>[ptk])˨|(?<n3>[ptk])2|(?<n4>[ptk])²/g,"$<n1>$<n2>$<n3>$<n4>6");
-        outputstr = outputstr.replace(/(?<n1>[ptk])̚˧|(?<n2>[ptk])˧|(?<n3>[ptk])3|(?<n4>[ptk])³/g,"$<n1>$<n2>$<n3>$<n4>3");
-        outputstr = outputstr.replace(/(?<n1>[ptk])̚˥|(?<n2>[ptk])˥|(?<n3>[ptk])5|(?<n4>[ptk])⁵/g,"$<n1>$<n2>$<n3>$<n4>1");
+        outputstr = outputstr.replace(/(?<n1>[ptk])˨|(?<n2>[ptk])2|(?<n3>[ptk])²/g,"$<n1>$<n2>$<n3>6");
+        outputstr = outputstr.replace(/(?<n1>[ptk])˧|(?<n2>[ptk])3|(?<n3>[ptk])³/g,"$<n1>$<n2>$<n3>3");
+        outputstr = outputstr.replace(/(?<n1>[ptk])˥|(?<n2>[ptk])5|(?<n3>[ptk])⁵/g,"$<n1>$<n2>$<n3>1");
 	} else {
         outputstr = outputstr.replace(/˨˩|21|²¹/g,"_4");
         outputstr = outputstr.replace(/˥˧|53|⁵³|˦˩|41|⁴¹/g,"_1");
@@ -525,14 +527,14 @@ function ipa_to_jyutping(inputstr, IPA_version){
         outputstr = outputstr.replace(/˧˧|33|³³/g,"_2");
         outputstr = outputstr.replace(/˨˨|22|²²|˨˨˧|223|²²³/g,"_6");
         outputstr = outputstr.replace(/˥˥|55|⁵⁵/g,"_3");
-        outputstr = outputstr.replace(/(?<n1>[ptk])̚˨|(?<n2>[ptk])˨|(?<n3>[ptk])2|(?<n4>[ptk])²/g,"$<n1>$<n2>$<n3>$<n4>6");
-        outputstr = outputstr.replace(/(?<n1>[ptk])̚˧|(?<n2>[ptk])˧|(?<n3>[ptk])3|(?<n4>[ptk])³/g,"$<n1>$<n2>$<n3>$<n4>2");
-        outputstr = outputstr.replace(/(?<n1>[ptk])̚˥|(?<n2>[ptk])˥|(?<n3>[ptk])5|(?<n4>[ptk])⁵/g,"$<n1>$<n2>$<n3>$<n4>3");
+        outputstr = outputstr.replace(/(?<n1>[ptk])˨|(?<n2>[ptk])2|(?<n3>[ptk])²/g,"$<n1>$<n2>$<n3>6");
+        outputstr = outputstr.replace(/(?<n1>[ptk])˧|(?<n2>[ptk])3|(?<n3>[ptk])³/g,"$<n1>$<n2>$<n3>2");
+        outputstr = outputstr.replace(/(?<n1>[ptk])˥|(?<n2>[ptk])5|(?<n3>[ptk])⁵/g,"$<n1>$<n2>$<n3>3");
 	}
     
     outputstr = outputstr.replace(/_/g,"");
-    outputstr = outputstr.replace(/t͡ʃʰ|t͡sʰ|tʃʰ|tsʰ|tʃh|tsh|ʧʰ|ʦʰ|ʧh|ʦh/g,"c");
-    outputstr = outputstr.replace(/t͡ʃ|t͡s|tʃ|ts|ʧ|ʦ/g,"z");
+    outputstr = outputstr.replace(/tʃʰ|tsʰ|tʃh|tsh|ʧʰ|ʦʰ|ʧh|ʦh/g,"c");
+    outputstr = outputstr.replace(/tʃ|ts|ʧ|ʦ/g,"z");
     outputstr = outputstr.replace(/ʃ|s/g,"s");
 
     if (IPA_version == 'nIPA' || IPA_version == 'gIPA'){
@@ -544,7 +546,6 @@ function ipa_to_jyutping(inputstr, IPA_version){
 
     outputstr = outputstr.replace(/^([yi])([mnptk])(\d)/g,"j$1$2$3");
     outputstr = outputstr.replace(/^([yi])(\d)/g,"j$1$2");
-    outputstr = outputstr.replace(/uː/g,"u");
 
     outputstr = outputstr.replace(/kʷʰ|kʰʷ|kwh|khw|kʰu|khu/g,"Kw");
     outputstr = outputstr.replace(/kʷ|kw|ku/g,"gw");
@@ -558,16 +559,15 @@ function ipa_to_jyutping(inputstr, IPA_version){
     outputstr = outputstr.replace(/(^|[ /])(th|tʰ)/g,"$1t");
     outputstr = outputstr.replace(/(^|[ /])(kh|kʰ)/g,"$1k");
 
-    outputstr = outputstr.replace(/aː|a/g,"aa");
+    outputstr = outputstr.replace(/a/g,"aa");
     outputstr = outputstr.replace(/ɐ|ə/g,"a");
 
-    outputstr = outputstr.replace(/(ɔː|ɔ)/g,"o");
+    outputstr = outputstr.replace(/ɔ/g,"o");
 
     outputstr = outputstr.replace(/eŋ|ɪŋ/g,"ing");
     outputstr = outputstr.replace(/ek|ɪk/g,"ik");
-    outputstr = outputstr.replace(/iː/g,"i");
-    outputstr = outputstr.replace(/ɛː|ɛ/g,"e");
-    outputstr = outputstr.replace(/œː|œ|øː|ø/g,"oe");
+    outputstr = outputstr.replace(/ɛ/g,"e");
+    outputstr = outputstr.replace(/œ|ø/g,"oe");
 
     outputstr = outputstr.replace(/ɵy/g,"eoi");
     outputstr = outputstr.replace(/ɵ/g,"eo");
@@ -578,7 +578,7 @@ function ipa_to_jyutping(inputstr, IPA_version){
 
     outputstr = outputstr.replace(/m̩|m̍/g,"m");
     outputstr = outputstr.replace(/ŋ̩|ŋ̍|ŋ|ŋ̇/g,"ng");
-    outputstr = outputstr.replace(/yː|y/g,"yu");
+    outputstr = outputstr.replace(/y/g,"yu");
     outputstr = outputstr.replace(/ɿ/g,"y");
     outputstr = outputstr.replace(/^[ʔ∅0Ø]/g,"");
 
