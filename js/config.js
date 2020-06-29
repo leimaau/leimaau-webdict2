@@ -4,7 +4,7 @@
 
 const cdnAddr = [];
 cdnAddr.push('https://cdn.jsdelivr.net/npm');
-cdnAddr.push('leimaau-npm-cdn@1.0.6');
+cdnAddr.push('leimaau-npm-cdn@1.0.7');
 cdnAddr.push('db/leimaau.db3');
 
 const DictConfig = {
@@ -287,6 +287,7 @@ var	playlist = [
 	, { title: "ソレソレ", artist: "JABBERLOOP", mp3: "http://music.163.com/song/media/outer/url?id=29307597.mp3" ,cover: "http://p1.music.126.net/HIjHgonnMOHxTo_cjt0LyQ==/6644348767037594.jpg?param=130y130" }
 	, { title: "回娘家", artist: "朱明瑛", mp3: "http://music.163.com/song/media/outer/url?id=340054.mp3" ,cover: "http://p2.music.126.net/b1DuxpPbEicNE06gVUQsLA==/39582418613242.jpg?param=130y130" }
 	, { title: "Last Dance", artist: "伍佰 & China Blue", mp3: "http://music.163.com/song/media/outer/url?id=157276.mp3" ,cover: "http://p1.music.126.net/HDdQFXVIlRvR96s0mQyu9g==/109951164170257125.jpg?param=130y130" }
+	, { title: "万水千山总是情（翻自 汪明荃）", artist: "励志豪", mp3: "http://music.163.com/song/media/outer/url?id=570074859.mp3" ,cover: "http://p1.music.126.net/-tC1TR2JtKD5-jfx1id88w==/109951163325160885.jpg?param=130y130" }
 ];
 var isRotate = true;
 var autoplay = false;
@@ -374,13 +375,215 @@ function decodeUnicode(str) {
 // 粵拼轉IPA
 function jyutping_to_ipa(inputstr, IPA_version, output_IPAformat){
 	let outputstr = inputstr;
-	outputstr = outputstr.replace(/jyut6/, "jyːt̚˨");
+	outputstr = outputstr.replace(/(^|[ ])(m)(\d)/g, "$1m̩$3");
+	outputstr = outputstr.replace(/(^|[ ])(ng)(\d)/g, "$1ŋ̍$3");
+    outputstr = outputstr.replace(/sl/g,"ɬ");
+    outputstr = outputstr.replace(/nj/g,"ȵ");
+	
+    outputstr = outputstr.replace(/yu/g,"yː");
+    outputstr = outputstr.replace(/eoi/g,"ɵy");
+    outputstr = outputstr.replace(/eo([tn])/g,"ɵ$1");
+    outputstr = outputstr.replace(/eo/g,"ɵ");
+	
+    outputstr = outputstr.replace(/oe([tk])/g,"œː$1");
+    outputstr = outputstr.replace(/oeng/g,"œːŋ");
+    outputstr = outputstr.replace(/oe/g,"œː");
+	
+    outputstr = outputstr.replace(/uk/g,"ʊk");  // uk[ok]
+    outputstr = outputstr.replace(/ung/g,"ʊŋ"); // ung[oŋ]
+    outputstr = outputstr.replace(/u([in])/g,"uː$1"); // ui[uːy]
+    outputstr = outputstr.replace(/ut/g,"uːt");
+    outputstr = outputstr.replace(/([^aeio])u(\d)/g,"$1uː$2");
+	
+    outputstr = outputstr.replace(/eng/g,"ɛːŋ");
+    outputstr = outputstr.replace(/e([umnptk])/g,"ɛː$1");
+    outputstr = outputstr.replace(/e(\d)/g,"ɛː$1");
+
+    outputstr = outputstr.replace(/ing/g,"ɪŋ"); // ing[eŋ]
+    outputstr = outputstr.replace(/ik/g,"ɪk");  // ik[ek]
+    outputstr = outputstr.replace(/i([umnpt])/g,"iː$1");
+    outputstr = outputstr.replace(/([^aeuoː])i(\d)/g,"$1iː$2");
+	
+    outputstr = outputstr.replace(/ong/g,"ɔːŋ");
+    outputstr = outputstr.replace(/o([imnptk])/g,"ɔː$1"); // oi[ɔːy]
+    outputstr = outputstr.replace(/o(\d)/g,"ɔː$1");
+
+    outputstr = outputstr.replace(/aa/,"Aː");
+    outputstr = outputstr.replace(/a/,"ɐ");
+
+    outputstr = outputstr.replace(/gw/g,"Kʷ");  // gw[ku]
+    outputstr = outputstr.replace(/kw/g,"Kʷʰ"); // kw[kʰu]
+    outputstr = outputstr.replace(/(^|[ /])([ptk])/g,"$1$2ʰ");
+    outputstr = outputstr.replace(/(^|[ /])b/g,"$1p");
+    outputstr = outputstr.replace(/(^|[ /])d/g,"$1t");
+    outputstr = outputstr.replace(/(^|[ /])g/g,"$1k");
+	
+    outputstr = outputstr.replace(/zy(\d)/g,"t͡Sɿ$1");
+    outputstr = outputstr.replace(/cy(\d)/g,"t͡Sʰɿ$1");
+    outputstr = outputstr.replace(/sy(\d)/g,"Sɿ$1");
+    outputstr = outputstr.replace(/ng/g,"ŋ");
+	
+    if (IPA_version == 'nIPA' || IPA_version == 'tIPA'){
+        outputstr = outputstr.replace(/s/g,"ʃ");
+        outputstr = outputstr.replace(/z/g,"t͡ʃ");
+        outputstr = outputstr.replace(/c/g,"t͡ʃʰ");
+	} else {
+        outputstr = outputstr.replace(/s/g,"s");
+        outputstr = outputstr.replace(/z/g,"t͡s");
+        outputstr = outputstr.replace(/c/g,"t͡sʰ");
+	}
+	
+    if (IPA_version == 'tIPA2'){
+        outputstr = outputstr.replace(/ȵ/g,"ɲ");
+        outputstr = outputstr.replace(/w/g,"β");
+        outputstr = outputstr.replace(/ɐ/g,"ə");
+        outputstr = outputstr.replace(/œ/g,"ø");
+        outputstr = outputstr.replace(/ɛː|ɛ/g,"e");
+        outputstr = outputstr.replace(/ɔː|ɔ/g,"o");
+        outputstr = outputstr.replace(/iə([ŋk])/g,"iɐ$1");
+        outputstr = outputstr.replace(/ɪ/g,"e")
+	} else if (IPA_version == 'tIPA'){
+        outputstr = outputstr.replace(/ɔː|ɔ/g,"o");
+        outputstr = outputstr.replace(/(ɛ|ɛː)(\d|ŋ|k|i)/g,"e$2");
+        outputstr = outputstr.replace(/ɪ/g,"e")
+	} else {
+        outputstr = outputstr;
+	}
+
+    if (IPA_version == 'nIPA' || IPA_version == 'gIPA'){
+        outputstr = outputstr.replace(/([ptk])6/g,"$1̚˨");
+        outputstr = outputstr.replace(/([ptk])3/g,"$1̚˧");
+        outputstr = outputstr.replace(/([ptk])1/g,"$1̚˥");	
+	} else {
+        outputstr = outputstr.replace(/([ptk])3/g,"$1̚˥");
+        outputstr = outputstr.replace(/([ptk])2/g,"$1̚˧");
+        outputstr = outputstr.replace(/([ptk])5/g,"$1̚˨˦");
+        outputstr = outputstr.replace(/([ptk])6/g,"$1̚˨");
+	}
+	
+    if (IPA_version == 'nIPA'){
+        outputstr = outputstr.replace(/1/g,"˥˥");
+        outputstr = outputstr.replace(/2/g,"˧˥");
+        outputstr = outputstr.replace(/3/g,"˧˧");
+        outputstr = outputstr.replace(/4/g,"˨˩");
+        outputstr = outputstr.replace(/5/g,"˨˦");
+        outputstr = outputstr.replace(/6/g,"˨˨");
+	} else if(IPA_version == 'gIPA') {
+        outputstr = outputstr.replace(/1/g,"˥˥");
+        outputstr = outputstr.replace(/2/g,"˧˥");
+        outputstr = outputstr.replace(/3/g,"˧˧");
+        outputstr = outputstr.replace(/4/g,"˩˩");
+        outputstr = outputstr.replace(/5/g,"˩˧");
+        outputstr = outputstr.replace(/6/g,"˨˨");
+	} else {
+        outputstr = outputstr.replace(/1/g,"˥˧");
+        outputstr = outputstr.replace(/2/g,"˧˧");
+        outputstr = outputstr.replace(/3/g,"˥˥");
+        outputstr = outputstr.replace(/4/g,"˨˩");
+        outputstr = outputstr.replace(/5/g,"˨˦");
+        outputstr = outputstr.replace(/6/g,"˨˨");
+	}
+	
+    outputstr = outputstr.toLowerCase().replace(/ɪ/g,"e");
+	
+	if( $("#output_symbolFormat").is(":checked") == false ){
+		outputstr = outputstr.replace(/ː/g,"").replace(/͡/g,"").replace(/̚/g,"");
+	}
+	
+    if(output_IPAformat == 'noUp'){
+        outputstr = outputstr.replace(/˥/g,"5").replace(/˦/g,"4").replace(/˧/g,"3").replace(/˨/g,"2").replace(/˩/g,"1");
+	} else if(output_IPAformat == 'Up') {
+        outputstr = outputstr.replace(/˥/g,"⁵").replace(/˦/g,"⁴").replace(/˧/g,"³").replace(/˨/g,"²").replace(/˩/g,"¹");
+	} else {
+        outputstr = outputstr;
+	}
+	
+    outputstr = outputstr.replace(/^([aeiouœʊɐɛɪ])/g,"∅$1");
+	
 	return outputstr;
 }
 
 
 // IPA轉粵拼
 function ipa_to_jyutping(inputstr, IPA_version){
+	let outputstr = inputstr;
 	
+    if (IPA_version == 'nIPA' || IPA_version == 'gIPA'){
+        outputstr = outputstr.replace(/˨˩|21|²¹|˩˩|11|¹¹/g,"_4");
+        outputstr = outputstr.replace(/˥˥|55|⁵⁵/g,"_1");
+        outputstr = outputstr.replace(/˨˦|24|²⁴|˩˧|13|¹³/g,"_5");
+        outputstr = outputstr.replace(/˧˥|35|³⁵/g,"_2");
+        outputstr = outputstr.replace(/˨˨|22|²²/g,"_6");
+        outputstr = outputstr.replace(/˧˧|33|³³/g,"_3");
+        outputstr = outputstr.replace(/(?<n1>[ptk])̚˨|(?<n2>[ptk])˨|(?<n3>[ptk])2|(?<n4>[ptk])²/g,"$<n1>$<n2>$<n3>$<n4>6");
+        outputstr = outputstr.replace(/(?<n1>[ptk])̚˧|(?<n2>[ptk])˧|(?<n3>[ptk])3|(?<n4>[ptk])³/g,"$<n1>$<n2>$<n3>$<n4>3");
+        outputstr = outputstr.replace(/(?<n1>[ptk])̚˥|(?<n2>[ptk])˥|(?<n3>[ptk])5|(?<n4>[ptk])⁵/g,"$<n1>$<n2>$<n3>$<n4>1");
+	} else {
+        outputstr = outputstr.replace(/˨˩|21|²¹/g,"_4");
+        outputstr = outputstr.replace(/˥˧|53|⁵³|˦˩|41|⁴¹/g,"_1");
+        outputstr = outputstr.replace(/˨˦|24|²⁴|˨˧|23|²³/g,"_5");
+        outputstr = outputstr.replace(/˧˧|33|³³/g,"_2");
+        outputstr = outputstr.replace(/˨˨|22|²²|˨˨˧|223|²²³/g,"_6");
+        outputstr = outputstr.replace(/˥˥|55|⁵⁵/g,"_3");
+        outputstr = outputstr.replace(/(?<n1>[ptk])̚˨|(?<n2>[ptk])˨|(?<n3>[ptk])2|(?<n4>[ptk])²/g,"$<n1>$<n2>$<n3>$<n4>6");
+        outputstr = outputstr.replace(/(?<n1>[ptk])̚˧|(?<n2>[ptk])˧|(?<n3>[ptk])3|(?<n4>[ptk])³/g,"$<n1>$<n2>$<n3>$<n4>2");
+        outputstr = outputstr.replace(/(?<n1>[ptk])̚˥|(?<n2>[ptk])˥|(?<n3>[ptk])5|(?<n4>[ptk])⁵/g,"$<n1>$<n2>$<n3>$<n4>3");
+	}
+    
+    outputstr = outputstr.replace(/_/g,"");
+    outputstr = outputstr.replace(/t͡ʃʰ|t͡sʰ|tʃʰ|tsʰ|tʃh|tsh|ʧʰ|ʦʰ|ʧh|ʦh/g,"c");
+    outputstr = outputstr.replace(/t͡ʃ|t͡s|tʃ|ts|ʧ|ʦ/g,"z");
+    outputstr = outputstr.replace(/ʃ|s/g,"s");
+
+    if (IPA_version == 'nIPA' || IPA_version == 'gIPA'){
+        outputstr = outputstr.replace(/ʊk|ok/g,"uk");
+        outputstr = outputstr.replace(/ʊŋ|oŋ/g,"ung");
+	} else {
+        outputstr = outputstr.replace(/oŋ/g,"ong");
+	}
+
+    outputstr = outputstr.replace(/^([yi])([mnptk])(\d)/g,"j$1$2$3");
+    outputstr = outputstr.replace(/^([yi])(\d)/g,"j$1$2");
+    outputstr = outputstr.replace(/uː/g,"u");
+
+    outputstr = outputstr.replace(/kʷʰ|kʰʷ|kwh|khw|kʰu|khu/g,"Kw");
+    outputstr = outputstr.replace(/kʷ|kw|ku/g,"gw");
+    outputstr = outputstr.replace(/(Kw)([inktg]*)(\d)/g,"Ku$2$3");
+    outputstr = outputstr.replace(/(gw)([inktg]*)(\d)/g,"gu$2$3");
+
+    outputstr = outputstr.replace(/(^|[ /])p([^hʰ])/g,"$1b$2");
+    outputstr = outputstr.replace(/(^|[ /])t([^hʰ])/g,"$1d$2");
+    outputstr = outputstr.replace(/(^|[ /])k([^hʰ])/g,"$1g$2");
+    outputstr = outputstr.replace(/(^|[ /])(ph|pʰ)/g,"$1p");
+    outputstr = outputstr.replace(/(^|[ /])(th|tʰ)/g,"$1t");
+    outputstr = outputstr.replace(/(^|[ /])(kh|kʰ)/g,"$1k");
+
+    outputstr = outputstr.replace(/aː|a/g,"aa");
+    outputstr = outputstr.replace(/ɐ|ə/g,"a");
+
+    outputstr = outputstr.replace(/(ɔː|ɔ)/g,"o");
+
+    outputstr = outputstr.replace(/eŋ|ɪŋ/g,"ing");
+    outputstr = outputstr.replace(/ek|ɪk/g,"ik");
+    outputstr = outputstr.replace(/iː/g,"i");
+    outputstr = outputstr.replace(/ɛː|ɛ/g,"e");
+    outputstr = outputstr.replace(/œː|œ|øː|ø/g,"oe");
+
+    outputstr = outputstr.replace(/ɵy/g,"eoi");
+    outputstr = outputstr.replace(/ɵ/g,"eo");
+
+    outputstr = outputstr.replace(/ɬ/g,"sl");
+    outputstr = outputstr.replace(/ȵ|ɲ/g,"nj");
+    outputstr = outputstr.replace(/v|β/g,"w");
+
+    outputstr = outputstr.replace(/m̩|m̍/g,"m");
+    outputstr = outputstr.replace(/ŋ̩|ŋ̍|ŋ|ŋ̇/g,"ng");
+    outputstr = outputstr.replace(/yː|y/g,"yu");
+    outputstr = outputstr.replace(/ɿ/g,"y");
+    outputstr = outputstr.replace(/^[ʔ∅0Ø]/g,"");
+
+    outputstr = outputstr.toLowerCase();
+	
+	return outputstr;
 }
 

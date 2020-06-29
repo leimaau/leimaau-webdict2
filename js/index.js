@@ -539,9 +539,16 @@ function Func_JP_IPA(inputSymbol, transform_type, IPA_version, output_IPAformat)
 		return false;
 	}
 	const outputText = [];
-	for (let lines of inputSymbol.split('\n')) {
-		outputText.push(jyutping_to_ipa(lines, IPA_version, output_IPAformat) + '<br>');
+	if (transform_type == '0'){
+		for (let lines of inputSymbol.split('\n')) {
+			outputText.push(jyutping_to_ipa(lines, IPA_version, output_IPAformat) + '<br>');
+		}
+	} else {
+		for (let lines of inputSymbol.split('\n')) {
+			outputText.push(ipa_to_jyutping(lines, IPA_version) + '<br>');
+		}
 	}
+	
 	$('#outputSymbol').html(outputText.join(''));
 }
 

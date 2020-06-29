@@ -70,7 +70,7 @@
   <script type="text/javascript" src="js/config.js"></script>
   <script type="text/javascript" src="js/dao.js"></script>
   <!--<script type="text/javascript" src="js/dictDb.js"></script>-->
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.0.6/js/dictDb.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.0.7/js/dictDb.js"></script>
   <script type="text/javascript" src="js/index.js"></script>
   <!--
   <script type="text/javascript" src="js/jieba-js/segMain.min.js"></script>
@@ -81,12 +81,12 @@
   <script type="text/javascript" src="js/jieba-js/gzDict.js"></script>
   -->
   
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.0.6/js/jieba-js/segMain.min.js"></script>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.0.6/js/jieba-js/segDict.min.js"></script>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.0.6/js/jieba-js/segDictPlus.min.js"></script>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.0.6/js/jieba-js/nnDict.js"></script>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.0.6/js/jieba-js/nntDict.js"></script>
-  <!--<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.0.6/js/jieba-js/gzDict.js"></script>-->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.0.7/js/jieba-js/segMain.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.0.7/js/jieba-js/segDict.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.0.7/js/jieba-js/segDictPlus.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.0.7/js/jieba-js/nnDict.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.0.7/js/jieba-js/nntDict.js"></script>
+  <!--<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.0.7/js/jieba-js/gzDict.js"></script>-->
   
   <link type="text/css" rel="stylesheet" href="css/player/player.css" />
 </head>
@@ -150,14 +150,17 @@
 			  <div class="form-group">
 				<label class="col-form-label">轉換方式：</label>
 				<div class="custom-control custom-radio custom-control-inline">
-					<input class="custom-control-input" type="radio" id="jp_to_ipa" name="transform_type" value="0" checked onclick="$('#IPA_selectFormat').removeClass('d-none');document.getElementById('ipa_ver_label').innerHTML='輸出 IPA 版本：';">
+					<input class="custom-control-input" type="radio" id="jp_to_ipa" name="transform_type" value="0" checked onclick="$('#IPA_selectFormat,#IPA_symbolFormat').removeClass('d-none');document.getElementById('ipa_ver_label').innerHTML='輸出 IPA 版本：';">
 					<label for="jp_to_ipa" class="custom-control-label">粵拼轉 IPA</label>
 				</div>
 				<div class="custom-control custom-radio custom-control-inline">
-					<input class="custom-control-input" type="radio" id="ipa_to_jp" name="transform_type" value="1" onclick="$('#IPA_selectFormat').addClass('d-none');document.getElementById('ipa_ver_label').innerHTML='輸入 IPA 版本：';">
+					<input class="custom-control-input" type="radio" id="ipa_to_jp" name="transform_type" value="1" onclick="$('#IPA_selectFormat,#IPA_symbolFormat').addClass('d-none');document.getElementById('ipa_ver_label').innerHTML='輸入 IPA 版本：';">
 					<label for="ipa_to_jp" class="custom-control-label">IPA 轉粵拼</label>
 				</div>
-				<textarea class="form-control textarea-style" id="inputSymbol">粵 jyut6&#10;拼 ping3&#10;轉 zyun2&#10;換 wun6</textarea>
+				<div class="custom-control custom-input custom-control-inline float-right">
+					<input class="btn btn-outline-info btn-sm" type="button" onclick="document.getElementById('inputSymbol').value='';" value="清空"/>
+				</div>
+				<textarea class="form-control textarea-style" id="inputSymbol">zing6 je6 si1/sy1 【 tong4 】 li5 baak6&#10;zing6 jaa6/je6 sli1 【 daang4 】 li5 biak6&#10;靜夜思 【唐】李白&#10;cong4 cin4 ming4 jyut6 gwong1，ni4 ci5/cy5 di6 soeng6 sloeng1；&#10;saang4 zin4 ming4 njyut5 gong1，ni4 zi3 di6 sang6 song1；&#10;牀前明月光，疑似地上霜；&#10;gyu2 tau4 mong6 ming4 jyut6，dai1 tau4 si1/sy1 gu3 hoeng1。&#10;gyu2 dau4 mong6 ming4 njyut5，dai1 dau4 sli1 gu3 hiang1。&#10;舉頭望明月，低頭思故鄉。 </textarea>
 			  </div>
 			  <div class="form-group">
 				<div class="row col-md-12">
@@ -177,6 +180,9 @@
 							<option value="toneLine">調型豎線</option>
 						</select>
 					</div>
+					<div id="IPA_symbolFormat" class="custom-control custom-control-inline pl-0">
+						<div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="output_symbolFormat" name="symbolFormatCheck"><label class="custom-control-label" for="output_symbolFormat" >帶附加符</label></div>
+					</div>
 				</div>
 				<span class="form-control textarea-style table-responsive" id="outputSymbol"></span>
 			  </div>
@@ -184,7 +190,7 @@
 		  <div class="modal-footer">
 			<input class="btn btn-secondary" type="button" data-dismiss="modal" value="關閉"/>
 			<input class="btn btn-info copyBtn" type="button" data-clipboard-target="#outputSymbol" onclick="handleCopy()" value="複製"/>
-			<input class="btn btn-primary" type="submit" value="標註"/>
+			<input class="btn btn-primary" type="submit" value="轉換"/>
 		  </div>
 		</form>
 		</div>
@@ -205,6 +211,9 @@
 		  <div class="modal-body">
 			  <div class="form-group">
 				<label class="col-form-label">輸入文本：</label>
+				<div class="custom-control custom-input custom-control-inline float-right">
+					<input class="btn btn-outline-info btn-sm" type="button" onclick="document.getElementById('segText').value='';" value="清空"/>
+				</div>
 				<textarea class="form-control textarea-style" id="segText">我們來自泥潭&#10;We come from the mire&#10;我們在地獄高歌&#10;We're singing in hell&#10;我們渴望權力&#10;We yearn for rights&#10;我們充滿野心&#10;We are full of ambition&#10;我們強大冷靜&#10;We are strong and calm&#10;我們優雅自持&#10;We hold ourselves gracefull&#10;我們從不後悔&#10;We never regret&#10;我們是永遠高貴純潔的&#10;We are always noble and pure&#10;斯萊特林&#10;Slytherin </textarea>
 			  </div>
 			  <div class="form-group">
@@ -251,7 +260,10 @@
 					<input class="custom-control-input" type="radio" id="signText_char_simp" name="signText_type" value="simp">
 					<label for="signText_char_simp" class="custom-control-label">簡體</label>
 				</div>
-				<textarea class="form-control textarea-style" id="signText">靜夜思 【唐】李白&#10;牀前明月光，疑似地上霜。&#10;舉頭望明月，低頭思故鄉。</textarea>
+				<div class="custom-control custom-input custom-control-inline float-right">
+					<input class="btn btn-outline-info btn-sm" type="button" onclick="document.getElementById('signText').value='';" value="清空"/>
+				</div>
+				<textarea class="form-control textarea-style" id="signText">莫說青山多障礙&#10;風也急風也勁&#10;白雲過山峰也可傳情&#10;莫說水中多變幻&#10;水也清水也靜&#10;柔情似水愛共永&#10;未怕罡風吹散了熱愛&#10;萬水千山總是情&#10;聚散也有天註定&#10;不怨天不怨命&#10;但求有山水共作證</textarea>
 			  </div>
 			  <div class="form-group">
 				<div class="row col-md-12">
@@ -319,6 +331,9 @@
 		  <div class="modal-body">
 			  <div class="form-group">
 				<label class="col-form-label"  for="derivationChar">輸入漢字：</label>
+				<div class="custom-control custom-input custom-control-inline float-right">
+					<input class="btn btn-outline-info btn-sm" type="button" onclick="document.getElementById('derivationChar').value='';" value="清空"/>
+				</div>
 				<input type="text" class="form-control" id="derivationChar" value="發"/>
 			  </div>
 			  <div class="form-group">
@@ -505,15 +520,11 @@
             </div>
             <!-- 模態框底部 -->
             <div class="modal-footer">
-              <button type="button" class="btn btn-info" id="btn-allselect"
-                onclick="javascript:{document.getElementsByClassName('book').forEach((item)=>{ item.checked = true });}">全選</button>
-              <button type="button" class="btn btn-info" id="btn-cancel"
-                onclick="javascript:{document.getElementsByClassName('book').forEach((item)=>{ item.checked = false});}">取消全選</button>
-              <button type="button" class="btn btn-info d-none" id="btn-allselect-phrase"
-                onclick="javascript:{document.getElementsByClassName('book_phrase').forEach((item)=>{ item.checked = true });}">全選</button>
-              <button type="button" class="btn btn-info d-none" id="btn-cancel-phrase"
-                onclick="javascript:{document.getElementsByClassName('book_phrase').forEach((item)=>{ item.checked = false });}">取消全選</button>
-              <button type="button" class="btn btn-primary" data-dismiss="modal">確定</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+              <button type="button" class="btn btn-info" id="btn-cancel" onclick="javascript:{document.getElementsByClassName('book').forEach((item)=>{ item.checked = false});}">取消全選</button>
+              <button type="button" class="btn btn-info" id="btn-allselect" onclick="javascript:{document.getElementsByClassName('book').forEach((item)=>{ item.checked = true });}">全選</button>
+              <button type="button" class="btn btn-info d-none" id="btn-cancel-phrase" onclick="javascript:{document.getElementsByClassName('book_phrase').forEach((item)=>{ item.checked = false });}">取消全選</button>
+              <button type="button" class="btn btn-info d-none" id="btn-allselect-phrase" onclick="javascript:{document.getElementsByClassName('book_phrase').forEach((item)=>{ item.checked = true });}">全選</button>
             </div>
           </div>
         </div>
