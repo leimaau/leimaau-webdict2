@@ -65,13 +65,17 @@
   -->
 
   <!-- USER CSS -->
-  <link type="text/css" rel="stylesheet" href="css/index.css"/>
+  <!--<link type="text/css" rel="stylesheet" href="css/index.css"/>-->
+  <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.0.9/css/index.css"/>
   <!-- USER JavaScript -->
   <script type="text/javascript" src="js/config.js"></script>
-  <script type="text/javascript" src="js/dao.js"></script>
+  <!--<script type="text/javascript" src="js/dao.js"></script>-->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.0.9/js/dao.js"></script>
   <!--<script type="text/javascript" src="js/dictDb.js"></script>-->
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.0.7/js/dictDb.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.0.9/js/dictDb.js"></script>
   <script type="text/javascript" src="js/index.js"></script>
+  
+  
   <!--
   <script type="text/javascript" src="js/jieba-js/segMain.min.js"></script>
   <script type="text/javascript" src="js/jieba-js/segDict.min.js"></script>
@@ -81,14 +85,15 @@
   <script type="text/javascript" src="js/jieba-js/gzDict.js"></script>
   -->
   
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.0.7/js/jieba-js/segMain.min.js"></script>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.0.7/js/jieba-js/segDict.min.js"></script>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.0.7/js/jieba-js/segDictPlus.min.js"></script>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.0.7/js/jieba-js/nnDict.js"></script>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.0.7/js/jieba-js/nntDict.js"></script>
-  <!--<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.0.7/js/jieba-js/gzDict.js"></script>-->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.0.9/js/jieba-js/segMain.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.0.9/js/jieba-js/segDict.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.0.9/js/jieba-js/segDictPlus.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.0.9/js/jieba-js/nnDict.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.0.9/js/jieba-js/nntDict.js"></script>
+  <!--<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.0.9/js/jieba-js/gzDict.js"></script>-->
   
-  <link type="text/css" rel="stylesheet" href="css/player/player.css" />
+  <!--<link type="text/css" rel="stylesheet" href="css/player/player.css"/>-->
+  <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.0.9/css/player/player.css"/>
 </head>
 
 <body>
@@ -167,9 +172,9 @@
 					<label id="ipa_ver_label" class="col-form-label">輸出 IPA 版本：</label>
 					<div class="custom-control custom-control-inline pl-0">
 						<select class="form-control form-control-sm" id="IPA_version">
-							<option value="nIPA" selected>南寧白話《廣西南寧白話研究》版</option>
-							<option value="tIPA">南寧平話《廣西通誌·漢語方言誌》版</option>
-							<option value="tIPA2">南寧平話《南寧平話詞典》版</option>
+							<option value="nIPA" selected>南寧白話-林亦、覃鳳餘《廣西南寧白話研究》版</option>
+							<option value="tIPA">南寧平話-楊煥典主編《廣西通誌·漢語方言誌》版</option>
+							<option value="tIPA2">南寧平話-李榮主編《南寧平話詞典》版</option>
 							<!--<option value="gIPA">廣州話</option>-->
 						</select>
 					</div>
@@ -248,7 +253,7 @@
 			  <span aria-hidden="true">&times;</span>
 			</button>
 		  </div>
-		<form onsubmit="signArticle(signText.value, signText_type.value, signResult_type.value, signResult_format.value, signResult_way.value, signResult_IPA.value); return false">
+		<form onsubmit="signArticle(signText.value, signText_type.value, signResult_type.value, signResult_format.value, signResult_way.value, signResult_IPA.value, signIPA_version.value); return false">
 		  <div class="modal-body">
 			  <div class="form-group">
 				<label class="col-form-label">輸入文本：</label>
@@ -269,7 +274,7 @@
 				<div class="row col-md-12">
 					<label class="col-form-label">輸出結果：</label>
 					<div class="custom-control custom-control-inline pl-0">
-						<select class="form-control form-control-sm" id="signResult_type" onchange="if($('#signResult_type').val()=='nnDict'){$('#restore_format').removeClass('d-none')}else{$('#restore_format').addClass('d-none')}">
+						<select class="form-control form-control-sm" id="signResult_type" onchange="if($('#signResult_type').val()=='nnDict'){$('#restore_format,#nIPA').removeClass('d-none');$('#tIPA,#tIPA2').addClass('d-none');$('#signIPA_version').val('nIPA')}else{$('#restore_format,#nIPA').addClass('d-none');$('#tIPA,#tIPA2').removeClass('d-none');$('#signIPA_version').val('tIPA')}">
 							<option value="nnDict" selected>南寧白話</option>
 							<option value="nntDict">南寧平話</option>
 							<!--<option value="gzDict">廣州話</option>-->
@@ -277,7 +282,7 @@
 					</div>
 					<label class="col-form-label">標註格式：</label>
 					<div class="custom-control custom-control-inline pl-0">
-						<select class="form-control form-control-sm" id="signResult_format" onchange="if($('#signResult_format').val()=='twolines'||$('#signResult_format').val()=='parallel'){$('#opt_jyutping_ipa,#opt_ipa_jyutping').removeClass('d-none')}else{$('#opt_jyutping_ipa,#opt_ipa_jyutping').addClass('d-none');if($('#signResult_way option:selected').val()=='jyutping_ipa'){$('#signResult_way').val('jyutping');$('#IPA_format').addClass('d-none')}else if($('#signResult_way option:selected').val()=='ipa_jyutping'){$('#signResult_way').val('ipa')}};">
+						<select class="form-control form-control-sm" id="signResult_format" onchange="if($('#signResult_format').val()=='twolines'||$('#signResult_format').val()=='parallel'){$('#opt_jyutping_ipa,#opt_ipa_jyutping').removeClass('d-none')}else{$('#opt_jyutping_ipa,#opt_ipa_jyutping').addClass('d-none');if($('#signResult_way option:selected').val()=='jyutping_ipa'){$('#signResult_way').val('jyutping');$('#IPA_format,#signIPA_format').addClass('d-none')}else if($('#signResult_way option:selected').val()=='ipa_jyutping'){$('#signResult_way').val('ipa')}};">
 							<option value="updown" selected>按字內嵌</option>
 							<option value="lineupdown">按行內嵌</option>
 							<option value="twolines">分行</option>
@@ -286,7 +291,7 @@
 					</div>
 					<label class="col-form-label">標註方式：</label>
 					<div class="custom-control custom-control-inline pl-0">
-						<select class="form-control form-control-sm" id="signResult_way" onchange="if($('#signResult_way').val()=='jyutping'){$('#IPA_format').addClass('d-none')}else{$('#IPA_format').removeClass('d-none')};">
+						<select class="form-control form-control-sm" id="signResult_way" onchange="if($('#signResult_way').val()=='jyutping'){$('#IPA_format,#signIPA_format').addClass('d-none')}else{$('#IPA_format').removeClass('d-none');$('#signIPA_format').removeClass('d-none')};">
 							<option value="jyutping" selected>粵拼</option>
 							<option value="ipa">IPA</option>
 							<option id="opt_jyutping_ipa" value="jyutping_ipa" class="d-none">粵拼和IPA</option>
@@ -302,11 +307,24 @@
 					</div>
 				</div>
 				<div id="restore_format" class="row col-md-12 mb-2">
-					<div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="checkbox_isw" name="wCheck" checked><label class="custom-control-label" for="checkbox_isw" title="即 (g|k)o(k|ng)->(gw|kw)o(k|ng)，(g|k)ik->(gw|kw)ik，而梗攝舒聲開合不混〔迥gwing〕(gw|kw)ing">恢復見組果宕曾一等合口〔光gwong、國gwok、過gwo〕，見組梗入合口〔隙kwik（讀如合口）〕。</label></div>
+					<div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="checkbox_isw" name="wCheck" checked><label class="custom-control-label" for="checkbox_isw" title="即 (g|k)o(k|ng)->(gw|kw)o(k|ng)，(g|k)ik->(gw|kw)ik，而梗攝舒聲開合不混〔迥gwing〕(gw|kw)ing">恢復見組果宕曾一等合口〔光gwong、國gwok、過gwo〕，見組梗入合口〔隙kwik（讀如合口）〕</label></div>
+				</div>
+				<div id="signIPA_format" class="row col-md-12 mb-2 d-none">
+					<label class="col-form-label">輸出 IPA 版本：</label>
+					<div class="custom-control custom-control-inline pl-0">
+						<select class="form-control form-control-sm" id="signIPA_version">
+							<option id="nIPA" value="nIPA" selected>南寧白話-林亦、覃鳳餘《廣西南寧白話研究》版</option>
+							<option id="tIPA" class="d-none" value="tIPA">南寧平話-楊煥典主編《廣西通誌·漢語方言誌》版</option>
+							<option id="tIPA2" class="d-none" value="tIPA2">南寧平話-李榮主編《南寧平話詞典》版</option>
+						</select>
+					</div>
+					<div id="signIPA_symbolFormat" class="custom-control custom-control-inline pl-0">
+						<div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="output_addSymbol" name="addSymbolCheck"><label class="custom-control-label" for="output_addSymbol" >帶附加符</label></div>
+					</div>
 				</div>
 				<span class="form-control textarea-style table-responsive" id="signResult"></span>
 			  </div>
-			  <span>※ 標註結果最好經過人工校對。</span>
+			  <span>※ 標註結果最好經過人工校對</span>
 		  </div>
 		  <div class="modal-footer">
 			<input class="btn btn-secondary" type="button" data-dismiss="modal" value="關閉"/>
@@ -339,7 +357,7 @@
 			  <div class="form-group">
 				<span class="form-control textarea-style table-responsive" id="derivationResult"></span>
 			  </div>
-			  <span>※ 推導結果最好經過人工校對。</span>
+			  <span>※ 推導結果最好經過人工校對</span>
 		  </div>
 		  <div class="modal-footer">
 			<input class="btn btn-secondary" type="button" data-dismiss="modal" value="關閉"/>
@@ -661,9 +679,10 @@
   	</div>
   	<ol id="playlist"></ol>
   </div>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery.marquee@1.5.0/jquery.marquee.min.js"></script>
   <!--<script type="text/javascript" src="js/player/jquery.marquee.min.js"></script>-->
-  <script type="text/javascript" src="js/player/player.js"></script>
+  <!--<script type="text/javascript" src="js/player/player.js"></script>-->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery.marquee@1.5.0/jquery.marquee.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.0.9/js/player/player.js"></script>
   
   <div class="footer text-center mt-auto py-3">
 	  <div class="foot-container user-font">

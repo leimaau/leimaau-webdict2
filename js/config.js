@@ -4,7 +4,7 @@
 
 const cdnAddr = [];
 cdnAddr.push('https://cdn.jsdelivr.net/npm');
-cdnAddr.push('leimaau-npm-cdn@1.0.7');
+cdnAddr.push('leimaau-npm-cdn@1.0.9');
 cdnAddr.push('db/leimaau.db3');
 
 const DictConfig = {
@@ -373,7 +373,7 @@ function decodeUnicode(str) {
 
 
 // 粵拼轉IPA
-function jyutping_to_ipa(inputstr, IPA_version, output_IPAformat){
+function jyutping_to_ipa(inputstr, IPA_version, output_IPAformat, judgeDiv){
 	let outputstr = inputstr;
 	outputstr = outputstr.replace(/(^|[ ])(m)(\d)/g, "$1m̩$3");
 	outputstr = outputstr.replace(/(^|[ ])(ng)(\d)/g, "$1ŋ̍$3");
@@ -486,7 +486,7 @@ function jyutping_to_ipa(inputstr, IPA_version, output_IPAformat){
 	
     outputstr = outputstr.toLowerCase().replace(/ɪ/g,"e");
 	
-	if( $("#output_symbolFormat").is(":checked") == false ){
+	if( $("#"+judgeDiv).is(":checked") == false ){
 		outputstr = outputstr.replace(/ː/g,"").replace(/͡/g,"").replace(/̚/g,"");
 	}
 	
@@ -495,7 +495,7 @@ function jyutping_to_ipa(inputstr, IPA_version, output_IPAformat){
 	} else if(output_IPAformat == 'Up') {
         outputstr = outputstr.replace(/˥/g,"⁵").replace(/˦/g,"⁴").replace(/˧/g,"³").replace(/˨/g,"²").replace(/˩/g,"¹");
 	} else {
-        outputstr = outputstr;
+        outputstr = outputstr.replace(/˥˥/g,'˥').replace(/˧˧/g,'˧').replace(/˨˨/g,'˨');
 	}
 	
     outputstr = outputstr.replace(/^([aeiouœʊɐɛɪ])/g,"∅$1");
