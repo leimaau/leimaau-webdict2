@@ -599,7 +599,7 @@ function derivationFun(textChar) {
 	
 	let res_koxqim = MainQuery.queryTableOne_triungkox(textChar, ['tab_1008'], 'char');
 	if (res_koxqim.length == 0) {
-		outputText.push(`中古音未查詢到結果，無法推導，請檢查是否輸入傳統漢字！`);
+		outputText.push(`未查詢到《廣韻》數據，請檢查是否輸入傳統漢字！`);
 	} else {
 		for (let line of res_koxqim) {
 			outputText.push(`中古音：` + line['FIRST'] + line['SHE'] + line['HU'] + line['DENG'] + line['YUNBU1'] + line['TONE'] + ` ` + line['PINYIN'] + `<br/>` + `反切：` + line['FANQIE1'] + `<br/>`);
@@ -616,7 +616,7 @@ function derivationFun(textChar) {
 				} else {
 					let jpdata = [];
 					for (let line_char of tempjp) {
-						if(judgeJP(line['PINYIN'], line_char['JYUTPING'], line['TONE'], 'n')){
+						if(judgeJP(line['PINYIN'], line_char['JYUTPING'], line['TONE'], 'n', line['SHE'])){
 							jpdata.push(line_char['JYUTPING']);
 						}
 					}
@@ -633,7 +633,7 @@ function derivationFun(textChar) {
 				} else {
 					let jpdata = [];
 					for (let line_char of tempjp2) {
-						if(judgeJP(line['PINYIN'], line_char['JYUTPING'], line['TONE'], 't')){
+						if(judgeJP(line['PINYIN'], line_char['JYUTPING'], line['TONE'], 't', line['SHE'])){
 							jpdata.push(line_char['JYUTPING']);
 						}
 					}
@@ -673,25 +673,34 @@ function derivationFun(textChar) {
 }
 
 // 粵拼與中古音適配判斷函數
-function judgeJP(koxqim, jyutping, tone, n_t){
-	if (n_t=='n') {
-		if ((tone == '平' && /1|4/.test(jyutping))||(tone == '上' && /2|5/.test(jyutping))||(tone == '去' && /3|6/.test(jyutping)) && /[^ptk][1-6]$/.test(jyutping)) {
-			return true;
-		} else if (tone == '入' && /1|3|6/.test(jyutping) && /[ptk][1-6]$/.test(jyutping)) {
-			return true;
+function judgeJP(koxqim, jyutping, tone, n_t, she){
+	
+	if ((tone == '平' && /1|4/.test(jyutping))||(tone == '上' && /2|5|6|3/.test(jyutping))||(tone == '去' && /3|6|5/.test(jyutping)) && /[^ptk][1-6]$/.test(jyutping)) {
+		if (((/通|江|宕|梗|曾/.test(she)) && (/(ng|k)\d$/.test(jyutping))) || ((/臻|山|深|咸/.test(she)) && (/(n|t)\d$/.test(jyutping))) || ((/深|咸/.test(she)) && (/(m|p)\d$/.test(jyutping)))){
+			
+		} else if (((/效|流/.test(she)) && (/u\d$/.test(jyutping))) || ((/止/.test(she)) && (/(i|e|yu)\d$/.test(jyutping))) || ((/蟹/.test(she)) && (/(i|a|o)\d$/.test(jyutping))) || ((/果/.test(she)) && (/(a|e|i|o|u|oe)\d$/.test(jyutping))) || ((/假/.test(she)) && (/(a|e|i)\d$/.test(jyutping))) || ((/遇/.test(she)) && (/(u|ng|yu|o)\d$/.test(jyutping)))) {
+			
+		} else {
+			return false;
+		}
+	} else if (tone == '入') {
+		if (n_t=='n' && /1|3|6/.test(jyutping) && /[ptk][1-6]$/.test(jyutping)) {
+			
+		} else if (n_t=='t' && /3|2|5|6/.test(jyutping) && /[ptk][1-6]$/.test(jyutping)) {
+			
+		} else {
+			return false;
+		}
+		if (((/通|江|宕|梗|曾/.test(she)) && (/(ng|k)\d$/.test(jyutping))) || ((/臻|山|深|咸/.test(she)) && (/(n|t)\d$/.test(jyutping))) || ((/深|咸/.test(she)) && (/(m|p)\d$/.test(jyutping)))){
+			
 		} else {
 			return false;
 		}
 	} else {
-		if ((tone == '平' && /1|4/.test(jyutping))||(tone == '上' && /2|5/.test(jyutping))||(tone == '去' && /3|6/.test(jyutping)) && /[^ptk][1-6]$/.test(jyutping)) {
-			return true;
-		} else if (tone == '入' && /3|2|5|6/.test(jyutping) && /[ptk][1-6]$/.test(jyutping)) {
-			return true;
-		} else {
-			return false;
-		}
+		return false;
 	}
-
+	
+	return true;
 }
 
 
