@@ -4,7 +4,7 @@
 
 const cdnAddr = [];
 cdnAddr.push('https://cdn.jsdelivr.net/npm');
-cdnAddr.push('leimaau-npm-cdn@1.0.9');
+cdnAddr.push('leimaau-npm-cdn@1.1.0');
 cdnAddr.push('db/leimaau.db3');
 
 const DictConfig = {
@@ -427,10 +427,14 @@ function jyutping_to_ipa(inputstr, IPA_version, output_IPAformat, judgeDiv){
         outputstr = outputstr.replace(/s/g,"ʃ");
         outputstr = outputstr.replace(/z/g,"t͡ʃ");
         outputstr = outputstr.replace(/c/g,"t͡ʃʰ");
-	} else {
+	} else if(IPA_version == 'nIPA2' || IPA_version == 'tIPA2') {
         outputstr = outputstr.replace(/s/g,"s");
         outputstr = outputstr.replace(/z/g,"t͡s");
         outputstr = outputstr.replace(/c/g,"t͡sʰ");
+	} else if(IPA_version == 'nIPA3'){
+        outputstr = outputstr.replace(/s/g,"ɕ");
+        outputstr = outputstr.replace(/z/g,"t͡ɕ");
+        outputstr = outputstr.replace(/c/g,"t͡ɕʰ");
 	}
 	
     if (IPA_version == 'tIPA2'){
@@ -446,22 +450,31 @@ function jyutping_to_ipa(inputstr, IPA_version, output_IPAformat, judgeDiv){
         outputstr = outputstr.replace(/ɔː|ɔ/g,"o");
         outputstr = outputstr.replace(/(ɛ|ɛː)(\d|ŋ|k|i)/g,"e$2");
         outputstr = outputstr.replace(/ɪ/g,"e")
-	} else {
-        outputstr = outputstr;
+	} else if(IPA_version == 'nIPA2') {
+        outputstr = outputstr.replace(/ʊ(k|ŋ)/g,"o$1");
+		outputstr = outputstr.replace(/ɪ/g,"e")
+	} else if(IPA_version == 'nIPA3')  {
+		outputstr = outputstr.replace(/ʊ(k|ŋ)/g,"u$1");
+		outputstr = outputstr.replace(/ɪ(k|ŋ)/g,"i$1");
 	}
 
-    if (IPA_version == 'nIPA' || IPA_version == 'gIPA'){
+    if (IPA_version == 'nIPA' || IPA_version == 'nIPA2' || IPA_version == 'nIPA3' || IPA_version == 'gIPA'){
         outputstr = outputstr.replace(/([ptk])6/g,"$1̚˨");
         outputstr = outputstr.replace(/([ptk])3/g,"$1̚˧");
         outputstr = outputstr.replace(/([ptk])1/g,"$1̚˥");	
-	} else {
+	} else if(IPA_version == 'tIPA') {
         outputstr = outputstr.replace(/([ptk])3/g,"$1̚˥");
         outputstr = outputstr.replace(/([ptk])2/g,"$1̚˧");
         outputstr = outputstr.replace(/([ptk])5/g,"$1̚˨˦");
         outputstr = outputstr.replace(/([ptk])6/g,"$1̚˨");
+	} else if(IPA_version == 'tIPA2') {
+        outputstr = outputstr.replace(/([ptk])3/g,"$1̚˥");
+        outputstr = outputstr.replace(/([ptk])2/g,"$1̚˧");
+        outputstr = outputstr.replace(/([ptk])5/g,"$1̚˨˧");
+        outputstr = outputstr.replace(/([ptk])6/g,"$1̚˨");
 	}
 	
-    if (IPA_version == 'nIPA'){
+    if (IPA_version == 'nIPA' || IPA_version == 'nIPA2' || IPA_version == 'nIPA3'){
         outputstr = outputstr.replace(/1/g,"˥˥");
         outputstr = outputstr.replace(/2/g,"˧˥");
         outputstr = outputstr.replace(/3/g,"˧˧");
@@ -510,7 +523,7 @@ function ipa_to_jyutping(inputstr, IPA_version){
 	
 	outputstr = outputstr.replace(/ː/g,"").replace(/͡/g,"").replace(/̚/g,"");
 	
-    if (IPA_version == 'nIPA' || IPA_version == 'gIPA'){
+    if (IPA_version == 'nIPA' || IPA_version == 'nIPA2' || IPA_version == 'nIPA3' || IPA_version == 'gIPA'){
         outputstr = outputstr.replace(/˨˩|21|²¹|˩˩|11|¹¹/g,"_4");
         outputstr = outputstr.replace(/˥˥|55|⁵⁵/g,"_1");
         outputstr = outputstr.replace(/˨˦|24|²⁴|˩˧|13|¹³/g,"_5");
@@ -520,6 +533,9 @@ function ipa_to_jyutping(inputstr, IPA_version){
         outputstr = outputstr.replace(/(?<n1>[ptk])˨|(?<n2>[ptk])2|(?<n3>[ptk])²/g,"$<n1>$<n2>$<n3>6");
         outputstr = outputstr.replace(/(?<n1>[ptk])˧|(?<n2>[ptk])3|(?<n3>[ptk])³/g,"$<n1>$<n2>$<n3>3");
         outputstr = outputstr.replace(/(?<n1>[ptk])˥|(?<n2>[ptk])5|(?<n3>[ptk])⁵/g,"$<n1>$<n2>$<n3>1");
+        outputstr = outputstr.replace(/˥/g,"_1");
+        outputstr = outputstr.replace(/˧/g,"_3");
+        outputstr = outputstr.replace(/˨/g,"_6");
 	} else {
         outputstr = outputstr.replace(/˨˩|21|²¹/g,"_4");
         outputstr = outputstr.replace(/˥˧|53|⁵³|˦˩|41|⁴¹/g,"_1");
@@ -530,17 +546,21 @@ function ipa_to_jyutping(inputstr, IPA_version){
         outputstr = outputstr.replace(/(?<n1>[ptk])˨|(?<n2>[ptk])2|(?<n3>[ptk])²/g,"$<n1>$<n2>$<n3>6");
         outputstr = outputstr.replace(/(?<n1>[ptk])˧|(?<n2>[ptk])3|(?<n3>[ptk])³/g,"$<n1>$<n2>$<n3>2");
         outputstr = outputstr.replace(/(?<n1>[ptk])˥|(?<n2>[ptk])5|(?<n3>[ptk])⁵/g,"$<n1>$<n2>$<n3>3");
+        outputstr = outputstr.replace(/˥/g,"_3");
+        outputstr = outputstr.replace(/˧/g,"_2");
+        outputstr = outputstr.replace(/˨/g,"_6");
 	}
     
     outputstr = outputstr.replace(/_/g,"");
-    outputstr = outputstr.replace(/tʃʰ|tsʰ|tʃh|tsh|ʧʰ|ʦʰ|ʧh|ʦh/g,"c");
-    outputstr = outputstr.replace(/tʃ|ts|ʧ|ʦ/g,"z");
-    outputstr = outputstr.replace(/ʃ|s/g,"s");
+    outputstr = outputstr.replace(/tʃʰ|tsʰ|tɕʰ|tʃh|tsh|tɕh|ʧʰ|ʦʰ|ʨʰ|ʧh|ʦh|ʨh/g,"c");
+    outputstr = outputstr.replace(/tʃ|ts|tɕ|ʧ|ʦ|ʨ/g,"z");
+    outputstr = outputstr.replace(/ʃ|s|ɕ/g,"s");
 
-    if (IPA_version == 'nIPA' || IPA_version == 'gIPA'){
-        outputstr = outputstr.replace(/ʊk|ok/g,"uk");
-        outputstr = outputstr.replace(/ʊŋ|oŋ/g,"ung");
+    if (IPA_version == 'nIPA' || IPA_version == 'nIPA2' || IPA_version == 'nIPA3' || IPA_version == 'gIPA'){
+        outputstr = outputstr.replace(/ʊk|ok|uk/g,"uk");
+        outputstr = outputstr.replace(/ʊŋ|oŋ|uŋ/g,"ung");
 	} else {
+		outputstr = outputstr.replace(/ok/g,"ok");
         outputstr = outputstr.replace(/oŋ/g,"ong");
 	}
 

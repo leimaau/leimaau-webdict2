@@ -115,18 +115,22 @@ ruby, rt {
 
 /*底部樣式*/
 .footer {
-  background-color: #f5f5f5;
+	background-color: #f5f5f5;
 }
 
 /*底部容器樣式*/
 .foot-container {
-  width: auto;
-  padding: 0 15px;
+	width: auto;
+	padding: 0 15px;
 }
 
 /*固定輸入框樣式*/
 .div-sticky {
-  position: sticky;
-  top: 0;
-  z-index: 1020;
+	position: sticky;
+	top: 0;
+	z-index: 1020;
+}
+
+#derivationResult {
+	height: 450px;
 }

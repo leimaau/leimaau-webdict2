@@ -372,9 +372,9 @@ function getDataText(){
 
 // 在線標註函數
 function signArticle(textCont, signText_type, signResult_type, signResult_format, signResult_way, signResult_IPA, signIPA_version) {
-	if (textCont.length > 2000){
+	if (textCont.length > 30000){
 		toastrFunc('toast-top-center');
-		toastr.error('禁止超過兩千字！');
+		toastr.error('禁止超過三萬字！');
 		return false;
 	}
 	
@@ -521,7 +521,7 @@ function jpFormat(jyutping){
 	return jyutping;
 }
 
-// 粵拼與IPA轉換
+// 音標轉換
 function Func_JP_IPA(inputSymbol, transform_type, IPA_version, output_IPAformat){
 	if (inputSymbol.length > 30000){
 		toastrFunc('toast-top-center');
@@ -569,19 +569,131 @@ function derivationFun(textChar) {
 		toastrFunc('toast-top-center');
 		toastr.warning('請輸入查詢關鍵字！');
 		return false;
-	} else if(textChar.length > 2) {
+	} else if(textChar.length >= 2) {
 		toastrFunc('toast-top-center');
 		toastr.warning('請輸入一個漢字！');
 		return false;
 	}
 	
 	const outputText = [];
+	let char_zing = [], char_zing_bw = [];
 	
-	outputText.push(`暫時未實現該功能！`);
+	let res_zing = MainQuery.queryTable(textChar, ['tab_2018'], 'char');
+	if (res_zing.length == 0) {
+		char_zing.push('無數據');
+	} else {
+		for (let line_char of res_zing) {
+			char_zing.push(line_char['JYUTPING']);
+		}
+	}
+	let res_zing_bw = MainQuery.queryTable(textChar, ['tab_2018_bw'], 'char');
+	if (res_zing_bw.length == 0) {
+		char_zing_bw.push('無數據');
+	} else {
+		for (let line_char of res_zing_bw) {
+			char_zing_bw.push(line_char['JYUTPING']);
+		}
+	}
+	outputText.push(`審音表：白：` + char_zing.join('/') + ` || 平：` + char_zing_bw.join('/') + `<br/><br/>`);
+	
+	
+	let res_koxqim = MainQuery.queryTableOne_triungkox(textChar, ['tab_1008'], 'char');
+	if (res_koxqim.length == 0) {
+		outputText.push(`中古音未查詢到結果，無法推導，請檢查是否輸入傳統漢字！`);
+	} else {
+		for (let line of res_koxqim) {
+			outputText.push(`中古音：` + line['FIRST'] + line['SHE'] + line['HU'] + line['DENG'] + line['YUNBU1'] + line['TONE'] + ` ` + line['PINYIN'] + `<br/>` + `反切：` + line['FANQIE1'] + `<br/>`);
+			
+			let res_char = MainQuery.queryTableOne_triungkox(line['PINYIN'], ['tab_1008'], 'jyut6ping3');
+			let char_same = [], char_jp = [], char_jp2 = [];
+			
+			for (let line_char of res_char) {
+				char_same.push(line_char['WORD1']);
+				
+				let tempjp = MainQuery.queryTable(line_char['WORD1'], ['tab_2018'], 'char');
+				if (tempjp.length == 0) {
+					char_jp.push('-');
+				} else {
+					let jpdata = [];
+					for (let line_char of tempjp) {
+						if(judgeJP(line['PINYIN'], line_char['JYUTPING'], line['TONE'], 'n')){
+							jpdata.push(line_char['JYUTPING']);
+						}
+					}
+					if (jpdata.length == 0){
+						char_jp.push('-');
+					} else {
+						char_jp.push(jpdata.join('/'));	
+					}
+				}
+				
+				let tempjp2 = MainQuery.queryTable(line_char['WORD1'], ['tab_2018_bw'], 'char');
+				if (tempjp2.length == 0) {
+					char_jp2.push('-');
+				} else {
+					let jpdata = [];
+					for (let line_char of tempjp2) {
+						if(judgeJP(line['PINYIN'], line_char['JYUTPING'], line['TONE'], 't')){
+							jpdata.push(line_char['JYUTPING']);
+						}
+					}
+					if (jpdata.length == 0){
+						char_jp2.push('-');
+					} else {
+						char_jp2.push(jpdata.join('/'));	
+					}
+				}
+			}
+			outputText.push(`同一音韻地位：` + char_same.join(' ') + `<br/>`);
+			outputText.push(`上述常用字標註：白：` + char_jp.join(' ') + ` || 平：` + char_jp2.join(' ') + `<br/>`);
+			
+			let result_char_jp = [...new Set(char_jp.filter(item => item.indexOf('-') == -1).join('/').split('/'))].join('/');
+			let result_char_jp2 = [...new Set(char_jp2.filter(item => item.indexOf('-') == -1).join('/').split('/'))].join('/');
+			let counts = (arr, value) => arr.reduce((a, v) => v === value ? a + 1 : a + 0, 0);
+			let total_char_jp = char_jp.filter(item => item.indexOf('-') == -1).join('/').split('/').length;
+			let total_char_jp2 = char_jp2.filter(item => item.indexOf('-') == -1).join('/').split('/').length;
+			
+			let res_char_jp =[], res_char_jp2 =[];
+			if(result_char_jp != ''){
+				for (let i of result_char_jp.split('/')){
+					res_char_jp.push(i + '(' + Math.round(counts(char_jp.join('/').split('/'),i) / total_char_jp * 10000) / 100.00 + '%' + ')');
+				}
+			}
+			if(result_char_jp2 != ''){
+				for (let i of result_char_jp2.split('/')){
+					res_char_jp2.push(i + '(' + Math.round(counts(char_jp2.join('/').split('/'),i) / total_char_jp2 * 10000) / 100.00 + '%' + ')');
+				}
+			}
+			outputText.push(`推導可能的結果：白：` + res_char_jp.join('/') + ` || 平：` + res_char_jp2.join('/') + `<br/><br/>`);
+		}
+	}
 	
 	$('#derivationResult').html(outputText.join(''));
 	
 }
+
+// 粵拼與中古音適配判斷函數
+function judgeJP(koxqim, jyutping, tone, n_t){
+	if (n_t=='n') {
+		if ((tone == '平' && /1|4/.test(jyutping))||(tone == '上' && /2|5/.test(jyutping))||(tone == '去' && /3|6/.test(jyutping)) && /[^ptk][1-6]$/.test(jyutping)) {
+			return true;
+		} else if (tone == '入' && /1|3|6/.test(jyutping) && /[ptk][1-6]$/.test(jyutping)) {
+			return true;
+		} else {
+			return false;
+		}
+	} else {
+		if ((tone == '平' && /1|4/.test(jyutping))||(tone == '上' && /2|5/.test(jyutping))||(tone == '去' && /3|6/.test(jyutping)) && /[^ptk][1-6]$/.test(jyutping)) {
+			return true;
+		} else if (tone == '入' && /3|2|5|6/.test(jyutping) && /[ptk][1-6]$/.test(jyutping)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+}
+
 
 // 複製按鈕
 function handleCopy() {
