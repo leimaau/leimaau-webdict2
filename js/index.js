@@ -569,15 +569,13 @@ function derivationFun(textChar) {
 		toastrFunc('toast-top-center');
 		toastr.warning('請輸入查詢關鍵字！');
 		return false;
-	} else if(textChar.length >= 2) {
+	} else if(textChar.length > 2) {
 		toastrFunc('toast-top-center');
 		toastr.warning('請輸入一個漢字！');
 		return false;
 	}
 	
-	const outputText = [];
 	let char_zing = [], char_zing_bw = [];
-	
 	let res_zing = MainQuery.queryTable(textChar, ['tab_2018'], 'char');
 	if (res_zing.length == 0) {
 		char_zing.push('無數據');
@@ -594,55 +592,25 @@ function derivationFun(textChar) {
 			char_zing_bw.push(line_char['JYUTPING']);
 		}
 	}
+	
+	const outputText = [];
 	outputText.push(`審音表：白：` + char_zing.join('/') + ` || 平：` + char_zing_bw.join('/') + `<br/><br/>`);
 	
 	
 	let res_koxqim = MainQuery.queryTableOne_triungkox(textChar, ['tab_1008'], 'char');
 	if (res_koxqim.length == 0) {
-		outputText.push(`未查詢到《廣韻》數據，請檢查是否輸入傳統漢字！`);
+		outputText.push(`未查詢到《廣韻》數據，請檢查是否輸入一個傳統漢字！`);
 	} else {
 		for (let line of res_koxqim) {
 			outputText.push(`中古音：` + line['FIRST'] + line['SHE'] + line['HU'] + line['DENG'] + line['YUNBU1'] + line['TONE'] + ` ` + line['PINYIN'] + `<br/>` + `反切：` + line['FANQIE1'] + `<br/>`);
 			
 			let res_char = MainQuery.queryTableOne_triungkox(line['PINYIN'], ['tab_1008'], 'jyut6ping3');
-			let char_same = [], char_jp = [], char_jp2 = [];
+			let char_jp = sameWordFunc(res_char, 'tab_2018', 'n', textChar, line['TONE'], line['SHE'], line['FIRST']);
+			let char_jp2 = sameWordFunc(res_char, 'tab_2018_bw', 't', textChar, line['TONE'], line['SHE'], line['FIRST']);
 			
+			let char_same = [];
 			for (let line_char of res_char) {
 				char_same.push(line_char['WORD1']);
-				
-				let tempjp = MainQuery.queryTable(line_char['WORD1'], ['tab_2018'], 'char');
-				if (tempjp.length == 0) {
-					char_jp.push('-');
-				} else {
-					let jpdata = [];
-					for (let line_char of tempjp) {
-						if(judgeJP(line['PINYIN'], line_char['JYUTPING'], line['TONE'], 'n', line['SHE'])){
-							jpdata.push(line_char['JYUTPING']);
-						}
-					}
-					if (jpdata.length == 0){
-						char_jp.push('-');
-					} else {
-						char_jp.push(jpdata.join('/'));	
-					}
-				}
-				
-				let tempjp2 = MainQuery.queryTable(line_char['WORD1'], ['tab_2018_bw'], 'char');
-				if (tempjp2.length == 0) {
-					char_jp2.push('-');
-				} else {
-					let jpdata = [];
-					for (let line_char of tempjp2) {
-						if(judgeJP(line['PINYIN'], line_char['JYUTPING'], line['TONE'], 't', line['SHE'])){
-							jpdata.push(line_char['JYUTPING']);
-						}
-					}
-					if (jpdata.length == 0){
-						char_jp2.push('-');
-					} else {
-						char_jp2.push(jpdata.join('/'));	
-					}
-				}
 			}
 			outputText.push(`同一音韻地位：` + char_same.join(' ') + `<br/>`);
 			outputText.push(`上述常用字標註：白：` + char_jp.join(' ') + ` || 平：` + char_jp2.join(' ') + `<br/>`);
@@ -672,13 +640,37 @@ function derivationFun(textChar) {
 	
 }
 
+// 獲取同一音韻地位字的函數
+function sameWordFunc(res_char, tabName, n_t, textChar, TONE, SHE, FIRST){
+	let char_jp = [];
+	for (let line_char of res_char) {
+		let tempjp = MainQuery.queryTable(line_char['WORD1'], [tabName], 'char');
+		if (tempjp.length == 0) {
+			char_jp.push('-');
+		} else {
+			let jpdata = [];
+			for (let line_char of tempjp) {
+				if(judgeJP(textChar, line_char['JYUTPING'], TONE, n_t, SHE, FIRST)){
+					jpdata.push(line_char['JYUTPING']);
+				}
+			}
+			if (jpdata.length == 0){
+				char_jp.push('-');
+			} else {
+				char_jp.push(jpdata.join('/'));	
+			}
+		}
+	}
+	return char_jp;
+}
+
 // 粵拼與中古音適配判斷函數
-function judgeJP(koxqim, jyutping, tone, n_t, she){
+function judgeJP(textChar, jyutping, tone, n_t, she, first){
 	
 	if ((tone == '平' && /1|4/.test(jyutping))||(tone == '上' && /2|5|6|3/.test(jyutping))||(tone == '去' && /3|6|5/.test(jyutping)) && /[^ptk][1-6]$/.test(jyutping)) {
 		if (((/通|江|宕|梗|曾/.test(she)) && (/(ng|k)\d$/.test(jyutping))) || ((/臻|山|深|咸/.test(she)) && (/(n|t)\d$/.test(jyutping))) || ((/深|咸/.test(she)) && (/(m|p)\d$/.test(jyutping)))){
 			
-		} else if (((/效|流/.test(she)) && (/u\d$/.test(jyutping))) || ((/止/.test(she)) && (/(i|e|yu)\d$/.test(jyutping))) || ((/蟹/.test(she)) && (/(i|a|o)\d$/.test(jyutping))) || ((/果/.test(she)) && (/(a|e|i|o|u|oe)\d$/.test(jyutping))) || ((/假/.test(she)) && (/(a|e|i)\d$/.test(jyutping))) || ((/遇/.test(she)) && (/(u|ng|yu|o)\d$/.test(jyutping)))) {
+		} else if (((/效|流/.test(she)) && (/u\d$/.test(jyutping))) || ((/止/.test(she)) && (/(i|e|yu|y)\d$/.test(jyutping))) || ((/蟹/.test(she)) && (/(i|a|o|u)\d$/.test(jyutping))) || ((/果/.test(she)) && (/(a|e|i|o|u|oe)\d$/.test(jyutping))) || ((/假/.test(she)) && (/(a|e|i)\d$/.test(jyutping))) || ((/遇/.test(she)) && (/(u|ng|yu|o)\d$/.test(jyutping)))) {
 			
 		} else {
 			return false;
@@ -699,6 +691,30 @@ function judgeJP(koxqim, jyutping, tone, n_t, she){
 	} else {
 		return false;
 	}
+	
+	if(((/幫|滂|並|非|敷|奉/.test(first)) && (/^[^bpf]/.test(jyutping))) || ((/明|微/.test(first)) && (/^[^mwf]/.test(jyutping))) || ((/端|透|定/.test(first)) && (/^[^dtn]/.test(jyutping))) || ((/泥/.test(first)) && (/^[^n]/.test(jyutping))) || ((/來/.test(first)) && (/^([^ln]|ng)/.test(jyutping))) || ((/知|徹|澄|精|清|從/.test(first)) && (/^[^zcd]/.test(jyutping))) || ((/娘/.test(first)) && (/^(?!([nj]|nj))/.test(jyutping))) || ((/心/.test(first)) && (/^(?!([sc]|sl))/.test(jyutping))) || ((/邪|生|俟|常|禪|書|船/.test(first)) && (/^(?!([zcs]|sl))/.test(jyutping))) || ((/莊|章/.test(first)) && (/^(?!([zj]|nj))/.test(jyutping))) || ((/初|昌/.test(first)) && (/^[^c]/.test(jyutping))) || ((/崇/.test(first)) && (/^[^zcs]/.test(jyutping))) || ((/見|溪|群|疑|曉|匣/.test(first)) && (/^(?!([gkhfjwnmdl]|ng|nj))/.test(jyutping))) || ((/日|云|以/.test(first)) && (/^(?!([hjwgn]|ng|nj))/.test(jyutping))) || ((/影/.test(first)) && (/^(?!([aeioujw]|ng|nj))/.test(jyutping))) || ((/疑/.test(first)) && (/^l/.test(jyutping))) || ((/書/.test(first)) && (/^z/.test(jyutping)))){
+		return false;
+	} else {
+		if(/並|奉|微|俟|定|澄|從|邪|崇|船|常|禪|群|匣|明|泥|來|娘|日|疑|以|云/.test(first)){
+			if ((tone == '平' && /[^41]$/.test(jyutping))||(tone == '上' && /[^2563]$/.test(jyutping))||(tone == '去' && textChar != '那' && first != '云' && /[^6]$/.test(jyutping))||(tone == '去' && first == '云' && /[^65]$/.test(jyutping))){
+				return false;
+			}
+			if ((n_t == 'n' && tone == '入' && first != '來' && /[^61]$/.test(jyutping))||(n_t == 'n' && tone == '入' && first == '來' && /[^361]$/.test(jyutping))||(n_t == 't' && tone == '入' && /[^56]$/.test(jyutping))) {
+				return false;	
+			}
+			if ((n_t == 'n' && (tone == '平'||tone == '上') && first != '匣' && first != '以' && /^[bdgz]/.test(jyutping) && /[^6]$/.test(jyutping))||(n_t == 'n' && (tone == '平'||tone == '上') && (first == '匣'||first == '以') && /^[bdz]/.test(jyutping) && /[^6]$/.test(jyutping))||(n_t == 'n' && (tone == '去'||tone == '入') && first != '邪' && /^[ptkc]/.test(jyutping))||(n_t == 'n' && (tone == '去'||tone == '入') && first == '邪' && /^[ptk]/.test(jyutping))) {
+				return false;	
+			}
+		} else {
+			if ((tone == '平' && /[^1]$/.test(jyutping))||(tone == '上' && /[^25]$/.test(jyutping))||(tone == '去' && /[^36]$/.test(jyutping))){
+				return false;
+			}
+			if ((n_t == 'n' && tone == '入' && textChar != '酷' && /[^13]$/.test(jyutping))||(n_t == 't' && tone == '入' && /[^32]$/.test(jyutping))) {
+				return false;	
+			}
+		}
+	}
+	
 	
 	return true;
 }
