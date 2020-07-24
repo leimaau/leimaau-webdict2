@@ -59,16 +59,6 @@ function querySubmit(inputValue, queryType, dictType) {
 		document.getElementsByClassName("classTabTitle").forEach((obj)=>{obj.innerHTML = ''});
 		document.getElementsByClassName("classTable").forEach((obj)=>{obj.innerHTML = ''});
 		$('.rowtabDiv').addClass('d-none');
-		displayAlert('未查詢到結果!', outputAlert, 'alert-primary');
-		
-		let tradRes = tradData.filter(item => item['simp'] == inputValue), tradLink = [];
-		if (tradRes.length != 0) {
-			for (let v of tradRes[0].trad) {
-				tradLink.push(`<a href="javascript:querySubmit('${v}', 'char', 'dicWord')">${v}</a>`);
-			}
-			displayAlert('未查詢到結果! 可能與之相關的繁體字：「' + tradLink.join('」,「') + '」', outputAlert, 'alert-primary');
-		}
-		
 		return false;
 	};
 }
@@ -148,14 +138,25 @@ function queryChar(inputValue, queryType, selVal){
 	if(queryType == 'char' || queryType == 'char_simp') showLink(inputValue);
 	
 	var isShow = res_triungkox.length + res_gw.length + res_jw.length + res_jj.length + res.length + res_bw.length + res_zb_sz.length + res_zb_b_wj.length + res_zb_wj.length;
-	//if (isShow != 0) { if(dataList.length != 0) $('#nav-tab').removeClass('d-none'); if(dataList_bw.length != 0) $('#nav-tab-bw').removeClass('d-none'); }// 顯示tab
 	if (isShow != 0) {
+		//if(dataList.length != 0) $('#nav-tab').removeClass('d-none'); // 顯示tab
+		//if(dataList_bw.length != 0) $('#nav-tab-bw').removeClass('d-none'); // 顯示tab
 		let tradRes = tradData.filter(item => item['simp'] == inputValue), tradLink = [];
 		if (tradRes.length != 0) {
 			for (let v of tradRes[0].trad) {
 				tradLink.push(`<a href="javascript:querySubmit('${v}', 'char', 'dicWord')">${v}</a>`);
 			}
 			displayAlert('可能與之相關的繁體字：「' + tradLink.join('」,「') + '」', outputAlert, 'alert-primary');
+		}
+	} else {
+		let tradRes = tradData.filter(item => item['simp'] == inputValue), tradLink = [];
+		if (tradRes.length != 0) {
+			for (let v of tradRes[0].trad) {
+				tradLink.push(`<a href="javascript:querySubmit('${v}', 'char', 'dicWord')">${v}</a>`);
+			}
+			displayAlert('未查詢到結果! 可能與之相關的繁體字：「' + tradLink.join('」,「') + '」', outputAlert, 'alert-primary');
+		} else {
+			displayAlert('未查詢到結果!', outputAlert, 'alert-primary');
 		}
 	}
 	
@@ -178,7 +179,7 @@ function queryPhrase(inputValue, queryType, selVal){
 	var dataList = selVal.filter(item => item.indexOf('_bw') == -1).filter(item => item.indexOf('_proverb') == -1);
 	if (dataList.length != 0) {
 		res = MainQuery.queryTablePhrase(inputValue, dataList, queryType);
-		showTable(res, 'outTab', allTitle, outTabTitle, colData_phrase);  // 顯示白話表格
+		showTable(res, 'outTab', allTitle+'(市區)', outTabTitle, colData_phrase);  // 顯示白話表格
 		showPie(res, inputValue, 'outPie', allTitle, queryType);  // 顯示白話餅圖
 		showWordCloud(res, inputValue, 'outWordCloud', allTitle, queryType, 'TRAD'); // 顯示白話詞雲圖
 	};
@@ -187,13 +188,18 @@ function queryPhrase(inputValue, queryType, selVal){
 	var dataList_bw = selVal.filter(item => item.indexOf('_bw') > -1).filter(item => item.indexOf('_proverb') == -1);
 	if (dataList_bw.length != 0) {
 		res_bw = MainQuery.queryTablePhrase(inputValue, dataList_bw, queryType);
-		showTable(res_bw, 'outTab_bw', allTitle_bw, outTabTitle_bw, colData_phrase);  // 顯示平話表格
+		showTable(res_bw, 'outTab_bw', allTitle_bw+'(亭子)', outTabTitle_bw, colData_phrase);  // 顯示平話表格
 		showPie(res_bw, inputValue, 'outPie_bw', allTitle_bw, queryType);  // 顯示平話餅圖
 		showWordCloud(res_bw, inputValue, 'outWordCloud_bw', allTitle_bw, queryType, 'TRAD'); // 顯示平話詞雲圖
 	};
 	
 	var isShow = res_proverb.length + res.length + res_bw.length;
-	if (isShow != 0) { if(dataList.length != 0) $('#nav-tab').removeClass('d-none'); if(dataList_bw.length != 0) $('#nav-tab-bw').removeClass('d-none'); }// 顯示tab
+	if (isShow != 0) {
+		if(dataList.length != 0) $('#nav-tab').removeClass('d-none'); // 顯示tab
+		if(dataList_bw.length != 0) $('#nav-tab-bw').removeClass('d-none'); // 顯示tab
+	} else {
+		displayAlert('未查詢到結果!', outputAlert, 'alert-primary');
+	}
 	
 	return isShow;
 }
@@ -450,6 +456,12 @@ function signArticle(textCont, signText_type, signResult_type, signResult_format
 					outputText.push(`${outputLine3.join('')} || ${outputLine1.join(' ')} || ${outputLine2.join(' ')}<br>`);
 				}
 			}
+		} else if (signResult_format == 'replace') { // 直接替換
+			let outputLine = [];
+			for (let txtStr of cutModule.cut(lines, false)) {
+				outputLine.push(queryJyutpingPhrase(txtStr, signText_type, signResult_type, (signResult_way == 'jyutping' || signResult_way == 'jyutping_ipa') ? 'jyutping' : 'ipa', signResult_format, signResult_IPA, signIPA_version).split(',').join(' '));
+			}
+			outputText.push(`${outputLine.join(' ')}<br>`);
 		}
 	}
 	
@@ -673,11 +685,55 @@ function koxqim_gujam(tabName, line){
 		firstRes = window[tabName].filter(item => item['first'] == line['FIRST'].replace('幫','非').replace('滂','敷').replace('並','奉').replace('明','微'));
 	}
 	if (firstRes.length != 0) {
-		koxqim_gujam_res.push(firstRes[0].first + `　` + firstRes[0].word);
+		koxqim_gujam_res.push(firstRes[0].first + `　` + firstRes[0].word + `<br>`);
 	}
+	
+	let finalRes = window[tabName].filter(item => item['first'].replace('開','').replace('合','').match(/^[\u4E00-\u9FA5]{2}/) == line['SHE'] + line['DENG']);
+	if (line['SHE'] == '止' && line['DENG'] == '三') {
+		finalRes = window[tabName].filter(item => item['first'].match(/^[\u4E00-\u9FA5]{3}/) == line['SHE'] + line['HU'] + line['DENG']);
+	}
+	if (finalRes.length != 0) {
+		for (let i of finalRes) {
+			koxqim_gujam_res.push(i.first + `　` + i.word.replace(/　　/g,'　　　　　') + `<br>`);
+		}
+	}
+	
+	let toneRes1 = window[tabName].filter(item => item['first'] == line['TONE']);
+	if (toneRes1.length != 0) {
+		koxqim_gujam_res.push(toneRes1[0].first + `　` + toneRes1[0].word + `<br>`);
+	}
+	let toneRes2 = window[tabName].filter(item => item['first'] == judgeFirst(line['FIRST'], 0) + line['TONE']);
+	if (toneRes2.length != 0) {
+		koxqim_gujam_res.push(toneRes2[0].first + `　` + toneRes2[0].word.replace(/　　/g,'　　　') + `<br>`);
+	}
+	let toneRes3 = window[tabName].filter(item => item['first'] == judgeFirst(line['FIRST'], 1) + line['TONE']);
+	if (toneRes3.length != 0) {
+		koxqim_gujam_res.push(toneRes3[0].first + `　` + toneRes3[0].word.replace(/　　/g,'　　　　') + `<br>`);
+	}
+	
 	return koxqim_gujam_res.join('');
 }
 
+// 判斷清濁
+function judgeFirst(first, num){
+	if (num == 1){
+		if (/並|奉|定|澄|从|邪|崇|俟|船|禅|常|群|匣/.test(first)){
+			return '全濁';
+		} else if (/明|泥|来|娘|日|疑|以|云/.test(first)){
+			return '次濁';
+		} else if (/滂|透|彻|清|初|昌|溪/.test(first)){
+			return '次清'
+		} else {
+			return '全清';
+		}
+	} else {
+		if (/並|奉|定|澄|从|邪|崇|俟|船|禅|群|匣|明|泥|来|娘|日|疑|以|云/.test(first)){
+			return '濁';
+		} else {
+			return '清';
+		}
+	}
+}
 
 // 獲取同一音韻地位字的函數
 function sameWordFunc(res_char, tabName, n_t, textChar, line){
@@ -798,7 +854,7 @@ function toastrFunc(pos){
 	toastr.options.preventDuplicates = true; // 防止重複
 }
 
-// 設置葉面底部年份信息
+// 設置䈎面底部年份信息
 function setWebYear() {
 	const myDate = new Date();
 	const myYear = myDate.getFullYear();
@@ -853,7 +909,7 @@ $(() => {
 	$('#dataModal').on('hide.bs.modal', function (event) {
 		dataButt.innerHTML = getDataText();
 	});
-	// 設置葉面底部年份信息
+	// 設置䈎面底部年份信息
 	setWebYear();
 	// 固定輸入框
 	setSticky();

@@ -66,14 +66,14 @@
 
   <!-- USER CSS -->
   <!--<link type="text/css" rel="stylesheet" href="css/index.css"/>-->
-  <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.1.1/css/index.css"/>
+  <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.1.2/css/index.css"/>
   <!-- USER JavaScript -->
   <!--<script type="text/javascript" src="js/config.js"></script>-->
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.1.1/js/config.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.1.2/js/config.js"></script>
   <!--<script type="text/javascript" src="js/dao.js"></script>-->
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.1.1/js/dao.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.1.2/js/dao.js"></script>
   <!--<script type="text/javascript" src="js/dictDb.js"></script>-->
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.1.1/js/dictDb.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.1.2/js/dictDb.js"></script>
   <script type="text/javascript" src="js/index.js"></script>
   
   
@@ -86,15 +86,15 @@
   <script type="text/javascript" src="js/jieba-js/gzDict.js"></script>
   -->
   
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.1.1/js/jieba-js/segMain.min.js"></script>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.1.1/js/jieba-js/segDict.min.js"></script>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.1.1/js/jieba-js/segDictPlus.min.js"></script>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.1.1/js/jieba-js/nnDict.js"></script>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.1.1/js/jieba-js/nntDict.js"></script>
-  <!--<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.1.1/js/jieba-js/gzDict.js"></script>-->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.1.2/js/jieba-js/segMain.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.1.2/js/jieba-js/segDict.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.1.2/js/jieba-js/segDictPlus.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.1.2/js/jieba-js/nnDict.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.1.2/js/jieba-js/nntDict.js"></script>
+  <!--<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.1.2/js/jieba-js/gzDict.js"></script>-->
   
   <!--<link type="text/css" rel="stylesheet" href="css/player/player.css"/>-->
-  <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.1.1/css/player/player.css"/>
+  <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.1.2/css/player/player.css"/>
 </head>
 
 <body>
@@ -111,7 +111,7 @@
         <div class="dropdown">
           <a href="#" class="dropdown-toggle text-muted user-font" id="right-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Link</a>
           <div class="dropdown-menu dropdown-menu-right mt-0" aria-labelledby="right-link">
-            <a class="dropdown-item" target="_blank" href="https://leimaau.github.io/leimaau-webdict2/">主葉地址(github pages)</a>
+            <a class="dropdown-item" target="_blank" href="https://leimaau.github.io/leimaau-webdict2/">主䈎地址(github pages)</a>
             <a class="dropdown-item" target="_blank" href="https://leimaau.gitee.io/leimaau-webdict2/">國內鏡像(gitee pages)</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" target="_blank" href="https://leimaau.github.io/book/PHONETICIZE.html">南寧白話拼音方案（市區）</a>
@@ -124,7 +124,7 @@
 			<a class="dropdown-item" target="_blank" href="https://opencc.byvoid.com/">開放中文轉換(OpenCC)</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" target="_blank" href="https://github.com/leimaau/dict-store">mdx-mdd 資料</a>
-            <a class="dropdown-item" target="_blank" href="https://github.com/leimaau/bookCollection">文本和 PDF 資料</a>
+			<a class="dropdown-item" data-toggle="modal" data-target="#aboutPDF" href="#">文本和 PDF 資料</a>
             <div class="dropdown-divider"></div>
 			<a class="dropdown-item text-primary" data-toggle="modal" data-target="#JP_IPA_Modal" href="#">音標轉換&nbsp;&nbsp;<span class="badge badge-danger">New</span></a>
 			<a class="dropdown-item text-primary" data-toggle="modal" data-target="#wordSegModal" href="#">在線分詞&nbsp;&nbsp;<span class="badge badge-danger">New</span></a>
@@ -139,7 +139,25 @@
       </div>
     </div>
   </nav>
-  
+	<!-- Modal -->
+	<div class="modal fade" id="aboutPDF" tabindex="-1" role="dialog" aria-labelledby="aboutPDFTitle" aria-hidden="true">
+	  <div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<h5 class="modal-title" id="aboutPDFTitle">文本和 PDF 資料</h5>
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			  <span aria-hidden="true">&times;</span>
+			</button>
+		  </div>
+		  <div class="modal-body">
+			詳情可郵件至 leimaau@qq.com 諮詢。
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+		  </div>
+		</div>
+	  </div>
+	</div>
 	<!-- Modal -->
 	<div class="modal fade" id="JP_IPA_Modal" tabindex="-1" role="dialog" aria-labelledby="JP_IPA_ModalLabel" aria-hidden="true">
 	  <div class="modal-dialog modal-lg" role="document">
@@ -194,7 +212,8 @@
 				<span class="form-control textarea-style table-responsive" id="outputSymbol"></span>
 			  </div>
 			  <span>※ 白(林 || 楊 || 梁)： tʃ/tʃʰ/ʃ、ʊŋ/ʊk/eŋ/ek || ts/tsʰ/s、oŋ/ok/eŋ/ek || tɕ/tɕʰ/ɕ、uŋ/uk/iŋ/ik</span><br/>
-			  <span>※ 平(楊 || 李)： tʃ/tʃʰ/ʃ、ȵwɐœɛ(無韻尾用e)、(i)ɐŋ/(i)ɐk || ts/tsʰ/s、ɲβəøe、əŋ/ək/iɐŋ/iɐk、上陽入23</span>
+			  <span>※ 平(楊 || 李)： tʃ/tʃʰ/ʃ、ȵwɐœɛ(無韻尾用e)、(i)ɐŋ/(i)ɐk、j-、wu(int)、jy(nt)、kʷ/kʷʰ(紙面爲kʰʷ)、上陽入24 || ts/tsʰ/s、ɲβəøe、əŋ/ək/iɐŋ/iɐk、∅i-、∅u(int)、∅y(nt)、ku/kʰu、上陽入23</span><br/>
+			  <span>※ kʷ/kʷʰ || kw/kwh || kʷ/kʰʷ || kw/khw || ku/kʰu || kᵘ/kʰᵘ 等可根據需要手工替換</span>
 		  </div>
 		  <div class="modal-footer">
 			<input class="btn btn-secondary" type="button" data-dismiss="modal" value="關閉"/>
@@ -291,6 +310,7 @@
 							<option value="lineupdown">按行內嵌</option>
 							<option value="twolines">分行</option>
 							<option value="parallel">平行</option>
+							<option value="replace">直接替換</option>
 						</select>
 					</div>
 					<label class="col-form-label">標註方式：</label>
@@ -385,7 +405,7 @@
 			</button>
 		  </div>
 		  <div class="modal-body">
-			本站叫「狸貓的在線詞典 2.0 版」(Leimaau's Webdict 2.0)，上線於2020年02月，是一個具有私人性質的在線詞典。相對於 1.0 版的 <a class="text-info" href="https://leimaau.github.io/leimaau-webdict/" target="_blank">Leimaau's Webdict</a> 本版有了較大的改進，程序的開發和製作得益於 sgalal 和匆匆的我的技術支持，特此致謝。</br></br>本站原先開發和運行於 github 中，爲了方便國內用戶訪問，故將程序備份於 gitee 中運行，因此本站有兩個地址，github 地址作<a class="text-info" target="_blank" href="https://leimaau.github.io/leimaau-webdict2/">主葉地址</a>，gitee 地址作<a class="text-info" target="_blank" href="https://leimaau.gitee.io/leimaau-webdict2/">國內鏡像</a>。關於生僻字的顯示，可在<a class="text-info" target="_blank" href="https://ctext.org/font-test-page/zh">字體試驗葉</a>查看。</br></br>
+			本站叫「狸貓的在線詞典 2.0 版」(Leimaau's Webdict 2.0)，上線於2020年02月，是一個具有私人性質的在線詞典。相對於 1.0 版的 <a class="text-info" href="https://leimaau.github.io/leimaau-webdict/" target="_blank">Leimaau's Webdict</a> 本版有了較大的改進，程序的開發和製作得益於 sgalal 和匆匆的我的技術支持，特此致謝。</br></br>本站原先開發和運行於 github 中，爲了方便國內用戶訪問，故將程序備份於 gitee 中運行，因此本站有兩個地址，github 地址作<a class="text-info" target="_blank" href="https://leimaau.github.io/leimaau-webdict2/">主䈎地址</a>，gitee 地址作<a class="text-info" target="_blank" href="https://leimaau.gitee.io/leimaau-webdict2/">國內鏡像</a>。關於生僻字的顯示，可在<a class="text-info" target="_blank" href="https://ctext.org/font-test-page/zh">字體試驗䈎</a>查看。</br></br>
 			資料收集整理錄入校對與擬音：Leimaau </br>
 			程序製作：Leimaau、匆匆的我、sgalal </br>
 			聯繫郵箱：leimaau@qq.com </br>
@@ -536,6 +556,7 @@
               <span class="modal-table" id="modal-table">
                 <table class="table table-bordered table-sm" id="outTab_oldbook"></table>
                 <table class="table table-bordered table-sm" id="outTab_book"></table>
+			    <div class="mt-1"><span>※ 2007年謝建猷《廣西漢語方言研究》所記橫縣粵語從音系看應屬橫縣平話</span></div>
               </span>
               <span class="modal-table-phrase d-none" id="modal-table-phrase">
                 <table class="table table-bordered table-sm" id="outTab_oldbook_proverb"></table>
@@ -688,7 +709,7 @@
   <!--<script type="text/javascript" src="js/player/jquery.marquee.min.js"></script>-->
   <!--<script type="text/javascript" src="js/player/player.js"></script>-->
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery.marquee@1.5.0/jquery.marquee.min.js"></script>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.1.1/js/player/player.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.1.2/js/player/player.js"></script>
   
   <div class="footer text-center mt-auto py-3">
 	  <div class="foot-container user-font">
