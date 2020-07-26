@@ -290,8 +290,7 @@ function showPie(res, inputValue, pieDiv, pieTitle, queryType) {
 function showWordCloud(res, inputValue, wordCloudDiv, wordCloudTitle, queryType, colName) {
 	//if (res.length == 0) return false;
 	if (queryType == 'expl' || queryType == 'phrase_expl') { // 詞例和解釋反查時不顯示詞雲圖
-		document.getElementById('nav-tab').style.display = 'none'; // 隱藏tab
-		document.getElementById('nav-tab-bw').style.display = 'none';
+		$('#nav-tab,#nav-tab-bw').addClass('d-none');  // 隱藏tab
 		return false;
 	}
 	var text = [];
