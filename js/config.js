@@ -4,7 +4,7 @@
 
 const cdnAddr = [];
 cdnAddr.push('https://cdn.jsdelivr.net/npm');
-cdnAddr.push('leimaau-npm-cdn@1.1.2');
+cdnAddr.push('leimaau-npm-cdn@1.1.3');
 cdnAddr.push('db/leimaau.db3');
 
 const DictConfig = {
@@ -60,6 +60,7 @@ const rowData_book = [
 	, { BOOK: '1997年楊煥典《南寧話音檔》', NN: 'tab_1997', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_S: '', HX_P: '' }
 	, { BOOK: '1997年李榮主編《南寧平話詞典》(單字音表)', NN: '', NN_D: '', NN_Y: '', HX_B: '', NN_T: 'noData', NN_S: '', HX_P: '' }
 	, { BOOK: '1998年楊煥典主編《廣西通誌·漢語方言誌》', NN: 'tab_1998', NN_D: '', NN_Y: '', HX_B: '', NN_T: 'tab_1998_bw', NN_S: '', HX_P: '' }
+	//, { BOOK: '1998年陳謨志總纂《南寧市誌·文化卷》(單字音表)', NN: 'noData', NN_D: '', NN_Y: '', HX_B: '', NN_T: 'noData', NN_S: '', HX_P: '' }
 	, { BOOK: '2000年李連進《平話音韻研究》', NN: '', NN_D: '', NN_Y: '', HX_B: '', NN_T: 'tab_2000_bw', NN_S: '', HX_P: 'tab_2000_zb_wj' }
 	, { BOOK: '2002年候精一《現代漢語方言音庫(字庫)》', NN: 'tab_2002', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_S: '', HX_P: '' }
 	, { BOOK: '2007年謝建猷《廣西漢語方言研究》', NN: 'tab_2007', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_S: 'tab_2007_zb_sz', HX_P: 'tab_2007_zb_wj' }
@@ -70,6 +71,7 @@ const rowData_book = [
 	, { BOOK: '2016年余瑾《廣西平話研究》', NN: '', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_S: '', HX_P: '' }
 	, { BOOK: '2017年教育部《漢語方言用字規範》', NN: '', NN_D: '', NN_Y: '', HX_B: '', NN_T: 'tab_201703_bw', NN_S: '', HX_P: '' }
 	, { BOOK: '2017年詹伯慧、張振興《漢語方言學大詞典》', NN: '', NN_D: '', NN_Y: '', HX_B: '', NN_T: 'tab_201705_bw', NN_S: '', HX_P: '' }
+	//, { BOOK: '2018年滕祖愛《南寧市與桂平市粵方言比較研究》', NN: 'noData', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_S: '', HX_P: '' }
 	, { BOOK: '2018年Leimaau《南寧話審音表》(本站提供)', NN: 'tab_2018', NN_D: '', NN_Y: '', HX_B: '', NN_T: 'tab_2018_bw', NN_S: '', HX_P: '' }
 	, { BOOK: '2019年莫思敏、談婷《廣西橫縣白話同音字彙》', NN: '', NN_D: '', NN_Y: '', HX_B: 'tab_2019_zb_b_wj', NN_T: '', NN_S: '', HX_P: '' }
 ];
@@ -108,6 +110,8 @@ const rowData_book_phrase = [
 	, { BOOK: '2008年林亦、覃鳳餘《廣西南寧白話研究》', NN: 'noData', NN_D: '', HX_B: '', NN_T: '', NN_S: '', HX_P: '' }
 	, { BOOK: '2015年黃增霞《廣西南寧疍家話詞彙研究》', NN: '', NN_D: 'noData', HX_B: '', NN_T: '', NN_S: '', HX_P: '' }
 	, { BOOK: '2016年余瑾《廣西平話研究》', NN: '', NN_D: '', HX_B: '', NN_T: '', NN_S: '', HX_P: '' }
+	, { BOOK: '2017年李怡《南寧白話古語詞研究》', NN: 'noData', NN_D: '', HX_B: '', NN_T: '', NN_S: '', HX_P: '' }
+	, { BOOK: '2017年韋慧梅《南寧白話詞彙研究》', NN: 'noData', NN_D: '', HX_B: '', NN_T: '', NN_S: '', HX_P: '' }
 	, { BOOK: '2017年詹伯慧、張振興《漢語方言學大詞典》', NN: '', NN_D: '', HX_B: '', NN_T: 'noData', NN_S: '', HX_P: '' }
 	, { BOOK: '2019年莫思敏《橫縣白話語音研究》', NN: '', NN_D: '', HX_B: 'noData', NN_T: '', NN_S: '', HX_P: '' }
 	, { BOOK: '2020年Leimaau《南寧話審詞表》(本站提供)', NN: 'tab_2020_phrase', NN_D: '', HX_B: '', NN_T: 'tab_2020_bw_phrase', NN_S: '', HX_P: '' }
@@ -291,7 +295,7 @@ var	playlist = [
 	, { title: "Last Dance", artist: "伍佰 & China Blue", mp3: "http://music.163.com/song/media/outer/url?id=157276.mp3" ,cover: "http://p1.music.126.net/HDdQFXVIlRvR96s0mQyu9g==/109951164170257125.jpg?param=130y130" }
 	, { title: "万水千山总是情(翻唱)", artist: "励志豪", mp3: "http://music.163.com/song/media/outer/url?id=570074859.mp3" ,cover: "http://p1.music.126.net/-tC1TR2JtKD5-jfx1id88w==/109951163325160885.jpg?param=130y130" }
 	, { title: "She纯音乐(Splice Version)", artist: "EYAir / Jami Soul / Mr. Bang / 시나에", mp3: "http://music.163.com/song/media/outer/url?id=478596258.mp3" ,cover: "http://p1.music.126.net/ieoL3KmgJLL3y3O9TqG3bQ==/109951162928795320.jpg?param=130y130" }
-	, { title: "麻雀", artist: "李荣浩", mp3: "http://music.163.com/song/media/outer/url?id=1407551413.mp3" ,cover: "http://p2.music.126.net/TzlSVBiNtpRD2b7MT2Hi-w==/109951164527590793.jpg?param=130y130" }
+	, { title: "李白", artist: "李荣浩", mp3: "http://music.163.com/song/media/outer/url?id=27678655.mp3" ,cover: "http://p2.music.126.net/0uZ_bKtm4E188Uk9LFN1qg==/109951163187393370.jpg?param=130y130" }
 	, { title: "年轮", artist: "汪苏泷", mp3: "http://music.163.com/song/media/outer/url?id=32897777.mp3" ,cover: "http://p2.music.126.net/5D4hfLdRezRlax4OWiPgnw==/2899412164997218.jpg?param=130y130" }
 	, { title: "The Day You Went Away", artist: "M2M", mp3: "http://music.163.com/song/media/outer/url?id=864648190.mp3" ,cover: "http://p2.music.126.net/0vL8DKxOjDAW-CgXBbgqMA==/109951163393829674.jpg?param=130y130" }
 	, { title: "情非得已(中英文版)", artist: "汪定中", mp3: "http://music.163.com/song/media/outer/url?id=36095122.mp3" ,cover: "http://p1.music.126.net/r-Zh4oqP4JJFQ1FaWP0NOQ==/3283141722233740.jpg?param=130y130" }
