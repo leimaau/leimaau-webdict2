@@ -96,6 +96,7 @@ CREATE TABLE tab_1937kk_proverb(
    TRAD          TEXT    NOT NULL,
    SIMP          TEXT    NOT NULL,
    SOUR          TEXT    NOT NULL,
+   EXPL          TEXT    ,
    NOTE          TEXT    
 );
 
@@ -105,6 +106,18 @@ CREATE TABLE tab_1937jz_proverb(
    TRAD          TEXT    NOT NULL,
    SIMP          TEXT    NOT NULL,
    SOUR          TEXT    NOT NULL,
+   EXPL          TEXT    ,
+   NOTE          TEXT    
+);
+
+
+-- 南宁童谣
+CREATE TABLE tab_2020_proverb(
+   ID            TEXT    NOT NULL,
+   TRAD          TEXT    NOT NULL,
+   SIMP          TEXT    NOT NULL,
+   SOUR          TEXT    ,
+   EXPL          TEXT    ,
    NOTE          TEXT    
 );
 
@@ -119,15 +132,6 @@ CREATE TABLE tab_2008_phrase(
    JYUTPING      TEXT    NOT NULL,
    SOUR          TEXT    NOT NULL,
    EXPL          TEXT    ,
-   NOTE          TEXT    
-);
-
--- 南宁童谣
-CREATE TABLE tab_2020_proverb(
-   ID            TEXT    NOT NULL,
-   TRAD          TEXT    NOT NULL,
-   SIMP          TEXT    NOT NULL,
-   SOUR          TEXT    ,
    NOTE          TEXT    
 );
 
