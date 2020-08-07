@@ -4,7 +4,7 @@
 
 const cdnAddr = [];
 cdnAddr.push('https://cdn.jsdelivr.net/npm');
-cdnAddr.push('leimaau-npm-cdn@1.1.4');
+cdnAddr.push('leimaau-npm-cdn@1.1.5');
 cdnAddr.push('db/leimaau.db3');
 
 const DictConfig = {
@@ -221,7 +221,7 @@ const colData_proverb = [
 	, { field: 'TRAD', title: '繁體', width: '350px', align: 'left', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
 	, { field: 'SIMP', title: '簡體', width: '350px', align: 'left', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
 	, { field: 'SOUR', title: '來源', width: '280px', formatter: (value, row) => { if(row['YEAR'] == 'tab_2020_proverb') {return `<span style="white-space: normal">2020年Leimaau《南寧童謠和熟語》(本站提供)<span/>`} else {return (row['YEAR'] == 'tab_1937kk_proverb') ? '<span style="white-space: normal">1937年廣西省政府總務處統計室《南寧社會概況》' + pageSplit(value, 'jpg','https://cdn.jsdelivr.net/gh/leimaau/CDN@latest/data-store/1937tj/kk_tj') + '<span/>' : '<span style="white-space: normal">1937年邕寧縣修誌委員會《邕寧縣誌(第4冊)》' + pageSplit(value, 'jpg','https://cdn.jsdelivr.net/gh/leimaau/CDN@latest/data-store/1937tj/jz_tj') + '<span/>' } } }
-	, { field: 'EXPL', title: '釋義', width: '220px', formatter: (value) => { return `<p data-toggle="tooltip" data-placement="left" title="${value}">${value}<p/>` } }
+	, { field: 'EXPL', title: '釋義', width: '220px', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
 	, { field: 'NOTE', title: '附註', width: '220px', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
 ];
 
@@ -249,7 +249,7 @@ function formatSOUR(value, row_year, picType, isChar = true) {
 	row_year = row_year.replace('_bw', '').replace('_phrase', '').replace('tab_', '');
 	//var linkaddr = 'https://leimaau.github.io/CDN/data-store/' + row_year;
 	//var linkaddr = 'https://cdn.jsdelivr.net/gh/leimaau/CDN@latest/data-store/' + row_year;
-	var linkaddr = 'https://leimaau.github.io/cdn/index.html?value=' + row_year;
+	var linkaddr = 'https://leimaau.github.io/CDN/index.html?value=' + row_year;
 	
 	if (row_year == '1994') linkaddr += 'zh/zh'
 	else if (row_year == '1997') linkaddr += 'yd/yd'
@@ -257,6 +257,7 @@ function formatSOUR(value, row_year, picType, isChar = true) {
 	else if (row_year == '2002') linkaddr += 'zk/zk'
 	else if (row_year == '2007') linkaddr = ''
 	else if (row_year == '2008') linkaddr += 'yj/yj'
+	else if (row_year == '2009') linkaddr += 'yy/yy'
 	else if (row_year == '201703') linkaddr = linkaddr.replace('201703','2017') + 'gj/gj'
 	else if (row_year == '201705') linkaddr =  linkaddr.replace('201705','2017') + 'hy/hy0'
 	else if (row_year == '2018') linkaddr = '';
@@ -539,7 +540,7 @@ function jyutping_to_ipa(inputstr, IPA_version, output_IPAformat, judgeDiv){
 	
     outputstr = outputstr.toLowerCase();
 	
-	if( $("#"+judgeDiv).is(":checked") == false ){
+	if( $("#" + judgeDiv).is(":checked") == false ){
 		outputstr = outputstr.replace(/ː/g,"").replace(/͡/g,"").replace(/̚/g,"");
 	}
 	

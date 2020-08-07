@@ -471,7 +471,7 @@ function signArticle(textCont, signText_type, signResult_type, signResult_format
 function queryJyutpingPhrase(txtStr, trad_simp, tabName, jyutping_ipa, signResult_format, signResult_IPA, signIPA_version, keep_symbol = true){
 	//let res = MainQuery.queryJyutping(txtStr, trad_simp, tabName); // 目前是從segDict.js獲取，tab_nn_review、tab_nnt_review、tab_gz_review停用，需要時導入數據使用
 	let res = window[tabName].filter(item => item[trad_simp] == txtStr), resJ =[];
-	if (res.length == 1 && txtStr.length > 1 ) { // 詞典有一個數據並且爲詞彙
+	if (res.length == 1 && txtStr.length > 1 && ($("#output_useWordSeg").is(":checked") == true)) { // 詞典有一個數據並且爲詞彙
 		for(let i in txtStr.split('')){
 			let charJp = res[0]['jyutping'].split(' ')[i];
 			if (signResult_format == 'updown') { // 按字內嵌時 中文字後帶 '</rt><rp>)</rp>'，拼音或ipa後帶 '</rt><rp>)</rp>'，return時合併起來
@@ -481,7 +481,7 @@ function queryJyutpingPhrase(txtStr, trad_simp, tabName, jyutping_ipa, signResul
 				resJ.push((jyutping_ipa == 'jyutping') ? jpFormat(charJp) : ipaFormat(jyutping_to_ipa(charJp, signIPA_version, signResult_IPA, "output_addSymbol")));
 			}
 		}
-	} else if (res.length > 1 && txtStr.length > 1 ) { // 詞典有多個數據並且爲詞彙
+	} else if (res.length > 1 && txtStr.length > 1 && ($("#output_useWordSeg").is(":checked") == true)) { // 詞典有多個數據並且爲詞彙
 		for(let i in txtStr.split('')){
 			let tempJp = [], tempIPA = [];
 			for (let j of res) {
@@ -511,7 +511,7 @@ function queryJyutpingPhrase(txtStr, trad_simp, tabName, jyutping_ipa, signResul
 // 【單字】查詢粵拼或IPA函數
 function queryJyutping(txtStr, trad_simp, tabName, jyutping_ipa, signResult_IPA, signIPA_version, keep_symbol = true){
 	//let res = MainQuery.queryJyutping(txtStr, trad_simp, tabName); // 目前是從segDict.js獲取，tab_nn_review、tab_nnt_review、tab_gz_review爲空，需要時導入數據使用
-	let res = window[tabName].filter(item => item[trad_simp] == txtStr);
+	let res = ($("#output_useFilter").is(":checked") == true) ? window[tabName].filter(item => item[trad_simp] == txtStr && item['flag'] == '0') : window[tabName].filter(item => item[trad_simp] == txtStr);
 	if ( !(/[^\u4e00-\u9fa5]/.test(txtStr)) || (res.length > 0) ) { // 判斷是否中文或字典有數據
 		if(res.length != 0){
 			if (res.length == 1){ // 只有一種讀音
