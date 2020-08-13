@@ -4,7 +4,7 @@
 
 const cdnAddr = [];
 cdnAddr.push('https://cdn.jsdelivr.net/npm');
-cdnAddr.push('leimaau-npm-cdn@1.1.5');
+cdnAddr.push('leimaau-npm-cdn@1.1.6');
 cdnAddr.push('db/leimaau.db3');
 
 const DictConfig = {
@@ -212,17 +212,17 @@ const colData = [
 	, { field: 'JYUTPING', title: '粵拼', sortable : true, formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'jyut6ping3', 'dicWord')">${value}</a>` } }
 	, { field: 'SOUR', title: '來源', sortable : true, formatter: (value, row) => { return formatSOUR(value, row['YEAR'], 'png') } }
 	, { field: 'EXPL', title: '釋義', sortable : true, formatter: (value) => { return `<p data-toggle="tooltip" data-placement="left" title="${value}">${value}<p/>` } }
-	, { field: 'NOTE', title: '附註', sortable : true, formatter: (value) => { return `<p data-toggle="tooltip" data-placement="left" title="${value}">${value}<p/>` } }
+	, { field: 'NOTE', title: '本站附註', sortable : true, formatter: (value) => { return `<p data-toggle="tooltip" data-placement="left" title="${value}">${value}<p/>` } }
 ];
 
 const colData_proverb = [
 	{ field: 'YEAR', title: '資料', align: 'center', formatter: (value) => { return `<span class="user-font">${value.replace('_proverb', '').replace('tab_', '')}</span>` } }
 	//, {field: 'ID',title: 'ID'}
-	, { field: 'TRAD', title: '繁體', width: '350px', align: 'left', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
-	, { field: 'SIMP', title: '簡體', width: '350px', align: 'left', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
+	, { field: 'TRAD', title: '繁體', width: '550px', align: 'left', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
+	, { field: 'SIMP', title: '簡體', width: '550px', align: 'left', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
 	, { field: 'SOUR', title: '來源', width: '280px', formatter: (value, row) => { if(row['YEAR'] == 'tab_2020_proverb') {return `<span style="white-space: normal">2020年Leimaau《南寧童謠和熟語》(本站提供)<span/>`} else {return (row['YEAR'] == 'tab_1937kk_proverb') ? '<span style="white-space: normal">1937年廣西省政府總務處統計室《南寧社會概況》' + pageSplit(value, 'jpg','https://cdn.jsdelivr.net/gh/leimaau/CDN@latest/data-store/1937tj/kk_tj') + '<span/>' : '<span style="white-space: normal">1937年邕寧縣修誌委員會《邕寧縣誌(第4冊)》' + pageSplit(value, 'jpg','https://cdn.jsdelivr.net/gh/leimaau/CDN@latest/data-store/1937tj/jz_tj') + '<span/>' } } }
 	, { field: 'EXPL', title: '釋義', width: '220px', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
-	, { field: 'NOTE', title: '附註', width: '220px', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
+	, { field: 'NOTE', title: '本站附註', width: '220px', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
 ];
 
 const colData_phrase = [
@@ -235,7 +235,7 @@ const colData_phrase = [
 	, { field: 'JYUTPING', title: '粵拼', sortable : true, formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'phrase_jyut6ping3', 'dicPhrase')">${value}</a>` } }
 	, { field: 'SOUR', title: '來源', sortable : true, formatter: (value, row) => { return formatSOUR(value, row['YEAR'], 'png', false) } }
 	, { field: 'EXPL', title: '釋義', sortable : true, formatter: (value) => { return `<p data-toggle="tooltip" data-placement="left" title="${value}">${value}<p/>` } }
-	, { field: 'NOTE', title: '附註', sortable : true, formatter: (value) => { return `<p data-toggle="tooltip" data-placement="left" title="${value}">${value}<p/>` } }
+	, { field: 'NOTE', title: '本站附註', sortable : true, formatter: (value) => { return `<p data-toggle="tooltip" data-placement="left" title="${value}">${value}<p/>` } }
 	, { field: 'CLASSIFI', title: '分類', sortable : true }
 ];
 
