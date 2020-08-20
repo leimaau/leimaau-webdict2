@@ -135,6 +135,20 @@ CREATE TABLE tab_2008_phrase(
    NOTE          TEXT    
 );
 
+-- 语法表 tab_2020_grammar、tab_2020_bw_grammar
+CREATE TABLE tab_2020_grammar(
+   ID            TEXT    NOT NULL,
+   CLASSIFI      TEXT    NOT NULL,
+   TRAD          TEXT    NOT NULL,
+   SIMP          TEXT    NOT NULL,
+   IPA_S         TEXT    NOT NULL,
+   IPA_T         TEXT    NOT NULL,
+   JYUTPING      TEXT    NOT NULL,
+   SOUR          TEXT    NOT NULL,
+   EXPL          TEXT    ,
+   NOTE          TEXT    
+);
+
 
 -- 分词用表 停用此表
 CREATE TABLE tab_segdict(

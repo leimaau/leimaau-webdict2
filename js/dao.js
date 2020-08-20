@@ -116,9 +116,9 @@ MainQuery = (() => {
 		} else if (queryType == 'phrase_simp') { // 查詢簡體
 			querySQL += `) where simp GLOB '*${searchValue}*' order by YEAR`;
 		} else if (queryType == 'phrase_jyutping') { // 查詢無調粵拼
-			querySQL += `) where replace(replace(replace(replace(replace(replace(jyutping,'1',''),'2',''),'3',''),'4',''),'5',''),'6','') GLOB '${searchValue}' order by YEAR`;
+			querySQL += `) where replace(replace(replace(replace(replace(replace(jyutping,'1',''),'2',''),'3',''),'4',''),'5',''),'6','') GLOB '${searchValue}' or replace(replace(replace(replace(replace(replace(jyutping,'1',''),'2',''),'3',''),'4',''),'5',''),'6','') GLOB '* ${searchValue} *' or replace(replace(replace(replace(replace(replace(jyutping,'1',''),'2',''),'3',''),'4',''),'5',''),'6','') GLOB '${searchValue} *' or replace(replace(replace(replace(replace(replace(jyutping,'1',''),'2',''),'3',''),'4',''),'5',''),'6','') GLOB '* ${searchValue}' order by YEAR`;
 		} else if (queryType == 'phrase_jyut6ping3') { // 查詢有調粵拼
-			querySQL += `) where jyutping GLOB '${searchValue}' order by YEAR`;
+			querySQL += `) where jyutping GLOB '${searchValue}' or jyutping GLOB '* ${searchValue} *' or jyutping GLOB '${searchValue} *' or jyutping GLOB '* ${searchValue}' order by YEAR`;
 		} else if (queryType == 'phrase_expl') { // 釋義反查
 			querySQL += `) where expl GLOB '*${searchValue}*' order by YEAR`;
 		};
@@ -144,6 +144,26 @@ MainQuery = (() => {
 		return DictDb.execParam( querySQL, [] );
 	};
 	
+	// (語法)查詢多個表
+	tempObj.queryTableGrammar = (searchValue, selVal, queryType) => {
+		let querySQL = '';
+		for (let i in selVal) {
+			querySQL += `select '${selVal[i]}' YEAR,* from ${selVal[i]} union `;  // 拼接查詢
+		};
+		querySQL = "select * from(" + querySQL.replace(/ union $/gi,"");
+		if (queryType == 'grammar') { // 查詢繁體
+			querySQL += `) where trad GLOB '*${searchValue}*' order by YEAR`;
+		} else if (queryType == 'grammar_simp') { // 查詢簡體
+			querySQL += `) where simp GLOB '*${searchValue}*' order by YEAR`;
+		} else if (queryType == 'grammar_jyutping') { // 查詢無調粵拼
+			querySQL += `) where replace(replace(replace(replace(replace(replace(jyutping,'1',''),'2',''),'3',''),'4',''),'5',''),'6','') GLOB '${searchValue}' or replace(replace(replace(replace(replace(replace(jyutping,'1',''),'2',''),'3',''),'4',''),'5',''),'6','') GLOB '* ${searchValue} *' or replace(replace(replace(replace(replace(replace(jyutping,'1',''),'2',''),'3',''),'4',''),'5',''),'6','') GLOB '${searchValue} *' or replace(replace(replace(replace(replace(replace(jyutping,'1',''),'2',''),'3',''),'4',''),'5',''),'6','') GLOB '* ${searchValue}' order by YEAR`;
+		} else if (queryType == 'grammar_jyut6ping3') { // 查詢有調粵拼
+			querySQL += `) where jyutping GLOB '${searchValue}' or jyutping GLOB '* ${searchValue} *' or jyutping GLOB '${searchValue} *' or jyutping GLOB '* ${searchValue}' order by YEAR`;
+		} else if (queryType == 'grammar_expl') { // 釋義反查
+			querySQL += `) where expl GLOB '*${searchValue}*' order by YEAR`;
+		};
+		return DictDb.execParam( querySQL, [] );
+	};
 	
 	return tempObj;
 })();

@@ -28,8 +28,10 @@ function querySubmit(inputValue, queryType, dictType) {
 	var selVal = [];
 	if(dictType == 'dicWord'){
 		document.getElementsByClassName("book").forEach((item)=>{ if(item.checked == true) selVal.push(item.value)});
-	} else {
+	} else if(dictType == 'dicPhrase') {
 		document.getElementsByClassName("book_phrase").forEach((item)=>{ if(item.checked == true) selVal.push(item.value)});
+	} else if(dictType == 'dicGrammar') {
+		document.getElementsByClassName("book_grammar").forEach((item)=>{ if(item.checked == true) selVal.push(item.value)});
 	};
 	
 	if (!inputValue) { //判斷選擇
@@ -50,8 +52,10 @@ function querySubmit(inputValue, queryType, dictType) {
 	// 開始顯示
 	if(dictType == 'dicWord'){
 		judgeFlag = queryChar(inputValue, queryType, selVal);
-	} else {
+	} else if(dictType == 'dicPhrase') {
 		judgeFlag = queryPhrase(inputValue, queryType, selVal);
+	} else if(dictType == 'dicGrammar') {
+		judgeFlag = queryGrammar(inputValue, queryType, selVal);
 	};
 	
 	if (judgeFlag == 0) {
@@ -67,13 +71,11 @@ const allTitle = '南寧白話', allTitle_bw = '南寧平話';
 
 // 【單字】查詢模塊
 function queryChar(inputValue, queryType, selVal){
-	
 	var res_triungkox = [];
 	if (selVal.some(item => item.indexOf('1008') > -1)) {
 		res_triungkox = MainQuery.queryTableOne_triungkox(inputValue, ['tab_1008'], queryType);
 		showTable(res_triungkox, 'outTab_triungkox', "《廣韻》", outTabTitle_triungkox, colData_triungkox);
 	};
-	
 	
 	var res_gw = [];
 	if (selVal.some(item => item.indexOf('1838') > -1)) {
@@ -166,7 +168,6 @@ function queryChar(inputValue, queryType, selVal){
 
 // 【詞彙】查詢模塊
 function queryPhrase(inputValue, queryType, selVal){
-	
 	var res_proverb = [];
 	var dataList_oldProverb = selVal.filter(item => item.indexOf('_proverb') > -1);
 	if (dataList_oldProverb.length != 0) {
@@ -203,6 +204,34 @@ function queryPhrase(inputValue, queryType, selVal){
 	
 	return isShow;
 }
+
+// 【語法】查詢模塊
+function queryGrammar(inputValue, queryType, selVal){
+	var res = [];
+	var dataList = selVal.filter(item => item.indexOf('_bw') == -1);
+	if (dataList.length != 0) {
+		res = MainQuery.queryTableGrammar(inputValue, dataList, queryType);
+		showTable(res, 'outTab_triungkox', allTitle+'(市區)', outTabTitle_triungkox, colData_grammar); // 使用顯示《廣韻》的位置
+	};
+	
+	var res_bw = [];
+	var dataList_bw = selVal.filter(item => item.indexOf('_bw') > -1);
+	if (dataList_bw.length != 0) {
+		res_bw = MainQuery.queryTableGrammar(inputValue, dataList_bw, queryType);
+		showTable(res_bw, 'outTab_gw', allTitle_bw+'(亭子)', outTabTitle_gw, colData_grammar); // 使用顯示《江湖分韻撮要》的位置
+	};
+	
+	var isShow = res.length + res_bw.length;
+	if (isShow != 0) {
+		if(res.length != 0) $('#nav-tab').addClass('d-none');
+		if(res_bw.length != 0) $('#nav-tab-bw').addClass('d-none');
+	} else {
+		displayAlert('未查詢到結果!', outputAlert, 'alert-primary');
+	}
+	
+	return isShow;
+}
+
 
 // 表格顯示函數
 function showTable(res, outputDiv, tabTitle, tabTitleDiv, colData) {
@@ -343,10 +372,17 @@ function selectDictionary(_this) {
 		document.getElementById('char').checked = true; // 默認選擇第一個
 		$('#queryRadio-dicPhrase,#modal-table-phrase,#btn-allselect-phrase,#btn-cancel-phrase').addClass('d-none'); // radio按鈕、模態框表格、全選取消按鈕
 		$('#queryRadio-dicWord,#modal-table,#btn-allselect,#btn-cancel').removeClass('d-none');
+		$('#queryRadio-dicGrammar,#modal-table-grammar,#btn-allselect-grammar,#btn-cancel-grammar').addClass('d-none');
 	} else if ('dicPhrase' === _this.id){
 		document.getElementById('phrase').checked = true; // 默認選擇第一個
 		$('#queryRadio-dicPhrase,#modal-table-phrase,#btn-allselect-phrase,#btn-cancel-phrase').removeClass('d-none');
 		$('#queryRadio-dicWord,#modal-table,#btn-allselect,#btn-cancel').addClass('d-none');
+		$('#queryRadio-dicGrammar,#modal-table-grammar,#btn-allselect-grammar,#btn-cancel-grammar').addClass('d-none');
+	} else if ('dicGrammar' === _this.id){
+		document.getElementById('grammar').checked = true; // 默認選擇第一個
+		$('#queryRadio-dicPhrase,#modal-table-phrase,#btn-allselect-phrase,#btn-cancel-phrase').addClass('d-none');
+		$('#queryRadio-dicWord,#modal-table,#btn-allselect,#btn-cancel').addClass('d-none');
+		$('#queryRadio-dicGrammar,#modal-table-grammar,#btn-allselect-grammar,#btn-cancel-grammar').removeClass('d-none');
 	}
 	dataButt.innerHTML = getDataText(); // 更新選擇資料顯示text
 }
@@ -379,13 +415,14 @@ function displayAlert(text, obj, colorType, close = true){
 }
 
 function getDataText(){
-	// 判斷當前是字典還是詞典
-	let currentTable = ""
+	// 判斷當前是字典、詞典還是語法
+	let currentTable = "";
 	if (dictType.dataset.dic == 'dicWord'){
 		currentTable = "#modal-table ";
-	}
-	else {
+	} else if(dictType.dataset.dic == 'dicPhrase') {
 		currentTable = "#modal-table-phrase ";
+	} else if(dictType.dataset.dic == 'dicGrammar') {
+		currentTable = "#modal-table-grammar ";
 	}
 	let model = $("#dataModal");
 	let count = model.find(currentTable + "input[name='dataCheck']").length;
@@ -887,13 +924,17 @@ $(() => {
 		columns: colData_book,
 		data: rowData_book
 	});
+	$('#outTab_oldbook_proverb').bootstrapTable({
+		columns: colData_oldbook_proverb,
+		data: rowData_oldbook_proverb
+	});
 	$('#outTab_book_phrase').bootstrapTable({
 		columns: colData_book_phrase,
 		data: rowData_book_phrase
 	});
-	$('#outTab_oldbook_proverb').bootstrapTable({
-		columns: colData_oldbook_proverb,
-		data: rowData_oldbook_proverb
+	$('#outTab_book_grammar').bootstrapTable({
+		columns: colData_book_grammar,
+		data: rowData_book_grammar
 	});
 	/*
 	$('#outTab_sponsor').bootstrapTable({
