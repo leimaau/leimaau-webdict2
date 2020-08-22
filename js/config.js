@@ -4,7 +4,7 @@
 
 const cdnAddr = [];
 cdnAddr.push('https://cdn.jsdelivr.net/npm');
-cdnAddr.push('leimaau-npm-cdn@1.1.7');
+cdnAddr.push('leimaau-npm-cdn@1.1.8');
 cdnAddr.push('db/leimaau.db3');
 
 const DictConfig = {
@@ -57,7 +57,7 @@ const colData_book = [
 ];
 
 const rowData_book = [
-	{ BOOK: '1994年謝建猷《南寧白話同音字彙》', NN: 'tab_1994', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '' }
+	{ BOOK: '<a class="text-info" target="_blank" href="https://leimaau.github.io/leimaau-webdict2/db/1994.html">1994年謝建猷《南寧白話同音字彙》</a>', NN: 'tab_1994', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '' }
 	, { BOOK: '1997年楊煥典《南寧話音檔》', NN: 'tab_1997', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '' }
 	, { BOOK: '1997年李榮主編《南寧平話詞典》(單字音表)', NN: '', NN_D: '', NN_Y: '', HX_B: '', NN_T: 'noData', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '' }
 	, { BOOK: '1998年楊煥典主編《廣西通誌·漢語方言誌》', NN: 'tab_1998', NN_D: '', NN_Y: '', HX_B: '', NN_T: 'tab_1998_bw', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '' }
@@ -67,14 +67,14 @@ const rowData_book = [
 	, { BOOK: '2007年謝建猷《廣西漢語方言研究》', NN: 'tab_2007', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: 'tab_2007_zb_sz', NN_SH: '', HX_P: 'tab_2007_zb_wj' }
 	, { BOOK: '2007年白雲《廣西疍家話語音研究》', NN: '', NN_D: 'noData', NN_Y: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '' }
 	, { BOOK: '2007年林亦《南寧石埠平話同音字彙》', NN: '', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', NN_SH: 'noData', HX_P: '' }
-	, { BOOK: '2008年林亦、覃鳳餘《廣西南寧白話研究》', NN: 'tab_2008', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '' }
+	, { BOOK: '<a class="text-info" target="_blank" href="https://leimaau.github.io/leimaau-webdict2/db/2008.html">2008年林亦、覃鳳餘《廣西南寧白話研究》</a>', NN: 'tab_2008', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '' }
 	, { BOOK: '2009年陳海倫、林亦《粵語平話土話方音字彙》', NN: 'noData', NN_D: '', NN_Y: 'noData', HX_B: '', NN_T: 'noData', NN_SL: '', NN_S: '', NN_SH: 'noData', HX_P: '' }
 	, { BOOK: '2009年張菁雅《桂南平話語音研究》', NN: 'noData', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', NN_SH: '', HX_P: 'noData' }
 	, { BOOK: '2017年教育部《漢語方言用字規範》', NN: '', NN_D: '', NN_Y: '', HX_B: '', NN_T: 'tab_201703_bw', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '' }
 	, { BOOK: '2017年詹伯慧、張振興《漢語方言學大詞典》', NN: '', NN_D: '', NN_Y: '', HX_B: '', NN_T: 'tab_201705_bw', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '' }
 	//, { BOOK: '2018年滕祖愛《南寧市與桂平市粵方言比較研究》', NN: 'noData', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '' }
 	, { BOOK: '2018年覃遠雄《南寧心墟平話語音系統》', NN: '', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_SL: 'noData', NN_S: '', NN_SH: '', HX_P: '' }
-	, { BOOK: '2018年Leimaau《南寧話審音表》(本站提供)', NN: 'tab_2018', NN_D: '', NN_Y: '', HX_B: '', NN_T: 'tab_2018_bw', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '' }
+	, { BOOK: '<a class="text-info" target="_blank" href="https://leimaau.github.io/leimaau-webdict2/db/2018.html">2018年Leimaau《南寧話審音表》(本站提供)</a>', NN: 'tab_2018', NN_D: '', NN_Y: '', HX_B: '', NN_T: 'tab_2018_bw', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '' }
 	, { BOOK: '2019年莫思敏、談婷《廣西橫縣白話同音字彙》', NN: '', NN_D: '', NN_Y: '', HX_B: 'tab_2019_zb_b_wj', NN_T: '', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '' }
 ];
 
@@ -137,6 +137,7 @@ const colData_book_grammar = [
 
 const rowData_book_grammar = [
 	{ BOOK: '1985年白宛如《南寧白話的[ɬai˧]與廣州話的比較》', NN: 'noData', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '' }
+	, { BOOK: '1987年張均如《記南寧心墟平話》', NN: '', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_SL: 'noData', NN_S: '', NN_SH: '', HX_P: '' }
 	, { BOOK: '1997年楊煥典《南寧話音檔》', NN: 'noData', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '' }
 	//, { BOOK: '1997年李榮主編《南寧平話詞典》(單字音表)', NN: '', NN_D: '', NN_Y: '', HX_B: '', NN_T: 'noData', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '' }
 	, { BOOK: '1998年楊煥典主編《廣西通誌·漢語方言誌》', NN: 'noData', NN_D: '', NN_Y: '', HX_B: '', NN_T: 'noData', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '' }
@@ -161,6 +162,7 @@ const rowData_book_grammar = [
 	, { BOOK: '2016年余瑾《廣西平話研究》', NN: 'noData', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '' }
 	, { BOOK: '2016年黃陽《南寧粵語的助詞“晒”》', NN: 'noData', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '' }
 	//, { BOOK: '2018年滕祖愛《南寧市與桂平市粵方言比較研究》', NN: 'noData', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '' }
+	//2018年覃东生,覃凤余 广西汉、壮语方言的方式助词和取舍助词
 	, { BOOK: '2019年黃陽《南寧白話被動句句法研究》', NN: 'noData', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '' }
 	, { BOOK: '2019年郭必之《語言接觸視角下的南寧粵語語法》', NN: 'noData', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '' }
 	//, { BOOK: '2019年霍進萍《南寧和岑溪粵語語氣詞比較研究》', NN: 'noData', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '' }
@@ -308,7 +310,8 @@ function formatSOUR(value, row_year, picType, qType) {
 	} else if (qType == 'grammar') {
 		var bookname = rowData_book_grammar.find(item => (item.NN == row_year || item.NN_D == row_year || item.HX_B == row_year || item.NN_T == row_year || item.NN_S == row_year || item.HX_P == row_year)).BOOK;
 	};
-	row_year = row_year.replace('_bw', '').replace('_phrase', '').replace('tab_', '');
+	bookname = bookname.replace(/<\/?a.*?>/g,'');
+	row_year = row_year.replace('_bw', '').replace('_phrase', '').replace('_grammar', '').replace('tab_', '');
 	//var linkaddr = 'https://leimaau.github.io/CDN/data-store/' + row_year;
 	//var linkaddr = 'https://cdn.jsdelivr.net/gh/leimaau/CDN@latest/data-store/' + row_year;
 	var linkaddr = 'https://leimaau.github.io/CDN/index.html?value=' + row_year;

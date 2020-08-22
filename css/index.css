@@ -41,6 +41,7 @@ ruby, rt {
 
 .dict-body {
 	min-height: 1140px;
+	max-width: 1440px;
 }
 
 .textarea-style {
@@ -62,6 +63,10 @@ ruby, rt {
 	border-bottom: 1px;
     border-bottom-color: #dcd5d5;
     border-bottom-style: solid;
+}
+
+.dict-nav-main {
+	max-width: 1440px;
 }
 
 /*左欄*/
