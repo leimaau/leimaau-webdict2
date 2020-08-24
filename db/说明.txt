@@ -76,7 +76,7 @@ CREATE TABLE tab_1941(
    FIRSTFLAG      TEXT    
 );
 
--- 单字表  1994、1997、1998、1998_bw（平话）、2002、2007、2008、2018 等相同(已经建好)
+-- 单字表  1994、1997、1998、1998_bw（平话）、2003、2007、2008、2018 等相同(已经建好)
 CREATE TABLE tab_1994(
    ID             TEXT     NOT NULL,
    TRAD           TEXT    NOT NULL,
