@@ -4,7 +4,7 @@
 
 const cdnAddr = [];
 cdnAddr.push('https://cdn.jsdelivr.net/npm');
-cdnAddr.push('leimaau-npm-cdn@1.1.9');
+cdnAddr.push('leimaau-npm-cdn@1.2.0');
 cdnAddr.push('db/leimaau.db3');
 
 const DictConfig = {
@@ -321,7 +321,7 @@ function formatSOUR(value, row_year, picType, qType) {
 	if (row_year == '1994') linkaddr += 'zh/zh'
 	else if (row_year == '1997') linkaddr += 'yd/yd'
 	else if (row_year == '1998') linkaddr += 'dfz/dfz'
-	else if (row_year == '2002') linkaddr += 'zk/zk'
+	else if (row_year == '2003') linkaddr += 'zk/zk'
 	else if (row_year == '2007') linkaddr = ''
 	else if (row_year == '2008') linkaddr += 'yj/yj'
 	else if (row_year == '2009') linkaddr += 'yy/yy'
