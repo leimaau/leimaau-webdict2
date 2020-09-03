@@ -247,6 +247,27 @@ function showTable(res, outputDiv, tabTitle, tabTitleDiv, colData) {
 	$('[data-toggle="tooltip"]').tooltip(); // 綁定tips
 }
 
+// 計算資料權重的幾何平均值
+function calcYear(data){
+	var dataValue = 0;
+	for (let item of data.values()){
+		if (item == '2018') {
+			dataValue += Math.log(9);
+		} else if (item == '1998' || item == '2008' || item == '2009') {
+			dataValue += Math.log(7);
+		} else if (item == '1997' || item == '2003'){
+			dataValue += Math.log(5);
+		} else if (item == '1994' || item == '2000' || item == '2007' || item == '201703' || item == '201705'){
+			dataValue += Math.log(3);
+		} else if (item == '201806'){
+			dataValue += Math.log(1.5);
+		} else {
+			dataValue += Math.log(1);
+		}
+	}
+	return Math.exp(dataValue/data.size);
+}
+
 // 餅圖顯示函數
 function showPie(res, inputValue, pieDiv, pieTitle, queryType) {
 	//if (res.length == 0) return false;
@@ -261,8 +282,8 @@ function showPie(res, inputValue, pieDiv, pieTitle, queryType) {
 	// 開始顯示
 	const show_data = [];
 	for (let i in pie_data) { pie_data[i] = new Set(pie_data[i]) }; //去重
-	for (let i in pie_data) { show_data.push({ name: i, y: pie_data[i].size, x: Array.from(pie_data[i]).toString() }) }; //name 數據名 y 數據值 x 附帶值
-
+	for (let i in pie_data) { show_data.push({ name: i, y: pie_data[i].size, x: Array.from(pie_data[i]).toString(), z: calcYear(pie_data[i]) }) }; //name 數據名 y 數據值 x 附帶值 z 資料權重的幾何平均值
+	
 	var chart = {
 		plotBackgroundColor: null,
 		plotBorderWidth: null,
@@ -271,26 +292,38 @@ function showPie(res, inputValue, pieDiv, pieTitle, queryType) {
 	var title = {
 		text: `<span class="user-font-title">${pieTitle}【${inputValue}】</span>`
 	};
+	var subtitle = {
+		text: '扇形面積表示資料數，扇形半徑表示資料權重的幾何平均值'  
+	};
 	var tooltip = {
-		headerFormat: '{series.name}({point.y})<br/>',
-		pointFormat: '<b>{point.x}</b>'
+		/*headerFormat: '{series.name}({point.y})<br/>',
+		pointFormat: '<b>{point.x}</b>'*/
+		headerFormat: '',
+		pointFormat: '<span style="color:{point.color}">\u25CF</span> <b> {point.name}</b><br/>' +
+		'資料數: <b>{point.y}</b><br/>' +
+		'佔比: <b>{point.percentage:.2f} %</b><br/>' +
+		'資料權重的幾何平均值: <b>{point.z:.2f}</b><br/>' +
+		'資料: <b>{point.x}</b><br/>'
 	};
 	var plotOptions = {
-		pie: {
+		variablepie: {
 			allowPointSelect: true,
 			cursor: 'pointer',
-			dataLabels: {
+			/*dataLabels: {
 				enabled: true,
 				format: '<b>{point.name}</b><br/><span style="color: {point.color}">資料數：{point.y}</span><br/><span style="color: {point.color}">佔比：{point.percentage:.1f} %</span>',
 				style: {
 					color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
 				}
-			},
+			},*/
 			showInLegend: true
 		}
 	};
 	var series = [{
-		type: 'pie',
+		type: 'variablepie',
+		minPointSize: 10,
+		innerSize: '20%',
+		zMin: 0,
 		name: '資料',
 		data: show_data
 	}];
@@ -311,6 +344,7 @@ function showPie(res, inputValue, pieDiv, pieTitle, queryType) {
 	json.credits = { enabled: false };
 	json.chart = chart;
 	json.title = title;
+	json.subtitle = subtitle;
 	json.tooltip = tooltip;
 	json.series = series;
 	json.plotOptions = plotOptions;
@@ -418,7 +452,7 @@ function showBasicBar(res, inputValue, barDiv, barTitle, queryType) {
 				allowOverlap: true,
 				formatter: function() {
 					var pcnt = (this.y / dataSum) * 100;
-					return '資料數：' + this.y + '<br/>' + '佔比：' + Highcharts.numberFormat(pcnt, 1) + '%';
+					return '資料數：' + this.y + '<br/>' + '佔比：' + Highcharts.numberFormat(pcnt, 2) + '%';
 				}
 			}
 		}
