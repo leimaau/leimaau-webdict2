@@ -100,26 +100,25 @@ function queryChar(inputValue, queryType, selVal){
 	if (dataList.length != 0) {
 		res = MainQuery.queryTable(inputValue, dataList, queryType);
 		showTable(res, 'outTab', allTitle+'(市區)', outTabTitle, colData);  // 顯示白話表格
-		if(queryType == 'char' || queryType == 'char_simp') showPie(res, inputValue, 'outPie', allTitle, queryType);  // 顯示白話餅圖
+		showPie(res, inputValue, 'outPie', allTitle, queryType);  // 顯示白話餅圖
 		//showWordCloud(res, inputValue, 'outWordCloud', allTitle, queryType, 'JYUTPING'); // 顯示白話詞雲圖
-		if(queryType == 'char' || queryType == 'char_simp') showBasicBar(res, inputValue, 'outWordCloud', allTitle, queryType, 'JYUTPING');
-		
+		showBasicBar(res, inputValue, 'outWordCloud', allTitle, queryType);
 	};
 	
 	var res_bw = [];
 	if (selVal.some(item => item.indexOf('_bw') > -1)) {
 		res_bw = MainQuery.queryTable(inputValue, selVal.filter(item => item.indexOf('_bw') > -1), queryType);
 		showTable(res_bw, 'outTab_bw', allTitle_bw+'(亭子)', outTabTitle_bw, colData);  // 顯示平話表格
-		if(queryType == 'char' || queryType == 'char_simp') showPie(res_bw, inputValue, 'outPie_bw', allTitle_bw, queryType);  // 顯示平話餅圖
+		showPie(res_bw, inputValue, 'outPie_bw', allTitle_bw, queryType);  // 顯示平話餅圖
 		//showWordCloud(res_bw, inputValue, 'outWordCloud_bw', allTitle_bw, queryType, 'JYUTPING'); // 顯示平話詞雲圖
-		if(queryType == 'char' || queryType == 'char_simp') showBasicBar(res_bw, inputValue, 'outWordCloud_bw', allTitle_bw, queryType, 'JYUTPING');
+		showBasicBar(res_bw, inputValue, 'outWordCloud_bw', allTitle_bw, queryType);
 	};
 	
 	var res_zb_sz = [];
 	if (selVal.some(item => item.indexOf('zb_sz') > -1)) {
 		res_zb_sz = MainQuery.queryTable(inputValue, selVal.filter(item => item.indexOf('zb_sz') > -1), queryType);
 		showTable(res_zb_sz, 'outTab_zb_sz', '沙井平話', outTabTitle_zb_sz, colData);
-		//if(queryType == 'char' || queryType == 'char_simp') showPie(res_zb_sz, inputValue, 'outPie_zb_sz', allTitle_zb_sz, queryType);
+		//showPie(res_zb_sz, inputValue, 'outPie_zb_sz', allTitle_zb_sz, queryType);
 		//showWordCloud(res_zb_sz, inputValue, 'outWordCloud_zb_sz', '沙井平話', queryType, 'JYUTPING');
 	};
 	
@@ -127,7 +126,7 @@ function queryChar(inputValue, queryType, selVal){
 	if (selVal.some(item => item.indexOf('zb_b_wj') > -1)) {
 		res_zb_b_wj = MainQuery.queryTable(inputValue, selVal.filter(item => item.indexOf('zb_b_wj') > -1), queryType);
 		showTable(res_zb_b_wj, 'outTab_zb_b_wj', '橫縣白話', outTabTitle_zb_b_wj, colData);
-		//if(queryType == 'char' || queryType == 'char_simp') showPie(res_zb_b_wj, inputValue, 'outPie_zb_b_wj', allTitle_zb_b_wj, queryType);
+		//showPie(res_zb_b_wj, inputValue, 'outPie_zb_b_wj', allTitle_zb_b_wj, queryType);
 		//showWordCloud(res_zb_b_wj, inputValue, 'outWordCloud_zb_b_wj', '橫縣白話', queryType, 'JYUTPING');
 	};
 	
@@ -135,7 +134,7 @@ function queryChar(inputValue, queryType, selVal){
 	if (selVal.some(item => item.indexOf('zb_wj') > -1)) {
 		res_zb_wj = MainQuery.queryTable(inputValue, selVal.filter(item => item.indexOf('zb_wj') > -1), queryType);
 		showTable(res_zb_wj, 'outTab_zb_wj', '橫縣平話', outTabTitle_zb_wj, colData);
-		//if(queryType == 'char' || queryType == 'char_simp') showPie(res_zb_wj, inputValue, 'outPie_zb_wj', allTitle_zb_wj, queryType);
+		//showPie(res_zb_wj, inputValue, 'outPie_zb_wj', allTitle_zb_wj, queryType);
 		//showWordCloud(res_zb_wj, inputValue, 'outWordCloud_zb_wj', '橫縣平話', queryType, 'JYUTPING');
 	};
 	
@@ -143,8 +142,10 @@ function queryChar(inputValue, queryType, selVal){
 	
 	var isShow = res_triungkox.length + res_gw.length + res_jw.length + res_jj.length + res.length + res_bw.length + res_zb_sz.length + res_zb_b_wj.length + res_zb_wj.length;
 	if (isShow != 0) {
-		if(res.length != 0 & (queryType == 'char' || queryType == 'char_simp')) $('#nav-tab').removeClass('d-none'); // 顯示tab
-		if(res_bw.length != 0 & (queryType == 'char' || queryType == 'char_simp')) $('#nav-tab-bw').removeClass('d-none'); // 顯示tab
+		if(queryType != 'expl') {
+			$('#nav-tab').removeClass('d-none'); // 顯示tab
+			$('#nav-tab-bw').removeClass('d-none'); // 顯示tab
+		}
 		let tradRes = tradData.filter(item => item['simp'] == inputValue), tradLink = [];
 		if (tradRes.length != 0) {
 			for (let v of tradRes[0].trad) {
@@ -198,8 +199,10 @@ function queryPhrase(inputValue, queryType, selVal){
 	
 	var isShow = res_proverb.length + res.length + res_bw.length;
 	if (isShow != 0) {
-		if(res.length != 0) $('#nav-tab').removeClass('d-none'); // 顯示tab
-		if(res_bw.length != 0) $('#nav-tab-bw').removeClass('d-none'); // 顯示tab
+		if(queryType != 'phrase_expl') {
+			$('#nav-tab').removeClass('d-none'); // 顯示tab
+			$('#nav-tab-bw').removeClass('d-none'); // 顯示tab
+		}
 	} else {
 		displayAlert('未查詢到結果!', outputAlert, 'alert-primary');
 	}
@@ -271,11 +274,17 @@ function calcYear(data){
 // 餅圖顯示函數
 function showPie(res, inputValue, pieDiv, pieTitle, queryType) {
 	//if (res.length == 0) return false;
-	if (queryType == 'expl' || queryType == 'phrase_expl') return false; // 詞例和解釋反查時不顯示餅圖
+	var piePara = 'JYUTPING';
+	if (queryType == 'expl' || queryType == 'phrase_expl') {
+		return false; // 詞例和解釋反查時不顯示餅圖
+	} else if (queryType == 'jyutping' || queryType == 'jyut6ping3' || queryType == 'phrase_jyutping' || queryType == 'phrase_jyut6ping3'){
+		piePara = 'TRAD';
+	}
+	
 	// 餅圖數據處理
 	const pie_data = {};  // 對象：{粵拼 -> [多份數據年份]}
 	for (let line of res) { // 循環每一對象存入數據 pie_data
-		var JYUTPING = line['JYUTPING'], YEAR = line['YEAR'];
+		var JYUTPING = line[piePara], YEAR = line['YEAR'];
 		YEAR = YEAR.replace('_bw', '').replace('_phrase', '').replace('tab_', ''); // 餅圖顯示tab_1998_bw -> 1998、tab_2008_phrase -> 2008
 		if (typeof (pie_data[JYUTPING]) == "undefined") { pie_data[JYUTPING] = []; pie_data[JYUTPING].push(YEAR); } else { pie_data[JYUTPING].push(YEAR); };
 	};
@@ -401,11 +410,17 @@ function showBasicBar(res, inputValue, barDiv, barTitle, queryType) {
 	document.getElementById('nav-profile-tab').innerHTML = '條形圖';
 	document.getElementById('nav-profile-tab-bw').innerHTML = '條形圖';
 	//if (res.length == 0) return false;
-	if (queryType == 'expl' || queryType == 'phrase_expl') return false; // 詞例和解釋反查時不顯示條形圖
+	var barPara = 'JYUTPING';
+	if (queryType == 'expl' || queryType == 'phrase_expl') {
+		return false; // 詞例和解釋反查時不顯示條形圖
+	} else if (queryType == 'jyutping' || queryType == 'jyut6ping3' || queryType == 'phrase_jyutping' || queryType == 'phrase_jyut6ping3'){
+		barPara = 'TRAD';
+	}
+	
 	// 條形圖數據處理
 	const bar_data = {};  // 對象：{粵拼 -> [多份數據年份]}
 	for (let line of res) { // 循環每一對象存入數據 bar_data
-		var JYUTPING = line['JYUTPING'], YEAR = line['YEAR'];
+		var JYUTPING = line[barPara], YEAR = line['YEAR'];
 		YEAR = YEAR.replace('_bw', '').replace('_phrase', '').replace('tab_', ''); // 條形圖顯示tab_1998_bw -> 1998、tab_2008_phrase -> 2008
 		if (typeof (bar_data[JYUTPING]) == "undefined") { bar_data[JYUTPING] = []; bar_data[JYUTPING].push(YEAR); } else { bar_data[JYUTPING].push(YEAR); };
 	};
@@ -440,20 +455,24 @@ function showBasicBar(res, inputValue, barDiv, barTitle, queryType) {
 		}
 	};
 	var tooltip = {
-		headerFormat: '{series.name}({point.y})<br/>',
+		/*headerFormat: '{series.name}({point.y})<br/>',
 		pointFormatter: function(){
 			return '<b>' + zAxis_data[this.x] + '</b>';
+		}*/
+		headerFormat: '',
+		pointFormatter: function() {
+			var pcnt = (this.y / dataSum) * 100;
+			return '<span style="color:' + this.color + '">\u25CF</span><b>'+ xAxis_data[this.x] + '</b><br/>' +
+			'資料數：<b>' + this.y + '</b><br/>' +
+			'佔比：<b>' + Highcharts.numberFormat(pcnt, 2) + '%</b><br/>' +
+			'資料：<b>' + zAxis_data[this.x] + '</b>';
 		}
 	};
 	var plotOptions = {
 		bar: {
 			dataLabels: {
 				enabled: true,
-				allowOverlap: true,
-				formatter: function() {
-					var pcnt = (this.y / dataSum) * 100;
-					return '資料數：' + this.y + '<br/>' + '佔比：' + Highcharts.numberFormat(pcnt, 2) + '%';
-				}
+				allowOverlap: true
 			}
 		}
 	};
