@@ -33,6 +33,20 @@ CREATE TABLE tab_1008(
    PINYIN         TEXT    NOT NULL
 );
 
+-- 集韵
+CREATE TABLE tab_1039(
+   ID             TEXT    NOT NULL,
+   WORD           TEXT    NOT NULL,
+   NIU            TEXT    NOT NULL,
+   YUNBU          TEXT    NOT NULL,
+   SHE            TEXT    NOT NULL,
+   HU             TEXT    NOT NULL,
+   DENG           TEXT    NOT NULL,
+   TONE           TEXT    NOT NULL,
+   FANQIE         TEXT    NOT NULL,
+   EXPL           TEXT    NOT NULL
+);
+
 -- 江湖尺牍分韵撮要
 CREATE TABLE tab_1838(
    ID             TEXT     NOT NULL,

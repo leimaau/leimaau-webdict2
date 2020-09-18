@@ -4,7 +4,7 @@
 
 const cdnAddr = [];
 cdnAddr.push('https://cdn.jsdelivr.net/npm');
-cdnAddr.push('leimaau-npm-cdn@1.2.4');
+cdnAddr.push('leimaau-npm-cdn@1.2.5');
 cdnAddr.push('db/leimaau.db3');
 
 const DictConfig = {
@@ -37,6 +37,7 @@ const colData_oldbook = [
 
 const rowData_oldbook = [
 	{ OLDBOOK: `1008年《廣韻》[<a class="text-info" target="_blank" href="https://zhuanlan.zhihu.com/p/20430939">poem覈校版20170209</a>]`, TRIUNGKOX: 'tab_1008_g', OLDCANTO: '', CANTO: '' }
+	, { OLDBOOK: `1039年《集韻》[<a class="text-info" target="_blank" href="http://www.eastling.org/">東方語言學版</a>]`, TRIUNGKOX: 'tab_1039_g', OLDCANTO: '', CANTO: '' }
 	, { OLDBOOK: `1838年重鐫本《江湖尺牘分韻撮要合集》[<a class="text-info" target="_blank" href="http://ytenx.org/pyonh/">韻典網poem覈校版</a>](本站擬音)`, TRIUNGKOX: '', OLDCANTO: 'tab_1838_g', CANTO: '' }
 	, { OLDBOOK: `1856年衛三畏廉士甫《英華分韻撮要》[<a class="text-info" target="_blank" href="https://jyut.net/">粵音資料集叢版</a>](本站擬音)`, TRIUNGKOX: '', OLDCANTO: 'tab_1856_g', CANTO: '' }
 	, { OLDBOOK: `1941年黃錫凌《粵音韻彙》[<a class="text-info" target="_blank" href="https://jyut.net/">粵音資料集叢版</a>](本站覆校)`, TRIUNGKOX: '', OLDCANTO: '', CANTO: 'tab_1941_g' }
@@ -207,17 +208,31 @@ const colData_triungkox = [
 	//, {field: 'ID',title: 'ID'}
 	, { field: 'WORD1', title: '字頭(覈校前)', align: 'center', formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'char', 'dicWord')">${value}</a>` } }
 	, { field: 'WORD2', title: '字頭(覈校後)', align: 'center', formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'char', 'dicWord')">${value}</a>` } }
-	, { field: 'FANQIE1', title: '反切(覈校前)' }
-	, { field: 'FANQIE2', title: '反切(覈校後)' }
 	, { field: 'FIRST', title: '聲紐' }
+	, { field: 'YUNBU1', title: '韻部(調整前)' }
+	, { field: 'YUNBU2', title: '韻部(調整後)' }
 	, { field: 'SHE', title: '攝' }
 	, { field: 'HU', title: '呼' }
 	, { field: 'DENG', title: '等' }
-	, { field: 'YUNBU1', title: '韻部(調整前)' }
-	, { field: 'YUNBU2', title: '韻部(調整後)' }
 	, { field: 'TONE', title: '聲調' }
+	, { field: 'FANQIE1', title: '反切(覈校前)' }
+	, { field: 'FANQIE2', title: '反切(覈校後)' }
 	, { field: 'PINYIN', title: '中古拼音(polyhedron版)', formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'jyut6ping3', 'dicWord')">${value}</a>` } }
 	, { field: 'EXPL', title: '釋義', formatter: (value) => { return `<p data-toggle="tooltip" data-placement="left" title="${value}">${value}<p/>` }  }
+];
+
+const colData_triungkoxghuh = [
+	{ field: 'YEAR', title: '資料', align: 'center', formatter: (value) => { return `<span class="user-font">${value.replace('tab_', '')}</span>` } }
+	//, {field: 'ID',title: 'ID'}
+	, { field: 'WORD', title: '字頭', align: 'center', formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'char', 'dicWord')">${value}</a>` } }
+	, { field: 'NIU', title: '聲' }
+	, { field: 'YUNBU', title: '韻' }
+	, { field: 'SHE', title: '攝' }
+	, { field: 'HU', title: '呼' }
+	, { field: 'DENG', title: '等' }
+	, { field: 'TONE', title: '調' }
+	, { field: 'FANQIE', title: '反切' }
+	, { field: 'EXPL', title: '釋義', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` }  }
 ];
 
 const colData_gw = [
@@ -260,7 +275,7 @@ const colData_jj = [
 	, { field: 'IPA', title: 'IPA' }
 	, { field: 'JYUTPING', title: '粵拼', formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'jyut6ping3', 'dicWord')">${value}</a>` } }
 	, { field: 'PAGE', title: '䈎', formatter: (value, row) => { return pageSplit(value, 'jpg', 'https://cdn.jsdelivr.net/gh/leimaau/CDN@latest/data-store/1941yy/yy') } }
-	, { field: 'EXPL', title: '釋義', formatter: (value) => { return `<p data-toggle="tooltip" data-placement="left" title="${value}">${value}<p/>` }  }
+	, { field: 'EXPL', title: '釋義', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` }  }
 	, { field: 'FIRSTFLAG', title: '國語聲母是否捲舌', formatter: (value) => { return `${value.replace('1', '1（否）').replace('2', '2（是）')}` }  }
 ];
 

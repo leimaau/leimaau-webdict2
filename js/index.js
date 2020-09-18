@@ -74,25 +74,31 @@ function queryChar(inputValue, queryType, selVal){
 	var res_triungkox = [];
 	if (selVal.some(item => item.indexOf('1008') > -1)) {
 		res_triungkox = MainQuery.queryTableOne_triungkox(inputValue, ['tab_1008'], queryType);
-		showTable(res_triungkox, 'outTab_triungkox', "《廣韻》", outTabTitle_triungkox, colData_triungkox);
+		showTable(res_triungkox, 'outTab_triungkox', '《廣韻》', outTabTitle_triungkox, colData_triungkox);
+	};
+	
+	var res_triungkoxghuh = [];
+	if (selVal.some(item => item.indexOf('1039') > -1)) {
+		res_triungkoxghuh = MainQuery.queryTableOne_triungkoxghuh(inputValue, ['tab_1039'], queryType);
+		showTable(res_triungkoxghuh, 'outTab_triungkoxghuh', '《集韻》', outTabTitle_triungkoxghuh, colData_triungkoxghuh);
 	};
 	
 	var res_gw = [];
 	if (selVal.some(item => item.indexOf('1838') > -1)) {
 		res_gw = MainQuery.queryTableOne_gw(inputValue, ['tab_1838'], queryType);
-		showTable(res_gw, 'outTab_gw', "《江湖尺牘分韻撮要合集》", outTabTitle_gw, colData_gw);
+		showTable(res_gw, 'outTab_gw', '《江湖尺牘分韻撮要合集》', outTabTitle_gw, colData_gw);
 	};
 	
 	var res_jw = [];
 	if (selVal.some(item => item.indexOf('1856') > -1)) {
 		res_jw = MainQuery.queryTableOne_jw(inputValue, ['tab_1856'], queryType);
-		showTable(res_jw, 'outTab_jw', "《英華分韻撮要》", outTabTitle_jw, colData_jw);
+		showTable(res_jw, 'outTab_jw', '《英華分韻撮要》', outTabTitle_jw, colData_jw);
 	};
 	
 	var res_jj = [];
 	if (selVal.some(item => item.indexOf('1941') > -1)) {
 		res_jj = MainQuery.queryTableOne_jj(inputValue, ['tab_1941'], queryType);
-		showTable(res_jj, 'outTab_jj', "《粵音韻彙》", outTabTitle_jj, colData_jj);
+		showTable(res_jj, 'outTab_jj', '《粵音韻彙》', outTabTitle_jj, colData_jj);
 	};
 	
 	var res = [];
@@ -140,7 +146,7 @@ function queryChar(inputValue, queryType, selVal){
 	
 	if(queryType == 'char' || queryType == 'char_simp') showLink(inputValue);
 	
-	var isShow = res_triungkox.length + res_gw.length + res_jw.length + res_jj.length + res.length + res_bw.length + res_zb_sz.length + res_zb_b_wj.length + res_zb_wj.length;
+	var isShow = res_triungkox.length + res_triungkoxghuh.length + res_gw.length + res_jw.length + res_jj.length + res.length + res_bw.length + res_zb_sz.length + res_zb_b_wj.length + res_zb_wj.length;
 	if (isShow != 0) {
 		if(queryType != 'expl') {
 			$('#nav-tab').removeClass('d-none'); // 顯示tab
@@ -223,7 +229,7 @@ function queryGrammar(inputValue, queryType, selVal){
 	var dataList_bw = selVal.filter(item => item.indexOf('_bw') > -1);
 	if (dataList_bw.length != 0) {
 		res_bw = MainQuery.queryTableGrammar(inputValue, dataList_bw, queryType);
-		showTable(res_bw, 'outTab_gw', allTitle_bw+'(亭子)', outTabTitle_gw, colData_grammar); // 使用顯示《江湖分韻撮要》的位置
+		showTable(res_bw, 'outTab_triungkoxghuh', allTitle_bw+'(亭子)', outTabTitle_triungkoxghuh, colData_grammar); // 使用顯示《集韻》的位置
 	};
 	
 	var isShow = res.length + res_bw.length;
@@ -481,6 +487,7 @@ function showBasicBar(res, inputValue, barDiv, barTitle, queryType) {
 	};
 	var series = [{
 		name: '資料',
+		//colorByPoint: true,
 		data: yAxis_data
 	}];
 	var color = ['#2775b6'];
