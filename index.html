@@ -171,17 +171,17 @@
 			  <div class="form-group">
 				<label class="col-form-label">轉換方式：</label>
 				<div class="custom-control custom-radio custom-control-inline">
-					<input class="custom-control-input" type="radio" id="jp_to_ipa" name="transform_type" value="0" checked onclick="$('#IPA_selectFormat,#IPA_symbolFormat').removeClass('d-none');document.getElementById('ipa_ver_label').innerHTML='輸出 IPA 版本：';">
+					<input class="custom-control-input" type="radio" id="jp_to_ipa" name="transform_type" value="0" checked onclick="$('#IPA_selectFormat,#IPA_symbolFormat').removeClass('d-none');document.getElementById('ipa_ver_label').innerHTML='輸出 IPA 版本：';$('#inputSymbol').val('zing6 je6 si1/sy1 【 tong4 】 li5 baak6\n靜夜思 【唐】李白\ncong4 cin4 ming4 jyut6 gwong1，ni4 ci5/cy5 di6 soeng6 sloeng1\n牀前明月光，疑似地上霜\ngyu2 tau4 mong6 ming4 jyut6，dai1 tau4 si1/sy1 gu3 hoeng1\n舉頭望明月，低頭思故鄉');">
 					<label for="jp_to_ipa" class="custom-control-label">粵拼轉 IPA</label>
 				</div>
 				<div class="custom-control custom-radio custom-control-inline">
-					<input class="custom-control-input" type="radio" id="ipa_to_jp" name="transform_type" value="1" onclick="$('#IPA_selectFormat,#IPA_symbolFormat').addClass('d-none');document.getElementById('ipa_ver_label').innerHTML='輸入 IPA 版本：';">
+					<input class="custom-control-input" type="radio" id="ipa_to_jp" name="transform_type" value="1" onclick="$('#IPA_selectFormat,#IPA_symbolFormat').addClass('d-none');document.getElementById('ipa_ver_label').innerHTML='輸入 IPA 版本：';$('#inputSymbol').val('tʃeŋ22 jɛ22 ʃi55/sɿ55 【 tʰɔŋ21 】 li24 pak2\n靜夜思 【唐】李白\ntʃʰɔŋ21 tʃʰin21 meŋ21 jyt2 kʷɔŋ55，ni21 tʃʰi24/tsʰɿ24 ti22 ʃœŋ22 ɬœŋ55\n牀前明月光，疑似地上霜\nky35 tʰɐu21 mɔŋ22 meŋ21 jyt2，dɐi55 tʰɐu21 ʃi55/sɿ55 ku33 hœŋ55\n舉頭望明月，低頭思故鄉');">
 					<label for="ipa_to_jp" class="custom-control-label">IPA 轉粵拼</label>
 				</div>
 				<div class="custom-control custom-input custom-control-inline float-right">
 					<input class="btn btn-outline-info btn-sm" type="button" onclick="document.getElementById('inputSymbol').value='';" value="清空"/>
 				</div>
-				<textarea class="form-control textarea-style" id="inputSymbol">白：zing6 je6 si1/sy1 【 tong4 】 li5 baak6&#10;平：zing6 jaa6/je6 sli1 【 daang4 】 li5 biak6&#10;靜夜思 【唐】李白&#10;白：cong4 cin4 ming4 jyut6 gwong1，ni4 ci5/cy5 di6 soeng6 sloeng1；&#10;平：saang4 zin4 ming4 njyut5 gung1，ni4 zi3 di6 sang6 sung1；&#10;牀前明月光，疑似地上霜；&#10;白：gyu2 tau4 mong6 ming4 jyut6，dai1 tau4 si1/sy1 gu3 hoeng1。&#10;平：gyu2 dau4 mung6 ming4 njyut5，dai1 dau4 sli1 gu3 hiang1。&#10;舉頭望明月，低頭思故鄉。 </textarea>
+				<textarea class="form-control textarea-style" id="inputSymbol">zing6 je6 si1/sy1 【 tong4 】 li5 baak6&#10;靜夜思 【唐】李白&#10;cong4 cin4 ming4 jyut6 gwong1，ni4 ci5/cy5 di6 soeng6 sloeng1&#10;牀前明月光，疑似地上霜&#10;gyu2 tau4 mong6 ming4 jyut6，dai1 tau4 si1/sy1 gu3 hoeng1&#10;舉頭望明月，低頭思故鄉</textarea>
 			  </div>
 			  <div class="form-group">
 				<div class="row col-md-12">
@@ -595,7 +595,7 @@
                 <table class="table table-bordered table-sm" id="outTab_oldbook"></table>
                 <table class="table table-bordered table-sm" id="outTab_book"></table>
 			    <div class="mt-1"><span>※ 部分資料相關說明：李連進《平話音韻研究》（南寧亭子、橫縣橫洲、賓陽盧墟）、謝建猷《廣西漢語方言研究》（南寧市、南寧沙井、橫縣、賓陽新橋）、陳海倫、林亦《粵語平話土話方音字彙》（南寧市、南寧亭子、南寧石埠、南寧四塘、邕寧縣、賓陽王靈、賓陽王靈復興、賓陽大橋）、張菁雅《桂南平話語音研究》（南寧市、南寧蘇盧）</span></div>
-				<div class="mt-1"><span>※ 南寧週邊平話還有：覃芝馨《友愛村誌》（友愛村平話）、覃芝馨《古道上堯的變遷》（上堯平話）、羅敏《南寧市北湖村平話語音比較研究》《北湖村平話聲母系統調查研究》、李若男《南寧市橫塘平話研究》、劉可可《南寧市吳圩鎮平話語音研究》、高薇《南寧鷓鴣淥村平話研究》、林亦、余瑾《廣西邕寧四塘平話同音字彙》、李連進《壯、漢語言接觸引發的廣西南寧市五塘平話古全濁聲母音值變異》、盧春怡《南寧市雙定鎮務讀村平話語音研究》、王娟《廣西南寧市延安鎮平話研究》、王珅《語言接觸背景下的南寧葛家園平話研究》、閉思明《橫縣那陽平話的語音特點》、黃海瑤《廣西橫縣百合平話音系》、黃英富《賓陽縣大橋平話同音字彙》、黃獻《黎塘鎮平話語音系統》、莫海文《廣西賓陽王靈鎮平話同音字彙》、盧玉婷《廣西賓陽縣四季平話同音字彙》、劉宇《現代桂南平話的嬗變——以南寧市週邊平話爲例》（南寧市五塘鎮粟村平話）、蘇沙《南寧上堯平話的一些名詞短語現象對比研究》、蒙鳳金、唐紅梅《廣西南寧市萬秀村平話詞彙代際差異現象研究》、黃增霞《南寧皁角村土話語音》（皁角村平話）等</span></div>
+				<div class="mt-1"><span>※ 南寧週邊平話還有：覃芝馨《友愛村誌》（友愛村平話）、覃芝馨《古道上堯的變遷》（上堯平話）、羅敏《南寧市北湖村平話語音比較研究》《北湖村平話聲母系統調查研究》、李若男《南寧市橫塘平話研究》、劉可可《南寧市吳圩鎮平話語音研究》、高薇《南寧鷓鴣淥村平話研究》、林亦、余瑾《廣西邕寧四塘平話同音字彙》、李連進《壯、漢語言接觸引發的廣西南寧市五塘平話古全濁聲母音值變異》、盧春怡《南寧市雙定鎮務讀村平話語音研究》、王娟《廣西南寧市延安鎮平話研究》、王珅《語言接觸背景下的南寧葛家園平話研究》、閉思明《橫縣那陽平話的語音特點》、黃海瑤《廣西橫縣百合平話音系》、黃英富《賓陽縣大橋平話同音字彙》、黃獻《黎塘鎮平話語音系統》、莫海文《廣西賓陽王靈鎮平話同音字彙》、盧玉婷《廣西賓陽縣四季平話同音字彙》、劉宇《現代桂南平話的嬗變——以南寧市週邊平話爲例》（南寧市五塘鎮粟村平話）、蘇沙《南寧上堯平話的一些名詞短語現象對比研究》、蒙鳳金、唐紅梅《廣西南寧市萬秀村平話詞彙代際差異現象研究》、黃增霞《南寧皁角村土話語音》（皁角村平話）、覃遠雄《廣西南寧五塘平話音系》等</span></div>
 				<div class="mt-1"><span>※ 建設中，未完工</span></div>
               </span>
               <span class="modal-table-phrase d-none" id="modal-table-phrase">

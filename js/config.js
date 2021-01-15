@@ -446,7 +446,6 @@ function showLink(textChar){
 	漢語方言學大詞典：<a href="http://www.fangyanxue.com/pages/index/index.html" target="_blank">前往</a></br>
 	古音手鏡：<a href="http://www.kaom.net/" target="_blank">前往</a></br>
 	小學堂：<a href="http://xiaoxue.iis.sinica.edu.tw/" target="_blank">前往</a></br>
-	英華字典資料庫：<a href="http://mhdb.mh.sinica.edu.tw/dictionary/index.php" target="_blank">前往</a></br>
 	引得市：<a href="http://www.mebag.com/index/" target="_blank">前往</a></br>
 	廣東省情網：<a href="http://dfz.gd.gov.cn/" target="_blank">前往</a></br>
 	廣州市情網：<a href="http://dfz.gz.gov.cn/gzsdfz/index.shtml" target="_blank">前往</a></br>
