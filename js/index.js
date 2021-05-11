@@ -1,6 +1,6 @@
 // 回車事件
 function searchPress(e, valueInput, queryType, dictType) {
-	var keyCode = null;
+	let keyCode = null;
 	if (e.which)
 		keyCode = e.which;
 	else if (e.keyCode)
@@ -25,7 +25,7 @@ function querySubmit(inputValue, queryType, dictType) {
 	$('#nav-tab,#nav-tab-bw').addClass('d-none');  // 隱藏tab
 	
 	
-	var selVal = [];
+	let selVal = [];
 	if(dictType == 'dicWord'){
 		document.getElementsByClassName("book").forEach((item)=>{ if(item.checked == true) selVal.push(item.value)});
 	} else if(dictType == 'dicPhrase') {
@@ -48,7 +48,7 @@ function querySubmit(inputValue, queryType, dictType) {
 		return false;
 	};
 	
-	var judgeFlag = 0; // 0無結果 非0有結果
+	let judgeFlag = 0; // 0無結果 非0有結果
 	// 開始顯示
 	if(dictType == 'dicWord'){
 		judgeFlag = queryChar(inputValue, queryType, selVal);
@@ -71,38 +71,38 @@ const allTitle = '南寧白話', allTitle_bw = '南寧平話';
 
 // 【單字】查詢模塊
 function queryChar(inputValue, queryType, selVal){
-	var res_triungkox = [];
+	let res_triungkox = [];
 	if (selVal.some(item => item.indexOf('1008') > -1)) {
 		res_triungkox = MainQuery.queryTableOne_triungkox(inputValue, ['tab_1008'], queryType);
 		showTable(res_triungkox, 'outTab_triungkox', '《廣韻》', outTabTitle_triungkox, colData_triungkox);
 	};
 	
-	var res_triungkoxghuh = [];
+	let res_triungkoxghuh = [];
 	if (selVal.some(item => item.indexOf('1039') > -1)) {
 		res_triungkoxghuh = MainQuery.queryTableOne_triungkoxghuh(inputValue, ['tab_1039'], queryType);
 		showTable(res_triungkoxghuh, 'outTab_triungkoxghuh', '《集韻》', outTabTitle_triungkoxghuh, colData_triungkoxghuh);
 	};
 	
-	var res_gw = [];
+	let res_gw = [];
 	if (selVal.some(item => item.indexOf('1838') > -1)) {
 		res_gw = MainQuery.queryTableOne_gw(inputValue, ['tab_1838'], queryType);
 		showTable(res_gw, 'outTab_gw', '《江湖尺牘分韻撮要合集》', outTabTitle_gw, colData_gw);
 	};
 	
-	var res_jw = [];
+	let res_jw = [];
 	if (selVal.some(item => item.indexOf('1856') > -1)) {
 		res_jw = MainQuery.queryTableOne_jw(inputValue, ['tab_1856'], queryType);
 		showTable(res_jw, 'outTab_jw', '《英華分韻撮要》', outTabTitle_jw, colData_jw);
 	};
 	
-	var res_jj = [];
+	let res_jj = [];
 	if (selVal.some(item => item.indexOf('1941') > -1)) {
 		res_jj = MainQuery.queryTableOne_jj(inputValue, ['tab_1941'], queryType);
 		showTable(res_jj, 'outTab_jj', '《粵音韻彙》', outTabTitle_jj, colData_jj);
 	};
 	
-	var res = [];
-	var dataList = selVal.filter(item => item.indexOf('_bw') == -1).filter(item => item.indexOf('_g') == -1).filter(item => item.indexOf('_zb') == -1);
+	let res = [];
+	let dataList = selVal.filter(item => item.indexOf('_bw') == -1).filter(item => item.indexOf('_g') == -1).filter(item => item.indexOf('_zb') == -1);
 	if (dataList.length != 0) {
 		res = MainQuery.queryTable(inputValue, dataList, queryType);
 		showTable(res, 'outTab', allTitle+'(市區)', outTabTitle, colData);  // 顯示白話表格
@@ -111,7 +111,7 @@ function queryChar(inputValue, queryType, selVal){
 		showBasicBar(res, inputValue, 'outWordCloud', allTitle, queryType);
 	};
 	
-	var res_bw = [];
+	let res_bw = [];
 	if (selVal.some(item => item.indexOf('_bw') > -1)) {
 		res_bw = MainQuery.queryTable(inputValue, selVal.filter(item => item.indexOf('_bw') > -1), queryType);
 		showTable(res_bw, 'outTab_bw', allTitle_bw+'(亭子)', outTabTitle_bw, colData);  // 顯示平話表格
@@ -120,7 +120,15 @@ function queryChar(inputValue, queryType, selVal){
 		showBasicBar(res_bw, inputValue, 'outWordCloud_bw', allTitle_bw, queryType);
 	};
 	
-	var res_zb_sz = [];
+	let res_zb_dg = [];
+	if (selVal.some(item => item.indexOf('zb_dg') > -1)) {
+		res_zb_dg = MainQuery.queryTable(inputValue, selVal.filter(item => item.indexOf('zb_dg') > -1), queryType);
+		showTable(res_zb_dg, 'outTab_zb_dg', '南寧疍家話', outTabTitle_zb_dg, colData);
+		//showPie(res_zb_dg, inputValue, 'outPie_zb_dg', allTitle_zb_dg, queryType);
+		//showWordCloud(res_zb_dg, inputValue, 'outWordCloud_zb_dg', '南寧疍家話', queryType, 'JYUTPING');
+	};
+	
+	let res_zb_sz = [];
 	if (selVal.some(item => item.indexOf('zb_sz') > -1)) {
 		res_zb_sz = MainQuery.queryTable(inputValue, selVal.filter(item => item.indexOf('zb_sz') > -1), queryType);
 		showTable(res_zb_sz, 'outTab_zb_sz', '沙井平話', outTabTitle_zb_sz, colData);
@@ -128,7 +136,7 @@ function queryChar(inputValue, queryType, selVal){
 		//showWordCloud(res_zb_sz, inputValue, 'outWordCloud_zb_sz', '沙井平話', queryType, 'JYUTPING');
 	};
 	
-	var res_zb_b_wj = [];
+	let res_zb_b_wj = [];
 	if (selVal.some(item => item.indexOf('zb_b_wj') > -1)) {
 		res_zb_b_wj = MainQuery.queryTable(inputValue, selVal.filter(item => item.indexOf('zb_b_wj') > -1), queryType);
 		showTable(res_zb_b_wj, 'outTab_zb_b_wj', '橫縣白話', outTabTitle_zb_b_wj, colData);
@@ -136,7 +144,7 @@ function queryChar(inputValue, queryType, selVal){
 		//showWordCloud(res_zb_b_wj, inputValue, 'outWordCloud_zb_b_wj', '橫縣白話', queryType, 'JYUTPING');
 	};
 	
-	var res_zb_wj = [];
+	let res_zb_wj = [];
 	if (selVal.some(item => item.indexOf('zb_wj') > -1)) {
 		res_zb_wj = MainQuery.queryTable(inputValue, selVal.filter(item => item.indexOf('zb_wj') > -1), queryType);
 		showTable(res_zb_wj, 'outTab_zb_wj', '橫縣平話', outTabTitle_zb_wj, colData);
@@ -144,9 +152,25 @@ function queryChar(inputValue, queryType, selVal){
 		//showWordCloud(res_zb_wj, inputValue, 'outWordCloud_zb_wj', '橫縣平話', queryType, 'JYUTPING');
 	};
 	
+	let res_zb_bjlu = [];
+	if (selVal.some(item => item.indexOf('zb_bjlu') > -1)) {
+		res_zb_bjlu = MainQuery.queryTable(inputValue, selVal.filter(item => item.indexOf('zb_bjlu') > -1), queryType);
+		showTable(res_zb_bjlu, 'outTab_zb_bjlu', '賓陽話(蘆墟)', outTabTitle_zb_bjlu, colData);
+		//showPie(res_zb_bjlu, inputValue, 'outPie_zb_bjlu', allTitle_zb_bjlu, queryType);
+		//showWordCloud(res_zb_bjlu, inputValue, 'outWordCloud_zb_bjlu', '賓陽話(蘆墟)', queryType, 'JYUTPING');
+	};
+	
+	let res_zb_ms = [];
+	if (selVal.some(item => item.indexOf('zb_ms') > -1)) {
+		res_zb_ms = MainQuery.queryTable(inputValue, selVal.filter(item => item.indexOf('zb_ms') > -1), queryType);
+		showTable(res_zb_ms, 'outTab_zb_ms', '馬山喬利平話', outTabTitle_zb_ms, colData);
+		//showPie(res_zb_ms, inputValue, 'outPie_zb_ms', allTitle_zb_ms, queryType);
+		//showWordCloud(res_zb_ms, inputValue, 'outWordCloud_zb_ms', '馬山喬利平話', queryType, 'JYUTPING');
+	};
+	
 	if(queryType == 'char' || queryType == 'char_simp') showLink(inputValue);
 	
-	var isShow = res_triungkox.length + res_triungkoxghuh.length + res_gw.length + res_jw.length + res_jj.length + res.length + res_bw.length + res_zb_sz.length + res_zb_b_wj.length + res_zb_wj.length;
+	let isShow = res_triungkox.length + res_triungkoxghuh.length + res_gw.length + res_jw.length + res_jj.length + res.length + res_bw.length + res_zb_dg.length + res_zb_sz.length + res_zb_b_wj.length + res_zb_wj.length + res_zb_bjlu.length + res_zb_ms.length;
 	if (isShow != 0) {
 		if(queryType != 'expl') {
 			$('#nav-tab').removeClass('d-none'); // 顯示tab
@@ -177,16 +201,16 @@ function queryChar(inputValue, queryType, selVal){
 
 // 【詞彙】查詢模塊
 function queryPhrase(inputValue, queryType, selVal){
-	var res_proverb = [];
-	var dataList_oldProverb = selVal.filter(item => item.indexOf('_proverb') > -1);
+	let res_proverb = [];
+	let dataList_oldProverb = selVal.filter(item => item.indexOf('_proverb') > -1);
 	if (dataList_oldProverb.length != 0) {
 		res_proverb = MainQuery.queryTable_proverb(inputValue, dataList_oldProverb, queryType);
 		showTable(res_proverb, 'outTab_triungkox', '童謠和熟語', outTabTitle_triungkox, colData_proverb);  // 使用顯示《廣韻》的位置
 		if (res_proverb.length != 0) showWordCloud(res_proverb, inputValue, 'outWordCloud_triungkox', '童謠和熟語', queryType, 'TRAD');
 	};
 	
-	var res = [];
-	var dataList = selVal.filter(item => item.indexOf('_bw') == -1).filter(item => item.indexOf('_proverb') == -1);
+	let res = [];
+	let dataList = selVal.filter(item => item.indexOf('_bw') == -1).filter(item => item.indexOf('_proverb') == -1);
 	if (dataList.length != 0) {
 		res = MainQuery.queryTablePhrase(inputValue, dataList, queryType);
 		showTable(res, 'outTab', allTitle+'(市區)', outTabTitle, colData_phrase);  // 顯示白話表格
@@ -194,8 +218,8 @@ function queryPhrase(inputValue, queryType, selVal){
 		showWordCloud(res, inputValue, 'outWordCloud', allTitle, queryType, 'TRAD'); // 顯示白話詞雲圖
 	};
 	
-	var res_bw = [];
-	var dataList_bw = selVal.filter(item => item.indexOf('_bw') > -1).filter(item => item.indexOf('_proverb') == -1);
+	let res_bw = [];
+	let dataList_bw = selVal.filter(item => item.indexOf('_bw') > -1).filter(item => item.indexOf('_proverb') == -1);
 	if (dataList_bw.length != 0) {
 		res_bw = MainQuery.queryTablePhrase(inputValue, dataList_bw, queryType);
 		showTable(res_bw, 'outTab_bw', allTitle_bw+'(亭子)', outTabTitle_bw, colData_phrase);  // 顯示平話表格
@@ -203,7 +227,7 @@ function queryPhrase(inputValue, queryType, selVal){
 		showWordCloud(res_bw, inputValue, 'outWordCloud_bw', allTitle_bw, queryType, 'TRAD'); // 顯示平話詞雲圖
 	};
 	
-	var isShow = res_proverb.length + res.length + res_bw.length;
+	let isShow = res_proverb.length + res.length + res_bw.length;
 	if (isShow != 0) {
 		if(queryType != 'phrase_expl') {
 			$('#nav-tab').removeClass('d-none'); // 顯示tab
@@ -218,21 +242,21 @@ function queryPhrase(inputValue, queryType, selVal){
 
 // 【語法】查詢模塊
 function queryGrammar(inputValue, queryType, selVal){
-	var res = [];
-	var dataList = selVal.filter(item => item.indexOf('_bw') == -1);
+	let res = [];
+	let dataList = selVal.filter(item => item.indexOf('_bw') == -1);
 	if (dataList.length != 0) {
 		res = MainQuery.queryTableGrammar(inputValue, dataList, queryType);
 		showTable(res, 'outTab_triungkox', allTitle+'(市區)', outTabTitle_triungkox, colData_grammar); // 使用顯示《廣韻》的位置
 	};
 	
-	var res_bw = [];
-	var dataList_bw = selVal.filter(item => item.indexOf('_bw') > -1);
+	let res_bw = [];
+	let dataList_bw = selVal.filter(item => item.indexOf('_bw') > -1);
 	if (dataList_bw.length != 0) {
 		res_bw = MainQuery.queryTableGrammar(inputValue, dataList_bw, queryType);
 		showTable(res_bw, 'outTab_triungkoxghuh', allTitle_bw+'(亭子)', outTabTitle_triungkoxghuh, colData_grammar); // 使用顯示《集韻》的位置
 	};
 	
-	var isShow = res.length + res_bw.length;
+	let isShow = res.length + res_bw.length;
 	if (isShow != 0) {
 		if(res.length != 0) $('#nav-tab').addClass('d-none');
 		if(res_bw.length != 0) $('#nav-tab-bw').addClass('d-none');
@@ -258,13 +282,13 @@ function showTable(res, outputDiv, tabTitle, tabTitleDiv, colData) {
 
 // 計算資料權重的幾何平均值
 function calcYear(data){
-	var dataValue = 0;
+	let dataValue = 0;
 	for (let item of data.values()){
 		if (item == '2018') {
 			dataValue += Math.log(9);
 		} else if (item == '1998' || item == '2008' || item == '2009') {
 			dataValue += Math.log(7);
-		} else if (item == '1997' || item == '2003'){
+		} else if (item == '1997' || item == '2003' || item == '2021'){
 			dataValue += Math.log(5);
 		} else if (item == '1994' || item == '2000' || item == '2007' || item == '201703' || item == '201705'){
 			dataValue += Math.log(3);
@@ -280,7 +304,7 @@ function calcYear(data){
 // 餅圖顯示函數
 function showPie(res, inputValue, pieDiv, pieTitle, queryType) {
 	//if (res.length == 0) return false;
-	var piePara = 'JYUTPING';
+	let piePara = 'JYUTPING';
 	if (queryType == 'expl' || queryType == 'phrase_expl') {
 		return false; // 詞例和解釋反查時不顯示餅圖
 	} else if (queryType == 'jyutping' || queryType == 'jyut6ping3' || queryType == 'phrase_jyutping' || queryType == 'phrase_jyut6ping3'){
@@ -290,7 +314,7 @@ function showPie(res, inputValue, pieDiv, pieTitle, queryType) {
 	// 餅圖數據處理
 	const pie_data = {};  // 對象：{粵拼 -> [多份數據年份]}
 	for (let line of res) { // 循環每一對象存入數據 pie_data
-		var JYUTPING = line[piePara], YEAR = line['YEAR'];
+		let JYUTPING = line[piePara], YEAR = line['YEAR'];
 		YEAR = YEAR.replace('_bw', '').replace('_phrase', '').replace('tab_', ''); // 餅圖顯示tab_1998_bw -> 1998、tab_2008_phrase -> 2008
 		if (typeof (pie_data[JYUTPING]) == "undefined") { pie_data[JYUTPING] = []; pie_data[JYUTPING].push(YEAR); } else { pie_data[JYUTPING].push(YEAR); };
 	};
@@ -299,18 +323,18 @@ function showPie(res, inputValue, pieDiv, pieTitle, queryType) {
 	for (let i in pie_data) { pie_data[i] = new Set(pie_data[i]) }; //去重
 	for (let i in pie_data) { show_data.push({ name: i, y: pie_data[i].size, x: Array.from(pie_data[i]).toString(), z: calcYear(pie_data[i]) }) }; //name 數據名 y 數據值 x 附帶值 z 資料權重的幾何平均值
 	
-	var chart = {
+	let chart = {
 		plotBackgroundColor: null,
 		plotBorderWidth: null,
 		plotShadow: false
 	};
-	var title = {
+	let title = {
 		text: `<span class="user-font-title">${pieTitle}【${inputValue}】</span>`
 	};
-	var subtitle = {
+	let subtitle = {
 		text: '扇形面積表示資料數，扇形半徑表示資料權重的幾何平均值'  
 	};
-	var tooltip = {
+	let tooltip = {
 		/*headerFormat: '{series.name}({point.y})<br/>',
 		pointFormat: '<b>{point.x}</b>'*/
 		headerFormat: '',
@@ -320,7 +344,7 @@ function showPie(res, inputValue, pieDiv, pieTitle, queryType) {
 		'資料權重的幾何平均值: <b>{point.z:.2f}</b><br/>' +
 		'資料: <b>{point.x}</b><br/>'
 	};
-	var plotOptions = {
+	let plotOptions = {
 		variablepie: {
 			allowPointSelect: true,
 			cursor: 'pointer',
@@ -334,7 +358,7 @@ function showPie(res, inputValue, pieDiv, pieTitle, queryType) {
 			showInLegend: true
 		}
 	};
-	var series = [{
+	let series = [{
 		type: 'variablepie',
 		minPointSize: 10,
 		innerSize: '20%',
@@ -342,7 +366,7 @@ function showPie(res, inputValue, pieDiv, pieTitle, queryType) {
 		name: '資料',
 		data: show_data
 	}];
-	var color = ['#2775b6', // 景泰藍
+	let color = ['#2775b6', // 景泰藍
 		'#2c9678', // 青礬綠
 		'#c06f98', // 櫻草紫
 		'#fca104', // 橙皮黃
@@ -355,7 +379,7 @@ function showPie(res, inputValue, pieDiv, pieTitle, queryType) {
 		'#fcd337', // 檸檬黃
 		'#5bae23'  // 鸚鵡綠
 	];
-	var json = {};
+	let json = {};
 	json.credits = { enabled: false };
 	json.chart = chart;
 	json.title = title;
@@ -376,13 +400,13 @@ function showWordCloud(res, inputValue, wordCloudDiv, wordCloudTitle, queryType,
 		$('#nav-tab,#nav-tab-bw').addClass('d-none');  // 隱藏tab
 		return false;
 	}
-	var text = [];
+	let text = [];
 	for (let line of res) {
 		text.push(line[colName]);
 	};
-	var data = text.join(',').split(/[（）《》？：，。,\. ]+/g)
+	let data = text.join(',').split(/[（）《》？：，。,\. ]+/g)
 	.reduce(function (arr, word) {
-		var obj = arr.find(function (obj) {
+		let obj = arr.find(function (obj) {
 			return obj.name === word;
 		});
 		if (obj) {
@@ -396,15 +420,15 @@ function showWordCloud(res, inputValue, wordCloudDiv, wordCloudTitle, queryType,
 		}
 		return arr;
 	}, []);
-	var series= [{
+	let series= [{
 		name: '計數',
 		type: 'wordcloud',
 		data: data
 	}];
-	var title= {
+	let title= {
 		text: `<span class="user-font-title">${wordCloudTitle}【${inputValue}】</span>`
 	};
-	var json = {};
+	let json = {};
 	json.credits = { enabled: false };
 	json.series = series;
 	json.title = title;
@@ -416,7 +440,7 @@ function showBasicBar(res, inputValue, barDiv, barTitle, queryType) {
 	document.getElementById('nav-profile-tab').innerHTML = '條形圖';
 	document.getElementById('nav-profile-tab-bw').innerHTML = '條形圖';
 	//if (res.length == 0) return false;
-	var barPara = 'JYUTPING';
+	let barPara = 'JYUTPING';
 	if (queryType == 'expl' || queryType == 'phrase_expl') {
 		return false; // 詞例和解釋反查時不顯示條形圖
 	} else if (queryType == 'jyutping' || queryType == 'jyut6ping3' || queryType == 'phrase_jyutping' || queryType == 'phrase_jyut6ping3'){
@@ -426,7 +450,7 @@ function showBasicBar(res, inputValue, barDiv, barTitle, queryType) {
 	// 條形圖數據處理
 	const bar_data = {};  // 對象：{粵拼 -> [多份數據年份]}
 	for (let line of res) { // 循環每一對象存入數據 bar_data
-		var JYUTPING = line[barPara], YEAR = line['YEAR'];
+		let JYUTPING = line[barPara], YEAR = line['YEAR'];
 		YEAR = YEAR.replace('_bw', '').replace('_phrase', '').replace('tab_', ''); // 條形圖顯示tab_1998_bw -> 1998、tab_2008_phrase -> 2008
 		if (typeof (bar_data[JYUTPING]) == "undefined") { bar_data[JYUTPING] = []; bar_data[JYUTPING].push(YEAR); } else { bar_data[JYUTPING].push(YEAR); };
 	};
@@ -436,21 +460,21 @@ function showBasicBar(res, inputValue, barDiv, barTitle, queryType) {
 	for (let i in bar_data) { show_data.push({ name: i, y: bar_data[i].size, x: Array.from(bar_data[i]).toString() }) }; //name 數據名 y 數據值 x 附帶值
 	
 	const xAxis_data = [], yAxis_data = [], zAxis_data = [];
-	var dataSum = 0;
+	let dataSum = 0;
 	for (let line of show_data) { xAxis_data.push(line.name); yAxis_data.push(line.y); zAxis_data.push(line.x); dataSum += line.y; };
-	var chart = {
+	let chart = {
 		type: 'bar'
 	};
-	var title = {
+	let title = {
 		text: `<span class="user-font-title">${barTitle}【${inputValue}】</span>`
 	};
-	var xAxis = {
+	let xAxis = {
 		categories: xAxis_data,
 		title: {
 			text: null
 		}
 	};
-	var yAxis = {
+	let yAxis = {
 		min: 0,
 		title: {
 			text: '資料數',
@@ -460,21 +484,21 @@ function showBasicBar(res, inputValue, barDiv, barTitle, queryType) {
 			overflow: 'justify'
 		}
 	};
-	var tooltip = {
+	let tooltip = {
 		/*headerFormat: '{series.name}({point.y})<br/>',
 		pointFormatter: function(){
 			return '<b>' + zAxis_data[this.x] + '</b>';
 		}*/
 		headerFormat: '',
 		pointFormatter: function() {
-			var pcnt = (this.y / dataSum) * 100;
+			let pcnt = (this.y / dataSum) * 100;
 			return '<span style="color:' + this.color + '">\u25CF</span><b>'+ xAxis_data[this.x] + '</b><br/>' +
 			'資料數：<b>' + this.y + '</b><br/>' +
 			'佔比：<b>' + Highcharts.numberFormat(pcnt, 2) + '%</b><br/>' +
 			'資料：<b>' + zAxis_data[this.x] + '</b>';
 		}
 	};
-	var plotOptions = {
+	let plotOptions = {
 		bar: {
 			dataLabels: {
 				enabled: true,
@@ -482,16 +506,16 @@ function showBasicBar(res, inputValue, barDiv, barTitle, queryType) {
 			}
 		}
 	};
-	var legend = {
+	let legend = {
 		enabled: false
 	};
-	var series = [{
+	let series = [{
 		name: '資料',
 		//colorByPoint: true,
 		data: yAxis_data
 	}];
-	var color = ['#2775b6'];
-	var json = {};
+	let color = ['#2775b6'];
+	let json = {};
 	json.credits = { enabled: false };
 	json.chart = chart;
 	json.xAxis = xAxis;
@@ -556,7 +580,7 @@ function dicLoaded(obj){
 顯示錯誤提示
 */
 function displayAlert(text, obj, colorType, close = true){
-	var html = `<div class="alert ${colorType} alert-dismissible fade show" role="alert"><strong>${text}</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>`;
+	let html = `<div class="alert ${colorType} alert-dismissible fade show" role="alert"><strong>${text}</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>`;
 	if (!close){
 		html = `<div class="alert ${colorType}"><strong>${text}</strong></div>`;
 	}
@@ -724,15 +748,13 @@ function queryJyutping(txtStr, trad_simp, tabName, jyutping_ipa, signResult_IPA,
 
 // IPA格式處理
 function ipaFormat(IPA){
-	IPA = ($("#checkbox_isw").is(":checked") == true) ? IPA : IPA.replace(/kʷ(ʰ|)ɔ(k|ŋ|\d{2}|[¹²³⁴⁵]*|[˩˨˧˦˥]*)/g,'k$1ɔ$2').replace(/kʷ(ʰ|)ek/g,'k$1ek').replace(/kʷ(ʰ|)o(k|ŋ|\d{2})/g,'k$1o$2');
-	
+	//IPA = ($("#checkbox_isw").is(":checked") == true) ? IPA : IPA.replace(/kʷ(ʰ|)ɔ(k|ŋ|\d{2}|[¹²³⁴⁵]*|[˩˨˧˦˥]*)/g,'k$1ɔ$2').replace(/kʷ(ʰ|)o(k|ŋ|\d{2})/g,'k$1o$2');
 	return IPA;
 }
 
 // 粵拼格式處理
 function jpFormat(jyutping){
-	jyutping = ($("#checkbox_isw").is(":checked") == true) ? jyutping : jyutping.replace(/(g|k)wo(k|ng|\d)/g,'$1o$2').replace(/(g|k)wik/g,'$1ik');
-	
+	//jyutping = ($("#checkbox_isw").is(":checked") == true) ? jyutping : jyutping.replace(/(g|k)wo(k|ng|\d)/g,'$1o$2');
 	return jyutping;
 }
 
@@ -1039,17 +1061,6 @@ function toastrFunc(pos){
 	toastr.options.preventDuplicates = true; // 防止重複
 }
 
-// 設置䈎面底部年份信息
-function setWebYear() {
-	const myDate = new Date();
-	const myYear = myDate.getFullYear();
-	if(myYear == '2020'){
-		document.getElementById("year").innerHTML =  myYear;	
-	} else {
-		document.getElementById("year").innerHTML = '2020-' + myYear;	
-	}
-}
-
 // 固定輸入框
 function setSticky(){
 	const sticky = document.querySelector('.mySticky');
@@ -1098,10 +1109,24 @@ $(() => {
 	$('#dataModal').on('hide.bs.modal', function (event) {
 		dataButt.innerHTML = getDataText();
 	});
-	// 設置䈎面底部年份信息
-	setWebYear();
 	// 固定輸入框
 	setSticky();
 	// 返回頂部插件
 	$('body').materialScrollTop();
+	
+	// 開關按鈕
+	/*$('[name="status"]').bootstrapSwitch({
+	   onText:"ON",
+	   offText:"OFF",
+	   onColor:"info",
+	   offColor:"default",
+	   size:"normal",
+	   onSwitchChange:function(event,state){
+		  if(state==true){
+			   console.log("开启");
+			 }else{
+			  console.log("关闭");
+			 }
+		 }
+	});*/
 })

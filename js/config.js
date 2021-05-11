@@ -4,7 +4,7 @@
 
 const cdnAddr = [];
 cdnAddr.push('https://cdn.jsdelivr.net/npm');
-cdnAddr.push('leimaau-npm-cdn@1.2.6');
+cdnAddr.push('leimaau-npm-cdn@1.2.7');
 cdnAddr.push('db/leimaau.db3');
 
 const DictConfig = {
@@ -55,32 +55,34 @@ const colData_book = [
 	, { field: 'NN_S',title: '沙井平話', align: 'center', formatter: (value) => { return formatCheckBox(value) } }
 	, { field: 'NN_SH',title: '石埠平話', align: 'center', formatter: (value) => { return formatCheckBox(value) } }
 	, { field: 'HX_P',title: '橫縣平話', align: 'center', formatter: (value) => { return formatCheckBox(value) } }
-	, { field: 'BY_P',title: '賓陽話(盧墟)', align: 'center', formatter: (value) => { return formatCheckBox(value) } }
+	, { field: 'BY_P',title: '賓陽話(蘆墟)', align: 'center', formatter: (value) => { return formatCheckBox(value) } }
 	, { field: 'BY_P2',title: '賓陽話(新橋)', align: 'center', formatter: (value) => { return formatCheckBox(value) } }
 	, { field: 'BY_P3',title: '賓陽話(大橋)', align: 'center', formatter: (value) => { return formatCheckBox(value) } }
+	, { field: 'MS_P',title: '馬山喬利平話', align: 'center', formatter: (value) => { return formatCheckBox(value) } }
 ];
 
 const rowData_book = [
-	{ BOOK: '<a class="text-info" target="_blank" href="https://leimaau.github.io/leimaau-webdict2/db/1994.html">1994年謝建猷《南寧白話同音字彙》</a>', NN: 'tab_1994', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: ''}
-	, { BOOK: '1997年楊煥典《南寧話音檔》', NN: 'tab_1997', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: ''}
-	, { BOOK: '1997年李榮主編《南寧平話詞典》(單字音表)', NN: '', NN_D: '', NN_Y: '', HX_B: '', NN_T: 'noData', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: ''}
-	, { BOOK: '1998年楊煥典主編《廣西通誌·漢語方言誌》', NN: 'tab_1998', NN_D: '', NN_Y: '', HX_B: '', NN_T: 'tab_1998_bw', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: ''}
-	//, { BOOK: '1998年陳謨志總纂《南寧市誌·文化卷》(單字音表)', NN: 'noData', NN_D: '', NN_Y: '', HX_B: '', NN_T: 'noData', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: ''}
-	, { BOOK: '2000年李連進《南寧近郊平話方言島》', NN: '', NN_D: '', NN_Y: '', HX_B: '', NN_T: 'noData', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: ''}
-	, { BOOK: '2000年李連進《平話音韻研究》', NN: '', NN_D: '', NN_Y: '', HX_B: '', NN_T: 'tab_2000_bw', NN_SL: '', NN_S: '', NN_SH: '', HX_P: 'tab_2000_zb_wj', BY_P: 'noData' , BY_P2: '' , BY_P3: ''}
-	, { BOOK: '<a class="text-info" target="_blank" href="https://leimaau.github.io/leimaau-webdict2/db/2003.html">2003年侯精一《現代漢語方言音庫(字庫)》</a>', NN: 'tab_2003', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: ''}
-	, { BOOK: '2007年謝建猷《廣西漢語方言研究》', NN: 'tab_2007', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: 'tab_2007_zb_sz', NN_SH: '', HX_P: 'tab_2007_zb_wj', BY_P: '', BY_P2: 'noData' , BY_P3: '' }
-	, { BOOK: '2007年白雲《廣西疍家話語音研究》', NN: '', NN_D: 'noData', NN_Y: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: ''}
-	, { BOOK: '2007年林亦《南寧石埠平話同音字彙》', NN: '', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', NN_SH: 'noData', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: ''}
-	, { BOOK: '<a class="text-info" target="_blank" href="https://leimaau.github.io/leimaau-webdict2/db/2008.html">2008年林亦、覃鳳餘《廣西南寧白話研究》</a>', NN: 'tab_2008', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: ''}
-	, { BOOK: '2009年陳海倫、林亦《粵語平話土話方音字彙》', NN: 'noData', NN_D: '', NN_Y: 'noData', HX_B: '', NN_T: 'noData', NN_SL: '', NN_S: '', NN_SH: 'noData', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: 'noData'}
-	, { BOOK: '2009年張菁雅《桂南平話語音研究》', NN: 'noData', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', NN_SH: '', HX_P: 'noData', BY_P: '' , BY_P2: '' , BY_P3: ''}
-	, { BOOK: '<a class="text-info" target="_blank" href="https://leimaau.github.io/leimaau-webdict2/db/201703_bw.html">2017年教育部《漢語方言用字規範》</a>', NN: '', NN_D: '', NN_Y: '', HX_B: '', NN_T: 'tab_201703_bw', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: ''}
-	, { BOOK: '<a class="text-info" target="_blank" href="https://leimaau.github.io/leimaau-webdict2/db/201705_bw.html">2017年詹伯慧、張振興《漢語方言學大詞典》</a>', NN: '', NN_D: '', NN_Y: '', HX_B: '', NN_T: 'tab_201705_bw', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: ''}
-	, { BOOK: '<a class="text-info" target="_blank" href="https://leimaau.github.io/leimaau-webdict2/db/201806.html">2018年滕祖愛《南寧市與桂平市粵方言比較研究》</a>', NN: 'tab_201806', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: ''}
-	, { BOOK: '2018年覃遠雄《南寧心墟平話語音系統》', NN: '', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_SL: 'noData', NN_S: '', NN_SH: '', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: ''}
-	, { BOOK: '<a class="text-info" target="_blank" href="https://leimaau.github.io/leimaau-webdict2/db/2018.html">2018年Leimaau《南寧話審音表》(本站提供)</a>', NN: 'tab_2018', NN_D: '', NN_Y: '', HX_B: '', NN_T: 'tab_2018_bw', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: ''}
-	, { BOOK: '2019年莫思敏、談婷《廣西橫縣白話同音字彙》', NN: '', NN_D: '', NN_Y: '', HX_B: 'tab_2019_zb_b_wj', NN_T: '', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: ''}
+	{ BOOK: '<a class="text-info" target="_blank" href="https://leimaau.github.io/leimaau-webdict2/db/1994.html">1994年謝建猷《南寧白話同音字彙》</a>', NN: 'tab_1994', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: '' , MS_P: ''}
+	, { BOOK: '1997年楊煥典《南寧話音檔》', NN: 'tab_1997', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: '' , MS_P: ''}
+	, { BOOK: '1997年李榮主編《南寧平話詞典》(單字音表)', NN: '', NN_D: '', NN_Y: '', HX_B: '', NN_T: 'noData', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: '' , MS_P: ''}
+	, { BOOK: '1998年楊煥典主編《廣西通誌·漢語方言誌》', NN: 'tab_1998', NN_D: '', NN_Y: '', HX_B: '', NN_T: 'tab_1998_bw', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: '' , MS_P: ''}
+	//, { BOOK: '1998年陳謨志總纂《南寧市誌·文化卷》(單字音表)', NN: 'noData', NN_D: '', NN_Y: '', HX_B: '', NN_T: 'noData', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: '' , MS_P: ''}
+	, { BOOK: '2000年李連進《南寧近郊平話方言島》', NN: '', NN_D: '', NN_Y: '', HX_B: '', NN_T: 'noData', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: '' , MS_P: ''}
+	, { BOOK: '2000年李連進《平話音韻研究》', NN: '', NN_D: '', NN_Y: '', HX_B: '', NN_T: 'tab_2000_bw', NN_SL: '', NN_S: '', NN_SH: '', HX_P: 'tab_2000_zb_wj', BY_P: 'tab_2000_zb_bjlu' , BY_P2: '' , BY_P3: '' , MS_P: 'tab_2000_zb_ms'}
+	, { BOOK: '<a class="text-info" target="_blank" href="https://leimaau.github.io/leimaau-webdict2/db/2003.html">2003年侯精一《現代漢語方言音庫(字庫)》</a>', NN: 'tab_2003', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: '' , MS_P: ''}
+	, { BOOK: '2007年謝建猷《廣西漢語方言研究》', NN: 'tab_2007', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: 'tab_2007_zb_sz', NN_SH: '', HX_P: 'tab_2007_zb_wj', BY_P: '', BY_P2: 'noData' , BY_P3: '' , MS_P: '' }
+	, { BOOK: '2007年白雲《廣西疍家話語音研究》', NN: '', NN_D: 'tab_2007_zb_dg', NN_Y: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: '' , MS_P: ''}
+	, { BOOK: '2007年林亦《南寧石埠平話同音字彙》', NN: '', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', NN_SH: 'noData', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: '' , MS_P: ''}
+	, { BOOK: '<a class="text-info" target="_blank" href="https://leimaau.github.io/leimaau-webdict2/db/2008.html">2008年林亦、覃鳳餘《廣西南寧白話研究》</a>', NN: 'tab_2008', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: '' , MS_P: ''}
+	, { BOOK: '2009年陳海倫、林亦《粵語平話土話方音字彙》', NN: 'noData', NN_D: '', NN_Y: 'noData', HX_B: '', NN_T: 'noData', NN_SL: '', NN_S: '', NN_SH: 'noData', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: 'noData' , MS_P: ''}
+	, { BOOK: '2009年張菁雅《桂南平話語音研究》（李連進調查）', NN: 'noData', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', NN_SH: '', HX_P: 'noData', BY_P: '' , BY_P2: '' , BY_P3: '' , MS_P: ''}
+	, { BOOK: '<a class="text-info" target="_blank" href="https://leimaau.github.io/leimaau-webdict2/db/201703_bw.html">2017年教育部《漢語方言用字規範》</a>', NN: '', NN_D: '', NN_Y: '', HX_B: '', NN_T: 'tab_201703_bw', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: '' , MS_P: ''}
+	, { BOOK: '<a class="text-info" target="_blank" href="https://leimaau.github.io/leimaau-webdict2/db/201705_bw.html">2017年詹伯慧、張振興《漢語方言學大詞典》</a>', NN: '', NN_D: '', NN_Y: '', HX_B: '', NN_T: 'tab_201705_bw', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: '' , MS_P: ''}
+	, { BOOK: '<a class="text-info" target="_blank" href="https://leimaau.github.io/leimaau-webdict2/db/201806.html">2018年滕祖愛《南寧市與桂平市粵方言比較研究》</a>', NN: 'tab_201806', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: '' , MS_P: ''}
+	, { BOOK: '2018年覃遠雄《南寧心墟平話語音系統》', NN: '', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_SL: 'noData', NN_S: '', NN_SH: '', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: '' , MS_P: ''}
+	, { BOOK: '<a class="text-info" target="_blank" href="https://leimaau.github.io/leimaau-webdict2/db/2018.html">2018年Leimaau《南寧話審音表》(本站提供)</a>', NN: 'tab_2018', NN_D: '', NN_Y: '', HX_B: '', NN_T: 'tab_2018_bw', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: '' , MS_P: ''}
+	, { BOOK: '2019年莫思敏、談婷《廣西橫縣白話同音字彙》', NN: '', NN_D: '', NN_Y: '', HX_B: 'tab_2019_zb_b_wj', NN_T: '', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: '' , MS_P: ''}
+	, { BOOK: '<a class="text-info" target="_blank" href="https://leimaau.github.io/leimaau-webdict2/db/2021.html">2021年Leimaau《單字音零散資料匯集》(本站提供)</a>', NN: 'tab_2021', NN_D: '', NN_Y: '', HX_B: '', NN_T: 'noData', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: '' , MS_P: ''}
 ];
 
 // 詞典資料
@@ -110,7 +112,7 @@ const colData_book_phrase = [
 	, { field: 'NN_S',title: '沙井平話', align: 'center', formatter: (value) => { return formatCheckBox(value, '_phrase') } }
 	//, { field: 'NN_SH',title: '石埠平話', align: 'center', formatter: (value) => { return formatCheckBox(value, '_phrase') } }
 	, { field: 'HX_P',title: '橫縣平話', align: 'center', formatter: (value) => { return formatCheckBox(value, '_phrase') } }
-	, { field: 'BY_P',title: '賓陽話(盧墟)', align: 'center', formatter: (value) => { return formatCheckBox(value, '_phrase') } }
+	, { field: 'BY_P',title: '賓陽話(蘆墟)', align: 'center', formatter: (value) => { return formatCheckBox(value, '_phrase') } }
 	, { field: 'BY_P2',title: '賓陽話(新橋)', align: 'center', formatter: (value) => { return formatCheckBox(value, '_phrase') } }
 ];
 
@@ -132,6 +134,7 @@ const rowData_book_phrase = [
 	, { BOOK: '2017年詹伯慧、張振興《漢語方言學大詞典》', NN: '', NN_D: '', HX_B: '', NN_T: 'noData', NN_SL: '', NN_S: '', HX_P: '', BY_P: '', BY_P2: '' }
 	, { BOOK: '2019年莫思敏《橫縣白話語音研究》', NN: '', NN_D: '', HX_B: 'noData', NN_T: '', NN_SL: '', NN_S: '', HX_P: '', BY_P: '', BY_P2: '' }
 	, { BOOK: '2020年Leimaau《南寧話審詞表》(本站提供)', NN: 'tab_2020_phrase', NN_D: '', HX_B: '', NN_T: 'tab_2020_bw_phrase', NN_SL: '', NN_S: '', HX_P: '', BY_P: '', BY_P2: '' }
+	, { BOOK: '2021年Leimaau《詞彙零散資料匯集》(本站提供)', NN: 'tab_2021_phrase', NN_D: '', HX_B: '', NN_T: 'noData', NN_SL: '', NN_S: '', HX_P: '', BY_P: '', BY_P2: '' }
 ];
 
 // 語法資料
@@ -152,6 +155,7 @@ const colData_book_grammar = [
 const rowData_book_grammar = [
 	{ BOOK: '1985年白宛如《南寧白話的[ɬai˧]與廣州話的比較》', NN: 'noData', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '', BY_P2: '' }
 	, { BOOK: '1987年張均如《記南寧心墟平話》', NN: '', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_SL: 'noData', NN_S: '', NN_SH: '', HX_P: '', BY_P2: '' }
+	// 1994年壮语陆西话和汉语平话、白话若干相似现象
 	, { BOOK: '1997年楊煥典《南寧話音檔》', NN: 'noData', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '', BY_P2: '' }
 	//, { BOOK: '1997年李榮主編《南寧平話詞典》(單字音表)', NN: '', NN_D: '', NN_Y: '', HX_B: '', NN_T: 'noData', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '', BY_P2: '' }
 	, { BOOK: '1998年楊煥典主編《廣西通誌·漢語方言誌》', NN: 'noData', NN_D: '', NN_Y: '', HX_B: '', NN_T: 'noData', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '', BY_P2: '' }
@@ -190,8 +194,8 @@ const rowData_book_grammar = [
 
 // 格式化顯示爲checkbox
 function formatCheckBox (value, qType = '') {
-	var checkboxDiv = `<div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input book${qType}" id="checkbox_${value}" name="dataCheck" value="${value}" checked><label class="custom-control-label" for="checkbox_${value}">選擇</label></div>`;
-	var disableCheckboxDiv = `<div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input disabledbook" id="checkbox_${value}" name="dataCheck" value="${value}" disabled><label class="custom-control-label" for="checkbox_${value}">選擇</label></div>`;
+	let checkboxDiv = `<div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input book${qType}" id="checkbox_${value}" name="dataCheck" value="${value}" checked><label class="custom-control-label" for="checkbox_${value}">選擇</label></div>`;
+	let disableCheckboxDiv = `<div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input disabledbook" id="checkbox_${value}" name="dataCheck" value="${value}" disabled><label class="custom-control-label" for="checkbox_${value}">選擇</label></div>`;
 	if (value != '') {
 		if (value == 'noData') {
 			return disableCheckboxDiv;
@@ -335,18 +339,19 @@ const colData_grammar = [
 
 // 格式化來源欄
 function formatSOUR(value, row_year, picType, qType) {
+	let bookname = '';
 	if (qType == 'char'){
-		var bookname = rowData_book.find(item => (item.NN == row_year || item.NN_D == row_year || item.NN_Y == row_year || item.HX_B == row_year || item.NN_T == row_year || item.NN_S == row_year || item.HX_P == row_year || item.BY_P == row_year)).BOOK;
+		bookname = rowData_book.find(item => (item.NN == row_year || item.NN_D == row_year || item.NN_Y == row_year || item.HX_B == row_year || item.NN_T == row_year || item.NN_S == row_year || item.HX_P == row_year || item.BY_P == row_year || item.MS_P == row_year)).BOOK;
 	} else if (qType == 'phrase') {
-		var bookname = rowData_book_phrase.find(item => (item.NN == row_year || item.NN_D == row_year || item.HX_B == row_year || item.NN_T == row_year || item.NN_S == row_year || item.HX_P == row_year || item.BY_P == row_year)).BOOK;
+		bookname = rowData_book_phrase.find(item => (item.NN == row_year || item.NN_D == row_year || item.HX_B == row_year || item.NN_T == row_year || item.NN_S == row_year || item.HX_P == row_year || item.BY_P == row_year)).BOOK;
 	} else if (qType == 'grammar') {
-		var bookname = rowData_book_grammar.find(item => (item.NN == row_year || item.NN_D == row_year || item.HX_B == row_year || item.NN_T == row_year || item.NN_S == row_year || item.HX_P == row_year || item.BY_P == row_year)).BOOK;
+		bookname = rowData_book_grammar.find(item => (item.NN == row_year || item.NN_D == row_year || item.HX_B == row_year || item.NN_T == row_year || item.NN_S == row_year || item.HX_P == row_year || item.BY_P == row_year)).BOOK;
 	};
 	bookname = bookname.replace(/<\/?a.*?>/g,'');
 	row_year = row_year.replace('_bw', '').replace('_phrase', '').replace('_grammar', '').replace('tab_', '');
-	//var linkaddr = 'https://leimaau.github.io/CDN/data-store/' + row_year;
-	//var linkaddr = 'https://cdn.jsdelivr.net/gh/leimaau/CDN@latest/data-store/' + row_year;
-	var linkaddr = 'https://leimaau.github.io/CDN/index.html?value=' + row_year;
+	//let linkaddr = 'https://leimaau.github.io/CDN/data-store/' + row_year;
+	//let linkaddr = 'https://cdn.jsdelivr.net/gh/leimaau/CDN@latest/data-store/' + row_year;
+	let linkaddr = 'https://leimaau.github.io/CDN/index.html?value=' + row_year;
 	
 	if (row_year == '1994') linkaddr += 'zh/zh'
 	else if (row_year == '1997') linkaddr += 'yd/yd'
@@ -358,7 +363,8 @@ function formatSOUR(value, row_year, picType, qType) {
 	else if (row_year == '201703') linkaddr = linkaddr.replace('201703','2017') + 'gj/gj'
 	else if (row_year == '201705') linkaddr =  linkaddr.replace('201705','2017') + 'hy/hy0'
 	else if (row_year == '2018') linkaddr = ''
-	else if (row_year == '201806') linkaddr = linkaddr.replace('201806','2018') + 'yj/yj';
+	else if (row_year == '201806') linkaddr = linkaddr.replace('201806','2018') + 'yj/yj'
+	else if (row_year == '2021') {linkaddr = ''; bookname = '〔2021年Leimaau匯集〕' + value};
 	
 	if (value == '' || linkaddr == '') {
 		return (qType != 'grammar') ? `<span style="white-space: nowrap">${bookname}</span>` : `<span style="white-space: normal">${bookname}<span/>`;
@@ -369,8 +375,8 @@ function formatSOUR(value, row_year, picType, qType) {
 
 // 䈎碼拼接函數
 function pageSplit(value, picType, linkaddr) {
-	var pageLink = [];
-	var pages = value.replace('P', '').replace('（單字音表）', '').split('，');
+	let pageLink = [];
+	let pages = value.replace('P', '').replace('（單字音表）', '').split('，');
 	for (let i in pages) {
 		pageLink.push(`P<a href="${linkaddr + pages[i]}.${picType}" target="_Blank">${pages[i].replace('s','*')}</a>`);
 	}
@@ -392,18 +398,19 @@ const rowData_sponsor = [
 */
 
 
-var playlist = [
+let playlist = [
 	{ title: "A Little Story", artist: "Valentin", mp3: "http://music.163.com/song/media/outer/url?id=857896.mp3" ,cover: "http://p2.music.126.net/w0Xz0wMOhko2IU0_b-vJ8A==/18561955301992385.jpg?param=130y130" }
+	, { title: "顽童", artist: "大宇", mp3: "http://music.163.com/song/media/outer/url?id=1433376109.mp3" ,cover: "http://p2.music.126.net/-fkYAJ6ZEUF3z_SvCi7nZA==/109951164832402338.jpg?param=130y130" }
 	//, { title: "Pneumatic Tokyo", artist: "EnV", mp3: "http://music.163.com/song/media/outer/url?id=33937527.mp3" ,cover: "http://p1.music.126.net/k8kONmsvnxJIeuvEE7eR0Q==/109951163694694330.jpg?param=130y130" }
 	//, { title: "Into the Groove", artist: "Madonna", mp3: "http://music.163.com/song/media/outer/url?id=485964327.mp3" ,cover: "http://p1.music.126.net/ssQQUL-oxDJv6MCE1h_eQg==/17940731230679903.jpg?param=130y130" }
 	//, { title: "Sunshine in the Rain", artist: "BwO", mp3: "http://music.163.com/song/media/outer/url?id=26843531.mp3" ,cover: "http://p1.music.126.net/4wCUqHV9yRupm5WRlPiV8w==/2035196023046217.jpg?param=130y130" }
 	//, { title: "Heart Like California", artist: "Before You Exit", mp3: "http://music.163.com/song/media/outer/url?id=28828120.mp3" ,cover: "http://p1.music.126.net/zuxhlVEkxksU3e5_mR4Ymg==/5990139348590509.jpg?param=130y130" }
 ];
-var isRotate = true;
-var autoplay = false;
+let isRotate = true;
+let autoplay = false;
 function bgChange(){
-	var lis= $('.lib');
-	for(var i=0; i<lis.length; i+=2)
+	let lis= $('.lib');
+	for(let i=0; i<lis.length; i+=2)
 	lis[i].style.background = 'rgba(246, 246, 246, 0.5)';
 }
 window.onload = bgChange;
@@ -415,7 +422,7 @@ function showLink(textChar){
 	outputText.push(`<div class="card mt-1 mb-3"><div class="card-header">相關鏈接</div><div class="card-body text-secondary"><span>
 	漢典網：<a href="http://www.zdic.net/hans/${textChar}" target="_blank">${textChar}</a> | <a href="http://www.zdic.net/zd/yy/yy/${textChar}" target="_blank">粵語</a> | <a href="http://www.zdic.net/zd/yy/ph/${textChar}" target="_blank">平話</a></br>
 	韻典網：<a href="https://ytenx.org/zim?dzih=${textChar}&dzyen=1&jtkb=1&jtkd=1&jtdt=1&jtgt=1" target="_blank">${textChar}</a></br>
-	國學大師：<a href="http://www.guoxuedashi.com/zidian/${encodeUnicode(textChar).replace('\\u','')}.html" target="_blank">${textChar}</a></br>
+	國學大師：<a href="http://www.guoxuedashi.net/zidian/${encodeUnicode(textChar).replace('\\u','')}.html" target="_blank">${textChar}</a></br>
 	古今文字集成：<a href="http://www.ccamc.co/cjkv.php?cjkv=${textChar}" target="_blank">${textChar}</a></br>
 	粵音資料集叢：<a href="https://jyut.net/query?q=${textChar}" target="_blank">${textChar}</a></br>
 	漢語多功能字庫：<a href="http://humanum.arts.cuhk.edu.hk/Lexis/lexi-mf/search.php?word=${textChar}" target="_blank">${textChar}</a> | <a href="http://humanum.arts.cuhk.edu.hk/Lexis/lexi-mf/dialect.php?word=${textChar}" target="_blank">其他方言讀音</a></br>
@@ -444,7 +451,7 @@ function showLink(textChar){
 	outputText3.push(`<div class="card mt-1 mb-3"><div class="card-header">相關鏈接</div><div class="card-body text-secondary"><span>
 	東方語言學：<a href="http://www.eastling.org/" target="_blank">前往</a></br>
 	漢語方言學大詞典：<a href="http://www.fangyanxue.com/pages/index/index.html" target="_blank">前往</a></br>
-	古音手鏡：<a href="http://www.kaom.net/" target="_blank">前往</a></br>
+	古音小鏡：<a href="http://www.kaom.net/" target="_blank">前往</a></br>
 	小學堂：<a href="http://xiaoxue.iis.sinica.edu.tw/" target="_blank">前往</a></br>
 	引得市：<a href="http://www.mebag.com/index/" target="_blank">前往</a></br>
 	廣東省情網：<a href="http://dfz.gd.gov.cn/" target="_blank">前往</a></br>
@@ -469,8 +476,8 @@ function showLink(textChar){
 
 // 漢字轉 Unicode
 function encodeUnicode(str) {
-    var res = [];
-    for (var i = 0; i < str.length; i++) {
+    let res = [];
+    for (let i = 0; i < str.length; i++) {
         res[i] = ( "00" + str.charCodeAt(i).toString(16) ).slice(-4);
     }
     return "\\u" + res.join("\\u");
@@ -486,8 +493,8 @@ function decodeUnicode(str) {
 // 粵拼轉IPA
 function jyutping_to_ipa(inputstr, IPA_version, output_IPAformat, judgeDiv){
 	let outputstr = inputstr;
-	outputstr = outputstr.replace(/(^|[ ])(m)(\d)/g, "$1m̩$3");
-	outputstr = outputstr.replace(/(^|[ ])(ng)(\d)/g, "$1ŋ̍$3");
+	outputstr = outputstr.replace(/(\b)(m)(\d)/g, "$1m̩$3");
+	outputstr = outputstr.replace(/(\b)(ng)(\d)/g, "$1ŋ̍$3");
     outputstr = outputstr.replace(/sl/g,"ɬ");
     outputstr = outputstr.replace(/nj/g,"ȵ");
 	
@@ -530,10 +537,10 @@ function jyutping_to_ipa(inputstr, IPA_version, output_IPAformat, judgeDiv){
 		outputstr = outputstr.replace(/kw/g,"Kʷʰ");
 	}
 	
-    outputstr = outputstr.replace(/(^|[ /])([ptk])/g,"$1$2ʰ");
-    outputstr = outputstr.replace(/(^|[ /])b/g,"$1p");
-    outputstr = outputstr.replace(/(^|[ /])d/g,"$1t");
-    outputstr = outputstr.replace(/(^|[ /])g/g,"$1k");
+    outputstr = outputstr.replace(/(\b)([ptk])(\D\S)/g,"$1$2ʰ$3");
+    outputstr = outputstr.replace(/(\b)b/g,"$1p");
+    outputstr = outputstr.replace(/(\b)d/g,"$1t");
+    outputstr = outputstr.replace(/(\b)g/g,"$1k");
 	
     outputstr = outputstr.replace(/zy(\d)/g,"t͡Sɿ$1");
     outputstr = outputstr.replace(/cy(\d)/g,"t͡Sʰɿ$1");
@@ -697,12 +704,12 @@ function ipa_to_jyutping(inputstr, IPA_version){
     outputstr = outputstr.replace(/(Kw)([inktg]*)(\d)/g,"Ku$2$3");
     outputstr = outputstr.replace(/(gw)([inktg]*)(\d)/g,"gu$2$3");
 
-    outputstr = outputstr.replace(/(^|[ /])p([^hʰ])/g,"$1b$2");
-    outputstr = outputstr.replace(/(^|[ /])t([^hʰ])/g,"$1d$2");
-    outputstr = outputstr.replace(/(^|[ /])k([^hʰ])/g,"$1g$2");
-    outputstr = outputstr.replace(/(^|[ /])(ph|pʰ)/g,"$1p");
-    outputstr = outputstr.replace(/(^|[ /])(th|tʰ)/g,"$1t");
-    outputstr = outputstr.replace(/(^|[ /])(kh|kʰ)/g,"$1k");
+    outputstr = outputstr.replace(/(\b)p([^hʰ\s\d])/g,"$1b$2");
+    outputstr = outputstr.replace(/(\b)t([^hʰ\s\d])/g,"$1d$2");
+    outputstr = outputstr.replace(/(\b)k([^hʰ\s\d])/g,"$1g$2");
+    outputstr = outputstr.replace(/(\b)(ph|pʰ)/g,"$1p");
+    outputstr = outputstr.replace(/(\b)(th|tʰ)/g,"$1t");
+    outputstr = outputstr.replace(/(\b)(kh|kʰ)/g,"$1k");
 
     outputstr = outputstr.replace(/a/g,"aa");
     outputstr = outputstr.replace(/ɐ|ə/g,"a");
