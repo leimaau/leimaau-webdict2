@@ -924,17 +924,17 @@ function koxqim_gujam(tabName, line){
 // 判斷清濁
 function judgeFirst(first, num){
 	if (num == 1){
-		if (/並|奉|定|澄|从|邪|崇|俟|船|禅|常|群|匣/.test(first)){
+		if (/並|奉|定|澄|從|邪|崇|俟|船|禅|常|群|匣/.test(first)){
 			return '全濁';
-		} else if (/明|泥|来|娘|日|疑|以|云/.test(first)){
+		} else if (/明|泥|來|娘|孃|日|疑|以|云/.test(first)){
 			return '次濁';
-		} else if (/滂|透|彻|清|初|昌|溪/.test(first)){
+		} else if (/滂|透|徹|清|初|昌|溪/.test(first)){
 			return '次清'
 		} else {
 			return '全清';
 		}
 	} else {
-		if (/並|奉|定|澄|从|邪|崇|俟|船|禅|群|匣|明|泥|来|娘|日|疑|以|云/.test(first)){
+		if (/並|奉|定|澄|從|邪|崇|俟|船|禅|群|匣|明|泥|來|娘|孃|日|疑|以|云/.test(first)){
 			return '濁';
 		} else {
 			return '清';
@@ -1010,10 +1010,10 @@ function judgeJP(textChar, jyutping, n_t, tone, she, first){
 		return false;
 	}
 	
-	if(((/幫|滂|並|非|敷|奉/.test(first)) && (/^[^bpf]/.test(jyutping))) || ((/明|微/.test(first)) && (/^[^mwf]/.test(jyutping))) || ((/端|透|定/.test(first)) && (/^[^dtn]/.test(jyutping))) || ((/泥/.test(first)) && (/^[^n]/.test(jyutping))) || ((/來/.test(first)) && (/^([^ln]|ng)/.test(jyutping))) || ((/知|徹|澄|精|清|從/.test(first)) && (/^[^zcd]/.test(jyutping))) || ((/娘/.test(first)) && (/^(?!([nj]|nj))/.test(jyutping))) || ((/心/.test(first)) && (/^(?!([sc]|sl))/.test(jyutping))) || ((/邪|生|俟|常|禪|書|船/.test(first)) && (/^(?!([zcsjh]|sl))/.test(jyutping))) || ((/莊|章/.test(first)) && (/^(?!([zj]|nj))/.test(jyutping))) || ((/初|昌/.test(first)) && (/^(?!([csj]|nj))/.test(jyutping))) || ((/崇/.test(first)) && (/^[^zcs]/.test(jyutping))) || ((/見|溪|群|疑|曉|匣/.test(first)) && (/^(?!([gkhfjwnmdl]|ng|nj))/.test(jyutping))) || ((/日|云|以/.test(first)) && (/^(?!([hjwgn]|ng|nj))/.test(jyutping))) || ((/影/.test(first)) && (/^(?!([aeioujw]|ng|nj))/.test(jyutping))) || ((/疑/.test(first)) && (/^l/.test(jyutping))) || ((/書/.test(first)) && (/^z/.test(jyutping)))){
+	if(((/幫|滂|並|非|敷|奉/.test(first)) && (/^[^bpf]/.test(jyutping))) || ((/明|微/.test(first)) && (/^[^mwf]/.test(jyutping))) || ((/端|透|定/.test(first)) && (/^[^dtn]/.test(jyutping))) || ((/泥/.test(first)) && (/^[^n]/.test(jyutping))) || ((/來/.test(first)) && (/^([^ln]|ng)/.test(jyutping))) || ((/知|徹|澄|精|清|從/.test(first)) && (/^[^zcd]/.test(jyutping))) || ((/娘|孃/.test(first)) && (/^(?!([nj]|nj))/.test(jyutping))) || ((/心/.test(first)) && (/^(?!([sc]|sl))/.test(jyutping))) || ((/邪|生|俟|常|禪|書|船/.test(first)) && (/^(?!([zcsjh]|sl))/.test(jyutping))) || ((/莊|章/.test(first)) && (/^(?!([zj]|nj))/.test(jyutping))) || ((/初|昌/.test(first)) && (/^(?!([csj]|nj))/.test(jyutping))) || ((/崇/.test(first)) && (/^[^zcs]/.test(jyutping))) || ((/見|溪|群|疑|曉|匣/.test(first)) && (/^(?!([gkhfjwnmdl]|ng|nj))/.test(jyutping))) || ((/日|云|以/.test(first)) && (/^(?!([hjwgn]|ng|nj))/.test(jyutping))) || ((/影/.test(first)) && (/^(?!([aeioujw]|ng|nj))/.test(jyutping))) || ((/疑/.test(first)) && (/^l/.test(jyutping))) || ((/書/.test(first)) && (/^z/.test(jyutping)))){
 		return false;
 	} else {
-		if(/並|奉|微|俟|定|澄|從|邪|崇|船|常|禪|群|匣|明|泥|來|娘|日|疑|以|云/.test(first)){
+		if(/並|奉|微|俟|定|澄|從|邪|崇|船|常|禪|群|匣|明|泥|來|娘|孃|日|疑|以|云/.test(first)){
 			if ((tone == '平' && /[^41]$/.test(jyutping))||(tone == '上' && /[^2563]$/.test(jyutping))||(tone == '去' && textChar != '那' && first != '云' && first != '以' && /[^63]$/.test(jyutping))||(tone == '去' && (first == '云' || first == '以') && /[^65]$/.test(jyutping))){
 				return false;
 			}

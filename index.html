@@ -71,14 +71,14 @@
 
   <!-- USER CSS -->
   <!--<link type="text/css" rel="stylesheet" href="css/index.css"/>-->
-  <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.2.7/css/index.css"/>
+  <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.2.8/css/index.css"/>
   <!-- USER JavaScript -->
   <!--<script type="text/javascript" src="js/config.js"></script>-->
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.2.7/js/config.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.2.8/js/config.js"></script>
   <!--<script type="text/javascript" src="js/dao.js"></script>-->
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.2.7/js/dao.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.2.8/js/dao.js"></script>
   <!--<script type="text/javascript" src="js/dictDb.js"></script>-->
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.2.7/js/dictDb.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.2.8/js/dictDb.js"></script>
   <script type="text/javascript" src="js/index.js"></script>
   
   <!--<script type="text/javascript" src="js/jieba-js/segMain.min.js"></script>
@@ -88,15 +88,15 @@
   <script type="text/javascript" src="js/jieba-js/nntDict.js"></script>
   <script type="text/javascript" src="js/jieba-js/gzDict.js"></script>-->
   
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.2.7/js/jieba-js/segMain.min.js"></script>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.2.7/js/jieba-js/segDict.min.js"></script>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.2.7/js/jieba-js/segDictPlus.min.js"></script>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.2.7/js/jieba-js/nnDict.js"></script>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.2.7/js/jieba-js/nntDict.js"></script>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.2.7/js/jieba-js/gzDict.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.2.8/js/jieba-js/segMain.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.2.8/js/jieba-js/segDict.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.2.8/js/jieba-js/segDictPlus.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.2.8/js/jieba-js/nnDict.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.2.8/js/jieba-js/nntDict.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.2.8/js/jieba-js/gzDict.js"></script>
   
   <!--<link type="text/css" rel="stylesheet" href="css/player/player.css"/>-->
-  <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.2.7/css/player/player.css"/>
+  <!--<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.2.8/css/player/player.css"/>-->
 </head>
 
 <body>
@@ -525,6 +525,10 @@
             <input class="custom-control-input" type="radio" id="expl" name="queryType" value="expl">
             <label for="expl" class="custom-control-label">釋義（反查）</label>
           </div>
+          <div class="custom-control custom-radio custom-control-inline">
+            <input class="custom-control-input" type="radio" id="note" name="queryType" value="note">
+            <label for="note" class="custom-control-label">附註（反查）</label>
+          </div>
         </div>
         <!-- 查詞 -->
         <div id="queryRadio-dicPhrase" class="d-none">
@@ -550,6 +554,10 @@
             <input class="custom-control-input" type="radio" id="phrase_expl" name="queryType" value="phrase_expl">
             <label for="phrase_expl" class="custom-control-label">釋義（反查）</label>
           </div>
+          <div class="custom-control custom-radio custom-control-inline">
+            <input class="custom-control-input" type="radio" id="phrase_note" name="queryType" value="phrase_note">
+            <label for="phrase_note" class="custom-control-label">附註（反查）</label>
+          </div>
         </div>
         <!-- 查句 -->
         <div id="queryRadio-dicGrammar" class="d-none">
@@ -574,6 +582,10 @@
           <div class="custom-control custom-radio custom-control-inline">
             <input class="custom-control-input" type="radio" id="grammar_expl" name="queryType" value="grammar_expl">
             <label for="grammar_expl" class="custom-control-label">釋義（反查）</label>
+          </div>
+          <div class="custom-control custom-radio custom-control-inline">
+            <input class="custom-control-input" type="radio" id="grammar_note" name="queryType" value="grammar_note">
+            <label for="grammar_note" class="custom-control-label">附註（反查）</label>
           </div>
         </div>
       </div>
@@ -768,7 +780,7 @@
   
   <button class="material-scrolltop" type="button"></button>
   
-  <div id="QPlayer">
+  <!--<div id="QPlayer">
   	<div id="pContent">
   		<div id="player">
   			<span class="cover"></span>
@@ -794,11 +806,11 @@
   		<div class="ssBtn"><div class="adf"></div></div>
   	</div>
   	<ol id="playlist"></ol>
-  </div>
+  </div>-->
   <!--<script type="text/javascript" src="js/player/jquery.marquee.min.js"></script>-->
   <!--<script type="text/javascript" src="js/player/player.js"></script>-->
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery.marquee@1.5.0/jquery.marquee.min.js"></script>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.2.7/js/player/player.js"></script>
+  <!--<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery.marquee@1.5.0/jquery.marquee.min.js"></script>-->
+  <!--<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.2.8/js/player/player.js"></script>-->
   
   <div class="footer text-center mt-auto py-3">
 	  <div class="foot-container user-font">

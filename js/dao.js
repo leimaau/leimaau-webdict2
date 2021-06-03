@@ -21,8 +21,10 @@ MainQuery = (() => {
 			querySQL += ') where jyutping = ? order by YEAR';
 		} else if (queryType == 'expl') { // 釋義反查
 			querySQL += `) where expl GLOB '*${searchValue}*' order by YEAR`;
+		} else if (queryType == 'note') { // 附註反查
+			querySQL += `) where note GLOB '*${searchValue}*' order by YEAR`;
 		};
-		return DictDb.execParam( querySQL, (queryType == 'jyutping' || queryType == 'expl') ? [] : [searchValue] );
+		return DictDb.execParam( querySQL, (queryType == 'jyutping' || queryType == 'expl' || queryType == 'note') ? [] : [searchValue] );
 	};
 	
 	// (單字)查詢單個表，用於《廣韻》
@@ -36,6 +38,8 @@ MainQuery = (() => {
 			querySQL += ' where pinyin = ? order by CAST(ID as INTEGER)';
 		} else if (queryType == 'expl') { // 釋義反查
 			querySQL += ` where expl GLOB '*${searchValue}*' order by CAST(ID as INTEGER)`;
+		} else if (queryType == 'note') { // 附註反查
+			querySQL += ` where 1=2`;
 		};
 		return DictDb.execParam( querySQL, (queryType != 'jyut6ping3') ? [] : [searchValue] );
 	};
@@ -51,6 +55,8 @@ MainQuery = (() => {
 			querySQL += ' where 1=2';
 		} else if (queryType == 'expl') { // 釋義反查
 			querySQL += ` where expl GLOB '*${searchValue}*' order by CAST(ID as INTEGER)`;
+		} else if (queryType == 'note') { // 附註反查
+			querySQL += ` where 1=2`;
 		};
 		return DictDb.execParam( querySQL, [] );
 	};
@@ -66,8 +72,10 @@ MainQuery = (() => {
 			querySQL += ` where jyutping = ? or jyutping = '${searchValue}°' order by CAST(ID as INTEGER)`;
 		} else if (queryType == 'expl') { // 釋義反查
 			querySQL += ` where expl GLOB '*${searchValue}*' order by CAST(ID as INTEGER)`;
+		} else if (queryType == 'note') { // 附註反查
+			querySQL += ` where 1=2`;
 		};
-		return DictDb.execParam( querySQL, (queryType == 'jyutping' || queryType == 'expl') ? [] : [searchValue] );
+		return DictDb.execParam( querySQL, (queryType == 'jyutping' || queryType == 'expl' || queryType == 'note') ? [] : [searchValue] );
 	};
 	
 	// (單字)查詢單個表，用於《英華分韻撮要》
@@ -81,6 +89,8 @@ MainQuery = (() => {
 			querySQL += ` where jyutping = ? or jyutping = '${searchValue}°' order by CAST(ID as INTEGER)`;
 		} else if (queryType == 'expl') { // 釋義反查
 			querySQL += ` where expl GLOB '*${searchValue}*' order by CAST(ID as INTEGER)`;
+		} else if (queryType == 'note') { // 附註反查
+			querySQL += ` where 1=2`;
 		};
 		return DictDb.execParam( querySQL, (queryType != 'jyut6ping3') ? [] : [searchValue] );
 	};
@@ -96,6 +106,8 @@ MainQuery = (() => {
 			querySQL += ` where jyutping = ? order by CAST(ID as INTEGER)`;
 		} else if (queryType == 'expl') { // 釋義反查
 			querySQL += ` where expl GLOB '*${searchValue}*' order by CAST(ID as INTEGER)`;
+		} else if (queryType == 'note') { // 附註反查
+			querySQL += ` where 1=2`;
 		};
 		return DictDb.execParam( querySQL, (queryType != 'jyut6ping3') ? [] : [searchValue] );
 	};
@@ -123,7 +135,7 @@ MainQuery = (() => {
 	tempObj.queryTablePhrase = (searchValue, selVal, queryType) => {
 		let querySQL = '';
 		for (let i in selVal) {
-			querySQL += `select '${selVal[i]}' YEAR,* from ${selVal[i]} union `;  // 拼接查詢
+			querySQL += `select '${selVal[i]}' YEAR,TRAD||'|'||SIMP TRADSIMP,JYUTPING||'|'||IPA_T||'|'||IPA_S JYUTPING_IPA_TS,* from ${selVal[i]} union `;  // 拼接查詢
 		};
 		querySQL = "select * from(" + querySQL.replace(/ union $/gi,"");
 		if (queryType == 'phrase') { // 查詢繁體
@@ -136,6 +148,8 @@ MainQuery = (() => {
 			querySQL += `) where jyutping GLOB '${searchValue}' or jyutping GLOB '* ${searchValue} *' or jyutping GLOB '${searchValue} *' or jyutping GLOB '* ${searchValue}' order by YEAR`;
 		} else if (queryType == 'phrase_expl') { // 釋義反查
 			querySQL += `) where expl GLOB '*${searchValue}*' order by YEAR`;
+		} else if (queryType == 'phrase_note') { // 附註反查
+			querySQL += `) where note GLOB '*${searchValue}*' order by YEAR`;
 		};
 		return DictDb.execParam( querySQL, [] );
 	};
@@ -144,7 +158,7 @@ MainQuery = (() => {
 	tempObj.queryTable_proverb = (searchValue, selVal, queryType) => {
 		let querySQL = '';
 		for (let i in selVal) {
-			querySQL += `select '${selVal[i]}' YEAR,* from ${selVal[i]} union `;  // 拼接查詢
+			querySQL += `select '${selVal[i]}' YEAR,TRAD||'<br/>'||SIMP TRADSIMP,* from ${selVal[i]} union `;  // 拼接查詢
 		};
 		querySQL = "select * from(" + querySQL.replace(/ union $/gi,"");
 		if (queryType == 'phrase') { // 查詢繁體
@@ -154,6 +168,8 @@ MainQuery = (() => {
 		}else if (queryType == 'phrase_jyutping' || queryType == 'phrase_jyut6ping3') { // 查詢粵拼
 			querySQL += ') where 1=2';
 		} else if (queryType == 'phrase_expl') { // 釋義反查
+			querySQL += `) where expl GLOB '*${searchValue}*' order by YEAR,CAST(ID as INTEGER)`;
+		} else if (queryType == 'phrase_note') { // 附註反查
 			querySQL += `) where note GLOB '*${searchValue}*' order by YEAR,CAST(ID as INTEGER)`;
 		};
 		return DictDb.execParam( querySQL, [] );
@@ -163,7 +179,7 @@ MainQuery = (() => {
 	tempObj.queryTableGrammar = (searchValue, selVal, queryType) => {
 		let querySQL = '';
 		for (let i in selVal) {
-			querySQL += `select '${selVal[i]}' YEAR,* from ${selVal[i]} union `;  // 拼接查詢
+			querySQL += `select '${selVal[i]}' YEAR,TRAD||'<br/>'||SIMP TRADSIMP,JYUTPING||'<br/>'||IPA_T||'<br/>'||IPA_S JYUTPING_IPA_TS,* from ${selVal[i]} union `;  // 拼接查詢
 		};
 		querySQL = "select * from(" + querySQL.replace(/ union $/gi,"");
 		if (queryType == 'grammar') { // 查詢繁體
@@ -176,6 +192,8 @@ MainQuery = (() => {
 			querySQL += `) where jyutping GLOB '${searchValue}' or jyutping GLOB '* ${searchValue} *' or jyutping GLOB '${searchValue} *' or jyutping GLOB '* ${searchValue}' order by YEAR`;
 		} else if (queryType == 'grammar_expl') { // 釋義反查
 			querySQL += `) where expl GLOB '*${searchValue}*' order by YEAR`;
+		} else if (queryType == 'grammar_note') { // 附註反查
+			querySQL += `) where note GLOB '*${searchValue}*' order by YEAR`;
 		};
 		return DictDb.execParam( querySQL, [] );
 	};
