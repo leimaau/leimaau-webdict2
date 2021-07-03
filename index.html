@@ -34,10 +34,6 @@
   <!-- clipboard.min.js -->
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js"></script>
   
-  <!-- bootstrap-switch.min.js -->
-  <!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-switch@3.4.0/dist/css/bootstrap3/bootstrap-switch.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap-switch@3.4.0/dist/js/bootstrap-switch.min.js"></script>-->
-  
   <!-- toastr.min.js -->
   <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastr@2.1.4/build/toastr.min.css">
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastr@2.1.4/toastr.min.js"></script>
@@ -71,14 +67,14 @@
 
   <!-- USER CSS -->
   <!--<link type="text/css" rel="stylesheet" href="css/index.css"/>-->
-  <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.2.8/css/index.css"/>
+  <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.2.9/css/index.css"/>
   <!-- USER JavaScript -->
   <!--<script type="text/javascript" src="js/config.js"></script>-->
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.2.8/js/config.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.2.9/js/config.js"></script>
   <!--<script type="text/javascript" src="js/dao.js"></script>-->
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.2.8/js/dao.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.2.9/js/dao.js"></script>
   <!--<script type="text/javascript" src="js/dictDb.js"></script>-->
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.2.8/js/dictDb.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.2.9/js/dictDb.js"></script>
   <script type="text/javascript" src="js/index.js"></script>
   
   <!--<script type="text/javascript" src="js/jieba-js/segMain.min.js"></script>
@@ -88,15 +84,15 @@
   <script type="text/javascript" src="js/jieba-js/nntDict.js"></script>
   <script type="text/javascript" src="js/jieba-js/gzDict.js"></script>-->
   
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.2.8/js/jieba-js/segMain.min.js"></script>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.2.8/js/jieba-js/segDict.min.js"></script>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.2.8/js/jieba-js/segDictPlus.min.js"></script>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.2.8/js/jieba-js/nnDict.js"></script>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.2.8/js/jieba-js/nntDict.js"></script>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.2.8/js/jieba-js/gzDict.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.2.9/js/jieba-js/segMain.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.2.9/js/jieba-js/segDict.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.2.9/js/jieba-js/segDictPlus.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.2.9/js/jieba-js/nnDict.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.2.9/js/jieba-js/nntDict.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.2.9/js/jieba-js/gzDict.js"></script>
   
   <!--<link type="text/css" rel="stylesheet" href="css/player/player.css"/>-->
-  <!--<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.2.8/css/player/player.css"/>-->
+  <!--<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.2.9/css/player/player.css"/>-->
 </head>
 
 <body>
@@ -358,6 +354,8 @@
 			<input class="btn btn-primary" type="submit" value="推導"/>
 		  </div>
 		</form>
+		<!--表單提交不刷新,form裏加上target="submitFrame"-->
+		<!--<iframe style="width:0; height:0; margin-top:-10px;" name="submitFrame" src="about:blank"></iframe>-->
 		</div>
 	  </div>
 	</div>
@@ -413,7 +411,7 @@
 			</button>
 		  </div>
 		  <div class="modal-body">
-			本站叫「狸貓的在線辭典 2.0 版」(Leimaau's Webdict 2.0)，上線於2020年02月，是一個具有私人性質的在線辭典，旨在記錄自己的學習筆記。相對於 1.0 版的 <a class="text-info" href="https://leimaau.github.io/leimaau-webdict/" target="_blank">Leimaau's Webdict</a> 本版有了較大的改進，程序的開發和製作得益於 sgalal 和匆匆的我的技術支持，特此致謝。</br></br>本站原先開發和運行於 github 中，爲了方便國內用戶訪問，故將程序備份於 gitee 中運行，因此本站有兩個地址，github 地址作<a class="text-info" target="_blank" href="https://leimaau.github.io/leimaau-webdict2/">主䈎地址</a>，gitee 地址作<a class="text-info" target="_blank" href="https://leimaau.gitee.io/leimaau-webdict2/">國內鏡像</a>。關於生僻字的顯示，可在<a class="text-info" target="_blank" href="https://ctext.org/font-test-page/zh">字體試驗䈎</a>查看。</br></br>
+			本站叫「狸貓的在線辭典 2.0 版」(Leimaau's Webdict 2.0)，上線於2020年02月，是一個私人在線辭典，旨在記錄自己的學習筆記。相對於 1.0 版的 <a class="text-info" href="https://leimaau.github.io/leimaau-webdict/" target="_blank">Leimaau's Webdict</a> 本版有了較大的改進，程序的開發和製作得益於 sgalal 和匆匆的我的技術支持，特此致謝。</br></br>本站原先開發和運行於 github 中，爲了方便國內用戶訪問，故將程序備份於 gitee 中運行，因此本站有兩個地址，github 地址作<a class="text-info" target="_blank" href="https://leimaau.github.io/leimaau-webdict2/">主䈎地址</a>，gitee 地址作<a class="text-info" target="_blank" href="https://leimaau.gitee.io/leimaau-webdict2/">國內鏡像</a>。關於生僻字的顯示，可在<a class="text-info" target="_blank" href="https://ctext.org/font-test-page/zh">字體試驗䈎</a>查看。</br></br>
 			字典中計算資料權重的幾何平均值時對各資料權重的預設值爲：</br>
 			9(2018)；</br>
 			7(1998、2008、2009)；</br>
@@ -592,8 +590,9 @@
 
       <div class="row col-md-12">
         <button type="button" id="dataButt" class="btn btn-outline-info btn-sm" data-toggle="modal" data-target="#dataModal">選擇資料</button>
-		<!--<button type="button" id="dataButt2" class="btn btn-outline-info btn-sm mx-3" data-toggle="modal" data-target="#dataModal2">復古音開關</button>-->
-      </div>
+		<button type="button" id="dataButt2" class="btn btn-outline-info btn-sm mx-3" data-toggle="modal" data-target="#dataModal2">中古音查詢</button>
+		<button type="button" id="dataButt3" class="btn btn-outline-info btn-sm" data-toggle="modal" data-target="#dataModal3">早期粵音查詢</button>
+	  </div>
 	  
       <!-- 模態框 -->
       <div class="modal fade" id="dataModal">
@@ -637,49 +636,80 @@
         </div>
       </div>
       <!-- 模態框 -->
-      <!--<div class="modal fade" id="dataModal2">
+      <div class="modal fade" id="dataModal2">
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">復古音開關</h4>
+              <h4 class="modal-title">中古音查詢</h4>
               <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
-            <div class="modal-body">
-				<span><strong>【說明】</strong>本站提供的南寧白話審音表和審詞表作了如下處理：</br></br>恢復見組果宕曾攝一等合口介音〔光gwong、國gwok、過gwo〕，即(g|k)o(k|ng)->(gw|kw)o(k|ng)</br></br>可以簡稱之爲「復古音」，如此設置一是爲計算機處理方便，二是爲輸入法碼表單字音作規範，三是爲研究提供參攷。而本系統查詢單字和詞彙時默認將復古音隱藏，只顯示脫落介音後的實際語音，若想顯示復古音，可打開下面的復古音開關。</span></br></br>
-				<span><input name="status" type="checkbox" checked></span></br>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+			<div class="modal-body">
+				<table class="table table-bordered table-sm" id="outTab_select"></table>
+				<div class="mt-2"><span>※ 除了反切和釋文其他項必填</span></div>
+				<div class="mt-0"><span>※ 重紐項只對東方版《廣韻》查詢較精確</span></div>
+			</div>
+			<div class="modal-footer">
+			  <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+              <button type="button" class="btn btn-info" id="btn-cancel" onclick="javascript:{document.getElementsByClassName('checkbox-triungkox').forEach((item)=>{ item.checked = false});document.getElementsByClassName('text-fanqie').forEach((item)=>{ item.disabled = true });document.getElementsByClassName('text-expl').forEach((item)=>{ item.disabled = true });}">取消全選</button>
+              <button type="button" class="btn btn-info" id="btn-allselect" onclick="javascript:{document.getElementsByClassName('checkbox-triungkox').forEach((item)=>{ item.checked = true});document.getElementsByClassName('text-fanqie').forEach((item)=>{ item.disabled = false });document.getElementsByClassName('text-expl').forEach((item)=>{ item.disabled = false });}">全選</button>
+			  <button type="button" class="btn btn-primary" onclick="javascript:triungkoxFun();">查詢</button>
 			</div>
           </div>
         </div>
-      </div>-->
+      </div>
+      <!-- 模態框 -->
+      <div class="modal fade" id="dataModal3">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">早期粵音查詢</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+			<div class="modal-body">
+				<table class="table table-bordered table-sm" id="outTab_selectY"></table>
+				<div class="mt-2"><span>※ 除了反切和字義其他項必填</span></div>
+			</div>
+			<div class="modal-footer">
+			  <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+              <button type="button" class="btn btn-info" id="btn-cancel" onclick="javascript:{document.getElementsByClassName('checkbox-jyut').forEach((item)=>{ item.checked = false});document.getElementsByClassName('text-jyut-fanqie').forEach((item)=>{ item.disabled = true });document.getElementsByClassName('text-jyut-expl').forEach((item)=>{ item.disabled = true });}">取消全選</button>
+              <button type="button" class="btn btn-info" id="btn-allselect" onclick="javascript:{document.getElementsByClassName('checkbox-jyut').forEach((item)=>{ item.checked = true});document.getElementsByClassName('text-jyut-fanqie').forEach((item)=>{ item.disabled = false });document.getElementsByClassName('text-jyut-expl').forEach((item)=>{ item.disabled = false });}">全選</button>
+			  <button type="button" class="btn btn-primary" onclick="javascript:oldJyutFun();">查詢</button>
+			</div>
+          </div>
+        </div>
+      </div>
 	  
 	  <span class="row col-md-12 mt-3"><output id="outputAlert" class="w-100"></output></span>
 	  
-	  <div class="row form-group col-md-12 table-responsive rowtabDiv">
+	  <div class="row form-group col-md-12 table-responsive rowtabDiv rowtabDiv-triungkox">
 		<div class="classHighcharts" id="outWordCloud_triungkox"></div>
 		<span class="classTabTitle" id="outTabTitle_triungkox"></span>
 		<table class="classTable" id="outTab_triungkox"></table>
 	  </div>
 	  
-	  <div class="row form-group col-md-12 table-responsive rowtabDiv">
+	  <div class="row form-group col-md-12 table-responsive rowtabDiv rowtabDiv-triungkox_tung">
+		<div class="classHighcharts" id="outWordCloud_triungkox_tung"></div>
+		<span class="classTabTitle" id="outTabTitle_triungkox_tung"></span>
+		<table class="classTable" id="outTab_triungkox_tung"></table>
+	  </div>
+	  
+	  <div class="row form-group col-md-12 table-responsive rowtabDiv rowtabDiv-triungkoxghuh">
 		<div class="classHighcharts" id="outWordCloud_triungkoxghuh"></div>
 		<span class="classTabTitle" id="outTabTitle_triungkoxghuh"></span>
 		<table class="classTable" id="outTab_triungkoxghuh"></table>
 	  </div>
 
-	  <div class="row form-group col-md-12 table-responsive rowtabDiv">
+	  <div class="row form-group col-md-12 table-responsive rowtabDiv rowtabDiv-gw">
 		<span class="classTabTitle" id="outTabTitle_gw"></span>
 		<table class="classTable" id="outTab_gw"></table>
 	  </div>
 	  
-	  <div class="row form-group col-md-12 table-responsive rowtabDiv">
+	  <div class="row form-group col-md-12 table-responsive rowtabDiv rowtabDiv-jw">
 		<span class="classTabTitle" id="outTabTitle_jw"></span>
 		<table class="classTable" id="outTab_jw"></table>
 	  </div>
 	  
-	  <div class="row form-group col-md-12 table-responsive rowtabDiv">
+	  <div class="row form-group col-md-12 table-responsive rowtabDiv rowtabDiv-jj">
 		<span class="classTabTitle" id="outTabTitle_jj"></span>
 		<table class="classTable" id="outTab_jj"></table>
 	  </div>
@@ -687,7 +717,7 @@
 	  <div class="row form-group col-md-12">
 		<div class="col-md-6">
 		  <nav>
-			<div class="nav nav-tabs d-none" id="nav-tab" role="tablist">
+			<div class="nav nav-tabs nav-tab-b d-none" id="nav-tab" role="tablist">
 			  <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab"
 				aria-controls="nav-home" aria-selected="true">餅圖</a>
 			  <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab"
@@ -705,7 +735,7 @@
 		</div>
 		<div class="col-md-6">
 		  <nav>
-			<div class="nav nav-tabs d-none" id="nav-tab-bw" role="tablist">
+			<div class="nav nav-tabs nav-tab-bw d-none" id="nav-tab-bw" role="tablist">
 			  <a class="nav-item nav-link active" id="nav-home-tab-bw" data-toggle="tab" href="#nav-home-bw" role="tab"
 				aria-controls="nav-home-bw" aria-selected="true">餅圖</a>
 			  <a class="nav-item nav-link" id="nav-profile-tab-bw" data-toggle="tab" href="#nav-profile-bw" role="tab"
@@ -723,42 +753,42 @@
 		</div>
 	  </div>
 
-	  <div class="row form-group col-md-12 table-responsive rowtabDiv">
+	  <div class="row form-group col-md-12 table-responsive rowtabDiv rowtabDiv-b">
 		<span class="classTabTitle" id="outTabTitle"></span>
 		<table class="classTable" id="outTab"></table>
 	  </div>
 	  
-	  <div class="row form-group col-md-12 table-responsive rowtabDiv">
+	  <div class="row form-group col-md-12 table-responsive rowtabDiv rowtabDiv-bw">
 		<span class="classTabTitle" id="outTabTitle_bw"></span>
 		<table class="classTable" id="outTab_bw"></table>
 	  </div>
 	  
-	  <div class="row form-group col-md-12 table-responsive rowtabDiv">
+	  <div class="row form-group col-md-12 table-responsive rowtabDiv rowtabDiv-zb_dg">
 		<span class="classTabTitle" id="outTabTitle_zb_dg"></span>
 		<table class="classTable" id="outTab_zb_dg"></table>
 	  </div>
 	  
-	  <div class="row form-group col-md-12 table-responsive rowtabDiv">
+	  <div class="row form-group col-md-12 table-responsive rowtabDiv rowtabDiv-zb_sz">
 		<span class="classTabTitle" id="outTabTitle_zb_sz"></span>
 		<table class="classTable" id="outTab_zb_sz"></table>
 	  </div>
 	  
-	  <div class="row form-group col-md-12 table-responsive rowtabDiv">
+	  <div class="row form-group col-md-12 table-responsive rowtabDiv rowtabDiv-zb_b_wj">
 		<span class="classTabTitle" id="outTabTitle_zb_b_wj"></span>
 		<table class="classTable" id="outTab_zb_b_wj"></table>
 	  </div>
 	  
-	  <div class="row form-group col-md-12 table-responsive rowtabDiv">
+	  <div class="row form-group col-md-12 table-responsive rowtabDiv rowtabDiv-zb_wj">
 		<span class="classTabTitle" id="outTabTitle_zb_wj"></span>
 		<table class="classTable" id="outTab_zb_wj"></table>
 	  </div>
 	  
-	  <div class="row form-group col-md-12 table-responsive rowtabDiv">
+	  <div class="row form-group col-md-12 table-responsive rowtabDiv rowtabDiv-zb_bjlu">
 		<span class="classTabTitle" id="outTabTitle_zb_bjlu"></span>
 		<table class="classTable" id="outTab_zb_bjlu"></table>
 	  </div>
 	  
-	  <div class="row form-group col-md-12 table-responsive rowtabDiv">
+	  <div class="row form-group col-md-12 table-responsive rowtabDiv rowtabDiv-zb_ms">
 		<span class="classTabTitle" id="outTabTitle_zb_ms"></span>
 		<table class="classTable" id="outTab_zb_ms"></table>
 	  </div>
@@ -810,7 +840,7 @@
   <!--<script type="text/javascript" src="js/player/jquery.marquee.min.js"></script>-->
   <!--<script type="text/javascript" src="js/player/player.js"></script>-->
   <!--<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery.marquee@1.5.0/jquery.marquee.min.js"></script>-->
-  <!--<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.2.8/js/player/player.js"></script>-->
+  <!--<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leimaau-npm-cdn@1.2.9/js/player/player.js"></script>-->
   
   <div class="footer text-center mt-auto py-3">
 	  <div class="foot-container user-font">

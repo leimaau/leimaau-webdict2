@@ -15,7 +15,7 @@ sqlite> .import tab_temp.txt tab_1994   # .import FileName TableName 放在同�
 
 -- 表结构 
 
--- 广韵
+-- 广韵（韵典版）
 CREATE TABLE tab_1008(
    ID             TEXT    NOT NULL,
    WORD1          TEXT    NOT NULL,
@@ -29,8 +29,24 @@ CREATE TABLE tab_1008(
    YUNBU1         TEXT    NOT NULL,
    YUNBU2         TEXT    NOT NULL,
    TONE           TEXT    NOT NULL,
-   FIRST          TEXT    NOT NULL,
+   NIU          TEXT    NOT NULL,
    PINYIN         TEXT    NOT NULL
+);
+
+-- 广韵（东方版）
+CREATE TABLE tab_1008_d(
+   ID             TEXT    NOT NULL,
+   WORD          TEXT    NOT NULL,
+   NIU          TEXT    NOT NULL,
+   YUNBU         TEXT    NOT NULL,
+   SHE            TEXT    NOT NULL,
+   HU             TEXT    NOT NULL,
+   DENG           TEXT    NOT NULL,
+   TONE           TEXT    NOT NULL,
+   CHONG         TEXT    NOT NULL,
+   FANQIE        TEXT    NOT NULL,
+   FLAG         TEXT    NOT NULL,
+   EXPL           TEXT    
 );
 
 -- 集韵

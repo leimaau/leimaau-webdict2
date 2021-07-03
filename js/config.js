@@ -4,7 +4,7 @@
 
 const cdnAddr = [];
 cdnAddr.push('https://cdn.jsdelivr.net/npm');
-cdnAddr.push('leimaau-npm-cdn@1.2.8');
+cdnAddr.push('leimaau-npm-cdn@1.2.9');
 cdnAddr.push('db/leimaau.db3');
 
 const DictConfig = {
@@ -36,9 +36,10 @@ const colData_oldbook = [
 ];
 
 const rowData_oldbook = [
-	{ OLDBOOK: `1008年《廣韻》[<a class="text-info" target="_blank" href="https://zhuanlan.zhihu.com/p/20430939">poem覈校版20170209</a>]`, TRIUNGKOX: 'tab_1008_g', OLDCANTO: '', CANTO: '' }
+	{ OLDBOOK: `1008年《廣韻》[<a class="text-info" target="_blank" href="https://zhuanlan.zhihu.com/p/20430939">網絡poem覈校版20170209</a>]`, TRIUNGKOX: 'tab_1008_g', OLDCANTO: '', CANTO: '' }
+	, { OLDBOOK: `1008年《廣韻》[<a class="text-info" target="_blank" href="http://www.eastling.org/">東方語言學版</a>]`, TRIUNGKOX: 'tab_1008_d_g', OLDCANTO: '', CANTO: '' }
 	, { OLDBOOK: `1039年《集韻》[<a class="text-info" target="_blank" href="http://www.eastling.org/">東方語言學版</a>]`, TRIUNGKOX: 'tab_1039_g', OLDCANTO: '', CANTO: '' }
-	, { OLDBOOK: `1838年重鐫本《江湖尺牘分韻撮要合集》[<a class="text-info" target="_blank" href="http://ytenx.org/pyonh/">韻典網poem覈校版</a>](本站擬音)`, TRIUNGKOX: '', OLDCANTO: 'tab_1838_g', CANTO: '' }
+	, { OLDBOOK: `1838年重鐫本《江湖尺牘分韻撮要合集》[首版爲1782年][<a class="text-info" target="_blank" href="http://ytenx.org/pyonh/">韻典網poem覈校版</a>](本站擬音)`, TRIUNGKOX: '', OLDCANTO: 'tab_1838_g', CANTO: '' }
 	, { OLDBOOK: `1856年衛三畏廉士甫《英華分韻撮要》[<a class="text-info" target="_blank" href="https://jyut.net/">粵音資料集叢版</a>](本站擬音)`, TRIUNGKOX: '', OLDCANTO: 'tab_1856_g', CANTO: '' }
 	, { OLDBOOK: `1941年黃錫凌《粵音韻彙》[<a class="text-info" target="_blank" href="https://jyut.net/">粵音資料集叢版</a>](本站覆校)`, TRIUNGKOX: '', OLDCANTO: '', CANTO: 'tab_1941_g' }
 ];
@@ -81,7 +82,7 @@ const rowData_book = [
 	, { BOOK: '2018年覃遠雄《南寧心墟平話語音系統》', NN: '', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_SL: 'noData', NN_S: '', NN_SH: '', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: '' , MS_P: ''}
 	, { BOOK: '<a class="text-info" target="_blank" href="https://leimaau.github.io/leimaau-webdict2/db/2018.html">2018年Leimaau《南寧話審音表》(本站提供)</a>', NN: 'tab_2018', NN_D: '', NN_Y: '', HX_B: '', NN_T: 'tab_2018_bw', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: '' , MS_P: ''}
 	, { BOOK: '2019年莫思敏、談婷《廣西橫縣白話同音字彙》', NN: '', NN_D: '', NN_Y: '', HX_B: 'tab_2019_zb_b_wj', NN_T: '', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: '' , MS_P: ''}
-	, { BOOK: '<a class="text-info" target="_blank" href="https://leimaau.github.io/leimaau-webdict2/db/2021.html">2021年Leimaau《單字音零散資料匯總》(本站提供)</a>', NN: 'tab_2021', NN_D: '', NN_Y: '', HX_B: '', NN_T: 'noData', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: '' , MS_P: ''}
+	, { BOOK: '<a class="text-info" target="_blank" href="https://leimaau.github.io/leimaau-webdict2/db/2021.html">2021年Leimaau《單字音零散資料匯總》(本站提供)</a>', NN: 'tab_2021', NN_D: '', NN_Y: '', HX_B: '', NN_T: 'tab_2021_bw', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: '' , MS_P: ''}
 ];
 
 // 詞典資料
@@ -132,8 +133,8 @@ const rowData_book_phrase = [
 	, { BOOK: '2017年韋慧梅《南寧白話詞彙研究》', NN: 'noData', NN_D: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', HX_P: '', BY_P: '', BY_P2: '' }
 	, { BOOK: '2017年詹伯慧、張振興《漢語方言學大詞典》', NN: '', NN_D: '', HX_B: '', NN_T: 'noData', NN_SL: '', NN_S: '', HX_P: '', BY_P: '', BY_P2: '' }
 	, { BOOK: '2019年莫思敏《橫縣白話語音研究》', NN: '', NN_D: '', HX_B: 'noData', NN_T: '', NN_SL: '', NN_S: '', HX_P: '', BY_P: '', BY_P2: '' }
-	, { BOOK: '2020年Leimaau《南寧話審詞表》(本站提供)', NN: 'tab_2020_phrase', NN_D: '', HX_B: '', NN_T: 'tab_2020_bw_phrase', NN_SL: '', NN_S: '', HX_P: '', BY_P: '', BY_P2: '' }
-	, { BOOK: '2021年Leimaau《詞彙零散資料匯總》(本站提供)', NN: 'tab_2021_phrase', NN_D: '', HX_B: '', NN_T: 'noData', NN_SL: '', NN_S: '', HX_P: '', BY_P: '', BY_P2: '' }
+	, { BOOK: '<a class="text-info" target="_blank" href="https://leimaau.github.io/leimaau-webdict2/db/2020_phrase.html">2020年Leimaau《南寧話審詞表》(本站提供)</a>', NN: 'tab_2020_phrase', NN_D: '', HX_B: '', NN_T: 'tab_2020_bw_phrase', NN_SL: '', NN_S: '', HX_P: '', BY_P: '', BY_P2: '' }
+	, { BOOK: '<a class="text-info" target="_blank" href="https://leimaau.github.io/leimaau-webdict2/db/2021_phrase.html">2021年Leimaau《詞彙零散資料匯總》(本站提供)</a>', NN: 'tab_2021_phrase', NN_D: '', HX_B: '', NN_T: 'tab_2021_bw_phrase', NN_SL: '', NN_S: '', HX_P: '', BY_P: '', BY_P2: '' }
 ];
 
 // 語法資料
@@ -215,7 +216,7 @@ const colData_triungkox = [
 	//, {field: 'ID',title: 'ID'}
 	, { field: 'WORD1', title: '字頭(覈校前)', align: 'center', formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'char', 'dicWord')">${value}</a>` } }
 	, { field: 'WORD2', title: '字頭(覈校後)', align: 'center', formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'char', 'dicWord')">${value}</a>` } }
-	, { field: 'FIRST', title: '聲紐' }
+	, { field: 'NIU', title: '聲紐' }
 	, { field: 'YUNBU1', title: '韻部(調整前)' }
 	, { field: 'YUNBU2', title: '韻部(調整後)' }
 	, { field: 'SHE', title: '攝' }
@@ -225,7 +226,23 @@ const colData_triungkox = [
 	, { field: 'FANQIE1', title: '反切(覈校前)' }
 	, { field: 'FANQIE2', title: '反切(覈校後)' }
 	, { field: 'PINYIN', title: '中古拼音(polyhedron版)', formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'jyut6ping3', 'dicWord')">${value}</a>` } }
-	, { field: 'EXPL', title: '釋義', formatter: (value) => { return `<p data-toggle="tooltip" data-placement="left" title="${value}">${value}<p/>` }  }
+	, { field: 'EXPL', title: '釋文', formatter: (value) => { return `<p data-toggle="tooltip" data-placement="left" title="${value}">${value}<p/>` }  }
+];
+
+const colData_triungkox_tung = [
+	{ field: 'YEAR', title: '資料', align: 'center', formatter: (value) => { return `<span class="user-font">${value.replace('tab_', '').replace('_d', '')}</span>` } }
+	//, {field: 'ID',title: 'ID'}
+	, { field: 'WORD', title: '字頭', align: 'center', formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'char', 'dicWord')">${value}</a>` } }
+	, { field: 'NIU', title: '聲' }
+	, { field: 'YUNBU', title: '韻' }
+	//, { field: 'SHE', title: '攝' }
+	, { field: 'HU', title: '呼' }
+	, { field: 'DENG', title: '等' }
+	, { field: 'TONE', title: '調' }
+	, { field: 'CHONG', title: '重紐' }
+	, { field: 'FANQIE', title: '反切' }
+	, { field: 'FLAG', title: '異讀' }
+	, { field: 'EXPL', title: '釋文', formatter: (value) => { return `<p data-toggle="tooltip" data-placement="left" title="${value}">${value}<p/>` }  }
 ];
 
 const colData_triungkoxghuh = [
@@ -239,7 +256,7 @@ const colData_triungkoxghuh = [
 	, { field: 'DENG', title: '等' }
 	, { field: 'TONE', title: '調' }
 	, { field: 'FANQIE', title: '反切' }
-	, { field: 'EXPL', title: '釋義', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` }  }
+	, { field: 'EXPL', title: '釋文', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` }  }
 ];
 
 const colData_gw = [
@@ -313,17 +330,17 @@ const colData_proverb = [
 const colData_phrase = [
 	{ field: 'YEAR', title: '資料', sortable : true, align: 'center', formatter: (value) => { return `<span class="user-font">${value.replace('_bw', '').replace('_phrase', '').replace('tab_', '')}</span>` } }
 	//, {field: 'ID',title: 'ID'}
-	, { field: 'TRADSIMP', title: '繁體〔簡體〕', sortable : true, align: 'center', formatter: (value) => { let charStr = value.split('|'), aLink = []; for (let i in charStr) aLink.push(`<a href="javascript:querySubmit('${charStr[i]}', '${i}'=='0' ? 'phrase' : 'phrase_simp', 'dicPhrase')">${charStr[i]}</a>`); return aLink.join('<br/>') } }
+	, { field: 'TRADSIMP', title: '繁體〔簡體〕', width: '550px', sortable : true, align: 'center', formatter: (value) => { let charStr = value.split('|'), aLink = []; for (let i in charStr) aLink.push(`<a href="javascript:querySubmit('${charStr[i]}', '${i}'=='0' ? 'phrase' : 'phrase_simp', 'dicPhrase')">${charStr[i]}</a>`); return aLink.join('<br/>') } }
 	//, { field: 'TRAD', title: '繁體', sortable : true, align: 'center', formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'phrase', 'dicPhrase')">${value}</a>` } }
 	//, { field: 'SIMP', title: '簡體', sortable : true, align: 'center', formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'phrase_simp', 'dicPhrase')">${value}</a>` } }
-	, { field: 'JYUTPING_IPA_TS', title: '粵拼〔統一IPA、原文IPA〕', sortable : true, formatter: (value) => { let jpStr = value.split('|'), aLink = []; for (let i in jpStr) aLink.push(i==0 ? `<a href="javascript:querySubmit('${jpStr[i]}', 'phrase_jyut6ping3', 'dicPhrase')">${jpStr[i]}</a>` : `${jpStr[i]}`); return aLink.join('<br/>') } }
+	, { field: 'JYUTPING_IPA_TS', title: '粵拼〔統一IPA、原文IPA〕', width: '550px', sortable : true, formatter: (value) => { let jpStr = value.split('|'), aLink = []; for (let i in jpStr) aLink.push(i==0 ? `<a href="javascript:querySubmit('${jpStr[i]}', 'phrase_jyut6ping3', 'dicPhrase')">${jpStr[i]}</a>` : `${jpStr[i]}`); return aLink.join('<br/>') } }
 	//, { field: 'IPA_S', title: '原文IPA', sortable : true }
 	//, { field: 'IPA_T', title: '統一IPA', sortable : true }
 	//, { field: 'JYUTPING', title: '粵拼', sortable : true, formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'phrase_jyut6ping3', 'dicPhrase')">${value}</a>` } }
-	, { field: 'SOUR', title: '來源', sortable : true, formatter: (value, row) => { return formatSOUR(value, row['YEAR'], 'png', 'phrase') } }
-	, { field: 'EXPL', title: '釋義', sortable : true, formatter: (value) => { return `<p data-toggle="tooltip" data-placement="left" title="${value}">${value}<p/>` } }
-	, { field: 'NOTE', title: '本站附註', sortable : true, formatter: (value) => { return `<p data-toggle="tooltip" data-placement="left" title="${value}">${value}<p/>` } }
-	, { field: 'CLASSIFI', title: '分類', sortable : true }
+	, { field: 'SOUR', title: '來源', width: '1500px', sortable : true, formatter: (value, row) => { return formatSOUR(value, row['YEAR'], 'png', 'phrase') } }
+	, { field: 'EXPL', title: '釋義', width: '550px', sortable : true, formatter: (value) => { return `<p data-toggle="tooltip" data-placement="left" title="${value}">${value}<p/>` } }
+	, { field: 'NOTE', title: '本站附註', width: '550px', sortable : true, formatter: (value) => { return `<p data-toggle="tooltip" data-placement="left" title="${value}">${value}<p/>` } }
+	, { field: 'CLASSIFI', title: '分類', sortable : true, formatter: (value) => { return `<p data-toggle="tooltip" data-placement="left" title="${value}">${value}<p/>` } }
 ];
 
 const colData_grammar = [
@@ -339,18 +356,18 @@ const colData_grammar = [
 	, { field: 'SOUR', title: '來源', width: '1500px', sortable : true, formatter: (value, row) => { return formatSOUR(value, row['YEAR'], 'png', 'grammar') } }
 	, { field: 'EXPL', title: '釋義', width: '550px', sortable : true, formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
 	, { field: 'NOTE', title: '本站附註', width: '550px', sortable : true, formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
-	, { field: 'CLASSIFI', title: '分類', sortable : true }
+	, { field: 'CLASSIFI', title: '分類', sortable : true, formatter: (value) => { return `<p data-toggle="tooltip" data-placement="left" title="${value}">${value}<p/>` } }
 ];
 
 // 格式化來源欄
 function formatSOUR(value, row_year, picType, qType) {
 	let bookname = '';
 	if (qType == 'char'){
-		bookname = rowData_book.find(item => (item.NN == row_year || item.NN_D == row_year || item.NN_Y == row_year || item.HX_B == row_year || item.NN_T == row_year || item.NN_S == row_year || item.HX_P == row_year || item.BY_P == row_year || item.MS_P == row_year)).BOOK;
+		bookname = rowData_book.find(item => (item.NN == row_year || item.NN == row_year.substring(0,8) || item.NN_D == row_year || item.NN_Y == row_year || item.HX_B == row_year || item.NN_T == row_year || item.NN_T == row_year.substring(0,11) || item.NN_S == row_year || item.HX_P == row_year || item.BY_P == row_year || item.MS_P == row_year)).BOOK;
 	} else if (qType == 'phrase') {
-		bookname = rowData_book_phrase.find(item => (item.NN == row_year || item.NN_D == row_year || item.HX_B == row_year || item.NN_T == row_year || item.NN_S == row_year || item.HX_P == row_year || item.BY_P == row_year)).BOOK;
+		bookname = rowData_book_phrase.find(item => (item.NN == row_year || item.NN == row_year.substring(0,15) || item.NN_D == row_year || item.HX_B == row_year || item.NN_T == row_year || item.NN_T == row_year.substring(0,18) || item.NN_S == row_year || item.HX_P == row_year || item.BY_P == row_year)).BOOK;
 	} else if (qType == 'grammar') {
-		bookname = rowData_book_grammar.find(item => (item.NN == row_year || item.NN_D == row_year || item.HX_B == row_year || item.NN_T == row_year || item.NN_S == row_year || item.HX_P == row_year || item.BY_P == row_year)).BOOK;
+		bookname = rowData_book_grammar.find(item => (item.NN == row_year || item.NN == row_year.substring(0,16) || item.NN_D == row_year || item.HX_B == row_year || item.NN_T == row_year || item.NN_T == row_year.substring(0,19) || item.NN_S == row_year || item.HX_P == row_year || item.BY_P == row_year)).BOOK;
 	};
 	bookname = bookname.replace(/<\/?a.*?>/g,'');
 	row_year = row_year.replace('_bw', '').replace('_phrase', '').replace('_grammar', '').replace('tab_', '');
@@ -369,12 +386,12 @@ function formatSOUR(value, row_year, picType, qType) {
 	else if (row_year == '201705') linkaddr =  linkaddr.replace('201705','2017') + 'hy/hy0'
 	else if (row_year == '2018') linkaddr = ''
 	else if (row_year == '201806') linkaddr = linkaddr.replace('201806','2018') + 'yj/yj'
-	else if (row_year == '2021') {linkaddr = ''; bookname = '〔2021年Leimaau匯總〕' + value};
+	else if (/2021/.test(row_year)) {linkaddr = ''; bookname = '〔2021年Leimaau匯總〕' + value};
 	
 	if (value == '' || linkaddr == '') {
-		return (qType != 'grammar') ? `<span style="white-space: nowrap">${bookname}</span>` : `<span style="white-space: normal">${bookname}<span/>`;
+		return (qType == 'char') ? `<span style="white-space: nowrap">${bookname}</span>` : `<span style="white-space: normal">${bookname}<span/>`;
 	} else {
-		return (qType != 'grammar') ? `<span style="white-space: nowrap">${bookname + pageSplit(value, picType, linkaddr)}</span>` : `<span style="white-space: normal">${bookname + pageSplit(value, picType, linkaddr)}</span>`;
+		return (qType == 'char') ? `<span style="white-space: nowrap">${bookname + pageSplit(value, picType, linkaddr)}</span>` : `<span style="white-space: normal">${bookname + pageSplit(value, picType, linkaddr)}</span>`;
 	};
 }
 
@@ -388,9 +405,226 @@ function pageSplit(value, picType, linkaddr) {
 	return pageLink.join('，');
 }
 
+const shengniu = {'幫':['幫','非'],
+'滂':['滂','敷'],
+'並':['並','奉'],
+'明':['明','微'],
+'端':['端'],
+'透':['透'],
+'定':['定'],
+'泥':['泥'],
+'知':['知'],
+'徹':['徹'],
+'澄':['澄'],
+'娘':['娘','孃'],
+'精':['精'],
+'清':['清'],
+'從':['從'],
+'心':['心'],
+'邪':['邪'],
+'莊':['莊','照莊'],
+'初':['初','穿初'],
+'崇':['崇','牀崇'],
+'生':['生','審生'],
+'章':['章'],
+'昌':['昌','穿昌'],
+'禪':['禪','常','俟','禪俟'],
+'書':['書','審書'],
+'船':['船','牀船'],
+'見':['見'],
+'溪':['溪'],
+'群':['群'],
+'疑':['疑'],
+'曉':['曉'],
+'匣':['匣'],
+'影':['影'],
+'云':['云','喻云'],
+'來':['來'],
+'以':['以','喻以'],
+'日':['日']};
+
+const yunmu = {'東':['東','董','送','屋'],
+'冬':['冬','湩','宋','沃','（湩）'],
+'鍾':['鍾','腫','用','燭'],
+'江':['江','講','絳','覺'],
+'支':['支','紙','寘'],
+'脂':['脂','旨','至'],
+'之':['之','止','志'],
+'微':['微','尾','未'],
+'魚':['魚','語','御'],
+'虞':['虞','麌','遇'],
+'模':['模','姥','暮'],
+'齊':['齊','薺','霽'],
+'祭':['祭'],
+'泰':['泰'],
+'佳':['佳','蟹','卦'],
+'皆':['皆','駭','怪'],
+'夬':['夬'],
+'灰':['灰','賄','隊'],
+'咍':['咍','海','代'],
+'廢':['廢'],
+'眞':['眞','真','軫','震','質'],
+'真':['眞','真','軫','震','質'],
+'諄':['諄','準','稕','術'],
+'臻':['臻','𧤛','櫬','櫛','（櫬）'],
+'文':['文','吻','問','物'],
+'欣':['欣','隱','焮','迄','殷'],
+'殷':['欣','隱','焮','迄','殷'],
+'元':['元','阮','願','月'],
+'魂':['魂','混','慁','沒'],
+'痕':['痕','很','恨','麧'],
+'寒':['寒','旱','翰','曷'],
+'桓':['桓','緩','換','末'],
+'刪':['刪','潸','諫','黠'],
+'山':['山','產','襇','鎋'],
+'先':['先','銑','霰','屑'],
+'仙':['仙','獮','線','薛'],
+'蕭':['蕭','篠','嘯'],
+'宵':['宵','小','笑'],
+'肴':['肴','巧','效'],
+'豪':['豪','晧','号'],
+'歌':['歌','哿','箇','戈','果','過'],
+'戈':['戈','果','過','歌','哿','箇'],
+'麻':['麻','馬','禡'],
+'陽':['陽','養','漾','藥'],
+'唐':['唐','蕩','宕','鐸'],
+'庚':['庚','梗','映','陌'],
+'耕':['耕','耿','諍','麥'],
+'清':['清','靜','勁','昔'],
+'青':['青','迥','徑','錫'],
+'蒸':['蒸','拯','證','職'],
+'登':['登','等','嶝','德'],
+'尤':['尤','有','宥'],
+'侯':['侯','厚','候'],
+'幽':['幽','黝','幼'],
+'侵':['侵','寑','沁','緝'],
+'覃':['覃','感','勘','合'],
+'談':['談','敢','闞','盍'],
+'鹽':['鹽','琰','豔','葉'],
+'添':['添','忝','㮇','怗'],
+'咸':['咸','豏','陷','洽'],
+'銜':['銜','檻','鑑','狎'],
+'嚴':['嚴','儼','釅','業'],
+'凡':['凡','梵','范','乏'],
+'屋':['屋'],
+'沃':['沃'],
+'燭':['燭'],
+'覺':['覺'],
+'質':['質'],
+'術':['術'],
+'櫛':['櫛'],
+'物':['物'],
+'迄':['迄'],
+'月':['月'],
+'沒':['沒'],
+'麧':['麧'],
+'曷':['曷'],
+'末':['末'],
+'黠':['黠'],
+'鎋':['鎋'],
+'屑':['屑'],
+'薛':['薛'],
+'藥':['藥'],
+'鐸':['鐸'],
+'陌':['陌'],
+'麥':['麥'],
+'昔':['昔'],
+'錫':['錫'],
+'職':['職'],
+'德':['德'],
+'緝':['緝'],
+'合':['合'],
+'盍':['盍'],
+'葉':['葉'],
+'怗':['怗','帖'],
+'帖':['怗','帖'],
+'洽':['洽'],
+'狎':['狎'],
+'業':['業'],
+'乏':['乏']};
+
+
+// 古音查詢
+const colData_select = [
+	{ field: 'SHOW', title: '說明', align: 'left' }
+	, { field: 'ITEM', title: '選項', align: 'left', formatter: (value,row,index) => { return formatCheckBox2(value,index) } }
+];
+
+const rowData_select = [
+	{ SHOW: `<div class="custom-control custom-checkbox custom-control-inline"><input type="checkbox" class="custom-control-input checkbox-triungkox" id="checkbox-niu" name="dataCheck" value="checkbox-niu" onclick="javascript:{document.getElementsByClassName('checkbox-0').forEach((item)=>{ item.checked = this.checked });}"><label class="custom-control-label" for="checkbox-niu">聲</label></div>`, ITEM: `幫組 幫 滂 並 明|端組 端 透 定 泥|知組 知 徹 澄 娘|精組 精 清 從 心 邪|莊組 莊 初 崇 生|章組 章 昌 禪 書 船|見組 見 溪 群 疑 曉 匣 影 云|來組 來 以 日` }
+	, { SHOW: `<div class="custom-control custom-checkbox custom-control-inline"><input type="checkbox" class="custom-control-input checkbox-triungkox" id="checkbox-yun" name="dataCheck" value="checkbox-yun" onclick="javascript:{document.getElementsByClassName('checkbox-1').forEach((item)=>{ item.checked = this.checked });}"><label class="custom-control-label" for="checkbox-yun">韻</label></div>`, ITEM: `果陰 歌|假陰 麻|遇陰 模 魚 虞|流陰 侯 尤 幽|效陰 豪 肴 宵 蕭|止陰 支 脂 之 微|蟹陰 咍 泰 皆 佳 夬 祭 廢 齊 灰|咸陽 覃 談 咸 銜 鹽 嚴 添 凡|深陽 侵|山陽 寒 山 刪 先 仙 元|臻陽 痕 真 臻 殷 魂 文|梗陽 庚 耕 清 青|宕陽 唐 陽|曾陽 登 蒸|江陽 江|通陽 東 冬 鍾|咸入 合 盍 洽 狎 葉 業 帖 乏|深入 緝|山入 曷 鎋 黠 屑 薛 月|臻入 質 櫛 迄 沒 物|梗入 陌 麥 昔 錫|宕入 鐸 藥|曾入 德 職|江入 覺|通入 屋 沃 燭` }
+	, { SHOW: `<div class="custom-control custom-checkbox custom-control-inline"><input type="checkbox" class="custom-control-input checkbox-triungkox" id="checkbox-hu" name="dataCheck" value="checkbox-hu" onclick="javascript:{document.getElementsByClassName('checkbox-2').forEach((item)=>{ item.checked = this.checked });}"><label class="custom-control-label" for="checkbox-hu">呼</label></div>`, ITEM: `開口 合口` }
+	, { SHOW: `<div class="custom-control custom-checkbox custom-control-inline"><input type="checkbox" class="custom-control-input checkbox-triungkox" id="checkbox-deng" name="dataCheck" value="checkbox-deng" onclick="javascript:{document.getElementsByClassName('checkbox-3').forEach((item)=>{ item.checked = this.checked });}"><label class="custom-control-label" for="checkbox-deng">等</label></div>`, ITEM: `一等 二等 三等 四等` }
+	, { SHOW: `<div class="custom-control custom-checkbox custom-control-inline"><input type="checkbox" class="custom-control-input checkbox-triungkox" id="checkbox-tone" name="dataCheck" value="checkbox-tone" onclick="javascript:{document.getElementsByClassName('checkbox-4').forEach((item)=>{ item.checked = this.checked });}"><label class="custom-control-label" for="checkbox-tone">調</label></div>`, ITEM: `平聲 上聲 去聲 入聲` }
+	, { SHOW: `<div class="custom-control custom-checkbox custom-control-inline"><input type="checkbox" class="custom-control-input checkbox-triungkox" id="checkbox-chong" name="dataCheck" value="checkbox-chong" onclick="javascript:{document.getElementsByClassName('checkbox-5').forEach((item)=>{ item.checked = this.checked });}"><label class="custom-control-label" for="checkbox-chong">重紐</label></div>`, ITEM: `A B X O` }
+	, { SHOW: `<div class="custom-control custom-checkbox custom-control-inline"><input type="checkbox" class="custom-control-input checkbox-triungkox" id="checkbox-fanqie" name="dataCheck" value="checkbox-fanqie" onclick="javascript:{document.getElementsByClassName('text-fanqie').forEach((item)=>{ item.disabled = !this.checked });}"><label class="custom-control-label" for="checkbox-fanqie">反切</label></div>`, ITEM: `` }
+	, { SHOW: `<div class="custom-control custom-checkbox custom-control-inline"><input type="checkbox" class="custom-control-input checkbox-triungkox" id="checkbox-expl" name="dataCheck" value="checkbox-expl" onclick="javascript:{document.getElementsByClassName('text-expl').forEach((item)=>{ item.disabled = !this.checked });}"><label class="custom-control-label" for="checkbox-expl">釋文</label></div>`, ITEM: `` }
+];
+
+// 格式化顯示爲checkbox
+function formatCheckBox2 (value,index) {
+	let selArr = [];
+	for (let i in value.split('|')) {
+		for (let j in value.split('|')[i].split(' ')) {
+			if (index==0 || index==1){
+				if (j!= 0){
+					selArr.push(`<div class="custom-control custom-checkbox custom-control-inline"><input type="checkbox" class="custom-control-input checkbox-triungkox triungkox-item-${index} checkbox-${index} checkbox-${index}-${i}" id="checkbox_${index}${i}${j}" name="dataCheck" value="${value.split('|')[i].split(' ')[j]}"><label class="custom-control-label" for="checkbox_${index}${i}${j}">${value.split('|')[i].split(' ')[j]}</label></div>`);
+				}else{
+					selArr.push(`<div class="custom-control custom-checkbox custom-control-inline"><input type="checkbox" class="custom-control-input checkbox-triungkox checkbox-${index} checkbox-${index}-${i}" id="checkbox_${index}${i}${j}" name="dataCheck" value="${value.split('|')[i].split(' ')[j]}" onclick="javascript:{document.getElementsByClassName('checkbox-${index}-${i}').forEach((item)=>{ item.checked = this.checked });}"><label class="custom-control-label" for="checkbox_${index}${i}${j}">${value.split('|')[i].split(' ')[j]}</label></div>`);
+				}
+			} else if(index==6){
+				selArr.push(`<div class="custom-control custom-text custom-control-inline"><input type="text" class="form-control text-fanqie" id="text_fanqie" value="" disabled/></div>`);
+			} else if(index==7){
+				selArr.push(`<div class="custom-control custom-text custom-control-inline"><input type="text" class="form-control text-expl" id="text_expl" value="" disabled/></div>`);
+			} else {
+				selArr.push(`<div class="custom-control custom-checkbox custom-control-inline"><input type="checkbox" class="custom-control-input checkbox-triungkox checkbox-${index} checkbox-${index}-${i}" id="checkbox_${index}${i}${j}" name="dataCheck" value="${value.split('|')[i].split(' ')[j]}"><label class="custom-control-label" for="checkbox_${index}${i}${j}">${value.split('|')[i].split(' ')[j]}</label></div>`);
+			}
+		}
+		selArr.push(`<br/>`);
+	}
+	return selArr.join('');
+}
+
+// 早期粵音查詢
+const colData_selectY = [
+	{ field: 'SHOW', title: '說明', align: 'left' }
+	, { field: 'ITEM', title: '選項', align: 'left', formatter: (value,row,index) => { return formatCheckBox3(value,index) } }
+];
+
+const rowData_selectY = [
+	{ SHOW: `<div class="custom-control custom-checkbox custom-control-inline"><input type="checkbox" class="custom-control-input checkbox-jyut" id="checkbox-jyut-niu" name="dataCheck" value="checkbox-jyut-niu" onclick="javascript:{document.getElementsByClassName('checkbox-jyut-0').forEach((item)=>{ item.checked = this.checked });}"><label class="custom-control-label" for="checkbox-jyut-niu">聲</label></div>`, ITEM: `幫非 幫 滂 非 明|端來 端 透 來 泥|見曉 見 古(見合) 溪 困(溪合) 曉 我|精心 精 清 心|照知 照 穿 審|以日 亞 以 云 日` }
+	, { SHOW: `<div class="custom-control custom-checkbox custom-control-inline"><input type="checkbox" class="custom-control-input checkbox-jyut" id="checkbox-jyut-yun" name="dataCheck" value="checkbox-jyut-yun" onclick="javascript:{document.getElementsByClassName('checkbox-jyut-1').forEach((item)=>{ item.checked = this.checked });}"><label class="custom-control-label" for="checkbox-jyut-yun">韻</label></div>`, ITEM: `第一先蘚線屑 先 屑|第二威偉畏 威|第三幾紀記 幾|第四諸主著 諸|第五修叟秀 修|第六東董凍篤 東 篤|第七英影應益 英 益|第八賓禀嬪𤲃 賓 𤲃|第九張掌帳着 張 着|第十剛講降角 剛 角|第十一朝沼照 朝|第十二孤古故 孤|第十三鴛婉怨乙 鴛 乙|第十四皆解介 皆|第十五登等凳德 登 德|第十六師史四 師|第十七金錦禁急 金 急|第十八交絞教 交|第十九栽宰載 栽|第二十兼檢劍劫 兼 劫|第二十一津贐進卒 津 卒|第二十二雖髓歲 雖|第二十三科火貨 科|第二十四緘减鑒甲 緘 甲|第二十五翻反泛發 翻 發|第二十六家賈嫁 家|第二十七官管貫括 官 括|第二十八魁賄誨 魁|第二十九遮者蔗 遮|第三十干趕幹割 干 割|第三十一甘敢紺蛤 甘 蛤|第三十二彭棒硬額 彭 額|第三十三吾五悟 吾` }
+	, { SHOW: `<div class="custom-control custom-checkbox custom-control-inline"><input type="checkbox" class="custom-control-input checkbox-jyut" id="checkbox-jyut-tone" name="dataCheck" value="checkbox-jyut-tone" onclick="javascript:{document.getElementsByClassName('checkbox-jyut-2').forEach((item)=>{ item.checked = this.checked });}"><label class="custom-control-label" for="checkbox-jyut-tone">調</label></div>`, ITEM: `陰平 陰上 陰去 陰入 陽平 陽上 陽去 陽入` }
+	, { SHOW: `<div class="custom-control custom-checkbox custom-control-inline"><input type="checkbox" class="custom-control-input checkbox-jyut" id="checkbox-jyut-fanqie" name="dataCheck" value="checkbox-jyut-fanqie" onclick="javascript:{document.getElementsByClassName('text-jyut-fanqie').forEach((item)=>{ item.disabled = !this.checked });}"><label class="custom-control-label" for="checkbox-jyut-fanqie">反切</label></div>`, ITEM: `` }
+	, { SHOW: `<div class="custom-control custom-checkbox custom-control-inline"><input type="checkbox" class="custom-control-input checkbox-jyut" id="checkbox-jyut-expl" name="dataCheck" value="checkbox-jyut-expl" onclick="javascript:{document.getElementsByClassName('text-jyut-expl').forEach((item)=>{ item.disabled = !this.checked });}"><label class="custom-control-label" for="checkbox-jyut-expl">字義</label></div>`, ITEM: `` }
+];
+
+// 格式化顯示爲checkbox
+function formatCheckBox3 (value,index) {
+	let selArr = [];
+	for (let i in value.split('|')) {
+		for (let j in value.split('|')[i].split(' ')) {
+			if (index==0 || index==1){
+				if (j!= 0){
+					selArr.push(`<div class="custom-control custom-checkbox custom-control-inline"><input type="checkbox" class="custom-control-input checkbox-jyut jyut-item-${index} checkbox-jyut-${index} checkbox-jyut-${index}-${i}" id="checkbox-jyut_${index}${i}${j}" name="dataCheck" value="${value.split('|')[i].split(' ')[j]}"><label class="custom-control-label" for="checkbox-jyut_${index}${i}${j}">${value.split('|')[i].split(' ')[j]}</label></div>`);
+				}else{
+					selArr.push(`<div class="custom-control custom-checkbox custom-control-inline"><input type="checkbox" class="custom-control-input checkbox-jyut checkbox-jyut-${index} checkbox-jyut-${index}-${i}" id="checkbox-jyut_${index}${i}${j}" name="dataCheck" value="${value.split('|')[i].split(' ')[j]}" onclick="javascript:{document.getElementsByClassName('checkbox-jyut-${index}-${i}').forEach((item)=>{ item.checked = this.checked });}"><label class="custom-control-label" for="checkbox-jyut_${index}${i}${j}">${value.split('|')[i].split(' ')[j]}</label></div>`);
+				}
+			} else if(index==3){
+				selArr.push(`<div class="custom-control custom-text custom-control-inline"><input type="text" class="form-control text-jyut-fanqie" id="text_jyutfanqie" value="" disabled/></div>`);
+			} else if(index==4){
+				selArr.push(`<div class="custom-control custom-text custom-control-inline"><input type="text" class="form-control text-jyut-expl" id="text_jyutexpl" value="" disabled/></div>`);
+			} else {
+				selArr.push(`<div class="custom-control custom-checkbox custom-control-inline"><input type="checkbox" class="custom-control-input checkbox-jyut checkbox-jyut-${index} checkbox-jyut-${index}-${i}" id="checkbox-jyut_${index}${i}${j}" name="dataCheck" value="${value.split('|')[i].split(' ')[j]}"><label class="custom-control-label" for="checkbox-jyut_${index}${i}${j}">${value.split('|')[i].split(' ')[j]}</label></div>`);
+			}
+		}
+		selArr.push(`<br/>`);
+	}
+	return selArr.join('');
+}
+
 // 贊助名單(暫不使用表格)
-/*
-const colData_sponsor = [
+/*const colData_sponsor = [
 	{ field: 'TIME', title: '贊助時間', align: 'center' }
 	, { field: 'WAY', title: '轉賬方式', align: 'center' }
 	, { field: 'NAME',title: '贊助人', align: 'center' }
@@ -701,8 +935,8 @@ function ipa_to_jyutping(inputstr, IPA_version){
 	outputstr = outputstr.replace(/ʊk|ok|uk/g,"uk");
 	outputstr = outputstr.replace(/ʊŋ|oŋ|uŋ/g,"ung");
 	
-    outputstr = outputstr.replace(/^([∅]|)([yi])([aeiouœʊɐɛɪɔə]|)([ŋmnptk]|)(\d|)/g,"j$2$3$4$5");
-    outputstr = outputstr.replace(/^([∅]|)([yi])(\d|)/g,"j$2$3");
+	outputstr = outputstr.replace(/^([∅]|)([yi])([aeiouœʊɐɛɪɔə]|)([ŋmnptk]|)(\d|)/g,"∅$2$3$4$5");
+	outputstr = outputstr.replace(/^([∅]|)([yi])(\d|)/g,"∅$2$3");
 
     outputstr = outputstr.replace(/kʷʰ|kʰʷ|kwh|khw|kʰu|khu/g,"Kw");
     outputstr = outputstr.replace(/kʷ|kw|ku/g,"gw");
