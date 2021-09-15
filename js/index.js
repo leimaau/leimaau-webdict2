@@ -121,7 +121,7 @@ function queryChar(inputValue, queryType, selVal){
 		if (queryType != 'expl' && queryType != 'note'){ $('.nav-tab-b').removeClass('d-none'); }
 		res = MainQuery.queryTable(inputValue, dataList, queryType);
 		showTable(res, 'outTab', allTitle+'<small>市區</small>', outTabTitle, colData);  // 顯示白話表格
-		showPie(res, inputValue, 'outPie', allTitle, queryType);  // 顯示白話餅圖
+		showPie(res, inputValue, 'outPie', allTitle, queryType, res_triungkox_tung);  // 顯示白話餅圖
 		//showWordCloud(res, inputValue, 'outWordCloud', allTitle, queryType, 'JYUTPING'); // 顯示白話詞雲圖
 		showBasicBar(res, inputValue, 'outWordCloud', allTitle, queryType);
 	}
@@ -132,7 +132,7 @@ function queryChar(inputValue, queryType, selVal){
 		if (queryType != 'expl' && queryType != 'note'){ $('.nav-tab-bw').removeClass('d-none'); }
 		res_bw = MainQuery.queryTable(inputValue, selVal.filter(item => item.indexOf('_bw') > -1), queryType);
 		showTable(res_bw, 'outTab_bw', allTitle_bw+'<small>亭子</small>', outTabTitle_bw, colData);  // 顯示平話表格
-		showPie(res_bw, inputValue, 'outPie_bw', allTitle_bw, queryType);  // 顯示平話餅圖
+		showPie(res_bw, inputValue, 'outPie_bw', allTitle_bw, queryType, res_triungkox_tung);  // 顯示平話餅圖
 		//showWordCloud(res_bw, inputValue, 'outWordCloud_bw', allTitle_bw, queryType, 'JYUTPING'); // 顯示平話詞雲圖
 		showBasicBar(res_bw, inputValue, 'outWordCloud_bw', allTitle_bw, queryType);
 	}
@@ -310,7 +310,7 @@ function calcYear(data){
 			dataValue += Math.log(5);
 		} else if (item == '1994' || item == '2000' || item == '2007' || item == '201703' || item == '201705'){
 			dataValue += Math.log(3);
-		} else if (item == '201806'){
+		} else if (item == '201806' || item == '2022'){
 			dataValue += Math.log(1.5);
 		} else {
 			dataValue += Math.log(1);
@@ -320,7 +320,7 @@ function calcYear(data){
 }
 
 // 餅圖顯示函數
-function showPie(res, inputValue, pieDiv, pieTitle, queryType) {
+function showPie(res, inputValue, pieDiv, pieTitle, queryType, res_triungkox_tung = []) {
 	//if (res.length == 0) return false;
 	let piePara = 'JYUTPING';
 	if (queryType == 'expl' || queryType == 'phrase_expl' || queryType == 'note' || queryType == 'phrase_note') {
@@ -330,16 +330,29 @@ function showPie(res, inputValue, pieDiv, pieTitle, queryType) {
 	}
 	
 	// 餅圖數據處理
-	const pie_data = {};  // 對象：{粵拼 -> [多份數據年份]}
+	const pie_data = {}, pie_data2 = {}, pie_data3 = {};  // 對象：{粵拼 -> [多份數據年份]}、對象：{粵拼 -> [多份數據解釋]}
 	for (let line of res) { // 循環每一對象存入數據 pie_data
-		let JYUTPING = line[piePara], YEAR = line['YEAR'];
+		let JYUTPING = line[piePara], YEAR = line['YEAR'], EXPL = line['EXPL'], NOTE = line['NOTE'];
 		YEAR = YEAR.replace('_bw', '').replace('_phrase', '').replace('tab_', ''); // 餅圖顯示tab_1998_bw -> 1998、tab_2008_phrase -> 2008
 		if (typeof (pie_data[JYUTPING]) == "undefined") { pie_data[JYUTPING] = []; pie_data[JYUTPING].push(YEAR); } else { pie_data[JYUTPING].push(YEAR); };
+		if (typeof (pie_data2[JYUTPING]) == "undefined") { pie_data2[JYUTPING] = []; if(EXPL!=''){pie_data2[JYUTPING].push(EXPL)}; } else { if(EXPL!=''){pie_data2[JYUTPING].push(EXPL)}; };
+		if (typeof (pie_data3[JYUTPING]) == "undefined") { pie_data3[JYUTPING] = []; if(NOTE!=''){pie_data3[JYUTPING].push(NOTE)}; } else { if(NOTE!=''){pie_data3[JYUTPING].push(NOTE)}; };
 	};
 	// 開始顯示
 	const show_data = [];
 	for (let i in pie_data) { pie_data[i] = new Set(pie_data[i]) }; //去重
-	for (let i in pie_data) { show_data.push({ name: i, y: pie_data[i].size, x: Array.from(pie_data[i]).toString(), z: calcYear(pie_data[i]) }) }; //name 數據名 y 數據值 x 附帶值 z 資料權重的幾何平均值
+	for (let i in pie_data2) { pie_data2[i] = new Set(pie_data2[i]) }; //去重
+	for (let i in pie_data3) { pie_data3[i] = new Set(pie_data3[i]) }; //去重
+	for (let i in pie_data) { show_data.push({ name: i, y: pie_data[i].size, x: Array.from(pie_data[i]).toString(), z: calcYear(pie_data[i]), u: Array.from(pie_data2[i]).join('|'), v: /※/.test(Array.from(pie_data3[i]).join('|')) ? '〖標準音經驗回歸值〗' : '' }) }; //name 數據名 y 數據值 x 附帶值 z 資料權重的幾何平均值 u 釋義 v 附註
+	
+	let dataSum = 0, perValue = 0, dungNum = (typeof (res_triungkox_tung[0]) == "undefined") ? 2 : res_triungkox_tung[0].FLAG;
+	for (let line of show_data) { dataSum += line.y };
+	if(dungNum <= 2) {
+		perValue = 40;
+	} else {
+		perValue = 100 / dungNum;
+	}
+	for (let i in pie_data) { show_data.find(item => (item.name == i)).w = ((pie_data[i].size/dataSum)*100>=perValue) && /char/.test(queryType) ? '〖標準音統計回歸值〗' : '' };
 	
 	let chart = {
 		plotBackgroundColor: null,
@@ -360,19 +373,20 @@ function showPie(res, inputValue, pieDiv, pieTitle, queryType) {
 		'資料數: <b>{point.y}</b><br/>' +
 		'佔比: <b>{point.percentage:.2f} %</b><br/>' +
 		'資料權重的幾何平均值: <b>{point.z:.2f}</b><br/>' +
-		'資料: <b>{point.x}</b><br/>'
+		'資料: <b>{point.x}</b><br/>' +
+		'釋義: <b>{point.u}</b><br/>' 
 	};
 	let plotOptions = {
 		variablepie: {
 			allowPointSelect: true,
 			cursor: 'pointer',
-			/*dataLabels: {
+			dataLabels: {
 				enabled: true,
-				format: '<b>{point.name}</b><br/><span style="color: {point.color}">資料數：{point.y}</span><br/><span style="color: {point.color}">佔比：{point.percentage:.1f} %</span>',
+				format: '<b>{point.name}</b><br/><span style="color: #bf3553">{point.v}</span><br/><span style="color: #1e9eb3">{point.w}</span><br/>',
 				style: {
 					color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
 				}
-			},*/
+			},
 			showInLegend: true
 		}
 	};
@@ -465,20 +479,22 @@ function showBasicBar(res, inputValue, barDiv, barTitle, queryType) {
 	}
 	
 	// 條形圖數據處理
-	const bar_data = {};  // 對象：{粵拼 -> [多份數據年份]}
+	const bar_data = {}, bar_data2 = {};  // 對象：{粵拼 -> [多份數據年份]}、對象：{粵拼 -> [多份數據釋義]}
 	for (let line of res) { // 循環每一對象存入數據 bar_data
-		let JYUTPING = line[barPara], YEAR = line['YEAR'];
+		let JYUTPING = line[barPara], YEAR = line['YEAR'], EXPL = line['EXPL'];
 		YEAR = YEAR.replace('_bw', '').replace('_phrase', '').replace('tab_', ''); // 條形圖顯示tab_1998_bw -> 1998、tab_2008_phrase -> 2008
 		if (typeof (bar_data[JYUTPING]) == "undefined") { bar_data[JYUTPING] = []; bar_data[JYUTPING].push(YEAR); } else { bar_data[JYUTPING].push(YEAR); };
+		if (typeof (bar_data2[JYUTPING]) == "undefined") { bar_data2[JYUTPING] = []; if(EXPL!=''){bar_data2[JYUTPING].push(EXPL)}; } else { if(EXPL!=''){bar_data2[JYUTPING].push(EXPL)}; };
 	};
 	// 開始顯示
 	const show_data = [];
 	for (let i in bar_data) { bar_data[i] = new Set(bar_data[i]) }; //去重
-	for (let i in bar_data) { show_data.push({ name: i, y: bar_data[i].size, x: Array.from(bar_data[i]).toString() }) }; //name 數據名 y 數據值 x 附帶值
+	for (let i in bar_data2) { bar_data2[i] = new Set(bar_data2[i]) }; //去重
+	for (let i in bar_data) { show_data.push({ name: i, y: bar_data[i].size, x: Array.from(bar_data[i]).toString(), u: Array.from(bar_data2[i]).join('|') }) }; //name 數據名 y 數據值 x 附帶值 u 釋義
 	
-	const xAxis_data = [], yAxis_data = [], zAxis_data = [];
+	const xAxis_data = [], yAxis_data = [], zAxis_data = [], uAxis_data = [];
 	let dataSum = 0;
-	for (let line of show_data) { xAxis_data.push(line.name); yAxis_data.push(line.y); zAxis_data.push(line.x); dataSum += line.y; };
+	for (let line of show_data) { xAxis_data.push(line.name); yAxis_data.push(line.y); zAxis_data.push(line.x); uAxis_data.push(line.u); dataSum += line.y; };
 	let chart = {
 		type: 'bar'
 	};
@@ -512,7 +528,8 @@ function showBasicBar(res, inputValue, barDiv, barTitle, queryType) {
 			return '<span style="color:' + this.color + '">\u25CF</span><b>'+ xAxis_data[this.x] + '</b><br/>' +
 			'資料數：<b>' + this.y + '</b><br/>' +
 			'佔比：<b>' + Highcharts.numberFormat(pcnt, 2) + '%</b><br/>' +
-			'資料：<b>' + zAxis_data[this.x] + '</b>';
+			'資料：<b>' + zAxis_data[this.x] + '</b><br/>' +
+			'釋義：<b>' + uAxis_data[this.x] + '</b>';
 		}
 	};
 	let plotOptions = {

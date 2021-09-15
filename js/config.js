@@ -4,7 +4,7 @@
 
 const cdnAddr = [];
 cdnAddr.push('https://cdn.jsdelivr.net/npm');
-cdnAddr.push('leimaau-npm-cdn@1.2.9');
+cdnAddr.push('leimaau-npm-cdn@1.3.0');
 cdnAddr.push('db/leimaau.db3');
 
 const DictConfig = {
@@ -75,7 +75,7 @@ const rowData_book = [
 	, { BOOK: '2007年林亦《南寧石埠平話同音字彙》', NN: '', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', NN_SH: 'noData', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: '' , MS_P: ''}
 	, { BOOK: '<a class="text-info" target="_blank" href="https://leimaau.github.io/leimaau-webdict2/db/2008.html">2008年林亦、覃鳳餘《廣西南寧白話研究》</a>', NN: 'tab_2008', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: '' , MS_P: ''}
 	, { BOOK: '2009年陳海倫、林亦《粵語平話土話方音字彙》', NN: 'noData', NN_D: '', NN_Y: 'noData', HX_B: '', NN_T: 'noData', NN_SL: '', NN_S: '', NN_SH: 'noData', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: 'noData' , MS_P: ''}
-	, { BOOK: '2009年張菁雅《桂南平話語音研究》（李連進調查）', NN: 'noData', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', NN_SH: '', HX_P: 'noData', BY_P: '' , BY_P2: '' , BY_P3: '' , MS_P: ''}
+	, { BOOK: '2009年張菁雅《桂南平話語音研究》', NN: 'noData', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', NN_SH: '', HX_P: 'noData', BY_P: '' , BY_P2: '' , BY_P3: '' , MS_P: ''}
 	, { BOOK: '<a class="text-info" target="_blank" href="https://leimaau.github.io/leimaau-webdict2/db/201703_bw.html">2017年教育部《漢語方言用字規範》</a>', NN: '', NN_D: '', NN_Y: '', HX_B: '', NN_T: 'tab_201703_bw', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: '' , MS_P: ''}
 	, { BOOK: '<a class="text-info" target="_blank" href="https://leimaau.github.io/leimaau-webdict2/db/201705_bw.html">2017年詹伯慧、張振興《漢語方言學大詞典》</a>', NN: '', NN_D: '', NN_Y: '', HX_B: '', NN_T: 'tab_201705_bw', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: '' , MS_P: ''}
 	, { BOOK: '<a class="text-info" target="_blank" href="https://leimaau.github.io/leimaau-webdict2/db/201806.html">2018年滕祖愛《南寧市與桂平市粵方言比較研究》</a>', NN: 'tab_201806', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: '' , MS_P: ''}
@@ -83,6 +83,7 @@ const rowData_book = [
 	, { BOOK: '<a class="text-info" target="_blank" href="https://leimaau.github.io/leimaau-webdict2/db/2018.html">2018年Leimaau《南寧話審音表》(本站提供)</a>', NN: 'tab_2018', NN_D: '', NN_Y: '', HX_B: '', NN_T: 'tab_2018_bw', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: '' , MS_P: ''}
 	, { BOOK: '2019年莫思敏、談婷《廣西橫縣白話同音字彙》', NN: '', NN_D: '', NN_Y: '', HX_B: 'tab_2019_zb_b_wj', NN_T: '', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: '' , MS_P: ''}
 	, { BOOK: '<a class="text-info" target="_blank" href="https://leimaau.github.io/leimaau-webdict2/db/2021.html">2021年Leimaau《單字音零散資料匯總》(本站提供)</a>', NN: 'tab_2021', NN_D: '', NN_Y: '', HX_B: '', NN_T: 'tab_2021_bw', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: '' , MS_P: ''}
+	, { BOOK: '<a class="text-info" target="_blank" href="https://leimaau.github.io/leimaau-webdict2/db/2022.html">2022年電腦《切韻音系自動推導理論音》(本站提供)</a>', NN: 'tab_2022', NN_D: '', NN_Y: '', HX_B: '', NN_T: 'tab_2022_bw', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: '' , MS_P: ''}
 ];
 
 // 詞典資料
@@ -235,7 +236,7 @@ const colData_triungkox_tung = [
 	, { field: 'WORD', title: '字頭', align: 'center', formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'char', 'dicWord')">${value}</a>` } }
 	, { field: 'NIU', title: '聲' }
 	, { field: 'YUNBU', title: '韻' }
-	//, { field: 'SHE', title: '攝' }
+	, { field: 'SHE', title: '攝' }
 	, { field: 'HU', title: '呼' }
 	, { field: 'DENG', title: '等' }
 	, { field: 'TONE', title: '調' }
@@ -363,11 +364,11 @@ const colData_grammar = [
 function formatSOUR(value, row_year, picType, qType) {
 	let bookname = '';
 	if (qType == 'char'){
-		bookname = rowData_book.find(item => (item.NN == row_year || item.NN == row_year.substring(0,8) || item.NN_D == row_year || item.NN_Y == row_year || item.HX_B == row_year || item.NN_T == row_year || item.NN_T == row_year.substring(0,11) || item.NN_S == row_year || item.HX_P == row_year || item.BY_P == row_year || item.MS_P == row_year)).BOOK;
+		bookname = rowData_book.find(item => (item.NN == row_year || /2021/.test(row_year) || item.NN_D == row_year || item.NN_Y == row_year || item.HX_B == row_year || item.NN_T == row_year || item.NN_S == row_year || item.HX_P == row_year || item.BY_P == row_year || item.MS_P == row_year)).BOOK;
 	} else if (qType == 'phrase') {
-		bookname = rowData_book_phrase.find(item => (item.NN == row_year || item.NN == row_year.substring(0,15) || item.NN_D == row_year || item.HX_B == row_year || item.NN_T == row_year || item.NN_T == row_year.substring(0,18) || item.NN_S == row_year || item.HX_P == row_year || item.BY_P == row_year)).BOOK;
+		bookname = rowData_book_phrase.find(item => (item.NN == row_year || /2021/.test(row_year) || item.NN_D == row_year || item.HX_B == row_year || item.NN_T == row_year || item.NN_S == row_year || item.HX_P == row_year || item.BY_P == row_year)).BOOK;
 	} else if (qType == 'grammar') {
-		bookname = rowData_book_grammar.find(item => (item.NN == row_year || item.NN == row_year.substring(0,16) || item.NN_D == row_year || item.HX_B == row_year || item.NN_T == row_year || item.NN_T == row_year.substring(0,19) || item.NN_S == row_year || item.HX_P == row_year || item.BY_P == row_year)).BOOK;
+		bookname = rowData_book_grammar.find(item => (item.NN == row_year || /2021/.test(row_year) || item.NN_D == row_year || item.HX_B == row_year || item.NN_T == row_year || item.NN_S == row_year || item.HX_P == row_year || item.BY_P == row_year)).BOOK;
 	};
 	bookname = bookname.replace(/<\/?a.*?>/g,'');
 	row_year = row_year.replace('_bw', '').replace('_phrase', '').replace('_grammar', '').replace('tab_', '');
@@ -386,13 +387,26 @@ function formatSOUR(value, row_year, picType, qType) {
 	else if (row_year == '201705') linkaddr =  linkaddr.replace('201705','2017') + 'hy/hy0'
 	else if (row_year == '2018') linkaddr = ''
 	else if (row_year == '201806') linkaddr = linkaddr.replace('201806','2018') + 'yj/yj'
-	else if (/2021/.test(row_year)) {linkaddr = ''; bookname = '〔2021年Leimaau匯總〕' + value};
+	else if (/2021/.test(row_year)) {
+		if (/1997年李榮主編《南寧平話詞典》引論/.test(value)){
+			linkaddr = linkaddr.replace('2021_','') + 'cd/cd';
+			bookname = '〔2021年匯總〕1997年李榮主編《南寧平話詞典》引論';
+			value = value.replace('1997年李榮主編《南寧平話詞典》引論','');
+		} else if (/1998年陳謨志總纂《南寧市誌·文化卷》/.test(value)){
+			linkaddr = linkaddr.replace('2021_','') + 'sz/sz';
+			bookname = '〔2021年匯總〕1998年陳謨志總纂《南寧市誌·文化卷》';
+			value = value.replace('1998年陳謨志總纂《南寧市誌·文化卷》','');
+		} else {
+			linkaddr = '';
+			bookname = '〔2021年匯總〕' + value;
+		}
+	}
 	
 	if (value == '' || linkaddr == '') {
 		return (qType == 'char') ? `<span style="white-space: nowrap">${bookname}</span>` : `<span style="white-space: normal">${bookname}<span/>`;
 	} else {
 		return (qType == 'char') ? `<span style="white-space: nowrap">${bookname + pageSplit(value, picType, linkaddr)}</span>` : `<span style="white-space: normal">${bookname + pageSplit(value, picType, linkaddr)}</span>`;
-	};
+	}
 }
 
 // 䈎碼拼接函數
@@ -426,7 +440,7 @@ const shengniu = {'幫':['幫','非'],
 '初':['初','穿初'],
 '崇':['崇','牀崇'],
 '生':['生','審生'],
-'章':['章'],
+'章':['章','照章'],
 '昌':['昌','穿昌'],
 '禪':['禪','常','俟','禪俟'],
 '書':['書','審書'],
@@ -463,28 +477,28 @@ const yunmu = {'東':['東','董','送','屋'],
 '灰':['灰','賄','隊'],
 '咍':['咍','海','代'],
 '廢':['廢'],
-'眞':['眞','真','軫','震','質'],
-'真':['眞','真','軫','震','質'],
-'諄':['諄','準','稕','術'],
+'眞':['眞','真','軫','震','質','諄','準','稕','術'],
+'真':['真','眞','軫','震','質','諄','準','稕','術'],
+'諄':['諄','準','稕','術'], // 真韻合口
 '臻':['臻','𧤛','櫬','櫛','（櫬）'],
 '文':['文','吻','問','物'],
-'欣':['欣','隱','焮','迄','殷'],
-'殷':['欣','隱','焮','迄','殷'],
+'欣':['欣','殷','隱','焮','迄'],
+'殷':['殷','欣','隱','焮','迄'],
 '元':['元','阮','願','月'],
 '魂':['魂','混','慁','沒'],
 '痕':['痕','很','恨','麧'],
-'寒':['寒','旱','翰','曷'],
-'桓':['桓','緩','換','末'],
+'寒':['寒','旱','翰','曷','桓','緩','換','末'],
+'桓':['桓','緩','換','末'], // 寒韻合口
 '刪':['刪','潸','諫','黠'],
-'山':['山','產','襇','鎋'],
+'山':['山','產','産','襇','襉','鎋'],
 '先':['先','銑','霰','屑'],
 '仙':['仙','獮','線','薛'],
 '蕭':['蕭','篠','嘯'],
 '宵':['宵','小','笑'],
 '肴':['肴','巧','效'],
 '豪':['豪','晧','号'],
-'歌':['歌','哿','箇','戈','果','過'],
-'戈':['戈','果','過','歌','哿','箇'],
+'歌':['歌','戈','哿','箇','果','過'],
+'戈':['戈','歌','果','過','哿','箇'],
 '麻':['麻','馬','禡'],
 '陽':['陽','養','漾','藥'],
 '唐':['唐','蕩','宕','鐸'],
@@ -497,7 +511,7 @@ const yunmu = {'東':['東','董','送','屋'],
 '尤':['尤','有','宥'],
 '侯':['侯','厚','候'],
 '幽':['幽','黝','幼'],
-'侵':['侵','寑','沁','緝'],
+'侵':['侵','寑','寢','沁','緝'],
 '覃':['覃','感','勘','合'],
 '談':['談','敢','闞','盍'],
 '鹽':['鹽','琰','豔','葉'],
@@ -537,7 +551,7 @@ const yunmu = {'東':['東','董','送','屋'],
 '盍':['盍'],
 '葉':['葉'],
 '怗':['怗','帖'],
-'帖':['怗','帖'],
+'帖':['帖','怗'],
 '洽':['洽'],
 '狎':['狎'],
 '業':['業'],
@@ -665,11 +679,19 @@ function showLink(textChar){
 	古今文字集成：<a href="http://www.ccamc.co/cjkv.php?cjkv=${textChar}" target="_blank">${textChar}</a></br>
 	粵音資料集叢：<a href="https://jyut.net/query?q=${textChar}" target="_blank">${textChar}</a></br>
 	漢語多功能字庫：<a href="http://humanum.arts.cuhk.edu.hk/Lexis/lexi-mf/search.php?word=${textChar}" target="_blank">${textChar}</a> | <a href="http://humanum.arts.cuhk.edu.hk/Lexis/lexi-mf/dialect.php?word=${textChar}" target="_blank">其他方言讀音</a></br>
+	粵典：<a href="https://words.hk/zidin/wan/?q=${textChar}" target="_blank">${textChar}</a></br>
 	縱橫在線中文字典：<a href="https://ckc.eduhk.hk/ckc2/dictionary.php?jiinput=${textChar}&lang=b5&form1=1" target="_blank">${textChar}</a></br>
-	「數理華聲」科學及數學科詞彙表：<a href="https://ckc.eduhk.hk/ckc2/charlist.php?csmsinput=${textChar}&lang=b5" target="_blank">${textChar}</a></br>
+	HKIED 繁簡辨識（1.0版）：<a href="https://ckc.eduhk.hk/ckc2/translate.php?word=${textChar}&lang=" target="_blank">${textChar}</a></br>
 	英華字典資料庫：<a href="http://mhdb.mh.sinica.edu.tw/dictionary/search.php?titleOnlyBtn=true&searchStr=${textChar}&lang=b5" target="_blank">${textChar}</a></br>
 	粵拼歌詞網：<a href="https://jyut6.com/search.php?keyword=${textChar}" target="_blank">${textChar}</a></br>
-	翡翠粵語歌詞：<a href="https://www.feitsui.com/zh-hans/search/${textChar}.html" target="_blank">${textChar}</a></br>
+	翡翠粵語歌詞：<a href="https://www.feitsui.com/zh-hans/search/?query=${textChar}" target="_blank">${textChar}</a></br>
+	國學寶典：<a href="http://www.gxbd.com/" target="_blank">前往</a></br>
+	書格：<a href="https://new.shuge.org/" target="_blank">前往</a></br>
+	世界數字圖書館：<a href="https://www.wdl.org/zh/" target="_blank">前往</a></br>
+	大學數字圖書館合作計劃：<a href="https://cadal.edu.cn/index/home" target="_blank">前往</a></br>
+	萬方方誌數據庫：<a href="http://fz.wanfangdata.com.cn/index.do" target="_blank">前往</a></br>
+	粵桂毗連地區傳世碑銘匯集數據庫：<a href="http://www.ctcasean.com/beita/index.php" target="_blank">前往</a></br>
+	中國大百科全書數據庫：<a href="https://h.bkzx.cn/search?query=${textChar}&sublibId=" target="_blank">${textChar}</a></br>
 	</span></div></div>`);
 	
 	outputText2.push(`<div class="card mt-1 mb-3"><div class="card-header">相關鏈接</div><div class="card-body text-secondary"><span>
@@ -679,12 +701,19 @@ function showLink(textChar){
 	Forvo：<a href="https://zh.forvo.com/search/${textChar}/" target="_blank">${textChar}</a></br>
 	Unihan：<a href="https://www.unicode.org/cgi-bin/GetUnihanData.pl?codepoint=${textChar}" target="_blank">${textChar}</a></br>
 	萌典：<a href="https://www.moedict.tw/${textChar}" target="_blank">${textChar}</a></br>
+	辭海：<a href="https://www.cihai.com.cn/search/words?q=${textChar}" target="_blank">${textChar}</a></br>
 	活用中文大辭典：<a href="https://lib.ctcn.edu.tw/chtdict/result.aspx?keyword=${textChar}" target="_blank">${textChar}</a></br>
 	漢字ペディア：<a href="https://www.kanjipedia.jp/search?k=${textChar}&kt=1&sk=leftHand" target="_blank">${textChar}</a></br>
 	CHISE IDS 漢字検索：<a href="http://www.chise.org/ids-find?components=${textChar}" target="_blank">${textChar}</a></br>
 	GlyphWiki：<a href="http://glyphwiki.org/wiki/${encodeUnicode(textChar).replace('\\','')}?tdsourcetag=s_pctim_aiomsg" target="_blank">${textChar}</a></br>
 	Chinese Etymology 字源：<a href="https://hanziyuan.net/#${textChar}" target="_blank">${textChar}</a></br>
+	ChuNom：<a href="https://chunom.org/pages/?search=${textChar}" target="_blank">${textChar}</a></br>
 	小雞詞典：<a href="https://jikipedia.com/search?phrase=${textChar}&kt=1&sk=leftHand" target="_blank">${textChar}</a></br>
+	壯漢在線詞典：<a href="http://www.jiu60.com/hoiz/" target="_blank">前往</a></br>
+	中國數字方誌庫：<a href="http://x.wenjinguan.com/" target="_blank">前往</a></br>
+	中國歷史文獻總庫：<a href="http://mg.nlcpress.com/library/publish/default/Login.jsp" target="_blank">前往</a></br>
+	國家哲學社會科學文獻中心：<a href="http://www.ncpssd.org/" target="_blank">前往</a></br>
+	廣西師範大學圖書館：<a href="http://www.library.gxnu.edu.cn/main.htm" target="_blank">前往</a></br>
 	</span></div></div>`);
 	
 	outputText3.push(`<div class="card mt-1 mb-3"><div class="card-header">相關鏈接</div><div class="card-body text-secondary"><span>
@@ -692,13 +721,14 @@ function showLink(textChar){
 	漢語方言學大詞典：<a href="http://www.fangyanxue.com/pages/index/index.html" target="_blank">前往</a></br>
 	古音小鏡：<a href="http://www.kaom.net/" target="_blank">前往</a></br>
 	小學堂：<a href="http://xiaoxue.iis.sinica.edu.tw/" target="_blank">前往</a></br>
-	引得市：<a href="http://www.mebag.com/index/" target="_blank">前往</a></br>
+	全國報刊索引：<a href="https://www.cnbksy.com/home" target="_blank">前往</a></br>
 	廣東省情網：<a href="http://dfz.gd.gov.cn/" target="_blank">前往</a></br>
-	廣州市情網：<a href="http://dfz.gz.gov.cn/gzsdfz/index.shtml" target="_blank">前往</a></br>
+	中共廣州市委黨史文獻研究室：<a href="http://www.gzsqw.org.cn/" target="_blank">前往</a></br>
 	廣西地情資料庫：<a href="http://www.gxdfz.org.cn/gdtz/" target="_blank">前往</a></br>
 	開放康熙字典：<a href="http://kangxi.adcs.org.tw/kangxizidian/" target="_blank">前往</a></br>
 	漢語大字典檢索：<a href="http://www.homeinmists.com/hd/search.html" target="_blank">前往</a></br>
 	說文解字圖像查閱：<a href="http://www.homeinmists.com/shuowen/find.html" target="_blank">前往</a></br>
+	說文解字在線查詢：<a href="http://www.shuowen.org/" target="_blank">前往</a></br>
 	現代標準漢語與粵語對照資料庫：<a href="http://apps.itsc.cuhk.edu.hk/hanyu/Page/Cover.aspx" target="_blank">前往</a></br>
 	CantoDict：<a href="http://www.cantonese.sheik.co.uk/scripts/masterlist.htm" target="_blank">前往</a></br>
 	ISO漢字查詢系統：<a href="http://glyph.iso10646hk.net/chinese/icharacters.jsp" target="_blank">前往</a></br>
