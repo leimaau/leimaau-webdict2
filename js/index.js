@@ -343,7 +343,7 @@ function showPie(res, inputValue, pieDiv, pieTitle, queryType, res_triungkox_tun
 	for (let i in pie_data) { pie_data[i] = new Set(pie_data[i]) }; //去重
 	for (let i in pie_data2) { pie_data2[i] = new Set(pie_data2[i]) }; //去重
 	for (let i in pie_data3) { pie_data3[i] = new Set(pie_data3[i]) }; //去重
-	for (let i in pie_data) { show_data.push({ name: i, y: pie_data[i].size, x: Array.from(pie_data[i]).toString(), z: calcYear(pie_data[i]), u: Array.from(pie_data2[i]).join('|'), v: /※/.test(Array.from(pie_data3[i]).join('|')) ? '〖標準音經驗回歸值〗' : '' }) }; //name 數據名 y 數據值 x 附帶值 z 資料權重的幾何平均值 u 釋義 v 附註
+	for (let i in pie_data) { show_data.push({ name: i, y: pie_data[i].size, x: Array.from(pie_data[i]).toString(), z: calcYear(pie_data[i]), u: Array.from(pie_data2[i]).join('|'), v: /※/.test(Array.from(pie_data3[i]).join('|')) && /char/.test(queryType) ? '〖標準音經驗回歸值〗' : '' }) }; //name 數據名 y 數據值 x 附帶值 z 資料權重的幾何平均值 u 釋義 v 附註
 	
 	let dataSum = 0, perValue = 0, dungNum = (typeof (res_triungkox_tung[0]) == "undefined") ? 2 : res_triungkox_tung[0].FLAG;
 	for (let line of show_data) { dataSum += line.y };

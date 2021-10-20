@@ -4,7 +4,7 @@
 
 const cdnAddr = [];
 cdnAddr.push('https://cdn.jsdelivr.net/npm');
-cdnAddr.push('leimaau-npm-cdn@1.3.0');
+cdnAddr.push('leimaau-npm-cdn@1.3.1');
 cdnAddr.push('db/leimaau.db3');
 
 const DictConfig = {
@@ -652,7 +652,7 @@ const rowData_sponsor = [
 
 /*
 let playlist = [
-	{ title: "A Little Story", artist: "Valentin", mp3: "http://music.163.com/song/media/outer/url?id=857896.mp3" ,cover: "http://p2.music.126.net/w0Xz0wMOhko2IU0_b-vJ8A==/18561955301992385.jpg?param=130y130" }
+	{ title: "Must Be Love", artist: "YUNG BAE", mp3: "http://music.163.com/song/media/outer/url?id=1368337989.mp3" ,cover: "http://p1.music.126.net/YaCDQb0AzqTZtngEudMDrQ==/109951164107259981.jpg?param=130y130" }
 	//, { title: "顽童", artist: "大宇", mp3: "http://music.163.com/song/media/outer/url?id=1433376109.mp3" ,cover: "http://p2.music.126.net/-fkYAJ6ZEUF3z_SvCi7nZA==/109951164832402338.jpg?param=130y130" }
 	//, { title: "Pneumatic Tokyo", artist: "EnV", mp3: "http://music.163.com/song/media/outer/url?id=33937527.mp3" ,cover: "http://p1.music.126.net/k8kONmsvnxJIeuvEE7eR0Q==/109951163694694330.jpg?param=130y130" }
 	//, { title: "Into the Groove", artist: "Madonna", mp3: "http://music.163.com/song/media/outer/url?id=485964327.mp3" ,cover: "http://p1.music.126.net/ssQQUL-oxDJv6MCE1h_eQg==/17940731230679903.jpg?param=130y130" }
@@ -685,13 +685,13 @@ function showLink(textChar){
 	英華字典資料庫：<a href="http://mhdb.mh.sinica.edu.tw/dictionary/search.php?titleOnlyBtn=true&searchStr=${textChar}&lang=b5" target="_blank">${textChar}</a></br>
 	粵拼歌詞網：<a href="https://jyut6.com/search.php?keyword=${textChar}" target="_blank">${textChar}</a></br>
 	翡翠粵語歌詞：<a href="https://www.feitsui.com/zh-hans/search/?query=${textChar}" target="_blank">${textChar}</a></br>
+	中國大百科全書數據庫：<a href="https://h.bkzx.cn/search?query=${textChar}&sublibId=" target="_blank">${textChar}</a></br>
 	國學寶典：<a href="http://www.gxbd.com/" target="_blank">前往</a></br>
 	書格：<a href="https://new.shuge.org/" target="_blank">前往</a></br>
 	世界數字圖書館：<a href="https://www.wdl.org/zh/" target="_blank">前往</a></br>
 	大學數字圖書館合作計劃：<a href="https://cadal.edu.cn/index/home" target="_blank">前往</a></br>
 	萬方方誌數據庫：<a href="http://fz.wanfangdata.com.cn/index.do" target="_blank">前往</a></br>
 	粵桂毗連地區傳世碑銘匯集數據庫：<a href="http://www.ctcasean.com/beita/index.php" target="_blank">前往</a></br>
-	中國大百科全書數據庫：<a href="https://h.bkzx.cn/search?query=${textChar}&sublibId=" target="_blank">${textChar}</a></br>
 	</span></div></div>`);
 	
 	outputText2.push(`<div class="card mt-1 mb-3"><div class="card-header">相關鏈接</div><div class="card-body text-secondary"><span>
