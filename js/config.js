@@ -4,7 +4,7 @@
 
 const cdnAddr = [];
 cdnAddr.push('https://cdn.jsdelivr.net/npm');
-cdnAddr.push('leimaau-npm-cdn@1.3.1');
+cdnAddr.push('leimaau-npm-cdn@1.3.2');
 cdnAddr.push('db/leimaau.db3');
 
 const DictConfig = {
@@ -252,7 +252,7 @@ const colData_triungkoxghuh = [
 	, { field: 'WORD', title: '字頭', align: 'center', formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'char', 'dicWord')">${value}</a>` } }
 	, { field: 'NIU', title: '聲' }
 	, { field: 'YUNBU', title: '韻' }
-	, { field: 'SHE', title: '攝' }
+	, { field: 'SHE', title: '攝(增補)' }
 	, { field: 'HU', title: '呼' }
 	, { field: 'DENG', title: '等' }
 	, { field: 'TONE', title: '調' }
@@ -650,11 +650,12 @@ const rowData_sponsor = [
 ];
 */
 
-/*
+
 let playlist = [
-	{ title: "Must Be Love", artist: "YUNG BAE", mp3: "http://music.163.com/song/media/outer/url?id=1368337989.mp3" ,cover: "http://p1.music.126.net/YaCDQb0AzqTZtngEudMDrQ==/109951164107259981.jpg?param=130y130" }
-	//, { title: "顽童", artist: "大宇", mp3: "http://music.163.com/song/media/outer/url?id=1433376109.mp3" ,cover: "http://p2.music.126.net/-fkYAJ6ZEUF3z_SvCi7nZA==/109951164832402338.jpg?param=130y130" }
-	//, { title: "Pneumatic Tokyo", artist: "EnV", mp3: "http://music.163.com/song/media/outer/url?id=33937527.mp3" ,cover: "http://p1.music.126.net/k8kONmsvnxJIeuvEE7eR0Q==/109951163694694330.jpg?param=130y130" }
+	{ title: "顽童", artist: "大宇", mp3: "http://music.163.com/song/media/outer/url?id=1433376109.mp3" ,cover: "http://p2.music.126.net/-fkYAJ6ZEUF3z_SvCi7nZA==/109951164832402338.jpg?param=130y130" }
+	, { title: "新鸳鸯蝴蝶梦（许嵩版）", artist: "音色", mp3: "http://music.163.com/song/media/outer/url?id=1812264780.mp3" ,cover: "http://p1.music.126.net/vd46BOC_HsJpPXeJDVT6lA==/109951166143370571.jpg?param=130y130" }
+	, { title: "Must Be Love", artist: "YUNG BAE", mp3: "http://music.163.com/song/media/outer/url?id=1368337989.mp3" ,cover: "http://p1.music.126.net/YaCDQb0AzqTZtngEudMDrQ==/109951164107259981.jpg?param=130y130" }
+	, { title: "柳叶笺 (Instrumental)", artist: "朱彦安", mp3: "http://music.163.com/song/media/outer/url?id=553798646.mp3" ,cover: "http://p1.music.126.net/BfUADafLXpKYAubWpWZJZw==/109951163253095310.jpg?param=130y130" }
 	//, { title: "Into the Groove", artist: "Madonna", mp3: "http://music.163.com/song/media/outer/url?id=485964327.mp3" ,cover: "http://p1.music.126.net/ssQQUL-oxDJv6MCE1h_eQg==/17940731230679903.jpg?param=130y130" }
 	//, { title: "Sunshine in the Rain", artist: "BwO", mp3: "http://music.163.com/song/media/outer/url?id=26843531.mp3" ,cover: "http://p1.music.126.net/4wCUqHV9yRupm5WRlPiV8w==/2035196023046217.jpg?param=130y130" }
 	//, { title: "Heart Like California", artist: "Before You Exit", mp3: "http://music.163.com/song/media/outer/url?id=28828120.mp3" ,cover: "http://p1.music.126.net/zuxhlVEkxksU3e5_mR4Ymg==/5990139348590509.jpg?param=130y130" }
@@ -667,7 +668,7 @@ function bgChange(){
 	lis[i].style.background = 'rgba(246, 246, 246, 0.5)';
 }
 window.onload = bgChange;
-*/
+
 
 // 鏈接顯示函數
 function showLink(textChar){
