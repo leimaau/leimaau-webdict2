@@ -32,7 +32,7 @@ MainQuery = (() => {
 	};
 	
 	// (單字)查詢單個表，用於《廣韻》韻典版
-	tempObj.queryTableOne_triungkox = (searchValue, selVal, queryType) => {
+	/*tempObj.queryTableOne_triungkox = (searchValue, selVal, queryType) => {
 		let querySQL = `select '${selVal[0]}' YEAR,* from ${selVal[0]}`;
 		if (queryType == 'char' || queryType == 'char_simp') { // 查詢繁簡體
 			querySQL += ` where word1 = '${searchValue}' or word2 = '${searchValue}' order by CAST(ID as INTEGER)`;
@@ -46,40 +46,25 @@ MainQuery = (() => {
 			querySQL += ` where 1=2`;
 		};
 		return DictDb.execParam( querySQL, (queryType != 'jyut6ping3') ? [] : [searchValue] );
-	};
+	};*/
 	
-	// (單字)查詢單個表，用於《廣韻》東方版
+	// (單字)查詢單個表，用於東方版《廣韻》《集韻》
 	tempObj.queryTableOne_triungkox_tung = (searchValue, selVal, queryType) => {
 		let querySQL = `select '${selVal[0]}' YEAR,* from ${selVal[0]}`;
 		if (queryType == 'char' || queryType == 'char_simp') { // 查詢繁簡體
 			querySQL += ` where word = '${searchValue}' order by CAST(ID as INTEGER)`;
 		} else if (queryType == 'jyutping') { // 查詢無調拼音
-			querySQL += ` where 1=2`;
+			querySQL += ` where jp GLOB '${searchValue}[1-6]' or bwjp GLOB '${searchValue}[1-6]' order by CAST(ID as INTEGER)`;
 		} else if (queryType == 'jyut6ping3') { // 查詢有調拼音
-			querySQL += ' where 1=2';
+			querySQL += ` where jp = ? or bwjp = ? order by CAST(ID as INTEGER)`;
 		} else if (queryType == 'expl') { // 釋義反查
 			querySQL += ` where expl GLOB '*${searchValue}*' order by CAST(ID as INTEGER)`;
 		} else if (queryType == 'note') { // 附註反查
 			querySQL += ` where 1=2`;
+		} else if (queryType == 'fanqie') { // 反切反查
+			querySQL += ` where fanqie = '${searchValue}'`;
 		};
-		return DictDb.execParam( querySQL, [] );
-	};
-	
-	// (單字)查詢單個表，用於《集韻》
-	tempObj.queryTableOne_triungkoxghuh = (searchValue, selVal, queryType) => {
-		let querySQL = `select '${selVal[0]}' YEAR,* from ${selVal[0]}`;
-		if (queryType == 'char' || queryType == 'char_simp') { // 查詢繁簡體
-			querySQL += ` where word = '${searchValue}' order by CAST(ID as INTEGER)`;
-		} else if (queryType == 'jyutping') { // 查詢無調拼音
-			querySQL += ` where 1=2`;
-		} else if (queryType == 'jyut6ping3') { // 查詢有調拼音
-			querySQL += ' where 1=2';
-		} else if (queryType == 'expl') { // 釋義反查
-			querySQL += ` where expl GLOB '*${searchValue}*' order by CAST(ID as INTEGER)`;
-		} else if (queryType == 'note') { // 附註反查
-			querySQL += ` where 1=2`;
-		};
-		return DictDb.execParam( querySQL, [] );
+		return DictDb.execParam( querySQL, (queryType != 'jyut6ping3') ? [] : [searchValue, searchValue] );
 	};
 	
 	// (單字)查詢單個表，用於《江湖尺牘分韻撮要》

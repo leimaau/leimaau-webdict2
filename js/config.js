@@ -4,7 +4,7 @@
 
 const cdnAddr = [];
 cdnAddr.push('https://cdn.jsdelivr.net/npm');
-cdnAddr.push('leimaau-npm-cdn@1.3.2');
+cdnAddr.push('leimaau-npm-cdn@1.3.3');
 cdnAddr.push('db/leimaau.db3');
 
 const DictConfig = {
@@ -36,9 +36,9 @@ const colData_oldbook = [
 ];
 
 const rowData_oldbook = [
-	{ OLDBOOK: `1008年《廣韻》[<a class="text-info" target="_blank" href="https://zhuanlan.zhihu.com/p/20430939">網絡poem覈校版20170209</a>]`, TRIUNGKOX: 'tab_1008_g', OLDCANTO: '', CANTO: '' }
-	, { OLDBOOK: `1008年《廣韻》[<a class="text-info" target="_blank" href="http://www.eastling.org/">東方語言學版</a>]`, TRIUNGKOX: 'tab_1008_d_g', OLDCANTO: '', CANTO: '' }
-	, { OLDBOOK: `1039年《集韻》[<a class="text-info" target="_blank" href="http://www.eastling.org/">東方語言學版</a>]`, TRIUNGKOX: 'tab_1039_g', OLDCANTO: '', CANTO: '' }
+	// { OLDBOOK: `1008年《廣韻》[<a class="text-info" target="_blank" href="https://zhuanlan.zhihu.com/p/20430939">網絡poem覈校版20170209</a>]`, TRIUNGKOX: 'tab_1008_g', OLDCANTO: '', CANTO: '' }
+	{ OLDBOOK: `1008年《廣韻》[<a class="text-info" target="_blank" href="http://www.eastling.org/">東方語言學版</a> | <a class="text-info" target="_blank" href="https://leimaau.github.io/leimaau-webdict2/db/Infer.html">本站推導理論音</a>]`, TRIUNGKOX: 'tab_1008_d_g', OLDCANTO: '', CANTO: '' }
+	, { OLDBOOK: `1039年《集韻》[<a class="text-info" target="_blank" href="http://www.eastling.org/">東方語言學版</a> | <a class="text-info" target="_blank" href="https://leimaau.github.io/leimaau-webdict2/db/Infer.html">本站推導理論音</a>]`, TRIUNGKOX: 'tab_1039_g', OLDCANTO: '', CANTO: '' }
 	, { OLDBOOK: `1838年重鐫本《江湖尺牘分韻撮要合集》[首版爲1782年][<a class="text-info" target="_blank" href="http://ytenx.org/pyonh/">韻典網poem覈校版</a>](本站擬音)`, TRIUNGKOX: '', OLDCANTO: 'tab_1838_g', CANTO: '' }
 	, { OLDBOOK: `1856年衛三畏廉士甫《英華分韻撮要》[<a class="text-info" target="_blank" href="https://jyut.net/">粵音資料集叢版</a>](本站擬音)`, TRIUNGKOX: '', OLDCANTO: 'tab_1856_g', CANTO: '' }
 	, { OLDBOOK: `1941年黃錫凌《粵音韻彙》[<a class="text-info" target="_blank" href="https://jyut.net/">粵音資料集叢版</a>](本站覆校)`, TRIUNGKOX: '', OLDCANTO: '', CANTO: 'tab_1941_g' }
@@ -83,7 +83,7 @@ const rowData_book = [
 	, { BOOK: '<a class="text-info" target="_blank" href="https://leimaau.github.io/leimaau-webdict2/db/2018.html">2018年Leimaau《南寧話審音表》(本站提供)</a>', NN: 'tab_2018', NN_D: '', NN_Y: '', HX_B: '', NN_T: 'tab_2018_bw', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: '' , MS_P: ''}
 	, { BOOK: '2019年莫思敏、談婷《廣西橫縣白話同音字彙》', NN: '', NN_D: '', NN_Y: '', HX_B: 'tab_2019_zb_b_wj', NN_T: '', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: '' , MS_P: ''}
 	, { BOOK: '<a class="text-info" target="_blank" href="https://leimaau.github.io/leimaau-webdict2/db/2021.html">2021年Leimaau《單字音零散資料匯總》(本站提供)</a>', NN: 'tab_2021', NN_D: '', NN_Y: '', HX_B: '', NN_T: 'tab_2021_bw', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: '' , MS_P: ''}
-	, { BOOK: '<a class="text-info" target="_blank" href="https://leimaau.github.io/leimaau-webdict2/db/2022.html">2022年電腦《切韻音系自動推導理論音》(本站提供)</a>', NN: 'tab_2022', NN_D: '', NN_Y: '', HX_B: '', NN_T: 'tab_2022_bw', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: '' , MS_P: ''}
+	//, { BOOK: '<a class="text-info" target="_blank" href="https://leimaau.github.io/leimaau-webdict2/db/2022.html">2022年電腦《切韻音系自動推導理論音》(本站提供)</a>', NN: 'tab_2022', NN_D: '', NN_Y: '', HX_B: '', NN_T: 'tab_2022_bw', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: '' , MS_P: ''}
 ];
 
 // 詞典資料
@@ -212,7 +212,7 @@ function formatCheckBox (value, qType = '') {
 
 // 定義表格列數據
 // 具體顯示的表格
-const colData_triungkox = [
+/*const colData_triungkox = [
 	{ field: 'YEAR', title: '資料', align: 'center', formatter: (value) => { return `<span class="user-font">${value.replace('tab_', '')}</span>` } }
 	//, {field: 'ID',title: 'ID'}
 	, { field: 'WORD1', title: '字頭(覈校前)', align: 'center', formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'char', 'dicWord')">${value}</a>` } }
@@ -228,69 +228,90 @@ const colData_triungkox = [
 	, { field: 'FANQIE2', title: '反切(覈校後)' }
 	, { field: 'PINYIN', title: '中古拼音(polyhedron版)', formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'jyut6ping3', 'dicWord')">${value}</a>` } }
 	, { field: 'EXPL', title: '釋文', formatter: (value) => { return `<p data-toggle="tooltip" data-placement="left" title="${value}">${value}<p/>` }  }
-];
+];*/
 
 const colData_triungkox_tung = [
-	{ field: 'YEAR', title: '資料', align: 'center', formatter: (value) => { return `<span class="user-font">${value.replace('tab_', '').replace('_d', '')}</span>` } }
-	//, {field: 'ID',title: 'ID'}
-	, { field: 'WORD', title: '字頭', align: 'center', formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'char', 'dicWord')">${value}</a>` } }
-	, { field: 'NIU', title: '聲' }
-	, { field: 'YUNBU', title: '韻' }
-	, { field: 'SHE', title: '攝' }
-	, { field: 'HU', title: '呼' }
-	, { field: 'DENG', title: '等' }
-	, { field: 'TONE', title: '調' }
-	, { field: 'CHONG', title: '重紐' }
-	, { field: 'FANQIE', title: '反切' }
-	, { field: 'FLAG', title: '異讀' }
-	, { field: 'EXPL', title: '釋文', formatter: (value) => { return `<p data-toggle="tooltip" data-placement="left" title="${value}">${value}<p/>` }  }
+	[{ field: 'YEAR', title: '資料', rowspan: 2, align: 'center', valign: 'middle', formatter: (value) => { return `<span class="user-font">${value.replace('tab_', '').replace('_d', '')}</span>` } }
+	//, {field: 'ID',title: 'ID', rowspan: 2, align: 'center', valign: 'middle' }
+	, { field: 'WORD', title: '字頭', rowspan: 2, align: 'center', valign: 'middle', formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'char', 'dicWord')">${value}</a>` } }
+	, { field: 'NIU', title: '聲', rowspan: 2, align: 'center', valign: 'middle' }
+	, { field: 'YUNBU', title: '韻', rowspan: 2, align: 'center', valign: 'middle' }
+	, { field: 'SHE', title: '攝', rowspan: 2, align: 'center', valign: 'middle' }
+	, { field: 'HU', title: '呼', rowspan: 2, align: 'center', valign: 'middle' }
+	, { field: 'DENG', title: '等', rowspan: 2, align: 'center', valign: 'middle' }
+	, { field: 'TONE', title: '調', rowspan: 2, align: 'center', valign: 'middle' }
+	, { field: 'CHONG', title: '重紐', rowspan: 2, align: 'center', valign: 'middle' }
+	, { field: 'FANQIE', title: '反切', rowspan: 2, align: 'center', valign: 'middle' }
+	, { field: 'FLAG', title: '異讀', rowspan: 2, align: 'center', valign: 'middle' }
+	, { field: 'EXPL', title: '釋文', rowspan: 2, align: 'center', valign: 'middle', formatter: (value) => { return `<p data-toggle="tooltip" data-placement="left" title="${value}">${value}<p/>` }  }
+	, { field: '', title: '南寧市區理論音', rowspan: 1,colspan: 2, align: 'center', valign: 'middle' }
+	, { field: '', title: '南寧亭子理論音', rowspan: 1,colspan: 2, align: 'center', valign: 'middle' }
+	],[
+	{ field: 'IPA', title: 'IPA', align: 'center', valign: 'middle' }
+	, { field: 'JP', title: '粵拼', align: 'center', valign: 'middle', formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'jyut6ping3', 'dicWord')">${value}</a>` } }
+	, { field: 'BWIPA', title: 'IPA', align: 'center', valign: 'middle' }
+	, { field: 'BWJP', title: '粵拼', align: 'center', valign: 'middle', formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'jyut6ping3', 'dicWord')">${value}</a>` } }
+	]
 ];
 
 const colData_triungkoxghuh = [
-	{ field: 'YEAR', title: '資料', align: 'center', formatter: (value) => { return `<span class="user-font">${value.replace('tab_', '')}</span>` } }
-	//, {field: 'ID',title: 'ID'}
-	, { field: 'WORD', title: '字頭', align: 'center', formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'char', 'dicWord')">${value}</a>` } }
-	, { field: 'NIU', title: '聲' }
-	, { field: 'YUNBU', title: '韻' }
-	, { field: 'SHE', title: '攝(增補)' }
-	, { field: 'HU', title: '呼' }
-	, { field: 'DENG', title: '等' }
-	, { field: 'TONE', title: '調' }
-	, { field: 'FANQIE', title: '反切' }
-	, { field: 'EXPL', title: '釋文', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` }  }
+	[{ field: 'YEAR', title: '資料', rowspan: 2, align: 'center', valign: 'middle', formatter: (value) => { return `<span class="user-font">${value.replace('tab_', '')}</span>` } }
+	//, {field: 'ID',title: 'ID', rowspan: 2, align: 'center', valign: 'middle' }
+	, { field: 'WORD', title: '字頭', rowspan: 2, align: 'center', valign: 'middle', formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'char', 'dicWord')">${value}</a>` } }
+	, { field: 'NIU', title: '聲', rowspan: 2, align: 'center', valign: 'middle' }
+	, { field: 'YUNBU', title: '韻', rowspan: 2, align: 'center', valign: 'middle' }
+	, { field: 'SHE', title: '攝(增補)', rowspan: 2, align: 'center', valign: 'middle' }
+	, { field: 'HU', title: '呼', rowspan: 2, align: 'center', valign: 'middle' }
+	, { field: 'DENG', title: '等', rowspan: 2, align: 'center', valign: 'middle' }
+	, { field: 'TONE', title: '調', rowspan: 2, align: 'center', valign: 'middle' }
+	, { field: 'FANQIE', title: '反切', rowspan: 2, align: 'center', valign: 'middle' }
+	, { field: 'EXPL', title: '釋文', rowspan: 2, align: 'center', valign: 'middle', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` }  }
+	, { field: '', title: '南寧市區理論音', rowspan: 1,colspan: 2, align: 'center', valign: 'middle' }
+	, { field: '', title: '南寧亭子理論音', rowspan: 1,colspan: 2, align: 'center', valign: 'middle' }
+	],[
+	{ field: 'IPA', title: 'IPA', align: 'center', valign: 'middle' }
+	, { field: 'JP', title: '粵拼', align: 'center', valign: 'middle', formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'jyut6ping3', 'dicWord')">${value}</a>` } }
+	, { field: 'BWIPA', title: 'IPA', align: 'center', valign: 'middle' }
+	, { field: 'BWJP', title: '粵拼', align: 'center', valign: 'middle', formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'jyut6ping3', 'dicWord')">${value}</a>` } }
+	]
 ];
 
 const colData_gw = [
-	{ field: 'YEAR', title: '資料', align: 'center', formatter: (value) => { return `<span class="user-font">${value.replace('tab_', '')}</span>` } }
-	//, {field: 'ID',title: 'ID'}
-	, { field: 'WORD', title: '字頭', align: 'center', formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'char', 'dicWord')">${value}</a>` } }
-	, { field: 'EXPL', title: '字義', formatter: (value) => { return `<p data-toggle="tooltip" data-placement="left" title="${value}">${value}<p/>` }  }
-	, { field: 'FINAL_PART', title: '韻部' }
-	, { field: 'FIRST_OLD', title: '聲母' }
-	, { field: 'FINAL_OLD', title: '韻母' }
-	, { field: 'TONE', title: '聲調' }
-	//, { field: 'FIRST_TYPE', title: '紐類' }
-	, { field: 'FANQIE', title: '反切' }
-	, { field: 'VOLUME', title: '冊' }
-	, { field: 'PAGE', title: '䈎', formatter: (value, row) => { return pageSplit(value.replace('-','，'), 'jpg', row['VOLUME']=='上冊' ? 'http://ytenx.org/static/img/KrungGhoTchiekDukPyonYonhTsuatQjeuhGhopDzip/volume1/' : 'http://ytenx.org/static/img/KrungGhoTchiekDukPyonYonhTsuatQjeuhGhopDzip/volume2/') } }
-	, { field: 'IPA', title: 'IPA擬音' }
-	, { field: 'JYUTPING', title: '粵拼擬音', formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'jyut6ping3', 'dicWord')">${value}</a>` } }
-
+	[{ field: 'YEAR', title: '資料', rowspan: 2, align: 'center', valign: 'middle', formatter: (value) => { return `<span class="user-font">${value.replace('tab_', '')}</span>` } }
+	//, {field: 'ID',title: 'ID', rowspan: 2, align: 'center', valign: 'middle' }
+	, { field: 'WORD', title: '字頭', rowspan: 2, align: 'center', valign: 'middle', formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'char', 'dicWord')">${value}</a>` } }
+	, { field: 'EXPL', title: '字義', rowspan: 2, align: 'center', valign: 'middle', formatter: (value) => { return `<p data-toggle="tooltip" data-placement="left" title="${value}">${value}<p/>` }  }
+	, { field: 'FINAL_PART', title: '韻部', rowspan: 2, align: 'center', valign: 'middle' }
+	, { field: 'FIRST_OLD', title: '聲母', rowspan: 2, align: 'center', valign: 'middle' }
+	, { field: 'FINAL_OLD', title: '韻母', rowspan: 2, align: 'center', valign: 'middle' }
+	, { field: 'TONE', title: '聲調', rowspan: 2, align: 'center', valign: 'middle' }
+	//, { field: 'FIRST_TYPE', title: '紐類', rowspan: 2, align: 'center', valign: 'middle' }
+	, { field: 'FANQIE', title: '反切', rowspan: 2, align: 'center', valign: 'middle' }
+	, { field: 'VOLUME', title: '冊', rowspan: 2, align: 'center', valign: 'middle' }
+	, { field: 'PAGE', title: '䈎', rowspan: 2, align: 'center', valign: 'middle', formatter: (value, row) => { return pageSplit(value.replace('-','，'), 'jpg', row['VOLUME']=='上冊' ? 'http://ytenx.org/static/img/KrungGhoTchiekDukPyonYonhTsuatQjeuhGhopDzip/volume1/' : 'http://ytenx.org/static/img/KrungGhoTchiekDukPyonYonhTsuatQjeuhGhopDzip/volume2/') } }
+	, { field: '', title: '擬音', rowspan: 1,colspan: 2, align: 'center', valign: 'middle' }
+	],[
+	{ field: 'IPA', title: 'IPA', align: 'center', valign: 'middle' }
+	, { field: 'JYUTPING', title: '粵拼', align: 'center', valign: 'middle', formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'jyut6ping3', 'dicWord')">${value}</a>` } }
+	]
 ];
 
 const colData_jw = [
-	{ field: 'YEAR', title: '資料', align: 'center', formatter: (value) => { return `<span class="user-font">${value.replace('tab_', '')}</span>` } }
-	//, {field: 'ID',title: 'ID'}
-	, { field: 'WORD', title: '字頭', align: 'center', formatter: (value) => { let charStr = value.split('|'), aLink = []; for (let i in charStr) aLink.push(`<a href="javascript:querySubmit('${charStr[i]}', 'char', 'dicWord')">${charStr[i]}</a>`); return aLink.join('|') } }
-	, { field: 'WORD_COMP', title: '兼容字頭', align: 'center', formatter: (value) => { let charStr = value.split('|'), aLink = []; for (let i in charStr) aLink.push(`<a href="javascript:querySubmit('${charStr[i]}', 'char', 'dicWord')">${charStr[i]}</a>`); return aLink.join('|') } }
-	, { field: 'WORD_NOTE', title: '字條校訂註' }
-	, { field: 'EXPL', title: '釋義', formatter: (value) => { return `<p data-toggle="tooltip" data-placement="left" title="${value}">${value}<p/>` }  }
-	, { field: 'OLD_JP', title: '讀音' }
-	, { field: 'OLD_JP_TYPE', title: '讀音分類' }
-	, { field: 'OLD_JP_NOTE', title: '讀音備註' }
-	, { field: 'PAGE', title: '䈎', formatter: (value, row) => { return pageSplit(value.replace('*','s'), 'jpg', 'https://cdn.jsdelivr.net/gh/leimaau/CDN@latest/data-store/1856fy/fy') } }
-	, { field: 'IPA', title: 'IPA擬音' }
-	, { field: 'JYUTPING', title: '粵拼擬音', formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'jyut6ping3', 'dicWord')">${value}</a>` } }
+	[{ field: 'YEAR', title: '資料', rowspan: 2, align: 'center', valign: 'middle', formatter: (value) => { return `<span class="user-font">${value.replace('tab_', '')}</span>` } }
+	//, {field: 'ID',title: 'ID', rowspan: 2, align: 'center', valign: 'middle' }
+	, { field: 'WORD', title: '字頭', rowspan: 2, align: 'center', valign: 'middle', formatter: (value) => { let charStr = value.split('|'), aLink = []; for (let i in charStr) aLink.push(`<a href="javascript:querySubmit('${charStr[i]}', 'char', 'dicWord')">${charStr[i]}</a>`); return aLink.join('|') } }
+	, { field: 'WORD_COMP', title: '兼容字頭', rowspan: 2, align: 'center', valign: 'middle', formatter: (value) => { let charStr = value.split('|'), aLink = []; for (let i in charStr) aLink.push(`<a href="javascript:querySubmit('${charStr[i]}', 'char', 'dicWord')">${charStr[i]}</a>`); return aLink.join('|') } }
+	, { field: 'WORD_NOTE', title: '字條校訂註', rowspan: 2, align: 'center', valign: 'middle' }
+	, { field: 'EXPL', title: '釋義', rowspan: 2, align: 'center', valign: 'middle', formatter: (value) => { return `<p data-toggle="tooltip" data-placement="left" title="${value}">${value}<p/>` }  }
+	, { field: 'OLD_JP', title: '讀音', rowspan: 2, align: 'center', valign: 'middle' }
+	, { field: 'OLD_JP_TYPE', title: '讀音分類', rowspan: 2, align: 'center', valign: 'middle' }
+	, { field: 'OLD_JP_NOTE', title: '讀音備註', rowspan: 2, align: 'center', valign: 'middle' }
+	, { field: 'PAGE', title: '䈎', rowspan: 2, align: 'center', valign: 'middle', formatter: (value, row) => { return pageSplit(value.replace('*','s'), 'jpg', 'https://cdn.jsdelivr.net/gh/leimaau/CDN@latest/data-store/1856fy/fy') } }
+	, { field: '', title: '擬音', rowspan: 1,colspan: 2, align: 'center', valign: 'middle' }
+	],[
+	{ field: 'IPA', title: 'IPA', align: 'center', valign: 'middle' }
+	, { field: 'JYUTPING', title: '粵拼', align: 'center', valign: 'middle', formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'jyut6ping3', 'dicWord')">${value}</a>` } }
+	]
 ];
 
 const colData_jj = [
@@ -305,16 +326,20 @@ const colData_jj = [
 ];
 
 const colData = [
-	{ field: 'YEAR', title: '資料', sortable : true, align: 'center', formatter: (value) => { return `<span class="user-font">${value.replace('_bw', '').replace('tab_', '').replace(/_zb.*/g,'')}</span>` } }
-	//, {field: 'ID',title: 'ID'}
-	, { field: 'TRAD', title: '繁體', sortable : true, align: 'center', formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'char', 'dicWord')">${value}</a>` } }
-	, { field: 'SIMP', title: '簡體', sortable : true, align: 'center', formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'char_simp', 'dicWord')">${value}</a>` } }
-	, { field: 'IPA_S', title: '原文IPA', sortable : true }
-	, { field: 'IPA_T', title: '統一IPA', sortable : true }
-	, { field: 'JYUTPING', title: '粵拼', sortable : true, formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'jyut6ping3', 'dicWord')">${value}</a>` } }
-	, { field: 'SOUR', title: '來源', sortable : true, formatter: (value, row) => { return formatSOUR(value, row['YEAR'], 'png', 'char') } }
-	, { field: 'EXPL', title: '釋義', sortable : true, formatter: (value) => { return `<p data-toggle="tooltip" data-placement="left" title="${value}">${value}<p/>` } }
-	, { field: 'NOTE', title: '本站附註', sortable : true, formatter: (value) => { return `<p data-toggle="tooltip" data-placement="left" title="${value}">${value}<p/>` } }
+	[{ field: 'YEAR', title: '資料', sortable : true, rowspan: 2, align: 'center', valign: 'middle', formatter: (value) => { return `<span class="user-font">${value.replace('_bw', '').replace('tab_', '').replace(/_zb.*/g,'')}</span>` } }
+	//, {field: 'ID',title: 'ID', rowspan: 2, align: 'center', valign: 'middle' }
+	, { field: '', title: '字頭', sortable : true, rowspan: 1,colspan: 2, align: 'center', valign: 'middle' }
+	, { field: '', title: 'IPA', sortable : true, rowspan: 1,colspan: 2, align: 'center', valign: 'middle' }
+	, { field: 'JYUTPING', title: '粵拼', sortable : true, rowspan: 2, align: 'center', valign: 'middle', formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'jyut6ping3', 'dicWord')">${value}</a>` } }
+	, { field: 'SOUR', title: '來源', sortable : true, rowspan: 2, align: 'center', valign: 'middle', formatter: (value, row) => { return formatSOUR(value, row['YEAR'], 'png', 'char') } }
+	, { field: 'EXPL', title: '釋義', sortable : true, rowspan: 2, align: 'center', valign: 'middle', formatter: (value) => { return `<p data-toggle="tooltip" data-placement="left" title="${value}">${value}<p/>` } }
+	, { field: 'NOTE', title: '本站附註', sortable : true, rowspan: 2, align: 'center', valign: 'middle', formatter: (value) => { return `<p data-toggle="tooltip" data-placement="left" title="${value}">${value}<p/>` } }
+	],[
+	{ field: 'TRAD', title: '繁體', sortable : true, align: 'center', valign: 'middle', formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'char', 'dicWord')">${value}</a>` } }
+	, { field: 'SIMP', title: '簡體', sortable : true, align: 'center', valign: 'middle', formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'char_simp', 'dicWord')">${value}</a>` } }
+	, { field: 'IPA_S', title: '原文IPA', sortable : true, align: 'center', valign: 'middle' }
+	, { field: 'IPA_T', title: '統一IPA', sortable : true, align: 'center', valign: 'middle' }
+	]
 ];
 
 const colData_proverb = [
@@ -656,7 +681,7 @@ let playlist = [
 	, { title: "新鸳鸯蝴蝶梦（许嵩版）", artist: "音色", mp3: "http://music.163.com/song/media/outer/url?id=1812264780.mp3" ,cover: "http://p1.music.126.net/vd46BOC_HsJpPXeJDVT6lA==/109951166143370571.jpg?param=130y130" }
 	, { title: "Must Be Love", artist: "YUNG BAE", mp3: "http://music.163.com/song/media/outer/url?id=1368337989.mp3" ,cover: "http://p1.music.126.net/YaCDQb0AzqTZtngEudMDrQ==/109951164107259981.jpg?param=130y130" }
 	, { title: "柳叶笺 (Instrumental)", artist: "朱彦安", mp3: "http://music.163.com/song/media/outer/url?id=553798646.mp3" ,cover: "http://p1.music.126.net/BfUADafLXpKYAubWpWZJZw==/109951163253095310.jpg?param=130y130" }
-	//, { title: "Into the Groove", artist: "Madonna", mp3: "http://music.163.com/song/media/outer/url?id=485964327.mp3" ,cover: "http://p1.music.126.net/ssQQUL-oxDJv6MCE1h_eQg==/17940731230679903.jpg?param=130y130" }
+	, { title: "孤勇者", artist: "陈奕迅", mp3: "http://music.163.com/song/media/outer/url?id=1901371647.mp3" ,cover: "http://p2.music.126.net/aG5zqxkBRfLiV7A8W0iwgA==/109951166702962263.jpg?param=130y130" }
 	//, { title: "Sunshine in the Rain", artist: "BwO", mp3: "http://music.163.com/song/media/outer/url?id=26843531.mp3" ,cover: "http://p1.music.126.net/4wCUqHV9yRupm5WRlPiV8w==/2035196023046217.jpg?param=130y130" }
 	//, { title: "Heart Like California", artist: "Before You Exit", mp3: "http://music.163.com/song/media/outer/url?id=28828120.mp3" ,cover: "http://p1.music.126.net/zuxhlVEkxksU3e5_mR4Ymg==/5990139348590509.jpg?param=130y130" }
 ];

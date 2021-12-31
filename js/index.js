@@ -72,25 +72,25 @@ const allTitle = '南寧白話', allTitle_bw = '南寧平話';
 
 // 【單字】查詢模塊
 function queryChar(inputValue, queryType, selVal){
-	let res_triungkox = [];
+	/*let res_triungkox = [];
 	if (selVal.some(item => item.indexOf('1008_g') > -1)) {
 		$('.rowtabDiv-triungkox').removeClass('d-none');
 		res_triungkox = MainQuery.queryTableOne_triungkox(inputValue, ['tab_1008'], queryType);
 		showTable(res_triungkox, 'outTab_triungkox', '《廣韻》<small>網絡版</small>', outTabTitle_triungkox, colData_triungkox);
-	}
+	}*/
 	
 	let res_triungkox_tung = [];
 	if (selVal.some(item => item.indexOf('1008_d') > -1)) {
 		$('.rowtabDiv-triungkox_tung').removeClass('d-none');
 		res_triungkox_tung = MainQuery.queryTableOne_triungkox_tung(inputValue, ['tab_1008_d'], queryType);
-		showTable(res_triungkox_tung, 'outTab_triungkox_tung', '《廣韻》<small>東方版</small>', outTabTitle_triungkox_tung, colData_triungkox_tung);
+		showTable(res_triungkox_tung, 'outTab_triungkox_tung', '《廣韻》', outTabTitle_triungkox_tung, colData_triungkox_tung);
 	}
 	
 	let res_triungkoxghuh = [];
 	if (selVal.some(item => item.indexOf('1039') > -1)) {
 		$('.rowtabDiv-triungkoxghuh').removeClass('d-none');
-		res_triungkoxghuh = MainQuery.queryTableOne_triungkoxghuh(inputValue, ['tab_1039'], queryType);
-		showTable(res_triungkoxghuh, 'outTab_triungkoxghuh', '《集韻》<small>東方版</small>', outTabTitle_triungkoxghuh, colData_triungkoxghuh);
+		res_triungkoxghuh = MainQuery.queryTableOne_triungkox_tung(inputValue, ['tab_1039'], queryType);
+		showTable(res_triungkoxghuh, 'outTab_triungkoxghuh', '《集韻》', outTabTitle_triungkoxghuh, colData_triungkoxghuh);
 	}
 	
 	let res_gw = [];
@@ -193,7 +193,7 @@ function queryChar(inputValue, queryType, selVal){
 	
 	if(queryType == 'char' || queryType == 'char_simp') showLink(inputValue);
 	
-	let isShow = res_triungkox.length + res_triungkox_tung.length + res_triungkoxghuh.length + res_gw.length + res_jw.length + res_jj.length + res.length + res_bw.length + res_zb_dg.length + res_zb_sz.length + res_zb_b_wj.length + res_zb_wj.length + res_zb_bjlu.length + res_zb_ms.length;
+	let isShow = res_triungkox_tung.length + res_triungkoxghuh.length + res_gw.length + res_jw.length + res_jj.length + res.length + res_bw.length + res_zb_dg.length + res_zb_sz.length + res_zb_b_wj.length + res_zb_wj.length + res_zb_bjlu.length + res_zb_ms.length;
 	if (isShow != 0) {
 		let tradRes = tradData.filter(item => item['simp'] == inputValue), tradLink = [];
 		if (tradRes.length != 0) {
@@ -223,10 +223,10 @@ function queryPhrase(inputValue, queryType, selVal){
 	let res_proverb = [];
 	let dataList_oldProverb = selVal.filter(item => item.indexOf('_proverb') > -1);
 	if (dataList_oldProverb.length != 0) {
-		$('.rowtabDiv-triungkox').removeClass('d-none');  // 使用顯示《廣韻》的位置
+		$('.rowtabDiv-triungkox_tung').removeClass('d-none');  // 使用顯示《廣韻》的位置
 		res_proverb = MainQuery.queryTable_proverb(inputValue, dataList_oldProverb, queryType);
-		showTable(res_proverb, 'outTab_triungkox', '童謠和熟語', outTabTitle_triungkox, colData_proverb);
-		if (res_proverb.length != 0) showWordCloud(res_proverb, inputValue, 'outWordCloud_triungkox', '童謠和熟語', queryType, 'TRAD');
+		showTable(res_proverb, 'outTab_triungkox_tung', '童謠和熟語', outTabTitle_triungkox_tung, colData_proverb);
+		if (res_proverb.length != 0) showWordCloud(res_proverb, inputValue, 'outWordCloud_triungkox_tung', '童謠和熟語', queryType, 'TRAD');
 	}
 	
 	let res = [];
@@ -264,9 +264,9 @@ function queryGrammar(inputValue, queryType, selVal){
 	let res = [];
 	let dataList = selVal.filter(item => item.indexOf('_bw') == -1);
 	if (dataList.length != 0) {
-		$('.rowtabDiv-triungkox').removeClass('d-none');  // 使用顯示《廣韻》的位置
+		$('.rowtabDiv-triungkox_tung').removeClass('d-none');  // 使用顯示《廣韻》的位置
 		res = MainQuery.queryTableGrammar(inputValue, dataList, queryType);
-		showTable(res, 'outTab_triungkox', allTitle+'(市區)', outTabTitle_triungkox, colData_grammar);
+		showTable(res, 'outTab_triungkox_tung', allTitle+'(市區)', outTabTitle_triungkox_tung, colData_grammar);
 	}
 	
 	let res_bw = [];
@@ -867,26 +867,75 @@ function derivationFun(textChar) {
 	const outputText = [];
 	outputText.push(`〖審音表〗白：` + char_zing.join('/') + ` || 平：` + char_zing_bw.join('/') + `<br/><br/>`);
 	
+	let res_koxqim = MainQuery.queryTableOne_triungkox_tung(textChar, ['tab_1008_d'], 'char');
 	
-	let res_koxqim = MainQuery.queryTableOne_triungkox(textChar, ['tab_1008'], 'char');
 	if (res_koxqim.length == 0) {
-		outputText.push(`未查詢到《廣韻》數據，請檢查是否輸入一個傳統漢字！`);
+		outputText.push(`未查詢到《廣韻》數據！<br/><br/>`);
 	} else {
 		for (let line of res_koxqim) {
-			outputText.push(`【中古音】` + line['NIU'] + line['SHE'] + line['HU'] + line['DENG'] + line['YUNBU1'] + line['TONE'] + ` ` + line['PINYIN'] + `<br/>` + `【反切】` + line['FANQIE1'] + `<br/>`);
+			outputText.push(`【中古音】《廣韻》` + line['NIU'] + line['SHE'] + line['HU'] + line['DENG'] + line['YUNBU'] + line['TONE'] + `<br/>【反切】` + line['FANQIE'] + `<br/>`);
 			
-			let res_char = MainQuery.queryTableOne_triungkox(line['PINYIN'], ['tab_1008'], 'jyut6ping3');
+			let res_char = MainQuery.queryTableOne_triungkox_tung(line['FANQIE'], ['tab_1008_d'], 'fanqie');
 			let char_jp = sameWordFunc(res_char, 'tab_2018', 'n', textChar, line);
 			let char_jp2 = sameWordFunc(res_char, 'tab_2018_bw', 't', textChar, line);
 			
 			let char_same = [];
 			for (let line_char of res_char) {
-				if (line_char['WORD1'] == line_char['WORD2']){
+				char_same.push(line_char['WORD']);
+				/*if (line_char['WORD1'] == line_char['WORD2']){
 					char_same.push(line_char['WORD1']);
 				} else {
 					char_same.push(line_char['WORD1']);
 					char_same.push(line_char['WORD2']);
+				}*/
+			}
+			outputText.push(`【同一音韻地位】` + char_same.join(' ') + `<br/>`);
+			outputText.push(`【上述常用字標註】白：` + char_jp.join(' ') + ` || 平：` + char_jp2.join(' ') + `<br/>`);
+			
+			let result_char_jp = [...new Set(char_jp.filter(item => item.indexOf('-') == -1).join('/').split('/'))].join('/');
+			let result_char_jp2 = [...new Set(char_jp2.filter(item => item.indexOf('-') == -1).join('/').split('/'))].join('/');
+			let counts = (arr, value) => arr.reduce((a, v) => v === value ? a + 1 : a + 0, 0);
+			let total_char_jp = char_jp.filter(item => item.indexOf('-') == -1).join('/').split('/').length;
+			let total_char_jp2 = char_jp2.filter(item => item.indexOf('-') == -1).join('/').split('/').length;
+			
+			let res_char_jp =[], res_char_jp2 =[];
+			if(result_char_jp != ''){
+				for (let i of result_char_jp.split('/')){
+					res_char_jp.push(i + '(' + Math.round(counts(char_jp.join('/').split('/'),i) / total_char_jp * 10000) / 100.00 + '%' + ')');
 				}
+			}
+			if(result_char_jp2 != ''){
+				for (let i of result_char_jp2.split('/')){
+					res_char_jp2.push(i + '(' + Math.round(counts(char_jp2.join('/').split('/'),i) / total_char_jp2 * 10000) / 100.00 + '%' + ')');
+				}
+			}
+			outputText.push(`【推導可能的結果】白：` + res_char_jp.join('/') + ` || 平：` + res_char_jp2.join('/') + `<br/>`);
+			outputText.push(`【演變規律參攷（IPA-簡體）】<br/><pre>〔白〕<br/>` + koxqim_gujam('evolveData', line) + `<br/>`);
+			outputText.push(`〔平〕<br/>` + koxqim_gujam('evolveData2', line) + `</pre><br/>`);
+		}
+	}
+	
+	let res_koxqim2 = MainQuery.queryTableOne_triungkox_tung(textChar, ['tab_1039'], 'char');
+	
+	if (res_koxqim2.length == 0) {
+		outputText.push(`未查詢到《集韻》數據！<br/><br/>`);
+	} else {
+		for (let line of res_koxqim2) {
+			outputText.push(`【中古音】《集韻》` + line['NIU'] + line['SHE'] + line['HU'] + line['DENG'] + line['YUNBU'] + line['TONE'] + `<br/>【反切】` + line['FANQIE'] + `<br/>`);
+			
+			let res_char = MainQuery.queryTableOne_triungkox_tung(line['FANQIE'], ['tab_1039'], 'fanqie');
+			let char_jp = sameWordFunc(res_char, 'tab_2018', 'n', textChar, line);
+			let char_jp2 = sameWordFunc(res_char, 'tab_2018_bw', 't', textChar, line);
+			
+			let char_same = [];
+			for (let line_char of res_char) {
+				char_same.push(line_char['WORD']);
+				/*if (line_char['WORD1'] == line_char['WORD2']){
+					char_same.push(line_char['WORD1']);
+				} else {
+					char_same.push(line_char['WORD1']);
+					char_same.push(line_char['WORD2']);
+				}*/
 			}
 			outputText.push(`【同一音韻地位】` + char_same.join(' ') + `<br/>`);
 			outputText.push(`【上述常用字標註】白：` + char_jp.join(' ') + ` || 平：` + char_jp2.join(' ') + `<br/>`);
@@ -980,7 +1029,7 @@ function judgeFirst(first, num){
 function sameWordFunc(res_char, tabName, n_t, textChar, line){
 	let char_jp = [];
 	for (let line_char of res_char) {
-		let tempjp = MainQuery.queryTable(line_char['WORD1'], [tabName], 'char');
+		let tempjp = MainQuery.queryTable(line_char['WORD'], [tabName], 'char');
 		if (tempjp.length == 0) {
 			char_jp.push('-');
 		} else {
@@ -996,7 +1045,7 @@ function sameWordFunc(res_char, tabName, n_t, textChar, line){
 				char_jp.push(jpdata.join('/'));	
 			}
 		}
-		if (line_char['WORD1'] != line_char['WORD2']){
+		/*if (line_char['WORD1'] != line_char['WORD2']){
 			let tempjp2 = MainQuery.queryTable(line_char['WORD2'], [tabName], 'char');
 			if (tempjp2.length == 0) {
 				char_jp.push('-');
@@ -1013,7 +1062,7 @@ function sameWordFunc(res_char, tabName, n_t, textChar, line){
 					char_jp.push(jpdata.join('/'));	
 				}
 			}
-		}
+		}*/
 	}
 	return char_jp;
 }
@@ -1140,21 +1189,21 @@ function triungkoxFun(){
 
 // 查詢中古音
 function queryTriungKox(Niu, Yun, Hu, Deng, Tone, Chong, fanqie, isFanqie, expl, isExpl){
-	let res_triungkox = MainQuery.queryTable_triungkox(Niu, Yun, Hu, Deng, Tone, Chong, fanqie, isFanqie, expl, isExpl);
+	//let res_triungkox = MainQuery.queryTable_triungkox(Niu, Yun, Hu, Deng, Tone, Chong, fanqie, isFanqie, expl, isExpl);
 	let res_triungkox_tung = MainQuery.queryTable_triungkox_tung(Niu, Yun, Hu, Deng, Tone, Chong, fanqie, isFanqie, expl, isExpl);
 	let res_triungkoxghuh = MainQuery.queryTable_triungkoxghuh(Niu, Yun, Hu, Deng, Tone, Chong, fanqie, isFanqie, expl, isExpl);
-	let isShow = res_triungkox.length + res_triungkox_tung.length + res_triungkoxghuh.length;
+	let isShow = res_triungkox_tung.length + res_triungkoxghuh.length;
 	if (isShow == 0) { 
 		displayAlert('未查詢到結果!', outputAlert, 'alert-primary');
 	} else if (isShow > 1000){
 		displayAlert('數據量超過1000，請縮小查詢範圍!', outputAlert, 'alert-danger');
 	} else {
-		$('.rowtabDiv-triungkox').removeClass('d-none');
-		showTable(res_triungkox, 'outTab_triungkox', '《廣韻》<small>韻典版</small>', outTabTitle_triungkox, colData_triungkox);
+		//$('.rowtabDiv-triungkox').removeClass('d-none');
+		//showTable(res_triungkox, 'outTab_triungkox', '《廣韻》<small>韻典版</small>', outTabTitle_triungkox, colData_triungkox);
 		$('.rowtabDiv-triungkox_tung').removeClass('d-none');
-		showTable(res_triungkox_tung, 'outTab_triungkox_tung', '《廣韻》<small>東方版</small>', outTabTitle_triungkox_tung, colData_triungkox_tung);
+		showTable(res_triungkox_tung, 'outTab_triungkox_tung', '《廣韻》', outTabTitle_triungkox_tung, colData_triungkox_tung);
 		$('.rowtabDiv-triungkoxghuh').removeClass('d-none');
-		showTable(res_triungkoxghuh, 'outTab_triungkoxghuh', '《集韻》<small>東方版</small>', outTabTitle_triungkoxghuh, colData_triungkoxghuh);
+		showTable(res_triungkoxghuh, 'outTab_triungkoxghuh', '《集韻》', outTabTitle_triungkoxghuh, colData_triungkoxghuh);
 	}
 	return isShow;
 }

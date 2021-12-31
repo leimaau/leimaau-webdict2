@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="zh-HK" class="h-100">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>2021年電腦《切韻音系自動推導理論音》</title>
+    <!-- Bootstrap core CSS -->
+	<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css">
+    <!-- jQuery -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+    <!-- material-scrolltop.min.js -->
+    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/material-scrolltop@2.0.1/dist/material-scrolltop.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/material-scrolltop@2.0.1/dist/material-scrolltop.min.js"></script>
+	
+    <style>
+	.container {
+	  width: auto;
+	  max-width: 1180px;
+	  padding: 0 15px;
+	}
+
+	.footer {
+	  background-color: #f5f5f5;
+	}
+	
+	.user-font {
+		font-family: fantasy, sans-serif;
+	}
+    </style>
+</head>
+<body class="d-flex flex-column h-100">
+
+<main role="main" class="flex-shrink-0">
+  <div class="container">
+    <h1 class="mt-5">2021年電腦《切韻音系自動推導理論音》</h1>
+    <p class="lead">電子化檔案使用 Oracle SQL 代碼來表示，下文取自數據庫的源碼，she攝 hu呼 deng等 niu聲紐 yunbu韻部。</p>
+    <p>原文由 Leimaau 所作，利用中古切韻音系至現代方言的演化規律自動推導大致的理論參攷音。演化規律從現實語言中總結得越完善，則推導出的理論音就越接近實際音，所以這是一個隨着研究深入不斷改善的系統。各文獻提供的演變規律祇是一個輪廓，實際的細化規律由筆者通過經驗補充。另外這個版本的《集韻》開合與《廣韻》不同，比如咸山攝幫組《集韻》合口而《廣韻》開口，宕攝三等來母《集韻》合口而《廣韻》開口，故而《集韻》有些字開合推導未必正確，需要對照反切。將來有更合適推導的《集韻》電子版本再更新。</p>
+<pre>
+
+-- 中古切韻音系至南寧白話演化關係
+create or replace view v_nbdict_202109_gy as
+select tab_id,word trad,
+case when niu='幫' then
+  case when yunbu='東' and deng='三' then 'f'
+  when she='通' and hu='合' and deng='三' and tone='上' then 'p'
+  when yunbu in('鍾','微','虞','廢','文','元','陽','尤','凡','燭','物','月','藥','乏') then 'f'
+  else 'b' end
+when niu='滂' then
+  case when yunbu='東' and deng='三' then 'f'
+  when she='通' and hu='合' and deng='三' and tone='上' then 'p'
+  when yunbu in('鍾','微','虞','廢','文','元','陽','尤','凡','燭','物','月','藥','乏') then 'f'
+  else 'p' end
+when niu='並' then
+  case when yunbu='東' and deng='三' then 'f'
+  when yunbu in('鍾','微','虞','廢','文','元','陽','尤','凡','燭','物','月','藥','乏') then 'f'
+  else case when tone='平' then 'p' else 'b' end end
+when niu='明' then 'm'
+when niu='端' then 'd'
+when niu='透' then 't'
+when niu='定' then case when tone='平' then 't' else 'd' end
+when niu='泥' then 'n'
+when niu='來' then 'l'
+when niu in('知','精','莊','章') then 'z'
+when niu in('徹','清','初','昌') then 'c'
+when niu in('澄','從','崇','邪') then case when tone='平' then 'c' else 'z' end
+when niu='娘' then 'n'
+when niu='心' then
+  case when (she='止' and hu='開' and deng='三' and not(yunbu='支' and tone='上')) --斯徙
+  or (she='止' and hu='合' and deng='三' and tone='上') --髓
+  or (she='蟹' and hu='開' and deng='一' and tone='去') --賽
+  or (she='山' and hu='開' and deng='一' and tone='平') then 's' --珊
+  else 'sl' end
+when niu in('生','禪','書','船') then 's'
+when niu='日' then 'j'
+when niu='見' then 'g'
+when niu='溪' then
+  case when yunbu='模' then 'f'
+  when hu='開' and yunbu<>'模' then
+    case when (yunbu='侯' and tone<>'上') or yunbu in('燭','屑','薛','佳','皆','齊','宵','支','覺','陽','藥') or (deng='三' and yunbu='陌') or (yunbu in('唐','咍') and tone='去') then 'k'
+    when yunbu in('尤','緝') then 'j'
+    else 'h' end
+  when hu='合' and yunbu<>'模' then
+    case when she='臻' and deng='三' and yunbu='文' then 'kw'
+    when she in('遇','止','假','梗') or yunbu in('皆','佳','祭','齊','屑','薛','魂','月','真') or (deng='三' and yunbu='歌') or (deng<>'三' and yunbu='宕') then 'k'
+    when she='曾' and deng='一' and yunbu='登' then 'w'
+    else 'h' end
+  end
+when niu='群' then case when tone='平' then 'k' else 'g' end
+when niu='疑' then 'ng'
+when niu='曉' then
+  case when yunbu='模' then 'f'
+  when hu='開' and yunbu<>'模' then
+    case when yunbu in('燭','尤') then 'j'
+    when yunbu='侯' and tone='去' then 'k'
+    else 'h' end
+  when hu='合' and yunbu<>'模' then
+    case when (she='梗' and deng='二' and yunbu in('庚','耕')) or (she='曾' and deng='一' and yunbu='登') or yunbu in('職','錫','昔') then 'gw'
+    when she in('通','遇','梗','曾') or (she in('果','山') and deng in('三','四')) or (niu not in('幫','滂','並','明') and hu='合' and deng='三') then 'h'
+    when she='止' or (yunbu='寒' and tone='去') or yunbu in('文','魂','祭','齊','廢') or (she='蟹' and deng='二') then 'w'
+    else 'f' end
+  end
+when niu='匣' then
+  case when yunbu='模' then 'w'
+  when hu='開' and yunbu<>'模' then 'h'
+    --case when (she='山' and deng='四' and tone<>'入') or (she='梗' and deng='四' and tone='平') then 'j' else 'h' end
+  when hu='合' and yunbu<>'模' and deng in('一','二') then
+    case when she='通' then 'h' else 'w' end
+  when hu='合' and yunbu<>'模' and deng in('三','四') then
+    case when she='通' then 'j'
+    when she='咸' then 'h' else 'w' end
+    --case when (she='山' and deng='四') or (she='梗' and deng='四' and tone='平') then 'j' else 'w' end
+  end
+when niu in('影','云','以') then
+  case when yunbu='模' then 'w'
+  when hu='開' and yunbu<>'模' then
+    case when deng in('三','四') and not(niu='影' and she='蟹') then 'j'
+    when deng='二' and niu='云' then 'w'
+    when deng in('一','二') and niu='以' then 'j' else '' end
+  when hu='合' and yunbu<>'模' and deng in('一','二') then
+    case when she='通' then '' else 'w' end
+  when hu='合' and yunbu<>'模' and deng in('三','四') then
+    case when she in('通','果') or (niu='以' and she='蟹') or (niu in('影','云') and she='咸') then 'j' else 'w' end
+  end
+end shengmu,
+case when she='通' then
+  case when yunbu in('東','冬','鍾') then 'ung' else 'uk' end
+when she='江' then
+  case when yunbu='江' then 'ong' else 'ok' end
+when she='止' then
+  case when niu in('幫','滂','並','明') then 'i'
+  when hu='開' and niu not in('幫','滂','並','明') then
+    case when niu in('精','清','從','心','邪','莊','初','崇','生') and deng='三' then
+      case when yunbu='支' and tone='上' and niu in('心','生') then 'ai' else 'y' end
+    else 'i' end
+  when hu='合' and niu not in('幫','滂','並','明') then
+    case when niu in('見','溪','群','疑','影','曉','匣','云','以') then 'ai' else 'ui' end
+  end
+when she='遇' then
+  case when yunbu in('魚','虞') then
+    case when niu in('幫','滂','並','明') then 'u'
+    when niu in('莊','初','崇','生') then 'o'
+    else 'yu' end
+  else
+    case when niu='疑' then '' else 'u' end
+  end
+when she='蟹' then
+  case when yunbu='齊' then 'ai'
+  when yunbu='祭' then
+    case when hu='合' and niu='以' then 'ui'
+    when hu='合' and niu not in('見','溪','群','疑','影','曉','匣','云','以') then 'ui'
+    else 'ai' end
+  when yunbu='泰' then
+    case when niu in('幫','滂','並','明') then 'ui' else
+      case when hu='開' then
+        case when niu in('見','溪','群','疑','影','曉','匣','精','清','從','心','邪','泥','娘') then 'oi' else 'aai' end
+      when hu='合' then
+        case when niu='疑' then 'oi' else 'ui' end
+      end
+    end
+  when yunbu in('佳','皆','夬') then 'aai'
+  when yunbu='灰' then
+    case when niu='疑' then 'ai' else 'ui' end
+  when yunbu='咍' then
+    case when niu in('幫','滂','並','明','以') then 'ui' else 'oi' end
+  when yunbu='廢' then 'ai' end
+when she='臻' then
+  case when yunbu in('真','臻','文','欣','魂','痕') then
+    case when yunbu='魂' and niu in('精','清','從','心','邪') then 'yun'
+    when yunbu='魂' and niu in('幫','滂','並','明') then 'un'
+    when hu='合' and deng='三' and niu not in('幫','滂','並','明','見','溪','群','疑','影','曉','匣','云','以') then 'yun'
+    else 'an' end
+  else
+    case when yunbu='沒' and niu in('精','清','從','心','邪') then 'yut'
+    when yunbu='沒' and niu in('幫','滂','並','明') then 'ut'
+    when hu='合' and deng='三' and niu not in('幫','滂','並','明','見','溪','群','疑','影','曉','匣','云','以') then 'yut'
+    else 'at' end
+  end
+when she='山' then
+  case when yunbu in('寒','刪','山','仙','先','元') then
+    case when yunbu='元' and niu in('幫','滂','並','明') then 'aan'
+    when yunbu='元' and niu not in('幫','滂','並','明') and hu='開' then 'in'
+    when yunbu='元' and niu not in('幫','滂','並','明') and hu='合' then 'yun'
+    when yunbu='寒' and niu in('幫','滂','並','明') then 'un'
+    when yunbu='寒' and hu='開' and niu not in('幫','滂','並','明') then
+      case when niu in('見','溪','群','疑','影','曉','匣') then 'on' else 'aan' end
+    when yunbu='寒' and hu='合' and niu not in('幫','滂','並','明') then
+      case when niu in('見','溪','群','疑','影','曉','匣') then 'un' else 'yun' end
+    when yunbu in('刪','山') then 'aan'
+      --case when deng='二' and niu in('見','溪','疑','曉','匣') then 'en' else 'aan' end
+    when yunbu in('仙','先') and hu='開' then 'in'
+    when yunbu in('仙','先') and hu='合' and niu in('幫','滂','並','明') then 'in'
+    when yunbu in('仙','先') and hu='合' and niu not in('幫','滂','並','明') then 'yun' end
+  else
+    case when yunbu='月' and niu in('幫','滂','並','明') then 'aat'
+    when yunbu='月' and niu not in('幫','滂','並','明') and hu='開' then 'it'
+    when yunbu='月' and niu not in('幫','滂','並','明') and hu='合' then 'yut'
+    when yunbu='曷' and niu in('幫','滂','並','明') then 'ut'
+    when yunbu='曷' and hu='開' and niu not in('幫','滂','並','明') then
+      case when niu in('見','溪','群','曉','匣') then 'ot' else 'aat' end
+    when yunbu='曷' and hu='合' and niu not in('幫','滂','並','明') then
+      case when niu in('見','溪','群','疑','曉','匣') then 'ut' when niu='影' then 'aat' else 'yut' end
+    when yunbu in('鎋','黠') then
+      case when niu='匣' and hu='開' then 'at' else 'aat' end
+      --case when deng='二' and niu in('見','溪','疑','曉','匣') then 'et' else 'aat' end
+    when yunbu in('屑','薛') and hu='開' then 'it'
+    when yunbu in('屑','薛') and hu='合' and niu in('幫','滂','並','明') then 'it'
+    when yunbu in('屑','薛') and hu='合' and niu not in('幫','滂','並','明') then 'yut' end
+  end
+when she='效' then
+  case when yunbu in('蕭','宵') then 'iu'
+  --when yunbu='肴' and niu<>'曉' then 'eu'
+  when yunbu='肴' then 'aau'
+  when yunbu='豪' and niu<>'溪' then 'u'
+  when yunbu='豪' and niu='溪' then 'aau' end
+when she='果' then
+  case when deng='一' then 'o'
+  when hu='合' and deng='三' then 'oe' else 'e' end
+when she='假' then
+  case when deng='二' then 'aa' else 'e' end
+when she='宕' then
+  case when yunbu in ('陽','唐') then
+    case when hu='開' and deng='三' and niu not in('幫','滂','並','明','莊','初','崇','生') then 'oeng'
+    when hu='合' and deng='三' and niu='來' and she='宕' then 'oeng' else 'ong' end
+  else
+    case when hu='開' and deng='三' and niu not in('幫','滂','並','明','莊','初','崇','生') then 'oek'
+    when hu='合' and deng='三' and niu='來' and she='宕' then 'oek'
+    when yunbu='鐸' and tone='去' then 'aau' -- 應歸入肴韻
+    else 'ok' end
+  end
+when she='梗' then
+  case when yunbu in ('清','青','庚','耕') then
+    case when yunbu in ('清','青')  or (yunbu='庚' and deng='三' and niu not in('莊','初','崇','生')) then 'ing' else
+      case when niu not in('影','見','曉') and deng='二' and not(niu in('匣','溪') and tone in('去','上')) then 'aang'
+      when niu in('莊','初','崇','生') and deng='三' then 'aang'
+      else 'ang' end
+    end
+  else
+    case when yunbu in ('昔','錫')  or (yunbu='陌' and deng='三' and niu not in('莊','初','崇','生')) then 'ik' else
+      case when niu not in('影','明','娘','孃') and deng='二' then 'aak'
+      when niu in('莊','初','崇','生') and deng='三' then 'aak'
+      else 'ak' end
+    end
+  end
+when she='曾' then
+  case when yunbu='登' then 'ang'
+  when yunbu='蒸' then 'ing'
+  when yunbu='德' then 'ak'
+  when yunbu='職' then 'ik' end
+when she='流' then 'au'
+when she='深' then
+  case when yunbu='侵' then 'am' else 'ap' end
+when she='咸' then
+  case when yunbu in('覃','談','鹽','添','嚴','咸','銜','凡') then
+    case when yunbu in('覃','談') and niu in('見','溪','群','疑','影','曉','匣','云','以','日') then 'am'
+    when (yunbu in('鹽','添','嚴') and deng<>'二') or (hu='開' and deng='三') or (niu not in('幫','滂','並','明') and hu='合' and deng='三') then 'im'
+    --when yunbu in('銜','咸') and niu in('莊','初','崇','見','溪','曉','匣') then 'em'
+    else 'aam' end
+  else
+    case when yunbu in('合','盍') and niu in('見','溪','群','疑','影','曉','匣','云','以','日') then 'ap'
+    when yunbu in('葉','怗','業') or (hu='開' and deng='三') or (niu not in('幫','滂','並','明') and hu='合' and deng='三') then 'ip'
+    --when yunbu in('狎','洽') and niu in('見','莊','初','崇','生','知','徹','澄','娘') then 'ep'
+    else 'aap' end
+  end
+end yunmu,
+case when niu in('並','奉','定','澄','從','邪','崇','船','禪','群','匣','明','泥','來','娘','日','疑','以','云') then
+  case when tone ='平' then '4'
+  when tone ='上' then
+    case when niu in('並','奉','定','澄','從','邪','崇','船','禪','群','匣') then '6'
+    when niu in('明','泥','來','娘','日','疑','以','云') then '5' end
+  when tone in ('去','入') then '6' end
+else
+  case when tone ='平' then '1'
+  when tone='上' then '2'
+  when tone='去' then '3'
+  when tone='入' then
+    -- 清紐外轉字
+    case when she in('咸','山','江','宕') or (she='梗' and deng='二' and niu<>'影') then
+      case when she='咸' and deng='一' and niu='影' then '1' else '3' end
+    when niu in('莊','初','崇','生') and deng='三' and she='梗' then '3'
+    else '1' end
+  end
+end shengdiao,
+niu,yunbu,she,hu,deng,tone,expl,note
+from tab_gy_jy_dong
+WITH READ ONLY
+;
+
+
+create or replace view v_nbdict_infer as
+select tab_id,trad,simp,ipa_t ipa_s,ipa_t,u1.jyutping,sour,expl,note from (
+  select tab_id,trad,simp,replace(replace(replace(
+  replace(replace(replace(replace(replace(replace(
+  replace(replace(replace(replace(replace(replace(shengmu||yunmu||shengdiao,
+  'ngik','nik'),'ngip','nip'),'ngit','nit'),'ngoek','noek'),
+  --njik>nik  njip>nip  njit>nit  njoek>noek
+  'wyu','jyu'),'ngi','ji'),'ngyu','jyu'),'ngoe','joe'),'nguk','juk'),'ngung','jung'),
+  'ngut','wut'),'ngun','wun'),'hwa','fa'),'hui','fui'),'hut','fut') jyutping,sour,expl,note
+  from (
+    select tab_id,trad,trad simp,
+    case when shengmu ='g' and hu='合' and yunmu not like 'u%' and yunmu not like 'o%' and yunmu not like 'yu%' and yunmu not like 'im%' then 'gw'
+    when shengmu ='k' and hu='合' and yunmu not like 'u%' and yunmu not like 'o%' and yunmu not like 'yu%' and yunmu not like 'ing%' and yunmu not like 'im%' then 'kw'
+    when shengmu ='h' and hu='合' and yunmu not like 'u%' and yunmu not like 'o%' and yunmu not like 'yu%' and yunmu not like 'i%' then 'hw'
+    when shengmu ='h' and yunmu='un' then 'f'
+    else shengmu end shengmu,
+    case when shengmu in('b','p','m','f') and yunmu like '%m' then substr(yunmu,1,length(yunmu)-1)||'n'
+    when shengmu in('b','p','m','f') and yunmu like '%p' then substr(yunmu,1,length(yunmu)-1)||'t'
+    else yunmu end yunmu,
+    --南寧 詠泳咏 濁去作上
+    case when niu in('云','匣') and hu='合' and yunbu='庚' and tone='去' then '5' else shengdiao end shengdiao
+    ,'' sour,expl,note
+    from  v_nbdict_202109_gy
+    order by tab_id)
+)u1,tab_jyutping_ipa u2
+where u1.jyutping=u2.jyutping(+)
+WITH READ ONLY
+;
+
+
+-- 中古切韻音系至南寧平話演化關係
+create or replace view v_nbdict_202109_gy_bw as
+select tab_id,word trad,
+case when niu='幫' then
+  case when yunbu='東' and deng='三' then 'f'
+  when she='通' and hu='合' and deng='三' and tone='上' then 'p'
+  when yunbu in('鍾','微','虞','廢','文','元','陽','尤','凡','燭','物','月','藥','乏') then 'f'
+  else 'b' end
+when niu='滂' then
+  case when yunbu='東' and deng='三' then 'f'
+  when she='通' and hu='合' and deng='三' and tone='上' then 'p'
+  when yunbu in('鍾','微','虞','廢','文','元','陽','尤','凡','燭','物','月','藥','乏') then 'f'
+  else 'p' end
+when niu='並' then
+  case when yunbu='東' and deng='三' then 'f'
+  when yunbu in('鍾','微','虞','廢','文','元','陽','尤','凡','燭','物','月','藥','乏') then 'f'
+  else 'b' end
+when niu='明' then
+  case when deng='三' and she in('遇','臻') then 'f' else 'm' end
+when niu='端' then 'd'
+when niu='透' then 't'
+when niu='定' then 'd'
+when niu='泥' then 'n'
+when niu='來' then 'l'
+when niu in('知','精','莊','章') then 'z'
+when niu in('徹','清','初','昌') then 'c'
+when niu in('澄','從','崇','邪') then 'z'
+when niu='娘' then 'n'
+when niu='心' then
+  case when (she='止' and hu='合' and deng='三' and tone='上') --髓
+  or (she='蟹' and hu='開' and deng='一' and tone='去') --賽
+  or (she='山' and hu='開' and deng='一' and tone='平') then 's' --珊
+  else 'sl' end
+when niu in('生','禪','書','船') then 's'
+when niu='日' then 'nj'
+when niu='見' then 'g'
+when niu='溪' then
+  case when yunbu='模' then 'h'
+  when hu='開' and yunbu<>'模' then
+    case when (yunbu='侯' and tone<>'上') or yunbu in('燭','屑','薛','佳','皆','齊','宵','支','覺','陽','藥') or (deng='三' and yunbu='陌') or (yunbu in('唐','咍') and tone='去') or (she='果' and hu='開') then 'k'
+    when yunbu in('尤','緝') then 'j'
+    else 'h' end
+  when hu='合' and yunbu<>'模' then
+    case when she='臻' and deng='三' and yunbu='文' then 'kw'
+    when she in('遇','止','假','梗') or yunbu in('皆','佳','祭','齊','屑','薛','魂','月','真') or (deng='三' and yunbu='歌') or (deng<>'三' and yunbu='宕') then 'k'
+    when she='曾' and deng='一' and yunbu='登' then 'w'
+    else 'h' end
+  end
+when niu='群' then 'g'
+when niu='疑' then 'ng'
+when niu='曉' then
+  case when yunbu='模' then 'h'
+  when hu='開' and yunbu<>'模' then
+    case when yunbu in('燭','尤') then 'j'
+    when yunbu='侯' and tone='去' then 'k'
+    else 'h' end
+  when hu='合' and yunbu<>'模' then
+    case when (she='梗' and deng='二' and yunbu in('庚','耕')) or (she='曾' and deng='一' and yunbu='登') or yunbu in('職','錫','昔') then 'gw'
+    when she='止' or (yunbu='寒' and tone='去') or yunbu in('文','魂','祭','齊','廢') then 'w'
+    else 'h' end
+  end
+when niu='匣' then
+  case when yunbu='模' then 'h'
+  when hu='開' and yunbu<>'模' then 'h'
+    --case when (she='山' and deng='四' and tone<>'入') or (she='梗' and deng='四' and tone='平') then 'j' else 'h' end
+  when hu='合' and yunbu<>'模' and deng in('一','二') then
+    case when she in('通','果','宕') then 'h' else 'w' end
+  when hu='合' and yunbu<>'模' and deng in('三','四') then
+    case when she='通' then 'j'
+    when she='咸' then 'h' else 'w' end
+    --case when (she='山' and deng='四') or (she='梗' and deng='四' and tone='平') then 'j' else 'w' end
+  end
+when niu in('影','云','以') then
+  case when yunbu='模' then 'w'
+  when hu='開' and yunbu<>'模' then
+    case when deng in('三','四') and not(niu='影' and she in('蟹','曾','梗','臻','通')) then 'j'
+    when deng='二' and niu='云' then 'w'
+    when deng in('一','二') and niu='以' then 'j' else '' end
+  when hu='合' and yunbu<>'模' and deng in('一','二') then
+    case when she in('通','果','宕') then '' else 'w' end
+  when hu='合' and yunbu<>'模' and deng in('三','四') then
+    case when she in('通','果') or (niu='以' and she='蟹') or (niu in('影','云') and she='咸') then
+      case when niu='影' and she<>'咸' then '' else 'j' end
+    else 'w' end
+  end
+end shengmu,
+case when she='通' then
+  case when yunbu in('東','冬','鍾') then 'oeng' else 'oek' end
+when she='江' then
+  case when yunbu='江' then
+    case when niu in('知','徹','澄','娘','莊','初','崇','生','明') then
+      case when hu='開' and deng='二' then 'iang' else 'ung' end
+    else 'aang' end
+  else
+    case when niu in('知','徹','澄','娘','莊','初','崇','生','明') then
+      case when hu='開' and deng='二' then 'iak' else 'uk' end
+    else 'aak' end
+  end
+when she='止' then
+  case when niu in('幫','滂','並','明') then 'i'
+  when hu='開' and niu not in('幫','滂','並','明') then
+    case when niu in('精','清','從','心','邪','莊','初','崇','生') and deng='三' then
+      case when yunbu='支' and tone='上' and niu in('心','生') then 'ai' else 'i' end
+    else 'i' end
+  when hu='合' and niu not in('幫','滂','並','明') then
+    case when niu in('見','溪','群','疑','影','曉','匣','云','以') then 'ai' else 'ui' end
+  end
+when she='遇' then
+  case when yunbu in('魚','虞') then
+    case when niu in('莊','初','崇','生','幫','滂','並','明') then 'u' else 'yu' end  --莊組部分字o
+  else 'u' end
+when she='蟹' then
+  case when yunbu='齊' then 'ai'
+  when yunbu='祭' then
+    case when hu='合' and niu='以' then 'ui'
+    when hu='合' and niu not in('見','溪','群','疑','影','曉','匣','云','以') then 'ui'
+    else 'ai' end
+  when yunbu='泰' then
+    case when niu in('幫','滂','並','明') then 'ui' else
+      case when hu='開' then 'aai'
+      when hu='合' then
+        case when niu='疑' then 'waai' else 'ui' end
+      end
+    end
+  when yunbu in('佳','皆','夬') then 'aai'
+  when yunbu='灰' then
+    case when niu='疑' then 'ai' else 'ui' end
+  when yunbu='咍' then
+    case when niu in('幫','滂','並','明','以') then 'ui' else 'aai' end
+  when yunbu='廢' and niu in('幫','滂','並','明') then 'i' else 'ai' end
+when she='臻' then
+  case when yunbu in('真','臻','文','欣','魂','痕') then
+    case when yunbu='魂' and niu in('幫','滂','並','明','精','清','從','心','邪') then 'un' else 'an' end
+  else
+    case
+      when yunbu='沒' and niu in('幫','滂','並','明','精','清','從','心','邪') then 'ut' else 'at' end
+  end
+when she='山' then
+  case when yunbu in('寒','刪','山','仙','先','元') then
+    case when yunbu='元' and niu in('幫','滂','並','明') then 'aan'
+    when yunbu='元' and niu not in('幫','滂','並','明') and hu='開' then 'in'
+    when yunbu='元' and niu not in('幫','滂','並','明') and hu='合' then 'yun'
+    when yunbu='寒' and niu in('幫','滂','並','明') then 'un'
+    when yunbu='寒' and hu='開' and niu not in('幫','滂','並','明') then 'aan'
+    when yunbu='寒' and hu='合' and niu not in('幫','滂','並','明') then 'un'
+    when yunbu in('刪','山') then 'aan'
+    when yunbu in('仙','先') and hu='開' then 'in'
+    when yunbu in('仙','先') and hu='合' and niu in('幫','滂','並','明') then 'in'
+    when yunbu in('仙','先') and hu='合' and niu not in('幫','滂','並','明') then 'yun' end
+  else
+    case when yunbu='月' and niu in('幫','滂','並','明') then 'aat'
+    when yunbu='月' and niu not in('幫','滂','並','明') and hu='開' then 'it'
+    when yunbu='月' and niu not in('幫','滂','並','明') and hu='合' then 'yut'
+    when yunbu='曷' and niu in('幫','滂','並','明') then 'ut'
+    when yunbu='曷' and hu='開' and niu not in('幫','滂','並','明') then 'aat'
+    when yunbu='曷' and hu='合' and niu not in('幫','滂','並','明') then
+      case when niu='影' then 'aat' else 'ut' end
+    when yunbu in('鎋','黠') then
+      case when niu='匣' and hu='開' then 'at' else 'aat' end
+    when yunbu in('屑','薛') and hu='開' then 'it'
+    when yunbu in('屑','薛') and hu='合' and niu in('幫','滂','並','明') then 'it'
+    when yunbu in('屑','薛') and hu='合' and niu not in('幫','滂','並','明') then 'yut' end
+  end
+when she='效' then
+  case when yunbu in('蕭','宵') then 'iu'
+  when yunbu in('肴','豪') then 'aau' end
+when she='果' then
+  case when deng='一' and hu='開' and niu not in('幫','滂','並','明') then 'o'
+  when deng='一' and hu='開' and niu in('幫','滂','並','明') then 'u'
+  when deng='一' and hu='合' then 'u'
+  when deng='三' and hu='合' then 'oe' else 'e' end
+when she='假' then
+  case when deng='二' then 'aa' else 'e' end
+when she='宕' then
+  case when yunbu in ('陽','唐') then
+    case when hu='開' and deng='三' and niu not in('幫','滂','並','明','莊','初','崇','生') then 'iang' else
+      case when hu='開' and (deng<>'三' or niu in('莊','初','崇','生')) then 'aang'
+      when hu='合' and deng='三' and niu='來' and she='宕' then 'iang' else 'ung' end
+    end
+  else
+    case when hu='開' and deng='三' and niu not in('幫','滂','並','明') then 'iak' else
+      case when yunbu='鐸' and tone='去' then 'aau' -- 應歸入肴韻
+      when hu='開' and deng='一' and niu='明' then 'oek'
+      when hu='開' and deng<>'三' and niu not in('幫','滂','並','明') then 'aak'
+      when hu='合' and deng='三' and niu='來' and she='宕' then 'iak' else 'uk' end
+    end
+  end
+when she='梗' then
+  case when yunbu in ('清','青','庚','耕') then
+    case when yunbu in ('清','青')  or (yunbu='庚' and deng='三' and niu not in('莊','初','崇','生')) then 'ing' else
+      case when niu not in('影','見','曉','幫','滂','並') and deng='二' then 'iang'
+      when niu in('莊','初','崇','生') and deng='三' then 'iang'
+      when niu='影' and hu='開' and deng='二' then 'aang' else 'ang' end
+    end
+  else
+    case when yunbu in ('昔','錫')  or (yunbu='陌' and deng='三' and niu not in('莊','初','崇','生')) then 'ik' else
+      case when (niu in('莊','初','崇','生') and deng='三') or deng='二' then 'iak' else 'ak' end
+    end
+  end
+when she='曾' then
+  case when yunbu='登' then 'ang'
+  when yunbu='蒸' then 'ing'
+  when yunbu='德' then 'ak'
+  when yunbu='職' then 'ik' end
+when she='流' then 'au'
+when she='深' then
+  case when yunbu='侵' then 'am' else 'ap' end
+when she='咸' then
+  case when yunbu in('覃','談','鹽','添','嚴','咸','銜','凡') then
+    case when (yunbu in('鹽','添','嚴') and deng<>'二') or (hu='開' and deng='三') or (niu not in('幫','滂','並','明') and hu='合' and deng='三') then 'im' else 'aam' end
+  else
+    case when yunbu in('葉','怗','業') or (hu='開' and deng='三') or (niu not in('幫','滂','並','明') and hu='合' and deng='三') then 'ip'
+    when yunbu in('合','盍') and niu in('影','疑') then 'ap' else 'aap' end
+  end
+end yunmu,
+case when niu in('並','奉','定','澄','從','邪','崇','船','禪','群','匣','明','泥','來','娘','日','疑','以','云') then
+  case when tone ='平' then '4'
+  when tone ='上' then
+    case when niu in('並','奉','定','澄','從','邪','崇','船','禪','群','匣') then '6'
+    when niu in('明','泥','來','娘','日','疑','以','云') then '5' end
+  when tone='去' then '6'
+  when tone='入' then
+    case when niu in('明','泥','來','娘','日','疑','以','云') then '5' else '6' end
+  end
+else
+  case when tone ='平' then '1'
+  when tone='上' then '2'
+  when tone='去' then '3'
+  when tone='入' then '2' end
+end shengdiao,niu,yunbu,she,hu,deng,tone,expl,note
+from tab_gy_jy_dong
+WITH READ ONLY
+;
+
+
+create or replace view v_nbdict_infer_bw as
+select tab_id,trad,simp,ipa_t ipa_s,ipa_t,u1.jyutping,sour,expl,note from (
+  select tab_id,trad,simp,replace(replace(replace(replace(
+  replace(replace(replace(replace(replace(replace(replace(
+  replace(replace(replace(replace(replace(shengmu||yunmu||shengdiao,
+  'wyu','jyu'),'ngi','nji'),'ngyu','njyu'),'ngoe','njoe'),'nguk','njuk'),'ngung','njung'),
+  'ngut','wut'),'ngun','wun'),'hwa','wa'),'ngw','w'),
+  'njing','nging'),'njik','nik'),'njip','nip'),'njit','nit'),'njiang','ngiang'),'njiak','ngiak') jyutping,sour,expl,note
+  --njing>nging  njik>nik  njip>nip  njit>nit  njiang>ngiang  njiak>ngiak
+  from (
+    select tab_id,trad,trad simp,
+    case when shengmu ='g' and hu='合' and yunmu not like 'u%' and yunmu not like 'o%' and yunmu not like 'yu%' and yunmu not like 'im%' then 'gw'
+    when shengmu ='k' and hu='合' and yunmu not like 'u%' and yunmu not like 'o%' and yunmu not like 'yu%' and yunmu not like 'ing%' and yunmu not like 'im%' then 'kw'
+    when shengmu ='h' and hu='合' and yunmu not like 'u%' and yunmu not like 'o%' and yunmu not like 'yu%' and yunmu not like 'i%' then 'hw'
+    when shengmu ='w' and (yunmu='ung' or yunmu='uk') then ''
+    else shengmu end shengmu,
+    case when shengmu in('b','p','m','f') and yunmu like '%m' then substr(yunmu,1,length(yunmu)-1)||'n'
+    when shengmu in('b','p','m','f') and yunmu like '%p' then substr(yunmu,1,length(yunmu)-1)||'t'
+    else yunmu end yunmu,
+    --南寧 詠泳咏 濁去作上
+    case when niu in('云','匣') and hu='合' and yunbu='庚' and tone='去' then '5' else shengdiao end shengdiao
+    ,'' sour,expl,note
+    from  v_nbdict_202109_gy_bw
+    order by tab_id)
+)u1,tab_jyutping_ipa_bw u2
+where u1.jyutping=u2.jyutping(+)
+WITH READ ONLY
+;
+
+
+</pre>
+
+  </div>
+</main>
+
+<button class="material-scrolltop" type="button"></button>
+<script>
+  $('body').materialScrollTop();
+</script>
+
+<footer class="footer text-center mt-auto py-3">
+  <div class="container user-font">
+    <span class="text-muted"> © 2020-<script>document.write(new Date().getFullYear());</script> <a class="text-info" target="_blank" href="https://leimaau.github.io/leimaau-webdict2/">Leimaau's Webdict 2</a> 版權所有</span></span>
+  </div>
+</footer>
+
+</body>
+</html>

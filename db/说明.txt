@@ -46,10 +46,14 @@ CREATE TABLE tab_1008_d(
    CHONG         TEXT    NOT NULL,
    FANQIE        TEXT    NOT NULL,
    FLAG         TEXT    NOT NULL,
-   EXPL           TEXT    
+   EXPL           TEXT,
+   IPA          TEXT,
+   JP         TEXT    NOT NULL,
+   BWIPA          TEXT,
+   BWJP         TEXT    NOT NULL
 );
 
--- 集韵
+-- 集韵（东方版）
 CREATE TABLE tab_1039(
    ID             TEXT    NOT NULL,
    WORD           TEXT    NOT NULL,
@@ -60,7 +64,11 @@ CREATE TABLE tab_1039(
    DENG           TEXT    NOT NULL,
    TONE           TEXT    NOT NULL,
    FANQIE         TEXT    NOT NULL,
-   EXPL           TEXT    NOT NULL
+   EXPL           TEXT    NOT NULL,
+   IPA          TEXT,
+   JP         TEXT    NOT NULL,
+   BWIPA          TEXT,
+   BWJP         TEXT    NOT NULL
 );
 
 -- 江湖尺牍分韵撮要
