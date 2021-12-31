@@ -4,7 +4,7 @@
 
 const cdnAddr = [];
 cdnAddr.push('https://cdn.jsdelivr.net/npm');
-cdnAddr.push('leimaau-npm-cdn@1.3.3');
+cdnAddr.push('leimaau-npm-cdn@1.3.4');
 cdnAddr.push('db/leimaau.db3');
 
 const DictConfig = {
