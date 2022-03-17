@@ -27,8 +27,10 @@ MainQuery = (() => {
 			querySQL += `) where expl GLOB '*${searchValue}*' order by YEAR`;
 		} else if (queryType == 'note') { // 附註反查
 			querySQL += `) where note GLOB '*${searchValue}*' order by YEAR`;
+		} else if (queryType == 'fanqie') { // 反切反查
+			querySQL += `) where 1=2`;
 		};
-		return DictDb.execParam( querySQL, (queryType == 'jyutping' || queryType == 'expl' || queryType == 'note') ? [] : [searchValue] );
+		return DictDb.execParam( querySQL, (queryType == 'jyutping' || queryType == 'expl' || queryType == 'note' || queryType == 'fanqie') ? [] : [searchValue] );
 	};
 	
 	// (單字)查詢單個表，用於《廣韻》韻典版
@@ -62,7 +64,7 @@ MainQuery = (() => {
 		} else if (queryType == 'note') { // 附註反查
 			querySQL += ` where 1=2`;
 		} else if (queryType == 'fanqie') { // 反切反查
-			querySQL += ` where fanqie = '${searchValue}'`;
+			querySQL += ` where fanqie = '${searchValue}' order by CAST(ID as INTEGER)`;
 		};
 		return DictDb.execParam( querySQL, (queryType != 'jyut6ping3') ? [] : [searchValue, searchValue] );
 	};
@@ -78,10 +80,10 @@ MainQuery = (() => {
 			querySQL += ` where jyutping = ? or jyutping = '${searchValue}°' or jyutping = replace(replace(replace('${searchValue}','1','7'),'3','7°'),'6','8') order by CAST(ID as INTEGER)`;
 		} else if (queryType == 'expl') { // 釋義反查
 			querySQL += ` where expl GLOB '*${searchValue}*' order by CAST(ID as INTEGER)`;
-		} else if (queryType == 'note') { // 附註反查
+		} else if (queryType == 'note' || queryType == 'fanqie') { // 附註/反切反查
 			querySQL += ` where 1=2`;
 		};
-		return DictDb.execParam( querySQL, (queryType == 'jyutping' || queryType == 'expl' || queryType == 'note') ? [] : [searchValue] );
+		return DictDb.execParam( querySQL, (queryType == 'jyutping' || queryType == 'expl' || queryType == 'note' || queryType == 'fanqie') ? [] : [searchValue] );
 	};
 	
 	// (單字)查詢單個表，用於《英華分韻撮要》
@@ -95,7 +97,7 @@ MainQuery = (() => {
 			querySQL += ` where jyutping = ? or jyutping = '${searchValue}°' or jyutping = replace(replace(replace('${searchValue}','1','7'),'3','7°'),'6','8') order by CAST(ID as INTEGER)`;
 		} else if (queryType == 'expl') { // 釋義反查
 			querySQL += ` where expl GLOB '*${searchValue}*' order by CAST(ID as INTEGER)`;
-		} else if (queryType == 'note') { // 附註反查
+		} else if (queryType == 'note' || queryType == 'fanqie') { // 附註/反切反查
 			querySQL += ` where 1=2`;
 		};
 		return DictDb.execParam( querySQL, (queryType != 'jyut6ping3') ? [] : [searchValue] );
@@ -112,7 +114,7 @@ MainQuery = (() => {
 			querySQL += ` where jyutping = ? order by CAST(ID as INTEGER)`;
 		} else if (queryType == 'expl') { // 釋義反查
 			querySQL += ` where expl GLOB '*${searchValue}*' order by CAST(ID as INTEGER)`;
-		} else if (queryType == 'note') { // 附註反查
+		} else if (queryType == 'note' || queryType == 'fanqie') { // 附註/反切反查
 			querySQL += ` where 1=2`;
 		};
 		return DictDb.execParam( querySQL, (queryType != 'jyut6ping3') ? [] : [searchValue] );
