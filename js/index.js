@@ -1257,7 +1257,7 @@ function queryOldJyut(Niu, Yun, Tone, fanqie, isFanqie, expl, isExpl){
 
 // 入口文件
 $(() => {
-	DictDb.factory(DictConfig.dir);
+	DictDb.factory(DictConfig.dir, DictConfig.dir2);
 	
 	// 輸出模態框表格數據
 	$('#outTab_oldbook').bootstrapTable({

@@ -66,7 +66,7 @@ MainQuery = (() => {
 		} else if (queryType == 'fanqie') { // 反切反查
 			querySQL += ` where fanqie = '${searchValue}' order by CAST(ID as INTEGER)`;
 		};
-		return DictDb.execParam( querySQL, (queryType != 'jyut6ping3') ? [] : [searchValue, searchValue] );
+		return DictDb.execParam2( querySQL, (queryType != 'jyut6ping3') ? [] : [searchValue, searchValue] );
 	};
 	
 	// (單字)查詢單個表，用於《江湖尺牘分韻撮要》

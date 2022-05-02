@@ -1,4 +1,7 @@
 ﻿
+分两个数据库 leimaau.db3 和 leimaau2.db3
+
+
 -- 命令
 
 sqlite3 进入命令行

@@ -2,13 +2,15 @@ DictDb = (() => {
   let dbTemp = {};
 
   dbTemp.db = null;
+  dbTemp.db2 = null;
 
-  dbTemp.factory = (dbDir) => {
+  dbTemp.factory = (dbDir, dbDir2) => {
     // 讀取數據庫數據
     //console.log(dbDir);
-    axios.get(dbDir, { responseType: 'arraybuffer' })
+    Promise.all([axios.get(dbDir, { responseType: 'arraybuffer' }), axios.get(dbDir2, { responseType: 'arraybuffer' })])
       .then(function (response) {
-        dbTemp.db = new window.SQL.Database(new Uint8Array(response.data));
+        dbTemp.db = new window.SQL.Database(new Uint8Array(response[0].data));
+		dbTemp.db2 = new window.SQL.Database(new Uint8Array(response[1].data));
         console.info("數據庫初始化完成");
         dicLoaded(queryButt); // 修改查詢按鈕
       })
@@ -21,6 +23,10 @@ DictDb = (() => {
   dbTemp.hasDb = () => {
     return dbTemp.db === null ? false : true
   }
+  
+  dbTemp.hasDb2 = () => {
+    return dbTemp.db2 === null ? false : true
+  }
 
   /*
   原生查詢
@@ -30,6 +36,13 @@ DictDb = (() => {
       return false;
     }
     return dbTemp.db.exec(sql);
+  }
+  
+  dbTemp.exec2 = (sql) => {
+    if (dbTemp.hasDb2() === false) {
+      return false;
+    }
+    return dbTemp.db2.exec(sql);
   }
 
   /**
@@ -52,6 +65,21 @@ DictDb = (() => {
     stmt.free(); // 釋放結果集
     return result;
   }
+  
+  dbTemp.execParam2 = (sql, param = {}, resObj = true) => {
+    let result = [];
+    let stmt = dbTemp.db2.prepare(sql);
+    stmt.bind(param);
+    while (stmt.step()) {
+      if (resObj) {
+        result.push(stmt.getAsObject()); // {col1: "4", col2: "DDD"}
+      } else {
+        result.push(stmt.get()); // ["4", "DDD"]
+      }
+    }
+    stmt.free(); // 釋放結果集
+    return result;
+  }
 
   /*
   帶回調函數的查詢
@@ -60,6 +88,21 @@ DictDb = (() => {
   dbTemp.execCallback = (callback, sql, param = {}, resObj = true) => {
     let result = [];
     let stmt = dbTemp.db.prepare(sql);
+    stmt.bind(param);
+    while (stmt.step()) {
+      if (resObj) {
+        result.push(stmt.getAsObject()); // {col1: "4", col2: "DDD"}
+      } else {
+        result.push(stmt.get()); // ["4", "DDD"]
+      }
+    }
+    stmt.free(); // 釋放結果集
+    callback(result); // 把結果返回給回調函數的參數
+  }
+  
+  dbTemp.execCallback2 = (callback, sql, param = {}, resObj = true) => {
+    let result = [];
+    let stmt = dbTemp.db2.prepare(sql);
     stmt.bind(param);
     while (stmt.step()) {
       if (resObj) {

@@ -41,12 +41,11 @@
 create or replace view v_nbdict_202109_gy as
 select tab_id,word trad,
 case when niu='幫' then
-  case when she='通' and hu='合' and deng='三' and yunbu not in('仙','庚') then 'f' else 'b' end
+  case when (yunbu='東' and deng='三') or yunbu in('鍾','微','廢','虞','文','元','陽','尤','凡') then 'f' else 'b' end
 when niu='滂' then
-  case when she='通' and hu='合' and deng='三' and tone='上' then 'p'
-  when she='通' and hu='合' and deng='三' and yunbu not in('仙','庚') then 'f' else 'p' end
+  case when (yunbu='東' and deng='三') or yunbu in('鍾','微','廢','虞','文','元','陽','尤','凡') then 'f' else 'p' end
 when niu='並' then
-  case when she='通' and hu='合' and deng='三' and yunbu not in('仙','庚') then 'f'
+  case when (yunbu='東' and deng='三') or yunbu in('鍾','微','廢','虞','文','元','陽','尤','凡') then 'f'
   else case when tone='平' then 'p' else 'b' end end
 when niu='明' then 'm'
 when niu='端' then 'd'
@@ -319,12 +318,11 @@ WITH READ ONLY
 create or replace view v_nbdict_202109_gy_bw as
 select tab_id,word trad,
 case when niu='幫' then
-  case when she='通' and hu='合' and deng='三' and yunbu not in('仙','庚') then 'f' else 'b' end
+  case when (yunbu='東' and deng='三') or yunbu in('鍾','微','廢','虞','文','元','陽','尤','凡') then 'f' else 'b' end
 when niu='滂' then
-  case when she='通' and hu='合' and deng='三' and tone='上' then 'p'
-  when she='通' and hu='合' and deng='三' and yunbu not in('仙','庚') then 'f' else 'p' end
+  case when (yunbu='東' and deng='三') or yunbu in('鍾','微','廢','虞','文','元','陽','尤','凡') then 'f' else 'p' end
 when niu='並' then
-  case when she='通' and hu='合' and deng='三' and yunbu not in('仙','庚') then 'f' else 'b' end
+  case when (yunbu='東' and deng='三') or yunbu in('鍾','微','廢','虞','文','元','陽','尤','凡') then 'f' else 'b' end
 when niu='明' then
   case when deng='三' and she in('遇','臻') then 'f' else 'm' end
 when niu='端' then 'd'
