@@ -66,7 +66,7 @@ MainQuery = (() => {
 		} else if (queryType == 'fanqie') { // 反切反查
 			querySQL += ` where fanqie = '${searchValue}' order by CAST(ID as INTEGER)`;
 		};
-		return DictDb.execParam2( querySQL, (queryType != 'jyut6ping3') ? [] : [searchValue, searchValue] );
+		return (selVal[0] == 'tab_1008_d') ? DictDb.execParam2( querySQL, (queryType != 'jyut6ping3') ? [] : [searchValue, searchValue] ) : DictDb.execParam3( querySQL, (queryType != 'jyut6ping3') ? [] : [searchValue, searchValue] );
 	};
 	
 	// (單字)查詢單個表，用於《江湖尺牘分韻撮要》
@@ -83,7 +83,7 @@ MainQuery = (() => {
 		} else if (queryType == 'note' || queryType == 'fanqie') { // 附註/反切反查
 			querySQL += ` where 1=2`;
 		};
-		return DictDb.execParam( querySQL, (queryType == 'jyutping' || queryType == 'expl' || queryType == 'note' || queryType == 'fanqie') ? [] : [searchValue] );
+		return DictDb.execParam2( querySQL, (queryType == 'jyutping' || queryType == 'expl' || queryType == 'note' || queryType == 'fanqie') ? [] : [searchValue] );
 	};
 	
 	// (單字)查詢單個表，用於《英華分韻撮要》
@@ -100,7 +100,7 @@ MainQuery = (() => {
 		} else if (queryType == 'note' || queryType == 'fanqie') { // 附註/反切反查
 			querySQL += ` where 1=2`;
 		};
-		return DictDb.execParam( querySQL, (queryType != 'jyut6ping3') ? [] : [searchValue] );
+		return DictDb.execParam2( querySQL, (queryType != 'jyut6ping3') ? [] : [searchValue] );
 	};
 	
 	// (單字)查詢單個表，用於《粵音韻彙》
@@ -117,7 +117,7 @@ MainQuery = (() => {
 		} else if (queryType == 'note' || queryType == 'fanqie') { // 附註/反切反查
 			querySQL += ` where 1=2`;
 		};
-		return DictDb.execParam( querySQL, (queryType != 'jyut6ping3') ? [] : [searchValue] );
+		return DictDb.execParam2( querySQL, (queryType != 'jyut6ping3') ? [] : [searchValue] );
 	};
 	
 	
@@ -226,7 +226,7 @@ MainQuery = (() => {
 		if (isFanqie) { querySQL += ` and (fanqie1 GLOB '*${fanqie}*' or fanqie2 GLOB '*${fanqie}*')`; }
 		if (isExpl) { querySQL += ` and expl GLOB '*${expl}*'`; }
 		querySQL += ` order by CAST(ID as INTEGER)`;
-		return DictDb.execParam( querySQL, [] );
+		return DictDb.execParam2( querySQL, [] );
 	};
 	
 	// (多字)查詢單個表，用於《廣韻》東方版
@@ -241,10 +241,10 @@ MainQuery = (() => {
 		if (isFanqie) { querySQL += ` and fanqie GLOB '*${fanqie}*'`; }
 		if (isExpl) { querySQL += ` and expl GLOB '*${expl}*'`; }
 		querySQL += ` order by CAST(ID as INTEGER)`;
-		return DictDb.execParam( querySQL, [] );
+		return DictDb.execParam2( querySQL, [] );
 	};
 	
-	// (多字)查詢單個表，用於《集韻》
+	// (多字)查詢單個表，用於《集韻》東方版
 	tempObj.queryTable_triungkoxghuh = (Niu, Yun, Hu, Deng, Tone, Chong, fanqie, isFanqie, expl, isExpl) => {
 		let querySQL = `select '1039' YEAR,* from tab_1039 where 1=1`;
 		querySQL += ` and niu in ('${Niu}')`;
@@ -256,7 +256,7 @@ MainQuery = (() => {
 		if (isFanqie) { querySQL += ` and fanqie GLOB '*${fanqie}*'`; }
 		if (isExpl) { querySQL += ` and expl GLOB '*${expl}*'`; }
 		querySQL += ` order by CAST(ID as INTEGER)`;
-		return DictDb.execParam( querySQL, [] );
+		return DictDb.execParam3( querySQL, [] );
 	};
 	
 	// (多字)查詢單個表，用於《江湖尺牘分韻撮要》
@@ -267,7 +267,7 @@ MainQuery = (() => {
 		querySQL += ` and tone in ('${Tone}')`;
 		if (isFanqie) { querySQL += ` and fanqie GLOB '*${fanqie}*'`; }
 		if (isExpl) { querySQL += ` and expl GLOB '*${expl}*'`; }
-		return DictDb.execParam( querySQL, [] );
+		return DictDb.execParam2( querySQL, [] );
 	};
 	
 	return tempObj;

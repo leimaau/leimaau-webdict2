@@ -648,7 +648,7 @@ function signArticle(textCont, signText_type, signResult_type, signResult_format
 	if (!cutModule.initFlag){ // 初始化分詞模塊，衹執行一次
 		//const segDict = MainQuery.queryTableOne_segdict(); // 目前是從segDict.js獲取，tab_segdict爲空，需要時導入數據使用
 		cutModule.initFlag = true;
-		segMain(segDict.concat(segDictPlus));
+		segMain(segDict.concat(segDict2.concat(segDictPlus)));
 	}
 	
 	const outputText = [];
@@ -824,7 +824,7 @@ function wordSeg(textCont, HMM = false) {
 	if (!cutModule.initFlag){ // 初始化分詞模塊，衹執行一次
 		//const segDict = MainQuery.queryTableOne_segdict(); // 目前是從segDict.js獲取，tab_segdict停用，需要時導入數據使用
 		cutModule.initFlag = true;
-		segMain(segDict.concat(segDictPlus));
+		segMain(segDict.concat(segDict2.concat(segDictPlus)));
 	}
 	
 	const outputText = [];
@@ -1257,7 +1257,7 @@ function queryOldJyut(Niu, Yun, Tone, fanqie, isFanqie, expl, isExpl){
 
 // 入口文件
 $(() => {
-	DictDb.factory(DictConfig.dir, DictConfig.dir2);
+	DictDb.factory(DictConfig.dir, DictConfig.dir2, DictConfig.dir3);
 	
 	// 輸出模態框表格數據
 	$('#outTab_oldbook').bootstrapTable({

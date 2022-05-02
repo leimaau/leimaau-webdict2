@@ -4,18 +4,24 @@
 
 const cdnAddr = [];
 cdnAddr.push('https://cdn.jsdelivr.net/npm');
-cdnAddr.push('leimaau-npm-cdn@1.3.6');
+cdnAddr.push('leimaau-npm-cdn@1.3.7');
 cdnAddr.push('db/leimaau.db3');
 
 const cdnAddr2 = [];
 cdnAddr2.push('https://cdn.jsdelivr.net/npm');
-cdnAddr2.push('leimaau-npm-cdn@1.3.6');
+cdnAddr2.push('leimaau-npm-cdn@1.3.7');
 cdnAddr2.push('db/leimaau2.db3');
+
+const cdnAddr3 = [];
+cdnAddr3.push('https://cdn.jsdelivr.net/npm');
+cdnAddr3.push('leimaau-npm-cdn@1.3.7');
+cdnAddr3.push('db/leimaau3.db3');
 
 const DictConfig = {
   //dir: 'db/leimaau.db3',  // 使用本地庫
   dir: cdnAddr.join('/'),  // 使用CDN加速
-  dir2: cdnAddr2.join('/')
+  dir2: cdnAddr2.join('/'),
+  dir3: cdnAddr3.join('/')
 };
 
 /*
