@@ -41,11 +41,11 @@
 create or replace view v_nbdict_202109_gy as
 select tab_id,word trad,
 case when niu='幫' then
-  case when (yunbu='東' and deng='三') or yunbu in('鍾','微','廢','虞','文','元','陽','尤','凡') then 'f' else 'b' end
+  case when (yunbu='東' and deng='三') or yunbu in('鍾','微','廢','虞','文','元','陽','尤','凡','燭','物','月','藥','乏') then 'f' else 'b' end
 when niu='滂' then
-  case when (yunbu='東' and deng='三') or yunbu in('鍾','微','廢','虞','文','元','陽','尤','凡') then 'f' else 'p' end
+  case when (yunbu='東' and deng='三') or yunbu in('鍾','微','廢','虞','文','元','陽','尤','凡','燭','物','月','藥','乏') then 'f' else 'p' end
 when niu='並' then
-  case when (yunbu='東' and deng='三') or yunbu in('鍾','微','廢','虞','文','元','陽','尤','凡') then 'f'
+  case when (yunbu='東' and deng='三') or yunbu in('鍾','微','廢','虞','文','元','陽','尤','凡','燭','物','月','藥','乏') then 'f'
   else case when tone='平' then 'p' else 'b' end end
 when niu='明' then 'm'
 when niu='端' then 'd'
@@ -123,7 +123,9 @@ end shengmu,
 case when she='通' then
   case when yunbu in('東','冬','鍾') then 'ung' else 'uk' end
 when she='江' then
-  case when yunbu='江' then 'ong' else 'ok' end
+  case when yunbu='江' then
+    case when niu in('初','生') and tone<>'入' then 'oeng' else 'ong' end
+  else case when niu in('影') then 'ak' else 'ok' end end
 when she='止' then
   case when niu in('幫','滂','並','明') then 'i'
   when hu='開' and niu not in('幫','滂','並','明') then
@@ -272,8 +274,10 @@ else
   when tone='去' then '3'
   when tone='入' then
     -- 清紐外轉字
-    case when she in('咸','山','江','宕') or (she='梗' and deng='二' and niu<>'影') then
-      case when she='咸' and deng='一' and niu='影' then '1' else '3' end
+    case when she in('咸','山','江','宕') or (she='梗' and deng='二') then
+      case when she='咸' and deng='一' and niu='影' then '1' 
+      when she='江' and niu='影' then '1' 
+      when she='梗' and niu='影' then '1' else '3' end
     when niu in('莊','初','崇','生') and deng='三' and she='梗' then '3'
     else '1' end
   end
@@ -318,13 +322,13 @@ WITH READ ONLY
 create or replace view v_nbdict_202109_gy_bw as
 select tab_id,word trad,
 case when niu='幫' then
-  case when (yunbu='東' and deng='三') or yunbu in('鍾','微','廢','虞','文','元','陽','尤','凡') then 'f' else 'b' end
+  case when (yunbu='東' and deng='三') or yunbu in('鍾','微','廢','虞','文','元','陽','尤','凡','燭','物','月','藥','乏') then 'f' else 'b' end
 when niu='滂' then
-  case when (yunbu='東' and deng='三') or yunbu in('鍾','微','廢','虞','文','元','陽','尤','凡') then 'f' else 'p' end
+  case when (yunbu='東' and deng='三') or yunbu in('鍾','微','廢','虞','文','元','陽','尤','凡','燭','物','月','藥','乏') then 'f' else 'p' end
 when niu='並' then
-  case when (yunbu='東' and deng='三') or yunbu in('鍾','微','廢','虞','文','元','陽','尤','凡') then 'f' else 'b' end
+  case when (yunbu='東' and deng='三') or yunbu in('鍾','微','廢','虞','文','元','陽','尤','凡','燭','物','月','藥','乏') then 'f' else 'b' end
 when niu='明' then
-  case when deng='三' and she in('遇','臻') then 'f' else 'm' end
+  case when yunbu in('虞','文') then 'f' else 'm' end
 when niu='端' then 'd'
 when niu='透' then 't'
 when niu='定' then 'd'
@@ -481,7 +485,8 @@ when she='假' then
 when she='宕' then
   case when yunbu in ('陽','唐') then
     case when hu='開' and deng='三' and niu not in('幫','滂','並','明','莊','初','崇','生') then 'iang' else
-      case when hu='開' and (deng<>'三' or niu in('莊','初','崇','生')) then 'aang'
+      case when hu='開' and (deng<>'三' or niu in('幫','滂','並','明','莊','初','崇','生')) then 'aang'
+      when hu='合' and niu in('幫','滂','並','明') then 'aang'
       when hu='合' and deng='三' and niu='來' and she='宕' then 'iang' else 'ung' end
     end
   else
@@ -489,6 +494,7 @@ when she='宕' then
       case when yunbu='鐸' and tone='去' then 'aau' -- 應歸入肴韻
       when hu='開' and deng='一' and niu='明' then 'oek'
       when hu='開' and deng<>'三' and niu not in('幫','滂','並','明') then 'aak'
+      when hu='合' and niu in('幫','滂','並','明') then 'aak'
       when hu='合' and deng='三' and niu='來' and she='宕' then 'iak' else 'uk' end
     end
   end
@@ -497,7 +503,7 @@ when she='梗' then
     case when yunbu in ('清','青')  or (yunbu='庚' and deng='三' and niu not in('莊','初','崇','生')) then 'ing' else
       case when niu not in('影','見','曉','幫','滂','並') and deng='二' then 'iang'
       when niu in('莊','初','崇','生') and deng='三' then 'iang'
-      when niu='影' and hu='開' and deng='二' then 'aang' else 'ang' end
+      else 'ang' end
     end
   else
     case when yunbu in ('昔','錫')  or (yunbu='陌' and deng='三' and niu not in('莊','初','崇','生')) then 'ik' else

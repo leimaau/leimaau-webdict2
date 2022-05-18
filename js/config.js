@@ -3,18 +3,18 @@
 */
 
 const cdnAddr = [];
-cdnAddr.push('https://cdn.jsdelivr.net/npm');
-cdnAddr.push('leimaau-npm-cdn@1.3.7');
+cdnAddr.push('https://fastly.jsdelivr.net/npm');
+cdnAddr.push('leimaau-npm-cdn@1.3.8');
 cdnAddr.push('db/leimaau.db3');
 
 const cdnAddr2 = [];
-cdnAddr2.push('https://cdn.jsdelivr.net/npm');
-cdnAddr2.push('leimaau-npm-cdn@1.3.7');
+cdnAddr2.push('https://fastly.jsdelivr.net/npm');
+cdnAddr2.push('leimaau-npm-cdn@1.3.8');
 cdnAddr2.push('db/leimaau2.db3');
 
 const cdnAddr3 = [];
-cdnAddr3.push('https://cdn.jsdelivr.net/npm');
-cdnAddr3.push('leimaau-npm-cdn@1.3.7');
+cdnAddr3.push('https://fastly.jsdelivr.net/npm');
+cdnAddr3.push('leimaau-npm-cdn@1.3.8');
 cdnAddr3.push('db/leimaau3.db3');
 
 const DictConfig = {
@@ -318,7 +318,7 @@ const colData_jw = [
 	, { field: 'OLD_JP', title: '讀音', rowspan: 2, align: 'center', valign: 'middle' }
 	, { field: 'OLD_JP_TYPE', title: '讀音分類', rowspan: 2, align: 'center', valign: 'middle' }
 	, { field: 'OLD_JP_NOTE', title: '讀音備註', rowspan: 2, align: 'center', valign: 'middle' }
-	, { field: 'PAGE', title: '䈎', rowspan: 2, align: 'center', valign: 'middle', formatter: (value, row) => { return pageSplit(value.replace('*','s'), 'jpg', 'https://cdn.jsdelivr.net/gh/leimaau/CDN@latest/data-store/1856fy/fy') } }
+	, { field: 'PAGE', title: '䈎', rowspan: 2, align: 'center', valign: 'middle', formatter: (value, row) => { return pageSplit(value.replace('*','s'), 'jpg', 'https://fastly.jsdelivr.net/gh/leimaau/CDN@latest/data-store/1856fy/fy') } }
 	, { field: '', title: '擬音', rowspan: 1,colspan: 2, align: 'center', valign: 'middle' }
 	],[
 	{ field: 'IPA', title: 'IPA', align: 'center', valign: 'middle' }
@@ -332,7 +332,7 @@ const colData_jj = [
 	, { field: 'WORD', title: '字頭', align: 'center', formatter: (value) => { let charStr = value.split('|'), aLink = []; for (let i in charStr) aLink.push(`<a href="javascript:querySubmit('${charStr[i]}', 'char', 'dicWord')">${charStr[i]}</a>`); return aLink.join('|') } }
 	, { field: 'IPA', title: 'IPA' }
 	, { field: 'JYUTPING', title: '粵拼', formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'jyut6ping3', 'dicWord')">${value}</a>` } }
-	, { field: 'PAGE', title: '䈎', formatter: (value, row) => { return pageSplit(value, 'jpg', 'https://cdn.jsdelivr.net/gh/leimaau/CDN@latest/data-store/1941yy/yy') } }
+	, { field: 'PAGE', title: '䈎', formatter: (value, row) => { return pageSplit(value, 'jpg', 'https://fastly.jsdelivr.net/gh/leimaau/CDN@latest/data-store/1941yy/yy') } }
 	, { field: 'EXPL', title: '釋義', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` }  }
 	, { field: 'FIRSTFLAG', title: '國語聲母是否捲舌', formatter: (value) => { return `${value.replace('1', '1（否）').replace('2', '2（是）')}` }  }
 ];
@@ -360,7 +360,7 @@ const colData_proverb = [
 	, { field: 'TRADSIMP', title: '繁體〔簡體〕', width: '550px', align: 'left', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
 	//, { field: 'TRAD', title: '繁體', width: '550px', align: 'left', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
 	//, { field: 'SIMP', title: '簡體', width: '550px', align: 'left', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
-	, { field: 'SOUR', title: '來源', width: '250px', formatter: (value, row) => { if(row['YEAR'] == 'tab_2020_proverb') {return `<span style="white-space: normal">2020年Leimaau《南寧童謠和熟語》(本站提供)<span/>`} else {return (row['YEAR'] == 'tab_1937kk_proverb') ? '<span style="white-space: normal">1937年廣西省政府總務處統計室《南寧社會概況》' + pageSplit(value, 'jpg','https://cdn.jsdelivr.net/gh/leimaau/CDN@latest/data-store/1937tj/kk_tj') + '<span/>' : '<span style="white-space: normal">1937年邕寧縣修誌委員會《邕寧縣誌(第4冊)》' + pageSplit(value, 'jpg','https://cdn.jsdelivr.net/gh/leimaau/CDN@latest/data-store/1937tj/jz_tj') + '<span/>' } } }
+	, { field: 'SOUR', title: '來源', width: '250px', formatter: (value, row) => { if(row['YEAR'] == 'tab_2020_proverb') {return `<span style="white-space: normal">2020年Leimaau《南寧童謠和熟語》(本站提供)<span/>`} else {return (row['YEAR'] == 'tab_1937kk_proverb') ? '<span style="white-space: normal">1937年廣西省政府總務處統計室《南寧社會概況》' + pageSplit(value, 'jpg','https://fastly.jsdelivr.net/gh/leimaau/CDN@latest/data-store/1937tj/kk_tj') + '<span/>' : '<span style="white-space: normal">1937年邕寧縣修誌委員會《邕寧縣誌(第4冊)》' + pageSplit(value, 'jpg','https://fastly.jsdelivr.net/gh/leimaau/CDN@latest/data-store/1937tj/jz_tj') + '<span/>' } } }
 	, { field: 'EXPL', title: '釋義', width: '250px', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
 	, { field: 'NOTE', title: '本站校訂附註', width: '250px', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
 ];
@@ -410,7 +410,7 @@ function formatSOUR(value, row_year, picType, qType) {
 	bookname = bookname.replace(/<\/?a.*?>/g,'');
 	row_year = row_year.replace('_bw', '').replace('_phrase', '').replace('_grammar', '').replace('tab_', '');
 	//let linkaddr = 'https://leimaau.github.io/CDN/data-store/' + row_year;
-	let linkaddr = 'https://cdn.jsdelivr.net/gh/leimaau/CDN@latest/data-store/' + row_year;
+	let linkaddr = 'https://fastly.jsdelivr.net/gh/leimaau/CDN@latest/data-store/' + row_year;
 	//let linkaddr = 'https://leimaau.github.io/CDN/index.html?value=' + row_year;
 	
 	if (row_year == '1994') linkaddr += 'zh/zh'
