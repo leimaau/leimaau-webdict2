@@ -1306,4 +1306,6 @@ $(() => {
 	// 返回頂部插件
 	$('body').materialScrollTop();
 	
+	displayAlert("新版本 <a href='https://leimaau-webdict3.vercel.app/'>Leimaau's Webdict 3</a> 已上線", outputAlert, 'alert-success');
+	
 })
