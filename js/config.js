@@ -4,17 +4,17 @@
 
 const cdnAddr = [];
 cdnAddr.push('https://fastly.jsdelivr.net/npm');
-cdnAddr.push('leimaau-npm-cdn@1.3.9');
+cdnAddr.push('leimaau-npm-cdn@1.4.0');
 cdnAddr.push('db/leimaau.db3');
 
 const cdnAddr2 = [];
 cdnAddr2.push('https://fastly.jsdelivr.net/npm');
-cdnAddr2.push('leimaau-npm-cdn@1.3.9');
+cdnAddr2.push('leimaau-npm-cdn@1.4.0');
 cdnAddr2.push('db/leimaau2.db3');
 
 const cdnAddr3 = [];
 cdnAddr3.push('https://fastly.jsdelivr.net/npm');
-cdnAddr3.push('leimaau-npm-cdn@1.3.9');
+cdnAddr3.push('leimaau-npm-cdn@1.4.0');
 cdnAddr3.push('db/leimaau3.db3');
 
 const DictConfig = {
@@ -86,7 +86,7 @@ const rowData_book = [
 	, { BOOK: '2007年白雲《廣西疍家話語音研究》', NN: '', NN_D: 'tab_2007_zb_dg', NN_Y: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: '' , MS_P: ''}
 	, { BOOK: '2007年林亦《南寧石埠平話同音字彙》', NN: '', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', NN_SH: 'noData', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: '' , MS_P: ''}
 	, { BOOK: '2008年林亦、覃鳳餘《廣西南寧白話研究》', NN: 'tab_2008', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: '' , MS_P: ''}
-	, { BOOK: '2009年陳海倫、林亦《粵語平話土話方音字彙》', NN: 'noData', NN_D: '', NN_Y: 'noData', HX_B: '', NN_T: 'noData', NN_SL: '', NN_S: '', NN_SH: 'noData', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: 'noData' , MS_P: ''}
+	, { BOOK: '2009年陳海倫、林亦《粵語平話土話方音字彙》', NN: 'tab_2009', NN_D: '', NN_Y: 'noData', HX_B: '', NN_T: 'tab_2009_bw', NN_SL: '', NN_S: '', NN_SH: 'noData', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: 'noData' , MS_P: ''}
 	, { BOOK: '2009年張菁雅《桂南平話語音研究》', NN: 'noData', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', NN_SH: '', HX_P: 'noData', BY_P: '' , BY_P2: '' , BY_P3: '' , MS_P: ''}
 	, { BOOK: '2017年教育部《漢語方言用字規範》', NN: '', NN_D: '', NN_Y: '', HX_B: '', NN_T: 'tab_201703_bw', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: '' , MS_P: ''}
 	, { BOOK: '2017年詹伯慧、張振興《漢語方言學大詞典》', NN: '', NN_D: '', NN_Y: '', HX_B: '', NN_T: 'tab_201705_bw', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: '' , MS_P: ''}
@@ -687,13 +687,13 @@ const rowData_sponsor = [
 ];
 */
 
-/*
+
 let playlist = [
 	{ title: "顽童", artist: "大宇", mp3: "http://music.163.com/song/media/outer/url?id=1433376109.mp3" ,cover: "http://p2.music.126.net/-fkYAJ6ZEUF3z_SvCi7nZA==/109951164832402338.jpg?param=130y130" }
-	, { title: "新鸳鸯蝴蝶梦（许嵩版）", artist: "音色", mp3: "http://music.163.com/song/media/outer/url?id=1812264780.mp3" ,cover: "http://p1.music.126.net/vd46BOC_HsJpPXeJDVT6lA==/109951166143370571.jpg?param=130y130" }
+	//, { title: "新鸳鸯蝴蝶梦（许嵩版）", artist: "音色", mp3: "http://music.163.com/song/media/outer/url?id=1812264780.mp3" ,cover: "http://p1.music.126.net/vd46BOC_HsJpPXeJDVT6lA==/109951166143370571.jpg?param=130y130" }
 	, { title: "Must Be Love", artist: "YUNG BAE", mp3: "http://music.163.com/song/media/outer/url?id=1368337989.mp3" ,cover: "http://p1.music.126.net/YaCDQb0AzqTZtngEudMDrQ==/109951164107259981.jpg?param=130y130" }
-	, { title: "柳叶笺 (Instrumental)", artist: "朱彦安", mp3: "http://music.163.com/song/media/outer/url?id=553798646.mp3" ,cover: "http://p1.music.126.net/BfUADafLXpKYAubWpWZJZw==/109951163253095310.jpg?param=130y130" }
-	, { title: "孤勇者", artist: "陈奕迅", mp3: "http://music.163.com/song/media/outer/url?id=1901371647.mp3" ,cover: "http://p2.music.126.net/aG5zqxkBRfLiV7A8W0iwgA==/109951166702962263.jpg?param=130y130" }
+	//, { title: "柳叶笺 (Instrumental)", artist: "朱彦安", mp3: "http://music.163.com/song/media/outer/url?id=553798646.mp3" ,cover: "http://p1.music.126.net/BfUADafLXpKYAubWpWZJZw==/109951163253095310.jpg?param=130y130" }
+	, { title: "Đã Có Anh (Gotcha)", artist: "Quang Hùng MasterD", mp3: "http://music.163.com/song/media/outer/url?id=1839663263.mp3" ,cover: "http://p2.music.126.net/DFurrIMjOL-QjbZz-Sp8qQ==/109951165916897431.jpg?param=130y130" }
 	//, { title: "Sunshine in the Rain", artist: "BwO", mp3: "http://music.163.com/song/media/outer/url?id=26843531.mp3" ,cover: "http://p1.music.126.net/4wCUqHV9yRupm5WRlPiV8w==/2035196023046217.jpg?param=130y130" }
 	//, { title: "Heart Like California", artist: "Before You Exit", mp3: "http://music.163.com/song/media/outer/url?id=28828120.mp3" ,cover: "http://p1.music.126.net/zuxhlVEkxksU3e5_mR4Ymg==/5990139348590509.jpg?param=130y130" }
 ];
@@ -704,7 +704,7 @@ function bgChange(){
 	for(let i=0; i<lis.length; i+=2)
 	lis[i].style.background = 'rgba(246, 246, 246, 0.5)';
 }
-window.onload = bgChange;*/
+window.onload = bgChange;
 
 
 // 鏈接顯示函數
