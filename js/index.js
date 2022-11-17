@@ -44,7 +44,7 @@ function querySubmit(inputValue, queryType, dictType) {
 		displayAlert('請選擇查詢資料!', outputAlert, 'alert-danger');
 		return false;
 	} else if (!DictDb.hasDb()) {
-		displayAlert('數據庫未加載，請刷新!', outputAlert, 'alert-danger');
+		displayAlert('數據庫未加載，請等候或刷新!', outputAlert, 'alert-danger');
 		return false;
 	};
 	
@@ -308,7 +308,7 @@ function calcYear(data){
 			dataValue += Math.log(7);
 		} else if (item == '1997' || item == '2003' || /2021/.test(item)){
 			dataValue += Math.log(5);
-		} else if (item == '1994' || item == '2000' || item == '2007' || item == '201703' || item == '201705'){
+		} else if (item == '1994' || item == '2000' || item == '2007' || item == '201703' || item == '201705' || item == '200906'){
 			dataValue += Math.log(3);
 		} else if (item == '201806' || item == '2022'){
 			dataValue += Math.log(1.5);
@@ -832,6 +832,70 @@ function wordSeg(textCont, HMM = false) {
 		outputText.push(cutModule.cut(lines, JSON.parse(HMM)).join(' ') + '<br>');
 	}
 	$('#segResult').html(outputText.join(''));
+}
+
+// 讀音聯想器
+function soundLenovoFun(jpChar) {
+	if (jpChar.length == 0){
+		toastrFunc('toast-top-center');
+		toastr.warning('請輸入需要聯想的讀音！');
+		return false;
+	} else if(jpChar.length > 10) {
+		toastrFunc('toast-top-center');
+		toastr.warning('請輸入一個正確音節！');
+		return false;
+	}
+	
+	const outputText = [], outputText2 = [];
+	outputText.push(jpChar);
+	outputText2.push(jpChar);
+	if(/gw/.test(jpChar)) outputText.push(jpChar.replace(/gw/g,"kw"));
+	if(/kw/.test(jpChar)) outputText.push(jpChar.replace(/kw/g,"gw"));
+	if(/^g/.test(jpChar)) outputText.push(jpChar.replace(/^g/g,"k"));
+	if(/^k/.test(jpChar)) outputText.push(jpChar.replace(/^k/g,"g"));
+	if(/^z/.test(jpChar)) outputText.push(jpChar.replace(/^z/g,"c"));
+	if(/^c/.test(jpChar)) outputText.push(jpChar.replace(/^c/g,"z"));
+	if(/^d/.test(jpChar)) outputText.push(jpChar.replace(/^d/g,"t"));
+	if(/^t/.test(jpChar)) outputText.push(jpChar.replace(/^t/g,"d"));
+	if(/^b/.test(jpChar)) outputText.push(jpChar.replace(/^b/g,"p"));
+	if(/^p/.test(jpChar)) outputText.push(jpChar.replace(/^p/g,"b"));
+	
+	for (let i of outputText) {	
+		if(/aa/.test(i)) outputText2.push(i.replace(/aa/g,"a"));
+		if(/aa/.test(i)) outputText2.push(i.replace(/aa/g,"e"));
+	}
+	
+	for (let i of outputText) {	
+		if(/a/.test(i)) outputText2.push(i.replace(/a/g,"e").replace(/ee/g,"e"));
+		if(/a/.test(i)) outputText2.push(i.replace(/a/g,"aa").replace(/aaaa/g,"aa"));
+	}
+	
+	for (let i of outputText) {
+		if(/eng/.test(i)) outputText2.push(i.replace(/eng/g,"ing"));
+		if(/e([umnptk])/.test(i)) outputText2.push(i.replace(/e([umnptk])/g,"aa$1"));
+		if(/e([umnptk])/.test(i)) outputText2.push(i.replace(/e([umnptk])/g,"a$1"));
+		if(/e([umnptk])/.test(i)) outputText2.push(i.replace(/e([umnptk])/g,"i$1"));
+		if(/e(\d)/.test(i)) outputText2.push(i.replace(/e(\d)/g,"aa$1"));
+		if(/e(\d)/.test(i)) outputText2.push(i.replace(/e(\d)/g,"a$1"));
+		if(/e(\d)/.test(i)) outputText2.push(i.replace(/e(\d)/g,"i$1"));
+	}
+	
+	for (let i of outputText) {
+		if(/ing/.test(i)) outputText2.push(i.replace(/ing/g,"eng"));
+		if(/i([umnptk])/.test(i)) outputText2.push(i.replace(/i([umnptk])/g,"e$1"));
+		if(/([^aeuo])i(\d)/.test(i)) outputText2.push(i.replace(/([^aeuo])i(\d)/g,"$1e$2"));	
+	}
+	
+	for (let i of outputText2) {
+		if(/^h/.test(i)) outputText.push(i.replace(/^h/g,"k"));
+		if(/^k/.test(i)) outputText.push(i.replace(/^k/g,"h"));
+	}
+	
+	for (let i of outputText2) { 
+		outputText.push(i);
+	}
+	
+	$('#soundResult').html(Array.from(new Set(outputText)).join('<br/>'));
 }
 
 // 在線推導函數

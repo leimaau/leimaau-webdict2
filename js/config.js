@@ -4,17 +4,17 @@
 
 const cdnAddr = [];
 cdnAddr.push('https://fastly.jsdelivr.net/npm');
-cdnAddr.push('leimaau-npm-cdn@1.4.0');
+cdnAddr.push('leimaau-npm-cdn@1.4.1');
 cdnAddr.push('db/leimaau.db3');
 
 const cdnAddr2 = [];
 cdnAddr2.push('https://fastly.jsdelivr.net/npm');
-cdnAddr2.push('leimaau-npm-cdn@1.4.0');
+cdnAddr2.push('leimaau-npm-cdn@1.4.1');
 cdnAddr2.push('db/leimaau2.db3');
 
 const cdnAddr3 = [];
 cdnAddr3.push('https://fastly.jsdelivr.net/npm');
-cdnAddr3.push('leimaau-npm-cdn@1.4.0');
+cdnAddr3.push('leimaau-npm-cdn@1.4.1');
 cdnAddr3.push('db/leimaau3.db3');
 
 const DictConfig = {
@@ -87,7 +87,7 @@ const rowData_book = [
 	, { BOOK: '2007年林亦《南寧石埠平話同音字彙》', NN: '', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', NN_SH: 'noData', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: '' , MS_P: ''}
 	, { BOOK: '2008年林亦、覃鳳餘《廣西南寧白話研究》', NN: 'tab_2008', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: '' , MS_P: ''}
 	, { BOOK: '2009年陳海倫、林亦《粵語平話土話方音字彙》', NN: 'tab_2009', NN_D: '', NN_Y: 'noData', HX_B: '', NN_T: 'tab_2009_bw', NN_SL: '', NN_S: '', NN_SH: 'noData', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: 'noData' , MS_P: ''}
-	, { BOOK: '2009年張菁雅《桂南平話語音研究》', NN: 'noData', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', NN_SH: '', HX_P: 'noData', BY_P: '' , BY_P2: '' , BY_P3: '' , MS_P: ''}
+	, { BOOK: '2009年張菁雅《桂南平話語音研究》', NN: 'tab_200906', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', NN_SH: '', HX_P: 'noData', BY_P: '' , BY_P2: '' , BY_P3: '' , MS_P: ''}
 	, { BOOK: '2017年教育部《漢語方言用字規範》', NN: '', NN_D: '', NN_Y: '', HX_B: '', NN_T: 'tab_201703_bw', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: '' , MS_P: ''}
 	, { BOOK: '2017年詹伯慧、張振興《漢語方言學大詞典》', NN: '', NN_D: '', NN_Y: '', HX_B: '', NN_T: 'tab_201705_bw', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: '' , MS_P: ''}
 	, { BOOK: '2018年滕祖愛《南寧市與桂平市粵方言比較研究》', NN: 'tab_201806', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: '' , MS_P: ''}
@@ -410,8 +410,8 @@ function formatSOUR(value, row_year, picType, qType) {
 	bookname = bookname.replace(/<\/?a.*?>/g,'');
 	row_year = row_year.replace('_bw', '').replace('_phrase', '').replace('_grammar', '').replace('tab_', '');
 	//let linkaddr = 'https://leimaau.github.io/CDN/data-store/' + row_year;
-	let linkaddr = 'https://fastly.jsdelivr.net/gh/leimaau/CDN@latest/data-store/' + row_year;
-	//let linkaddr = 'https://leimaau.github.io/CDN/index.html?value=' + row_year;
+	//let linkaddr = 'https://fastly.jsdelivr.net/gh/leimaau/CDN@latest/data-store/' + row_year;
+	let linkaddr = 'https://leimaau.github.io/CDN/index.html?value=' + row_year;
 	
 	if (row_year == '1994') linkaddr += 'zh/zh'
 	else if (row_year == '1997') linkaddr += 'yd/yd'
@@ -420,6 +420,7 @@ function formatSOUR(value, row_year, picType, qType) {
 	else if (row_year == '2007') linkaddr = ''
 	else if (row_year == '2008') linkaddr += 'yj/yj'
 	else if (row_year == '2009') linkaddr += 'yy/yy'
+	else if (row_year == '200906') linkaddr = linkaddr.replace('200906','2009') + 'yj/yj'
 	else if (row_year == '201703') linkaddr = linkaddr.replace('201703','2017') + 'gj/gj'
 	else if (row_year == '201705') linkaddr =  linkaddr.replace('201705','2017') + 'hy/hy0'
 	else if (row_year == '2018') linkaddr = ''
@@ -690,10 +691,10 @@ const rowData_sponsor = [
 
 let playlist = [
 	{ title: "顽童", artist: "大宇", mp3: "http://music.163.com/song/media/outer/url?id=1433376109.mp3" ,cover: "http://p2.music.126.net/-fkYAJ6ZEUF3z_SvCi7nZA==/109951164832402338.jpg?param=130y130" }
-	//, { title: "新鸳鸯蝴蝶梦（许嵩版）", artist: "音色", mp3: "http://music.163.com/song/media/outer/url?id=1812264780.mp3" ,cover: "http://p1.music.126.net/vd46BOC_HsJpPXeJDVT6lA==/109951166143370571.jpg?param=130y130" }
-	, { title: "Must Be Love", artist: "YUNG BAE", mp3: "http://music.163.com/song/media/outer/url?id=1368337989.mp3" ,cover: "http://p1.music.126.net/YaCDQb0AzqTZtngEudMDrQ==/109951164107259981.jpg?param=130y130" }
-	//, { title: "柳叶笺 (Instrumental)", artist: "朱彦安", mp3: "http://music.163.com/song/media/outer/url?id=553798646.mp3" ,cover: "http://p1.music.126.net/BfUADafLXpKYAubWpWZJZw==/109951163253095310.jpg?param=130y130" }
+	, { title: "Trouble Maker", artist: "Soundroll", mp3: "http://music.163.com/song/media/outer/url?id=39224325.mp3" ,cover: "http://p1.music.126.net/pNrh9cQMc8S8s2saGFrDwA==/3223768095974144.jpg?param=130y130" }
+	, { title: "轻轻地告诉你", artist: "杨钰莹", mp3: "http://music.163.com/song/media/outer/url?id=317396.mp3" ,cover: "http://p2.music.126.net/O51NKwxOEmWlOXw3-hY6BA==/109951167519003016.jpg?param=130y130" }
 	, { title: "Đã Có Anh (Gotcha)", artist: "Quang Hùng MasterD", mp3: "http://music.163.com/song/media/outer/url?id=1839663263.mp3" ,cover: "http://p2.music.126.net/DFurrIMjOL-QjbZz-Sp8qQ==/109951165916897431.jpg?param=130y130" }
+	, { title: "柳叶笺 (Instrumental)", artist: "朱彦安", mp3: "http://music.163.com/song/media/outer/url?id=553798646.mp3" ,cover: "http://p1.music.126.net/BfUADafLXpKYAubWpWZJZw==/109951163253095310.jpg?param=130y130" }
 	//, { title: "Sunshine in the Rain", artist: "BwO", mp3: "http://music.163.com/song/media/outer/url?id=26843531.mp3" ,cover: "http://p1.music.126.net/4wCUqHV9yRupm5WRlPiV8w==/2035196023046217.jpg?param=130y130" }
 	//, { title: "Heart Like California", artist: "Before You Exit", mp3: "http://music.163.com/song/media/outer/url?id=28828120.mp3" ,cover: "http://p1.music.126.net/zuxhlVEkxksU3e5_mR4Ymg==/5990139348590509.jpg?param=130y130" }
 ];
@@ -727,7 +728,7 @@ function showLink(textChar){
 	粵拼歌詞網：<a href="https://jyut6.com/search.php?keyword=${textChar}" target="_blank">${textChar}</a></br>
 	翡翠粵語歌詞：<a href="https://www.feitsui.com/zh-hans/search/?query=${textChar}" target="_blank">${textChar}</a></br>
 	中國大百科全書數據庫：<a href="https://h.bkzx.cn/search?query=${textChar}&sublibId=" target="_blank">${textChar}</a></br>
-	國學寶典：<a href="http://www.gxbd.com/" target="_blank">前往</a></br>
+	中國哲學書電子化計劃：<a href="https://ctext.org/dictionary.pl?if=gb&char=${textChar}" target="_blank">${textChar}</a></br>
 	大學數字圖書館合作計劃：<a href="https://cadal.edu.cn/index/home" target="_blank">前往</a></br>
 	萬方方誌數據庫：<a href="http://fz.wanfangdata.com.cn/index.do" target="_blank">前往</a></br>
 	</span></div></div>`);
@@ -736,7 +737,7 @@ function showLink(textChar){
 	字海|葉典：<a href="http://zisea.com/zscontent.asp?uni=${encodeUnicode(textChar).replace('\\u','')}" target="_blank">${textChar}</a></br>
 	字統网：<a href="https://zi.tools/zi/${textChar}" target="_blank">${textChar}</a></br>
 	漢字全息資源應用系統：<a href="http://qxk.bnu.edu.cn/#/danziDetail/42c2d834-fa1d-47e9-9f90-972a687183f7/${textChar}/22d3af76-1ffe-46da-8c28-40e7dfe6b8d2/0" target="_blank">${textChar}</a></br>
-	中國哲學書電子化計劃：<a href="https://ctext.org/dictionary.pl?if=gb&char=${textChar}" target="_blank">${textChar}</a></br>
+	教育部國語小字典：<a href="https://dict.mini.moe.edu.tw/SearchIndex/searchResult?searchType=one&dictSearchField=${textChar}" target="_blank">${textChar}</a></br>
 	Forvo：<a href="https://zh.forvo.com/search/${textChar}/" target="_blank">${textChar}</a></br>
 	Unihan：<a href="https://www.unicode.org/cgi-bin/GetUnihanData.pl?codepoint=${textChar}" target="_blank">${textChar}</a></br>
 	萌典：<a href="https://www.moedict.tw/${textChar}" target="_blank">${textChar}</a></br>
@@ -767,7 +768,7 @@ function showLink(textChar){
 	廣西地情資料庫：<a href="http://www.gxdfz.org.cn/gdtz/" target="_blank">前往</a></br>
 	開放康熙字典：<a href="http://kangxi.adcs.org.tw/kangxizidian/" target="_blank">前往</a></br>
 	漢語大字典檢索：<a href="http://www.homeinmists.com/hd/search.html" target="_blank">前往</a></br>
-	說文解字圖像查閱：<a href="http://www.homeinmists.com/shuowen/find.html" target="_blank">前往</a></br>
+	國學寶典：<a href="http://www.gxbd.com/" target="_blank">前往</a></br>
 	說文解字在線查詢：<a href="http://www.shuowen.org/" target="_blank">前往</a></br>
 	現代標準漢語與粵語對照資料庫：<a href="http://apps.itsc.cuhk.edu.hk/hanyu/Page/Cover.aspx" target="_blank">前往</a></br>
 	ISO漢字查詢系統：<a href="http://glyph.iso10646hk.net/chinese/icharacters.jsp" target="_blank">前往</a></br>
@@ -836,7 +837,7 @@ function jyutping_to_ipa(inputstr, IPA_version, output_IPAformat, judgeDiv){
     outputstr = outputstr.replace(/aa/g,"Aː");
     outputstr = outputstr.replace(/a/g,"ɐ");
 
-	if (IPA_version == 'tIPA2') {
+	if (IPA_version == 'tIPA2' || IPA_version == 'nIPA4' || IPA_version == 'tIPA4') {
 		outputstr = outputstr.replace(/gw/g,"Ku");
 		outputstr = outputstr.replace(/kw/g,"Kʰu");
 	} else {
@@ -854,7 +855,7 @@ function jyutping_to_ipa(inputstr, IPA_version, output_IPAformat, judgeDiv){
     outputstr = outputstr.replace(/sy(\d)/g,"Sɿ$1");
     outputstr = outputstr.replace(/ng/g,"ŋ");
 	
-    if (IPA_version == 'nIPA' || IPA_version == 'tIPA' || IPA_version == 'tIPA3'){
+  if (IPA_version == 'nIPA' || IPA_version == 'tIPA' || IPA_version == 'tIPA3' || IPA_version == 'nIPA4' || IPA_version == 'tIPA4'){
         outputstr = outputstr.replace(/s/g,"ʃ");
         outputstr = outputstr.replace(/z/g,"t͡ʃ");
         outputstr = outputstr.replace(/c/g,"t͡ʃʰ");
@@ -868,7 +869,7 @@ function jyutping_to_ipa(inputstr, IPA_version, output_IPAformat, judgeDiv){
         outputstr = outputstr.replace(/c/g,"t͡ɕʰ");
 	}
 	
-    if (IPA_version == 'tIPA'){
+  if (IPA_version == 'tIPA' || IPA_version == 'tIPA4'){
         outputstr = outputstr.replace(/ɔː|ɔ/g,"o");
         outputstr = outputstr.replace(/ʊ(k|ŋ)/g,"o$1");
         outputstr = outputstr.replace(/(ɛ|ɛː)(\d|i)/g,"e$2");
@@ -893,20 +894,20 @@ function jyutping_to_ipa(inputstr, IPA_version, output_IPAformat, judgeDiv){
         outputstr = outputstr.replace(/ɪ/g,"e");
         outputstr = outputstr.replace(/iɐ([ŋk])/g,"ɛː$1");
 	} else if(IPA_version == 'nIPA') {
-		outputstr = outputstr.replace(/ɪ/g,"e");
-	} else if(IPA_version == 'nIPA2') {
+		    outputstr = outputstr.replace(/ɪ/g,"e");
+	} else if(IPA_version == 'nIPA2' || IPA_version == 'nIPA4') {
         outputstr = outputstr.replace(/ʊ(k|ŋ)/g,"o$1");
-		outputstr = outputstr.replace(/ɪ/g,"e");
+		    outputstr = outputstr.replace(/ɪ/g,"e");
 	} else if(IPA_version == 'nIPA3')  {
-		outputstr = outputstr.replace(/ʊ(k|ŋ)/g,"u$1");
-		outputstr = outputstr.replace(/ɪ(k|ŋ)/g,"i$1");
+		    outputstr = outputstr.replace(/ʊ(k|ŋ)/g,"u$1");
+		    outputstr = outputstr.replace(/ɪ(k|ŋ)/g,"i$1");
 	}
 
-    if (IPA_version == 'nIPA' || IPA_version == 'nIPA2' || IPA_version == 'nIPA3' || IPA_version == 'gIPA'){
+  if (IPA_version == 'nIPA' || IPA_version == 'nIPA2' || IPA_version == 'nIPA3' || IPA_version == 'nIPA4' || IPA_version == 'gIPA'){
         outputstr = outputstr.replace(/([ptk])6/g,"$1̚˨");
         outputstr = outputstr.replace(/([ptk])3/g,"$1̚˧");
         outputstr = outputstr.replace(/([ptk])1/g,"$1̚˥");	
-	} else if(IPA_version == 'tIPA' || IPA_version == 'tIPA3') {
+	} else if(IPA_version == 'tIPA' || IPA_version == 'tIPA3' || IPA_version == 'tIPA4') {
         outputstr = outputstr.replace(/([ptk])3/g,"$1̚˥");
         outputstr = outputstr.replace(/([ptk])2/g,"$1̚˧");
         outputstr = outputstr.replace(/([ptk])5/g,"$1̚˨˦");
@@ -918,7 +919,7 @@ function jyutping_to_ipa(inputstr, IPA_version, output_IPAformat, judgeDiv){
         outputstr = outputstr.replace(/([ptk])6/g,"$1̚˨");
 	}
 	
-    if (IPA_version == 'nIPA' || IPA_version == 'nIPA2' || IPA_version == 'nIPA3'){
+    if (IPA_version == 'nIPA' || IPA_version == 'nIPA2' || IPA_version == 'nIPA3' || IPA_version == 'nIPA4'){
         outputstr = outputstr.replace(/1/g,"˥˥");
         outputstr = outputstr.replace(/2/g,"˧˥");
         outputstr = outputstr.replace(/3/g,"˧˧");
@@ -967,7 +968,7 @@ function ipa_to_jyutping(inputstr, IPA_version){
 	
 	outputstr = outputstr.replace(/ː/g,"").replace(/͡/g,"").replace(/̚/g,"");
 	
-    if (IPA_version == 'nIPA' || IPA_version == 'nIPA2' || IPA_version == 'nIPA3' || IPA_version == 'gIPA'){
+    if (IPA_version == 'nIPA' || IPA_version == 'nIPA2' || IPA_version == 'nIPA3' || IPA_version == 'nIPA4' || IPA_version == 'gIPA'){
         outputstr = outputstr.replace(/˨˩|21|²¹|˩˩|11|¹¹/g,"_4");
         outputstr = outputstr.replace(/˥˥|55|⁵⁵/g,"_1");
         outputstr = outputstr.replace(/˨˦|24|²⁴|˩˧|13|¹³/g,"_5");
@@ -1040,7 +1041,7 @@ function ipa_to_jyutping(inputstr, IPA_version){
     outputstr = outputstr.replace(/y/g,"yu");
     outputstr = outputstr.replace(/ɿ/g,"y");
 	
-	if (IPA_version == 'tIPA2') {
+	if (IPA_version == 'tIPA2' || IPA_version == 'tIPA4') {
 		outputstr = outputstr.replace(/∅u/g,"wu");
 		outputstr = outputstr.replace(/^([∅]|)([u])([int]|)(\d|)/g,"w$2$3$4");
 		outputstr = outputstr.replace(/∅y/g,"jy");
