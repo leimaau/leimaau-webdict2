@@ -67,14 +67,14 @@
 
   <!-- USER CSS -->
   <!--<link type="text/css" rel="stylesheet" href="css/index.css"/>-->
-  <link type="text/css" rel="stylesheet" href="https://fastly.jsdelivr.net/npm/leimaau-npm-cdn@1.4.1/css/index.css"/>
+  <link type="text/css" rel="stylesheet" href="https://fastly.jsdelivr.net/npm/leimaau-npm-cdn@1.4.2/css/index.css"/>
   <!-- USER JavaScript -->
   <!--<script type="text/javascript" src="js/config.js"></script>-->
-  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/leimaau-npm-cdn@1.4.1/js/config.js"></script>
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/leimaau-npm-cdn@1.4.2/js/config.js"></script>
   <!--<script type="text/javascript" src="js/dao.js"></script>-->
-  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/leimaau-npm-cdn@1.4.1/js/dao.js"></script>
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/leimaau-npm-cdn@1.4.2/js/dao.js"></script>
   <!--<script type="text/javascript" src="js/dictDb.js"></script>-->
-  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/leimaau-npm-cdn@1.4.1/js/dictDb.js"></script>
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/leimaau-npm-cdn@1.4.2/js/dictDb.js"></script>
   <script type="text/javascript" src="js/index.js"></script>
   
   <!--<script type="text/javascript" src="js/jieba-js/segMain.min.js"></script>
@@ -84,15 +84,15 @@
   <script type="text/javascript" src="js/jieba-js/nntDict.js"></script>
   <script type="text/javascript" src="js/jieba-js/gzDict.js"></script>-->
   
-  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/leimaau-npm-cdn@1.4.1/js/jieba-js/segMain.min.js"></script>
-  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/leimaau-npm-cdn@1.4.1/js/jieba-js/segDict.min.js"></script>
-  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/leimaau-npm-cdn@1.4.1/js/jieba-js/segDictPlus.min.js"></script>
-  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/leimaau-npm-cdn@1.4.1/js/jieba-js/nnDict.js"></script>
-  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/leimaau-npm-cdn@1.4.1/js/jieba-js/nntDict.js"></script>
-  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/leimaau-npm-cdn@1.4.1/js/jieba-js/gzDict.js"></script>
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/leimaau-npm-cdn@1.4.2/js/jieba-js/segMain.min.js"></script>
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/leimaau-npm-cdn@1.4.2/js/jieba-js/segDict.min.js"></script>
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/leimaau-npm-cdn@1.4.2/js/jieba-js/segDictPlus.min.js"></script>
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/leimaau-npm-cdn@1.4.2/js/jieba-js/nnDict.js"></script>
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/leimaau-npm-cdn@1.4.2/js/jieba-js/nntDict.js"></script>
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/leimaau-npm-cdn@1.4.2/js/jieba-js/gzDict.js"></script>
   
   <!--<link type="text/css" rel="stylesheet" href="css/player/player.css"/>-->
-  <link type="text/css" rel="stylesheet" href="https://fastly.jsdelivr.net/npm/leimaau-npm-cdn@1.4.1/css/player/player.css"/>
+  <link type="text/css" rel="stylesheet" href="https://fastly.jsdelivr.net/npm/leimaau-npm-cdn@1.4.2/css/player/player.css"/>
 </head>
 
 <body>
@@ -129,6 +129,7 @@
             <a class="dropdown-item text-primary" data-toggle="modal" data-target="#derivationModal" href="#">在線推導&nbsp;&nbsp;<span class="badge badge-danger">New</span></a>
 			<a class="dropdown-item text-primary" data-toggle="modal" data-target="#wordSegModal" href="#">在線分詞&nbsp;&nbsp;<span class="badge badge-danger">New</span></a>
 			<a class="dropdown-item text-primary" data-toggle="modal" data-target="#soundLenovoModal" href="#">讀音聯想&nbsp;&nbsp;<span class="badge badge-danger">New</span></a>
+			<a class="dropdown-item text-primary" data-toggle="modal" data-target="#soundSplitModal" href="#">合音拆分&nbsp;&nbsp;<span class="badge badge-danger">New</span></a>
 			<div class="dropdown-divider"></div>
             <a class="dropdown-item" data-toggle="modal" data-target="#aboutModal" href="#">關於</a>
             <a class="dropdown-item" target="_blank" href="https://leimaau.github.io/book/REFERENCES.html">參攷資料</a>
@@ -440,6 +441,42 @@
 		</form>
 		<!--表單提交不刷新,form裏加上target="submitFrame"-->
 		<!--<iframe style="width:0; height:0; margin-top:-10px;" name="submitFrame" src="about:blank"></iframe>-->
+		</div>
+	  </div>
+	</div>
+	<!-- Modal -->
+	<div class="modal fade" id="soundSplitModal" tabindex="-1" role="dialog" aria-labelledby="soundSplitModalLabel" aria-hidden="true">
+	  <div class="modal-dialog modal-xl" role="document">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<h5 class="modal-title" id="soundSplitModalLabel">合音拆分</h5>
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			  <span aria-hidden="true">&times;</span>
+			</button>
+		  </div>
+		<form onsubmit="soundSplitFun(soundChorusChar.value); return false" target="submitFrame">
+		  <div class="modal-body">
+			  <div class="form-group">
+				<label class="col-form-label"  for="soundChorusChar">輸入讀音：</label>
+				<div class="custom-control custom-input custom-control-inline float-right">
+					<input class="btn btn-outline-info btn-sm" type="button" onclick="document.getElementById('soundChorusChar').value='';" value="清空"/>
+				</div>
+				<input type="text" class="form-control" id="soundChorusChar" value="cot6"/>
+			  </div>
+			  <div class="form-group">
+				<span class="form-control textarea-style table-responsive" id="soundChorusCharResult"></span>
+			  </div>
+			  <span>※ 合音拆分器用於在攷究有音無字的音節時，爲猜想其可能的合音提供方便</span><br/>
+			  <span>※ 拆分原則：拆分的音節爲合理音節，爲了方便忽略聲調</span>
+		  </div>
+		  <div class="modal-footer">
+			<input class="btn btn-secondary" type="button" data-dismiss="modal" value="關閉"/>
+			<input class="btn btn-info copyBtn" type="button" data-clipboard-target="#soundChorusCharResult" onclick="handleCopy()" value="複製"/>
+			<input class="btn btn-primary" type="submit" value="拆分"/>
+		  </div>
+		</form>
+		<!--表單提交不刷新,form裏加上target="submitFrame"-->
+		<iframe style="width:0; height:0; margin-top:-10px;" name="submitFrame" src="about:blank"></iframe>
 		</div>
 	  </div>
 	</div>
@@ -884,7 +921,7 @@
   <!--<script type="text/javascript" src="js/player/jquery.marquee.min.js"></script>-->
   <!--<script type="text/javascript" src="js/player/player.js"></script>-->
   <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/jquery.marquee@1.5.0/jquery.marquee.min.js"></script>
-  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/leimaau-npm-cdn@1.4.1/js/player/player.js"></script>
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/leimaau-npm-cdn@1.4.2/js/player/player.js"></script>
   
   <div class="footer text-center mt-auto py-3">
 	  <div class="foot-container user-font">

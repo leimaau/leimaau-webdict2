@@ -898,6 +898,46 @@ function soundLenovoFun(jpChar) {
 	$('#soundResult').html(Array.from(new Set(outputText)).join('<br/>'));
 }
 
+// 合音拆分器
+function soundSplitFun(jpChar) {
+	if (jpChar.length == 0){
+		toastrFunc('toast-top-center');
+		toastr.warning('請輸入需要拆分的讀音！');
+		return false;
+	} else if(jpChar.length > 10) {
+		toastrFunc('toast-top-center');
+		toastr.warning('請輸入一個正確音節！');
+		return false;
+	}
+	
+	const outputText = [], outputText2 = [], resultText = [], resultText2 = [];
+	
+	const wordArr = jpChar.replace(/[0-9]+/g,'').split('');
+	
+	for (let i=0;i<wordArr.length;i++) {
+		let tempArr = [], tempArr2 = []
+		for (let j=0;j<i;j++) {
+			tempArr.push(wordArr[j]);
+		}
+		for (let j=i+1;j<wordArr.length;j++) {
+			tempArr2.push(wordArr[j]);
+		}
+		outputText.push(tempArr.join().replaceAll(',',''));
+		outputText2.push(tempArr2.join().replaceAll(',',''));
+	}
+	
+	const outputText_new = outputText.filter(item=>item);
+	const outputText2_new = outputText2.filter(item=>item);
+	
+	for (i in outputText_new) {
+		let patt1 = new RegExp('^'+outputText_new[i]), patt2 = new RegExp(outputText2_new[i]+'$');
+		resultText.push('以' + outputText_new[i] + '開頭的音節：' + syllable.filter(item=>patt1.test(item)).join(', ') + '<br/>以' + outputText2_new[i] + '結尾的音節：' + syllable.filter(item=>patt2.test(item)).join(', '));
+		resultText2.push('以' + outputText_new[i] + '開頭的音節：' + syllable_bw.filter(item=>patt1.test(item)).join(', ') + '<br/>以' + outputText2_new[i] + '結尾的音節：' + syllable_bw.filter(item=>patt2.test(item)).join(', '));
+	}
+	
+	$('#soundChorusCharResult').html('白話：<br/><br/>'+Array.from(new Set(resultText)).join('<br/><br/>') + '<br/><br/>平話：<br/><br/>'+Array.from(new Set(resultText2)).join('<br/><br/>'));
+}
+
 // 在線推導函數
 function derivationFun(textChar) {
 	if (textChar.length == 0){

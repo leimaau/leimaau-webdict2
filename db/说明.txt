@@ -208,3 +208,10 @@ CREATE TABLE tab_nn_review(
   ipa TEXT    NOT NULL
 );
 
+
+-- 字等级表 暂时不用
+CREATE TABLE tab_bookjp(
+   TRAD           TEXT    NOT NULL,
+   SIMP           TEXT    NOT NULL,
+   BOOKJP          TEXT
+);
