@@ -4,17 +4,17 @@
 
 const cdnAddr = [];
 cdnAddr.push('https://fastly.jsdelivr.net/npm');
-cdnAddr.push('leimaau-npm-cdn@1.4.2');
+cdnAddr.push('leimaau-npm-cdn@1.4.3');
 cdnAddr.push('db/leimaau.db3');
 
 const cdnAddr2 = [];
 cdnAddr2.push('https://fastly.jsdelivr.net/npm');
-cdnAddr2.push('leimaau-npm-cdn@1.4.2');
+cdnAddr2.push('leimaau-npm-cdn@1.4.3');
 cdnAddr2.push('db/leimaau2.db3');
 
 const cdnAddr3 = [];
 cdnAddr3.push('https://fastly.jsdelivr.net/npm');
-cdnAddr3.push('leimaau-npm-cdn@1.4.2');
+cdnAddr3.push('leimaau-npm-cdn@1.4.3');
 cdnAddr3.push('db/leimaau3.db3');
 
 const DictConfig = {
@@ -693,10 +693,11 @@ let playlist = [
 	{ title: "顽童", artist: "大宇", mp3: "http://music.163.com/song/media/outer/url?id=1433376109.mp3" ,cover: "http://p2.music.126.net/-fkYAJ6ZEUF3z_SvCi7nZA==/109951164832402338.jpg?param=130y130" }
 	, { title: "Trouble Maker", artist: "Soundroll", mp3: "http://music.163.com/song/media/outer/url?id=39224325.mp3" ,cover: "http://p1.music.126.net/pNrh9cQMc8S8s2saGFrDwA==/3223768095974144.jpg?param=130y130" }
 	, { title: "轻轻地告诉你", artist: "杨钰莹", mp3: "http://music.163.com/song/media/outer/url?id=317396.mp3" ,cover: "http://p2.music.126.net/O51NKwxOEmWlOXw3-hY6BA==/109951167519003016.jpg?param=130y130" }
-	, { title: "Đã Có Anh (Gotcha)", artist: "Quang Hùng MasterD", mp3: "http://music.163.com/song/media/outer/url?id=1839663263.mp3" ,cover: "http://p2.music.126.net/DFurrIMjOL-QjbZz-Sp8qQ==/109951165916897431.jpg?param=130y130" }
+	, { title: "Miami Nights", artist: "Work Drugs", mp3: "http://music.163.com/song/media/outer/url?id=532776022.mp3" ,cover: "http://p1.music.126.net/nnj8wlrsc6yLJ9aujhcc0A==/109951165449485352.jpg?param=130y130" }
 	, { title: "柳叶笺 (Instrumental)", artist: "朱彦安", mp3: "http://music.163.com/song/media/outer/url?id=553798646.mp3" ,cover: "http://p1.music.126.net/BfUADafLXpKYAubWpWZJZw==/109951163253095310.jpg?param=130y130" }
-	//, { title: "Sunshine in the Rain", artist: "BwO", mp3: "http://music.163.com/song/media/outer/url?id=26843531.mp3" ,cover: "http://p1.music.126.net/4wCUqHV9yRupm5WRlPiV8w==/2035196023046217.jpg?param=130y130" }
-	//, { title: "Heart Like California", artist: "Before You Exit", mp3: "http://music.163.com/song/media/outer/url?id=28828120.mp3" ,cover: "http://p1.music.126.net/zuxhlVEkxksU3e5_mR4Ymg==/5990139348590509.jpg?param=130y130" }
+	, { title: "OK (Dangerous Game)", artist: "Darin", mp3: "http://music.163.com/song/media/outer/url?id=1217526.mp3" ,cover: "http://p2.music.126.net/w9HWgFT-AXuRJ_u0UgHYmw==/109951165033611725.jpg?param=130y130" }
+	, { title: "Tell Me", artist: "潘玮柏 / 徐洁儿", mp3: "http://music.163.com/song/media/outer/url?id=139893.mp3" ,cover: "http://p2.music.126.net/Ss0bcbirGfl6vV6grByKKw==/109951165549347319.jpg?param=130y130" }
+	, { title: "南国之舞", artist: "梁翘柏", mp3: "http://music.163.com/song/media/outer/url?id=28496074.mp3" ,cover: "http://p2.music.126.net/lHwwVluAutDy0FmpaslYiw==/5905476953005960.jpg?param=130y130" }
 ];
 let isRotate = true;
 let autoplay = false;
@@ -757,7 +758,7 @@ function showLink(textChar){
 	
 	outputText3.push(`<div class="card mt-1 mb-3"><div class="card-header">快速鏈接</div><div class="card-body text-secondary"><span>
 	東方語言學：<a href="http://www.eastling.org/" target="_blank">前往</a></br>
-	漢語方言學大詞典：<a href="http://www.fangyanxue.com/pages/index/index.html" target="_blank">前往</a></br>
+	漢語方言學大詞典：<a href="http://www.fangyanxue.com:8090/pages/index/index.html" target="_blank">前往</a></br>
 	古音小鏡：<a href="http://www.kaom.net/" target="_blank">前往</a></br>
 	小學堂：<a href="http://xiaoxue.iis.sinica.edu.tw/" target="_blank">前往</a></br>
 	早期漢語方言文獻資料庫：<a href="http://database.shss.ust.hk/5dialects/" target="_blank">前往</a></br>

@@ -75,9 +75,9 @@ MainQuery = (() => {
 		if (queryType == 'char' || queryType == 'char_simp') { // 查詢繁簡體
 			querySQL += ' where word = ? order by CAST(ID as INTEGER)';
 		} else if (queryType == 'jyutping') { // 查詢無調粵拼
-			querySQL += ` where jyutping GLOB '${searchValue}[1-8]' or jyutping = '${searchValue}7°' order by CAST(ID as INTEGER)`;
+			querySQL += ` where jyutping GLOB '${searchValue}[1-8]' or jyutping = '${searchValue}7°' or jyutping GLOB replace(replace(replace('${searchValue}[1-8]','gy','gwy'),'ky','kwy'),'hy','hwy') or jyutping = replace(replace(replace('${searchValue}7°','gy','gwy'),'ky','kwy'),'hy','hwy') order by CAST(ID as INTEGER)`;
 		} else if (queryType == 'jyut6ping3') { // 查詢有調粵拼
-			querySQL += ` where jyutping = ? or jyutping = '${searchValue}°' or jyutping = replace(replace(replace('${searchValue}','1','7'),'3','7°'),'6','8') order by CAST(ID as INTEGER)`;
+			querySQL += ` where jyutping = ? or jyutping = '${searchValue}°' or jyutping = replace(replace(replace('${searchValue}','1','7'),'3','7°'),'6','8') or jyutping = replace(replace(replace('${searchValue}','gy','gwy'),'ky','kwy'),'hy','hwy') order by CAST(ID as INTEGER)`;
 		} else if (queryType == 'expl') { // 釋義反查
 			querySQL += ` where expl GLOB '*${searchValue}*' order by CAST(ID as INTEGER)`;
 		} else if (queryType == 'note' || queryType == 'fanqie') { // 附註/反切反查

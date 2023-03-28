@@ -929,7 +929,7 @@ function soundSplitFun(jpChar) {
 	const outputText_new = outputText.filter(item=>item);
 	const outputText2_new = outputText2.filter(item=>item);
 	
-	for (i in outputText_new) {
+	for (let i in outputText_new) {
 		let patt1 = new RegExp('^'+outputText_new[i]), patt2 = new RegExp(outputText2_new[i]+'$');
 		resultText.push('以' + outputText_new[i] + '開頭的音節：' + syllable.filter(item=>patt1.test(item)).join(', ') + '<br/>以' + outputText2_new[i] + '結尾的音節：' + syllable.filter(item=>patt2.test(item)).join(', '));
 		resultText2.push('以' + outputText_new[i] + '開頭的音節：' + syllable_bw.filter(item=>patt1.test(item)).join(', ') + '<br/>以' + outputText2_new[i] + '結尾的音節：' + syllable_bw.filter(item=>patt2.test(item)).join(', '));
@@ -1410,6 +1410,6 @@ $(() => {
 	// 返回頂部插件
 	$('body').materialScrollTop();
 	
-	displayAlert("新版本 <a href='https://leimaau-webdict3.vercel.app/'>Leimaau's Webdict 3</a> 已上線，<a href='https://tranquil-tulumba-4026d9.netlify.app'>備用系統</a> 同時開啓", outputAlert, 'alert-success');
+	displayAlert("新版本 <a href='https://leimaau-webdict3.vercel.app/' target='_blank'>Leimaau's Webdict 3</a> 已上線，<a href='https://tranquil-tulumba-4026d9.netlify.app' target='_blank'>備用系統</a> 同時開啓", outputAlert, 'alert-success');
 	
 })
