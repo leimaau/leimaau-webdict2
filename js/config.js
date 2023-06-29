@@ -4,17 +4,17 @@
 
 const cdnAddr = [];
 cdnAddr.push('https://fastly.jsdelivr.net/npm');
-cdnAddr.push('leimaau-npm-cdn@1.4.3');
+cdnAddr.push('leimaau-npm-cdn@1.4.4');
 cdnAddr.push('db/leimaau.db3');
 
 const cdnAddr2 = [];
 cdnAddr2.push('https://fastly.jsdelivr.net/npm');
-cdnAddr2.push('leimaau-npm-cdn@1.4.3');
+cdnAddr2.push('leimaau-npm-cdn@1.4.4');
 cdnAddr2.push('db/leimaau2.db3');
 
 const cdnAddr3 = [];
 cdnAddr3.push('https://fastly.jsdelivr.net/npm');
-cdnAddr3.push('leimaau-npm-cdn@1.4.3');
+cdnAddr3.push('leimaau-npm-cdn@1.4.4');
 cdnAddr3.push('db/leimaau3.db3');
 
 const DictConfig = {
@@ -82,6 +82,7 @@ const rowData_book = [
 	, { BOOK: '2000年李連進《南寧近郊平話方言島》', NN: '', NN_D: '', NN_Y: '', HX_B: '', NN_T: 'noData', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: '' , MS_P: ''}
 	, { BOOK: '2000年李連進《平話音韻研究》', NN: '', NN_D: '', NN_Y: '', HX_B: '', NN_T: 'tab_2000_bw', NN_SL: '', NN_S: '', NN_SH: '', HX_P: 'noData', BY_P: 'noData' , BY_P2: '' , BY_P3: '' , MS_P: 'noData'}
 	, { BOOK: '2003年侯精一《現代漢語方言音庫(字庫)》', NN: 'tab_2003', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: '' , MS_P: ''}
+	, { BOOK: '2007年李彬《左江土白話研究》', NN: 'tab_200706', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '', BY_P: '', BY_P2: '' , BY_P3: '' , MS_P: '' }
 	, { BOOK: '2007年謝建猷《廣西漢語方言研究》', NN: 'tab_2007', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: 'noData', NN_SH: '', HX_P: 'noData', BY_P: '', BY_P2: 'noData' , BY_P3: '' , MS_P: '' }
 	, { BOOK: '2007年白雲《廣西疍家話語音研究》', NN: '', NN_D: 'tab_2007_zb_dg', NN_Y: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: '' , MS_P: ''}
 	, { BOOK: '2007年林亦《南寧石埠平話同音字彙》', NN: '', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', NN_SH: 'noData', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: '' , MS_P: ''}
@@ -410,14 +411,15 @@ function formatSOUR(value, row_year, picType, qType) {
 	bookname = bookname.replace(/<\/?a.*?>/g,'');
 	row_year = row_year.replace('_bw', '').replace('_phrase', '').replace('_grammar', '').replace('tab_', '');
 	//let linkaddr = 'https://leimaau.github.io/CDN/data-store/' + row_year;
-	let linkaddr = 'https://fastly.jsdelivr.net/gh/leimaau/CDN@latest/data-store/' + row_year;
-	//let linkaddr = 'https://leimaau.github.io/CDN/index.html?value=' + row_year;
+	//let linkaddr = 'https://fastly.jsdelivr.net/gh/leimaau/CDN@latest/data-store/' + row_year;
+	let linkaddr = 'https://leimaau.github.io/CDN/index.html?value=' + row_year;
 	
 	if (row_year == '1994') linkaddr += 'zh/zh'
 	else if (row_year == '1997') linkaddr += 'yd/yd'
 	else if (row_year == '1998') linkaddr += 'dfz/dfz'
 	else if (row_year == '2003') linkaddr += 'zk/zk'
-	else if (row_year == '2007') linkaddr = ''
+	else if (row_year == '200706') linkaddr += 'zj/zj'
+	else if (row_year == '2007') linkaddr += 'yj/yj'
 	else if (row_year == '2008') linkaddr += 'yj/yj'
 	else if (row_year == '2009') linkaddr += 'yy/yy'
 	else if (row_year == '200906') linkaddr = linkaddr.replace('200906','2009') + 'yj/yj'
@@ -696,8 +698,10 @@ let playlist = [
 	, { title: "Miami Nights", artist: "Work Drugs", mp3: "http://music.163.com/song/media/outer/url?id=532776022.mp3" ,cover: "http://p1.music.126.net/nnj8wlrsc6yLJ9aujhcc0A==/109951165449485352.jpg?param=130y130" }
 	, { title: "柳叶笺 (Instrumental)", artist: "朱彦安", mp3: "http://music.163.com/song/media/outer/url?id=553798646.mp3" ,cover: "http://p1.music.126.net/BfUADafLXpKYAubWpWZJZw==/109951163253095310.jpg?param=130y130" }
 	, { title: "OK (Dangerous Game)", artist: "Darin", mp3: "http://music.163.com/song/media/outer/url?id=1217526.mp3" ,cover: "http://p2.music.126.net/w9HWgFT-AXuRJ_u0UgHYmw==/109951165033611725.jpg?param=130y130" }
-	, { title: "Tell Me", artist: "潘玮柏 / 徐洁儿", mp3: "http://music.163.com/song/media/outer/url?id=139893.mp3" ,cover: "http://p2.music.126.net/Ss0bcbirGfl6vV6grByKKw==/109951165549347319.jpg?param=130y130" }
-	, { title: "南国之舞", artist: "梁翘柏", mp3: "http://music.163.com/song/media/outer/url?id=28496074.mp3" ,cover: "http://p2.music.126.net/lHwwVluAutDy0FmpaslYiw==/5905476953005960.jpg?param=130y130" }
+	, { title: "one day before i die", artist: "nobody likes you pat", mp3: "http://music.163.com/song/media/outer/url?id=1986926142.mp3" ,cover: "http://p1.music.126.net/5NCG08qMlA5SHjnu3m99qg==/109951167937905668.jpg?param=130y130" }
+	, { title: "星间旅行 Interstellar Journey (英文版)", artist: "HOYO-MiX / Lea Sirk", mp3: "http://music.163.com/song/media/outer/url?id=2043177706.mp3" ,cover: "http://p2.music.126.net/JaSa3Gt5oaJ77cDfJBR1fg==/109951168575641463.jpg?param=130y130" }
+	, { title: "致：黯淡星", artist: "傲七爷 / 哦漏", mp3: "http://music.163.com/song/media/outer/url?id=2047787698.mp3" ,cover: "http://p2.music.126.net/LAXHjEEFTBTgg85eHWQ0LQ==/109951168616575456.jpg?param=130y130" }
+	, { title: "城市青年图鉴", artist: "侯磊", mp3: "http://music.163.com/song/media/outer/url?id=1905604895.mp3" ,cover: "http://p2.music.126.net/bltsKq7u2MtjWXnbJAIArg==/109951166778335025.jpg?param=130y130" }
 ];
 let isRotate = true;
 let autoplay = false;

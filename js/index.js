@@ -306,7 +306,7 @@ function calcYear(data){
 			dataValue += Math.log(9);
 		} else if (item == '1998' || item == '2008' || item == '2009') {
 			dataValue += Math.log(7);
-		} else if (item == '1997' || item == '2003' || /2021/.test(item)){
+		} else if (item == '1997' || item == '2003' || item == '200706' || /2021/.test(item)){
 			dataValue += Math.log(5);
 		} else if (item == '1994' || item == '2000' || item == '2007' || item == '201703' || item == '201705' || item == '200906'){
 			dataValue += Math.log(3);
