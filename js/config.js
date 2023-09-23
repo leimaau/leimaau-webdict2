@@ -4,17 +4,17 @@
 
 const cdnAddr = [];
 cdnAddr.push('https://fastly.jsdelivr.net/npm');
-cdnAddr.push('leimaau-npm-cdn@1.4.4');
+cdnAddr.push('leimaau-npm-cdn@1.4.5');
 cdnAddr.push('db/leimaau.db3');
 
 const cdnAddr2 = [];
 cdnAddr2.push('https://fastly.jsdelivr.net/npm');
-cdnAddr2.push('leimaau-npm-cdn@1.4.4');
+cdnAddr2.push('leimaau-npm-cdn@1.4.5');
 cdnAddr2.push('db/leimaau2.db3');
 
 const cdnAddr3 = [];
 cdnAddr3.push('https://fastly.jsdelivr.net/npm');
-cdnAddr3.push('leimaau-npm-cdn@1.4.4');
+cdnAddr3.push('leimaau-npm-cdn@1.4.5');
 cdnAddr3.push('db/leimaau3.db3');
 
 const DictConfig = {
@@ -138,10 +138,12 @@ const rowData_book_phrase = [
 	, { BOOK: '1998年楊煥典主編《廣西通誌·漢語方言誌》', NN: 'noData', NN_D: '', HX_B: '', NN_T: 'noData', NN_SL: '', NN_S: '', HX_P: '', BY_P: '', BY_P2: '' }
 	, { BOOK: '2000年李連進《南寧近郊平話方言島》', NN: '', NN_D: '', HX_B: '', NN_T: 'noData', NN_SL: '', NN_S: '', HX_P: '', BY_P: '', BY_P2: '' }
 	, { BOOK: '2006年張均如《賓陽話的語音和詞彙》', NN: '', NN_D: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', HX_P: '', BY_P: 'noData', BY_P2: '' }
+	, { BOOK: '2007年李彬《左江土白話研究》', NN: 'noData', NN_D: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', HX_P: '', BY_P: '', BY_P2: '' }
 	, { BOOK: '2007年謝建猷《廣西漢語方言研究》', NN: 'noData', NN_D: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: 'noData', HX_P: 'noData', BY_P: '', BY_P2: 'noData' }
 	, { BOOK: '2008年林亦、覃鳳餘《廣西南寧白話研究》', NN: 'noData', NN_D: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', HX_P: '', BY_P: '', BY_P2: '' }
 	// 	黎丽程 宾阳话的基本词类及句式研究	
 	// 	黎丽程 宾阳话的语音和词汇构成	
+	//  王莉宁 桂南平话与粤语词汇比较方法探讨
 	, { BOOK: '2015年黃增霞《廣西南寧疍家話詞彙研究》', NN: '', NN_D: 'noData', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', HX_P: '', BY_P: '', BY_P2: '' }
 	, { BOOK: '2017年李怡《南寧白話古語詞研究》', NN: 'noData', NN_D: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', HX_P: '', BY_P: '', BY_P2: '' }
 	, { BOOK: '2017年韋慧梅《南寧白話詞彙研究》', NN: 'noData', NN_D: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', HX_P: '', BY_P: '', BY_P2: '' }
@@ -417,6 +419,7 @@ function formatSOUR(value, row_year, picType, qType) {
 	if (row_year == '1994') linkaddr += 'zh/zh'
 	else if (row_year == '1997') linkaddr += 'yd/yd'
 	else if (row_year == '1998') linkaddr += 'dfz/dfz'
+	else if (row_year == '2000') linkaddr += 'yj/yj'
 	else if (row_year == '2003') linkaddr += 'zk/zk'
 	else if (row_year == '200706') linkaddr += 'zj/zj'
 	else if (row_year == '2007') linkaddr += 'yj/yj'
@@ -697,11 +700,12 @@ let playlist = [
 	, { title: "轻轻地告诉你", artist: "杨钰莹", mp3: "http://music.163.com/song/media/outer/url?id=317396.mp3" ,cover: "http://p2.music.126.net/O51NKwxOEmWlOXw3-hY6BA==/109951167519003016.jpg?param=130y130" }
 	, { title: "Miami Nights", artist: "Work Drugs", mp3: "http://music.163.com/song/media/outer/url?id=532776022.mp3" ,cover: "http://p1.music.126.net/nnj8wlrsc6yLJ9aujhcc0A==/109951165449485352.jpg?param=130y130" }
 	, { title: "柳叶笺 (Instrumental)", artist: "朱彦安", mp3: "http://music.163.com/song/media/outer/url?id=553798646.mp3" ,cover: "http://p1.music.126.net/BfUADafLXpKYAubWpWZJZw==/109951163253095310.jpg?param=130y130" }
-	, { title: "OK (Dangerous Game)", artist: "Darin", mp3: "http://music.163.com/song/media/outer/url?id=1217526.mp3" ,cover: "http://p2.music.126.net/w9HWgFT-AXuRJ_u0UgHYmw==/109951165033611725.jpg?param=130y130" }
+	, { title: "Samurai 45 (伴奏《异度侵入 ID_INVADED》插曲)", artist: "Hinno", mp3: "http://music.163.com/song/media/outer/url?id=2009429476.mp3" ,cover: "http://p1.music.126.net/Bt8ZcyJMfGjKJedn_ue2Jw==/109951168172151605.jpg?param=130y130" }
 	, { title: "one day before i die", artist: "nobody likes you pat", mp3: "http://music.163.com/song/media/outer/url?id=1986926142.mp3" ,cover: "http://p1.music.126.net/5NCG08qMlA5SHjnu3m99qg==/109951167937905668.jpg?param=130y130" }
 	, { title: "星间旅行 Interstellar Journey (英文版)", artist: "HOYO-MiX / Lea Sirk", mp3: "http://music.163.com/song/media/outer/url?id=2043177706.mp3" ,cover: "http://p2.music.126.net/JaSa3Gt5oaJ77cDfJBR1fg==/109951168575641463.jpg?param=130y130" }
 	, { title: "致：黯淡星", artist: "傲七爷 / 哦漏", mp3: "http://music.163.com/song/media/outer/url?id=2047787698.mp3" ,cover: "http://p2.music.126.net/LAXHjEEFTBTgg85eHWQ0LQ==/109951168616575456.jpg?param=130y130" }
 	, { title: "城市青年图鉴", artist: "侯磊", mp3: "http://music.163.com/song/media/outer/url?id=1905604895.mp3" ,cover: "http://p2.music.126.net/bltsKq7u2MtjWXnbJAIArg==/109951166778335025.jpg?param=130y130" }
+	, { title: "杀死那个石家庄人", artist: "杀死那个石家庄人", mp3: "http://music.163.com/song/media/outer/url?id=386844.mp3" ,cover: "http://p1.music.126.net/W1kczDCB4-r-uNAznD1ljg==/108851651165850.jpg?param=130y130" }
 ];
 let isRotate = true;
 let autoplay = false;
