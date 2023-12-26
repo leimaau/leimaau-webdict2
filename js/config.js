@@ -4,17 +4,17 @@
 
 const cdnAddr = [];
 cdnAddr.push('https://fastly.jsdelivr.net/npm');
-cdnAddr.push('leimaau-npm-cdn@1.4.5');
+cdnAddr.push('leimaau-npm-cdn@1.4.6');
 cdnAddr.push('db/leimaau.db3');
 
 const cdnAddr2 = [];
 cdnAddr2.push('https://fastly.jsdelivr.net/npm');
-cdnAddr2.push('leimaau-npm-cdn@1.4.5');
+cdnAddr2.push('leimaau-npm-cdn@1.4.6');
 cdnAddr2.push('db/leimaau2.db3');
 
 const cdnAddr3 = [];
 cdnAddr3.push('https://fastly.jsdelivr.net/npm');
-cdnAddr3.push('leimaau-npm-cdn@1.4.5');
+cdnAddr3.push('leimaau-npm-cdn@1.4.6');
 cdnAddr3.push('db/leimaau3.db3');
 
 const DictConfig = {
@@ -695,7 +695,8 @@ const rowData_sponsor = [
 
 
 let playlist = [
-	{ title: "顽童", artist: "大宇", mp3: "http://music.163.com/song/media/outer/url?id=1433376109.mp3" ,cover: "http://p2.music.126.net/-fkYAJ6ZEUF3z_SvCi7nZA==/109951164832402338.jpg?param=130y130" }
+	{ title: "Celebrity Mashup", artist: "Blue Stahli", mp3: "http://music.163.com/song/media/outer/url?id=26358699.mp3" ,cover: "http://p1.music.126.net/_fO4tqYgG2-SbYCjTB0Qiw==/109951165209621635.jpg?param=130y130" }
+	, { title: "顽童", artist: "大宇", mp3: "http://music.163.com/song/media/outer/url?id=1433376109.mp3" ,cover: "http://p2.music.126.net/-fkYAJ6ZEUF3z_SvCi7nZA==/109951164832402338.jpg?param=130y130" }
 	, { title: "Trouble Maker", artist: "Soundroll", mp3: "http://music.163.com/song/media/outer/url?id=39224325.mp3" ,cover: "http://p1.music.126.net/pNrh9cQMc8S8s2saGFrDwA==/3223768095974144.jpg?param=130y130" }
 	, { title: "轻轻地告诉你", artist: "杨钰莹", mp3: "http://music.163.com/song/media/outer/url?id=317396.mp3" ,cover: "http://p2.music.126.net/O51NKwxOEmWlOXw3-hY6BA==/109951167519003016.jpg?param=130y130" }
 	, { title: "Miami Nights", artist: "Work Drugs", mp3: "http://music.163.com/song/media/outer/url?id=532776022.mp3" ,cover: "http://p1.music.126.net/nnj8wlrsc6yLJ9aujhcc0A==/109951165449485352.jpg?param=130y130" }
@@ -705,7 +706,7 @@ let playlist = [
 	, { title: "星间旅行 Interstellar Journey (英文版)", artist: "HOYO-MiX / Lea Sirk", mp3: "http://music.163.com/song/media/outer/url?id=2043177706.mp3" ,cover: "http://p2.music.126.net/JaSa3Gt5oaJ77cDfJBR1fg==/109951168575641463.jpg?param=130y130" }
 	, { title: "致：黯淡星", artist: "傲七爷 / 哦漏", mp3: "http://music.163.com/song/media/outer/url?id=2047787698.mp3" ,cover: "http://p2.music.126.net/LAXHjEEFTBTgg85eHWQ0LQ==/109951168616575456.jpg?param=130y130" }
 	, { title: "城市青年图鉴", artist: "侯磊", mp3: "http://music.163.com/song/media/outer/url?id=1905604895.mp3" ,cover: "http://p2.music.126.net/bltsKq7u2MtjWXnbJAIArg==/109951166778335025.jpg?param=130y130" }
-	, { title: "杀死那个石家庄人", artist: "杀死那个石家庄人", mp3: "http://music.163.com/song/media/outer/url?id=386844.mp3" ,cover: "http://p1.music.126.net/W1kczDCB4-r-uNAznD1ljg==/108851651165850.jpg?param=130y130" }
+	, { title: "杀死那个石家庄人", artist: "万能青年旅店", mp3: "http://music.163.com/song/media/outer/url?id=386844.mp3" ,cover: "http://p1.music.126.net/W1kczDCB4-r-uNAznD1ljg==/108851651165850.jpg?param=130y130" }
 ];
 let isRotate = true;
 let autoplay = false;
