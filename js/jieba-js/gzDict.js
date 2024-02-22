@@ -3396,7 +3396,7 @@ var tradData = [{simp:'𪮳',trad:['𢺳']},
 {simp:'既',trad:['旣']},
 {simp:'鳋',trad:['鰠']},
 {simp:'膳',trad:['饍']},
-{simp:'鲓',trad:['鮳']}
+{simp:'鲓',trad:['鮳']},
 {simp:'嶲',trad:['巂']},
 {simp:'槜',trad:['檇']},
 {simp:'𬄩',trad:['檃']},

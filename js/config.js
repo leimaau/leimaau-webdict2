@@ -4,17 +4,17 @@
 
 const cdnAddr = [];
 cdnAddr.push('https://fastly.jsdelivr.net/npm');
-cdnAddr.push('leimaau-npm-cdn@1.4.7');
+cdnAddr.push('leimaau-npm-cdn@1.4.8');
 cdnAddr.push('db/leimaau.db3');
 
 const cdnAddr2 = [];
 cdnAddr2.push('https://fastly.jsdelivr.net/npm');
-cdnAddr2.push('leimaau-npm-cdn@1.4.7');
+cdnAddr2.push('leimaau-npm-cdn@1.4.8');
 cdnAddr2.push('db/leimaau2.db3');
 
 const cdnAddr3 = [];
 cdnAddr3.push('https://fastly.jsdelivr.net/npm');
-cdnAddr3.push('leimaau-npm-cdn@1.4.7');
+cdnAddr3.push('leimaau-npm-cdn@1.4.8');
 cdnAddr3.push('db/leimaau3.db3');
 
 const DictConfig = {
