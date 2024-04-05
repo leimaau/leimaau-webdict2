@@ -4,17 +4,17 @@
 
 const cdnAddr = [];
 cdnAddr.push('https://fastly.jsdelivr.net/npm');
-cdnAddr.push('leimaau-npm-cdn@1.4.8');
+cdnAddr.push('leimaau-npm-cdn@1.4.9');
 cdnAddr.push('db/leimaau.db3');
 
 const cdnAddr2 = [];
 cdnAddr2.push('https://fastly.jsdelivr.net/npm');
-cdnAddr2.push('leimaau-npm-cdn@1.4.8');
+cdnAddr2.push('leimaau-npm-cdn@1.4.9');
 cdnAddr2.push('db/leimaau2.db3');
 
 const cdnAddr3 = [];
 cdnAddr3.push('https://fastly.jsdelivr.net/npm');
-cdnAddr3.push('leimaau-npm-cdn@1.4.8');
+cdnAddr3.push('leimaau-npm-cdn@1.4.9');
 cdnAddr3.push('db/leimaau3.db3');
 
 const DictConfig = {
@@ -79,7 +79,7 @@ const rowData_book = [
 	, { BOOK: '1997年楊煥典《南寧話音檔》', NN: 'tab_1997', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: '' , MS_P: ''}
 	//, { BOOK: '1997年李榮主編《南寧平話詞典》(單字音表)', NN: '', NN_D: '', NN_Y: '', HX_B: '', NN_T: 'noData', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: '' , MS_P: ''}
 	, { BOOK: '1998年楊煥典主編《廣西通誌·漢語方言誌》', NN: 'tab_1998', NN_D: '', NN_Y: '', HX_B: '', NN_T: 'tab_1998_bw', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: '' , MS_P: ''}
-	, { BOOK: '2000年李連進《南寧近郊平話方言島》', NN: '', NN_D: '', NN_Y: '', HX_B: '', NN_T: 'noData', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: '' , MS_P: ''}
+	//, { BOOK: '2000年李連進《南寧近郊平話方言島》', NN: '', NN_D: '', NN_Y: '', HX_B: '', NN_T: 'noData', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: '' , MS_P: ''}
 	, { BOOK: '2000年李連進《平話音韻研究》', NN: '', NN_D: '', NN_Y: '', HX_B: '', NN_T: 'tab_2000_bw', NN_SL: '', NN_S: '', NN_SH: '', HX_P: 'noData', BY_P: 'noData' , BY_P2: '' , BY_P3: '' , MS_P: 'noData'}
 	, { BOOK: '2003年侯精一《現代漢語方言音庫(字庫)》', NN: 'tab_2003', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: '' , MS_P: ''}
 	, { BOOK: '2007年李彬《左江土白話研究》', NN: 'tab_200706', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '', BY_P: '', BY_P2: '' , BY_P3: '' , MS_P: '' }
@@ -707,6 +707,7 @@ let playlist = [
 	, { title: "致：黯淡星", artist: "傲七爷 / 哦漏", mp3: "http://music.163.com/song/media/outer/url?id=2047787698.mp3" ,cover: "http://p2.music.126.net/LAXHjEEFTBTgg85eHWQ0LQ==/109951168616575456.jpg?param=130y130" }
 	, { title: "城市青年图鉴", artist: "侯磊", mp3: "http://music.163.com/song/media/outer/url?id=1905604895.mp3" ,cover: "http://p2.music.126.net/bltsKq7u2MtjWXnbJAIArg==/109951166778335025.jpg?param=130y130" }
 	, { title: "杀死那个石家庄人", artist: "万能青年旅店", mp3: "http://music.163.com/song/media/outer/url?id=386844.mp3" ,cover: "http://p1.music.126.net/W1kczDCB4-r-uNAznD1ljg==/108851651165850.jpg?param=130y130" }
+	, { title: "有梦好甜蜜(独唱版)", artist: "胡彦斌", mp3: "http://music.163.com/song/media/outer/url?id=4877778.mp3" ,cover: "http://p2.music.126.net/so1A3jfz5PBIw8I_b0NXRA==/19171084741913846.jpg?param=130y130" }
 ];
 let isRotate = true;
 let autoplay = false;
@@ -744,21 +745,21 @@ function showLink(textChar){
 	</span></div></div>`);
 	
 	outputText2.push(`<div class="card mt-1 mb-3"><div class="card-header">快速鏈接</div><div class="card-body text-secondary"><span>
-	字海|葉典：<a href="http://zisea.com/zscontent.asp?uni=${encodeUnicode(textChar).replace('\\u','')}" target="_blank">${textChar}</a></br>
 	字統网：<a href="https://zi.tools/zi/${textChar}" target="_blank">${textChar}</a></br>
+	重編國語辭典修訂本：<a href="https://dict.revised.moe.edu.tw/search.jsp?md=1&word=${textChar}#searchL" target="_blank">${textChar}</a></br>
+	國語辭典簡編本：<a href="https://dict.concised.moe.edu.tw/search.jsp?md=1&word=${textChar}&qMd=0&qCol=0" target="_blank">${textChar}</a></br>	
+	國語小字典：<a href="https://dict.mini.moe.edu.tw/SearchIndex/searchResult?searchType=one&dictSearchField=${textChar}" target="_blank">${textChar}</a></br>
 	漢字全息資源應用系統：<a href="http://qxk.bnu.edu.cn/#/danziDetail/42c2d834-fa1d-47e9-9f90-972a687183f7/${textChar}/22d3af76-1ffe-46da-8c28-40e7dfe6b8d2/0" target="_blank">${textChar}</a></br>
-	教育部國語小字典：<a href="https://dict.mini.moe.edu.tw/SearchIndex/searchResult?searchType=one&dictSearchField=${textChar}" target="_blank">${textChar}</a></br>
+	字海|葉典：<a href="http://zisea.com/zscontent.asp?uni=${encodeUnicode(textChar).replace('\\u','')}" target="_blank">${textChar}</a></br>
 	Forvo：<a href="https://zh.forvo.com/search/${textChar}/" target="_blank">${textChar}</a></br>
 	Unihan：<a href="https://www.unicode.org/cgi-bin/GetUnihanData.pl?codepoint=${textChar}" target="_blank">${textChar}</a></br>
 	萌典：<a href="https://www.moedict.tw/${textChar}" target="_blank">${textChar}</a></br>
 	辭海：<a href="https://www.cihai.com.cn/search/words?q=${textChar}" target="_blank">${textChar}</a></br>
 	活用中文大辭典：<a href="https://lib.ctcn.edu.tw/chtdict/result.aspx?keyword=${textChar}" target="_blank">${textChar}</a></br>
-	漢字ペディア：<a href="https://www.kanjipedia.jp/search?k=${textChar}&kt=1&sk=leftHand" target="_blank">${textChar}</a></br>
 	CHISE IDS 漢字検索：<a href="http://www.chise.org/ids-find?components=${textChar}" target="_blank">${textChar}</a></br>
 	GlyphWiki：<a href="http://glyphwiki.org/wiki/${encodeUnicode(textChar).replace('\\','')}?tdsourcetag=s_pctim_aiomsg" target="_blank">${textChar}</a></br>
 	Chinese Etymology 字源：<a href="https://hanziyuan.net/#${textChar}" target="_blank">${textChar}</a></br>
 	ChuNom：<a href="https://chunom.org/pages/?search=${textChar}" target="_blank">${textChar}</a></br>
-	小雞詞典：<a href="https://jikipedia.com/search?phrase=${textChar}&kt=1&sk=leftHand" target="_blank">${textChar}</a></br>
 	CantoDict：<a href="http://www.cantonese.sheik.co.uk/scripts/masterlist.htm" target="_blank">前往</a></br>
 	中國數字方誌庫：<a href="http://x.wenjinguan.com/" target="_blank">前往</a></br>
 	中國歷史文獻總庫：<a href="http://mg.nlcpress.com/library/publish/default/Login.jsp" target="_blank">前往</a></br>
@@ -766,10 +767,10 @@ function showLink(textChar){
 	</span></div></div>`);
 	
 	outputText3.push(`<div class="card mt-1 mb-3"><div class="card-header">快速鏈接</div><div class="card-body text-secondary"><span>
-	東方語言學：<a href="http://www.eastling.org/" target="_blank">前往</a></br>
-	漢語方言學大詞典：<a href="http://www.fangyanxue.com:8090/pages/index/index.html" target="_blank">前往</a></br>
+	中國國家地名信息庫：<a href="https://dmfw.mca.gov.cn/index.html" target="_blank">前往</a></br>
 	古音小鏡：<a href="http://www.kaom.net/" target="_blank">前往</a></br>
 	小學堂：<a href="http://xiaoxue.iis.sinica.edu.tw/" target="_blank">前往</a></br>
+	漢語方言學大詞典：<a href="http://www.fangyanxue.com:8090/pages/index/index.html" target="_blank">前往</a></br>
 	早期漢語方言文獻資料庫：<a href="http://database.shss.ust.hk/5dialects/" target="_blank">前往</a></br>
 	香港小學學習字詞表：<a href="https://www.edbchinese.hk/lexlist_ch/" target="_blank">前往</a></br>
 	壯漢在線詞典：<a href="http://www.jiu60.com/hoiz/" target="_blank">前往</a></br>
