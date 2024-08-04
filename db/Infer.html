@@ -154,12 +154,12 @@ when she='蟹' then
       case when hu='開' then
         case when niu in('見','溪','群','疑','影','曉','匣','精','清','從','心','邪','泥','娘') then 'oi' else 'aai' end
       when hu='合' then
-        case when niu='疑' then 'oi' else 'ui' end
+        case when niu='疑' then 'oi' else 'ai' end
       end
     end
   when yunbu in('佳','皆','夬') then 'aai'
   when yunbu='灰' then
-    case when niu='疑' then 'ai' else 'ui' end
+    case when niu in('疑','見') then 'ai' else 'ui' end
   when yunbu='咍' then
     case when niu in('幫','滂','並','明','以') then 'ui' else 'oi' end
   when yunbu='廢' then 'ai' end
@@ -198,7 +198,7 @@ when she='山' then
     when yunbu='曷' and hu='開' and niu not in('幫','滂','並','明') then
       case when niu in('見','溪','群','曉','匣') then 'ot' else 'aat' end
     when yunbu='曷' and hu='合' and niu not in('幫','滂','並','明') then
-      case when niu in('見','溪','群','疑','曉','匣') then 'ut' when niu='影' then 'aat' else 'yut' end
+      case when niu in('溪','群','疑','曉','匣') then 'ut' when niu in('影','見') then 'aat' else 'yut' end
     when yunbu in('鎋','黠') then
       case when niu='匣' and hu='開' then 'at' else 'aat' end
       --case when (deng='二' and niu in('見','溪','疑','曉','匣')) or (yunbu='黠' and niu='幫') then 'et' else 'aat' end
@@ -307,7 +307,7 @@ select tab_id,trad,simp,ipa_t ipa_s,ipa_t,u1.jyutping,sour,expl,note from (
     case when shengmu in('b','p','m','f') and yunmu like '%m' then substr(yunmu,1,length(yunmu)-1)||'n'
     when shengmu in('b','p','m','f') and yunmu like '%p' then substr(yunmu,1,length(yunmu)-1)||'t'
     else yunmu end yunmu,
-    --南寧 詠泳咏 濁去作上
+    --南寧 詠泳咏 讀陽上
     case when niu in('云','匣') and hu='合' and yunbu='庚' and tone='去' then '5' else shengdiao end shengdiao
     ,'' sour,expl,note
     from  v_nbdict_202109_gy
@@ -465,7 +465,7 @@ when she='山' then
     when yunbu='曷' and niu in('幫','滂','並','明') then 'ut'
     when yunbu='曷' and hu='開' and niu not in('幫','滂','並','明') then 'aat'
     when yunbu='曷' and hu='合' and niu not in('幫','滂','並','明') then
-      case when niu='影' then 'aat' else 'ut' end
+      case when niu in('影','見') then 'aat' else 'ut' end
     when yunbu in('鎋','黠') then
       case when niu='匣' and hu='開' then 'at' else 'aat' end
     when yunbu in('屑','薛') and hu='開' then 'it'
@@ -552,9 +552,9 @@ create or replace view v_nbdict_infer_bw as
 select tab_id,trad,simp,ipa_t ipa_s,ipa_t,u1.jyutping,sour,expl,note from (
   select tab_id,trad,simp,replace(replace(replace(replace(
   replace(replace(replace(replace(replace(replace(replace(
-  replace(replace(replace(replace(replace(replace(shengmu||yunmu||shengdiao,
+  replace(replace(replace(replace(replace(replace(replace(shengmu||yunmu||shengdiao,
   'wyu','jyu'),'ngi','nji'),'ngyu','njyu'),'ngoe','njoe'),'nguk','njuk'),'ngung','njung'),
-  'ngut','wut'),'ngun','wun'),'hwa','wa'),'ngw','w'),'wui','wai'),
+  'ngut','wut'),'ngun','wun'),'hwa','wa'),'ngw','w'),'wui','wai'),'wut','wat'),
   'njing','nging'),'njik','nik'),'njip','nip'),'njit','nit'),'njiang','ngiang'),'njiak','ngiak') jyutping,sour,expl,note
   --njing>nging  njik>nik  njip>nip  njit>nit  njiang>ngiang  njiak>ngiak
   from (
@@ -567,7 +567,7 @@ select tab_id,trad,simp,ipa_t ipa_s,ipa_t,u1.jyutping,sour,expl,note from (
     case when shengmu in('b','p','m','f') and yunmu like '%m' then substr(yunmu,1,length(yunmu)-1)||'n'
     when shengmu in('b','p','m','f') and yunmu like '%p' then substr(yunmu,1,length(yunmu)-1)||'t'
     else yunmu end yunmu,
-    --南寧 詠泳咏 濁去作上
+    --南寧 詠泳咏 讀陽上
     case when niu in('云','匣') and hu='合' and yunbu='庚' and tone='去' then '5' else shengdiao end shengdiao
     ,'' sour,expl,note
     from  v_nbdict_202109_gy_bw
