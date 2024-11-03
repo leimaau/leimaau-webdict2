@@ -4,17 +4,17 @@
 
 const cdnAddr = [];
 cdnAddr.push('https://fastly.jsdelivr.net/npm');
-cdnAddr.push('leimaau-npm-cdn@1.5.0');
+cdnAddr.push('leimaau-npm-cdn@1.5.1');
 cdnAddr.push('db/leimaau.db3');
 
 const cdnAddr2 = [];
 cdnAddr2.push('https://fastly.jsdelivr.net/npm');
-cdnAddr2.push('leimaau-npm-cdn@1.5.0');
+cdnAddr2.push('leimaau-npm-cdn@1.5.1');
 cdnAddr2.push('db/leimaau2.db3');
 
 const cdnAddr3 = [];
 cdnAddr3.push('https://fastly.jsdelivr.net/npm');
-cdnAddr3.push('leimaau-npm-cdn@1.5.0');
+cdnAddr3.push('leimaau-npm-cdn@1.5.1');
 cdnAddr3.push('db/leimaau3.db3');
 
 const DictConfig = {
@@ -723,69 +723,69 @@ window.onload = bgChange;
 function showLink(textChar){
 	const outputText = [], outputText2 = [], outputText3 = [];
 	outputText.push(`<div class="card mt-1 mb-3"><div class="card-header">快速鏈接</div><div class="card-body text-secondary"><span>
-	漢典網：<a href="http://www.zdic.net/hans/${textChar}" target="_blank">${textChar}</a> | <a href="http://www.zdic.net/zd/yy/yy/${textChar}" target="_blank">粵語</a> | <a href="http://www.zdic.net/zd/yy/ph/${textChar}" target="_blank">平話</a></br>
-	韻典網：<a href="https://ytenx.org/zim?dzih=${textChar}&dzyen=1&jtkb=1&jtkd=1&jtdt=1&jtgt=1" target="_blank">${textChar}</a></br>
-	國學大師：<a href="http://www.guoxuedashi.net/zidian/${encodeUnicode(textChar).replace('\\u','')}.html" target="_blank">${textChar}</a></br>
-	古今文字集成：<a href="http://www.ccamc.co/cjkv.php?cjkv=${textChar}" target="_blank">${textChar}</a></br>
-	粵音資料集叢：<a href="https://jyut.net/query?q=${textChar}" target="_blank">${textChar}</a></br>
-	漢語多功能字庫：<a href="http://humanum.arts.cuhk.edu.hk/Lexis/lexi-mf/search.php?word=${textChar}" target="_blank">${textChar}</a> | <a href="http://humanum.arts.cuhk.edu.hk/Lexis/lexi-mf/dialect.php?word=${textChar}" target="_blank">其他方言讀音</a></br>
-	漢字音典：<a href="https://mcpdict.sourceforge.io/cgi-bin/index.py" target="_blank">前往</a></br>
-	粵典：<a href="https://words.hk/zidin/wan/?q=${textChar}" target="_blank">${textChar}</a></br>
-	CC-Canto：<a href="https://www.cccanto.org/search.php?q=${textChar}" target="_blank">${textChar}</a></br>
-	開放粵語詞典：<a href="https://kaifangcidian.com/han/yue/?${textChar}" target="_blank">${textChar}</a></br>
-	縱橫在線中文字典：<a href="https://ckc.eduhk.hk/ckc2/dictionary.php?jiinput=${textChar}&lang=b5&form1=1" target="_blank">${textChar}</a></br>
-	HKIED 繁簡辨識（1.0版）：<a href="https://ckc.eduhk.hk/ckc2/translate.php?word=${textChar}&lang=" target="_blank">${textChar}</a></br>
-	英華字典資料庫：<a href="http://mhdb.mh.sinica.edu.tw/dictionary/search.php?titleOnlyBtn=true&searchStr=${textChar}&lang=b5" target="_blank">${textChar}</a></br>
-	粵拼歌詞網：<a href="https://jyut6.com/search.php?keyword=${textChar}" target="_blank">${textChar}</a></br>
-	翡翠粵語歌詞：<a href="https://www.feitsui.com/zh-hans/search/?query=${textChar}" target="_blank">${textChar}</a></br>
-	中國大百科全書數據庫：<a href="https://h.bkzx.cn/search?query=${textChar}&sublibId=" target="_blank">${textChar}</a></br>
-	中國哲學書電子化計劃：<a href="https://ctext.org/dictionary.pl?if=gb&char=${textChar}" target="_blank">${textChar}</a></br>
-	大學數字圖書館合作計劃：<a href="https://cadal.edu.cn/index/home" target="_blank">前往</a></br>
-	萬方方誌數據庫：<a href="http://fz.wanfangdata.com.cn/index.do" target="_blank">前往</a></br>
+	漢典網：<a href="http://www.zdic.net/hans/${textChar}" target="_blank">${textChar}</a> | <a href="http://www.zdic.net/zd/yy/yy/${textChar}" target="_blank">粵語</a> | <a href="http://www.zdic.net/zd/yy/ph/${textChar}" target="_blank">平話</a><br/>
+	韻典網：<a href="https://ytenx.org/zim?dzih=${textChar}&dzyen=1&jtkb=1&jtkd=1&jtdt=1&jtgt=1" target="_blank">${textChar}</a><br/>
+	國學大師：<a href="http://www.guoxuedashi.net/zidian/${encodeUnicode(textChar).replace('\\u','')}.html" target="_blank">${textChar}</a><br/>
+	古今文字集成：<a href="http://www.ccamc.co/cjkv.php?cjkv=${textChar}" target="_blank">${textChar}</a><br/>
+	粵音資料集叢：<a href="https://jyut.net/query?q=${textChar}" target="_blank">${textChar}</a><br/>
+	漢語多功能字庫：<a href="http://humanum.arts.cuhk.edu.hk/Lexis/lexi-mf/search.php?word=${textChar}" target="_blank">${textChar}</a> | <a href="http://humanum.arts.cuhk.edu.hk/Lexis/lexi-mf/dialect.php?word=${textChar}" target="_blank">其他方言讀音</a><br/>
+	漢字音典：<a href="https://mcpdict.sourceforge.io/cgi-bin/index.py" target="_blank">前往</a><br/>
+	粵典：<a href="https://words.hk/zidin/wan/?q=${textChar}" target="_blank">${textChar}</a><br/>
+	CC-Canto：<a href="https://www.cccanto.org/search.php?q=${textChar}" target="_blank">${textChar}</a><br/>
+	開放粵語詞典：<a href="https://kaifangcidian.com/han/yue/?${textChar}" target="_blank">${textChar}</a><br/>
+	縱橫在線中文字典：<a href="https://ckc.eduhk.hk/ckc2/dictionary.php?jiinput=${textChar}&lang=b5&form1=1" target="_blank">${textChar}</a><br/>
+	HKIED 繁簡辨識（1.0版）：<a href="https://ckc.eduhk.hk/ckc2/translate.php?word=${textChar}&lang=" target="_blank">${textChar}</a><br/>
+	英華字典資料庫：<a href="http://mhdb.mh.sinica.edu.tw/dictionary/search.php?titleOnlyBtn=true&searchStr=${textChar}&lang=b5" target="_blank">${textChar}</a><br/>
+	粵拼歌詞網：<a href="https://jyut6.com/search.php?keyword=${textChar}" target="_blank">${textChar}</a><br/>
+	翡翠粵語歌詞：<a href="https://www.feitsui.com/zh-hans/search/?query=${textChar}" target="_blank">${textChar}</a><br/>
+	中國大百科全書數據庫：<a href="https://h.bkzx.cn/search?query=${textChar}&sublibId=" target="_blank">${textChar}</a><br/>
+	中國哲學書電子化計劃：<a href="https://ctext.org/dictionary.pl?if=gb&char=${textChar}" target="_blank">${textChar}</a><br/>
+	大學數字圖書館合作計劃：<a href="https://cadal.edu.cn/index/home" target="_blank">前往</a><br/>
+	萬方方誌數據庫：<a href="http://fz.wanfangdata.com.cn/index.do" target="_blank">前往</a><br/>
 	</span></div></div>`);
 	
 	outputText2.push(`<div class="card mt-1 mb-3"><div class="card-header">快速鏈接</div><div class="card-body text-secondary"><span>
-	字統网：<a href="https://zi.tools/zi/${textChar}" target="_blank">${textChar}</a></br>
-	重編國語辭典修訂本：<a href="https://dict.revised.moe.edu.tw/search.jsp?md=1&word=${textChar}#searchL" target="_blank">${textChar}</a></br>
-	國語辭典簡編本：<a href="https://dict.concised.moe.edu.tw/search.jsp?md=1&word=${textChar}&qMd=0&qCol=0" target="_blank">${textChar}</a></br>	
-	國語小字典：<a href="https://dict.mini.moe.edu.tw/SearchIndex/searchResult?searchType=one&dictSearchField=${textChar}" target="_blank">${textChar}</a></br>
-	漢字全息資源應用系統：<a href="http://qxk.bnu.edu.cn/#/danziDetail/42c2d834-fa1d-47e9-9f90-972a687183f7/${textChar}/22d3af76-1ffe-46da-8c28-40e7dfe6b8d2/0" target="_blank">${textChar}</a></br>
-	字海|葉典：<a href="http://zisea.com/zscontent.asp?uni=${encodeUnicode(textChar).replace('\\u','')}" target="_blank">${textChar}</a></br>
-	Forvo：<a href="https://zh.forvo.com/search/${textChar}/" target="_blank">${textChar}</a></br>
-	Unihan：<a href="https://www.unicode.org/cgi-bin/GetUnihanData.pl?codepoint=${textChar}" target="_blank">${textChar}</a></br>
-	萌典：<a href="https://www.moedict.tw/${textChar}" target="_blank">${textChar}</a></br>
-	辭海：<a href="https://www.cihai.com.cn/search/words?q=${textChar}" target="_blank">${textChar}</a></br>
-	活用中文大辭典：<a href="https://lib.ctcn.edu.tw/chtdict/result.aspx?keyword=${textChar}" target="_blank">${textChar}</a></br>
-	CHISE IDS 漢字検索：<a href="http://www.chise.org/ids-find?components=${textChar}" target="_blank">${textChar}</a></br>
-	GlyphWiki：<a href="http://glyphwiki.org/wiki/${encodeUnicode(textChar).replace('\\','')}?tdsourcetag=s_pctim_aiomsg" target="_blank">${textChar}</a></br>
-	Chinese Etymology 字源：<a href="https://hanziyuan.net/#${textChar}" target="_blank">${textChar}</a></br>
-	ChuNom：<a href="https://chunom.org/pages/?search=${textChar}" target="_blank">${textChar}</a></br>
-	CantoDict：<a href="http://www.cantonese.sheik.co.uk/scripts/masterlist.htm" target="_blank">前往</a></br>
-	中國數字方誌庫：<a href="http://x.wenjinguan.com/" target="_blank">前往</a></br>
-	中國歷史文獻總庫：<a href="http://mg.nlcpress.com/library/publish/default/Login.jsp" target="_blank">前往</a></br>
-	廣西師範大學圖書館：<a href="http://www.library.gxnu.edu.cn/main.htm" target="_blank">前往</a></br>
+	字統网：<a href="https://zi.tools/zi/${textChar}" target="_blank">${textChar}</a><br/>
+	重編國語辭典修訂本：<a href="https://dict.revised.moe.edu.tw/search.jsp?md=1&word=${textChar}#searchL" target="_blank">${textChar}</a><br/>
+	國語辭典簡編本：<a href="https://dict.concised.moe.edu.tw/search.jsp?md=1&word=${textChar}&qMd=0&qCol=0" target="_blank">${textChar}</a><br/>	
+	國語小字典：<a href="https://dict.mini.moe.edu.tw/SearchIndex/searchResult?searchType=one&dictSearchField=${textChar}" target="_blank">${textChar}</a><br/>
+	漢字全息資源應用系統：<a href="http://qxk.bnu.edu.cn/#/danziDetail/42c2d834-fa1d-47e9-9f90-972a687183f7/${textChar}/22d3af76-1ffe-46da-8c28-40e7dfe6b8d2/0" target="_blank">${textChar}</a><br/>
+	字海|葉典：<a href="http://zisea.com/zscontent.asp?uni=${encodeUnicode(textChar).replace('\\u','')}" target="_blank">${textChar}</a><br/>
+	Forvo：<a href="https://zh.forvo.com/search/${textChar}/" target="_blank">${textChar}</a><br/>
+	Unihan：<a href="https://www.unicode.org/cgi-bin/GetUnihanData.pl?codepoint=${textChar}" target="_blank">${textChar}</a><br/>
+	萌典：<a href="https://www.moedict.tw/${textChar}" target="_blank">${textChar}</a><br/>
+	辭海：<a href="https://www.cihai.com.cn/search/words?q=${textChar}" target="_blank">${textChar}</a><br/>
+	活用中文大辭典：<a href="https://lib.ctcn.edu.tw/chtdict/result.aspx?keyword=${textChar}" target="_blank">${textChar}</a><br/>
+	CHISE IDS 漢字検索：<a href="http://www.chise.org/ids-find?components=${textChar}" target="_blank">${textChar}</a><br/>
+	GlyphWiki：<a href="http://glyphwiki.org/wiki/${encodeUnicode(textChar).replace('\\','')}?tdsourcetag=s_pctim_aiomsg" target="_blank">${textChar}</a><br/>
+	Chinese Etymology 字源：<a href="https://hanziyuan.net/#${textChar}" target="_blank">${textChar}</a><br/>
+	ChuNom：<a href="https://chunom.org/pages/?search=${textChar}" target="_blank">${textChar}</a><br/>
+	CantoDict：<a href="http://www.cantonese.sheik.co.uk/scripts/masterlist.htm" target="_blank">前往</a><br/>
+	中國數字方誌庫：<a href="http://x.wenjinguan.com/" target="_blank">前往</a><br/>
+	中國歷史文獻總庫：<a href="http://mg.nlcpress.com/library/publish/default/Login.jsp" target="_blank">前往</a><br/>
+	廣西師範大學圖書館：<a href="http://www.library.gxnu.edu.cn/main.htm" target="_blank">前往</a><br/>
 	</span></div></div>`);
 	
 	outputText3.push(`<div class="card mt-1 mb-3"><div class="card-header">快速鏈接</div><div class="card-body text-secondary"><span>
-	中國國家地名信息庫：<a href="https://dmfw.mca.gov.cn/index.html" target="_blank">前往</a></br>
-	古音小鏡：<a href="http://www.kaom.net/" target="_blank">前往</a></br>
-	小學堂：<a href="http://xiaoxue.iis.sinica.edu.tw/" target="_blank">前往</a></br>
-	漢語方言學大詞典：<a href="http://www.fangyanxue.com:8090/pages/index/index.html" target="_blank">前往</a></br>
-	早期漢語方言文獻資料庫：<a href="http://database.shss.ust.hk/5dialects/" target="_blank">前往</a></br>
-	香港小學學習字詞表：<a href="https://www.edbchinese.hk/lexlist_ch/" target="_blank">前往</a></br>
-	壯漢在線詞典：<a href="http://www.jiu60.com/hoiz/" target="_blank">前往</a></br>
-	廣東省情網：<a href="http://dfz.gd.gov.cn/" target="_blank">前往</a></br>
-	中共廣州市委黨史文獻研究室：<a href="http://www.gzsqw.org.cn/" target="_blank">前往</a></br>
-	廣西地情資料庫：<a href="http://www.gxdfz.org.cn/gdtz/" target="_blank">前往</a></br>
-	開放康熙字典：<a href="http://kangxi.adcs.org.tw/kangxizidian/" target="_blank">前往</a></br>
-	漢語大字典檢索：<a href="http://www.homeinmists.com/hd/search.html" target="_blank">前往</a></br>
-	國學寶典：<a href="http://www.gxbd.com/" target="_blank">前往</a></br>
-	說文解字在線查詢：<a href="http://www.shuowen.org/" target="_blank">前往</a></br>
-	現代標準漢語與粵語對照資料庫：<a href="http://apps.itsc.cuhk.edu.hk/hanyu/Page/Cover.aspx" target="_blank">前往</a></br>
-	ISO漢字查詢系統：<a href="http://glyph.iso10646hk.net/chinese/icharacters.jsp" target="_blank">前往</a></br>
-	早期粵語口語文獻資料庫：<a href="http://143.89.108.109/Candbase/" target="_blank">前往</a></br>
-	香港二十世紀中期粵語語料庫：<a href="https://hkcc.eduhk.hk/v1/introduction.html" target="_blank">前往</a></br>
-	語保工程採錄展示平臺：<a href="https://zhongguoyuyan.cn/" target="_blank">前往</a></br>
+	中國國家地名信息庫：<a href="https://dmfw.mca.gov.cn/index.html" target="_blank">前往</a><br/>
+	古音小鏡：<a href="http://www.kaom.net/" target="_blank">前往</a><br/>
+	小學堂：<a href="http://xiaoxue.iis.sinica.edu.tw/" target="_blank">前往</a><br/>
+	漢語方言學大詞典：<a href="http://www.fangyanxue.com:8090/pages/index/index.html" target="_blank">前往</a><br/>
+	早期漢語方言文獻資料庫：<a href="http://database.shss.ust.hk/5dialects/" target="_blank">前往</a><br/>
+	香港小學學習字詞表：<a href="https://www.edbchinese.hk/lexlist_ch/" target="_blank">前往</a><br/>
+	廣西地情網：<a href="http://www.gxdfz.org.cn/index.html" target="_blank">前往</a><br/>
+	廣東省情網：<a href="http://dfz.gd.gov.cn/" target="_blank">前往</a><br/>
+	中共廣州市委黨史文獻研究室：<a href="http://www.gzsqw.org.cn/" target="_blank">前往</a><br/>
+	廣西圖書館：<a href="https://www.gxlib.org.cn/" target="_blank">前往</a><br/>
+	開放康熙字典：<a href="http://kangxi.adcs.org.tw/kangxizidian/" target="_blank">前往</a><br/>
+	漢語大字典檢索：<a href="http://www.homeinmists.com/hd/search.html" target="_blank">前往</a><br/>
+	國學寶典：<a href="http://www.gxbd.com/" target="_blank">前往</a><br/>
+	說文解字在線查詢：<a href="http://www.shuowen.org/" target="_blank">前往</a><br/>
+	現代標準漢語與粵語對照資料庫：<a href="http://apps.itsc.cuhk.edu.hk/hanyu/Page/Cover.aspx" target="_blank">前往</a><br/>
+	ISO漢字查詢系統：<a href="http://glyph.iso10646hk.net/chinese/icharacters.jsp" target="_blank">前往</a><br/>
+	早期粵語口語文獻資料庫：<a href="http://143.89.108.109/Candbase/" target="_blank">前往</a><br/>
+	香港二十世紀中期粵語語料庫：<a href="https://hkcc.eduhk.hk/v1/introduction.html" target="_blank">前往</a><br/>
+	語保工程採錄展示平臺：<a href="https://zhongguoyuyan.cn/" target="_blank">前往</a><br/>
 	</span></div></div>`);
 	
 	$('#webLink').html(outputText.join(''));
