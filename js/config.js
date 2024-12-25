@@ -4,17 +4,17 @@
 
 const cdnAddr = [];
 cdnAddr.push('https://fastly.jsdelivr.net/npm');
-cdnAddr.push('leimaau-npm-cdn@1.5.1');
+cdnAddr.push('leimaau-npm-cdn@1.5.2');
 cdnAddr.push('db/leimaau.db3');
 
 const cdnAddr2 = [];
 cdnAddr2.push('https://fastly.jsdelivr.net/npm');
-cdnAddr2.push('leimaau-npm-cdn@1.5.1');
+cdnAddr2.push('leimaau-npm-cdn@1.5.2');
 cdnAddr2.push('db/leimaau2.db3');
 
 const cdnAddr3 = [];
 cdnAddr3.push('https://fastly.jsdelivr.net/npm');
-cdnAddr3.push('leimaau-npm-cdn@1.5.1');
+cdnAddr3.push('leimaau-npm-cdn@1.5.2');
 cdnAddr3.push('db/leimaau3.db3');
 
 const DictConfig = {
@@ -84,7 +84,7 @@ const rowData_book = [
 	, { BOOK: '2003年侯精一《現代漢語方言音庫(字庫)》', NN: 'tab_2003', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: '' , MS_P: ''}
 	, { BOOK: '2007年李彬《左江土白話研究》', NN: 'tab_200706', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '', BY_P: '', BY_P2: '' , BY_P3: '' , MS_P: '' }
 	, { BOOK: '2007年謝建猷《廣西漢語方言研究》', NN: 'tab_2007', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: 'noData', NN_SH: '', HX_P: 'noData', BY_P: '', BY_P2: 'noData' , BY_P3: '' , MS_P: '' }
-	, { BOOK: '2007年白雲《廣西疍家話語音研究》', NN: '', NN_D: 'tab_2007_zb_dg', NN_Y: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: '' , MS_P: ''}
+	, { BOOK: '2007年白雲《廣西疍家話語音研究》', NN: '', NN_D: 'noData', NN_Y: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: '' , MS_P: ''}
 	, { BOOK: '2007年林亦《南寧石埠平話同音字彙》', NN: '', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', NN_SH: 'noData', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: '' , MS_P: ''}
 	, { BOOK: '2008年林亦、覃鳳餘《廣西南寧白話研究》', NN: 'tab_2008', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: '' , MS_P: ''}
 	, { BOOK: '2009年陳海倫、林亦《粵語平話土話方音字彙》', NN: 'tab_2009', NN_D: '', NN_Y: 'noData', HX_B: '', NN_T: 'tab_2009_bw', NN_SL: '', NN_S: '', NN_SH: 'noData', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: 'noData' , MS_P: ''}
@@ -94,7 +94,7 @@ const rowData_book = [
 	, { BOOK: '2018年滕祖愛《南寧市與桂平市粵方言比較研究》', NN: 'tab_201806', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: '' , MS_P: ''}
 	, { BOOK: '2018年覃遠雄《南寧心墟平話語音系統》', NN: '', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_SL: 'noData', NN_S: '', NN_SH: '', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: '' , MS_P: ''}
 	, { BOOK: '2018年Leimaau《南寧話審音表》(本站提供)', NN: 'tab_2018', NN_D: '', NN_Y: '', HX_B: '', NN_T: 'tab_2018_bw', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: '' , MS_P: ''}
-	, { BOOK: '2019年莫思敏、談婷《廣西橫縣白話同音字彙》', NN: '', NN_D: '', NN_Y: '', HX_B: 'tab_2019_zb_b_wj', NN_T: '', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: '' , MS_P: ''}
+	, { BOOK: '2019年莫思敏、談婷《廣西橫縣白話同音字彙》', NN: '', NN_D: '', NN_Y: '', HX_B: 'noData', NN_T: '', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: '' , MS_P: ''}
 	, { BOOK: '2021年Leimaau《單字音零散資料匯總》(本站提供)', NN: 'tab_2021', NN_D: '', NN_Y: '', HX_B: '', NN_T: 'tab_2021_bw', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: '' , MS_P: ''}
 	//, { BOOK: '<a class="text-info" target="_blank" href="https://leimaau.github.io/leimaau-webdict2/db/2022.html">2022年電腦《切韻音系自動推導理論音》(本站提供)</a>', NN: 'tab_2022', NN_D: '', NN_Y: '', HX_B: '', NN_T: 'tab_2022_bw', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: '' , MS_P: ''}
 ];
@@ -133,14 +133,14 @@ const colData_book_phrase = [
 const rowData_book_phrase = [
 	{ BOOK: '1987年張均如《記南寧心墟平話》', NN: '', NN_D: '', HX_B: '', NN_T: '', NN_SL: 'noData', NN_S: '', HX_P: '', BY_P: '', BY_P2: '' }
 	, { BOOK: '1994年閉克朝《廣西橫縣平話詞彙》', NN: '', NN_D: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', HX_P: 'noData', BY_P: '', BY_P2: '' }
-	, { BOOK: '1997年楊煥典《南寧話音檔》', NN: 'noData', NN_D: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', HX_P: '', BY_P: '', BY_P2: '' }
+	, { BOOK: '1997年楊煥典《南寧話音檔》', NN: 'tab_1997_phrase', NN_D: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', HX_P: '', BY_P: '', BY_P2: '' }
 	, { BOOK: '1997年李榮主編《南寧平話詞典》', NN: '', NN_D: '', HX_B: '', NN_T: 'noData', NN_SL: '', NN_S: '', HX_P: '', BY_P: '', BY_P2: '' }
-	, { BOOK: '1998年楊煥典主編《廣西通誌·漢語方言誌》', NN: 'noData', NN_D: '', HX_B: '', NN_T: 'noData', NN_SL: '', NN_S: '', HX_P: '', BY_P: '', BY_P2: '' }
+	, { BOOK: '1998年楊煥典主編《廣西通誌·漢語方言誌》', NN: 'tab_1998_phrase', NN_D: '', HX_B: '', NN_T: 'noData', NN_SL: '', NN_S: '', HX_P: '', BY_P: '', BY_P2: '' }
 	, { BOOK: '2000年李連進《南寧近郊平話方言島》', NN: '', NN_D: '', HX_B: '', NN_T: 'noData', NN_SL: '', NN_S: '', HX_P: '', BY_P: '', BY_P2: '' }
 	, { BOOK: '2006年張均如《賓陽話的語音和詞彙》', NN: '', NN_D: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', HX_P: '', BY_P: 'noData', BY_P2: '' }
 	, { BOOK: '2007年李彬《左江土白話研究》', NN: 'noData', NN_D: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', HX_P: '', BY_P: '', BY_P2: '' }
-	, { BOOK: '2007年謝建猷《廣西漢語方言研究》', NN: 'noData', NN_D: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: 'noData', HX_P: 'noData', BY_P: '', BY_P2: 'noData' }
-	, { BOOK: '2008年林亦、覃鳳餘《廣西南寧白話研究》', NN: 'noData', NN_D: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', HX_P: '', BY_P: '', BY_P2: '' }
+	, { BOOK: '2007年謝建猷《廣西漢語方言研究》', NN: 'tab_2007_phrase', NN_D: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: 'noData', HX_P: 'noData', BY_P: '', BY_P2: 'noData' }
+	, { BOOK: '2008年林亦、覃鳳餘《廣西南寧白話研究》', NN: 'tab_2008_phrase', NN_D: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', HX_P: '', BY_P: '', BY_P2: '' }
 	// 	黎丽程 宾阳话的基本词类及句式研究	
 	// 	黎丽程 宾阳话的语音和词汇构成	
 	//  王莉宁 桂南平话与粤语词汇比较方法探讨
@@ -360,8 +360,8 @@ const colData = [
 const colData_proverb = [
 	{ field: 'YEAR', title: '資料', align: 'center', formatter: (value) => { return `<span class="user-font">${value.replace('_proverb', '').replace('tab_', '')}</span>` } }
 	//, {field: 'ID',title: 'ID'}
-	, { field: 'TRADSIMP', title: '繁體〔簡體〕', width: '550px', align: 'left', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
-	//, { field: 'TRAD', title: '繁體', width: '550px', align: 'left', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
+	//, { field: 'TRADSIMP', title: '繁體〔簡體〕', width: '550px', align: 'left', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
+	, { field: 'TRAD', title: '繁體', width: '550px', align: 'left', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
 	//, { field: 'SIMP', title: '簡體', width: '550px', align: 'left', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
 	, { field: 'SOUR', title: '來源', width: '250px', formatter: (value, row) => { if(row['YEAR'] == 'tab_2020_proverb') {return `<span style="white-space: normal">2020年Leimaau《南寧童謠和熟語》(本站提供)<span/>`} else {return (row['YEAR'] == 'tab_1937kk_proverb') ? '<span style="white-space: normal">1937年廣西省政府總務處統計室《南寧社會概況》' + pageSplit(value, 'jpg','https://fastly.jsdelivr.net/gh/leimaau/CDN@latest/data-store/1937tj/kk_tj') + '<span/>' : '<span style="white-space: normal">1937年邕寧縣修誌委員會《邕寧縣誌(第4冊)》' + pageSplit(value, 'jpg','https://fastly.jsdelivr.net/gh/leimaau/CDN@latest/data-store/1937tj/jz_tj') + '<span/>' } } }
 	, { field: 'EXPL', title: '釋義', width: '250px', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
@@ -371,13 +371,13 @@ const colData_proverb = [
 const colData_phrase = [
 	{ field: 'YEAR', title: '資料', sortable : true, align: 'center', formatter: (value) => { return `<span class="user-font">${value.replace('_bw', '').replace('_phrase', '').replace('tab_', '')}</span>` } }
 	//, {field: 'ID',title: 'ID'}
-	, { field: 'TRADSIMP', title: '繁體〔簡體〕', width: '550px', sortable : true, align: 'center', formatter: (value) => { let charStr = value.split('|'), aLink = []; for (let i in charStr) aLink.push(`<a href="javascript:querySubmit('${charStr[i]}', '${i}'=='0' ? 'phrase' : 'phrase_simp', 'dicPhrase')">${charStr[i]}</a>`); return aLink.join('<br/>') } }
-	//, { field: 'TRAD', title: '繁體', sortable : true, align: 'center', formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'phrase', 'dicPhrase')">${value}</a>` } }
+	//, { field: 'TRADSIMP', title: '繁體〔簡體〕', width: '550px', sortable : true, align: 'center', formatter: (value) => { let charStr = value.split('|'), aLink = []; for (let i in charStr) aLink.push(`<a href="javascript:querySubmit('${charStr[i]}', '${i}'=='0' ? 'phrase' : 'phrase_simp', 'dicPhrase')">${charStr[i]}</a>`); return aLink.join('<br/>') } }
+	, { field: 'TRAD', title: '繁體', sortable : true, align: 'center', formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'phrase', 'dicPhrase')">${value}</a>` } }
 	//, { field: 'SIMP', title: '簡體', sortable : true, align: 'center', formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'phrase_simp', 'dicPhrase')">${value}</a>` } }
-	, { field: 'JYUTPING_IPA_TS', title: '粵拼〔統一IPA、原文IPA〕', width: '550px', sortable : true, formatter: (value) => { let jpStr = value.split('|'), aLink = []; for (let i in jpStr) aLink.push(i==0 ? `<a href="javascript:querySubmit('${jpStr[i]}', 'phrase_jyut6ping3', 'dicPhrase')">${jpStr[i]}</a>` : `${jpStr[i]}`); return aLink.join('<br/>') } }
+	//, { field: 'JYUTPING_IPA_TS', title: '粵拼〔統一IPA、原文IPA〕', width: '550px', sortable : true, formatter: (value) => { let jpStr = value.split('|'), aLink = []; for (let i in jpStr) aLink.push(i==0 ? `<a href="javascript:querySubmit('${jpStr[i]}', 'phrase_jyut6ping3', 'dicPhrase')">${jpStr[i]}</a>` : `${jpStr[i]}`); return aLink.join('<br/>') } }
 	//, { field: 'IPA_S', title: '原文IPA', sortable : true }
 	//, { field: 'IPA_T', title: '統一IPA', sortable : true }
-	//, { field: 'JYUTPING', title: '粵拼', sortable : true, formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'phrase_jyut6ping3', 'dicPhrase')">${value}</a>` } }
+	, { field: 'JYUTPING', title: '粵拼', sortable : true, formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'phrase_jyut6ping3', 'dicPhrase')">${value}</a>` } }
 	, { field: 'SOUR', title: '來源', width: '1500px', sortable : true, formatter: (value, row) => { return formatSOUR(value, row['YEAR'], 'png', 'phrase') } }
 	, { field: 'EXPL', title: '釋義', width: '550px', sortable : true, formatter: (value) => { return `<p data-toggle="tooltip" data-placement="left" title="${value}">${value}<p/>` } }
 	, { field: 'NOTE', title: '本站校訂附註', width: '550px', sortable : true, formatter: (value) => { return `<p data-toggle="tooltip" data-placement="left" title="${value}">${value}<p/>` } }
@@ -387,13 +387,13 @@ const colData_phrase = [
 const colData_grammar = [
 	{ field: 'YEAR', title: '資料', sortable : true, align: 'center', formatter: (value) => { return `<span class="user-font">${value.replace('_bw', '').replace('_grammar', '').replace('tab_', '')}</span>` } }
 	//, {field: 'ID',title: 'ID'}
-	, { field: 'TRADSIMP', title: '繁體〔簡體〕', width: '550px', sortable : true, align: 'left', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
-	//, { field: 'TRAD', title: '繁體', width: '550px', sortable : true, align: 'left', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
+	//, { field: 'TRADSIMP', title: '繁體〔簡體〕', width: '550px', sortable : true, align: 'left', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
+	, { field: 'TRAD', title: '繁體', width: '550px', sortable : true, align: 'left', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
 	//, { field: 'SIMP', title: '簡體', width: '550px', sortable : true, align: 'left', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
-	, { field: 'JYUTPING_IPA_TS', title: '粵拼〔統一IPA、原文IPA〕', width: '550px', sortable : true, align: 'left', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
+	//, { field: 'JYUTPING_IPA_TS', title: '粵拼〔統一IPA、原文IPA〕', width: '550px', sortable : true, align: 'left', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
 	//, { field: 'IPA_S', title: '原文IPA', width: '550px', sortable : true, align: 'left', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
 	//, { field: 'IPA_T', title: '統一IPA', width: '550px', sortable : true, align: 'left', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
-	//, { field: 'JYUTPING', title: '粵拼', width: '750px', sortable : true, align: 'left', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
+	, { field: 'JYUTPING', title: '粵拼', width: '750px', sortable : true, align: 'left', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
 	, { field: 'SOUR', title: '來源', width: '1500px', sortable : true, formatter: (value, row) => { return formatSOUR(value, row['YEAR'], 'png', 'grammar') } }
 	, { field: 'EXPL', title: '釋義', width: '550px', sortable : true, formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
 	, { field: 'NOTE', title: '本站校訂附註', width: '550px', sortable : true, formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
@@ -430,6 +430,7 @@ function formatSOUR(value, row_year, picType, qType) {
 	else if (row_year == '201705') linkaddr =  linkaddr.replace('201705','2017') + 'hy/hy0'
 	else if (row_year == '2018') linkaddr = ''
 	else if (row_year == '201806') linkaddr = linkaddr.replace('201806','2018') + 'yj/yj'
+	else if (row_year == '2020') linkaddr = ''
 	else if (/2021/.test(row_year)) {
 		if (/1997年李榮主編《南寧平話詞典》引論/.test(value)){
 			linkaddr = linkaddr.replace('2021_','') + 'cd/cd';

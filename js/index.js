@@ -83,14 +83,14 @@ function queryChar(inputValue, queryType, selVal){
 	if (selVal.some(item => item.indexOf('1008_d') > -1)) {
 		$('.rowtabDiv-triungkox_tung').removeClass('d-none');
 		res_triungkox_tung = MainQuery.queryTableOne_triungkox_tung(inputValue, ['tab_1008_d'], queryType);
-		showTable(res_triungkox_tung, 'outTab_triungkox_tung', '《廣韻》', outTabTitle_triungkox_tung, colData_triungkox_tung);
+		showTable(res_triungkox_tung, 'outTab_triungkox_tung', '《廣韻》<small>精簡版</small>', outTabTitle_triungkox_tung, colData_triungkox_tung);
 	}
 	
 	let res_triungkoxghuh = [];
 	if (selVal.some(item => item.indexOf('1039') > -1)) {
 		$('.rowtabDiv-triungkoxghuh').removeClass('d-none');
 		res_triungkoxghuh = MainQuery.queryTableOne_triungkox_tung(inputValue, ['tab_1039'], queryType);
-		showTable(res_triungkoxghuh, 'outTab_triungkoxghuh', '《集韻》', outTabTitle_triungkoxghuh, colData_triungkoxghuh);
+		showTable(res_triungkoxghuh, 'outTab_triungkoxghuh', '《集韻》<small>精簡版</small>', outTabTitle_triungkoxghuh, colData_triungkoxghuh);
 	}
 	
 	let res_gw = [];
@@ -136,7 +136,7 @@ function queryChar(inputValue, queryType, selVal){
 		//showWordCloud(res_bw, inputValue, 'outWordCloud_bw', allTitle_bw, queryType, 'JYUTPING'); // 顯示平話詞雲圖
 		showBasicBar(res_bw, inputValue, 'outWordCloud_bw', allTitle_bw, queryType);
 	}
-	
+	/*
 	let res_zb_dg = [];
 	if (selVal.some(item => item.indexOf('zb_dg') > -1)) {
 		$('.rowtabDiv-zb_dg').removeClass('d-none');
@@ -189,7 +189,7 @@ function queryChar(inputValue, queryType, selVal){
 		showTable(res_zb_ms, 'outTab_zb_ms', '馬山喬利平話', outTabTitle_zb_ms, colData);
 		//showPie(res_zb_ms, inputValue, 'outPie_zb_ms', allTitle_zb_ms, queryType);
 		//showWordCloud(res_zb_ms, inputValue, 'outWordCloud_zb_ms', '馬山喬利平話', queryType, 'JYUTPING');
-	}
+	}*/
 	
 	if(queryType == 'char' || queryType == 'char_simp') showLink(inputValue);
 	
@@ -302,7 +302,7 @@ function showTable(res, outputDiv, tabTitle, tabTitleDiv, colData) {
 function calcYear(data){
 	let dataValue = 0;
 	for (let item of data.values()){
-		if (item == '2018') {
+		if (item == '2018' || item == '2020') {
 			dataValue += Math.log(9);
 		} else if (item == '1998' || item == '2008' || item == '2009') {
 			dataValue += Math.log(7);
@@ -639,9 +639,9 @@ function getDataText(){
 
 // 在線標註函數
 function signArticle(textCont, signText_type, signResult_type, signResult_format, signResult_way, signResult_IPA, signIPA_version) {
-	if (textCont.length > 30000){
+	if (textCont.length > 3000000){
 		toastrFunc('toast-top-center');
-		toastr.error('禁止超過三萬字！');
+		toastr.error('禁止超過三百萬字！');
 		return false;
 	}
 	
@@ -794,9 +794,9 @@ function jpFormat(jyutping){
 
 // 音標轉換
 function Func_JP_IPA(inputSymbol, transform_type, IPA_version, output_IPAformat){
-	if (inputSymbol.length > 30000){
+	if (inputSymbol.length > 3000000){
 		toastrFunc('toast-top-center');
-		toastr.error('禁止超過三萬字！');
+		toastr.error('禁止超過三百萬字！');
 		return false;
 	}
 	const outputText = [];
@@ -1411,5 +1411,6 @@ $(() => {
 	$('body').materialScrollTop();
 	
 	//displayAlert("新版本 <a href='https://leimaau-webdict3.vercel.app/' target='_blank'>Leimaau's Webdict 3</a> 已上線，<a href='https://tranquil-tulumba-4026d9.netlify.app' target='_blank'>備用系統</a> 同時開啓", outputAlert, 'alert-success');
+	displayAlert("詞彙系統數據已更新，爲減少數據量，只收錄繁體，簡體搜索不提供", outputAlert, 'alert-success');
 	
 })
