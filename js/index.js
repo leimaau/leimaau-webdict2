@@ -1460,6 +1460,6 @@ $(() => {
 	$('body').materialScrollTop();
 	
 	//displayAlert("新版本 <a href='https://leimaau-webdict3.vercel.app/' target='_blank'>Leimaau's Webdict 3</a> 已上線，<a href='https://tranquil-tulumba-4026d9.netlify.app' target='_blank'>備用系統</a> 同時開啓", outputAlert, 'alert-success');
-	displayAlert("【公告】<br>說明：每次更新後第一次加載要花些時間，之後加載則方便許多<br>更新版本：20250618<br>更新內容：<br>1.修訂字典數據，改正一些錯誤<br>2.修訂詞典數據，增加現代漢語詞彙表，爲減少數據庫壓力，只收錄繁體，不提供簡體搜索<br>3.改進頁碼的圖片跳轉<br>4.詳細地修訂歷史可上github查詢", outputAlert, 'alert-success');
+	displayAlert("【公告】<br>說明：每次更新後第一次加載要花些時間，之後加載則方便許多<br>更新版本：20250620<br>更新內容：<br>1.修訂字典數據，改正一些錯誤<br>2.修訂詞典數據，增加現代漢語詞彙表，爲減少數據庫壓力，只收錄繁體，不提供簡體搜索<br>3.改進頁碼的圖片跳轉<br>4.詳細地修訂歷史可上github查詢", outputAlert, 'alert-success');
 	
 })

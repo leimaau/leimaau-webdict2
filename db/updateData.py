@@ -92,39 +92,46 @@ def update_version() -> None:
         print(f"更新版本号时出错: {str(e)}")
 
 
+def copy_files(source_dir: Path, pattern: str, target_dir: Path, desc: str):
+    """通用文件复制函数"""
+    if not target_dir.exists():
+        raise ValueError(f"{desc} 目标目录不存在: {target_dir}")
+    files = list(source_dir.glob(pattern))
+    if not files:
+        print(f"警告: 在目录 {source_dir} 下没有找到 {pattern} 文件")
+        return
+    success_count = 0
+    for f in files:
+        try:
+            shutil.copy2(f, target_dir / f.name)
+            print(f"{desc} 已复制: {f.name}")
+            success_count += 1
+        except Exception as e:
+            print(f"{desc} 复制文件 {f.name} 时出错: {str(e)}")
+    print(f"{desc} 完成! 共复制了 {success_count}/{len(files)} 个文件到 {target_dir}")
+
+
 def copy_files_to_targets(source_dir: Optional[Path] = None) -> None:
-    """将.gz文件复制到目标目录"""
-    print("\n开始复制.gz文件到目标目录...")
-    
-    # 设置源目录和目标目录
+    """将.gz文件及其它指定文件复制到目标目录"""
+    print("\n开始复制文件到目标目录...")
+
+    # 1. 复制 .gz 文件
     if source_dir is None:
         source_dir = BAT_DIR  # 使用db目录作为源目录
     target_dir = Path(r"E:\LocalRepository\github\db-server\public")
-    
-    # 检查目标目录是否存在
-    if not target_dir.exists():
-        raise ValueError(f"目标目录不存在: {target_dir}")
-    
-    # 获取所有.gz文件
-    gz_files = list(source_dir.glob("*.gz"))
-    
-    if not gz_files:
-        print(f"警告: 在目录 {source_dir} 下没有找到.gz文件")
-        return
-        
-    # 复制文件
-    success_count = 0
-    for gz_file in gz_files:
-        try:
-            target_path = target_dir / gz_file.name
-            shutil.copy2(gz_file, target_path)
-            print(f"已复制: {gz_file.name}")
-            success_count += 1
-        except Exception as e:
-            print(f"复制文件 {gz_file.name} 时出错: {str(e)}")
-            continue
-    
-    print(f"\n完成! 共复制了 {success_count}/{len(gz_files)} 个.gz文件到 {target_dir}")
+    copy_files(source_dir, "*.gz", target_dir, ".gz文件")
+
+    # 2. 复制 db 目录下的 .db3 文件
+    db3_target_dir = Path(r"E:\LocalRepository\github\leimaau-npm-cdn\db")
+    copy_files(BAT_DIR, "*.db3", db3_target_dir, ".db3文件")
+
+    # 3. 复制 js 目录下的 .js 文件
+    js_target_dir = Path(r"E:\LocalRepository\github\leimaau-npm-cdn\js")
+    copy_files(BASE_DIR / "js", "*.js", js_target_dir, "js目录下的.js文件")
+
+    # 4. 复制 js/jieba-js 目录下的 .js 文件
+    jieba_js_target_dir = Path(r"E:\LocalRepository\github\leimaau-npm-cdn\js\jieba-js")
+    copy_files(jieba_js_DIR, "*.js", jieba_js_target_dir, "jieba-js目录下的.js文件")
 
 
 def main():
