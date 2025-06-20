@@ -176,6 +176,16 @@ CREATE TABLE tab_2008_phrase(
    NOTE          TEXT    
 );
 
+-- 现代汉语词汇表
+CREATE TABLE tab_xiandaihanyu_phrase(
+   ID            TEXT    NOT NULL,
+   TRAD          TEXT    NOT NULL,
+   JYUTPING      TEXT    NOT NULL,
+   JYUTPING2      TEXT    NOT NULL,
+   EXPL          TEXT    
+);
+
+
 -- 语法表 tab_2020_grammar、tab_2020_bw_grammar
 CREATE TABLE tab_2020_grammar(
    ID            TEXT    NOT NULL,

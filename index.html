@@ -14,6 +14,9 @@
   <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   <!-- Bootstrap4 JavaScript -->
   <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"></script>
+  
+  <!-- DOMPurify -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.9/purify.min.js"></script>
 
   <!-- Latest compiled and minified CSS -->
   <link type="text/css" rel="stylesheet" href="https://fastly.jsdelivr.net/npm/bootstrap-table@1.16.0/dist/bootstrap-table.min.css">
@@ -30,6 +33,7 @@
   <!-- <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/sql.js@0.5.0/js/sql-optimized.js"></script> -->
   <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/sql.js@0.5.0/js/sql.min.js"></script>
   <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/axios@0.19.2/dist/axios.min.js"></script>
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/pako@2.1.0/dist/pako.min.js"></script>
   
   <!-- clipboard.min.js -->
   <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js"></script>
@@ -41,9 +45,6 @@
   <!-- material-scrolltop.min.js -->
   <link type="text/css" rel="stylesheet" href="https://fastly.jsdelivr.net/npm/material-scrolltop@2.0.1/dist/material-scrolltop.min.css">
   <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/material-scrolltop@2.0.1/dist/material-scrolltop.min.js"></script>
-  
-  <!-- busuanzi.pure.mini.js -->
-  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
   
   <!-- USER Local file -->
   <!-- 
@@ -76,14 +77,14 @@
   <!--<script type="text/javascript" src="js/dictDb.js"></script>-->
   <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/leimaau-npm-cdn@1.5.2/js/dictDb.js"></script>
   <script type="text/javascript" src="js/index.js"></script>
-  
-  <!--<script type="text/javascript" src="js/jieba-js/segMain.min.js"></script>
+  <!--
+  <script type="text/javascript" src="js/jieba-js/segMain.min.js"></script>
   <script type="text/javascript" src="js/jieba-js/segDict.min.js"></script>
   <script type="text/javascript" src="js/jieba-js/segDictPlus.min.js"></script>
   <script type="text/javascript" src="js/jieba-js/nnDict.js"></script>
   <script type="text/javascript" src="js/jieba-js/nntDict.js"></script>
-  <script type="text/javascript" src="js/jieba-js/gzDict.js"></script>-->
-  
+  <script type="text/javascript" src="js/jieba-js/gzDict.js"></script>
+  -->
   <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/leimaau-npm-cdn@1.5.2/js/jieba-js/segMain.min.js"></script>
   <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/leimaau-npm-cdn@1.5.2/js/jieba-js/segDict.min.js"></script>
   <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/leimaau-npm-cdn@1.5.2/js/jieba-js/segDictPlus.min.js"></script>
@@ -525,7 +526,8 @@
 				<div class="col-sm-6 col-md-6 text-center">
 					 <div class="thumbnail">
 						<!--<img src="https://gitee.com/leimaau/data-store/raw/master/jpg/zhifubao.jpg" class="img-thumbnail" alt="支付寶">-->
-						<img src="https://leimaau.github.io/CDN/data-store/jpg/zhifubao.jpg" class="img-thumbnail" alt="支付寶">
+						<!--<img src="https://leimaau.github.io/CDN/data-store/jpg/zhifubao.jpg" class="img-thumbnail" alt="支付寶">-->
+						<img src="https://polite-cranachan-566a82.netlify.app/data-store/jpg/zhifubao.jpg" class="img-thumbnail" alt="支付寶">
 						<div class="caption">
 							<h3>支付寶</h3>
 						</div>
@@ -534,7 +536,8 @@
 				<div class="col-sm-6 col-md-6 text-center">
 					<div class="thumbnail">
 						<!--<img src="https://gitee.com/leimaau/data-store/raw/master/jpg/weixin.jpg" class="img-thumbnail" alt="微信">-->
-						<img src="https://leimaau.github.io/CDN/data-store/jpg/weixin.jpg" class="img-thumbnail" alt="微信">
+						<!--<img src="https://leimaau.github.io/CDN/data-store/jpg/weixin.jpg" class="img-thumbnail" alt="微信">-->
+						<img src="https://polite-cranachan-566a82.netlify.app/data-store/jpg/weixin.jpg" class="img-thumbnail" alt="微信">
 						<div class="caption">
 							<h3>微信</h3>
 						</div>
@@ -842,6 +845,12 @@
 		<table class="classTable" id="outTab_bw"></table>
 	  </div>
 	  
+	  <div class="row form-group col-md-12 table-responsive rowtabDiv rowtabDiv-xiandaihanyu">
+		<div class="classHighcharts" id="outWordCloud_xiandaihanyu"></div>
+		<span class="classTabTitle" id="outTabTitle_xiandaihanyu"></span>
+		<table class="classTable" id="outTab_xiandaihanyu"></table>
+	  </div>
+	  
 	  <!--<div class="row form-group col-md-12 table-responsive rowtabDiv rowtabDiv-zb_dg">
 		<span class="classTabTitle" id="outTabTitle_zb_dg"></span>
 		<table class="classTable" id="outTab_zb_dg"></table>
@@ -923,7 +932,7 @@
   
   <div class="footer text-center mt-auto py-3">
 	  <div class="foot-container user-font">
-		<span class="text-muted"> © 2020-<script>document.write(new Date().getFullYear());</script> <a class="text-info" target="_blank" href="https://leimaau.github.io/leimaau-webdict2/">Leimaau's Webdict 2</a> 版權所有</span><span class="text-muted" id="busuanzi_container_site_pv" style="display:none"> | 本站總訪問量 <span id="busuanzi_value_site_pv"></span> 次</span>
+		<span class="text-muted"> © 2020-<script>document.write(new Date().getFullYear());</script> <a class="text-info" target="_blank" href="https://leimaau.github.io/leimaau-webdict2/">Leimaau's Webdict 2</a> 版權所有</span>
 	  </div>
   </div>
 </body>

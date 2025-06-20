@@ -19,11 +19,15 @@ function querySubmit(inputValue, queryType, dictType) {
 	document.getElementsByClassName('classTabTitle').forEach((obj)=>{obj.innerHTML = ''});
 	document.getElementsByClassName('classTable').forEach((obj)=>{obj.innerHTML = ''});
 	document.getElementsByClassName('webLinkDiv').forEach((obj)=>{obj.innerHTML = ''});
-	$('#nav-home-tab,#nav-home-tab-bw,#nav-home,#nav-home-bw').addClass('active show'); // 選回第一個tab和內容
-	$('#nav-profile-tab,#nav-profile-tab-bw,#nav-profile,#nav-profile-bw').removeClass('active show');
+	if (dictType == 'dicWord') {
+		$('#nav-home-tab,#nav-home-tab-bw,#nav-home,#nav-home-bw').addClass('active show'); // 選回第一個tab和內容
+		$('#nav-profile-tab,#nav-profile-tab-bw,#nav-profile,#nav-profile-bw').removeClass('active show');
+	} else {
+		$('#nav-profile-tab,#nav-profile-tab-bw,#nav-profile,#nav-profile-bw').addClass('active show'); // 選回第二個tab和內容
+		$('#nav-home-tab,#nav-home-tab-bw,#nav-home,#nav-home-bw').removeClass('active show');	
+	}
 	$('.rowtabDiv').addClass('d-none');
 	$('#nav-tab,#nav-tab-bw').addClass('d-none');  // 隱藏tab
-	
 	
 	let selVal = [];
 	if(dictType == 'dicWord'){
@@ -44,9 +48,21 @@ function querySubmit(inputValue, queryType, dictType) {
 		displayAlert('請選擇查詢資料!', outputAlert, 'alert-danger');
 		return false;
 	} else if (!DictDb.hasDb()) {
-		displayAlert('數據庫未加載，請等候或刷新!', outputAlert, 'alert-danger');
+		displayAlert('數據庫正在加載中，請稍候...', outputAlert, 'alert-warning');
 		return false;
 	};
+	
+	// 检查是否需要等待其他数据库加载
+	if (selVal.some(val => val.includes('db2') || val.includes('db3'))) {
+		if (selVal.some(val => val.includes('db2')) && !DictDb.hasDb2()) {
+			displayAlert('數據庫2正在加載中，請稍候...', outputAlert, 'alert-warning');
+			return false;
+		}
+		if (selVal.some(val => val.includes('db3')) && !DictDb.hasDb3()) {
+			displayAlert('數據庫3正在加載中，請稍候...', outputAlert, 'alert-warning');
+			return false;
+		}
+	}
 	
 	let judgeFlag = 0; // 0無結果 非0有結果
 	// 開始顯示
@@ -193,7 +209,7 @@ function queryChar(inputValue, queryType, selVal){
 	
 	if(queryType == 'char' || queryType == 'char_simp') showLink(inputValue);
 	
-	let isShow = res_triungkox_tung.length + res_triungkoxghuh.length + res_gw.length + res_jw.length + res_jj.length + res.length + res_bw.length + res_zb_dg.length + res_zb_sz.length + res_zb_b_wj.length + res_zb_wj.length + res_zb_bjlu.length + res_zb_ms.length;
+	let isShow = res_triungkox_tung.length + res_triungkoxghuh.length + res_gw.length + res_jw.length + res_jj.length + res.length + res_bw.length; // + res_zb_dg.length + res_zb_sz.length + res_zb_b_wj.length + res_zb_wj.length + res_zb_bjlu.length + res_zb_ms.length;
 	if (isShow != 0) {
 		let tradRes = tradData.filter(item => item['simp'] == inputValue), tradLink = [];
 		if (tradRes.length != 0) {
@@ -229,29 +245,40 @@ function queryPhrase(inputValue, queryType, selVal){
 		if (res_proverb.length != 0) showWordCloud(res_proverb, inputValue, 'outWordCloud_triungkox_tung', '童謠和熟語', queryType, 'TRAD');
 	}
 	
+	let res_xiandaihanyu = [];
+	let dataList_xiandaihanyu = selVal.filter(item => item.indexOf('_xiandaihanyu') > -1);
+	if (dataList_xiandaihanyu.length != 0) {
+		$('.rowtabDiv-xiandaihanyu').removeClass('d-none');
+		res_xiandaihanyu = MainQuery.queryTable_xiandaihanyu(inputValue, dataList_xiandaihanyu, queryType);
+		showTable(res_xiandaihanyu, 'outTab_xiandaihanyu', '現代漢語詞彙<small>釋義源自《現代漢語詞典（第7版）》或《現代漢語規範詞典（第4版）》，爲適應本地有少量改動</small>', outTabTitle_xiandaihanyu, colData_xiandaihanyu);
+		if (res_xiandaihanyu.length != 0) showWordCloud(res_xiandaihanyu, inputValue, 'outWordCloud_xiandaihanyu', '現代漢語詞彙', queryType, 'TRAD');
+	}
+	
 	let res = [];
-	let dataList = selVal.filter(item => item.indexOf('_bw') == -1).filter(item => item.indexOf('_proverb') == -1);
+	let dataList = selVal.filter(item => item.indexOf('_bw') == -1).filter(item => item.indexOf('_proverb') == -1).filter(item => item.indexOf('_xiandaihanyu') == -1);
 	if (dataList.length != 0) {
 		$('.rowtabDiv-b').removeClass('d-none');
-		if (queryType != 'phrase_expl' && queryType != 'phrase_note'){ $('.nav-tab-b').removeClass('d-none'); }
+		$('.nav-tab-b').removeClass('d-none');
 		res = MainQuery.queryTablePhrase(inputValue, dataList, queryType);
-		showTable(res, 'outTab', allTitle+'(市區)', outTabTitle, colData_phrase);  // 顯示白話表格
-		showPie(res, inputValue, 'outPie', allTitle, queryType);  // 顯示白話餅圖
+		showTable(res, 'outTab', allTitle+'<small>市區</small>', outTabTitle, colData_phrase);  // 顯示白話表格
+		//showPie(res, inputValue, 'outPie', allTitle, queryType);  // 顯示白話餅圖
+		showBasicBar(res, inputValue, 'outPie', allTitle, queryType);
 		showWordCloud(res, inputValue, 'outWordCloud', allTitle, queryType, 'TRAD'); // 顯示白話詞雲圖
 	}
 	
 	let res_bw = [];
-	let dataList_bw = selVal.filter(item => item.indexOf('_bw') > -1).filter(item => item.indexOf('_proverb') == -1);
+	let dataList_bw = selVal.filter(item => item.indexOf('_bw') > -1).filter(item => item.indexOf('_proverb') == -1).filter(item => item.indexOf('_xiandaihanyu') == -1);
 	if (dataList_bw.length != 0) {
 		$('.rowtabDiv-bw').removeClass('d-none');
-		if (queryType != 'phrase_expl' && queryType != 'phrase_note'){ $('.nav-tab-bw').removeClass('d-none'); }
+		$('.nav-tab-bw').removeClass('d-none');
 		res_bw = MainQuery.queryTablePhrase(inputValue, dataList_bw, queryType);
-		showTable(res_bw, 'outTab_bw', allTitle_bw+'(亭子)', outTabTitle_bw, colData_phrase);  // 顯示平話表格
-		showPie(res_bw, inputValue, 'outPie_bw', allTitle_bw, queryType);  // 顯示平話餅圖
+		showTable(res_bw, 'outTab_bw', allTitle_bw+'<small>亭子</small>', outTabTitle_bw, colData_phrase);  // 顯示平話表格
+		//showPie(res_bw, inputValue, 'outPie_bw', allTitle_bw, queryType);  // 顯示平話餅圖
+		showBasicBar(res_bw, inputValue, 'outPie_bw', allTitle_bw, queryType);
 		showWordCloud(res_bw, inputValue, 'outWordCloud_bw', allTitle_bw, queryType, 'TRAD'); // 顯示平話詞雲圖
 	}
 	
-	let isShow = res_proverb.length + res.length + res_bw.length;
+	let isShow = res_proverb.length + res_xiandaihanyu.length + res.length + res_bw.length;
 	if (isShow == 0) {
 		displayAlert('未查詢到結果!', outputAlert, 'alert-primary');
 	}
@@ -322,11 +349,11 @@ function calcYear(data){
 // 餅圖顯示函數
 function showPie(res, inputValue, pieDiv, pieTitle, queryType, res_triungkox_tung = []) {
 	//if (res.length == 0) return false;
-	let piePara = 'JYUTPING';
-	if (queryType == 'expl' || queryType == 'phrase_expl' || queryType == 'note' || queryType == 'phrase_note') {
-		return false; // 釋義和附註反查時不顯示餅圖
-	} else if (queryType == 'jyutping' || queryType == 'jyut6ping3' || queryType == 'phrase_jyutping' || queryType == 'phrase_jyut6ping3'){
-		piePara = 'TRAD';
+	let piePara = 'TRAD';
+	if (queryType == 'expl' || queryType == 'note') {
+		return false; // 單字查詢，釋義和附註反查時不顯示餅圖
+	} else if (queryType == 'char' || queryType == 'char_simp'){
+		piePara = 'JYUTPING';
 	}
 	
 	// 餅圖數據處理
@@ -428,7 +455,7 @@ function showWordCloud(res, inputValue, wordCloudDiv, wordCloudTitle, queryType,
 	document.getElementById('nav-profile-tab').innerHTML = '詞雲圖';
 	document.getElementById('nav-profile-tab-bw').innerHTML = '詞雲圖';
 	//if (res.length == 0) return false;
-	if (queryType == 'expl' || queryType == 'phrase_expl' || queryType == 'note' || queryType == 'phrase_note') { // 釋義和附註反查時不顯示詞雲圖
+	if (queryType == 'expl' || queryType == 'note') { // 單字查詢，釋義和附註反查時不顯示詞雲圖
 		return false;
 	}
 	let text = [];
@@ -468,14 +495,23 @@ function showWordCloud(res, inputValue, wordCloudDiv, wordCloudTitle, queryType,
 
 // 條形圖顯示函數
 function showBasicBar(res, inputValue, barDiv, barTitle, queryType) {
-	document.getElementById('nav-profile-tab').innerHTML = '條形圖';
-	document.getElementById('nav-profile-tab-bw').innerHTML = '條形圖';
+	if (queryType == 'phrase' || queryType == 'phrase_simp' || queryType == 'phrase_jyutping' || queryType == 'phrase_jyut6ping3' || queryType == 'phrase_expl' || queryType == 'phrase_note') {
+		document.getElementById('nav-home-tab').innerHTML = '條形圖';
+		document.getElementById('nav-home-tab-bw').innerHTML = '條形圖';
+		document.getElementById('nav-profile-tab').innerHTML = '詞雲圖';
+		document.getElementById('nav-profile-tab-bw').innerHTML = '詞雲圖';
+	} else {
+		document.getElementById('nav-home-tab').innerHTML = '餅圖';
+		document.getElementById('nav-home-tab-bw').innerHTML = '餅圖';
+		document.getElementById('nav-profile-tab').innerHTML = '條形圖';
+		document.getElementById('nav-profile-tab-bw').innerHTML = '條形圖';
+	}
 	//if (res.length == 0) return false;
-	let barPara = 'JYUTPING';
-	if (queryType == 'expl' || queryType == 'phrase_expl' || queryType == 'note' || queryType == 'phrase_note') {
-		return false; // 釋義和附註反查時不顯示條形圖
-	} else if (queryType == 'jyutping' || queryType == 'jyut6ping3' || queryType == 'phrase_jyutping' || queryType == 'phrase_jyut6ping3'){
-		barPara = 'TRAD';
+	let barPara = 'TRAD';
+	if (queryType == 'expl' || queryType == 'note') {
+		return false; // 單字查詢，釋義和附註反查時不顯示條形圖
+	} else if (queryType == 'char' || queryType == 'char_simp'){
+		barPara = 'JYUTPING';
 	}
 	
 	// 條形圖數據處理
@@ -708,7 +744,9 @@ function signArticle(textCont, signText_type, signResult_type, signResult_format
 		}
 	}
 	
-	$('#signResult').html(outputText.join(''));
+	$('#signResult').html(
+	  DOMPurify.sanitize(outputText.join(''), purifyConfig)
+	);
 }
 
 // 【詞彙】查詢粵拼或IPA函數
@@ -810,7 +848,9 @@ function Func_JP_IPA(inputSymbol, transform_type, IPA_version, output_IPAformat)
 		}
 	}
 	
-	$('#outputSymbol').html(outputText.join(''));
+	$('#outputSymbol').html(
+	  DOMPurify.sanitize(outputText.join(''), purifyConfig)
+	);
 }
 
 // 在線分詞函數
@@ -831,7 +871,10 @@ function wordSeg(textCont, HMM = false) {
 	for (let lines of textCont.split('\n')) {
 		outputText.push(cutModule.cut(lines, JSON.parse(HMM)).join(' ') + '<br>');
 	}
-	$('#segResult').html(outputText.join(''));
+	
+	$('#segResult').html(
+	  DOMPurify.sanitize(outputText.join(''), purifyConfig)
+	);
 }
 
 // 讀音聯想器
@@ -895,7 +938,9 @@ function soundLenovoFun(jpChar) {
 		outputText.push(i);
 	}
 	
-	$('#soundResult').html(Array.from(new Set(outputText)).join('<br/>'));
+	$('#soundResult').html(
+	  DOMPurify.sanitize(Array.from(new Set(outputText)).join('<br/>'), purifyConfig)
+	);
 }
 
 // 合音拆分器
@@ -935,7 +980,9 @@ function soundSplitFun(jpChar) {
 		resultText2.push('以' + outputText_new[i] + '開頭的音節：' + syllable_bw.filter(item=>patt1.test(item)).join(', ') + '<br/>以' + outputText2_new[i] + '結尾的音節：' + syllable_bw.filter(item=>patt2.test(item)).join(', '));
 	}
 	
-	$('#soundChorusCharResult').html('白話：<br/><br/>'+Array.from(new Set(resultText)).join('<br/><br/>') + '<br/><br/>平話：<br/><br/>'+Array.from(new Set(resultText2)).join('<br/><br/>'));
+	$('#soundChorusCharResult').html(
+	  DOMPurify.sanitize('白話：<br/><br/>'+Array.from(new Set(resultText)).join('<br/><br/>') + '<br/><br/>平話：<br/><br/>'+Array.from(new Set(resultText2)).join('<br/><br/>'), purifyConfig)
+	);
 }
 
 // 在線推導函數
@@ -1067,7 +1114,9 @@ function derivationFun(textChar) {
 		}
 	}
 	
-	$('#derivationResult').html(outputText.join(''));
+	$('#derivationResult').html(
+	  DOMPurify.sanitize(outputText.join(''), purifyConfig)
+	);
 	
 }
 
@@ -1411,6 +1460,6 @@ $(() => {
 	$('body').materialScrollTop();
 	
 	//displayAlert("新版本 <a href='https://leimaau-webdict3.vercel.app/' target='_blank'>Leimaau's Webdict 3</a> 已上線，<a href='https://tranquil-tulumba-4026d9.netlify.app' target='_blank'>備用系統</a> 同時開啓", outputAlert, 'alert-success');
-	displayAlert("詞彙系統數據已更新，爲減少數據量，只收錄繁體，簡體搜索不提供", outputAlert, 'alert-success');
+	displayAlert("【公告】<br>說明：每次更新後第一次加載要花些時間，之後加載則方便許多<br>更新版本：20250618<br>更新內容：<br>1.修訂字典數據，改正一些錯誤<br>2.修訂詞典數據，增加現代漢語詞彙表，爲減少數據庫壓力，只收錄繁體，不提供簡體搜索<br>3.改進頁碼的圖片跳轉<br>4.詳細地修訂歷史可上github查詢", outputAlert, 'alert-success');
 	
 })

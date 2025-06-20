@@ -3,25 +3,47 @@
 */
 
 const cdnAddr = [];
-cdnAddr.push('https://fastly.jsdelivr.net/npm');
-cdnAddr.push('leimaau-npm-cdn@1.5.2');
-cdnAddr.push('db/leimaau.db3');
+//cdnAddr.push('https://fastly.jsdelivr.net/npm');
+//cdnAddr.push('leimaau-npm-cdn@1.5.2');
+//cdnAddr.push('db/leimaau.db3');
+cdnAddr.push('https://delicate-bombolone-0bc03e.netlify.app/');
+cdnAddr.push('public/leimaau.db3.gz'); // 使用gzip压缩文件
 
 const cdnAddr2 = [];
-cdnAddr2.push('https://fastly.jsdelivr.net/npm');
-cdnAddr2.push('leimaau-npm-cdn@1.5.2');
-cdnAddr2.push('db/leimaau2.db3');
+//cdnAddr2.push('https://fastly.jsdelivr.net/npm');
+//cdnAddr2.push('leimaau-npm-cdn@1.5.2');
+//cdnAddr2.push('db/leimaau2.db3');
+cdnAddr2.push('https://delicate-bombolone-0bc03e.netlify.app/');
+cdnAddr2.push('public/leimaau2.db3.gz'); // 使用gzip压缩文件
 
 const cdnAddr3 = [];
-cdnAddr3.push('https://fastly.jsdelivr.net/npm');
-cdnAddr3.push('leimaau-npm-cdn@1.5.2');
-cdnAddr3.push('db/leimaau3.db3');
+//cdnAddr3.push('https://fastly.jsdelivr.net/npm');
+//cdnAddr3.push('leimaau-npm-cdn@1.5.2');
+//cdnAddr3.push('db/leimaau3.db3');
+cdnAddr3.push('https://delicate-bombolone-0bc03e.netlify.app/');
+cdnAddr3.push('public/leimaau3.db3.gz'); // 使用gzip压缩文件
 
 const DictConfig = {
   //dir: 'db/leimaau.db3',  // 使用本地庫
   dir: cdnAddr.join('/'),  // 使用CDN加速
   dir2: cdnAddr2.join('/'),
   dir3: cdnAddr3.join('/')
+};
+
+// 配置 DOMPurify
+const purifyConfig = {
+    ALLOWED_TAGS: [
+        'div', 'span', 'a', 'br', 'input', 'label',  // 基础标签
+        'ruby', 'rt', 'rp',  // 注音相关
+        'small', 'b', 'pre', 'h5'  // 格式化相关
+    ],
+    ALLOWED_ATTR: [
+        'class', 'href', 'target',  // 基础属性
+        'type', 'id', 'name', 'value',  // input 属性
+        'onclick', 'disabled',  // 交互属性
+        'for',  // label 属性
+        'data-toggle', 'style', 'role', 'aria-label'  // Bootstrap 相关
+    ]
 };
 
 /*
@@ -104,16 +126,17 @@ const colData_oldbook_proverb = [
 	{ field: 'OLDBOOK', title: '古籍資料和近代資料', align: 'center' }
 	, { field: 'OLDPROVERB', title: '早期童謠', align: 'center', formatter: (value) => { return formatCheckBox(value, '_phrase') } }
 	, { field: 'PROVERB', title: '近代童謠和熟語', align: 'center', formatter: (value) => { return formatCheckBox(value, '_phrase') } }
-	, { field: 'PHRASE', title: '詞彙', align: 'center', formatter: (value) => { return formatCheckBox(value, '_phrase') } }
+	, { field: 'PHRASE', title: '現代漢語詞彙', align: 'center', formatter: (value) => { return formatCheckBox(value, '_phrase') } }
 ];
 
 const rowData_oldbook_proverb = [
 	{ OLDBOOK: '<a class="text-info" target="_blank" href="https://leimaau.github.io/leimaau-webdict2/db/1937jz_proverb.html">1937年邕寧縣修誌委員會《邕寧縣誌(第4冊)·童謠》</a>', OLDPROVERB: 'tab_1937jz_proverb', PROVERB: '', PHRASE: '' }
 	, { OLDBOOK: '<a class="text-info" target="_blank" href="https://leimaau.github.io/leimaau-webdict2/db/1937kk_proverb.html">1937年廣西省政府總務處統計室《南寧社會概況·童謠》</a>', OLDPROVERB: 'tab_1937kk_proverb', PROVERB: '', PHRASE: '' }
-	, { OLDBOOK: '1937年邕寧縣修誌委員會《邕寧縣誌(第4冊)·言語》', OLDPROVERB: '', PROVERB: '', PHRASE: 'noData'}
+	//, { OLDBOOK: '1937年邕寧縣修誌委員會《邕寧縣誌(第4冊)·言語》', OLDPROVERB: '', PROVERB: '', PHRASE: 'noData'}
 	//, { OLDBOOK: '2008年林亦、覃鳳餘《廣西南寧白話研究》', OLDPROVERB: '', PROVERB: 'noData' }
 	//, { OLDBOOK: '?年萬立仁、劉子林《白話童謠300首辨析》', OLDPROVERB: '', PROVERB: 'noData' }
 	, { OLDBOOK: '2020年Leimaau《南寧童謠和熟語》(本站提供)', OLDPROVERB: '', PROVERB: 'tab_2020_proverb', PHRASE: '' }
+	, { OLDBOOK: '2025年Leimaau《現代漢語詞彙讀音表》(本站提供)', OLDPROVERB: '', PROVERB: '', PHRASE: 'tab_xiandaihanyu_phrase'}
 ];
 
 const colData_book_phrase = [
@@ -138,15 +161,15 @@ const rowData_book_phrase = [
 	, { BOOK: '1998年楊煥典主編《廣西通誌·漢語方言誌》', NN: 'tab_1998_phrase', NN_D: '', HX_B: '', NN_T: 'noData', NN_SL: '', NN_S: '', HX_P: '', BY_P: '', BY_P2: '' }
 	, { BOOK: '2000年李連進《南寧近郊平話方言島》', NN: '', NN_D: '', HX_B: '', NN_T: 'noData', NN_SL: '', NN_S: '', HX_P: '', BY_P: '', BY_P2: '' }
 	, { BOOK: '2006年張均如《賓陽話的語音和詞彙》', NN: '', NN_D: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', HX_P: '', BY_P: 'noData', BY_P2: '' }
-	, { BOOK: '2007年李彬《左江土白話研究》', NN: 'noData', NN_D: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', HX_P: '', BY_P: '', BY_P2: '' }
+	//, { BOOK: '2007年李彬《左江土白話研究》', NN: 'noData', NN_D: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', HX_P: '', BY_P: '', BY_P2: '' }
 	, { BOOK: '2007年謝建猷《廣西漢語方言研究》', NN: 'tab_2007_phrase', NN_D: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: 'noData', HX_P: 'noData', BY_P: '', BY_P2: 'noData' }
 	, { BOOK: '2008年林亦、覃鳳餘《廣西南寧白話研究》', NN: 'tab_2008_phrase', NN_D: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', HX_P: '', BY_P: '', BY_P2: '' }
 	// 	黎丽程 宾阳话的基本词类及句式研究	
 	// 	黎丽程 宾阳话的语音和词汇构成	
 	//  王莉宁 桂南平话与粤语词汇比较方法探讨
 	, { BOOK: '2015年黃增霞《廣西南寧疍家話詞彙研究》', NN: '', NN_D: 'noData', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', HX_P: '', BY_P: '', BY_P2: '' }
-	, { BOOK: '2017年李怡《南寧白話古語詞研究》', NN: 'noData', NN_D: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', HX_P: '', BY_P: '', BY_P2: '' }
-	, { BOOK: '2017年韋慧梅《南寧白話詞彙研究》', NN: 'noData', NN_D: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', HX_P: '', BY_P: '', BY_P2: '' }
+	//, { BOOK: '2017年李怡《南寧白話古語詞研究》', NN: 'noData', NN_D: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', HX_P: '', BY_P: '', BY_P2: '' }
+	//, { BOOK: '2017年韋慧梅《南寧白話詞彙研究》', NN: 'noData', NN_D: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', HX_P: '', BY_P: '', BY_P2: '' }
 	, { BOOK: '2017年詹伯慧、張振興《漢語方言學大詞典》', NN: '', NN_D: '', HX_B: '', NN_T: 'noData', NN_SL: '', NN_S: '', HX_P: '', BY_P: '', BY_P2: '' }
 	, { BOOK: '2019年莫思敏《橫縣白話語音研究》', NN: '', NN_D: '', HX_B: 'noData', NN_T: '', NN_SL: '', NN_S: '', HX_P: '', BY_P: '', BY_P2: '' }
 	, { BOOK: '2020年Leimaau《南寧話審詞表》(本站提供)', NN: 'tab_2020_phrase', NN_D: '', HX_B: '', NN_T: 'tab_2020_bw_phrase', NN_SL: '', NN_S: '', HX_P: '', BY_P: '', BY_P2: '' }
@@ -360,43 +383,56 @@ const colData = [
 const colData_proverb = [
 	{ field: 'YEAR', title: '資料', align: 'center', formatter: (value) => { return `<span class="user-font">${value.replace('_proverb', '').replace('tab_', '')}</span>` } }
 	//, {field: 'ID',title: 'ID'}
-	//, { field: 'TRADSIMP', title: '繁體〔簡體〕', width: '550px', align: 'left', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
-	, { field: 'TRAD', title: '繁體', width: '550px', align: 'left', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
-	//, { field: 'SIMP', title: '簡體', width: '550px', align: 'left', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
-	, { field: 'SOUR', title: '來源', width: '250px', formatter: (value, row) => { if(row['YEAR'] == 'tab_2020_proverb') {return `<span style="white-space: normal">2020年Leimaau《南寧童謠和熟語》(本站提供)<span/>`} else {return (row['YEAR'] == 'tab_1937kk_proverb') ? '<span style="white-space: normal">1937年廣西省政府總務處統計室《南寧社會概況》' + pageSplit(value, 'jpg','https://fastly.jsdelivr.net/gh/leimaau/CDN@latest/data-store/1937tj/kk_tj') + '<span/>' : '<span style="white-space: normal">1937年邕寧縣修誌委員會《邕寧縣誌(第4冊)》' + pageSplit(value, 'jpg','https://fastly.jsdelivr.net/gh/leimaau/CDN@latest/data-store/1937tj/jz_tj') + '<span/>' } } }
-	, { field: 'EXPL', title: '釋義', width: '250px', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
-	, { field: 'NOTE', title: '本站校訂附註', width: '250px', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
+	//, { field: 'TRADSIMP', title: '繁體〔簡體〕', align: 'left', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
+	, { field: 'TRAD', title: '繁體', align: 'left', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
+	//, { field: 'SIMP', title: '簡體', align: 'left', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
+	, { field: 'SOUR', title: '來源', formatter: (value, row) => { if(row['YEAR'] == 'tab_2020_proverb') {return `<span style="white-space: normal">2020年Leimaau《南寧童謠和熟語》(本站提供)<span/>`} else {return (row['YEAR'] == 'tab_1937kk_proverb') ? '<span style="white-space: normal">1937年廣西省政府總務處統計室《南寧社會概況》' + pageSplit(value, 'jpg','https://fastly.jsdelivr.net/gh/leimaau/CDN@latest/data-store/1937tj/kk_tj') + '<span/>' : '<span style="white-space: normal">1937年邕寧縣修誌委員會《邕寧縣誌(第4冊)》' + pageSplit(value, 'jpg','https://fastly.jsdelivr.net/gh/leimaau/CDN@latest/data-store/1937tj/jz_tj') + '<span/>' } } }
+	, { field: 'EXPL', title: '釋義', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
+	, { field: 'NOTE', title: '本站校訂附註', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
+];
+
+const colData_xiandaihanyu = [
+	{ field: 'YEAR', title: '資料', sortable : true, align: 'center', formatter: (value) => { return `<span class="user-font">${value}<span/>` } }
+	//, {field: 'ID',title: 'ID'}
+	//, { field: 'TRADSIMP', title: '繁體〔簡體〕', sortable : true, align: 'center', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
+	, { field: 'TRAD', title: '繁體', sortable : true, align: 'center', formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'phrase', 'dicPhrase')">${value}</a>` } }
+	//, { field: 'SIMP', title: '簡體', sortable : true, align: 'center', formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'phrase_simp', 'dicPhrase')">${value}</a>` } }
+	, { field: 'JYUTPING', title: '南寧白話', sortable : true, formatter: (value) => { let charStr = value.split(/,|\|\|/), aLink = []; for (let i in charStr) aLink.push(`<a href="javascript:querySubmit('${charStr[i]}', 'phrase_jyut6ping3', 'dicPhrase')">${charStr[i]}</a>`); return aLink.join('<br/>') } }
+	, { field: 'JYUTPING2', title: '南寧亭子平話', sortable : true, formatter: (value) => { let charStr = value.split(/,|\|\|/), aLink = []; for (let i in charStr) aLink.push(`<a href="javascript:querySubmit('${charStr[i]}', 'phrase_jyut6ping3', 'dicPhrase')">${charStr[i]}</a>`); return aLink.join('<br/>') } }
+	//, { field: 'SOUR', title: '來源（釋義主要來源）', sortable : true, formatter: (value) => { return '《現代漢語詞典（第7版）》' } }
+	, { field: 'EXPL', title: '釋義', sortable : true, formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
+	//, { field: 'NOTE', title: '本站校訂附註', formatter: (value) => { return `<p data-toggle="tooltip" data-placement="left" title="${value}">${value}<p/>` } }
 ];
 
 const colData_phrase = [
 	{ field: 'YEAR', title: '資料', sortable : true, align: 'center', formatter: (value) => { return `<span class="user-font">${value.replace('_bw', '').replace('_phrase', '').replace('tab_', '')}</span>` } }
 	//, {field: 'ID',title: 'ID'}
-	//, { field: 'TRADSIMP', title: '繁體〔簡體〕', width: '550px', sortable : true, align: 'center', formatter: (value) => { let charStr = value.split('|'), aLink = []; for (let i in charStr) aLink.push(`<a href="javascript:querySubmit('${charStr[i]}', '${i}'=='0' ? 'phrase' : 'phrase_simp', 'dicPhrase')">${charStr[i]}</a>`); return aLink.join('<br/>') } }
+	//, { field: 'TRADSIMP', title: '繁體〔簡體〕', sortable : true, align: 'center', formatter: (value) => { let charStr = value.split('|'), aLink = []; for (let i in charStr) aLink.push(`<a href="javascript:querySubmit('${charStr[i]}', '${i}'=='0' ? 'phrase' : 'phrase_simp', 'dicPhrase')">${charStr[i]}</a>`); return aLink.join('<br/>') } }
 	, { field: 'TRAD', title: '繁體', sortable : true, align: 'center', formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'phrase', 'dicPhrase')">${value}</a>` } }
 	//, { field: 'SIMP', title: '簡體', sortable : true, align: 'center', formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'phrase_simp', 'dicPhrase')">${value}</a>` } }
-	//, { field: 'JYUTPING_IPA_TS', title: '粵拼〔統一IPA、原文IPA〕', width: '550px', sortable : true, formatter: (value) => { let jpStr = value.split('|'), aLink = []; for (let i in jpStr) aLink.push(i==0 ? `<a href="javascript:querySubmit('${jpStr[i]}', 'phrase_jyut6ping3', 'dicPhrase')">${jpStr[i]}</a>` : `${jpStr[i]}`); return aLink.join('<br/>') } }
+	//, { field: 'JYUTPING_IPA_TS', title: '粵拼〔統一IPA、原文IPA〕', sortable : true, formatter: (value) => { let jpStr = value.split('|'), aLink = []; for (let i in jpStr) aLink.push(i==0 ? `<a href="javascript:querySubmit('${jpStr[i]}', 'phrase_jyut6ping3', 'dicPhrase')">${jpStr[i]}</a>` : `${jpStr[i]}`); return aLink.join('<br/>') } }
 	//, { field: 'IPA_S', title: '原文IPA', sortable : true }
 	//, { field: 'IPA_T', title: '統一IPA', sortable : true }
 	, { field: 'JYUTPING', title: '粵拼', sortable : true, formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'phrase_jyut6ping3', 'dicPhrase')">${value}</a>` } }
-	, { field: 'SOUR', title: '來源', width: '1500px', sortable : true, formatter: (value, row) => { return formatSOUR(value, row['YEAR'], 'png', 'phrase') } }
-	, { field: 'EXPL', title: '釋義', width: '550px', sortable : true, formatter: (value) => { return `<p data-toggle="tooltip" data-placement="left" title="${value}">${value}<p/>` } }
-	, { field: 'NOTE', title: '本站校訂附註', width: '550px', sortable : true, formatter: (value) => { return `<p data-toggle="tooltip" data-placement="left" title="${value}">${value}<p/>` } }
+	, { field: 'SOUR', title: '來源', sortable : true, formatter: (value, row) => { return formatSOUR(value, row['YEAR'], 'png', 'phrase') } }
+	, { field: 'EXPL', title: '釋義（或上一級分類）', sortable : true, formatter: (value) => { return `<p data-toggle="tooltip" data-placement="left" title="${value}">${value}<p/>` } }
+	, { field: 'NOTE', title: '本站校訂附註', sortable : true, formatter: (value) => { return `<p data-toggle="tooltip" data-placement="left" title="${value}">${value}<p/>` } }
 	, { field: 'CLASSIFI', title: '分類', sortable : true, formatter: (value) => { return `<p data-toggle="tooltip" data-placement="left" title="${value}">${value}<p/>` } }
 ];
 
 const colData_grammar = [
 	{ field: 'YEAR', title: '資料', sortable : true, align: 'center', formatter: (value) => { return `<span class="user-font">${value.replace('_bw', '').replace('_grammar', '').replace('tab_', '')}</span>` } }
 	//, {field: 'ID',title: 'ID'}
-	//, { field: 'TRADSIMP', title: '繁體〔簡體〕', width: '550px', sortable : true, align: 'left', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
-	, { field: 'TRAD', title: '繁體', width: '550px', sortable : true, align: 'left', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
-	//, { field: 'SIMP', title: '簡體', width: '550px', sortable : true, align: 'left', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
-	//, { field: 'JYUTPING_IPA_TS', title: '粵拼〔統一IPA、原文IPA〕', width: '550px', sortable : true, align: 'left', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
-	//, { field: 'IPA_S', title: '原文IPA', width: '550px', sortable : true, align: 'left', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
-	//, { field: 'IPA_T', title: '統一IPA', width: '550px', sortable : true, align: 'left', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
-	, { field: 'JYUTPING', title: '粵拼', width: '750px', sortable : true, align: 'left', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
-	, { field: 'SOUR', title: '來源', width: '1500px', sortable : true, formatter: (value, row) => { return formatSOUR(value, row['YEAR'], 'png', 'grammar') } }
-	, { field: 'EXPL', title: '釋義', width: '550px', sortable : true, formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
-	, { field: 'NOTE', title: '本站校訂附註', width: '550px', sortable : true, formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
+	//, { field: 'TRADSIMP', title: '繁體〔簡體〕', sortable : true, align: 'left', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
+	, { field: 'TRAD', title: '繁體', sortable : true, align: 'left', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
+	//, { field: 'SIMP', title: '簡體', sortable : true, align: 'left', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
+	//, { field: 'JYUTPING_IPA_TS', title: '粵拼〔統一IPA、原文IPA〕', sortable : true, align: 'left', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
+	//, { field: 'IPA_S', title: '原文IPA', sortable : true, align: 'left', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
+	//, { field: 'IPA_T', title: '統一IPA', sortable : true, align: 'left', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
+	, { field: 'JYUTPING', title: '粵拼', sortable : true, align: 'left', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
+	, { field: 'SOUR', title: '來源', sortable : true, formatter: (value, row) => { return formatSOUR(value, row['YEAR'], 'png', 'grammar') } }
+	, { field: 'EXPL', title: '釋義', sortable : true, formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
+	, { field: 'NOTE', title: '本站校訂附註', sortable : true, formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
 	, { field: 'CLASSIFI', title: '分類', sortable : true, formatter: (value) => { return `<p data-toggle="tooltip" data-placement="left" title="${value}">${value}<p/>` } }
 ];
 
@@ -414,7 +450,8 @@ function formatSOUR(value, row_year, picType, qType) {
 	row_year = row_year.replace('_bw', '').replace('_phrase', '').replace('_grammar', '').replace('tab_', '');
 	//let linkaddr = 'https://leimaau.github.io/CDN/data-store/' + row_year;
 	//let linkaddr = 'https://fastly.jsdelivr.net/gh/leimaau/CDN@latest/data-store/' + row_year;
-	let linkaddr = 'https://leimaau.github.io/CDN/index.html?value=' + row_year;
+	//let linkaddr = 'https://leimaau.github.io/CDN/index.html?value=' + row_year;
+	let linkaddr = 'https://polite-cranachan-566a82.netlify.app/data-store/' + row_year;
 	
 	if (row_year == '1994') linkaddr += 'zh/zh'
 	else if (row_year == '1997') linkaddr += 'yd/yd'
@@ -789,9 +826,17 @@ function showLink(textChar){
 	語保工程採錄展示平臺：<a href="https://zhongguoyuyan.cn/" target="_blank">前往</a><br/>
 	</span></div></div>`);
 	
-	$('#webLink').html(outputText.join(''));
-	$('#webLink2').html(outputText2.join(''));
-	$('#webLink3').html(outputText3.join(''));
+	$('#webLink').html(
+		DOMPurify.sanitize(outputText.join(''), purifyConfig)
+	);
+
+	$('#webLink2').html(
+		DOMPurify.sanitize(outputText2.join(''), purifyConfig)
+	);
+
+	$('#webLink3').html(
+		DOMPurify.sanitize(outputText3.join(''), purifyConfig)
+	);
 }
 
 // 漢字轉 Unicode
