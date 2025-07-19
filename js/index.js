@@ -250,7 +250,7 @@ function queryPhrase(inputValue, queryType, selVal){
 	if (dataList_xiandaihanyu.length != 0) {
 		$('.rowtabDiv-xiandaihanyu').removeClass('d-none');
 		res_xiandaihanyu = MainQuery.queryTable_xiandaihanyu(inputValue, dataList_xiandaihanyu, queryType);
-		showTable(res_xiandaihanyu, 'outTab_xiandaihanyu', '現代漢語詞彙<small>釋義源自《現代漢語詞典（第7版）》或《現代漢語規範詞典（第4版）》，爲適應本地有少量改動</small>', outTabTitle_xiandaihanyu, colData_xiandaihanyu);
+		showTable(res_xiandaihanyu, 'outTab_xiandaihanyu', '現代漢語詞彙<small>釋義源自《現代漢語詞典（第7版）》或《現代漢語規範詞典（第4版）》，爲適應本地有改動</small>', outTabTitle_xiandaihanyu, colData_xiandaihanyu);
 		if (res_xiandaihanyu.length != 0) showWordCloud(res_xiandaihanyu, inputValue, 'outWordCloud_xiandaihanyu', '現代漢語詞彙', queryType, 'TRAD');
 	}
 	
@@ -277,6 +277,8 @@ function queryPhrase(inputValue, queryType, selVal){
 		showBasicBar(res_bw, inputValue, 'outPie_bw', allTitle_bw, queryType);
 		showWordCloud(res_bw, inputValue, 'outWordCloud_bw', allTitle_bw, queryType, 'TRAD'); // 顯示平話詞雲圖
 	}
+	
+	if(queryType == 'phrase' || queryType == 'phrase_simp') showLink(inputValue);
 	
 	let isShow = res_proverb.length + res_xiandaihanyu.length + res.length + res_bw.length;
 	if (isShow == 0) {
@@ -1460,6 +1462,6 @@ $(() => {
 	$('body').materialScrollTop();
 	
 	//displayAlert("新版本 <a href='https://leimaau-webdict3.vercel.app/' target='_blank'>Leimaau's Webdict 3</a> 已上線，<a href='https://tranquil-tulumba-4026d9.netlify.app' target='_blank'>備用系統</a> 同時開啓", outputAlert, 'alert-success');
-	displayAlert("【公告】<br>說明：每次更新後第一次加載要花些時間，之後加載則方便許多<br>更新版本：20250620<br>更新內容：<br>1.修訂字典數據，改正一些錯誤<br>2.修訂詞典數據，增加現代漢語詞彙表，爲減少數據庫壓力，只收錄繁體，不提供簡體搜索<br>3.改進頁碼的圖片跳轉<br>4.詳細地修訂歷史可上github查詢", outputAlert, 'alert-success');
+	displayAlert("【公告】<br>說明：每次更新後第一次加載要花些時間，之後加載則方便許多<br>更新版本：20250623<br>更新內容：<br>1.修訂字典數據，改正一些錯誤<br>2.修訂詞典數據，增加現代漢語詞彙表，爲減少數據庫壓力，只收錄繁體，不提供簡體搜索<br>3.改進頁碼的圖片跳轉<br>4.詳細地修訂歷史可上github查詢", outputAlert, 'alert-success');
 	
 })

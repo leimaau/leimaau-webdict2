@@ -344,7 +344,7 @@ const colData_jw = [
 	, { field: 'OLD_JP', title: '讀音', rowspan: 2, align: 'center', valign: 'middle' }
 	, { field: 'OLD_JP_TYPE', title: '讀音分類', rowspan: 2, align: 'center', valign: 'middle' }
 	, { field: 'OLD_JP_NOTE', title: '讀音備註', rowspan: 2, align: 'center', valign: 'middle' }
-	, { field: 'PAGE', title: '䈎', rowspan: 2, align: 'center', valign: 'middle', formatter: (value, row) => { return pageSplit(value.replace('*','s'), 'jpg', 'https://fastly.jsdelivr.net/gh/leimaau/CDN@latest/data-store/1856fy/fy') } }
+	, { field: 'PAGE', title: '䈎', rowspan: 2, align: 'center', valign: 'middle', formatter: (value, row) => { return pageSplit(value.replace('*','s'), 'jpg', 'https://polite-cranachan-566a82.netlify.app/data-store/1856fy/fy') } }
 	, { field: '', title: '擬音', rowspan: 1,colspan: 2, align: 'center', valign: 'middle' }
 	],[
 	{ field: 'IPA', title: 'IPA', align: 'center', valign: 'middle' }
@@ -358,7 +358,7 @@ const colData_jj = [
 	, { field: 'WORD', title: '字頭', align: 'center', formatter: (value) => { let charStr = value.split('|'), aLink = []; for (let i in charStr) aLink.push(`<a href="javascript:querySubmit('${charStr[i]}', 'char', 'dicWord')">${charStr[i]}</a>`); return aLink.join('|') } }
 	, { field: 'IPA', title: 'IPA' }
 	, { field: 'JYUTPING', title: '粵拼', formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'jyut6ping3', 'dicWord')">${value}</a>` } }
-	, { field: 'PAGE', title: '䈎', formatter: (value, row) => { return pageSplit(value, 'jpg', 'https://fastly.jsdelivr.net/gh/leimaau/CDN@latest/data-store/1941yy/yy') } }
+	, { field: 'PAGE', title: '䈎', formatter: (value, row) => { return pageSplit(value, 'jpg', 'https://polite-cranachan-566a82.netlify.app/data-store/1941yy/yy') } }
 	, { field: 'EXPL', title: '釋義', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` }  }
 	, { field: 'FIRSTFLAG', title: '國語聲母是否捲舌', formatter: (value) => { return `${value.replace('1', '1（否）').replace('2', '2（是）')}` }  }
 ];
@@ -386,7 +386,7 @@ const colData_proverb = [
 	//, { field: 'TRADSIMP', title: '繁體〔簡體〕', align: 'left', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
 	, { field: 'TRAD', title: '繁體', align: 'left', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
 	//, { field: 'SIMP', title: '簡體', align: 'left', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
-	, { field: 'SOUR', title: '來源', formatter: (value, row) => { if(row['YEAR'] == 'tab_2020_proverb') {return `<span style="white-space: normal">2020年Leimaau《南寧童謠和熟語》(本站提供)<span/>`} else {return (row['YEAR'] == 'tab_1937kk_proverb') ? '<span style="white-space: normal">1937年廣西省政府總務處統計室《南寧社會概況》' + pageSplit(value, 'jpg','https://fastly.jsdelivr.net/gh/leimaau/CDN@latest/data-store/1937tj/kk_tj') + '<span/>' : '<span style="white-space: normal">1937年邕寧縣修誌委員會《邕寧縣誌(第4冊)》' + pageSplit(value, 'jpg','https://fastly.jsdelivr.net/gh/leimaau/CDN@latest/data-store/1937tj/jz_tj') + '<span/>' } } }
+	, { field: 'SOUR', title: '來源', formatter: (value, row) => { if(row['YEAR'] == 'tab_2020_proverb') {return `<span style="white-space: normal">2020年Leimaau《南寧童謠和熟語》(本站提供)<span/>`} else {return (row['YEAR'] == 'tab_1937kk_proverb') ? '<span style="white-space: normal">1937年廣西省政府總務處統計室《南寧社會概況》' + pageSplit(value, 'jpg','https://polite-cranachan-566a82.netlify.app/data-store/1937tj/kk_tj') + '<span/>' : '<span style="white-space: normal">1937年邕寧縣修誌委員會《邕寧縣誌(第4冊)》' + pageSplit(value, 'jpg','https://polite-cranachan-566a82.netlify.app/data-store/1937tj/jz_tj') + '<span/>' } } }
 	, { field: 'EXPL', title: '釋義', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
 	, { field: 'NOTE', title: '本站校訂附註', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
 ];
@@ -763,21 +763,21 @@ function showLink(textChar){
 	outputText.push(`<div class="card mt-1 mb-3"><div class="card-header">快速鏈接</div><div class="card-body text-secondary"><span>
 	漢典網：<a href="http://www.zdic.net/hans/${textChar}" target="_blank">${textChar}</a> | <a href="http://www.zdic.net/zd/yy/yy/${textChar}" target="_blank">粵語</a> | <a href="http://www.zdic.net/zd/yy/ph/${textChar}" target="_blank">平話</a><br/>
 	韻典網：<a href="https://ytenx.org/zim?dzih=${textChar}&dzyen=1&jtkb=1&jtkd=1&jtdt=1&jtgt=1" target="_blank">${textChar}</a><br/>
-	國學大師：<a href="http://www.guoxuedashi.net/zidian/${encodeUnicode(textChar).replace('\\u','')}.html" target="_blank">${textChar}</a><br/>
-	古今文字集成：<a href="http://www.ccamc.co/cjkv.php?cjkv=${textChar}" target="_blank">${textChar}</a><br/>
 	粵音資料集叢：<a href="https://jyut.net/query?q=${textChar}" target="_blank">${textChar}</a><br/>
 	漢語多功能字庫：<a href="http://humanum.arts.cuhk.edu.hk/Lexis/lexi-mf/search.php?word=${textChar}" target="_blank">${textChar}</a> | <a href="http://humanum.arts.cuhk.edu.hk/Lexis/lexi-mf/dialect.php?word=${textChar}" target="_blank">其他方言讀音</a><br/>
-	漢字音典：<a href="https://mcpdict.sourceforge.io/cgi-bin/index.py" target="_blank">前往</a><br/>
+	漢語大字典：<a href="https://dict.rushi-ai.net/dict/hy?q=${textChar}" target="_blank">${textChar}</a><br/>
+	萌典：<a href="https://www.moedict.tw/${textChar}" target="_blank">${textChar}</a><br/>
+	中國大百科全書（第三版）：<a href="https://www.zgbk.com/ecph/search/result?SiteID=1&Alias=all&Query=${textChar}" target="_blank">${textChar}</a><br/>
+	中國大百科全書數據庫：<a href="https://h.bkzx.cn/search?query=${textChar}" target="_blank">${textChar}</a><br/>
+	辭海：<a href="https://www.cihai.com.cn/search?type=cihai&q=${textChar}" target="_blank">${textChar}</a><br/>
+	開放粵語詞典：<a href="https://kaifangcidian.com/yue/ci/?${textChar}" target="_blank">${textChar}</a><br/>
 	粵典：<a href="https://words.hk/zidin/wan/?q=${textChar}" target="_blank">${textChar}</a><br/>
 	CC-Canto：<a href="https://www.cccanto.org/search.php?q=${textChar}" target="_blank">${textChar}</a><br/>
-	開放粵語詞典：<a href="https://kaifangcidian.com/han/yue/?${textChar}" target="_blank">${textChar}</a><br/>
 	縱橫在線中文字典：<a href="https://ckc.eduhk.hk/ckc2/dictionary.php?jiinput=${textChar}&lang=b5&form1=1" target="_blank">${textChar}</a><br/>
 	HKIED 繁簡辨識（1.0版）：<a href="https://ckc.eduhk.hk/ckc2/translate.php?word=${textChar}&lang=" target="_blank">${textChar}</a><br/>
 	英華字典資料庫：<a href="http://mhdb.mh.sinica.edu.tw/dictionary/search.php?titleOnlyBtn=true&searchStr=${textChar}&lang=b5" target="_blank">${textChar}</a><br/>
 	粵拼歌詞網：<a href="https://jyut6.com/search.php?keyword=${textChar}" target="_blank">${textChar}</a><br/>
 	翡翠粵語歌詞：<a href="https://www.feitsui.com/zh-hans/search/?query=${textChar}" target="_blank">${textChar}</a><br/>
-	中國大百科全書數據庫：<a href="https://h.bkzx.cn/search?query=${textChar}&sublibId=" target="_blank">${textChar}</a><br/>
-	中國哲學書電子化計劃：<a href="https://ctext.org/dictionary.pl?if=gb&char=${textChar}" target="_blank">${textChar}</a><br/>
 	大學數字圖書館合作計劃：<a href="https://cadal.edu.cn/index/home" target="_blank">前往</a><br/>
 	萬方方誌數據庫：<a href="http://fz.wanfangdata.com.cn/index.do" target="_blank">前往</a><br/>
 	</span></div></div>`);
@@ -787,12 +787,13 @@ function showLink(textChar){
 	重編國語辭典修訂本：<a href="https://dict.revised.moe.edu.tw/search.jsp?md=1&word=${textChar}#searchL" target="_blank">${textChar}</a><br/>
 	國語辭典簡編本：<a href="https://dict.concised.moe.edu.tw/search.jsp?md=1&word=${textChar}&qMd=0&qCol=0" target="_blank">${textChar}</a><br/>	
 	國語小字典：<a href="https://dict.mini.moe.edu.tw/SearchIndex/searchResult?searchType=one&dictSearchField=${textChar}" target="_blank">${textChar}</a><br/>
+	異體字字典：<a href="https://dict.variants.moe.edu.tw/search.jsp?QTP=0&WORD=${textChar}#searchL" target="_blank">${textChar}</a><br/>
+	國學大師：<a href="http://www.guoxuedashi.net/zidian/${encodeUnicode(textChar).replace('\\u','')}.html" target="_blank">${textChar}</a><br/>
+	古今文字集成：<a href="http://www.ccamc.co/cjkv.php?cjkv=${textChar}" target="_blank">${textChar}</a><br/>
 	漢字全息資源應用系統：<a href="http://qxk.bnu.edu.cn/#/danziDetail/42c2d834-fa1d-47e9-9f90-972a687183f7/${textChar}/22d3af76-1ffe-46da-8c28-40e7dfe6b8d2/0" target="_blank">${textChar}</a><br/>
 	字海|葉典：<a href="http://zisea.com/zscontent.asp?uni=${encodeUnicode(textChar).replace('\\u','')}" target="_blank">${textChar}</a><br/>
 	Forvo：<a href="https://zh.forvo.com/search/${textChar}/" target="_blank">${textChar}</a><br/>
 	Unihan：<a href="https://www.unicode.org/cgi-bin/GetUnihanData.pl?codepoint=${textChar}" target="_blank">${textChar}</a><br/>
-	萌典：<a href="https://www.moedict.tw/${textChar}" target="_blank">${textChar}</a><br/>
-	辭海：<a href="https://www.cihai.com.cn/search/words?q=${textChar}" target="_blank">${textChar}</a><br/>
 	活用中文大辭典：<a href="https://lib.ctcn.edu.tw/chtdict/result.aspx?keyword=${textChar}" target="_blank">${textChar}</a><br/>
 	CHISE IDS 漢字検索：<a href="http://www.chise.org/ids-find?components=${textChar}" target="_blank">${textChar}</a><br/>
 	GlyphWiki：<a href="http://glyphwiki.org/wiki/${encodeUnicode(textChar).replace('\\','')}?tdsourcetag=s_pctim_aiomsg" target="_blank">${textChar}</a><br/>
@@ -801,29 +802,28 @@ function showLink(textChar){
 	CantoDict：<a href="http://www.cantonese.sheik.co.uk/scripts/masterlist.htm" target="_blank">前往</a><br/>
 	中國數字方誌庫：<a href="http://x.wenjinguan.com/" target="_blank">前往</a><br/>
 	中國歷史文獻總庫：<a href="http://mg.nlcpress.com/library/publish/default/Login.jsp" target="_blank">前往</a><br/>
-	廣西師範大學圖書館：<a href="http://www.library.gxnu.edu.cn/main.htm" target="_blank">前往</a><br/>
 	</span></div></div>`);
 	
 	outputText3.push(`<div class="card mt-1 mb-3"><div class="card-header">快速鏈接</div><div class="card-body text-secondary"><span>
 	中國國家地名信息庫：<a href="https://dmfw.mca.gov.cn/index.html" target="_blank">前往</a><br/>
 	古音小鏡：<a href="http://www.kaom.net/" target="_blank">前往</a><br/>
 	小學堂：<a href="http://xiaoxue.iis.sinica.edu.tw/" target="_blank">前往</a><br/>
-	漢語方言學大詞典：<a href="http://www.fangyanxue.com:8090/pages/index/index.html" target="_blank">前往</a><br/>
-	早期漢語方言文獻資料庫：<a href="http://database.shss.ust.hk/5dialects/" target="_blank">前往</a><br/>
 	香港小學學習字詞表：<a href="https://www.edbchinese.hk/lexlist_ch/" target="_blank">前往</a><br/>
+	如是古籍字典：<a href="https://dict.rushi-ai.net/variant" target="_blank">前往</a><br/>
+	東方語言學：<a href="http://www.eastling.org/" target="_blank">前往</a><br/>
+	語保工程採錄展示平臺：<a href="https://zhongguoyuyan.cn/" target="_blank">前往</a><br/>
+	早期漢語方言文獻資料庫：<a href="https://database.shss.hkust.edu.hk/5dialects/" target="_blank">前往</a><br/>
+	早期粵語口語文獻資料庫：<a href="https://database.shss.hkust.edu.hk/Candbase/" target="_blank">前往</a><br/>
+	香港二十世紀中期粵語語料庫：<a href="https://hkcc.eduhk.hk/v1/introduction.html" target="_blank">前往</a><br/>
+	漢語方言學大詞典：<a href="http://www.fangyanxue.com:8090/pages/index/index.html" target="_blank">前往</a><br/>
 	廣西地情網：<a href="http://www.gxdfz.org.cn/index.html" target="_blank">前往</a><br/>
 	廣東省情網：<a href="http://dfz.gd.gov.cn/" target="_blank">前往</a><br/>
 	中共廣州市委黨史文獻研究室：<a href="http://www.gzsqw.org.cn/" target="_blank">前往</a><br/>
 	廣西圖書館：<a href="https://www.gxlib.org.cn/" target="_blank">前往</a><br/>
-	開放康熙字典：<a href="http://kangxi.adcs.org.tw/kangxizidian/" target="_blank">前往</a><br/>
-	漢語大字典檢索：<a href="http://www.homeinmists.com/hd/search.html" target="_blank">前往</a><br/>
 	國學寶典：<a href="http://www.gxbd.com/" target="_blank">前往</a><br/>
 	說文解字在線查詢：<a href="http://www.shuowen.org/" target="_blank">前往</a><br/>
 	現代標準漢語與粵語對照資料庫：<a href="http://apps.itsc.cuhk.edu.hk/hanyu/Page/Cover.aspx" target="_blank">前往</a><br/>
 	ISO漢字查詢系統：<a href="http://glyph.iso10646hk.net/chinese/icharacters.jsp" target="_blank">前往</a><br/>
-	早期粵語口語文獻資料庫：<a href="http://143.89.108.109/Candbase/" target="_blank">前往</a><br/>
-	香港二十世紀中期粵語語料庫：<a href="https://hkcc.eduhk.hk/v1/introduction.html" target="_blank">前往</a><br/>
-	語保工程採錄展示平臺：<a href="https://zhongguoyuyan.cn/" target="_blank">前往</a><br/>
 	</span></div></div>`);
 	
 	$('#webLink').html(

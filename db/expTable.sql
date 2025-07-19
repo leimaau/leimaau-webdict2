@@ -129,10 +129,10 @@ spool E:\LocalRepository\github\leimaau-webdict2\db\tab_2007_phrase.txt
 select tab_id||'$'||classifi||'$'||trad||'$'||null||'$'||null||'$'||null||'$'||jyutping||'$'||sour||'$'||expl||'$'||note from tab_nbdict_2007_phrase order by tab_id;
 
 spool E:\LocalRepository\github\leimaau-webdict2\db\tab_2008_phrase.txt
-select tab_id||'$'||classifi||'$'||trad||'$'||null||'$'||null||'$'||null||'$'||jyutping||'$'||sour||'$'||expl||'$'||note from tab_nbdict_2008_phrase order by tab_id;
+select tab_id||'$'||classifi||'$'||trad||'$'||null||'$'||null||'$'||null||'$'||jyutping||'$'||sour||'$'||expl||'$'||note from v_nbdict_2008_phrase order by tab_id;
 
 spool E:\LocalRepository\github\leimaau-webdict2\db\tab_2020_phrase.txt
-select tab_id||'$'||classifi||'$'||trad||'$'||null||'$'||null||'$'||null||'$'||jyutping||'$'||sour||'$'||expl||'$'||note from tab_nb_zingjam_phrase order by tab_id;
+select tab_id||'$'||classifi||'$'||trad||'$'||null||'$'||null||'$'||null||'$'||jyutping||'$'||sour||'$'||expl||'$'||note from v_nb_zingjam_phrase order by tab_id;
 
 spool E:\LocalRepository\github\leimaau-webdict2\db\tab_2021_phrase.txt
 select tab_id||'$'||classifi||'$'||trad||'$'||null||'$'||null||'$'||null||'$'||jyutping||'$'||sour||'$'||expl||'$'||note from tab_nbdict_2021_phrase order by tab_id;
