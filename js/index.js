@@ -1408,7 +1408,51 @@ function queryOldJyut(Niu, Yun, Tone, fanqie, isFanqie, expl, isExpl){
 	return res_gw.length;
 }
 
+// 詞彙聯合查詢
+function allPhraseFun(){
+	outputAlert.innerHTML = '';
+	document.getElementsByClassName('classHighcharts').forEach((obj)=>{obj.innerHTML = ''});
+	document.getElementsByClassName('classTabTitle').forEach((obj)=>{obj.innerHTML = ''});
+	document.getElementsByClassName('classTable').forEach((obj)=>{obj.innerHTML = ''});
+	document.getElementsByClassName('webLinkDiv').forEach((obj)=>{obj.innerHTML = ''});
+	$('#nav-home-tab,#nav-home-tab-bw,#nav-home,#nav-home-bw').addClass('active show'); // 選回第一個tab和內容
+	$('#nav-profile-tab,#nav-profile-tab-bw,#nav-profile,#nav-profile-bw').removeClass('active show');
+	$('.rowtabDiv').addClass('d-none');
+	$('#nav-tab,#nav-tab-bw').addClass('d-none');  // 隱藏tab
+	
+	// 開始顯示
+	let judgeFlag = queryAllPhrase(text_phrasetrad.value,document.getElementById("checkbox-phrase-trad").checked,text_phrasejyut.value,document.getElementById("checkbox-phrase-jyut").checked,text_phrasejyutandtone.value,document.getElementById("checkbox-phrase-jyutandtone").checked,text_phraseexpl.value,document.getElementById("checkbox-phrase-expl").checked,text_phrasenote.value,document.getElementById("checkbox-phrase-note").checked,text_phraseclassifi.value,document.getElementById("checkbox-phrase-classifi").checked);
+	
+	if (judgeFlag == 0) {
+		document.getElementsByClassName("classHighcharts").forEach((obj)=>{obj.innerHTML = ''});
+		document.getElementsByClassName("classTabTitle").forEach((obj)=>{obj.innerHTML = ''});
+		document.getElementsByClassName("classTable").forEach((obj)=>{obj.innerHTML = ''});
+		$('.rowtabDiv').addClass('d-none');
+		$('#nav-tab,#nav-tab-bw').addClass('d-none');
+		return false;
+	};
+}
 
+// 聯合查詢詞彙
+function queryAllPhrase(trad, isTrad, jyutping, isJyutping, jyut6ping3, isJyut6ping3, expl, isExpl, note, isNote, classifi, isClassifi){
+	if (!(isTrad || isJyutping || isJyut6ping3 || isExpl || isNote || isNote || isClassifi)) { 
+		displayAlert('未查詢到結果!', outputAlert, 'alert-primary');
+		return;
+	} 
+	let res_allPhrase = MainQuery.queryTable_allPhrase(trad, isTrad, jyutping, isJyutping, jyut6ping3, isJyut6ping3, expl, isExpl, note, isNote, classifi, isClassifi);
+	if (res_allPhrase.length == 0) { 
+		displayAlert('未查詢到結果!', outputAlert, 'alert-primary');
+	} else if (res_allPhrase.length > 1000){
+		displayAlert('數據量超過1000，請縮小查詢範圍!', outputAlert, 'alert-danger');
+	} else {
+		$('.rowtabDiv-b').removeClass('d-none');
+		$('.nav-tab-b').removeClass('d-none');
+		showTable(res_allPhrase, 'outTab', allTitle+'<small>市區</small>', outTabTitle, colData_phrase);  // 顯示白話表格
+		showBasicBar(res_allPhrase, inputValue, 'outPie', allTitle, queryType);
+		showWordCloud(res_allPhrase, inputValue, 'outWordCloud', allTitle, queryType, 'TRAD'); // 顯示白話詞雲圖
+	}
+	return res_allPhrase.length;
+}
 
 // 入口文件
 $(() => {
@@ -1443,6 +1487,10 @@ $(() => {
 		columns: colData_selectY,
 		data: rowData_selectY
 	});
+	$('#outTab_selectP').bootstrapTable({
+		columns: colData_selectP,
+		data: rowData_selectP
+	});
 	/*
 	$('#outTab_sponsor').bootstrapTable({
 		columns: colData_sponsor,
@@ -1462,6 +1510,6 @@ $(() => {
 	$('body').materialScrollTop();
 	
 	//displayAlert("新版本 <a href='https://leimaau-webdict3.vercel.app/' target='_blank'>Leimaau's Webdict 3</a> 已上線，<a href='https://tranquil-tulumba-4026d9.netlify.app' target='_blank'>備用系統</a> 同時開啓", outputAlert, 'alert-success');
-	displayAlert("【公告】<br>說明：每次更新後第一次加載要花些時間，之後加載則方便許多<br>更新版本：20250623<br>更新內容：<br>1.修訂字典數據，改正一些錯誤<br>2.修訂詞典數據，增加現代漢語詞彙表，爲減少數據庫壓力，只收錄繁體，不提供簡體搜索<br>3.改進頁碼的圖片跳轉<br>4.詳細地修訂歷史可上github查詢", outputAlert, 'alert-success');
+	displayAlert("【公告】<br>說明：每次更新後第一次加載要花些時間，之後加載則方便許多，爲減少數據庫壓力，詞彙只收錄繁體，不提供簡體搜索<br>更新版本：20250623<br>更新內容：<br>1.修訂字典數據，改正一些錯誤<br>2.修訂詞典數據，修訂現代漢語詞彙表<br>3.改進頁碼的圖片跳轉，改進快速鏈接跳轉<br>4.增加詞彙多條件查詢功能<br>5.詳細地修訂歷史可上github查詢", outputAlert, 'alert-success');
 	
 })

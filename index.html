@@ -674,7 +674,8 @@
       <div class="row col-md-12">
         <button type="button" id="dataButt" class="btn btn-outline-info btn-sm" data-toggle="modal" data-target="#dataModal">選擇資料</button>
 		<button type="button" id="dataButt2" class="btn btn-outline-info btn-sm mx-3" data-toggle="modal" data-target="#dataModal2">中古音查詢</button>
-		<button type="button" id="dataButt3" class="btn btn-outline-info btn-sm" data-toggle="modal" data-target="#dataModal3">早期粵音查詢</button>
+		<button type="button" id="dataButt3" class="btn btn-outline-info btn-sm mr-3" data-toggle="modal" data-target="#dataModal3">早期粵音查詢</button>
+		<button type="button" id="dataButt4" class="btn btn-outline-info btn-sm" data-toggle="modal" data-target="#dataModal4">分類詞彙查詢</button>
 	  </div>
 	  
       <!-- 模態框 -->
@@ -732,8 +733,8 @@
 			</div>
 			<div class="modal-footer">
 			  <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
-              <button type="button" class="btn btn-info" id="btn-cancel" onclick="javascript:{document.getElementsByClassName('checkbox-triungkox').forEach((item)=>{ item.checked = false});document.getElementsByClassName('text-fanqie').forEach((item)=>{ item.disabled = true });document.getElementsByClassName('text-expl').forEach((item)=>{ item.disabled = true });}">取消全選</button>
-              <button type="button" class="btn btn-info" id="btn-allselect" onclick="javascript:{document.getElementsByClassName('checkbox-triungkox').forEach((item)=>{ item.checked = true});document.getElementsByClassName('text-fanqie').forEach((item)=>{ item.disabled = false });document.getElementsByClassName('text-expl').forEach((item)=>{ item.disabled = false });}">全選</button>
+              <button type="button" class="btn btn-info" id="btn-cancel-gu" onclick="javascript:{document.getElementsByClassName('checkbox-triungkox').forEach((item)=>{ item.checked = false});document.getElementsByClassName('text-fanqie').forEach((item)=>{ item.disabled = true });document.getElementsByClassName('text-expl').forEach((item)=>{ item.disabled = true });}">取消全選</button>
+              <button type="button" class="btn btn-info" id="btn-allselect-gu" onclick="javascript:{document.getElementsByClassName('checkbox-triungkox').forEach((item)=>{ item.checked = true});document.getElementsByClassName('text-fanqie').forEach((item)=>{ item.disabled = false });document.getElementsByClassName('text-expl').forEach((item)=>{ item.disabled = false });}">全選</button>
 			  <button type="button" class="btn btn-primary" onclick="javascript:triungkoxFun();">查詢</button>
 			</div>
           </div>
@@ -753,9 +754,30 @@
 			</div>
 			<div class="modal-footer">
 			  <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
-              <button type="button" class="btn btn-info" id="btn-cancel" onclick="javascript:{document.getElementsByClassName('checkbox-jyut').forEach((item)=>{ item.checked = false});document.getElementsByClassName('text-jyut-fanqie').forEach((item)=>{ item.disabled = true });document.getElementsByClassName('text-jyut-expl').forEach((item)=>{ item.disabled = true });}">取消全選</button>
-              <button type="button" class="btn btn-info" id="btn-allselect" onclick="javascript:{document.getElementsByClassName('checkbox-jyut').forEach((item)=>{ item.checked = true});document.getElementsByClassName('text-jyut-fanqie').forEach((item)=>{ item.disabled = false });document.getElementsByClassName('text-jyut-expl').forEach((item)=>{ item.disabled = false });}">全選</button>
+              <button type="button" class="btn btn-info" id="btn-cancel-gw" onclick="javascript:{document.getElementsByClassName('checkbox-jyut').forEach((item)=>{ item.checked = false});document.getElementsByClassName('text-jyut-fanqie').forEach((item)=>{ item.disabled = true });document.getElementsByClassName('text-jyut-expl').forEach((item)=>{ item.disabled = true });}">取消全選</button>
+              <button type="button" class="btn btn-info" id="btn-allselect-gw" onclick="javascript:{document.getElementsByClassName('checkbox-jyut').forEach((item)=>{ item.checked = true});document.getElementsByClassName('text-jyut-fanqie').forEach((item)=>{ item.disabled = false });document.getElementsByClassName('text-jyut-expl').forEach((item)=>{ item.disabled = false });}">全選</button>
 			  <button type="button" class="btn btn-primary" onclick="javascript:oldJyutFun();">查詢</button>
+			</div>
+          </div>
+        </div>
+      </div>
+      <!-- 模態框 -->
+      <div class="modal fade" id="dataModal4">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">分類詞彙查詢</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+			<div class="modal-body">
+				<table class="table table-bordered table-sm" id="outTab_selectP"></table>
+				<div class="mt-2"><span>※ 2020和2021資料沒有明確的分類，1997資料與其餘資料分類不同</span></div>
+			</div>
+			<div class="modal-footer">
+			  <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+              <button type="button" class="btn btn-info" id="btn-cancel-fl" onclick="javascript:{document.getElementsByClassName('checkbox-phrase').forEach((item)=>{ item.checked = false});document.getElementsByClassName('text-phrase').forEach((item)=>{ item.disabled = true });}">取消全選</button>
+              <button type="button" class="btn btn-info" id="btn-allselect-fl" onclick="javascript:{document.getElementsByClassName('checkbox-phrase').forEach((item)=>{ item.checked = true});document.getElementsByClassName('text-phrase').forEach((item)=>{ item.disabled = false });}">全選</button>
+			  <button type="button" class="btn btn-primary" onclick="javascript:allPhraseFun();">查詢</button>
 			</div>
           </div>
         </div>

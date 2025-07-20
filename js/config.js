@@ -718,6 +718,45 @@ function formatCheckBox3 (value,index) {
 	return selArr.join('');
 }
 
+// 詞彙聯合查詢
+const colData_selectP = [
+	{ field: 'SHOW', title: '說明', align: 'left' }
+	, { field: 'ITEM', title: '選項', align: 'left', formatter: (value,row,index) => { return formatCheckBox4(value,index) } }
+];
+
+const rowData_selectP = [
+	{ SHOW: `<div class="custom-control custom-checkbox custom-control-inline"><input type="checkbox" class="custom-control-input checkbox-phrase" id="checkbox-phrase-trad" name="dataCheck" value="checkbox-phrase-trad" onclick="javascript:{document.getElementsByClassName('text-phrase-trad').forEach((item)=>{ item.disabled = !this.checked });}"><label class="custom-control-label" for="checkbox-phrase-trad">繁體</label></div>`, ITEM: `` }
+	, { SHOW: `<div class="custom-control custom-checkbox custom-control-inline"><input type="checkbox" class="custom-control-input checkbox-phrase" id="checkbox-phrase-jyut" name="dataCheck" value="checkbox-phrase-jyut" onclick="javascript:{document.getElementsByClassName('text-phrase-jyut').forEach((item)=>{ item.disabled = !this.checked });}"><label class="custom-control-label" for="checkbox-phrase-jyut">拼音（無聲調）</label></div>`, ITEM: `` }
+	, { SHOW: `<div class="custom-control custom-checkbox custom-control-inline"><input type="checkbox" class="custom-control-input checkbox-phrase" id="checkbox-phrase-jyutandtone" name="dataCheck" value="checkbox-phrase-jyutandtone" onclick="javascript:{document.getElementsByClassName('text-phrase-jyutandtone').forEach((item)=>{ item.disabled = !this.checked });}"><label class="custom-control-label" for="checkbox-phrase-jyutandtone">拼音（帶聲調）</label></div>`, ITEM: `` }
+	, { SHOW: `<div class="custom-control custom-checkbox custom-control-inline"><input type="checkbox" class="custom-control-input checkbox-phrase" id="checkbox-phrase-expl" name="dataCheck" value="checkbox-phrase-expl" onclick="javascript:{document.getElementsByClassName('text-phrase-expl').forEach((item)=>{ item.disabled = !this.checked });}"><label class="custom-control-label" for="checkbox-phrase-expl">釋義</label></div>`, ITEM: `` }
+	, { SHOW: `<div class="custom-control custom-checkbox custom-control-inline"><input type="checkbox" class="custom-control-input checkbox-phrase" id="checkbox-phrase-note" name="dataCheck" value="checkbox-phrase-note" onclick="javascript:{document.getElementsByClassName('text-phrase-note').forEach((item)=>{ item.disabled = !this.checked });}"><label class="custom-control-label" for="checkbox-phrase-note">附註</label></div>`, ITEM: `` }
+	, { SHOW: `<div class="custom-control custom-checkbox custom-control-inline"><input type="checkbox" class="custom-control-input checkbox-phrase" id="checkbox-phrase-classifi" name="dataCheck" value="checkbox-phrase-classifi" onclick="javascript:{document.getElementsByClassName('text-phrase-classifi').forEach((item)=>{ item.disabled = !this.checked });}"><label class="custom-control-label" for="checkbox-phrase-classifi">分類</label></div>`, ITEM: `` }
+];
+
+// 格式化顯示爲checkbox
+function formatCheckBox4 (value,index) {
+	let selArr = [];
+	for (let i in value.split('|')) {
+		for (let j in value.split('|')[i].split(' ')) {
+			if (index==0){
+				selArr.push(`<div class="custom-control custom-text custom-control-inline"><input type="text" class="form-control text-phrase text-phrase-trad" id="text_phrasetrad" value="" disabled/></div>`);
+			} else if(index==1){
+				selArr.push(`<div class="custom-control custom-text custom-control-inline"><input type="text" class="form-control text-phrase text-phrase-jyut" id="text_phrasejyut" value="" disabled/></div>`);
+			} else if(index==2){
+				selArr.push(`<div class="custom-control custom-text custom-control-inline"><input type="text" class="form-control text-phrase text-phrase-jyutandtone" id="text_phrasejyutandtone" value="" disabled/></div>`);
+			} else if(index==3){
+				selArr.push(`<div class="custom-control custom-text custom-control-inline"><input type="text" class="form-control text-phrase text-phrase-expl" id="text_phraseexpl" value="" disabled/></div>`);
+			} else if(index==4){
+				selArr.push(`<div class="custom-control custom-text custom-control-inline"><input type="text" class="form-control text-phrase text-phrase-note" id="text_phrasenote" value="" disabled/></div>`);
+			} else if(index==5){
+				selArr.push(`<div class="custom-control custom-text custom-control-inline"><input type="text" class="form-control text-phrase text-phrase-classifi" id="text_phraseclassifi" value="" disabled/></div>`);
+			}
+		}
+		selArr.push(`<br/>`);
+	}
+	return selArr.join('');
+}
+
 // 贊助名單(暫不使用表格)
 /*const colData_sponsor = [
 	{ field: 'TIME', title: '贊助時間', align: 'center' }
