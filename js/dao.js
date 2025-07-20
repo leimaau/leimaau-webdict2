@@ -301,27 +301,27 @@ MainQuery = (() => {
 				querySQL += `select '${selVal[i]}' YEAR,TRAD||'|'||SIMP TRADSIMP,JYUTPING||'|'||IPA_T||'|'||IPA_S JYUTPING_IPA_TS,* from ${selVal[i]} union `;  // 拼接查詢
 			}
 		};
-		querySQL = "select * from(" + querySQL.replace(/ union $/gi,"") + ") where 1=1 ";
+		querySQL = "select * from(" + querySQL.replace(/ union $/gi,"") + ") where 1=1";
 		if (isTrad) { // 查詢繁體
-			querySQL += `and trad GLOB '*${trad}*' order by YEAR,ID`;
+			querySQL += ` and trad GLOB '*${trad}*' order by YEAR,ID`;
 		} 
 		if ('1' == '2') { // 查詢簡體
-			querySQL += `and simp GLOB '*${trad}*' order by YEAR,ID`;
+			querySQL += ` and simp GLOB '*${trad}*' order by YEAR,ID`;
 		} 
 		if (isJyutping) { // 查詢無調粵拼
-			querySQL += `and replace(replace(replace(replace(replace(replace(jyutping,'1',''),'2',''),'3',''),'4',''),'5',''),'6','') GLOB '${jyutping}' or replace(replace(replace(replace(replace(replace(jyutping,'1',''),'2',''),'3',''),'4',''),'5',''),'6','') GLOB '* ${jyutping} *' or replace(replace(replace(replace(replace(replace(jyutping,'1',''),'2',''),'3',''),'4',''),'5',''),'6','') GLOB '${jyutping} *' or replace(replace(replace(replace(replace(replace(jyutping,'1',''),'2',''),'3',''),'4',''),'5',''),'6','') GLOB '* ${jyutping}' order by YEAR,ID`;
+			querySQL += ` and replace(replace(replace(replace(replace(replace(jyutping,'1',''),'2',''),'3',''),'4',''),'5',''),'6','') GLOB '${jyutping}' or replace(replace(replace(replace(replace(replace(jyutping,'1',''),'2',''),'3',''),'4',''),'5',''),'6','') GLOB '* ${jyutping} *' or replace(replace(replace(replace(replace(replace(jyutping,'1',''),'2',''),'3',''),'4',''),'5',''),'6','') GLOB '${jyutping} *' or replace(replace(replace(replace(replace(replace(jyutping,'1',''),'2',''),'3',''),'4',''),'5',''),'6','') GLOB '* ${jyutping}' order by YEAR,ID`;
 		} 
 		if (isJyut6ping3) { // 查詢有調粵拼
-			querySQL += `and jyutping GLOB '${jyut6ping3}' or jyutping GLOB '* ${jyut6ping3} *' or jyutping GLOB '${jyut6ping3} *' or jyutping GLOB '* ${jyut6ping3}' order by YEAR,ID`;
+			querySQL += ` and jyutping GLOB '${jyut6ping3}' or jyutping GLOB '* ${jyut6ping3} *' or jyutping GLOB '${jyut6ping3} *' or jyutping GLOB '* ${jyut6ping3}' order by YEAR,ID`;
 		} 
 		if (isExpl) { // 釋義反查
-			querySQL += `and expl GLOB '*${expl}*' order by YEAR,ID`;
+			querySQL += ` and expl GLOB '*${expl}*' order by YEAR,ID`;
 		} 
 		if (isNote) { // 附註反查
-			querySQL += `and note GLOB '*${note}*' order by YEAR,ID`;
+			querySQL += ` and note GLOB '*${note}*' order by YEAR,ID`;
 		}
 		if (isClassifi) { // 分類反查
-			querySQL += `and classifi GLOB '*${classifi}*' order by YEAR,ID`;
+			querySQL += ` and classifi GLOB '*${classifi}*' order by YEAR,ID`;
 		}
 		return DictDb.execParam( querySQL, [] );
 	};
