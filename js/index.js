@@ -1420,8 +1420,13 @@ function allPhraseFun(){
 	$('.rowtabDiv').addClass('d-none');
 	$('#nav-tab,#nav-tab-bw').addClass('d-none');  // 隱藏tab
 	
+	let selListClassifi1997 = [], selListClassifi2007 = [], selListClassifi2008 = [];
+	document.getElementsByClassName("checkbox-phrase-5").forEach((item)=>{ if(item.checked == true) selListClassifi1997.push(item.value)});
+	document.getElementsByClassName("checkbox-phrase-6").forEach((item)=>{ if(item.checked == true) selListClassifi2007.push(item.value)});
+	document.getElementsByClassName("phrase-item-7").forEach((item)=>{ if(item.checked == true) selListClassifi2008.push(item.value)});
+	
 	// 開始顯示
-	let judgeFlag = queryAllPhrase(text_phrasetrad.value,document.getElementById("checkbox-phrase-trad").checked,text_phrasejyut.value,document.getElementById("checkbox-phrase-jyut").checked,text_phrasejyutandtone.value,document.getElementById("checkbox-phrase-jyutandtone").checked,text_phraseexpl.value,document.getElementById("checkbox-phrase-expl").checked,text_phrasenote.value,document.getElementById("checkbox-phrase-note").checked,text_phraseclassifi.value,document.getElementById("checkbox-phrase-classifi").checked);
+	let judgeFlag = queryAllPhrase(selListClassifi1997,selListClassifi2007,selListClassifi2008,text_phrasetrad.value,document.getElementById("checkbox-phrase-trad").checked,text_phrasejyut.value,document.getElementById("checkbox-phrase-jyut").checked,text_phrasejyutandtone.value,document.getElementById("checkbox-phrase-jyutandtone").checked,text_phraseexpl.value,document.getElementById("checkbox-phrase-expl").checked,text_phrasenote.value,document.getElementById("checkbox-phrase-note").checked,text_phraseclassifi.value,document.getElementById("checkbox-phrase-classifi").checked);
 	
 	if (judgeFlag == 0) {
 		document.getElementsByClassName("classHighcharts").forEach((obj)=>{obj.innerHTML = ''});
@@ -1434,19 +1439,18 @@ function allPhraseFun(){
 }
 
 // 聯合查詢詞彙
-function queryAllPhrase(trad, isTrad, jyutping, isJyutping, jyut6ping3, isJyut6ping3, expl, isExpl, note, isNote, classifi, isClassifi){
-	if (!(isTrad || isJyutping || isJyut6ping3 || isExpl || isNote || isNote || isClassifi)) { 
+function queryAllPhrase(listClassifi1997, listClassifi2007, listClassifi2008, trad, isTrad, jyutping, isJyutping, jyut6ping3, isJyut6ping3, expl, isExpl, note, isNote, classifi, isClassifi){
+	if (listClassifi1997.length==0 && listClassifi2007.length==0 && listClassifi2008.length==0) { 
 		displayAlert('未查詢到結果!', outputAlert, 'alert-primary');
 		return;
 	} 
-	let res_allPhrase = MainQuery.queryTable_allPhrase(trad, isTrad, jyutping, isJyutping, jyut6ping3, isJyut6ping3, expl, isExpl, note, isNote, classifi, isClassifi);
+	let res_allPhrase = MainQuery.queryTable_allPhrase(listClassifi1997, listClassifi2007, listClassifi2008, trad, isTrad, jyutping, isJyutping, jyut6ping3, isJyut6ping3, expl, isExpl, note, isNote, classifi, isClassifi);
 	if (res_allPhrase.length == 0) { 
 		displayAlert('未查詢到結果!', outputAlert, 'alert-primary');
 	} else if (res_allPhrase.length > 1000){
 		displayAlert('數據量超過1000，請縮小查詢範圍!', outputAlert, 'alert-danger');
 	} else {
 		$('.rowtabDiv-b').removeClass('d-none');
-		$('.nav-tab-b').removeClass('d-none');
 		showTable(res_allPhrase, 'outTab', allTitle+'<small>市區</small>', outTabTitle, colData_phrase);  // 顯示白話表格
 	}
 	return res_allPhrase.length;

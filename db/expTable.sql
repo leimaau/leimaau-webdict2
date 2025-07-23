@@ -123,7 +123,7 @@ spool E:\LocalRepository\github\leimaau-webdict2\db\tab_1997_phrase.txt
 select tab_id||'$'||classifi||'$'||trad||'$'||null||'$'||null||'$'||null||'$'||jyutping||'$'||sour||'$'||expl||'$'||note from tab_nbdict_1997_phrase order by tab_id;
 
 spool E:\LocalRepository\github\leimaau-webdict2\db\tab_1998_phrase.txt
-select tab_id||'$'||classifi||'$'||trad||'$'||null||'$'||null||'$'||null||'$'||jyutping||'$'||sour||'$'||expl||'$'||note from tab_nbdict_1998_phrase order by tab_id;
+select tab_id||'$'||classifi||'$'||trad||'$'||null||'$'||null||'$'||null||'$'||jyutping||'$'||sour||'$'||expl||'$'||note from v_nbdict_1998_phrase order by tab_id;
 
 spool E:\LocalRepository\github\leimaau-webdict2\db\tab_2007_phrase.txt
 select tab_id||'$'||classifi||'$'||trad||'$'||null||'$'||null||'$'||null||'$'||jyutping||'$'||sour||'$'||expl||'$'||note from tab_nbdict_2007_phrase order by tab_id;
