@@ -299,8 +299,11 @@ MainQuery = (() => {
 		if (listClassifi2007.length==0){ selVal = selVal.filter(item => item !== "tab_2007_phrase"); }
 		if (listClassifi2008.length==0){ selVal = selVal.filter(item => item !== "tab_1998_phrase").filter(item => item !== "tab_2008_phrase").filter(item => item !== "tab_2020_phrase").filter(item => item !== "tab_2021_phrase"); }
 		
-		let listAllClassifi = listClassifi1997.concat(listClassifi2007,listClassifi2008);
-		let setClassifiStr = listAllClassifi.join("*' or classifi GLOB '*");
+		//let listAllClassifi = listClassifi1997.concat(listClassifi2007,listClassifi2008);
+		//let setClassifiStr = listAllClassifi.join("*' or classifi GLOB '*");
+		let setClassifiStr1997 = listClassifi1997.join("*' or classifi GLOB '*");
+		let setClassifiStr2007 = listClassifi2007.join("*' or classifi GLOB '*");
+		let setClassifiStr2008 = listClassifi2008.join("*' or classifi GLOB '*");
 		
 		for (let i in selVal) {
 			if (/2021/.test(selVal[i])) {
@@ -331,7 +334,17 @@ MainQuery = (() => {
 		if (isClassifi && classifi.length!=0) { // 分類反查
 			querySQL += ` and classifi GLOB '*${classifi}*'`;
 		}
-		querySQL += ` and (classifi GLOB '*${setClassifiStr}*') order by YEAR,ID`;
+		if (!(listClassifi1997.length==16 || listClassifi1997.length==0)) { // 1997分類
+			querySQL += ` and (classifi GLOB '*${setClassifiStr1997}*')`;
+		}
+		if (!(listClassifi2007.length==23 || listClassifi2007.length==0)) { // 2007分類
+			querySQL += ` and (classifi GLOB '*${setClassifiStr2007}*')`;
+		}
+		if (!(listClassifi2008.length==91 || listClassifi2008.length==0)) { // 2008分類
+			querySQL += ` and (classifi GLOB '*${setClassifiStr2008}*')`;
+		}
+		//querySQL += ` and (classifi GLOB '*${setClassifiStr}*') order by YEAR,ID`;
+		querySQL += ` order by YEAR,ID`;
 		
 		return DictDb.execParam( querySQL, [] );
 	};
