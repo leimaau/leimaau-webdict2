@@ -776,9 +776,10 @@
 			</div>
 			<div class="modal-footer">
 			  <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+              <button type="button" class="btn btn-warning" id="btn-clear-fl" onclick="javascript:{document.getElementById('text_phrasetrad').value='';document.getElementById('text_phrasejyut').value='';document.getElementById('text_phrasejyutandtone').value='';document.getElementById('text_phraseexpl').value='';document.getElementById('text_phrasenote').value='';document.getElementById('text_phraseclassifi').value='';}">清空</button>
               <button type="button" class="btn btn-info" id="btn-cancel-fl" onclick="javascript:{document.getElementsByClassName('checkbox-phrase').forEach((item)=>{ item.checked = false});document.getElementsByClassName('text-phrase').forEach((item)=>{ item.disabled = true });}">取消全選</button>
               <button type="button" class="btn btn-info" id="btn-allselect-fl" onclick="javascript:{document.getElementsByClassName('checkbox-phrase').forEach((item)=>{ item.checked = true});document.getElementsByClassName('text-phrase').forEach((item)=>{ item.disabled = false });}">全選</button>
-			  <button type="button" class="btn btn-primary" onclick="javascript:allPhraseFun();">查詢</button>
+			  <button type="button" class="btn btn-primary" onclick="javascript:allPhraseFun(trad_matchType.value,jyut_matchType.value,jyutandtone_matchType.value,expl_matchType.value,note_matchType.value,classifi_matchType.value);">查詢</button>
 			</div>
           </div>
         </div>

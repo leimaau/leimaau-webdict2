@@ -1409,7 +1409,7 @@ function queryOldJyut(Niu, Yun, Tone, fanqie, isFanqie, expl, isExpl){
 }
 
 // 詞彙聯合查詢
-function allPhraseFun(){
+function allPhraseFun(trad_matchType, jyut_matchType, jyutandtone_matchType, expl_matchType, note_matchType, classifi_matchType){
 	outputAlert.innerHTML = '';
 	document.getElementsByClassName('classHighcharts').forEach((obj)=>{obj.innerHTML = ''});
 	document.getElementsByClassName('classTabTitle').forEach((obj)=>{obj.innerHTML = ''});
@@ -1426,7 +1426,7 @@ function allPhraseFun(){
 	document.getElementsByClassName("phrase-item-7").forEach((item)=>{ if(item.checked == true) selListClassifi2008.push(item.value)});
 	
 	// 開始顯示
-	let judgeFlag = queryAllPhrase(selListClassifi1997,selListClassifi2007,selListClassifi2008,text_phrasetrad.value,document.getElementById("checkbox-phrase-trad").checked,text_phrasejyut.value,document.getElementById("checkbox-phrase-jyut").checked,text_phrasejyutandtone.value,document.getElementById("checkbox-phrase-jyutandtone").checked,text_phraseexpl.value,document.getElementById("checkbox-phrase-expl").checked,text_phrasenote.value,document.getElementById("checkbox-phrase-note").checked,text_phraseclassifi.value,document.getElementById("checkbox-phrase-classifi").checked);
+	let judgeFlag = queryAllPhrase(selListClassifi1997,selListClassifi2007,selListClassifi2008,text_phrasetrad.value,document.getElementById("checkbox-phrase-trad").checked,text_phrasejyut.value,document.getElementById("checkbox-phrase-jyut").checked,text_phrasejyutandtone.value,document.getElementById("checkbox-phrase-jyutandtone").checked,text_phraseexpl.value,document.getElementById("checkbox-phrase-expl").checked,text_phrasenote.value,document.getElementById("checkbox-phrase-note").checked,text_phraseclassifi.value,document.getElementById("checkbox-phrase-classifi").checked,trad_matchType, jyut_matchType, jyutandtone_matchType, expl_matchType, note_matchType, classifi_matchType);
 	
 	if (judgeFlag == 0) {
 		document.getElementsByClassName("classHighcharts").forEach((obj)=>{obj.innerHTML = ''});
@@ -1439,12 +1439,12 @@ function allPhraseFun(){
 }
 
 // 聯合查詢詞彙
-function queryAllPhrase(listClassifi1997, listClassifi2007, listClassifi2008, trad, isTrad, jyutping, isJyutping, jyut6ping3, isJyut6ping3, expl, isExpl, note, isNote, classifi, isClassifi){
+function queryAllPhrase(listClassifi1997, listClassifi2007, listClassifi2008, trad, isTrad, jyutping, isJyutping, jyut6ping3, isJyut6ping3, expl, isExpl, note, isNote, classifi, isClassifi, trad_matchType, jyut_matchType, jyutandtone_matchType, expl_matchType, note_matchType, classifi_matchType){
 	if (listClassifi1997.length==0 && listClassifi2007.length==0 && listClassifi2008.length==0) { 
 		displayAlert('未查詢到結果!', outputAlert, 'alert-primary');
 		return;
 	} 
-	let res_allPhrase = MainQuery.queryTable_allPhrase(listClassifi1997, listClassifi2007, listClassifi2008, trad, isTrad, jyutping, isJyutping, jyut6ping3, isJyut6ping3, expl, isExpl, note, isNote, classifi, isClassifi);
+	let res_allPhrase = MainQuery.queryTable_allPhrase(listClassifi1997, listClassifi2007, listClassifi2008, trad, isTrad, jyutping, isJyutping, jyut6ping3, isJyut6ping3, expl, isExpl, note, isNote, classifi, isClassifi, trad_matchType, jyut_matchType, jyutandtone_matchType, expl_matchType, note_matchType, classifi_matchType);
 	if (res_allPhrase.length == 0) { 
 		displayAlert('未查詢到結果!', outputAlert, 'alert-primary');
 	} else if (res_allPhrase.length > 1000){

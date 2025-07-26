@@ -291,7 +291,7 @@ MainQuery = (() => {
 	};
 	
 	// (多詞)查詢多個詞彙表，詞彙聯合查詢
-	tempObj.queryTable_allPhrase = (listClassifi1997, listClassifi2007, listClassifi2008, trad, isTrad, jyutping, isJyutping, jyut6ping3, isJyut6ping3, expl, isExpl, note, isNote, classifi, isClassifi) => {
+	tempObj.queryTable_allPhrase = (listClassifi1997, listClassifi2007, listClassifi2008, trad, isTrad, jyutping, isJyutping, jyut6ping3, isJyut6ping3, expl, isExpl, note, isNote, classifi, isClassifi, trad_matchType, jyut_matchType, jyutandtone_matchType, expl_matchType, note_matchType, classifi_matchType) => {
 		let querySQL = '';
 		let selVal = ['tab_1997_phrase', 'tab_1998_phrase', 'tab_2007_phrase', 'tab_2008_phrase', 'tab_2008_phrase', 'tab_2020_phrase', 'tab_2021_phrase']; 
 		
@@ -314,25 +314,31 @@ MainQuery = (() => {
 		};
 		querySQL = "select * from(" + querySQL.replace(/ union $/gi,"") + ") where 1=1";
 		if (isTrad && trad.length!=0) { // 查詢繁體
-			querySQL += ` and trad GLOB '*${trad}*'`;
+			if (trad_matchType=='0') { querySQL += ` and trad GLOB '*${trad}*'` };
+			if (trad_matchType=='1') { querySQL += ` and trad = '${trad}'` };
 		} 
-		if ('1' == '2' && trad.length!=0) { // 查詢簡體
+		if ('1' == '2' && trad.length!=0) { // 查詢簡體（暫留）
 			querySQL += ` and simp GLOB '*${trad}*'`;
 		} 
 		if (isJyutping && jyutping.length!=0) { // 查詢無調粵拼
-			querySQL += ` and (replace(replace(replace(replace(replace(replace(jyutping,'1',''),'2',''),'3',''),'4',''),'5',''),'6','') GLOB '${jyutping}' or replace(replace(replace(replace(replace(replace(jyutping,'1',''),'2',''),'3',''),'4',''),'5',''),'6','') GLOB '* ${jyutping} *' or replace(replace(replace(replace(replace(replace(jyutping,'1',''),'2',''),'3',''),'4',''),'5',''),'6','') GLOB '${jyutping} *' or replace(replace(replace(replace(replace(replace(jyutping,'1',''),'2',''),'3',''),'4',''),'5',''),'6','') GLOB '* ${jyutping}')`;
+			if (jyut_matchType=='0') { querySQL += ` and (replace(replace(replace(replace(replace(replace(jyutping,'1',''),'2',''),'3',''),'4',''),'5',''),'6','') GLOB '${jyutping}' or replace(replace(replace(replace(replace(replace(jyutping,'1',''),'2',''),'3',''),'4',''),'5',''),'6','') GLOB '* ${jyutping} *' or replace(replace(replace(replace(replace(replace(jyutping,'1',''),'2',''),'3',''),'4',''),'5',''),'6','') GLOB '${jyutping} *' or replace(replace(replace(replace(replace(replace(jyutping,'1',''),'2',''),'3',''),'4',''),'5',''),'6','') GLOB '* ${jyutping}')` };
+			if (jyut_matchType=='1') { querySQL += ` and replace(replace(replace(replace(replace(replace(jyutping,'1',''),'2',''),'3',''),'4',''),'5',''),'6','') = '${jyutping}'` };
 		} 
 		if (isJyut6ping3 && jyut6ping3.length!=0) { // 查詢有調粵拼
-			querySQL += ` and (jyutping GLOB '${jyut6ping3}' or jyutping GLOB '* ${jyut6ping3} *' or jyutping GLOB '${jyut6ping3} *' or jyutping GLOB '* ${jyut6ping3}')`;
+			if (jyutandtone_matchType=='0') { querySQL += ` and (jyutping GLOB '${jyut6ping3}' or jyutping GLOB '* ${jyut6ping3} *' or jyutping GLOB '${jyut6ping3} *' or jyutping GLOB '* ${jyut6ping3}')` };
+			if (jyutandtone_matchType=='1') { querySQL += ` and jyutping = '${jyut6ping3}'` };
 		} 
 		if (isExpl && expl.length!=0) { // 釋義反查
-			querySQL += ` and expl GLOB '*${expl}*'`;
+			if (expl_matchType=='0') { querySQL += ` and expl GLOB '*${expl}*'` };
+			if (expl_matchType=='1') { querySQL += ` and expl = '${expl}'` };
 		} 
 		if (isNote && note.length!=0) { // 附註反查
-			querySQL += ` and note GLOB '*${note}*'`;
+			if (note_matchType=='0') { querySQL += ` and note GLOB '*${note}*'` };
+			if (note_matchType=='1') { querySQL += ` and note = '${note}'` };
 		}
 		if (isClassifi && classifi.length!=0) { // 分類反查
-			querySQL += ` and classifi GLOB '*${classifi}*'`;
+			if (classifi_matchType=='0') { querySQL += ` and classifi GLOB '*${classifi}*'` };
+			if (classifi_matchType=='1') { querySQL += ` and classifi = '${classifi}'` };
 		}
 		if (!(listClassifi1997.length==16 || listClassifi1997.length==0)) { // 1997分類
 			querySQL += ` and (classifi GLOB '*${setClassifiStr1997}*')`;

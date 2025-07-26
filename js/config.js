@@ -725,32 +725,76 @@ const colData_selectP = [
 ];
 
 const rowData_selectP = [
-	{ SHOW: `<div class="custom-control custom-checkbox custom-control-inline"><input type="checkbox" class="custom-control-input checkbox-phrase" id="checkbox-phrase-trad" name="dataCheck" value="checkbox-phrase-trad" onclick="javascript:{document.getElementsByClassName('text-phrase-trad').forEach((item)=>{ item.disabled = !this.checked });}"><label class="custom-control-label" for="checkbox-phrase-trad">繁體</label></div>`, ITEM: `` }
+	{ SHOW: `<div class="custom-control custom-checkbox custom-control-inline"><input type="checkbox" class="custom-control-input checkbox-phrase" id="checkbox-phrase-trad" name="dataCheck" value="checkbox-phrase-trad" onclick="javascript:{document.getElementsByClassName('text-phrase-trad').forEach((item)=>{ item.disabled = !this.checked });}"><label class="custom-control-label" for="checkbox-phrase-trad">詞彙（繁體）</label></div>`, ITEM: `` }
 	, { SHOW: `<div class="custom-control custom-checkbox custom-control-inline"><input type="checkbox" class="custom-control-input checkbox-phrase" id="checkbox-phrase-jyut" name="dataCheck" value="checkbox-phrase-jyut" onclick="javascript:{document.getElementsByClassName('text-phrase-jyut').forEach((item)=>{ item.disabled = !this.checked });}"><label class="custom-control-label" for="checkbox-phrase-jyut">拼音（無聲調）</label></div>`, ITEM: `` }
 	, { SHOW: `<div class="custom-control custom-checkbox custom-control-inline"><input type="checkbox" class="custom-control-input checkbox-phrase" id="checkbox-phrase-jyutandtone" name="dataCheck" value="checkbox-phrase-jyutandtone" onclick="javascript:{document.getElementsByClassName('text-phrase-jyutandtone').forEach((item)=>{ item.disabled = !this.checked });}"><label class="custom-control-label" for="checkbox-phrase-jyutandtone">拼音（帶聲調）</label></div>`, ITEM: `` }
 	, { SHOW: `<div class="custom-control custom-checkbox custom-control-inline"><input type="checkbox" class="custom-control-input checkbox-phrase" id="checkbox-phrase-expl" name="dataCheck" value="checkbox-phrase-expl" onclick="javascript:{document.getElementsByClassName('text-phrase-expl').forEach((item)=>{ item.disabled = !this.checked });}"><label class="custom-control-label" for="checkbox-phrase-expl">釋義</label></div>`, ITEM: `` }
 	, { SHOW: `<div class="custom-control custom-checkbox custom-control-inline"><input type="checkbox" class="custom-control-input checkbox-phrase" id="checkbox-phrase-note" name="dataCheck" value="checkbox-phrase-note" onclick="javascript:{document.getElementsByClassName('text-phrase-note').forEach((item)=>{ item.disabled = !this.checked });}"><label class="custom-control-label" for="checkbox-phrase-note">附註</label></div>`, ITEM: `` }
 	, { SHOW: `<div class="custom-control custom-checkbox custom-control-inline"><input type="checkbox" class="custom-control-input checkbox-phrase" id="checkbox-phrase-classifi1997" name="dataCheck" value="checkbox-phrase-classifi1997" onclick="javascript:{document.getElementsByClassName('checkbox-phrase-5').forEach((item)=>{ item.checked = this.checked });}"><label class="custom-control-label" for="checkbox-phrase-classifi1997">1997分類</label></div>`, ITEM: `一、自然現象 二、時令、時節 三、植物 四、動物|五、房舍 六、身體 七、親屬 八、飯食|九、稱謂 十、疾病 十一、代詞 十二、量詞|十三、方位詞 十四、形容詞 十五、副詞、連詞、介詞 十六、數詞` }
 	, { SHOW: `<div class="custom-control custom-checkbox custom-control-inline"><input type="checkbox" class="custom-control-input checkbox-phrase" id="checkbox-phrase-classifi2007" name="dataCheck" value="checkbox-phrase-classifi2007" onclick="javascript:{document.getElementsByClassName('checkbox-phrase-6').forEach((item)=>{ item.checked = this.checked });}"><label class="custom-control-label" for="checkbox-phrase-classifi2007">2007分類</label></div>`, ITEM: `一、自然 二、時令 三、農事 四、植物|五、動物 六、房舍 七、稱謂 八、人體|九、疾病 十、服飾 十一、飲食 十二、起居|十三、交際 十四、婚喪 十五、商業 十六、文化|十七、動作 十八、性狀 十九、方位 二十、指代|二十一、副詞 二十二、介詞 二十三、數量` }
-	, { SHOW: `<div class="custom-control custom-checkbox custom-control-inline"><input type="checkbox" class="custom-control-input checkbox-phrase" id="checkbox-phrase-classifi2008" name="dataCheck" value="checkbox-phrase-classifi2008" onclick="javascript:{document.getElementsByClassName('checkbox-phrase-7').forEach((item)=>{ item.checked = this.checked });}"><label class="custom-control-label" for="checkbox-phrase-classifi2008">2008分類</label></div>`, ITEM: `一、天文 日、月、星 風、雲、雷、雨 冰、雪、霜、露 氣候|二、地理 地 山 江、河、湖、海、水 石沙、土塊、礦物 城鄉處所|三、時令時間 季節 節日 年 月 日、時 其他時間概念|四、農業 農事 農具|五、植物 農作物 豆類、菜蔬 樹木 瓜果 花草、菌類|六、動物 牲畜 鳥獸 蟲類 魚蝦類|七、房舍 房子 房屋結構 其他設施|八、器具、用品 一般傢俱 臥室用具 炊事用具 工匠用具 其他生活用品|九、稱謂 一般稱謂 職業稱謂|十、親屬 長輩 平輩 晚輩 其他|十一、身體 五官 手、腳、胸、背 其他|十二、疾病、醫療 一般用語 內科 外科 殘疾等|十三、衣服、穿戴 服裝 鞋帽 裝飾品 其他穿戴用品|十四、飲食 伙食 米食 麪食 肉、蛋 菜 油鹽作料 菸、茶、酒|十五、紅白大事 婚姻、生育 壽辰、喪葬 迷信|十六、日常生活 衣 食 住 行|十七、訟事 訟事|十八、交際 交際|十九、商業、交通 經商行業 經營、交易 賬目、度量衡 交通|二十、文化教育 學校 教室、文具 讀書識字 寫字|二十一、文體活動 遊戲、玩具 體育 武術、舞蹈 戲劇|二十二、動作 一般動作 心理活動 語言動作|二十三、位置 位置|二十四、代詞等 代詞等|二十五、形容詞 形容詞|二十六、副詞、介詞等 副詞、介詞等|二十七、連詞 連詞|二十八、量詞 量詞|二十九、附加成分 附加成分|三十、數字等 數字等|三十一、四字詞語 四字詞語` }
+	, { SHOW: `<div class="custom-control custom-checkbox custom-control-inline"><input type="checkbox" class="custom-control-input checkbox-phrase" id="checkbox-phrase-classifi2008" name="dataCheck" value="checkbox-phrase-classifi2008" onclick="javascript:{document.getElementsByClassName('checkbox-phrase-7').forEach((item)=>{ item.checked = this.checked });}"><label class="custom-control-label" for="checkbox-phrase-classifi2008">2008分類</label></div>`, ITEM: `一、天文 日、月、星 風、雲、雷、雨 冰、雪、霜、露 氣候|二、地理 地 山 江、河、湖、海、水 石沙、土塊、礦物 城鄉處所|三、時令時間 季節 節日 年 月 日、時 其他時間概念|四、農業 農事 農具|五、植物 農作物 豆類、菜蔬 樹木 瓜果 花草、菌類|六、動物 牲畜 鳥獸 蟲類 魚蝦類|七、房舍 房子 房屋結構 其他設施|八、器具、用品 一般傢俱 臥室用具 炊事用具 工匠用具 其他生活用品|九、稱謂 一般稱謂 職業稱謂|十、親屬 長輩 平輩 晚輩 其他|十一、身體 五官 手、腳、胸、背 其他|十二、疾病、醫療 一般用語 內科 外科 殘疾等|十三、衣服、穿戴 服裝 鞋帽 裝飾品 其他穿戴用品|十四、飲食 伙食 米食 麪食 肉、蛋 菜 油鹽作料 菸、茶、酒|十五、紅白大事 婚姻、生育 壽辰、喪葬 迷信|十六、日常生活 衣 食 住 行|十七、訟事 訟事|十八、交際 交際|十九、商業、交通 經商行業 經營、交易 賬目、度量衡 交通|二十、文化教育 學校 教室、文具 讀書識字 寫字|二十一、文體活動 遊戲、玩具 體育 武術、舞蹈 戲劇|二十二、動作 一般動作 心理活動 語言動作|二十三、位置 位置|二十四、代詞等 代詞等|二十五、形容詞 形容詞|二十六、副詞、介詞等 副詞、介詞等|二十七、連詞 連詞|二十八、量詞 量詞|二十九、附加成分 附加成分|三十、數字等 數字等|三十一、四字詞語 四字詞語|三十二、干支 干支` }
 	, { SHOW: `<div class="custom-control custom-checkbox custom-control-inline"><input type="checkbox" class="custom-control-input checkbox-phrase" id="checkbox-phrase-classifi" name="dataCheck" value="checkbox-phrase-classifi" onclick="javascript:{document.getElementsByClassName('text-phrase-classifi').forEach((item)=>{ item.disabled = !this.checked });}"><label class="custom-control-label" for="checkbox-phrase-classifi">自定義分類輸入</label></div>`, ITEM: `` }
 ];
 
 // 格式化顯示爲checkbox
 function formatCheckBox4 (value,index) {
 	let selArr = [];
+	
+	let setRadioDiv_trad = `<div class="custom-control custom-radio custom-control-inline ml-2">
+<input class="custom-control-input" type="radio" id="trad_isNotMatchWholeWord" name="trad_matchType" value="0" checked><label for="trad_isNotMatchWholeWord" class="custom-control-label">部分匹配</label>
+</div>
+<div class="custom-control custom-radio custom-control-inline">
+<input class="custom-control-input" type="radio" id="trad_isMatchWholeWord" name="trad_matchType" value="1"><label for="trad_isMatchWholeWord" class="custom-control-label">完全匹配</label>
+</div>`;
+
+	let setRadioDiv_jyut = `<div class="custom-control custom-radio custom-control-inline ml-2">
+<input class="custom-control-input" type="radio" id="jyut_isNotMatchWholeWord" name="jyut_matchType" value="0" checked><label for="jyut_isNotMatchWholeWord" class="custom-control-label">部分匹配</label>
+</div>
+<div class="custom-control custom-radio custom-control-inline">
+<input class="custom-control-input" type="radio" id="jyut_isMatchWholeWord" name="jyut_matchType" value="1"><label for="jyut_isMatchWholeWord" class="custom-control-label">完全匹配</label>
+</div>`;
+
+	let setRadioDiv_jyutandtone = `<div class="custom-control custom-radio custom-control-inline ml-2">
+<input class="custom-control-input" type="radio" id="jyutandtone_isNotMatchWholeWord" name="jyutandtone_matchType" value="0" checked><label for="jyutandtone_isNotMatchWholeWord" class="custom-control-label">部分匹配</label>
+</div>
+<div class="custom-control custom-radio custom-control-inline">
+<input class="custom-control-input" type="radio" id="jyutandtone_isMatchWholeWord" name="jyutandtone_matchType" value="1"><label for="jyutandtone_isMatchWholeWord" class="custom-control-label">完全匹配</label>
+</div>`;
+
+	let setRadioDiv_expl = `<div class="custom-control custom-radio custom-control-inline ml-2">
+<input class="custom-control-input" type="radio" id="expl_isNotMatchWholeWord" name="expl_matchType" value="0" checked><label for="expl_isNotMatchWholeWord" class="custom-control-label">部分匹配</label>
+</div>
+<div class="custom-control custom-radio custom-control-inline">
+<input class="custom-control-input" type="radio" id="expl_isMatchWholeWord" name="expl_matchType" value="1"><label for="expl_isMatchWholeWord" class="custom-control-label">完全匹配</label>
+</div>`;
+	
+	let setRadioDiv_note = `<div class="custom-control custom-radio custom-control-inline ml-2">
+<input class="custom-control-input" type="radio" id="note_isNotMatchWholeWord" name="note_matchType" value="0" checked><label for="note_isNotMatchWholeWord" class="custom-control-label">部分匹配</label>
+</div>
+<div class="custom-control custom-radio custom-control-inline">
+<input class="custom-control-input" type="radio" id="note_isMatchWholeWord" name="note_matchType" value="1"><label for="note_isMatchWholeWord" class="custom-control-label">完全匹配</label>
+</div>`;
+
+	let setRadioDiv_classifi = `<div class="custom-control custom-radio custom-control-inline ml-2">
+<input class="custom-control-input" type="radio" id="classifi_isNotMatchWholeWord" name="classifi_matchType" value="0" checked><label for="classifi_isNotMatchWholeWord" class="custom-control-label">部分匹配</label>
+</div>
+<div class="custom-control custom-radio custom-control-inline">
+<input class="custom-control-input" type="radio" id="classifi_isMatchWholeWord" name="classifi_matchType" value="1"><label for="classifi_isMatchWholeWord" class="custom-control-label">完全匹配</label>
+</div>`;
+	
+	
 	for (let i in value.split('|')) {
 		for (let j in value.split('|')[i].split(' ')) {
 			if (index==0){
-				selArr.push(`<div class="custom-control custom-text custom-control-inline"><input type="text" class="form-control text-phrase text-phrase-trad" id="text_phrasetrad" value="" disabled/></div>`);
+				selArr.push(`<div class="custom-control custom-text custom-control-inline"><input type="text" class="form-control text-phrase text-phrase-trad" id="text_phrasetrad" value="" disabled/></div>${setRadioDiv_trad}`);
 			} else if(index==1){
-				selArr.push(`<div class="custom-control custom-text custom-control-inline"><input type="text" class="form-control text-phrase text-phrase-jyut" id="text_phrasejyut" value="" disabled/></div>`);
+				selArr.push(`<div class="custom-control custom-text custom-control-inline"><input type="text" class="form-control text-phrase text-phrase-jyut" id="text_phrasejyut" value="" disabled/></div>${setRadioDiv_jyut}`);
 			} else if(index==2){
-				selArr.push(`<div class="custom-control custom-text custom-control-inline"><input type="text" class="form-control text-phrase text-phrase-jyutandtone" id="text_phrasejyutandtone" value="" disabled/></div>`);
+				selArr.push(`<div class="custom-control custom-text custom-control-inline"><input type="text" class="form-control text-phrase text-phrase-jyutandtone" id="text_phrasejyutandtone" value="" disabled/></div>${setRadioDiv_jyutandtone}`);
 			} else if(index==3){
-				selArr.push(`<div class="custom-control custom-text custom-control-inline"><input type="text" class="form-control text-phrase text-phrase-expl" id="text_phraseexpl" value="" disabled/></div>`);
+				selArr.push(`<div class="custom-control custom-text custom-control-inline"><input type="text" class="form-control text-phrase text-phrase-expl" id="text_phraseexpl" value="" disabled/></div>${setRadioDiv_expl}`);
 			} else if(index==4){
-				selArr.push(`<div class="custom-control custom-text custom-control-inline"><input type="text" class="form-control text-phrase text-phrase-note" id="text_phrasenote" value="" disabled/></div>`);
+				selArr.push(`<div class="custom-control custom-text custom-control-inline"><input type="text" class="form-control text-phrase text-phrase-note" id="text_phrasenote" value="" disabled/></div>${setRadioDiv_note}`);
 			} else if (index==7){
 				if (j!= 0){
 					selArr.push(`<div class="custom-control custom-checkbox custom-control-inline"><input type="checkbox" class="custom-control-input checkbox-phrase phrase-item-${index} checkbox-phrase-${index} checkbox-phrase-${index}-${i}" id="checkbox-phrase_${index}${i}${j}" name="dataCheck" value="${value.split('|')[i].split(' ')[j]}"><label class="custom-control-label" for="checkbox-phrase_${index}${i}${j}">${value.split('|')[i].split(' ')[j]}</label></div>`);
@@ -758,7 +802,7 @@ function formatCheckBox4 (value,index) {
 					selArr.push(`<div class="custom-control custom-checkbox custom-control-inline"><input type="checkbox" class="custom-control-input checkbox-phrase checkbox-phrase-${index} checkbox-phrase-${index}-${i}" id="checkbox-phrase_${index}${i}${j}" name="dataCheck" value="${value.split('|')[i].split(' ')[j]}" onclick="javascript:{document.getElementsByClassName('checkbox-phrase-${index}-${i}').forEach((item)=>{ item.checked = this.checked });}"><label class="custom-control-label" for="checkbox-phrase_${index}${i}${j}">${value.split('|')[i].split(' ')[j]}</label></div>`);
 				}
 			} else if(index==8){
-				selArr.push(`<div class="custom-control custom-text custom-control-inline"><input type="text" class="form-control text-phrase text-phrase-classifi" id="text_phraseclassifi" value="" disabled/></div>`);
+				selArr.push(`<div class="custom-control custom-text custom-control-inline"><input type="text" class="form-control text-phrase text-phrase-classifi" id="text_phraseclassifi" value="" disabled/></div>${setRadioDiv_classifi}`);
 			} else {
 				selArr.push(`<div class="custom-control custom-checkbox custom-control-inline"><input type="checkbox" class="custom-control-input checkbox-phrase checkbox-phrase-${index} checkbox-phrase-${index}-${i}" id="checkbox-phrase_${index}${i}${j}" name="dataCheck" value="${value.split('|')[i].split(' ')[j]}"><label class="custom-control-label" for="checkbox-phrase_${index}${i}${j}">${value.split('|')[i].split(' ')[j]}</label></div>`);
 			}
