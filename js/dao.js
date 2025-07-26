@@ -340,14 +340,19 @@ MainQuery = (() => {
 			if (classifi_matchType=='0') { querySQL += ` and classifi GLOB '*${classifi}*'` };
 			if (classifi_matchType=='1') { querySQL += ` and classifi = '${classifi}'` };
 		}
-		if (!(listClassifi1997.length==16 || listClassifi1997.length==0)) { // 1997分類
-			querySQL += ` and (classifi GLOB '*${setClassifiStr1997}*')`;
-		}
-		if (!(listClassifi2007.length==23 || listClassifi2007.length==0)) { // 2007分類
-			querySQL += ` and (classifi GLOB '*${setClassifiStr2007}*')`;
-		}
-		if (!(listClassifi2008.length==91 || listClassifi2008.length==0)) { // 2008分類
-			querySQL += ` and (classifi GLOB '*${setClassifiStr2008}*')`;
+		if (!(listClassifi1997.length==16 || listClassifi1997.length==0) || !(listClassifi2007.length==23 || listClassifi2007.length==0) || !(listClassifi2008.length==92 || listClassifi2008.length==0)) {
+			querySQL += ` and (classifi GLOB '*`;
+			let tempSOLArr = [];
+			if (!(listClassifi1997.length==16 || listClassifi1997.length==0)) { // 1997分類
+				tempSOLArr.push(`${setClassifiStr1997}`);
+			}
+			if (!(listClassifi2007.length==23 || listClassifi2007.length==0)) { // 2007分類
+				tempSOLArr.push(`${setClassifiStr2007}`);
+			}
+			if (!(listClassifi2008.length==92 || listClassifi2008.length==0)) { // 2008分類
+				tempSOLArr.push(`${setClassifiStr2008}`);
+			}
+			querySQL += tempSOLArr.join("*' or classifi GLOB '*") +`*')`;
 		}
 		//querySQL += ` and (classifi GLOB '*${setClassifiStr}*') order by YEAR,ID`;
 		querySQL += ` order by YEAR,ID`;
