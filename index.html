@@ -16,7 +16,7 @@
   <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"></script>
   
   <!-- DOMPurify -->
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.9/purify.min.js"></script>
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/dompurify@3.2.6/dist/purify.min.js"></script>
 
   <!-- Latest compiled and minified CSS -->
   <link type="text/css" rel="stylesheet" href="https://fastly.jsdelivr.net/npm/bootstrap-table@1.16.0/dist/bootstrap-table.min.css">
@@ -24,9 +24,10 @@
   <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/bootstrap-table@1.16.0/dist/bootstrap-table.min.js"></script>
 
   <!-- highcharts -->
-  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/highcharts@8.2.0/highcharts.min.js"></script>
-  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/highcharts@8.2.0/modules/wordcloud.js"></script>
-  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/highcharts@8.2.0/modules/variable-pie.js"></script>
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/highcharts@12.3.0/highcharts.min.js"></script>
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/highcharts@12.3.0/modules/wordcloud.js"></script>
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/highcharts@12.3.0/modules/variable-pie.js"></script>
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/highcharts@12.3.0/modules/accessibility.js"></script>
   
   <!-- sql.min.js -->
   <!-- <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/sql.js@0.5.0/js/sql-debug.js"></script> -->
@@ -772,7 +773,7 @@
 			<div class="modal-body">
 				<table class="table table-bordered table-sm" id="outTab_selectP"></table>
 				<div class="mt-2"><span>※ 其中1997分類、2007分類、2008分類至少必填一項</span></div>
-				<div class="mt-0"><span>※ 1998資料原文分類很粗略，2021資料沒有明確的分類，兩者經過細分已同2008分類，故而目前共有三種分類法：1997分類、2007分類、2008分類（1998、2020、2021同2008）</span></div>
+				<div class="mt-0"><span>※ 1998資料分類很粗略，經過細分已同2008分類；2021資料主體部分源自語保工程，按照《中國語言資源保護調查規範 第1部分：漢語方言》的分類法基本可歸入2007分類，其他來源也一併歸入；故而目前共有三種分類法：1997分類、2007分類（2021同2007）、2008分類（1998、2020同2008）</span></div>
 			</div>
 			<div class="modal-footer">
 			  <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
@@ -956,7 +957,7 @@
   
   <div class="footer text-center mt-auto py-3">
 	  <div class="foot-container user-font">
-		<span class="text-muted"> © 2020-<script>document.write(new Date().getFullYear());</script> <a class="text-info" target="_blank" href="https://leimaau.github.io/leimaau-webdict2/">Leimaau's Webdict 2</a> 版權所有</span>
+		<span class="text-muted"> © 2020-<span id="yearStr"></span> <a class="text-info" target="_blank" href="https://leimaau.github.io/leimaau-webdict2/">Leimaau's Webdict 2</a> 版權所有</span>
 	  </div>
   </div>
 </body>

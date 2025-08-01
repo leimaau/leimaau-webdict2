@@ -296,8 +296,8 @@ MainQuery = (() => {
 		let selVal = ['tab_1997_phrase', 'tab_1998_phrase', 'tab_2007_phrase', 'tab_2008_phrase', 'tab_2008_phrase', 'tab_2020_phrase', 'tab_2021_phrase']; 
 		
 		if (listClassifi1997.length==0){ selVal = selVal.filter(item => item !== "tab_1997_phrase"); }
-		if (listClassifi2007.length==0){ selVal = selVal.filter(item => item !== "tab_2007_phrase"); }
-		if (listClassifi2008.length==0){ selVal = selVal.filter(item => item !== "tab_1998_phrase").filter(item => item !== "tab_2008_phrase").filter(item => item !== "tab_2020_phrase").filter(item => item !== "tab_2021_phrase"); }
+		if (listClassifi2007.length==0){ selVal = selVal.filter(item => item !== "tab_2007_phrase").filter(item => item !== "tab_2021_phrase"); }
+		if (listClassifi2008.length==0){ selVal = selVal.filter(item => item !== "tab_1998_phrase").filter(item => item !== "tab_2008_phrase").filter(item => item !== "tab_2020_phrase"); }
 		
 		//let listAllClassifi = listClassifi1997.concat(listClassifi2007,listClassifi2008);
 		//let setClassifiStr = listAllClassifi.join("*' or classifi GLOB '*");
