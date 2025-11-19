@@ -7,7 +7,7 @@
     <!-- Bootstrap core CSS -->
 	<link type="text/css" rel="stylesheet" href="https://fastly.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css">
     <!-- jQuery -->
-    <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
     <!-- material-scrolltop.min.js -->
     <link type="text/css" rel="stylesheet" href="https://fastly.jsdelivr.net/npm/material-scrolltop@2.0.1/dist/material-scrolltop.min.css">
     <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/material-scrolltop@2.0.1/dist/material-scrolltop.min.js"></script>
@@ -275,7 +275,7 @@ else
   when tone='入' then
     -- 清紐外轉字
     case when she in('咸','山','江','宕') or (she='梗' and deng='二') then
-      case when she='咸' and deng='一' and niu='影' then '1'
+      case when she='咸' and deng='一' and niu in('影','溪') then '1'
       when she='江' and niu='影' then '1'
       when she='梗' and niu='影' then '1' else '3' end
     when niu in('莊','初','崇','生') and deng='三' and she='梗' then '3'

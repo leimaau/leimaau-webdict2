@@ -241,8 +241,8 @@ function queryPhrase(inputValue, queryType, selVal){
 	if (dataList_oldProverb.length != 0) {
 		$('.rowtabDiv-triungkox_tung').removeClass('d-none');  // 使用顯示《廣韻》的位置
 		res_proverb = MainQuery.queryTable_proverb(inputValue, dataList_oldProverb, queryType);
-		showTable(res_proverb, 'outTab_triungkox_tung', '童謠和熟語', outTabTitle_triungkox_tung, colData_proverb);
-		if (res_proverb.length != 0) showWordCloud(res_proverb, inputValue, 'outWordCloud_triungkox_tung', '童謠和熟語', queryType, 'TRAD');
+		showTable(res_proverb, 'outTab_triungkox_tung', '諺語、童謠等', outTabTitle_triungkox_tung, colData_proverb);
+		if (res_proverb.length != 0) showWordCloud(res_proverb, inputValue, 'outWordCloud_triungkox_tung', '諺語、童謠等', queryType, 'TRAD');
 	}
 	
 	let res_xiandaihanyu = [];
@@ -747,7 +747,7 @@ function signArticle(textCont, signText_type, signResult_type, signResult_format
 	}
 	
 	$('#signResult').html(
-	  DOMPurify.sanitize(outputText.join(''), purifyConfig)
+	  DOMPurify.sanitize(outputText.join('').replace(/\s*([。·？！，、；：“”‘'（）《》〈〉【】『』「」﹃﹄〔〕…—～﹏￥])\s*/g,'$1'), purifyConfig)
 	);
 }
 
@@ -796,7 +796,7 @@ function queryJyutpingPhrase(txtStr, trad_simp, tabName, jyutping_ipa, signResul
 function queryJyutping(txtStr, trad_simp, tabName, jyutping_ipa, signResult_IPA, signIPA_version, keep_symbol = true){
 	//let res = MainQuery.queryJyutping(txtStr, trad_simp, tabName); // 目前是從segDict.js獲取，tab_nn_review、tab_nnt_review、tab_gz_review爲空，需要時導入數據使用
 	let res = ($("#output_useFilter").is(":checked") == true) ? window[tabName].filter(item => item[trad_simp] == txtStr && item['flag'] == '0') : window[tabName].filter(item => item[trad_simp] == txtStr);
-	if ( !(/[^\u4e00-\u9fa5]/.test(txtStr)) || (res.length > 0) ) { // 判斷是否中文或字典有數據
+	if ( !(/[^\u4e00-\u9fff]/.test(txtStr)) || (res.length > 0) ) { // 判斷是否中文或字典有數據
 		if(res.length != 0){
 			if (res.length == 1){ // 只有一種讀音
 				return (jyutping_ipa == 'jyutping') ? jpFormat(res[0]['jyutping']) : ipaFormat(jyutping_to_ipa(res[0]['jyutping'], signIPA_version, signResult_IPA, "output_addSymbol"));
@@ -809,7 +809,7 @@ function queryJyutping(txtStr, trad_simp, tabName, jyutping_ipa, signResult_IPA,
 				return (jyutping_ipa == 'jyutping') ? [...new Set(char_jyutping)].join('/') : [...new Set(char_ipa)].join('/');
 			}
 		} else { // 無讀音
-			return '　';　// 全角空格，會被當成一個中文
+			return '■';　// 黑色缺字符
 		}
 	} else { // 非中文字符
 		if(keep_symbol) {
@@ -1515,6 +1515,6 @@ $(() => {
 	document.getElementById("yearStr").innerHTML = new Date().getFullYear();
 	
 	//displayAlert("新版本 <a href='https://leimaau-webdict3.vercel.app/' target='_blank'>Leimaau's Webdict 3</a> 已上線，<a href='https://tranquil-tulumba-4026d9.netlify.app' target='_blank'>備用系統</a> 同時開啓", outputAlert, 'alert-success');
-	displayAlert("【公告】<br>說明：每次更新後第一次加載要花些時間，之後加載則方便許多，爲減少數據庫壓力，詞彙只收錄繁體，不提供簡體搜索<br>更新版本：20250908<br>更新內容：<br>1.修訂字典數據，改正一些錯誤<br>2.修訂詞典數據，修訂現代漢語詞彙表，擴充本地詞彙<br>3.改進頁碼的圖片跳轉，改進快速鏈接跳轉<br>4.完善詞彙多條件查詢功能<br>5.詳細地修訂歷史可上github查詢", outputAlert, 'alert-success');
+	displayAlert("【公告】<br>說明：每次更新後第一次加載要花些時間，之後加載則方便許多，爲減少數據庫壓力，詞彙只收錄繁體，不提供簡體搜索<br>更新版本：20250908<br>更新內容：<br>1.修訂字典數據，改正一些錯誤<br>2.修訂詞典數據，修訂現代漢語詞彙表，擴充本地詞彙、諺語、童謠等<br>3.改進在線標註功能，改進詞彙顯示方式<br>4.完善詞彙多條件查詢功能<br>5.詳細地修訂歷史可上github查詢", outputAlert, 'alert-success');
 	
 })

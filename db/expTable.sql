@@ -26,19 +26,28 @@ spool E:\LocalRepository\github\leimaau-webdict2\db\tab_1941.txt
 select tab_id||'$'||word||'$'||jyutping||'$'||ipa||'$'||page||'$'||expl||'$'||firstflag from tab_1941 order by tab_id;
 
 spool E:\LocalRepository\github\leimaau-webdict2\db\tab_1937jz_proverb.txt
-select tab_id||'$'||trad||'$'||null||'$'||sour||'$'||expl||'$'||note from tab_1937jz_proverb order by tab_id;
+select tab_id||'$'||classifi||'$'||trad||'$'||null||'$'||null||'$'||null||'$'||jyutping||'$'||sour||'$'||expl||'$'||note from tab_1937jz_proverb order by tab_id;
 
 spool E:\LocalRepository\github\leimaau-webdict2\db\tab_1937kk_proverb.txt
-select tab_id||'$'||trad||'$'||null||'$'||sour||'$'||expl||'$'||note from tab_1937kk_proverb order by tab_id;
+select tab_id||'$'||classifi||'$'||trad||'$'||null||'$'||null||'$'||null||'$'||jyutping||'$'||sour||'$'||expl||'$'||note from tab_1937kk_proverb order by tab_id;
+
+spool E:\LocalRepository\github\leimaau-webdict2\db\tab_2008_proverb.txt
+select tab_id||'$'||classifi||'$'||trad||'$'||null||'$'||null||'$'||null||'$'||jyutping||'$'||sour||'$'||expl||'$'||note from tab_2008_proverb order by tab_id;
+
+spool E:\LocalRepository\github\leimaau-webdict2\db\tab_2015_proverb.txt
+select tab_id||'$'||classifi||'$'||trad||'$'||null||'$'||null||'$'||null||'$'||jyutping||'$'||sour||'$'||expl||'$'||note from tab_2015_proverb order by tab_id;
+
+spool E:\LocalRepository\github\leimaau-webdict2\db\tab_2020_proverb.txt
+select tab_id||'$'||classifi||'$'||trad||'$'||null||'$'||null||'$'||null||'$'||jyutping||'$'||sour||'$'||expl||'$'||note from tab_2020_proverb order by tab_id;
+
+spool E:\LocalRepository\github\leimaau-webdict2\db\tab_2021_proverb.txt
+select tab_id||'$'||classifi||'$'||trad||'$'||null||'$'||null||'$'||null||'$'||jyutping||'$'||sour||'$'||expl||'$'||note from tab_2021_proverb order by tab_id;
 
 --spool E:\LocalRepository\github\leimaau-webdict2\db\tab_1838.txt
 --select tab_id||'$'||word||'$'||expl||'$'||final_part||'$'||first_old||'$'||final_old||'$'||tone||'$'||jyutping||'$'||ipa||'$'||volume||'$'||page||'$'||first_type||'$'||fanqie from v_1782fy order by tab_id;
 
 --spool E:\LocalRepository\github\leimaau-webdict2\db\tab_1856.txt
 --select tab_id||'$'||word||'$'||word_comp||'$'||word_note||'$'||page||'$'||old_jp||'$'||old_jp_type||'$'||old_jp_note||'$'||expl||'$'||ipa||'$'||jyutping from v_1856yh order by tab_id;
-
-spool E:\LocalRepository\github\leimaau-webdict2\db\tab_2020_proverb.txt
-select tab_id||'$'||trad||'$'||null||'$'||sour||'$'||expl||'$'||note from tab_2020_proverb order by tab_id;
 
 spool E:\LocalRepository\github\leimaau-webdict2\db\tab_1994.txt
 select tab_id||'$'||trad||'$'||simp||'$'||ipa_s||'$'||ipa_t||'$'||jyutping||'$'||replace(sour,'1994年謝建猷《南寧白話同音字彙》','')||'$'||expl||'$'||note from v_nbdict_1994 order by tab_id;

@@ -1,8 +1,5 @@
 .separator "$"
 
-delete from tab_1937jz_proverb;
-delete from tab_1937kk_proverb;
-delete from tab_2020_proverb;
 delete from tab_1994;
 delete from tab_1997;
 delete from tab_1998;
@@ -49,9 +46,6 @@ delete from tab_2021_grammar;
 
 
 
-.import tab_1937jz_proverb.txt tab_1937jz_proverb
-.import tab_1937kk_proverb.txt tab_1937kk_proverb
-.import tab_2020_proverb.txt tab_2020_proverb
 .import tab_1994.txt tab_1994
 .import tab_1997.txt tab_1997
 .import tab_1998.txt tab_1998

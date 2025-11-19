@@ -134,8 +134,12 @@ CREATE TABLE tab_1994(
 -- 南宁旧童谣，《南宁社会概况》
 CREATE TABLE tab_1937kk_proverb(
    ID            TEXT    NOT NULL,
+   CLASSIFI      TEXT    NOT NULL,
    TRAD          TEXT    NOT NULL,
    SIMP          TEXT    NOT NULL,
+   IPA_S         TEXT    NOT NULL,
+   IPA_T         TEXT    NOT NULL,
+   JYUTPING      TEXT    NOT NULL,
    SOUR          TEXT    NOT NULL,
    EXPL          TEXT    ,
    NOTE          TEXT    
@@ -144,19 +148,56 @@ CREATE TABLE tab_1937kk_proverb(
 -- 南宁旧童谣，《邕宁县志》
 CREATE TABLE tab_1937jz_proverb(
    ID            TEXT    NOT NULL,
+   CLASSIFI      TEXT    NOT NULL,
    TRAD          TEXT    NOT NULL,
    SIMP          TEXT    NOT NULL,
+   IPA_S         TEXT    NOT NULL,
+   IPA_T         TEXT    NOT NULL,
+   JYUTPING      TEXT    NOT NULL,
+   SOUR          TEXT    NOT NULL,
+   EXPL          TEXT    ,
+   NOTE          TEXT    
+);
+
+-- 南宁童谣，2008林亦《广西南宁白话研究》
+CREATE TABLE tab_2008_proverb(
+   ID            TEXT    NOT NULL,
+   CLASSIFI      TEXT    NOT NULL,
+   TRAD          TEXT    NOT NULL,
+   SIMP          TEXT    NOT NULL,
+   IPA_S         TEXT    NOT NULL,
+   IPA_T         TEXT    NOT NULL,
+   JYUTPING      TEXT    NOT NULL,
    SOUR          TEXT    NOT NULL,
    EXPL          TEXT    ,
    NOTE          TEXT    
 );
 
 
--- 南宁童谣
-CREATE TABLE tab_2020_proverb(
+-- 南宁童谣，2015语保工程
+CREATE TABLE tab_2015_proverb(
    ID            TEXT    NOT NULL,
+   CLASSIFI      TEXT    NOT NULL,
    TRAD          TEXT    NOT NULL,
    SIMP          TEXT    NOT NULL,
+   IPA_S         TEXT    NOT NULL,
+   IPA_T         TEXT    NOT NULL,
+   JYUTPING      TEXT    NOT NULL,
+   SOUR          TEXT    NOT NULL,
+   EXPL          TEXT    ,
+   NOTE          TEXT    
+);
+
+
+-- 南宁童谣 tab_2020_proverb、tab_2021_proverb（零散资料汇总）
+CREATE TABLE tab_2020_proverb(
+   ID            TEXT    NOT NULL,
+   CLASSIFI      TEXT    NOT NULL,
+   TRAD          TEXT    NOT NULL,
+   SIMP          TEXT    NOT NULL,
+   IPA_S         TEXT    NOT NULL,
+   IPA_T         TEXT    NOT NULL,
+   JYUTPING      TEXT    NOT NULL,
    SOUR          TEXT    ,
    EXPL          TEXT    ,
    NOTE          TEXT    
