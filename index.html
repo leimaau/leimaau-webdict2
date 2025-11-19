@@ -30,10 +30,8 @@
   <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/highcharts@12.3.0/modules/variable-pie.js"></script>
   <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/highcharts@12.3.0/modules/accessibility.js"></script>
   
-  <!-- sql.min.js -->
-  <!-- <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/sql.js@0.5.0/js/sql-debug.js"></script> -->
-  <!-- <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/sql.js@0.5.0/js/sql-optimized.js"></script> -->
-  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/sql.js@0.5.0/js/sql.min.js"></script>
+  <!-- sql.js (upgraded to 1.10.3 with WebAssembly support) -->
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/sql.js@1.10.3/dist/sql-wasm.js"></script>
   <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/axios@0.19.2/dist/axios.min.js"></script>
   <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/pako@2.1.0/dist/pako.min.js"></script>
   
@@ -50,6 +48,10 @@
   
   <!-- USER Local file -->
   <!-- 
+  注意：如果使用本地文件，需要下载 sql.js 1.10.3 版本的文件
+  下载地址：https://github.com/sql-js/sql.js/releases/tag/v1.10.3
+  需要的文件：sql-wasm.js 和 sql-wasm.wasm
+  
   <link type="text/css" rel="stylesheet" href="css/Bootstrap4/bootstrap.min.css" />
   <script type="text/javascript" src="js/Bootstrap4/jquery.min.js"></script>
   <script type="text/javascript" src="js/Bootstrap4/popper.min.js"></script>
@@ -59,7 +61,7 @@
   <script type="text/javascript" src="js/bootstrap-table/bootstrap-table-zh-CN.min.js"></script>
   <script type="text/javascript" src="js/highcharts/highcharts.min.js"></script>
   <script type="text/javascript" src="js/highcharts/wordcloud.js"></script>
-  <script type="text/javascript" src="js/sqljs/sql.min.js"></script>
+  <script type="text/javascript" src="js/sqljs/sql-wasm.js"></script>
   <script type="text/javascript" src="js/sqljs/axios.min.js"></script>
   <script type="text/javascript" src="js/clipboard/clipboard.min.js"></script>
   <link type="text/css" rel="stylesheet" href="css/toastr/toastr.min.css" />

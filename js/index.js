@@ -241,8 +241,10 @@ function queryPhrase(inputValue, queryType, selVal){
 	if (dataList_oldProverb.length != 0) {
 		$('.rowtabDiv-triungkox_tung').removeClass('d-none');  // 使用顯示《廣韻》的位置
 		res_proverb = MainQuery.queryTable_proverb(inputValue, dataList_oldProverb, queryType);
-		showTable(res_proverb, 'outTab_triungkox_tung', '諺語、童謠等', outTabTitle_triungkox_tung, colData_proverb);
-		if (res_proverb.length != 0) showWordCloud(res_proverb, inputValue, 'outWordCloud_triungkox_tung', '諺語、童謠等', queryType, 'TRAD');
+		if (res_proverb.length <= 1000){
+			showTable(res_proverb, 'outTab_triungkox_tung', '諺語、童謠等', outTabTitle_triungkox_tung, colData_proverb);
+			if (res_proverb.length != 0) showWordCloud(res_proverb, inputValue, 'outWordCloud_triungkox_tung', '諺語、童謠等', queryType, 'TRAD');
+		};
 	}
 	
 	let res_xiandaihanyu = [];
@@ -250,8 +252,10 @@ function queryPhrase(inputValue, queryType, selVal){
 	if (dataList_xiandaihanyu.length != 0) {
 		$('.rowtabDiv-xiandaihanyu').removeClass('d-none');
 		res_xiandaihanyu = MainQuery.queryTable_xiandaihanyu(inputValue, dataList_xiandaihanyu, queryType);
-		showTable(res_xiandaihanyu, 'outTab_xiandaihanyu', '現代漢語詞彙<small>釋義源自《現代漢語詞典（第7版）》或《現代漢語規範詞典（第4版）》，爲適應本地有改動</small>', outTabTitle_xiandaihanyu, colData_xiandaihanyu);
-		if (res_xiandaihanyu.length != 0) showWordCloud(res_xiandaihanyu, inputValue, 'outWordCloud_xiandaihanyu', '現代漢語詞彙', queryType, 'TRAD');
+		if (res_xiandaihanyu.length <= 1000){
+			showTable(res_xiandaihanyu, 'outTab_xiandaihanyu', '現代漢語詞彙<small>釋義源自《現代漢語詞典（第7版）》或《現代漢語規範詞典（第4版）》，爲適應本地有改動</small>', outTabTitle_xiandaihanyu, colData_xiandaihanyu);
+			if (res_xiandaihanyu.length != 0) showWordCloud(res_xiandaihanyu, inputValue, 'outWordCloud_xiandaihanyu', '現代漢語詞彙', queryType, 'TRAD');
+		};
 	}
 	
 	let res = [];
@@ -260,10 +264,12 @@ function queryPhrase(inputValue, queryType, selVal){
 		$('.rowtabDiv-b').removeClass('d-none');
 		$('.nav-tab-b').removeClass('d-none');
 		res = MainQuery.queryTablePhrase(inputValue, dataList, queryType);
-		showTable(res, 'outTab', allTitle+'<small>市區</small>', outTabTitle, colData_phrase);  // 顯示白話表格
-		//showPie(res, inputValue, 'outPie', allTitle, queryType);  // 顯示白話餅圖
-		showBasicBar(res, inputValue, 'outPie', allTitle, queryType);
-		showWordCloud(res, inputValue, 'outWordCloud', allTitle, queryType, 'TRAD'); // 顯示白話詞雲圖
+		if (res.length <= 1000){
+			showTable(res, 'outTab', allTitle+'<small>市區</small>', outTabTitle, colData_phrase);  // 顯示白話表格
+			//showPie(res, inputValue, 'outPie', allTitle, queryType);  // 顯示白話餅圖
+			showBasicBar(res, inputValue, 'outPie', allTitle, queryType);
+			showWordCloud(res, inputValue, 'outWordCloud', allTitle, queryType, 'TRAD'); // 顯示白話詞雲圖
+		};
 	}
 	
 	let res_bw = [];
@@ -272,10 +278,12 @@ function queryPhrase(inputValue, queryType, selVal){
 		$('.rowtabDiv-bw').removeClass('d-none');
 		$('.nav-tab-bw').removeClass('d-none');
 		res_bw = MainQuery.queryTablePhrase(inputValue, dataList_bw, queryType);
-		showTable(res_bw, 'outTab_bw', allTitle_bw+'<small>亭子</small>', outTabTitle_bw, colData_phrase);  // 顯示平話表格
-		//showPie(res_bw, inputValue, 'outPie_bw', allTitle_bw, queryType);  // 顯示平話餅圖
-		showBasicBar(res_bw, inputValue, 'outPie_bw', allTitle_bw, queryType);
-		showWordCloud(res_bw, inputValue, 'outWordCloud_bw', allTitle_bw, queryType, 'TRAD'); // 顯示平話詞雲圖
+		if (res_bw.length <= 1000){
+			showTable(res_bw, 'outTab_bw', allTitle_bw+'<small>亭子</small>', outTabTitle_bw, colData_phrase);  // 顯示平話表格
+			//showPie(res_bw, inputValue, 'outPie_bw', allTitle_bw, queryType);  // 顯示平話餅圖
+			showBasicBar(res_bw, inputValue, 'outPie_bw', allTitle_bw, queryType);
+			showWordCloud(res_bw, inputValue, 'outWordCloud_bw', allTitle_bw, queryType, 'TRAD'); // 顯示平話詞雲圖
+		};
 	}
 	
 	if(queryType == 'phrase' || queryType == 'phrase_simp') showLink(inputValue);
@@ -283,6 +291,10 @@ function queryPhrase(inputValue, queryType, selVal){
 	let isShow = res_proverb.length + res_xiandaihanyu.length + res.length + res_bw.length;
 	if (isShow == 0) {
 		displayAlert('未查詢到結果!', outputAlert, 'alert-primary');
+	} else if (res_proverb.length >1000 || res_xiandaihanyu.length >1000 || res.length >1000 || res_bw.length >1000) {
+		displayAlert('諺語、童謠等：'+res_proverb.length+'條，南寧白話詞彙：'+res.length+'條，南寧平話詞彙：'+res_bw.length+'條，現代漢語詞彙：'+res_xiandaihanyu.length+'條。'+'數據量超過1000條的項目不予顯示，請縮小查詢範圍!', outputAlert, 'alert-danger');
+	} else {
+		displayAlert('諺語、童謠等：'+res_proverb.length+'條，南寧白話詞彙：'+res.length+'條，南寧平話詞彙：'+res_bw.length+'條，現代漢語詞彙：'+res_xiandaihanyu.length+'條。', outputAlert, 'alert-success');
 	}
 	
 	return isShow;

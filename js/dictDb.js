@@ -5,6 +5,21 @@ DictDb = (() => {
   dbTemp.db2 = null;
   dbTemp.db3 = null;
   
+  // sql.js 1.x 全局 SQL 实例（避免重复初始化）
+  let sqlInstance = null;
+  
+  // 初始化 sql.js（仅初始化一次）
+  const initSQL = async () => {
+    if (!sqlInstance) {
+      console.info('初始化 sql.js WebAssembly...');
+      sqlInstance = await initSqlJs({
+        locateFile: file => `https://fastly.jsdelivr.net/npm/sql.js@1.10.3/dist/${file}`
+      });
+      console.info('sql.js 初始化完成');
+    }
+    return sqlInstance;
+  };
+  
   // IndexedDB管理类
   const DBManager = {
     dbName: 'DictCache',
@@ -197,6 +212,9 @@ DictDb = (() => {
     try {
       console.info(`开始加载数据库: ${dbDir}`);
       
+      // 确保 sql.js 已初始化
+      const SQL = await initSQL();
+      
       // 先尝试从IndexedDB获取（如果IndexedDB可用）
       if (DBManager.db) {
         console.info(`尝试从IndexedDB加载数据库 ${dbKey}...`);
@@ -223,7 +241,7 @@ DictDb = (() => {
             const cachedData = await DBManager.getDatabase(dbKey);
             if (cachedData) {
               console.info(`从IndexedDB加载数据库 ${dbKey} 成功（ETag匹配）。`);
-              return new window.SQL.Database(new Uint8Array(cachedData));
+              return new SQL.Database(new Uint8Array(cachedData));
             }
           }
         } catch (headError) {
@@ -232,7 +250,7 @@ DictDb = (() => {
           const cachedData = await DBManager.getDatabase(dbKey);
           if (cachedData) {
             console.info(`从IndexedDB加载数据库 ${dbKey} 成功（HEAD请求失败，使用缓存）。`);
-            return new window.SQL.Database(new Uint8Array(cachedData));
+            return new SQL.Database(new Uint8Array(cachedData));
           }
         }
       } else {
@@ -267,7 +285,7 @@ DictDb = (() => {
       }
       
       console.info('创建SQLite数据库实例...');
-      const db = new window.SQL.Database(new Uint8Array(data));
+      const db = new SQL.Database(new Uint8Array(data));
       console.info('SQLite数据库实例创建成功');
       
       // 如果IndexedDB可用，保存数据和ETag到缓存
@@ -558,6 +576,11 @@ DictDb = (() => {
       await DBManager.clearDatabaseCache(dbKey);
     }
     return await loadDatabase(dbDir, dbKey);
+  };
+  
+  // 导出 SQL 实例供外部使用（如果需要）
+  dbTemp.getSQL = async () => {
+    return await initSQL();
   };
 
   return dbTemp;
