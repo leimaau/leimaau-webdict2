@@ -267,8 +267,8 @@ function queryPhrase(inputValue, queryType, selVal){
 		if (res.length <= 1000){
 			showTable(res, 'outTab', allTitle+'<small>市區</small>', outTabTitle, colData_phrase);  // 顯示白話表格
 			//showPie(res, inputValue, 'outPie', allTitle, queryType);  // 顯示白話餅圖
-			showBasicBar(res, inputValue, 'outPie', allTitle, queryType);
-			showWordCloud(res, inputValue, 'outWordCloud', allTitle, queryType, 'TRAD'); // 顯示白話詞雲圖
+			if (res.length != 0) showBasicBar(res, inputValue, 'outPie', allTitle, queryType);
+			if (res.length != 0) showWordCloud(res, inputValue, 'outWordCloud', allTitle, queryType, 'TRAD'); // 顯示白話詞雲圖
 		};
 	}
 	
@@ -281,8 +281,8 @@ function queryPhrase(inputValue, queryType, selVal){
 		if (res_bw.length <= 1000){
 			showTable(res_bw, 'outTab_bw', allTitle_bw+'<small>亭子</small>', outTabTitle_bw, colData_phrase);  // 顯示平話表格
 			//showPie(res_bw, inputValue, 'outPie_bw', allTitle_bw, queryType);  // 顯示平話餅圖
-			showBasicBar(res_bw, inputValue, 'outPie_bw', allTitle_bw, queryType);
-			showWordCloud(res_bw, inputValue, 'outWordCloud_bw', allTitle_bw, queryType, 'TRAD'); // 顯示平話詞雲圖
+			if (res_bw.length != 0) showBasicBar(res_bw, inputValue, 'outPie_bw', allTitle_bw, queryType);
+			if (res_bw.length != 0) showWordCloud(res_bw, inputValue, 'outWordCloud_bw', allTitle_bw, queryType, 'TRAD'); // 顯示平話詞雲圖
 		};
 	}
 	
@@ -1527,6 +1527,6 @@ $(() => {
 	document.getElementById("yearStr").innerHTML = new Date().getFullYear();
 	
 	//displayAlert("新版本 <a href='https://leimaau-webdict3.vercel.app/' target='_blank'>Leimaau's Webdict 3</a> 已上線，<a href='https://tranquil-tulumba-4026d9.netlify.app' target='_blank'>備用系統</a> 同時開啓", outputAlert, 'alert-success');
-	displayAlert("【公告】<br>說明：每次更新後第一次加載要花些時間，之後加載則方便許多，爲減少數據庫壓力，詞彙只收錄繁體，不提供簡體搜索<br>更新版本：20250908<br>更新內容：<br>1.修訂字典數據，改正一些錯誤<br>2.修訂詞典數據，修訂現代漢語詞彙表，擴充本地詞彙、諺語、童謠等<br>3.改進在線標註功能，改進詞彙顯示方式<br>4.完善詞彙多條件查詢功能<br>5.詳細地修訂歷史可上github查詢", outputAlert, 'alert-success');
+	displayAlert("【公告】<br>說明：每次更新後第一次加載要花些時間，之後加載則方便許多，爲減少數據庫壓力，詞彙只收錄繁體，不提供簡體搜索<br>更新版本：20251119<br>更新內容：<br>1.修訂字典數據，改正一些錯誤<br>2.修訂詞典數據，修訂現代漢語詞彙表，擴充本地詞彙、諺語、童謠等<br>3.改進在線標註功能，改進詞彙顯示方式<br>4.完善詞彙多條件查詢功能<br>5.詳細地修訂歷史可上github查詢", outputAlert, 'alert-success');
 	
 })
