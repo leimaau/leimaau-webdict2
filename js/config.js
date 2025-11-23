@@ -4,21 +4,21 @@
 
 const cdnAddr = [];
 //cdnAddr.push('https://fastly.jsdelivr.net/npm');
-//cdnAddr.push('leimaau-npm-cdn@1.5.2');
+//cdnAddr.push('leimaau-npm-cdn@1.5.8');
 //cdnAddr.push('db/leimaau.db3');
 cdnAddr.push('https://delicate-bombolone-0bc03e.netlify.app/');
 cdnAddr.push('public/leimaau.db3.gz'); // 使用gzip压缩文件
 
 const cdnAddr2 = [];
 //cdnAddr2.push('https://fastly.jsdelivr.net/npm');
-//cdnAddr2.push('leimaau-npm-cdn@1.5.2');
+//cdnAddr2.push('leimaau-npm-cdn@1.5.8');
 //cdnAddr2.push('db/leimaau2.db3');
 cdnAddr2.push('https://delicate-bombolone-0bc03e.netlify.app/');
 cdnAddr2.push('public/leimaau2.db3.gz'); // 使用gzip压缩文件
 
 const cdnAddr3 = [];
 //cdnAddr3.push('https://fastly.jsdelivr.net/npm');
-//cdnAddr3.push('leimaau-npm-cdn@1.5.2');
+//cdnAddr3.push('leimaau-npm-cdn@1.5.8');
 //cdnAddr3.push('db/leimaau3.db3');
 cdnAddr3.push('https://delicate-bombolone-0bc03e.netlify.app/');
 cdnAddr3.push('public/leimaau3.db3.gz'); // 使用gzip压缩文件
@@ -385,43 +385,47 @@ const colData = [
 const colData_proverb = [
 	{ field: 'YEAR', title: '資料', sortable : true, align: 'center', formatter: (value) => { return `<span class="user-font">${value.replace('_proverb', '').replace('tab_', '')}</span>` } }
 	//, {field: 'ID',title: 'ID'}
-	//, { field: 'TRADSIMP', title: '繁體〔簡體〕', align: 'left', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
-	, { field: 'TRAD', title: '繁體', sortable : true, align: 'left', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
-	//, { field: 'SIMP', title: '簡體', align: 'left', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
-	, { field: 'JYUTPING', title: '粵拼', sortable : true, formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
+	//, { field: 'TRADSIMP', title: '繁體、簡體', sortable : true, align: 'left', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
+	, { field: 'TRADJYUTPING', title: '繁體、粵拼', sortable : true, align: 'left', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
+	//, { field: 'TRAD', title: '繁體', sortable : true, align: 'left', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
+	//, { field: 'SIMP', title: '簡體', sortable : true, align: 'left', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
+	//, { field: 'JYUTPING', title: '粵拼', sortable : true, formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
 	, { field: 'SOUR', title: '來源', sortable : true, formatter: (value, row) => { return formatSOUR(value, row['YEAR'], 'png', 'proverb') } }
-	, { field: 'EXPL', title: '釋義', sortable : true, formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
-	, { field: 'NOTE', title: '本站校訂附註', sortable : true, formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
-	, { field: 'CLASSIFI', title: '分類', sortable : true, formatter: (value) => { return `<p data-toggle="tooltip" data-placement="left" title="${value}">${value}<p/>` } }
+	, { field: 'EXPLNOTECLASSIFI', title: '釋義、本站校訂附註、分類', sortable : true, align: 'left', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
+	//, { field: 'EXPL', title: '釋義', sortable : true, formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
+	//, { field: 'NOTE', title: '本站校訂附註', sortable : true, formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
+	//, { field: 'CLASSIFI', title: '分類', sortable : true, formatter: (value) => { return `<p data-toggle="tooltip" data-placement="left" title="${value}">${value}<p/>` } }
 ];
 
 const colData_xiandaihanyu = [
 	{ field: 'YEAR', title: '資料', sortable : true, align: 'center', formatter: (value) => { return `<span class="user-font">${value}<span/>` } }
 	//, {field: 'ID',title: 'ID'}
 	//, { field: 'TRADSIMP', title: '繁體〔簡體〕', sortable : true, align: 'center', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
-	, { field: 'TRAD', title: '繁體', sortable : true, align: 'center', formatter: (value) => { return `<a style="white-space: normal" href="javascript:querySubmit('${value}', 'phrase', 'dicPhrase')">${value}</a>` } }
+	, { field: 'TRAD', title: '繁體', sortable : true, align: 'center', formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'phrase', 'dicPhrase')">${value}</a>` } }
 	//, { field: 'SIMP', title: '簡體', sortable : true, align: 'center', formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'phrase_simp', 'dicPhrase')">${value}</a>` } }
-	, { field: 'JYUTPING', title: '南寧白話', sortable : true, formatter: (value) => { let charStr = value.split(/,|\|\|/), aLink = []; for (let i in charStr) aLink.push(`<a style="white-space: normal" href="javascript:querySubmit('${charStr[i]}', 'phrase_jyut6ping3', 'dicPhrase')">${charStr[i]}</a>`); return aLink.join('<br/>') } }
-	, { field: 'JYUTPING2', title: '南寧亭子平話', sortable : true, formatter: (value) => { let charStr = value.split(/,|\|\|/), aLink = []; for (let i in charStr) aLink.push(`<a style="white-space: normal" href="javascript:querySubmit('${charStr[i]}', 'phrase_jyut6ping3', 'dicPhrase')">${charStr[i]}</a>`); return aLink.join('<br/>') } }
+	, { field: 'JYUTPING', title: '南寧白話', sortable : true, formatter: (value) => { let charStr = value.split(/,|\|\|/), aLink = []; for (let i in charStr) aLink.push(`<a href="javascript:querySubmit('${charStr[i]}', 'phrase_jyut6ping3', 'dicPhrase')">${charStr[i]}</a>`); return aLink.join('<br/>') } }
+	, { field: 'JYUTPING2', title: '南寧亭子平話', sortable : true, formatter: (value) => { let charStr = value.split(/,|\|\|/), aLink = []; for (let i in charStr) aLink.push(`<a href="javascript:querySubmit('${charStr[i]}', 'phrase_jyut6ping3', 'dicPhrase')">${charStr[i]}</a>`); return aLink.join('<br/>') } }
 	//, { field: 'SOUR', title: '來源（釋義主要來源）', sortable : true, formatter: (value) => { return '《現代漢語詞典（第7版）》' } }
-	, { field: 'EXPL', title: '釋義', sortable : true, formatter: (value) => { return `<span style="white-space: normal">${value.replace('//〖', '<br/>〖')}<span/>` } }
+	, { field: 'EXPL', title: '釋義', sortable : true, formatter: (value) => { return `<span style="white-space: normal">${value.replace(/\/\/〖/g, '<br/>〖')}<span/>` } }
 	//, { field: 'NOTE', title: '本站校訂附註', formatter: (value) => { return `<p data-toggle="tooltip" data-placement="left" title="${value}">${value}<p/>` } }
 ];
 
 const colData_phrase = [
 	{ field: 'YEAR', title: '資料', sortable : true, align: 'center', formatter: (value) => { return `<span class="user-font">${value.replace('_bw', '').replace('_phrase', '').replace('tab_', '')}</span>` } }
 	//, {field: 'ID',title: 'ID'}
-	//, { field: 'TRADSIMP', title: '繁體〔簡體〕', sortable : true, align: 'center', formatter: (value) => { let charStr = value.split('|'), aLink = []; for (let i in charStr) aLink.push(`<a href="javascript:querySubmit('${charStr[i]}', '${i}'=='0' ? 'phrase' : 'phrase_simp', 'dicPhrase')">${charStr[i]}</a>`); return aLink.join('<br/>') } }
-	, { field: 'TRAD', title: '繁體', sortable : true, align: 'center', formatter: (value) => { return `<a style="white-space: normal" href="javascript:querySubmit('${value}', 'phrase', 'dicPhrase')">${value}</a>` } }
+	//, { field: 'TRADSIMP', title: '繁體、簡體', sortable : true, align: 'center', formatter: (value) => { let charStr = value.split('|'), aLink = []; for (let i in charStr) aLink.push(`<a href="javascript:querySubmit('${charStr[i]}', '${i}'=='0' ? 'phrase' : 'phrase_simp', 'dicPhrase')">${charStr[i]}</a>`); return aLink.join('<br/>') } }
+	, { field: 'TRADJYUTPING', title: '繁體、粵拼', sortable : true, align: 'center', formatter: (value) => { let charStr = value.split('|'), aLink = []; for (let i in charStr) aLink.push(`<a href="javascript:querySubmit('${charStr[i]}', '${i}'=='0' ? 'phrase' : 'phrase_jyut6ping3', 'dicPhrase')">${charStr[i]}</a>`); return aLink.join('<br/>') } }
+	//, { field: 'TRAD', title: '繁體', sortable : true, align: 'center', formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'phrase', 'dicPhrase')">${value}</a>` } }
 	//, { field: 'SIMP', title: '簡體', sortable : true, align: 'center', formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'phrase_simp', 'dicPhrase')">${value}</a>` } }
 	//, { field: 'JYUTPING_IPA_TS', title: '粵拼〔統一IPA、原文IPA〕', sortable : true, formatter: (value) => { let jpStr = value.split('|'), aLink = []; for (let i in jpStr) aLink.push(i==0 ? `<a href="javascript:querySubmit('${jpStr[i]}', 'phrase_jyut6ping3', 'dicPhrase')">${jpStr[i]}</a>` : `${jpStr[i]}`); return aLink.join('<br/>') } }
 	//, { field: 'IPA_S', title: '原文IPA', sortable : true }
 	//, { field: 'IPA_T', title: '統一IPA', sortable : true }
-	, { field: 'JYUTPING', title: '粵拼', sortable : true, formatter: (value) => { return `<a style="white-space: normal" href="javascript:querySubmit('${value}', 'phrase_jyut6ping3', 'dicPhrase')">${value}</a>` } }
+	//, { field: 'JYUTPING', title: '粵拼', sortable : true, formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'phrase_jyut6ping3', 'dicPhrase')">${value}</a>` } }
 	, { field: 'SOUR', title: '來源', sortable : true, formatter: (value, row) => { return formatSOUR(value, row['YEAR'], 'png', 'phrase') } }
-	, { field: 'EXPL', title: '上一級分類（或釋義）', sortable : true, formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
-	, { field: 'NOTE', title: '本站校訂附註', sortable : true, formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
-	, { field: 'CLASSIFI', title: '分類', sortable : true, formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
+	, { field: 'EXPLNOTECLASSIFI', title: '上一級分類（或釋義）、本站校訂附註、分類', sortable : true, align: 'left', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
+	//, { field: 'EXPL', title: '上一級分類（或釋義）', sortable : true, formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
+	//, { field: 'NOTE', title: '本站校訂附註', sortable : true, formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
+	//, { field: 'CLASSIFI', title: '分類', sortable : true, formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
 ];
 
 const colData_grammar = [
@@ -756,7 +760,7 @@ const rowData_selectP = [
 	, { SHOW: `<div class="custom-control custom-checkbox custom-control-inline"><input type="checkbox" class="custom-control-input checkbox-phrase" id="checkbox-phrase-jyutandtone" name="dataCheck" value="checkbox-phrase-jyutandtone" onclick="javascript:{document.getElementsByClassName('text-phrase-jyutandtone').forEach((item)=>{ item.disabled = !this.checked });}"><label class="custom-control-label" for="checkbox-phrase-jyutandtone">拼音（帶聲調）</label></div>`, ITEM: `` }
 	, { SHOW: `<div class="custom-control custom-checkbox custom-control-inline"><input type="checkbox" class="custom-control-input checkbox-phrase" id="checkbox-phrase-expl" name="dataCheck" value="checkbox-phrase-expl" onclick="javascript:{document.getElementsByClassName('text-phrase-expl').forEach((item)=>{ item.disabled = !this.checked });}"><label class="custom-control-label" for="checkbox-phrase-expl">釋義</label></div>`, ITEM: `` }
 	, { SHOW: `<div class="custom-control custom-checkbox custom-control-inline"><input type="checkbox" class="custom-control-input checkbox-phrase" id="checkbox-phrase-note" name="dataCheck" value="checkbox-phrase-note" onclick="javascript:{document.getElementsByClassName('text-phrase-note').forEach((item)=>{ item.disabled = !this.checked });}"><label class="custom-control-label" for="checkbox-phrase-note">附註</label></div>`, ITEM: `` }
-	, { SHOW: `<div class="custom-control custom-checkbox custom-control-inline"><input type="checkbox" class="custom-control-input checkbox-phrase" id="checkbox-phrase-classifi1997" name="dataCheck" value="checkbox-phrase-classifi1997" onclick="javascript:{document.getElementsByClassName('checkbox-phrase-5').forEach((item)=>{ item.checked = this.checked });}"><label class="custom-control-label" for="checkbox-phrase-classifi1997">1997分類</label></div>`, ITEM: `一、自然現象 二、時令、時節 三、植物 四、動物|五、房舍 六、身體 七、親屬 八、飯食|九、稱謂 十、疾病 十一、代詞 十二、量詞|十三、方位詞 十四、形容詞 十五、副詞、連詞、介詞 十六、數詞` }
+	, { SHOW: `<div class="custom-control custom-checkbox custom-control-inline"><input type="checkbox" class="custom-control-input checkbox-phrase" id="checkbox-phrase-classifi1997" name="dataCheck" value="checkbox-phrase-classifi1997" onclick="javascript:{document.getElementsByClassName('checkbox-phrase-5').forEach((item)=>{ item.checked = this.checked });}"><label class="custom-control-label" for="checkbox-phrase-classifi1997">1997分類</label></div><br/><div>（該分類無動詞，動詞歸入「六、身體」）</div>`, ITEM: `一、自然現象 二、時令、時節 三、植物 四、動物|五、房舍 六、身體 七、親屬 八、飯食|九、稱謂 十、疾病 十一、代詞 十二、量詞|十三、方位詞 十四、形容詞 十五、副詞、連詞、介詞 十六、數詞` }
 	, { SHOW: `<div class="custom-control custom-checkbox custom-control-inline"><input type="checkbox" class="custom-control-input checkbox-phrase" id="checkbox-phrase-classifi2007" name="dataCheck" value="checkbox-phrase-classifi2007" onclick="javascript:{document.getElementsByClassName('checkbox-phrase-6').forEach((item)=>{ item.checked = this.checked });}"><label class="custom-control-label" for="checkbox-phrase-classifi2007">2007分類</label></div>${setCheckboxDiv}`, ITEM: `一、自然 二、時令 三、農事 四、植物|五、動物 六、房舍 七、稱謂 八、人體|九、疾病 十、服飾 十一、飲食 十二、起居|十三、交際 十四、婚喪 十五、商業 十六、文化|十七、動作 十八、性狀 十九、方位 二十、指代|二十一、副詞 二十二、介詞 二十三、數量` }
 	, { SHOW: `<div class="custom-control custom-checkbox custom-control-inline"><input type="checkbox" class="custom-control-input checkbox-phrase" id="checkbox-phrase-classifi2008" name="dataCheck" value="checkbox-phrase-classifi2008" onclick="javascript:{document.getElementsByClassName('checkbox-phrase-7').forEach((item)=>{ item.checked = this.checked });}"><label class="custom-control-label" for="checkbox-phrase-classifi2008">2008分類</label></div>`, ITEM: `一、天文 日、月、星 風、雲、雷、雨 冰、雪、霜、露 氣候|二、地理 地 山 江、河、湖、海、水 石沙、土塊、礦物 城鄉處所|三、時令時間 季節 節日 年 月 日、時 其他時間概念|四、農業 農事 農具|五、植物 農作物 豆類、菜蔬 樹木 瓜果 花草、菌類|六、動物 牲畜 鳥獸 蟲類 魚蝦類|七、房舍 房子 房屋結構 其他設施|八、器具、用品 一般傢俱 臥室用具 炊事用具 工匠用具 其他生活用品|九、稱謂 一般稱謂 職業稱謂|十、親屬 長輩 平輩 晚輩 其他|十一、身體 五官 手、腳、胸、背 其他|十二、疾病、醫療 一般用語 內科 外科 殘疾等|十三、衣服、穿戴 服裝 鞋帽 裝飾品 其他穿戴用品|十四、飲食 伙食 米食 麪食 肉、蛋 菜 油鹽作料 菸、茶、酒|十五、紅白大事 婚姻、生育 壽辰、喪葬 迷信|十六、日常生活 衣 食 住 行|十七、訟事 訟事|十八、交際 交際|十九、商業、交通 經商行業 經營、交易 賬目、度量衡 交通|二十、文化教育 學校 教室、文具 讀書識字 寫字|二十一、文體活動 遊戲、玩具 體育 武術、舞蹈 戲劇|二十二、動作 一般動作 心理活動 語言動作|二十三、位置 位置|二十四、代詞等 代詞等|二十五、形容詞 形容詞|二十六、副詞、介詞等 副詞、介詞等|二十七、連詞 連詞|二十八、量詞 量詞|二十九、附加成分 後加成分 前加成分 虛字|三十、數字等 數字等|三十一、四字詞語 四字詞語|三十二、干支 干支` }
 	, { SHOW: `<div class="custom-control custom-checkbox custom-control-inline"><input type="checkbox" class="custom-control-input checkbox-phrase" id="checkbox-phrase-classifi" name="dataCheck" value="checkbox-phrase-classifi" onclick="javascript:{document.getElementsByClassName('text-phrase-classifi').forEach((item)=>{ item.disabled = !this.checked });}"><label class="custom-control-label" for="checkbox-phrase-classifi">自定義分類輸入</label></div>`, ITEM: `` }

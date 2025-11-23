@@ -210,7 +210,7 @@ DictDb = (() => {
   // 加载单个数据库
   const loadDatabase = async (dbDir, dbKey) => {
     try {
-      console.info(`开始加载数据库: ${dbDir}`);
+      console.info(`开始加载数据库: ${dbKey}`);
       
       // 确保 sql.js 已初始化
       const SQL = await initSQL();

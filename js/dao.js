@@ -144,9 +144,9 @@ MainQuery = (() => {
 		let querySQL = '';
 		for (let i in selVal) {
 			if (/2021/.test(selVal[i])) {
-				querySQL += `select '${selVal[i]}'||'_'||substr(sour,1,4) YEAR,TRAD||'|'||SIMP TRADSIMP,JYUTPING||'|'||IPA_T||'|'||IPA_S JYUTPING_IPA_TS,* from ${selVal[i]} union `;  // 拼接查詢
+				querySQL += `select '${selVal[i]}'||'_'||substr(sour,1,4) YEAR,TRAD||'|'||JYUTPING TRADJYUTPING,'【上一級分類（或釋義）】'||'<strong>'||EXPL||'</strong>'||'<br/>'||'【本站校訂附註】'||NOTE||'<br/>'||'【分類】'||CLASSIFI EXPLNOTECLASSIFI,* from ${selVal[i]} union `;  // 拼接查詢
 			} else {
-				querySQL += `select '${selVal[i]}' YEAR,TRAD||'|'||SIMP TRADSIMP,JYUTPING||'|'||IPA_T||'|'||IPA_S JYUTPING_IPA_TS,* from ${selVal[i]} union `;  // 拼接查詢
+				querySQL += `select '${selVal[i]}' YEAR,TRAD||'|'||JYUTPING TRADJYUTPING,'【上一級分類（或釋義）】'||'<strong>'||EXPL||'</strong>'||'<br/>'||'【本站校訂附註】'||NOTE||'<br/>'||'【分類】'||CLASSIFI EXPLNOTECLASSIFI,* from ${selVal[i]} union `;  // 拼接查詢
 			}
 		};
 		querySQL = "select * from(" + querySQL.replace(/ union $/gi,"");
@@ -171,9 +171,9 @@ MainQuery = (() => {
 		let querySQL = '';
 		for (let i in selVal) {
 			if (/2021/.test(selVal[i])) {
-				querySQL += `select '${selVal[i]}'||'_'||substr(sour,1,4) YEAR,TRAD||'<br/>'||SIMP TRADSIMP,* from ${selVal[i]} union `;  // 拼接查詢
+				querySQL += `select '${selVal[i]}'||'_'||substr(sour,1,4) YEAR,TRAD||'<br/>'||JYUTPING TRADJYUTPING,'【釋義】'||'<strong>'||EXPL||'</strong>'||'<br/>'||'【本站校訂附註】'||NOTE||'<br/>'||'【分類】'||CLASSIFI EXPLNOTECLASSIFI,* from ${selVal[i]} union `;  // 拼接查詢
 			} else {
-				querySQL += `select '${selVal[i]}' YEAR,TRAD||'<br/>'||SIMP TRADSIMP,* from ${selVal[i]} union `;  // 拼接查詢
+				querySQL += `select '${selVal[i]}' YEAR,TRAD||'<br/>'||JYUTPING TRADJYUTPING,'【釋義】'||'<strong>'||EXPL||'</strong>'||'<br/>'||'【本站校訂附註】'||NOTE||'<br/>'||'【分類】'||CLASSIFI EXPLNOTECLASSIFI,* from ${selVal[i]} union `;  // 拼接查詢
 			}
 		};
 		querySQL = "select * from(" + querySQL.replace(/ union $/gi,"");
@@ -202,9 +202,9 @@ MainQuery = (() => {
 		} else if (queryType == 'phrase_simp') { // 查詢簡體
 			querySQL += `) where 1=2`;
 		} else if (queryType == 'phrase_jyutping') { // 查詢無調粵拼
-			querySQL += `) where replace(replace(replace(replace(replace(replace(jyutping||'，'||jyutping2,'1',''),'2',''),'3',''),'4',''),'5',''),'6','') GLOB '${searchValue}' or replace(replace(replace(replace(replace(replace(jyutping||'，'||jyutping2,'1',''),'2',''),'3',''),'4',''),'5',''),'6','') GLOB '*[ ，]${searchValue}[ ，]*' or replace(replace(replace(replace(replace(replace(jyutping||'，'||jyutping2,'1',''),'2',''),'3',''),'4',''),'5',''),'6','') GLOB '${searchValue}[ ，]*' or replace(replace(replace(replace(replace(replace(jyutping||'，'||jyutping2,'1',''),'2',''),'3',''),'4',''),'5',''),'6','') GLOB '*[ ，]${searchValue}' order by trad`;
+			querySQL += `) where replace(replace(replace(replace(replace(replace(jyutping||','||jyutping2,'1',''),'2',''),'3',''),'4',''),'5',''),'6','') GLOB '${searchValue}' or replace(replace(replace(replace(replace(replace(jyutping||','||jyutping2,'1',''),'2',''),'3',''),'4',''),'5',''),'6','') GLOB '*[ ,，]${searchValue}[ ,，]*' or replace(replace(replace(replace(replace(replace(jyutping||','||jyutping2,'1',''),'2',''),'3',''),'4',''),'5',''),'6','') GLOB '${searchValue}[ ,，]*' or replace(replace(replace(replace(replace(replace(jyutping||','||jyutping2,'1',''),'2',''),'3',''),'4',''),'5',''),'6','') GLOB '*[ ,，]${searchValue}' order by trad`;
 		} else if (queryType == 'phrase_jyut6ping3') { // 查詢有調粵拼
-			querySQL += `) where jyutping||jyutping2 GLOB '${searchValue}' or jyutping||'，'||jyutping2 GLOB '*[ ，]${searchValue}[ ，]*' or jyutping||'，'||jyutping2 GLOB '${searchValue}[ ，]*' or jyutping||'，'||jyutping2 GLOB '*[ ，]${searchValue}' order by trad`;
+			querySQL += `) where jyutping||','||jyutping2 GLOB '${searchValue}' or jyutping||','||jyutping2 GLOB '*[ ,，]${searchValue}[ ,，]*' or jyutping||','||jyutping2 GLOB '${searchValue}[ ,，]*' or jyutping||','||jyutping2 GLOB '*[ ,，]${searchValue}' order by trad`;
 		} else if (queryType == 'phrase_expl') { // 釋義反查
 			querySQL += `) where expl GLOB '*${searchValue}*' order by trad`;
 		} else if (queryType == 'phrase_note') { // 附註反查
@@ -313,9 +313,9 @@ MainQuery = (() => {
 		
 		for (let i in selVal) {
 			if (/2021/.test(selVal[i])) {
-				querySQL += `select '${selVal[i]}'||'_'||substr(sour,1,4) YEAR,TRAD||'|'||SIMP TRADSIMP,JYUTPING||'|'||IPA_T||'|'||IPA_S JYUTPING_IPA_TS,* from ${selVal[i]} union `;  // 拼接查詢
+				querySQL += `select '${selVal[i]}'||'_'||substr(sour,1,4) YEAR,TRAD||'|'||JYUTPING TRADJYUTPING,'【上一級分類（或釋義）】'||EXPL||'<br/>'||'【本站校訂附註】'||NOTE||'<br/>'||'【分類】'||CLASSIFI EXPLNOTECLASSIFI,* from ${selVal[i]} union `;  // 拼接查詢
 			} else {
-				querySQL += `select '${selVal[i]}' YEAR,TRAD||'|'||SIMP TRADSIMP,JYUTPING||'|'||IPA_T||'|'||IPA_S JYUTPING_IPA_TS,* from ${selVal[i]} union `;  // 拼接查詢
+				querySQL += `select '${selVal[i]}' YEAR,TRAD||'|'||JYUTPING TRADJYUTPING,'【上一級分類（或釋義）】'||EXPL||'<br/>'||'【本站校訂附註】'||NOTE||'<br/>'||'【分類】'||CLASSIFI EXPLNOTECLASSIFI,* from ${selVal[i]} union `;  // 拼接查詢
 			}
 		};
 		querySQL = "select * from(" + querySQL.replace(/ union $/gi,"") + ") where 1=1";
