@@ -4,21 +4,21 @@
 
 const cdnAddr = [];
 //cdnAddr.push('https://fastly.jsdelivr.net/npm');
-//cdnAddr.push('leimaau-npm-cdn@1.5.8');
+//cdnAddr.push('leimaau-npm-cdn@1.5.9');
 //cdnAddr.push('db/leimaau.db3');
 cdnAddr.push('https://delicate-bombolone-0bc03e.netlify.app/');
 cdnAddr.push('public/leimaau.db3.gz'); // 使用gzip压缩文件
 
 const cdnAddr2 = [];
 //cdnAddr2.push('https://fastly.jsdelivr.net/npm');
-//cdnAddr2.push('leimaau-npm-cdn@1.5.8');
+//cdnAddr2.push('leimaau-npm-cdn@1.5.9');
 //cdnAddr2.push('db/leimaau2.db3');
 cdnAddr2.push('https://delicate-bombolone-0bc03e.netlify.app/');
 cdnAddr2.push('public/leimaau2.db3.gz'); // 使用gzip压缩文件
 
 const cdnAddr3 = [];
 //cdnAddr3.push('https://fastly.jsdelivr.net/npm');
-//cdnAddr3.push('leimaau-npm-cdn@1.5.8');
+//cdnAddr3.push('leimaau-npm-cdn@1.5.9');
 //cdnAddr3.push('db/leimaau3.db3');
 cdnAddr3.push('https://delicate-bombolone-0bc03e.netlify.app/');
 cdnAddr3.push('public/leimaau3.db3.gz'); // 使用gzip压缩文件
@@ -391,7 +391,7 @@ const colData_proverb = [
 	//, { field: 'SIMP', title: '簡體', sortable : true, align: 'left', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
 	//, { field: 'JYUTPING', title: '粵拼', sortable : true, formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
 	, { field: 'SOUR', title: '來源', sortable : true, formatter: (value, row) => { return formatSOUR(value, row['YEAR'], 'png', 'proverb') } }
-	, { field: 'EXPLNOTECLASSIFI', title: '釋義、本站校訂附註、分類', sortable : true, align: 'left', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
+	, { field: 'EXPLNOTECLASSIFI', title: '釋義（或發音人情況）、本站校訂附註、分類', sortable : true, align: 'left', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
 	//, { field: 'EXPL', title: '釋義', sortable : true, formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
 	//, { field: 'NOTE', title: '本站校訂附註', sortable : true, formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
 	//, { field: 'CLASSIFI', title: '分類', sortable : true, formatter: (value) => { return `<p data-toggle="tooltip" data-placement="left" title="${value}">${value}<p/>` } }
@@ -422,8 +422,8 @@ const colData_phrase = [
 	//, { field: 'IPA_T', title: '統一IPA', sortable : true }
 	//, { field: 'JYUTPING', title: '粵拼', sortable : true, formatter: (value) => { return `<a href="javascript:querySubmit('${value}', 'phrase_jyut6ping3', 'dicPhrase')">${value}</a>` } }
 	, { field: 'SOUR', title: '來源', sortable : true, formatter: (value, row) => { return formatSOUR(value, row['YEAR'], 'png', 'phrase') } }
-	, { field: 'EXPLNOTECLASSIFI', title: '上一級分類（或釋義）、本站校訂附註、分類', sortable : true, align: 'left', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
-	//, { field: 'EXPL', title: '上一級分類（或釋義）', sortable : true, formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
+	, { field: 'EXPLNOTECLASSIFI', title: '釋義（或上一級分類）、本站校訂附註、分類', sortable : true, align: 'left', formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
+	//, { field: 'EXPL', title: '釋義（或上一級分類）', sortable : true, formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
 	//, { field: 'NOTE', title: '本站校訂附註', sortable : true, formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
 	//, { field: 'CLASSIFI', title: '分類', sortable : true, formatter: (value) => { return `<span style="white-space: normal">${value}<span/>` } }
 ];
@@ -855,18 +855,18 @@ const rowData_sponsor = [
 ];
 */
 
-/*
+
 let playlist = [
 	{ title: "Celebrity Mashup", artist: "Blue Stahli", mp3: "http://music.163.com/song/media/outer/url?id=26358699.mp3" ,cover: "http://p1.music.126.net/_fO4tqYgG2-SbYCjTB0Qiw==/109951165209621635.jpg?param=130y130" }
 	, { title: "顽童", artist: "大宇", mp3: "http://music.163.com/song/media/outer/url?id=1433376109.mp3" ,cover: "http://p2.music.126.net/-fkYAJ6ZEUF3z_SvCi7nZA==/109951164832402338.jpg?param=130y130" }
-	, { title: "Trouble Maker", artist: "Soundroll", mp3: "http://music.163.com/song/media/outer/url?id=39224325.mp3" ,cover: "http://p1.music.126.net/pNrh9cQMc8S8s2saGFrDwA==/3223768095974144.jpg?param=130y130" }
+	, { title: "关于我在地铁上莫名其妙干了碗鸡汤这件事儿 (Live)", artist: "孙天宇", mp3: "http://music.163.com/song/media/outer/url?id=2607368013.mp3" ,cover: "http://p1.music.126.net/Yw9k8sm5dZYkM8AS55BGoQ==/109951169775132195.jpg?param=130y130" }
 	, { title: "轻轻地告诉你", artist: "杨钰莹", mp3: "http://music.163.com/song/media/outer/url?id=317396.mp3" ,cover: "http://p2.music.126.net/O51NKwxOEmWlOXw3-hY6BA==/109951167519003016.jpg?param=130y130" }
 	, { title: "Miami Nights", artist: "Work Drugs", mp3: "http://music.163.com/song/media/outer/url?id=532776022.mp3" ,cover: "http://p1.music.126.net/nnj8wlrsc6yLJ9aujhcc0A==/109951165449485352.jpg?param=130y130" }
 	, { title: "柳叶笺 (Instrumental)", artist: "朱彦安", mp3: "http://music.163.com/song/media/outer/url?id=553798646.mp3" ,cover: "http://p1.music.126.net/BfUADafLXpKYAubWpWZJZw==/109951163253095310.jpg?param=130y130" }
 	, { title: "Samurai 45 (伴奏《异度侵入 ID_INVADED》插曲)", artist: "Hinno", mp3: "http://music.163.com/song/media/outer/url?id=2009429476.mp3" ,cover: "http://p1.music.126.net/Bt8ZcyJMfGjKJedn_ue2Jw==/109951168172151605.jpg?param=130y130" }
-	, { title: "one day before i die", artist: "nobody likes you pat", mp3: "http://music.163.com/song/media/outer/url?id=1986926142.mp3" ,cover: "http://p1.music.126.net/5NCG08qMlA5SHjnu3m99qg==/109951167937905668.jpg?param=130y130" }
-	, { title: "星间旅行 Interstellar Journey (英文版)", artist: "HOYO-MiX / Lea Sirk", mp3: "http://music.163.com/song/media/outer/url?id=2043177706.mp3" ,cover: "http://p2.music.126.net/JaSa3Gt5oaJ77cDfJBR1fg==/109951168575641463.jpg?param=130y130" }
-	, { title: "致：黯淡星", artist: "傲七爷 / 哦漏", mp3: "http://music.163.com/song/media/outer/url?id=2047787698.mp3" ,cover: "http://p2.music.126.net/LAXHjEEFTBTgg85eHWQ0LQ==/109951168616575456.jpg?param=130y130" }
+	, { title: "阑珊处", artist: "唐伯虎Annie", mp3: "http://music.163.com/song/media/outer/url?id=2692072314.mp3" ,cover: "http://p1.music.126.net/OlfKE-Imu3iPqzZgu_SPvQ==/109951170700086034.jpg?param=130y130" }
+	, { title: "字字我念", artist: "任胤菘", mp3: "http://music.163.com/song/media/outer/url?id=2721297073.mp3" ,cover: "http://p2.music.126.net/mX6yQt2glZo_0FFAW6OXyw==/109951171707041907.jpg?param=130y130" }
+	, { title: "谎", artist: "双笙（陈元汐） / 瞿子千 / 万物和声", mp3: "http://music.163.com/song/media/outer/url?id=2036195126.mp3" ,cover: "http://p2.music.126.net/IAJFLnY_AUkg1Wbc1cI4hg==/109951168521636974.jpg?param=130y130" }
 	, { title: "城市青年图鉴", artist: "侯磊", mp3: "http://music.163.com/song/media/outer/url?id=1905604895.mp3" ,cover: "http://p2.music.126.net/bltsKq7u2MtjWXnbJAIArg==/109951166778335025.jpg?param=130y130" }
 	, { title: "杀死那个石家庄人", artist: "万能青年旅店", mp3: "http://music.163.com/song/media/outer/url?id=386844.mp3" ,cover: "http://p1.music.126.net/W1kczDCB4-r-uNAznD1ljg==/108851651165850.jpg?param=130y130" }
 	, { title: "有梦好甜蜜(独唱版)", artist: "胡彦斌", mp3: "http://music.163.com/song/media/outer/url?id=4877778.mp3" ,cover: "http://p2.music.126.net/so1A3jfz5PBIw8I_b0NXRA==/19171084741913846.jpg?param=130y130" }
@@ -879,7 +879,7 @@ function bgChange(){
 	lis[i].style.background = 'rgba(246, 246, 246, 0.5)';
 }
 window.onload = bgChange;
-*/
+
 
 // 鏈接顯示函數
 function showLink(textChar){

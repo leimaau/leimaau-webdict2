@@ -144,9 +144,9 @@ MainQuery = (() => {
 		let querySQL = '';
 		for (let i in selVal) {
 			if (/2021/.test(selVal[i])) {
-				querySQL += `select '${selVal[i]}'||'_'||substr(sour,1,4) YEAR,TRAD||'|'||JYUTPING TRADJYUTPING,'【上一級分類（或釋義）】'||'<strong>'||EXPL||'</strong>'||'<br/>'||'【本站校訂附註】'||NOTE||'<br/>'||'【分類】'||CLASSIFI EXPLNOTECLASSIFI,* from ${selVal[i]} union `;  // 拼接查詢
+				querySQL += `select '${selVal[i]}'||'_'||substr(sour,1,4) YEAR,TRAD||'|'||JYUTPING TRADJYUTPING,'【釋義（或上一級分類）】'||'<strong style="color: #579572;">'||EXPL||'</strong>'||'<br/>'||'【本站校訂附註】'||NOTE||'<br/>'||'【分類】'||CLASSIFI EXPLNOTECLASSIFI,* from ${selVal[i]} union `;  // 拼接查詢
 			} else {
-				querySQL += `select '${selVal[i]}' YEAR,TRAD||'|'||JYUTPING TRADJYUTPING,'【上一級分類（或釋義）】'||'<strong>'||EXPL||'</strong>'||'<br/>'||'【本站校訂附註】'||NOTE||'<br/>'||'【分類】'||CLASSIFI EXPLNOTECLASSIFI,* from ${selVal[i]} union `;  // 拼接查詢
+				querySQL += `select '${selVal[i]}' YEAR,TRAD||'|'||JYUTPING TRADJYUTPING,'【釋義（或上一級分類）】'||'<strong style="color: #579572;">'||EXPL||'</strong>'||'<br/>'||'【本站校訂附註】'||NOTE||'<br/>'||'【分類】'||CLASSIFI EXPLNOTECLASSIFI,* from ${selVal[i]} union `;  // 拼接查詢
 			}
 		};
 		querySQL = "select * from(" + querySQL.replace(/ union $/gi,"");
@@ -171,9 +171,9 @@ MainQuery = (() => {
 		let querySQL = '';
 		for (let i in selVal) {
 			if (/2021/.test(selVal[i])) {
-				querySQL += `select '${selVal[i]}'||'_'||substr(sour,1,4) YEAR,TRAD||'<br/>'||JYUTPING TRADJYUTPING,'【釋義】'||'<strong>'||EXPL||'</strong>'||'<br/>'||'【本站校訂附註】'||NOTE||'<br/>'||'【分類】'||CLASSIFI EXPLNOTECLASSIFI,* from ${selVal[i]} union `;  // 拼接查詢
+				querySQL += `select '${selVal[i]}'||'_'||substr(sour,1,4) YEAR,TRAD||'<br/>'||JYUTPING TRADJYUTPING,'【釋義（或發音人情況）】'||'<strong style="color: #579572;">'||EXPL||'</strong>'||'<br/>'||'【本站校訂附註】'||NOTE||'<br/>'||'【分類】'||CLASSIFI EXPLNOTECLASSIFI,* from ${selVal[i]} union `;  // 拼接查詢
 			} else {
-				querySQL += `select '${selVal[i]}' YEAR,TRAD||'<br/>'||JYUTPING TRADJYUTPING,'【釋義】'||'<strong>'||EXPL||'</strong>'||'<br/>'||'【本站校訂附註】'||NOTE||'<br/>'||'【分類】'||CLASSIFI EXPLNOTECLASSIFI,* from ${selVal[i]} union `;  // 拼接查詢
+				querySQL += `select '${selVal[i]}' YEAR,TRAD||'<br/>'||JYUTPING TRADJYUTPING,'【釋義（或發音人情況）】'||'<strong style="color: #579572;">'||EXPL||'</strong>'||'<br/>'||'【本站校訂附註】'||NOTE||'<br/>'||'【分類】'||CLASSIFI EXPLNOTECLASSIFI,* from ${selVal[i]} union `;  // 拼接查詢
 			}
 		};
 		querySQL = "select * from(" + querySQL.replace(/ union $/gi,"");
@@ -313,9 +313,9 @@ MainQuery = (() => {
 		
 		for (let i in selVal) {
 			if (/2021/.test(selVal[i])) {
-				querySQL += `select '${selVal[i]}'||'_'||substr(sour,1,4) YEAR,TRAD||'|'||JYUTPING TRADJYUTPING,'【上一級分類（或釋義）】'||EXPL||'<br/>'||'【本站校訂附註】'||NOTE||'<br/>'||'【分類】'||CLASSIFI EXPLNOTECLASSIFI,* from ${selVal[i]} union `;  // 拼接查詢
+				querySQL += `select '${selVal[i]}'||'_'||substr(sour,1,4) YEAR,TRAD||'|'||JYUTPING TRADJYUTPING,'【釋義（或上一級分類）】'||'<strong style="color: #579572;">'||EXPL||'</strong>'||'<br/>'||'【本站校訂附註】'||NOTE||'<br/>'||'【分類】'||CLASSIFI EXPLNOTECLASSIFI,* from ${selVal[i]} union `;  // 拼接查詢
 			} else {
-				querySQL += `select '${selVal[i]}' YEAR,TRAD||'|'||JYUTPING TRADJYUTPING,'【上一級分類（或釋義）】'||EXPL||'<br/>'||'【本站校訂附註】'||NOTE||'<br/>'||'【分類】'||CLASSIFI EXPLNOTECLASSIFI,* from ${selVal[i]} union `;  // 拼接查詢
+				querySQL += `select '${selVal[i]}' YEAR,TRAD||'|'||JYUTPING TRADJYUTPING,'【釋義（或上一級分類）】'||'<strong style="color: #579572;">'||EXPL||'</strong>'||'<br/>'||'【本站校訂附註】'||NOTE||'<br/>'||'【分類】'||CLASSIFI EXPLNOTECLASSIFI,* from ${selVal[i]} union `;  // 拼接查詢
 			}
 		};
 		querySQL = "select * from(" + querySQL.replace(/ union $/gi,"") + ") where 1=1";
