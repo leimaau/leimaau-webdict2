@@ -3668,4 +3668,5 @@ var tradData = [{simp:'𪮳',trad:['𢺳']},
 {simp:'𫍟',trad:['𧦧']},
 {simp:'𮫂',trad:['鬡']},
 {simp:'𫗩',trad:['饠']},
+{simp:'𪠳',trad:['唓']},
 ];

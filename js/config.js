@@ -857,19 +857,19 @@ const rowData_sponsor = [
 
 
 let playlist = [
-	{ title: "Celebrity Mashup", artist: "Blue Stahli", mp3: "http://music.163.com/song/media/outer/url?id=26358699.mp3" ,cover: "http://p1.music.126.net/_fO4tqYgG2-SbYCjTB0Qiw==/109951165209621635.jpg?param=130y130" }
-	, { title: "顽童", artist: "大宇", mp3: "http://music.163.com/song/media/outer/url?id=1433376109.mp3" ,cover: "http://p2.music.126.net/-fkYAJ6ZEUF3z_SvCi7nZA==/109951164832402338.jpg?param=130y130" }
+	{ title: "孤单北半球（R&B版）", artist: "LHX", mp3: "http://music.163.com/song/media/outer/url?id=3343937570.mp3" ,cover: "http://p1.music.126.net/ci_rXUg2vmyKD09fRZigSw==/109951172590853712.jpg?param=130y130" }
+	, { title: "月牙湾（R&B男声）", artist: "江越", mp3: "http://music.163.com/song/media/outer/url?id=3334681833.mp3" ,cover: "http://p1.music.126.net/LS9RjTcciZzMUy1QHR_I7w==/109951172521359501.jpg?param=130y130" }
 	, { title: "关于我在地铁上莫名其妙干了碗鸡汤这件事儿 (Live)", artist: "孙天宇", mp3: "http://music.163.com/song/media/outer/url?id=2607368013.mp3" ,cover: "http://p1.music.126.net/Yw9k8sm5dZYkM8AS55BGoQ==/109951169775132195.jpg?param=130y130" }
-	, { title: "轻轻地告诉你", artist: "杨钰莹", mp3: "http://music.163.com/song/media/outer/url?id=317396.mp3" ,cover: "http://p2.music.126.net/O51NKwxOEmWlOXw3-hY6BA==/109951167519003016.jpg?param=130y130" }
+	, { title: "轻轻地告诉你", artist: "大旗", mp3: "https://v26-ex-luna.douyinvod.com/ebafaacbb64f2d41d08c73b3027feca6/699564ee/video/tos/cn/tos-cn-ve-2774/oodTxgSiGI9TarXDEyQ8UJ6EIQsT1MWwABPiM/?a=8478&ch=0&cr=5&dr=0&cd=0%7C0%7C0%7C5&br=126&bt=126&ft=H6XWy4BeHuuD.5XONg2VvjpDt1q-TrK_t3gnRkaIIBO9UjVhWL6&mime_type=audio_mp4&qs=6&rc=PDhmOTs8OGk0ZmlpZGk3N0BpMzx2dms5cmxtNzMzNDlkM0AvY15fLjViX2AxMzNjMjQwYSNyYGY2MmQ0LW5hLS1kYWFzcw%3D%3D&btag=c0000e00030000&dy_q=1771308120&l=202602171402006EDE378C5067C7806096" ,cover: "https://p3-luna.douyinpic.com/img/tos-cn-v-2774c002/oIBNDfpItEWNEEMfAApgFBT1ERZTCA0vAAgAaH~c5_375x375.jpg" }
+	, { title: "你爱我像谁（翻唱正式版）", artist: "王大二勇", mp3: "http://music.163.com/song/media/outer/url?id=2154779425.mp3" ,cover: "http://p2.music.126.net/O9Y1jA5-ozN32RM1e-n3qQ==/109951169580402487.jpg?param=130y130" }
+	, { title: "Celebrity Mashup", artist: "Blue Stahli", mp3: "http://music.163.com/song/media/outer/url?id=26358699.mp3" ,cover: "http://p1.music.126.net/_fO4tqYgG2-SbYCjTB0Qiw==/109951165209621635.jpg?param=130y130" }
 	, { title: "Miami Nights", artist: "Work Drugs", mp3: "http://music.163.com/song/media/outer/url?id=532776022.mp3" ,cover: "http://p1.music.126.net/nnj8wlrsc6yLJ9aujhcc0A==/109951165449485352.jpg?param=130y130" }
-	, { title: "柳叶笺 (Instrumental)", artist: "朱彦安", mp3: "http://music.163.com/song/media/outer/url?id=553798646.mp3" ,cover: "http://p1.music.126.net/BfUADafLXpKYAubWpWZJZw==/109951163253095310.jpg?param=130y130" }
 	, { title: "Samurai 45 (伴奏《异度侵入 ID_INVADED》插曲)", artist: "Hinno", mp3: "http://music.163.com/song/media/outer/url?id=2009429476.mp3" ,cover: "http://p1.music.126.net/Bt8ZcyJMfGjKJedn_ue2Jw==/109951168172151605.jpg?param=130y130" }
-	, { title: "阑珊处", artist: "唐伯虎Annie", mp3: "http://music.163.com/song/media/outer/url?id=2692072314.mp3" ,cover: "http://p1.music.126.net/OlfKE-Imu3iPqzZgu_SPvQ==/109951170700086034.jpg?param=130y130" }
-	, { title: "字字我念", artist: "任胤菘", mp3: "http://music.163.com/song/media/outer/url?id=2721297073.mp3" ,cover: "http://p2.music.126.net/mX6yQt2glZo_0FFAW6OXyw==/109951171707041907.jpg?param=130y130" }
-	, { title: "谎", artist: "双笙（陈元汐） / 瞿子千 / 万物和声", mp3: "http://music.163.com/song/media/outer/url?id=2036195126.mp3" ,cover: "http://p2.music.126.net/IAJFLnY_AUkg1Wbc1cI4hg==/109951168521636974.jpg?param=130y130" }
-	, { title: "城市青年图鉴", artist: "侯磊", mp3: "http://music.163.com/song/media/outer/url?id=1905604895.mp3" ,cover: "http://p2.music.126.net/bltsKq7u2MtjWXnbJAIArg==/109951166778335025.jpg?param=130y130" }
-	, { title: "杀死那个石家庄人", artist: "万能青年旅店", mp3: "http://music.163.com/song/media/outer/url?id=386844.mp3" ,cover: "http://p1.music.126.net/W1kczDCB4-r-uNAznD1ljg==/108851651165850.jpg?param=130y130" }
-	, { title: "有梦好甜蜜(独唱版)", artist: "胡彦斌", mp3: "http://music.163.com/song/media/outer/url?id=4877778.mp3" ,cover: "http://p2.music.126.net/so1A3jfz5PBIw8I_b0NXRA==/19171084741913846.jpg?param=130y130" }
+	, { title: "第一次爱的人(R&B)", artist: "拾光者 / 大头针", mp3: "http://music.163.com/song/media/outer/url?id=3336783009.mp3" ,cover: "http://p2.music.126.net/1qhaBqPUD7LGPFmzK_pKzA==/109951172551950545.jpg?param=130y130" }
+	, { title: "世界が終るまでは…~TV Version~", artist: "WANDS", mp3: "http://music.163.com/song/media/outer/url?id=27495025.mp3" ,cover: "http://p2.music.126.net/ss5Rm0q7UIV1cMvUid-tbw==/5727356069142637.jpg?param=130y130" }
+	, { title: "爱就一个字", artist: "张信哲", mp3: "http://music.163.com/song/media/outer/url?id=33599439.mp3" ,cover: "http://p2.music.126.net/8lHJleTkwDg-DlhRq35EhA==/3366704604374334.jpg?param=130y130" }
+	, { title: "國士無雙(戰無不胜)", artist: "GTR7 / SENKEI", mp3: "http://music.163.com/song/media/outer/url?id=2108021465.mp3" ,cover: "http://p2.music.126.net/uHhvsZhZR_mmIPlfFV7MUA==/109951169176137343.jpg?param=130y130" }
+	, { title: "下一站天后（翻唱热播）", artist: "音乐休憩站", mp3: "http://music.163.com/song/media/outer/url?id=2157802206.mp3" ,cover: "http://p2.music.126.net/-VDeKl03izOQI9H1-cAcgw==/109951169605994022.jpg?param=130y130" }
 ];
 let isRotate = true;
 let autoplay = false;

@@ -3674,3 +3674,4 @@ and simp not in(select word from temp_xxxx3)
 {simp:'𫍟',trad:['𧦧']},
 {simp:'𮫂',trad:['鬡']},
 {simp:'𫗩',trad:['饠']},
+{simp:'𪠳',trad:['唓']},
