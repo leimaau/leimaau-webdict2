@@ -857,10 +857,10 @@ const rowData_sponsor = [
 
 
 let playlist = [
-	{ title: "孤单北半球（R&B版）", artist: "LHX", mp3: "http://music.163.com/song/media/outer/url?id=3343937570.mp3" ,cover: "http://p1.music.126.net/ci_rXUg2vmyKD09fRZigSw==/109951172590853712.jpg?param=130y130" }
+	{ title: "当你孤单你会想起谁（R&B版）", artist: "小黑", mp3: "http://p1.music.126.net/GaoXajrRQTaUuQjKponkRg==/109951172578376050.jpg?param=130y130" }
+	, { title: "孤单北半球（R&B版）", artist: "LHX", mp3: "http://music.163.com/song/media/outer/url?id=3343937570.mp3" ,cover: "http://p1.music.126.net/ci_rXUg2vmyKD09fRZigSw==/109951172590853712.jpg?param=130y130" }
 	, { title: "月牙湾（R&B男声）", artist: "江越", mp3: "http://music.163.com/song/media/outer/url?id=3334681833.mp3" ,cover: "http://p1.music.126.net/LS9RjTcciZzMUy1QHR_I7w==/109951172521359501.jpg?param=130y130" }
 	, { title: "关于我在地铁上莫名其妙干了碗鸡汤这件事儿 (Live)", artist: "孙天宇", mp3: "http://music.163.com/song/media/outer/url?id=2607368013.mp3" ,cover: "http://p1.music.126.net/Yw9k8sm5dZYkM8AS55BGoQ==/109951169775132195.jpg?param=130y130" }
-	, { title: "轻轻地告诉你", artist: "大旗", mp3: "https://v26-ex-luna.douyinvod.com/ebafaacbb64f2d41d08c73b3027feca6/699564ee/video/tos/cn/tos-cn-ve-2774/oodTxgSiGI9TarXDEyQ8UJ6EIQsT1MWwABPiM/?a=8478&ch=0&cr=5&dr=0&cd=0%7C0%7C0%7C5&br=126&bt=126&ft=H6XWy4BeHuuD.5XONg2VvjpDt1q-TrK_t3gnRkaIIBO9UjVhWL6&mime_type=audio_mp4&qs=6&rc=PDhmOTs8OGk0ZmlpZGk3N0BpMzx2dms5cmxtNzMzNDlkM0AvY15fLjViX2AxMzNjMjQwYSNyYGY2MmQ0LW5hLS1kYWFzcw%3D%3D&btag=c0000e00030000&dy_q=1771308120&l=202602171402006EDE378C5067C7806096" ,cover: "https://p3-luna.douyinpic.com/img/tos-cn-v-2774c002/oIBNDfpItEWNEEMfAApgFBT1ERZTCA0vAAgAaH~c5_375x375.jpg" }
 	, { title: "你爱我像谁（翻唱正式版）", artist: "王大二勇", mp3: "http://music.163.com/song/media/outer/url?id=2154779425.mp3" ,cover: "http://p2.music.126.net/O9Y1jA5-ozN32RM1e-n3qQ==/109951169580402487.jpg?param=130y130" }
 	, { title: "Celebrity Mashup", artist: "Blue Stahli", mp3: "http://music.163.com/song/media/outer/url?id=26358699.mp3" ,cover: "http://p1.music.126.net/_fO4tqYgG2-SbYCjTB0Qiw==/109951165209621635.jpg?param=130y130" }
 	, { title: "Miami Nights", artist: "Work Drugs", mp3: "http://music.163.com/song/media/outer/url?id=532776022.mp3" ,cover: "http://p1.music.126.net/nnj8wlrsc6yLJ9aujhcc0A==/109951165449485352.jpg?param=130y130" }
