@@ -110,7 +110,7 @@ const rowData_book = [
 	, { BOOK: '2007年林亦《南寧石埠平話同音字彙》', NN: '', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', NN_SH: 'noData', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: '' , MS_P: ''}
 	, { BOOK: '2008年林亦、覃鳳餘《廣西南寧白話研究》', NN: 'tab_2008', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: '' , MS_P: ''}
 	, { BOOK: '2009年陳海倫、林亦《粵語平話土話方音字彙》', NN: 'tab_2009', NN_D: '', NN_Y: 'noData', HX_B: '', NN_T: 'tab_2009_bw', NN_SL: '', NN_S: '', NN_SH: 'noData', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: 'noData' , MS_P: ''}
-	, { BOOK: '2009年張菁雅《桂南平話語音研究》', NN: 'tab_200906', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', NN_SH: '', HX_P: 'noData', BY_P: '' , BY_P2: '' , BY_P3: '' , MS_P: ''}
+	, { BOOK: '2009年張菁雅《桂南平話語音比較研究》', NN: 'tab_200906', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', NN_SH: '', HX_P: 'noData', BY_P: '' , BY_P2: '' , BY_P3: '' , MS_P: ''}
 	, { BOOK: '2017年教育部《漢語方言用字規範》', NN: '', NN_D: '', NN_Y: '', HX_B: '', NN_T: 'tab_201703_bw', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: '' , MS_P: ''}
 	, { BOOK: '2017年詹伯慧、張振興《漢語方言學大詞典》', NN: '', NN_D: '', NN_Y: '', HX_B: '', NN_T: 'tab_201705_bw', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: '' , MS_P: ''}
 	, { BOOK: '2018年滕祖愛《南寧市與桂平市粵方言比較研究》', NN: 'tab_201806', NN_D: '', NN_Y: '', HX_B: '', NN_T: '', NN_SL: '', NN_S: '', NN_SH: '', HX_P: '', BY_P: '' , BY_P2: '' , BY_P3: '' , MS_P: ''}
@@ -857,19 +857,19 @@ const rowData_sponsor = [
 
 
 let playlist = [
-	{ title: "当你孤单你会想起谁（R&B版）", artist: "小黑", mp3: "http://p1.music.126.net/GaoXajrRQTaUuQjKponkRg==/109951172578376050.jpg?param=130y130" }
-	, { title: "孤单北半球（R&B版）", artist: "LHX", mp3: "http://music.163.com/song/media/outer/url?id=3343937570.mp3" ,cover: "http://p1.music.126.net/ci_rXUg2vmyKD09fRZigSw==/109951172590853712.jpg?param=130y130" }
-	, { title: "月牙湾（R&B男声）", artist: "江越", mp3: "http://music.163.com/song/media/outer/url?id=3334681833.mp3" ,cover: "http://p1.music.126.net/LS9RjTcciZzMUy1QHR_I7w==/109951172521359501.jpg?param=130y130" }
-	, { title: "关于我在地铁上莫名其妙干了碗鸡汤这件事儿 (Live)", artist: "孙天宇", mp3: "http://music.163.com/song/media/outer/url?id=2607368013.mp3" ,cover: "http://p1.music.126.net/Yw9k8sm5dZYkM8AS55BGoQ==/109951169775132195.jpg?param=130y130" }
-	, { title: "你爱我像谁（翻唱正式版）", artist: "王大二勇", mp3: "http://music.163.com/song/media/outer/url?id=2154779425.mp3" ,cover: "http://p2.music.126.net/O9Y1jA5-ozN32RM1e-n3qQ==/109951169580402487.jpg?param=130y130" }
-	, { title: "Celebrity Mashup", artist: "Blue Stahli", mp3: "http://music.163.com/song/media/outer/url?id=26358699.mp3" ,cover: "http://p1.music.126.net/_fO4tqYgG2-SbYCjTB0Qiw==/109951165209621635.jpg?param=130y130" }
-	, { title: "Miami Nights", artist: "Work Drugs", mp3: "http://music.163.com/song/media/outer/url?id=532776022.mp3" ,cover: "http://p1.music.126.net/nnj8wlrsc6yLJ9aujhcc0A==/109951165449485352.jpg?param=130y130" }
-	, { title: "Samurai 45 (伴奏《异度侵入 ID_INVADED》插曲)", artist: "Hinno", mp3: "http://music.163.com/song/media/outer/url?id=2009429476.mp3" ,cover: "http://p1.music.126.net/Bt8ZcyJMfGjKJedn_ue2Jw==/109951168172151605.jpg?param=130y130" }
-	, { title: "第一次爱的人(R&B)", artist: "拾光者 / 大头针", mp3: "http://music.163.com/song/media/outer/url?id=3336783009.mp3" ,cover: "http://p2.music.126.net/1qhaBqPUD7LGPFmzK_pKzA==/109951172551950545.jpg?param=130y130" }
-	, { title: "世界が終るまでは…~TV Version~", artist: "WANDS", mp3: "http://music.163.com/song/media/outer/url?id=27495025.mp3" ,cover: "http://p2.music.126.net/ss5Rm0q7UIV1cMvUid-tbw==/5727356069142637.jpg?param=130y130" }
-	, { title: "爱就一个字", artist: "张信哲", mp3: "http://music.163.com/song/media/outer/url?id=33599439.mp3" ,cover: "http://p2.music.126.net/8lHJleTkwDg-DlhRq35EhA==/3366704604374334.jpg?param=130y130" }
-	, { title: "國士無雙(戰無不胜)", artist: "GTR7 / SENKEI", mp3: "http://music.163.com/song/media/outer/url?id=2108021465.mp3" ,cover: "http://p2.music.126.net/uHhvsZhZR_mmIPlfFV7MUA==/109951169176137343.jpg?param=130y130" }
-	, { title: "下一站天后（翻唱热播）", artist: "音乐休憩站", mp3: "http://music.163.com/song/media/outer/url?id=2157802206.mp3" ,cover: "http://p2.music.126.net/-VDeKl03izOQI9H1-cAcgw==/109951169605994022.jpg?param=130y130" }
+	{ title: "一抹春妆赴春光", artist: "姜南溪", mp3: "http://music.163.com/song/media/outer/url?id=3365224791.mp3" ,cover: "http://p1.music.126.net/rMpBr_w_pIOFTFZWTc_6pA==/109951172973361963.jpg?param=130y130"  }
+	, { title: "等花落", artist: "铁柱", mp3: "http://music.163.com/song/media/outer/url?id=3365300964.mp3" ,cover: "http://p2.music.126.net/ZGFvNmf_6MpCuYnREaYm9A==/109951172974236305.jpg?param=130y130" }
+	, { title: "悄然靠近", artist: "沈逸", mp3: "http://music.163.com/song/media/outer/url?id=3368815479.mp3" ,cover: "http://p1.music.126.net/YSb1lZ5lUDS09mQ9evDv2A==/109951173028021575.jpg?param=130y130" }
+	, { title: "コンプリケイション", artist: "OOKiEZ is PUNK'D", mp3: "http://music.163.com/song/media/outer/url?id=811995.mp3" ,cover: "http://p2.music.126.net/WyrGkrM1Z0VNgqRj5HafrQ==/866415162731275.jpg?param=130y130" }
+	, { title: "Trust Me", artist: "松下優也", mp3: "http://music.163.com/song/media/outer/url?id=30053349.mp3" ,cover: "http://p2.music.126.net/i2imMnXpmtxMX6rBfHx3Tg==/7851612533948584.jpg?param=130y130" }
+	, { title: "难念的经", artist: "周华健", mp3: "http://music.163.com/song/media/outer/url?id=5271858.mp3" ,cover: "http://p2.music.126.net/kwahKngiu5K4s2hktASbsw==/109951165792137374.jpg?param=130y130" }
+	, { title: "Always On My Mind", artist: "Sakda Record", mp3: "http://music.163.com/song/media/outer/url?id=3366916631.mp3" ,cover: "http://p1.music.126.net/EidODb8mlUHEmA3cvK-Ftg==/109951173000583429.jpg?param=130y130" }
+	, { title: "Wonderland", artist: "卫兰 / 廿四味", mp3: "http://music.163.com/song/media/outer/url?id=297482.mp3" ,cover: "http://p1.music.126.net/osuhc7lsZAByRb5UAG8Ztg==/1781208837010226.jpg?param=130y130" }
+	, { title: "日不落", artist: "蔡依林", mp3: "http://music.163.com/song/media/outer/url?id=209643.mp3" ,cover: "http://p1.music.126.net/Yu--DIhsQSoei6XQTrSUNA==/109951163200168756.jpg?param=130y130" }
+	, { title: "WHITE NIGHT (不眠之夜)", artist: "Jake Miller / HOYO-MiX", mp3: "http://music.163.com/song/media/outer/url?id=2122308128.mp3" ,cover: "http://p2.music.126.net/sZ-rACbFrybF0x_lI6XNMw==/109951169297766755.jpg?param=130y130" }
+	, { title: "天生鬼才", artist: "萧敬腾 / HOYO-MiX", mp3: "http://music.163.com/song/media/outer/url?id=3370640529.mp3" ,cover: "http://p2.music.126.net/FbgTqkMiPKZqS8Fk4yNS6w==/109951173054819321.jpg?param=130y130" }
+	, { title: "Brand New Sky (新世界的天空)", artist: "鸣潮先约电台 / 飞行雪绒", mp3: "http://music.163.com/song/media/outer/url?id=3395393730.mp3" ,cover: "http://p1.music.126.net/NbbrRcmT1EYggFnvom016Q==/109951173417603934.jpg?param=130y130" }
+	, { title: "心花开", artist: "李千那", mp3: "http://music.163.com/song/media/outer/url?id=28613322.mp3" ,cover: "http://p2.music.126.net/QdBHyumYd4T1JzBPjuZTCQ==/109951165992358264.jpg?param=130y130" }
 ];
 let isRotate = true;
 let autoplay = false;
@@ -885,7 +885,7 @@ window.onload = bgChange;
 function showLink(textChar){
 	const outputText = [], outputText2 = [], outputText3 = [];
 	outputText.push(`<div class="card mt-1 mb-3"><div class="card-header">快速鏈接</div><div class="card-body text-secondary"><span>
-	漢典網：<a href="http://www.zdic.net/hans/${textChar}" target="_blank">${textChar}</a> | <a href="http://www.zdic.net/zd/yy/yy/${textChar}" target="_blank">粵語</a> | <a href="http://www.zdic.net/zd/yy/ph/${textChar}" target="_blank">平話</a><br/>
+	漢典網：<a href="http://www.zdic.net/hans/${textChar}" target="_blank">${textChar}</a> | <a href="https://zdic.net/hans/${textChar}/yueyu" target="_blank">粵語</a> | <a href="https://zdic.net/hans/${textChar}/pinghua" target="_blank">平話</a><br/>
 	韻典網：<a href="https://ytenx.org/zim?dzih=${textChar}&dzyen=1&jtkb=1&jtkd=1&jtdt=1&jtgt=1" target="_blank">${textChar}</a><br/>
 	粵音資料集叢：<a href="https://jyut.net/query?q=${textChar}" target="_blank">${textChar}</a><br/>
 	漢語多功能字庫：<a href="http://humanum.arts.cuhk.edu.hk/Lexis/lexi-mf/search.php?word=${textChar}" target="_blank">${textChar}</a> | <a href="http://humanum.arts.cuhk.edu.hk/Lexis/lexi-mf/dialect.php?word=${textChar}" target="_blank">其他方言讀音</a><br/>
