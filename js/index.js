@@ -1435,7 +1435,7 @@ function allPhraseFun(trad_matchType, jyut_matchType, jyutandtone_matchType, exp
 	let selListClassifi1997 = [], selListClassifi2007 = [], selListClassifi2008 = [];
 	document.getElementsByClassName("checkbox-phrase-5").forEach((item)=>{ if(item.checked == true) selListClassifi1997.push(item.value)});
 	document.getElementsByClassName("checkbox-phrase-6").forEach((item)=>{ if(item.checked == true) selListClassifi2007.push(item.value)});
-	document.getElementsByClassName("phrase-item-7").forEach((item)=>{ if(item.checked == true) selListClassifi2008.push(item.value)});
+	document.getElementsByClassName("phrase-item-7").forEach((item)=>{ if(item.checked == true) selListClassifi2008.push(document.getElementById(item.id.slice(0, -1)+'0').value+'*'+item.value)});
 	
 	// 開始顯示
 	let judgeFlag = queryAllPhrase(selListClassifi1997,selListClassifi2007,selListClassifi2008,text_phrasetrad.value,document.getElementById("checkbox-phrase-trad").checked,text_phrasejyut.value,document.getElementById("checkbox-phrase-jyut").checked,text_phrasejyutandtone.value,document.getElementById("checkbox-phrase-jyutandtone").checked,text_phraseexpl.value,document.getElementById("checkbox-phrase-expl").checked,text_phrasenote.value,document.getElementById("checkbox-phrase-note").checked,text_phraseclassifi.value,document.getElementById("checkbox-phrase-classifi").checked,trad_matchType, jyut_matchType, jyutandtone_matchType, expl_matchType, note_matchType, classifi_matchType);
@@ -1527,6 +1527,6 @@ $(() => {
 	document.getElementById("yearStr").innerHTML = new Date().getFullYear();
 	
 	//displayAlert("新版本 <a href='https://leimaau-webdict3.vercel.app/' target='_blank'>Leimaau's Webdict 3</a> 已上線，<a href='https://tranquil-tulumba-4026d9.netlify.app' target='_blank'>備用系統</a> 同時開啓", outputAlert, 'alert-success');
-	displayAlert("【公告】<br>說明：每次更新後第一次加載要花些時間，之後加載則方便許多，爲減少數據庫壓力，詞彙只收錄繁體，不提供簡體搜索<br>更新版本：20260624<br>更新內容：<br>1.修訂字典數據，改正一些錯誤<br>2.修訂詞典數據，修訂現代漢語詞彙表，擴充本地詞彙、諺語、童謠等<br>3.更新音樂播放器的音樂<br>4.修訂了小冊子「詞法和句法」一章<br>5.詳細地修訂歷史可上github查詢", outputAlert, 'alert-success');
+	displayAlert("<span style='font-family: fangsong;'>【開篇語】<br><br><span style='font-size: xx-large;'>「月光光，映池塘，花棉被，照紗窗，明燈照，照繡房，明鏡照，照梳粧，梳起蟠龍天大光，手拈梳盒輕輕放，莫來驚醒讀書郎。」<br>——1937年廣西省政府總務處統計室《南寧社會概況·童謠》P129</span><br><br><br>【公告】<br>說明：每次更新後第一次加載要花些時間，之後加載則方便許多，爲減少數據庫壓力，詞彙只收錄繁體，不提供簡體搜索<br>更新版本：20260827<br>更新內容：<br>1.修訂字典數據，改正一些錯誤<br>2.修訂詞典數據，修訂現代漢語詞彙表，擴充本地詞彙、諺語、童謠等<br>3.更新音樂播放器的音樂<br>4.修訂了小冊子「詞法」一章，另立「句法」一章<br>5.詳細地修訂歷史可上github查詢</span>", outputAlert, 'alert-success');
 	
 })

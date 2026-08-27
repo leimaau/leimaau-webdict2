@@ -299,7 +299,7 @@ MainQuery = (() => {
 	// (多詞)查詢多個詞彙表，詞彙聯合查詢
 	tempObj.queryTable_allPhrase = (listClassifi1997, listClassifi2007, listClassifi2008, trad, isTrad, jyutping, isJyutping, jyut6ping3, isJyut6ping3, expl, isExpl, note, isNote, classifi, isClassifi, trad_matchType, jyut_matchType, jyutandtone_matchType, expl_matchType, note_matchType, classifi_matchType) => {
 		let querySQL = '';
-		let selVal = ['tab_1997_phrase', 'tab_1998_phrase', 'tab_2007_phrase', 'tab_2008_phrase', 'tab_2008_phrase', 'tab_2020_phrase', 'tab_2021_phrase']; 
+		let selVal = ['tab_1997_phrase', 'tab_1998_phrase', 'tab_2007_phrase', 'tab_2008_phrase', 'tab_2020_phrase', 'tab_2021_phrase']; 
 		
 		if (listClassifi1997.length==0){ selVal = selVal.filter(item => item !== "tab_1997_phrase"); }
 		if (listClassifi2007.length==0){ selVal = selVal.filter(item => item !== "tab_2007_phrase").filter(item => item !== "tab_2021_phrase"); }

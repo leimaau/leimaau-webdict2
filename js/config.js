@@ -4,21 +4,21 @@
 
 const cdnAddr = [];
 //cdnAddr.push('https://fastly.jsdelivr.net/npm');
-//cdnAddr.push('leimaau-npm-cdn@1.5.9');
+//cdnAddr.push('leimaau-npm-cdn@1.6.3');
 //cdnAddr.push('db/leimaau.db3');
 cdnAddr.push('https://delicate-bombolone-0bc03e.netlify.app/');
 cdnAddr.push('public/leimaau.db3.gz'); // 使用gzip压缩文件
 
 const cdnAddr2 = [];
 //cdnAddr2.push('https://fastly.jsdelivr.net/npm');
-//cdnAddr2.push('leimaau-npm-cdn@1.5.9');
+//cdnAddr2.push('leimaau-npm-cdn@1.6.3');
 //cdnAddr2.push('db/leimaau2.db3');
 cdnAddr2.push('https://delicate-bombolone-0bc03e.netlify.app/');
 cdnAddr2.push('public/leimaau2.db3.gz'); // 使用gzip压缩文件
 
 const cdnAddr3 = [];
 //cdnAddr3.push('https://fastly.jsdelivr.net/npm');
-//cdnAddr3.push('leimaau-npm-cdn@1.5.9');
+//cdnAddr3.push('leimaau-npm-cdn@1.6.3');
 //cdnAddr3.push('db/leimaau3.db3');
 cdnAddr3.push('https://delicate-bombolone-0bc03e.netlify.app/');
 cdnAddr3.push('public/leimaau3.db3.gz'); // 使用gzip压缩文件
@@ -863,13 +863,14 @@ let playlist = [
 	, { title: "コンプリケイション", artist: "OOKiEZ is PUNK'D", mp3: "http://music.163.com/song/media/outer/url?id=811995.mp3" ,cover: "http://p2.music.126.net/WyrGkrM1Z0VNgqRj5HafrQ==/866415162731275.jpg?param=130y130" }
 	, { title: "Trust Me", artist: "松下優也", mp3: "http://music.163.com/song/media/outer/url?id=30053349.mp3" ,cover: "http://p2.music.126.net/i2imMnXpmtxMX6rBfHx3Tg==/7851612533948584.jpg?param=130y130" }
 	, { title: "难念的经", artist: "周华健", mp3: "http://music.163.com/song/media/outer/url?id=5271858.mp3" ,cover: "http://p2.music.126.net/kwahKngiu5K4s2hktASbsw==/109951165792137374.jpg?param=130y130" }
-	, { title: "Always On My Mind", artist: "Sakda Record", mp3: "http://music.163.com/song/media/outer/url?id=3366916631.mp3" ,cover: "http://p1.music.126.net/EidODb8mlUHEmA3cvK-Ftg==/109951173000583429.jpg?param=130y130" }
+	, { title: "Illusion (Original Mix)", artist: "Javier Penna / Cristian Poow", mp3: "http://music.163.com/song/media/outer/url?id=35443009.mp3" ,cover: "http://p2.music.126.net/W3rnwzGZf3sgPW1mUZPGFA==/109951163310020425.jpg?param=130y130" }
 	, { title: "Wonderland", artist: "卫兰 / 廿四味", mp3: "http://music.163.com/song/media/outer/url?id=297482.mp3" ,cover: "http://p1.music.126.net/osuhc7lsZAByRb5UAG8Ztg==/1781208837010226.jpg?param=130y130" }
 	, { title: "日不落", artist: "蔡依林", mp3: "http://music.163.com/song/media/outer/url?id=209643.mp3" ,cover: "http://p1.music.126.net/Yu--DIhsQSoei6XQTrSUNA==/109951163200168756.jpg?param=130y130" }
 	, { title: "WHITE NIGHT (不眠之夜)", artist: "Jake Miller / HOYO-MiX", mp3: "http://music.163.com/song/media/outer/url?id=2122308128.mp3" ,cover: "http://p2.music.126.net/sZ-rACbFrybF0x_lI6XNMw==/109951169297766755.jpg?param=130y130" }
 	, { title: "天生鬼才", artist: "萧敬腾 / HOYO-MiX", mp3: "http://music.163.com/song/media/outer/url?id=3370640529.mp3" ,cover: "http://p2.music.126.net/FbgTqkMiPKZqS8Fk4yNS6w==/109951173054819321.jpg?param=130y130" }
 	, { title: "Brand New Sky (新世界的天空)", artist: "鸣潮先约电台 / 飞行雪绒", mp3: "http://music.163.com/song/media/outer/url?id=3395393730.mp3" ,cover: "http://p1.music.126.net/NbbrRcmT1EYggFnvom016Q==/109951173417603934.jpg?param=130y130" }
 	, { title: "心花开", artist: "李千那", mp3: "http://music.163.com/song/media/outer/url?id=28613322.mp3" ,cover: "http://p2.music.126.net/QdBHyumYd4T1JzBPjuZTCQ==/109951165992358264.jpg?param=130y130" }
+	, { title: "心云 (R&B版)", artist: "陶宏杰", mp3: "http://music.163.com/song/media/outer/url?id=3384321483.mp3" ,cover: "http://p2.music.126.net/_37j1VLOgwcu0DpCtQEenA==/109951173253374742.jpg?param=130y130" }
 ];
 let isRotate = true;
 let autoplay = false;
@@ -912,7 +913,7 @@ function showLink(textChar){
 	國語辭典簡編本：<a href="https://dict.concised.moe.edu.tw/search.jsp?md=1&word=${textChar}&qMd=0&qCol=0" target="_blank">${textChar}</a><br/>	
 	國語小字典：<a href="https://dict.mini.moe.edu.tw/SearchIndex/searchResult?searchType=one&dictSearchField=${textChar}" target="_blank">${textChar}</a><br/>
 	異體字字典：<a href="https://dict.variants.moe.edu.tw/search.jsp?QTP=0&WORD=${textChar}#searchL" target="_blank">${textChar}</a><br/>
-	國學大師：<a href="http://www.guoxuedashi.net/zidian/${encodeUnicode(textChar).replace('\\u','')}.html" target="_blank">${textChar}</a><br/>
+	國學大全：<a href="https://www.gxdq.com/zidian/${encodeUnicode(textChar).replace('\\u','')}.html" target="_blank">${textChar}</a><br/>
 	古今文字集成：<a href="http://www.ccamc.co/cjkv.php?cjkv=${textChar}" target="_blank">${textChar}</a><br/>
 	漢字全息資源應用系統：<a href="http://qxk.bnu.edu.cn/#/danziDetail/42c2d834-fa1d-47e9-9f90-972a687183f7/${textChar}/22d3af76-1ffe-46da-8c28-40e7dfe6b8d2/0" target="_blank">${textChar}</a><br/>
 	字海|葉典：<a href="http://zisea.com/zscontent.asp?uni=${encodeUnicode(textChar).replace('\\u','')}" target="_blank">${textChar}</a><br/>
@@ -929,20 +930,20 @@ function showLink(textChar){
 	</span></div></div>`);
 	
 	outputText3.push(`<div class="card mt-1 mb-3"><div class="card-header">快速鏈接</div><div class="card-body text-secondary"><span>
-	中國國家地名信息庫：<a href="https://dmfw.mca.gov.cn/index.html" target="_blank">前往</a><br/>
+	OpenCC 開放中文轉換：<a href="https://opencc.byvoid.com/" target="_blank">前往</a><br/>
 	古音小鏡：<a href="http://www.kaom.net/" target="_blank">前往</a><br/>
 	小學堂：<a href="http://xiaoxue.iis.sinica.edu.tw/" target="_blank">前往</a><br/>
+	中國國家地名信息庫：<a href="https://dmfw.mca.gov.cn/index.html" target="_blank">前往</a><br/>
+	語保工程採錄展示平臺：<a href="https://zhongguoyuyan.cn/" target="_blank">前往</a><br/>
 	香港小學學習字詞表：<a href="https://www.edbchinese.hk/lexlist_ch/" target="_blank">前往</a><br/>
 	如是古籍字典：<a href="https://dict.rushi-ai.net/variant" target="_blank">前往</a><br/>
 	東方語言學：<a href="http://www.eastling.org/" target="_blank">前往</a><br/>
-	語保工程採錄展示平臺：<a href="https://zhongguoyuyan.cn/" target="_blank">前往</a><br/>
 	早期漢語方言文獻資料庫：<a href="https://database.shss.hkust.edu.hk/5dialects/" target="_blank">前往</a><br/>
 	早期粵語口語文獻資料庫：<a href="https://database.shss.hkust.edu.hk/Candbase/" target="_blank">前往</a><br/>
 	香港二十世紀中期粵語語料庫：<a href="https://hkcc.eduhk.hk/v1/introduction.html" target="_blank">前往</a><br/>
 	漢語方言學大詞典：<a href="http://www.fangyanxue.com:8090/pages/index/index.html" target="_blank">前往</a><br/>
 	廣西地情網：<a href="http://www.gxdfz.org.cn/index.html" target="_blank">前往</a><br/>
 	廣東省情網：<a href="http://dfz.gd.gov.cn/" target="_blank">前往</a><br/>
-	中共廣州市委黨史文獻研究室：<a href="http://www.gzsqw.org.cn/" target="_blank">前往</a><br/>
 	廣西圖書館：<a href="https://www.gxlib.org.cn/" target="_blank">前往</a><br/>
 	國學寶典：<a href="http://www.gxbd.com/" target="_blank">前往</a><br/>
 	說文解字在線查詢：<a href="http://www.shuowen.org/" target="_blank">前往</a><br/>
